@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=harbour.mitakuuluu2.server
+Exec=/usr/bin/invoker --type=qt5 -s /usr/bin/harbour-mitakuuluu2-server
+User=nemo

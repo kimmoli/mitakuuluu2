@@ -1,0 +1,12 @@
+[Unit]
+Description=Mitakuuluu2
+Requires=lipstick.service
+After=lipstick.service
+
+[Service]
+Type=dbus
+ExecStart=/usr/bin/invoker --type=qt5 -s /usr/bin/harbour-mitakuuluu2-server
+BusName=harbour.mitakuuluu2.server
+
+[Install]
+WantedBy=post-user-session.target
