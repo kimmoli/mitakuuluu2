@@ -12,6 +12,7 @@ Page {
 
     property PositionSource positionSource
     property AudioRecorder audioRecorder
+    property ConversationModel conversationModel: ConversationModel {}
 
     onStatusChanged: {
         if (page.status === PageStatus.Inactive && pageStack.depth === 1) {
@@ -626,25 +627,6 @@ Page {
 
     RemorsePopup {
         id: remorseAll
-    }
-
-    ConversationModel {
-        id: conversationModel
-        onLastMessageChanged: {
-            if (mjid == page.jid && (conversationView.shouldGotoEnd || force)) {
-                //if (conversationView.contentHeight > conversationView.height)
-                //    scrollDown.start()
-                //conversationView.shouldGotoEnd = false
-            }
-        }
-        onLastMessageToBeChanged: {
-            if (mjid == page.jid && conversationView.atYEnd) {
-                //conversationView.shouldGotoEnd = true
-            }
-            else if (conversationView.contentHeight > conversationView.header) {
-               //newMessageItem.opacity = 1.0
-            }
-        }
     }
 
     Timer {

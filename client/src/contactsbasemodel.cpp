@@ -96,7 +96,6 @@ void ContactsBaseModel::reloadContact(const QString &jid)
 void ContactsBaseModel::setPropertyByJid(const QString &jid, const QString &name, const QVariant &value)
 {
     if (_modelData.keys().contains(jid)) {
-        //qDebug() << "Model setPropertyByJid:" << jid << name << value;
         if (_modelData.keys().contains(jid)) {
             int row = _modelData.keys().indexOf(jid);
             if (name == "avatar") {
@@ -157,7 +156,6 @@ void ContactsBaseModel::clear()
     beginResetModel();
     _modelData.clear();
     endResetModel();
-    //reset();
 }
 
 QColor ContactsBaseModel::generateColor()
@@ -179,10 +177,8 @@ void ContactsBaseModel::checkTotalUnread()
 {
     _totalUnread = 0;
     foreach (const QVariantMap &contact, _modelData.values()) {
-        //qDebug() << contact["jid"].toString() << "unread:" << contact["unread"].toInt();
         _totalUnread += contact["unread"].toInt();
     }
-    //qDebug() << "Total unread:" << QString::number(_totalUnread);
     Q_EMIT totalUnreadChanged();
 }
 
@@ -235,6 +231,7 @@ void ContactsBaseModel::contactChanged(const QVariantMap &data)
     QString nickname = getNicknameBy(jid, message, name, pushname);
 
     contact["nickname"] = nickname;
+    contact["typing"] = false;
 
     _modelData[jid] = contact;
 
@@ -306,14 +303,6 @@ void ContactsBaseModel::contactsChanged()
     dbExecutor->queueAction(query);
 }
 
-void ContactsBaseModel::deleteEverything()
-{
-    QVariantMap query;
-    query["uuid"] = uuid;
-    //query["type"] = QueryType::DeleteEverything;
-    dbExecutor->queueAction(query, 1000);
-}
-
 void ContactsBaseModel::setUnread(const QString &jid, int count)
 {
     setPropertyByJid(jid, "unread", count);
@@ -331,10 +320,6 @@ void ContactsBaseModel::pushnameUpdated(const QString &jid, const QString &pushN
 
         nickname = getNicknameBy(jid, message, name, pushname);
 
-        /*if (!jid.contains("-") && !pushname.isEmpty()) {
-            if (name == jid.split("@").first())
-                nickname = pushName;
-        }*/
         _modelData[jid]["nickname"] = nickname;
 
         int row = _modelData.keys().indexOf(jid);
@@ -346,7 +331,6 @@ void ContactsBaseModel::pushnameUpdated(const QString &jid, const QString &pushN
 
 void ContactsBaseModel::presenceAvailable(const QString &jid)
 {
-    //qDebug() << "presenceAvailable" << jid;
     if (!_availableContacts.contains(jid))
         _availableContacts.append(jid);
     setPropertyByJid(jid, "available", true);
@@ -354,7 +338,6 @@ void ContactsBaseModel::presenceAvailable(const QString &jid)
 
 void ContactsBaseModel::presenceUnavailable(const QString &jid)
 {
-    //qDebug() << "presenceUnavailable" << jid;
     if (_availableContacts.contains(jid))
         _availableContacts.removeAll(jid);
     setPropertyByJid(jid, "available", false);
@@ -367,7 +350,6 @@ void ContactsBaseModel::presenceLastSeen(const QString jid, int timestamp)
 
 void ContactsBaseModel::messageReceived(const QVariantMap &data)
 {
-    //qDebug() << "MessageReceived:" << data["jid"] << data["message"];
     QString jid = data["jid"].toString();
     int lastmessage = data["timestamp"].toInt();
     if (_modelData.keys().contains(jid)) {
@@ -444,7 +426,6 @@ void ContactsBaseModel::contactPaused(const QString &jid)
 
 void ContactsBaseModel::dbResults(const QVariant &result)
 {
-    //qDebug() << "dbResults received";
     QVariantMap reply = result.toMap();
     int vtype = reply["type"].toInt();
 
@@ -491,23 +472,16 @@ void ContactsBaseModel::dbResults(const QVariant &result)
                     requestAvatar(jid);
             }
             endResetModel();
-            //reset();
         }
-        //qDebug() << "inserted" << QString::number(_modelData.size()) << "rows";
         checkTotalUnread();
         break;
     }
-    //case QueryType::DeleteEverything: {
-    //    Q_EMIT deleteEverythingSuccessful();
-    //    break;
-    //}
     }
 }
 
 int ContactsBaseModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    //qDebug() << "Model count:" << _modelData.size();
     return _modelData.size();
 }
 
@@ -516,7 +490,7 @@ QVariant ContactsBaseModel::data(const QModelIndex &index, int role) const
     int row = index.row();
     if (row < 0 || row >= _modelData.count())
         return QVariantMap();
-    return _modelData[_modelData.keys().at(row)][_roles[role]];
+    return _modelData[_modelData.keys()[row]][_roles[role]];
 }
 
 bool ContactsBaseModel::setData(const QModelIndex &index, const QVariant &value, int role)

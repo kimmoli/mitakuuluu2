@@ -30,7 +30,7 @@ QueryExecutor::QueryExecutor(QObject *parent) :
     }
 
     if (db.isOpen()) {
-        qDebug() << "Tables:" << db.tables();
+        //qDebug() << "Tables:" << db.tables();
         if (!db.tables().contains("contacts"))
             db.exec("CREATE TABLE contacts (jid TEXT, pushname TEXT, name TEXT, message TEXT, contacttype INTEGER, owner TEXT, subowner TEXT, timestamp INTEGER, subtimestamp INTEGER, avatar TEXT, unread INTEGER, lastmessage INTEGER);");
     }
@@ -684,6 +684,12 @@ void QueryExecutor::removeAllMessages(QVariantMap &query)
 {
     QString table = query["table"].toString();
     db.exec(QString("DELETE FROM u%1;").arg(table));
+
+    QSqlQuery sql(db);
+    sql.prepare("UPDATE contacts SET lastmessage=(:lastmessage) WHERE jid=(:jid);");
+    sql.bindValue(":lastmessage", 0);
+    sql.bindValue(":jid", query["jid"]);
+    sql.exec();
 
     Q_EMIT actionDone(query);
 }

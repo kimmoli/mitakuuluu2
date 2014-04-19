@@ -14,6 +14,7 @@ public:
 
 public slots:
     Q_INVOKABLE void startSharing(const QStringList &jids, const QString &name, const QString &data);
+    Q_INVOKABLE QVariantMap get(int itemIndex);
 
 private:
     int count();

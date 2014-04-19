@@ -1,7 +1,6 @@
 TEMPLATE = aux
 
-TS_FILE = $$PWD/mitakuuluu2-en_eng.ts
-EE_QM = $$PWD/mitakuuluu2-en_eng.qm
+TS_FILE = $$PWD/mitakuuluu2.ts
 
 ts.commands += lupdate $$PWD/.. -ts $$TS_FILE
 ts.CONFIG += no_check_exist no_link
@@ -12,7 +11,7 @@ QMAKE_EXTRA_TARGETS += ts
 PRE_TARGETDEPS += ts
 
 TRANSLATIONS += \
-#    mitakuuluu2-ru_RU.ts \
+    ru_RU.ts \
     $${NULL}
 
 build_translations.target = build_translations
@@ -26,3 +25,6 @@ qm.path = /usr/share/harbour-mitakuuluu2/locales
 qm.CONFIG += no_check_exist
 
 INSTALLS += qm
+
+OTHER_FILES += $$TRANSLATIONS
+

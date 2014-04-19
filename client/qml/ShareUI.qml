@@ -18,8 +18,10 @@ ShareDialog {
 
     canAccept: false
 
-    Component.onCompleted: {
-        fastScroll.init()
+    onStatusChanged: {
+        if (status == DialogStatus.Opened) {
+            fastScroll.init()
+        }
     }
 
     onAccepted: {
@@ -52,7 +54,10 @@ ShareDialog {
         section.property: "nickname"
         section.criteria: ViewSection.FirstCharacter
         section.delegate: sectionDelegate
-        FastScroll { id: fastScroll }
+        FastScroll {
+            id: fastScroll
+            __hasPageHeight: false
+        }
     }
 
     Component {

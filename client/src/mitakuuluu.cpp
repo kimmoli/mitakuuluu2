@@ -33,6 +33,7 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         QDir localesDir(baseName);
         if (localesDir.exists()) {
             locales = localesDir.entryList(QStringList() << "*.qm", QDir::Files | QDir::NoDotAndDotDot, QDir::Name | QDir::IgnoreCase);
+            qDebug() << "available translations:" << locales;
         }
         foreach (const QString &locale, locales) {
             localeNames << QString("%1 (%2)")
@@ -805,7 +806,7 @@ void Mitakuuluu::setLocale(const QString &localeName)
         qDebug() << (QGuiApplication::installTranslator(translator) ? "Translator installed" : "Error installing translator");
     }
     else {
-        qDebug() << "Error loading translator";
+        qDebug() << "Translation not available";
     }
 }
 

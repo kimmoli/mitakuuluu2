@@ -28,6 +28,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
     virtual QHash<int, QByteArray> roleNames() const { return _roles; }
+    QVariantMap get(int index);
 
 public slots:
     void startSharing(const QStringList &jids, const QString &name, const QString &data);

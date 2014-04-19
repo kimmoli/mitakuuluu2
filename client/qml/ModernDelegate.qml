@@ -777,8 +777,7 @@ MouseArea {
                 text: qsTr("Forward", "Conversation message context menu item")
                 enabled: Mitakuuluu.connectionStatus === Mitakuuluu.LoggedIn
                 onClicked: {
-                    //forwardMessage.loadMessage(conversationModel.getModelByMsgId(model.msgid), page.jid)
-                    //forwardMessage.open()
+                    pageStack.push(Qt.resolvedUrl("Forward.qml"), {"jid": page.jid, "messageModel": model, "conversationModel": page.conversationModel})
                 }
             }
 

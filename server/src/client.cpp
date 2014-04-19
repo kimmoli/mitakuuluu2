@@ -2182,32 +2182,28 @@ void Client::getAvailableJids()
 
 void Client::forwardMessage(const QStringList &jids, const QVariantMap &model)
 {
-    int msgtype = model["msgtype"].toInt();
-    if (msgtype == 2) {
-        broadcastSend(jids, model["message"].toString());
+    int msgtype = model["watype"].toInt();
+    if (msgtype == 0) {
+        broadcastSend(jids, model["data"].toString());
     }
-    else if (msgtype == 3) {
+    else {
         FMessage msg(jids.size() > 1 ? "broadcast" : jids.first(), true);
         msg.type = FMessage::MediaMessage;
         if (jids.size() > 1) {
             msg.broadcast = true;
             msg.broadcastJids = jids;
         }
-        int mediatype = model["mediatype"].toInt();
-        msg.media_wa_type = mediatype;
+        msg.media_wa_type = msgtype;
         msg.status = FMessage::Uploaded;
-        msg.media_size = model["mediasize"].toInt();
-        msg.media_mime_type = model["mediamime"].toString();
-        msg.media_name = model["medianame"].toString();
-        msg.media_url = model["mediaurl"].toString();
-        msg.local_file_uri = model["localurl"].toString();
-        QString preview = model["mediathumb"].toString();
-        if (preview.mid(1, 3) == "PNG")
-            msg.setData(preview);
-        else
-            msg.setData(QByteArray::fromBase64(preview.toLatin1()));
-        msg.latitude = model["medialat"].toDouble();
-        msg.longitude = model["medialon"].toDouble();
+        msg.media_size = model["size"].toInt();
+        msg.media_mime_type = model["mime"].toString();
+        msg.media_name = model["name"].toString();
+        msg.media_url = model["url"].toString();
+        msg.local_file_uri = model["local"].toString();
+        msg.setData(model["data"].toString());
+        msg.latitude = model["latitude"].toDouble();
+        msg.longitude = model["longitude"].toDouble();
+        msg.media_duration_seconds = model["duration"].toInt();
         queueMessage(msg);
         addMessage(msg);
     }

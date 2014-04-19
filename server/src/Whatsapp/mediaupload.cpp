@@ -92,7 +92,7 @@ void MediaUpload::sendPicture(QStringList jids, MediaDescriptor descriptor)
 
 void MediaUpload::sendVideo(QStringList jids, MediaDescriptor descriptor)
 {
-    QString thumbnail = "/usr/share/harbour-mitakuuluu/images/thumbnail-video.jpg";
+    QString thumbnail = "/usr/share/harbour-mitakuuluu2/images/thumbnail-video.jpg";
 
     QImage picture;
 
@@ -179,7 +179,9 @@ void MediaUpload::sendMedia(QStringList jids, MediaDescriptor descriptor)
     // ToDo: Save tmp file for persistence sending.
 
     msg.status = FMessage::Uploading;
+    msg.data = msg.data.toBase64();
     emit readyToSendMessage(this,msg);
+    msg.data = QByteArray::fromBase64(msg.data);
 
     if (descriptor.upload)
     {

@@ -264,5 +264,8 @@ Page {
         contactsModel: ContactsBaseModel
         showActive: false
         showUnknown: acceptUnknown
+        onContactsModelChanged: {
+            fastScroll.init()
+        }
     }
 }

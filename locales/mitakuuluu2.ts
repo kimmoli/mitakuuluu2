@@ -358,7 +358,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2585"/>
+        <location filename="../server/src/client.cpp" line="2581"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished">
@@ -450,79 +450,79 @@
 <context>
     <name>ConversationPage</name>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="80"/>
+        <location filename="../client/qml/ConversationPage.qml" line="81"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="230"/>
+        <location filename="../client/qml/ConversationPage.qml" line="231"/>
         <source>Clear all messages</source>
         <comment>Conversation menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="232"/>
+        <location filename="../client/qml/ConversationPage.qml" line="233"/>
         <source>Clear all messages</source>
         <comment>Conversation delete all messages remorse popup</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="242"/>
+        <location filename="../client/qml/ConversationPage.qml" line="243"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="248"/>
+        <location filename="../client/qml/ConversationPage.qml" line="249"/>
         <source>Load old conversation</source>
         <comment>Conversation menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="295"/>
+        <location filename="../client/qml/ConversationPage.qml" line="296"/>
         <source>Enable location in settings!</source>
         <comment>Banner text if GPS disabled in settings</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="320"/>
+        <location filename="../client/qml/ConversationPage.qml" line="321"/>
         <source>Delete</source>
         <comment>Conversation voice recorder delete label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="335"/>
+        <location filename="../client/qml/ConversationPage.qml" line="336"/>
         <source>Hold button for recorfing, release to send</source>
         <comment>Conversation voice recorder description label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="436"/>
+        <location filename="../client/qml/ConversationPage.qml" line="437"/>
         <source>Typing...</source>
         <comment>Contact typing converstation text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="437"/>
+        <location filename="../client/qml/ConversationPage.qml" line="438"/>
         <source>Last seen: %1</source>
         <comment>Last seen converstation text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="500"/>
+        <location filename="../client/qml/ConversationPage.qml" line="501"/>
         <source>New message</source>
         <comment>Conversation new message indicator</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="536"/>
+        <location filename="../client/qml/ConversationPage.qml" line="537"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="765"/>
+        <location filename="../client/qml/ConversationPage.qml" line="747"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation type="unfinished"></translation>
@@ -574,6 +574,21 @@
         <location filename="../client/qml/CreateGroup.qml" line="244"/>
         <source>Change</source>
         <comment>Avatar view change button text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Forward</name>
+    <message>
+        <location filename="../client/qml/Forward.qml" line="64"/>
+        <source>Select contacts</source>
+        <comment>Forward message page title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Forward.qml" line="65"/>
+        <source>Forward</source>
+        <comment>Forward message page title</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -763,61 +778,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="206"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="207"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="209"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="210"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="212"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="213"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="215"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="216"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="218"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="219"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="221"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="222"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="224"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="225"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="227"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="228"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="230"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="231"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="233"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="234"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation type="unfinished"></translation>
@@ -862,19 +877,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="787"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="786"/>
         <source>Save to Gallery</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="790"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="789"/>
         <source>File saved as %1</source>
         <comment>Banner text message</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="796"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="795"/>
         <source>Delete</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
@@ -1755,7 +1770,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
 <context>
     <name>ShareUI</name>
     <message numerus="yes">
-        <location filename="../client/qml/ShareUI.qml" line="51"/>
+        <location filename="../client/qml/ShareUI.qml" line="53"/>
         <source>Selected: %n</source>
         <comment>Sharing menu title text</comment>
         <translation type="unfinished">
@@ -1763,7 +1778,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         </translation>
     </message>
     <message>
-        <location filename="../client/qml/ShareUI.qml" line="103"/>
+        <location filename="../client/qml/ShareUI.qml" line="108"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation type="unfinished"></translation>

@@ -45,8 +45,6 @@ public slots:
     void clear();
     void contactsChanged();
 
-    void deleteEverything();
-
 private:
     bool getAvailable(const QString &jid);
     bool getBlocked(const QString &jid);

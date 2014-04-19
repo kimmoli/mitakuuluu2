@@ -1,4 +1,5 @@
 #include "contactsfiltermodel.h"
+#include <QDebug>
 
 ContactsFilterModel::ContactsFilterModel(QObject *parent) :
     QSortFilterProxyModel(parent),
@@ -6,6 +7,10 @@ ContactsFilterModel::ContactsFilterModel(QObject *parent) :
     _showUnknown(false),
     _filter("")
 {
+    QObject::connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(onRowsInserted(QModelIndex,int,int)));
+    QObject::connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(onRowsRemoved(QModelIndex,int,int)));
+    QObject::connect(this, SIGNAL(rowsMoved(QModelIndex,int,int,QModelIndex,int)), this, SLOT(onRowsMoved(QModelIndex,int,int,QModelIndex,int)));
+
     setFilterRole(Qt::UserRole + 1);
     setSortRole(Qt::UserRole + 1);
     sort(0);
@@ -13,9 +18,28 @@ ContactsFilterModel::ContactsFilterModel(QObject *parent) :
 
 QVariantMap ContactsFilterModel::get(int itemIndex)
 {
-    QModelIndex sourceIndex = index(itemIndex, 0, QModelIndex());
+    QModelIndex sourceIndex = mapToSource(index(itemIndex, 0, QModelIndex()));
     QVariantMap data = _contactsModel->get(sourceIndex.row());
     return data;
+}
+
+void ContactsFilterModel::onRowsInserted(const QModelIndex &parent, int first, int last)
+{
+    Q_UNUSED(parent);
+    Q_EMIT contactsModelChanged();
+}
+
+void ContactsFilterModel::onRowsRemoved(const QModelIndex &parent, int first, int last)
+{
+    Q_UNUSED(parent);
+    Q_EMIT contactsModelChanged();
+}
+
+void ContactsFilterModel::onRowsMoved(const QModelIndex &parent, int start, int end, const QModelIndex &destination, int row)
+{
+    Q_UNUSED(parent);
+    Q_UNUSED(destination);
+    Q_EMIT contactsModelChanged();
 }
 
 bool ContactsFilterModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const

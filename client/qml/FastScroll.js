@@ -40,7 +40,7 @@ function initSectionData(list) {
             if(item.norender && item.norender == true)
                 continue;
             if (item[prop].substring(0, 1) !== current) {
-                current = item[prop].substring(0, 1);
+                current = item[prop].substring(0, 1).toLocaleUpperCase();
                 _sections.push(current);
                 sectionData.push({ index: i, header: current });
             }

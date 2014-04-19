@@ -35,7 +35,6 @@ SOURCES += \
     ../threadworker/queryexecutor.cpp \
     src/conversationmodel.cpp \
     src/mitakuuluu.cpp \
-    src/settings.cpp \
     src/contactsfiltermodel.cpp \
     src/contactsbasemodel.cpp \
     src/main.cpp
@@ -46,7 +45,6 @@ HEADERS += \
     src/constants.h \
     src/conversationmodel.h \
     src/mitakuuluu.h \
-    src/settings.h \
     src/audiorecorder.h \
     ../logging/logging.h \
     src/contactsfiltermodel.h \

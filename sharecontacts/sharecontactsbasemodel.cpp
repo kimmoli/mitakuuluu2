@@ -222,6 +222,13 @@ bool ShareContactsBaseModel::setData(const QModelIndex &index, const QVariant &v
     return false;
 }
 
+QVariantMap ShareContactsBaseModel::get(int index)
+{
+    if (index < 0 || index >= _modelData.count())
+        return QVariantMap();
+    return _modelData[_modelData.keys()[index]];
+}
+
 void ShareContactsBaseModel::startSharing(const QStringList &jids, const QString &name, const QString &data)
 {
     if (iface) {

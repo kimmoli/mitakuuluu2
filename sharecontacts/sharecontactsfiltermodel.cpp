@@ -16,6 +16,13 @@ void ShareContactsFilterModel::startSharing(const QStringList &jids, const QStri
     _baseModel->startSharing(jids, name, data);
 }
 
+QVariantMap ShareContactsFilterModel::get(int itemIndex)
+{
+    QModelIndex sourceIndex = mapToSource(index(itemIndex, 0, QModelIndex()));
+    QVariantMap data = _baseModel->get(sourceIndex.row());
+    return data;
+}
+
 int ShareContactsFilterModel::count()
 {
     return rowCount();
