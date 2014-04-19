@@ -9,16 +9,29 @@ QueryExecutor::QueryExecutor(QObject *parent) :
 {
     m_worker.setCallObject(this);
 
+    QString dataDir = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+    QString dataFile = QString("%1/database.db").arg(dataDir);
+    QString oldFile = QString("%1/.whatsapp/whatsapp.db").arg(QDir::homePath());
+
+    QFile newDBFile(dataFile);
+    QFile oldDBFile(oldFile);
+
+    bool transferBase = false;
+
+    if (!newDBFile.exists() && oldDBFile.exists()) {
+        oldDBFile.copy(dataFile);
+        transferBase = true;
+    }
+
     db = QSqlDatabase::database();
     if (!db.isOpen()) {
         qDebug() << "QE Opening database";
         db = QSqlDatabase::addDatabase("QSQLITE");
-        QString dataDir = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
         QDir dir(dataDir);
         if (!dir.exists())
             dir.mkpath(dataDir);
         qDebug() << "DB Dir:" << dataDir;
-        db.setDatabaseName(QString("%1/database.db").arg(dataDir));
+        db.setDatabaseName(dataFile);
         qDebug() << "DB Name:" << db.databaseName();
         if (db.open())
             qDebug() << "QE opened database";
@@ -30,9 +43,67 @@ QueryExecutor::QueryExecutor(QObject *parent) :
     }
 
     if (db.isOpen()) {
-        //qDebug() << "Tables:" << db.tables();
-        if (!db.tables().contains("contacts"))
+        if (!db.tables().contains("contacts")) {
             db.exec("CREATE TABLE contacts (jid TEXT, pushname TEXT, name TEXT, message TEXT, contacttype INTEGER, owner TEXT, subowner TEXT, timestamp INTEGER, subtimestamp INTEGER, avatar TEXT, unread INTEGER, lastmessage INTEGER);");
+        }
+        if (transferBase) {
+            qDebug() << "Begin transfer old database";
+
+            qDebug() << "Tweaking database contacts table";
+            QSqlQuery contacts(db);
+            contacts.prepare("UPDATE contacts SET contacttype=(:contacttype);");
+            contacts.bindValue(":contacttype", 1);
+            contacts.exec();
+
+            foreach (QString table, db.tables()) {
+                if (table.startsWith("u")) {
+                    QString tmpTable = table;
+                    tmpTable.replace("u", "x");
+                    QString jid = table;
+                    jid.replace("g", "-").replace("u", "");
+                    jid.append(table.contains("g") ? "@g.us" : "@s.whatsapp.net");
+                    qDebug() << "Transfer database table" << table << "started";
+                    db.exec(QString("ALTER TABLE %1 RENAME TO %2;").arg(table).arg(tmpTable));
+                    db.exec(QString("CREATE TABLE %1 (msgid TEXT, jid TEXT, author TEXT, timestamp INTEGER, data TEXT, status INTEGER, watype INTEGER, url TEXT, name TEXT, latitude TEXT, longitude TEXT, size INTEGER, duration INTEGER, width INTEGER, height INTEGER, hash TEXT, mime TEXT, broadcast INTEGER, live INTEGER, local TEXT);").arg(table));
+                    QSqlQuery query(db);
+                    query.prepare(QString("SELECT msgid, author, timestamp, message, msgstatus FROM %1 WHERE msgtype=(:msgtype);").arg(tmpTable));
+                    query.bindValue(":msgtype", 2);
+                    query.exec();
+                    while (query.next()) {
+                        QSqlQuery transfer(db);
+                        transfer.prepare(QString("INSERT INTO %1 VALUES (:msgid, :jid, :author, :timestamp, :data, :status, :watype, :url, :name, :latitude, :longitude, :size, :duration, :width, :height, :hash, :mime, :broadcast, :live, :local);").arg(table));
+                        transfer.bindValue(":msgid", query.value("msgid"));
+                        transfer.bindValue(":jid", jid);
+                        transfer.bindValue(":author", query.value("author"));
+                        transfer.bindValue(":timestamp", query.value("timestamp"));
+                        transfer.bindValue(":data", query.value("message"));
+                        transfer.bindValue(":status", query.value("msgstatus"));
+                        transfer.bindValue(":watype", 0);
+                        transfer.bindValue(":url", "");
+                        transfer.bindValue(":name", "");
+                        transfer.bindValue(":latitude", "");
+                        transfer.bindValue(":longitude", "");
+                        transfer.bindValue(":size", 0);
+                        transfer.bindValue(":duration", 0);
+                        transfer.bindValue(":width", 0);
+                        transfer.bindValue(":height", 0);
+                        transfer.bindValue(":mime", "");
+                        transfer.bindValue(":broadcast", 0);
+                        transfer.bindValue(":live", 0);
+                        transfer.bindValue(":local", "");
+                        transfer.exec();
+                    }
+                    db.exec(QString("DROP TABLE %1;").arg(tmpTable));
+                    qDebug() << "Transfer database table" << table << "complete";
+                }
+                else if (table == "login") {
+                    db.exec("DROP TABLE login;");
+                }
+                else if (table == "muted") {
+                    db.exec("DROP TABLE muted;");
+                }
+            }
+        }
     }
 }
 
