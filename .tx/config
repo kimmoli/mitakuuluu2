@@ -1,0 +1,7 @@
+[main]
+host = https://www.transifex.com
+
+[mitakuuluu2.mitakuuluu2]
+file_filter = locales/<lang>.ts
+source_file = locales/mitakuuluu2.ts
+source_lang = en
