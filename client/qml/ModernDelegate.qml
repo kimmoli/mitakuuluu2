@@ -37,7 +37,7 @@ MouseArea {
     property variant highlightColor: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
 
     property int maxWidth: parent.width - Theme.itemSizeLarge
-    onMaxWidthChanged: changeMessageWidth()
+    //onMaxWidthChanged: changeMessageWidth()
 
     DragFilter.screenMargin: Theme.paddingLarge
     onPressed: item.DragFilter.begin(mouse.x, mouse.y)
@@ -219,13 +219,6 @@ MouseArea {
         }
         else if (model.watype == Mitakuuluu.Location) {
             Qt.openUrlExternally("geo:" + model.latitude + "," + model.longitude)
-        }
-    }
-
-    function changeMessageWidth() {
-        message.width = undefined
-        if (message.paintedWidth > maxWidth) {
-            message.width = maxWidth
         }
     }
 
@@ -514,7 +507,11 @@ MouseArea {
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font.pixelSize: fontSize
             color: down ? Theme.highlightColor : Theme.primaryColor
-            onPaintedWidthChanged: changeMessageWidth()
+            onPaintedWidthChanged: {
+                if (paintedWidth > maxWidth) {
+                    width = maxWidth
+                }
+            }
         }
     }
 
