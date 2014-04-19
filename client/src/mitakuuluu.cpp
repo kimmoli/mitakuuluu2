@@ -25,6 +25,26 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         nam = new QNetworkAccessManager(this);
         _pendingJid = QString();
         connStatus = Unknown;
+        translator = 0;
+
+        QStringList locales;
+        QStringList localeNames;
+        QString baseName("/usr/share/harbour-mitakuuluu2/locales/");
+        QDir localesDir(baseName);
+        if (localesDir.exists()) {
+            locales = localesDir.entryList(QStringList() << "*.qm", QDir::Files | QDir::NoDotAndDotDot, QDir::Name | QDir::IgnoreCase);
+        }
+        foreach (const QString &locale, locales) {
+            localeNames << QString("%1 (%2)")
+                                   .arg(QLocale::languageToString(QLocale(locale).language()))
+                                   .arg(QLocale::countryToString(QLocale(locale).country()));
+        }
+        _locales =  locales.isEmpty() ? QStringList() << "en.qm" : locales;
+        _localesNames = localeNames.isEmpty() ? QStringList() << "Engineering english" : localeNames;
+
+        settings = new QSettings("coderus", "mitakuuluu2", this);
+        _currentLocale = settings->value("settings/locale", QString("%1.qm").arg(QLocale::system().name().split(".").first())).toString();
+        setLocale(_currentLocale);
 
         QDateTime::currentDateTime().toString("dd-MM-yy-hh-mm-ss");
 
@@ -578,6 +598,7 @@ void Mitakuuluu::onServerPong()
 
 void Mitakuuluu::groupCreated(const QString &gjid)
 {
+    qDebug() << "Group created:" << gjid;
     _pendingGroup = gjid;
 }
 
@@ -603,7 +624,7 @@ void Mitakuuluu::exit()
     QGuiApplication::exit(0);
 }
 
-void Mitakuuluu::setPendingJid(const QString &jid)
+void Mitakuuluu::notificationCallback(const QString &jid)
 {
     _pendingJid = jid;
     Q_EMIT notificationOpenJid(jid);
@@ -768,13 +789,31 @@ void Mitakuuluu::forceConnection()
 
 void Mitakuuluu::setLocale(const QString &localeName)
 {
-    QGuiApplication::removeTranslator(&translator);
+    if (translator) {
+        QGuiApplication::removeTranslator(translator);
+        delete translator;
+        translator = 0;
+    }
 
     QString locale = localeName.split(".").first();
 
+    translator = new QTranslator(this);
+
     qDebug() << "Loading translation:" << locale;
-    qDebug() << (translator.load(locale, "/usr/share/harbour-mitakuuluu2/locales", QString(), ".qm") ? "Translator loaded" : "Error loading translator");
-    qDebug() << (QGuiApplication::installTranslator(&translator) ? "Translator installed" : "Error installing translator");
+    if (translator->load(locale, "/usr/share/harbour-mitakuuluu2/locales", QString(), ".qm")) {
+        qDebug() << "Translator loaded";
+        qDebug() << (QGuiApplication::installTranslator(translator) ? "Translator installed" : "Error installing translator");
+    }
+    else {
+        qDebug() << "Error loading translator";
+    }
+}
+
+void Mitakuuluu::setLocale(int index)
+{
+    QString locale = _locales[index];
+    settings->setValue("settings/locale", locale);
+    setLocale(locale);
 }
 
 int Mitakuuluu::getExifRotation(const QString &image)
@@ -884,4 +923,81 @@ void Mitakuuluu::rejectMediaCapture(const QString &path)
     QFile file(path);
     if (file.exists())
         file.remove();
+}
+
+QStringList Mitakuuluu::getLocalesNames()
+{
+    return _localesNames;
+}
+
+int Mitakuuluu::getCurrentLocaleIndex()
+{
+    if (_locales.contains(_currentLocale)) {
+        return _locales.indexOf(_currentLocale);
+    }
+    else
+        return 0;
+}
+
+// Settings
+
+void Mitakuuluu::save(const QString &key, const QVariant &value)
+{
+    if (settings) {
+        settings->setValue(key, value);
+        settings->sync();
+    }
+}
+
+QVariant Mitakuuluu::load(const QString &key, const QVariant &defaultValue)
+{
+    if (settings) {
+        settings->sync();
+        QVariant value = settings->value(key, defaultValue);
+        switch (defaultValue.type()) {
+        case QVariant::Bool:
+            return value.toBool();
+        case QVariant::Double:
+            return value.toDouble();
+        case QVariant::Int:
+            return value.toInt();
+        case QVariant::String:
+            return value.toString();
+        case QVariant::StringList:
+            return value.toStringList();
+        case QVariant::List:
+            return value.toList();
+        default:
+            return value;
+        }
+    }
+    return QVariant();
+}
+
+QVariantList Mitakuuluu::loadGroup(const QString &name)
+{
+    if (settings) {
+        settings->sync();
+        settings->beginGroup(name);
+        QVariantList result;
+        foreach (const QString &key, settings->childKeys()) {
+            QVariantMap item;
+            item["jid"] = key;
+            item["value"] = settings->value(key, 0);
+            result.append(item);
+        }
+        settings->endGroup();
+        return result;
+    }
+    return QVariantList();
+}
+
+void Mitakuuluu::clearGroup(const QString &name)
+{
+    if (settings) {
+        settings->beginGroup(name);
+        settings->remove("");
+        settings->endGroup();
+        settings->sync();
+    }
 }

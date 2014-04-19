@@ -70,9 +70,9 @@ Dialog {
 
     DialogHeader {
         id: header
-        title: multiple && page.selectedFiles.length > 0 ? (_mode === "image" ? qsTr("Images selected: %n", "Media selection page title text", page.selectedFiles.length)
-                                                                              : (_mode === "music") ? qsTr("Audio selected: %n", "Media selection page title text", page.selectedFiles.length)
-                                                                                                    : qsTr("Video selected: %n", "Media selection page title text", page.selectedFiles.length))
+        title: page.selectedFiles.length > 0 ? (_mode === "image" ? (multiple ? qsTr("Images selected: %n", "Media selection page title text", page.selectedFiles.length) : qsTr("Image selected", "Media selection page title text"))
+                                                                  : (_mode === "music") ? (multiple ? qsTr("Audio selected: %n", "Media selection page title text", page.selectedFiles.length) : qsTr("Audio selected", "Media selection page title text"))
+                                                                                        : (multiple ? qsTr("Video selected: %n", "Media selection page title text", page.selectedFiles.length) : qsTr("Video selected", "Media selection page title text")))
                         : (_mode === "image" ? qsTr("Images", "Media selection page title text")
                                              : (_mode === "music") ? qsTr("Audio", "Media selection page title text")
                                                                    : qsTr("Video", "Media selection page title text"))

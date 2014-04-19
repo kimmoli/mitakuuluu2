@@ -1147,7 +1147,7 @@ void Connection::parseSuccessNode(const ProtocolTreeNode &node)
         connect(socket,SIGNAL(readyRead()),this,SLOT(readNode()));
 
         //sendClientConfig("android");
-        sendClientConfig("none");
+        //sendClientConfig("none");
 
         //sendGetMyStatus();
 

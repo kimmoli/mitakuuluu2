@@ -35,7 +35,7 @@ Page {
                 truncationMode: TruncationMode.Fade
             }
             onClicked: {
-                Settings.setValue("muting/" + jid, new Date().getTime() + model.value)
+                Mitakuuluu.save("muting/" + jid, new Date().getTime() + model.value)
                 pageStack.pop()
             }
         }

@@ -31,26 +31,26 @@ Dialog {
 
     onStatusChanged: {
         if (status == DialogStatus.Opened) {
-            pushname = Settings.value("account/pushname", "WhatsApp user")
+            pushname = Mitakuuluu.load("account/pushname", "WhatsApp user")
             pushnameArea.text = pushname
-            presence = Settings.value("account/presence", "I'm using Mitakuuluu!")
+            presence = Mitakuuluu.load("account/presence", "I'm using Mitakuuluu!")
             presenceArea.text = presence
-            creation = Settings.value("account/creation", 0)
-            expiration = Settings.value("account/expiration", 0)
-            kind = Settings.value("account/kind", "free")
-            active = Settings.value("account/accountstatus", "active") == "active"
+            creation = Mitakuuluu.load("account/creation", 0)
+            expiration = Mitakuuluu.load("account/expiration", 0)
+            kind = Mitakuuluu.load("account/kind", "free")
+            active = Mitakuuluu.load("account/accountstatus", "active") == "active"
         }
     }
 
     onAccepted: {
         page.pushname = pushnameArea.text
-        Settings.setValue("account/pushname", pushnameArea.text)
+        Mitakuuluu.save("account/pushname", pushnameArea.text)
         Mitakuuluu.setMyPushname(pushnameArea.text)
         pushnameArea.focus = false
         page.forceActiveFocus()
 
         page.presence = presenceArea.text
-        Settings.setValue("account/presence", presenceArea.text)
+        Mitakuuluu.save("account/presence", presenceArea.text)
         Mitakuuluu.setMyPresence(presenceArea.text)
         presenceArea.focus = false
         page.forceActiveFocus()
@@ -109,7 +109,7 @@ Dialog {
             //EnterKey.text: "save"
             /*EnterKey.onClicked: {
                 page.pushname = text
-                Settings.setValue("account/pushname", text.trim())
+                Mitakuuluu.save("account/pushname", text.trim())
                 Mitakuuluu.setMyPushname(text.trim())
                 pushnameArea.focus = false
                 page.forceActiveFocus()
@@ -141,7 +141,7 @@ Dialog {
             //EnterKey.text: "save"
             /*EnterKey.onClicked: {
                 page.presence = text
-                Settings.setValue("account/status", text.trim())
+                Mitakuuluu.save("account/status", text.trim())
                 Mitakuuluu.setMyPresence(text.trim())
                 presenceArea.focus = false
                 page.forceActiveFocus()
@@ -256,7 +256,7 @@ Dialog {
             //pageStack.pop(roster, PageStackAction.Immediate)
             //pageStack.replace(removePage)
             Mitakuuluu.removeAccountFromServer()
-            Settings.clearGroup("account")
+            Mitakuuluu.clearGroup("account")
         }
     }
 

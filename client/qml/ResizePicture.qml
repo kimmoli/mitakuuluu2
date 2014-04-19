@@ -7,6 +7,10 @@ Dialog {
     objectName: "resizePicture"
     
     property string picture
+    onPictureChanged: {
+        pinch.rotate(Mitakuuluu.getExifRotation(picture))
+    }
+
     property int maximumSize
     property int minimumSize
     property bool avatar: true
@@ -18,10 +22,6 @@ Dialog {
 
     forwardNavigation: !pinch.pressed
     backNavigation: !pinch.pressed
-
-    onPictureChanged: {
-        pinch.rotate(Mitakuuluu.getExifRotation(picture))
-    }
 
     onAccepted: {
         filename = Mitakuuluu.transformPicture(picture, jid, pinch.rectX, pinch.rectY, pinch.rectW, pinch.rectH, maximumSize, pinch.angle)    }

@@ -68,11 +68,11 @@ Page {
     property bool typing: false
 
     function loadText() {
-        sendBox.text = Settings.value("typing/" + jid, "")
+        sendBox.text = Mitakuuluu.load("typing/" + jid, "")
     }
 
     function saveText() {
-        Settings.setValue("typing/" + jid, sendBox.text.trim())
+        Mitakuuluu.save("typing/" + jid, sendBox.text.trim())
     }
 
     function getNicknameByJid(jid) {

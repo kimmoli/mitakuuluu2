@@ -8,21 +8,21 @@ ApplicationWindow {
     id: appWindow
     objectName: "appWindow"
     cover: Qt.resolvedUrl("CoverPage.qml")
-    initialPage: (Settings.value("account/phoneNumber", "unregistered") === "unregistered") ?
+    initialPage: (Mitakuuluu.load("account/phoneNumber", "unregistered") === "unregistered") ?
                      Qt.resolvedUrl("RegistrationPage.qml") : Qt.resolvedUrl("ChatsPage.qml")
 
     property bool sendByEnter: false
-    onSendByEnterChanged: Settings.setValue("settings/sendByEnter", sendByEnter)
+    onSendByEnterChanged: Mitakuuluu.save("settings/sendByEnter", sendByEnter)
 
     property bool showTimestamp: true
-    onShowTimestampChanged: Settings.setValue("settings/showTimestamp", showTimestamp)
+    onShowTimestampChanged: Mitakuuluu.save("settings/showTimestamp", showTimestamp)
 
     property int fontSize: 32
-    onFontSizeChanged: Settings.setValue("settings/fontSize", fontSize)
+    onFontSizeChanged: Mitakuuluu.save("settings/fontSize", fontSize)
 
     property bool followPresence: false
     onFollowPresenceChanged: {
-        Settings.setValue("settings/followPresence", followPresence)
+        Mitakuuluu.save("settings/followPresence", followPresence)
         updateCoverActions()
         pageStack.push()
     }
@@ -36,41 +36,41 @@ ApplicationWindow {
     }
 
     property bool showSeconds: true
-    onShowSecondsChanged: Settings.setValue("settings/showSeconds", showSeconds)
+    onShowSecondsChanged: Mitakuuluu.save("settings/showSeconds", showSeconds)
 
     property bool showMyJid: false
-    onShowMyJidChanged: Settings.setValue("settings/showMyJid", showMyJid)
+    onShowMyJidChanged: Mitakuuluu.save("settings/showMyJid", showMyJid)
 
     property bool showKeyboard: false
-    onShowKeyboardChanged: Settings.setValue("settings/showKeyboard", showKeyboard)
+    onShowKeyboardChanged: Mitakuuluu.save("settings/showKeyboard", showKeyboard)
 
     property bool acceptUnknown: true
-    onAcceptUnknownChanged: Settings.setValue("settings/acceptUnknown", acceptUnknown)
+    onAcceptUnknownChanged: Mitakuuluu.save("settings/acceptUnknown", acceptUnknown)
 
     property bool notifyActive: true
-    onNotifyActiveChanged: Settings.setValue("settings/notifyActive", notifyActive)
+    onNotifyActiveChanged: Mitakuuluu.save("settings/notifyActive", notifyActive)
 
     property bool resizeImages: false
-    onResizeImagesChanged: Settings.setValue("settings/resizeImages", resizeImages)
+    onResizeImagesChanged: Mitakuuluu.save("settings/resizeImages", resizeImages)
 
     property bool resizeBySize: true
-    onResizeBySizeChanged: Settings.setValue("settings/resizeBySize", resizeBySize)
+    onResizeBySizeChanged: Mitakuuluu.save("settings/resizeBySize", resizeBySize)
 
     property int resizeImagesTo: 1048546
-    onResizeImagesToChanged: Settings.setValue("settings/resizeImagesTo", resizeImagesTo)
+    onResizeImagesToChanged: Mitakuuluu.save("settings/resizeImagesTo", resizeImagesTo)
 
     property double resizeImagesToMPix: 5.01
-    onResizeImagesToMPixChanged: Settings.setValue("settings/resizeImagesToMPix", resizeImagesToMPix)
+    onResizeImagesToMPixChanged: Mitakuuluu.save("settings/resizeImagesToMPix", resizeImagesToMPix)
 
     property string conversationTheme: "/usr/share/harbour-mitakuuluu2/qml/DefaultDelegate.qml"
-    onConversationThemeChanged: Settings.setValue("settings/conversationTheme", conversationTheme)
+    onConversationThemeChanged: Mitakuuluu.save("settings/conversationTheme", conversationTheme)
 
     property int conversationIndex: 0
-    onConversationIndexChanged: Settings.setValue("settings/conversationIndex", conversationIndex)
+    onConversationIndexChanged: Mitakuuluu.save("settings/conversationIndex", conversationIndex)
 
     property bool alwaysOffline: false
     onAlwaysOfflineChanged: {
-        Settings.setValue("settings/alwaysOffline", alwaysOffline)
+        Mitakuuluu.save("settings/alwaysOffline", alwaysOffline)
         if (alwaysOffline)
             Mitakuuluu.setPresenceUnavailable()
         else
@@ -78,43 +78,43 @@ ApplicationWindow {
         updateCoverActions()
     }
     property bool deleteMediaFiles: false
-    onDeleteMediaFilesChanged: Settings.setValue("settings/deleteMediaFiles", deleteMediaFiles)
+    onDeleteMediaFilesChanged: Mitakuuluu.save("settings/deleteMediaFiles", deleteMediaFiles)
 
     property bool importToGallery: true
-    onImportToGalleryChanged: Settings.setValue("settings/importToGallery", importToGallery)
+    onImportToGalleryChanged: Mitakuuluu.save("settings/importToGallery", importToGallery)
 
     property bool showConnectionNotifications: false
-    onShowConnectionNotificationsChanged: Settings.setValue("settings/showConnectionNotifications", showConnectionNotifications)
+    onShowConnectionNotificationsChanged: Mitakuuluu.save("settings/showConnectionNotifications", showConnectionNotifications)
 
     property bool lockPortrait: false
-    onLockPortraitChanged: Settings.setValue("settings/lockPortrait", lockPortrait)
+    onLockPortraitChanged: Mitakuuluu.save("settings/lockPortrait", lockPortrait)
 
     property string connectionServer: "c3.whatsapp.net"
-    onConnectionServerChanged: Settings.setValue("connection/server", connectionServer)
+    onConnectionServerChanged: Mitakuuluu.save("connection/server", connectionServer)
 
     property bool notificationsMuted: false
     onNotificationsMutedChanged: {
-        Settings.setValue("settings/notificationsMuted", notificationsMuted)
+        Mitakuuluu.save("settings/notificationsMuted", notificationsMuted)
         updateCoverActions()
     }
 
     property bool threading: true
-    onThreadingChanged: Settings.setValue("connection/threading", threading)
+    onThreadingChanged: Mitakuuluu.save("connection/threading", threading)
 
     property bool hideKeyboard: false
-    onHideKeyboardChanged: Settings.setValue("settings/hideKeyboard", hideKeyboard)
+    onHideKeyboardChanged: Mitakuuluu.save("settings/hideKeyboard", hideKeyboard)
 
     property bool notifyMessages: false
-    onNotifyMessagesChanged: Settings.setValue("settings/notifyMessages", notifyMessages)
+    onNotifyMessagesChanged: Mitakuuluu.save("settings/notifyMessages", notifyMessages)
 
     property bool keepLogs: true
-    onKeepLogsChanged: Settings.setValue("settings/keepLogs", keepLogs)
+    onKeepLogsChanged: Mitakuuluu.save("settings/keepLogs", keepLogs)
 
     property string mapSource: "here"
-    onMapSourceChanged: Settings.setValue("settings/mapSource", mapSource)
+    onMapSourceChanged: Mitakuuluu.save("settings/mapSource", mapSource)
 
     property int automaticDownload: 524288
-    onAutomaticDownloadChanged: Settings.setValue("settings/automaticdownload", automaticDownload)
+    onAutomaticDownloadChanged: Mitakuuluu.save("settings/automaticdownload", automaticDownload)
 
     property int currentOrientation: pageStack._currentOrientation
 
@@ -393,12 +393,12 @@ ApplicationWindow {
 
     property int coverLeftAction: 4
     onCoverLeftActionChanged: {
-        Settings.setValue("settings/coverLeftAction", coverLeftAction)
+        Mitakuuluu.save("settings/coverLeftAction", coverLeftAction)
         updateCoverActions()
     }
     property int coverRightAction: 3
     onCoverRightActionChanged: {
-        Settings.setValue("settings/coverRightAction", coverRightAction)
+        Mitakuuluu.save("settings/coverRightAction", coverRightAction)
         updateCoverActions()
     }
 
@@ -484,38 +484,48 @@ ApplicationWindow {
         onConnectionStatusChanged: {
             console.log("connectionStatus: " + Mitakuuluu.connectionStatus)
         }
+        onNotificationOpenJid: {
+            activate()
+            if (njid.length > 0) {
+                console.log("should open " + njid)
+                while (pageStack.depth > 1) {
+                    pageStack.navigateBack(PageStackAction.Immediate)
+                }
+                pageStack.push(Qt.resolvedUrl("ConversationPage.qml"), {"initialModel": ContactsBaseModel.getModel(njid)}, PageStackAction.Immediate)
+            }
+        }
     }
 
     Component.onCompleted: {
-        sendByEnter = Settings.value("settings/sendByEnter", false)
-        showTimestamp = Settings.value("settings/showTimestamp", true)
-        fontSize = Settings.value("settings/fontSize", 32)
-        followPresence = Settings.value("settings/followPresence", false)
-        showSeconds = Settings.value("settings/showSeconds", true)
-        showMyJid = Settings.value("settings/showMyJid", false)
-        showKeyboard = Settings.value("settings/showKeyboard", false)
-        acceptUnknown = Settings.value("settings/acceptUnknown", true)
-        notifyActive = Settings.value("settings/notifyActive", true)
-        resizeImages = Settings.value("settings/resizeImages", false);
-        resizeBySize = Settings.value("settings/resizeBySize", true)
-        resizeImagesTo = Settings.value("settings/resizeImagesTo", parseInt(1048546))
-        resizeImagesToMPix = Settings.value("settings/resizeImagesToMPix", parseFloat(5.01))
-        conversationTheme = Settings.value("settings/conversationTheme", "/usr/share/harbour-mitakuuluu2/qml/DefaultDelegate.qml")
-        alwaysOffline = Settings.value("settings/alwaysOffline", false)
-        deleteMediaFiles = Settings.value("settings/deleteMediaFiles", false)
-        importToGallery = Settings.value("settings/importmediatogallery", true)
-        showConnectionNotifications = Settings.value("settings/showConnectionNotifications", false)
-        lockPortrait = Settings.value("settings/lockPortrait", false)
-        connectionServer = Settings.value("connection/server", "c3.whatsapp.net")
-        threading = Settings.value("connection/threading", true)
-        hideKeyboard = Settings.value("settings/hideKeyboard", false)
-        notifyMessages = Settings.value("settings/notifyMessages", false)
-        keepLogs = Settings.value("settings/keepLogs", true)
-        mapSource = Settings.value("settings/mapSource", "here")
-        notificationsMuted = Settings.value("settings/notificationsMuted", false)
-        coverLeftAction = Settings.value("settings/coverLeftAction", 4)
-        coverRightAction = Settings.value("settings/coverRightAction", 3)
-        automaticDownload = Settings.value("settings/automaticdownload", 524288)
+        sendByEnter = Mitakuuluu.load("settings/sendByEnter", false)
+        showTimestamp = Mitakuuluu.load("settings/showTimestamp", true)
+        fontSize = Mitakuuluu.load("settings/fontSize", 32)
+        followPresence = Mitakuuluu.load("settings/followPresence", false)
+        showSeconds = Mitakuuluu.load("settings/showSeconds", true)
+        showMyJid = Mitakuuluu.load("settings/showMyJid", false)
+        showKeyboard = Mitakuuluu.load("settings/showKeyboard", false)
+        acceptUnknown = Mitakuuluu.load("settings/acceptUnknown", true)
+        notifyActive = Mitakuuluu.load("settings/notifyActive", true)
+        resizeImages = Mitakuuluu.load("settings/resizeImages", false);
+        resizeBySize = Mitakuuluu.load("settings/resizeBySize", true)
+        resizeImagesTo = Mitakuuluu.load("settings/resizeImagesTo", parseInt(1048546))
+        resizeImagesToMPix = Mitakuuluu.load("settings/resizeImagesToMPix", parseFloat(5.01))
+        conversationTheme = Mitakuuluu.load("settings/conversationTheme", "/usr/share/harbour-mitakuuluu2/qml/DefaultDelegate.qml")
+        alwaysOffline = Mitakuuluu.load("settings/alwaysOffline", false)
+        deleteMediaFiles = Mitakuuluu.load("settings/deleteMediaFiles", false)
+        importToGallery = Mitakuuluu.load("settings/importmediatogallery", true)
+        showConnectionNotifications = Mitakuuluu.load("settings/showConnectionNotifications", false)
+        lockPortrait = Mitakuuluu.load("settings/lockPortrait", false)
+        connectionServer = Mitakuuluu.load("connection/server", "c3.whatsapp.net")
+        threading = Mitakuuluu.load("connection/threading", true)
+        hideKeyboard = Mitakuuluu.load("settings/hideKeyboard", false)
+        notifyMessages = Mitakuuluu.load("settings/notifyMessages", false)
+        keepLogs = Mitakuuluu.load("settings/keepLogs", true)
+        mapSource = Mitakuuluu.load("settings/mapSource", "here")
+        notificationsMuted = Mitakuuluu.load("settings/notificationsMuted", false)
+        coverLeftAction = Mitakuuluu.load("settings/coverLeftAction", 4)
+        coverRightAction = Mitakuuluu.load("settings/coverRightAction", 3)
+        automaticDownload = Mitakuuluu.load("settings/automaticdownload", 524288)
 
         updateCoverActions()
     }

@@ -16,7 +16,7 @@ Dialog {
 
     onStatusChanged: {
         if (status == DialogStatus.Opened) {
-            groupTitle.text = ""
+            //groupTitle.text = ""
             groupTitle.forceActiveFocus()
         }
     }
@@ -213,7 +213,7 @@ Dialog {
         function transitionDone() {
             if (!pageStack.busy) {
                 pageStack.busyChanged.disconnect(avatarView.transitionDone)
-                pageStack.push(Qt.resolvedUrl("ResizePicture.qml"), {"picture": imgPath, "jid": "page", "maximumSize": 480})
+                pageStack.push(Qt.resolvedUrl("ResizePicture.qml"), {"picture": imgPath, "jid": "new_page", "maximumSize": 480})
                 pageStack.currentPage.accepted.connect(avatarView.setNewAvatar)
             }
         }

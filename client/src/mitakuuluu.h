@@ -21,6 +21,7 @@
 class Mitakuuluu: public QObject
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "harbour.mitakuuluu2.client")
     Q_ENUMS(ConnectionStatus)
     Q_ENUMS(MessageType)
     Q_ENUMS(MessageStatus)
@@ -104,13 +105,17 @@ private:
 
     QDBusInterface *iface;
 
-    QTranslator translator;
+    QTranslator *translator;
 
     QTimer *pingServer;
 
     QString _pendingGroup;
     QString _pendingAvatar;
     QStringList _pendingParticipants;
+
+    QStringList _locales;
+    QStringList _localesNames;
+    QString _currentLocale;
 
 signals:
     void connectionStatusChanged();
@@ -189,7 +194,7 @@ private slots:
 
 public slots:
     Q_SCRIPTABLE void exit();
-    Q_SCRIPTABLE void setPendingJid(const QString &jid);
+    Q_SCRIPTABLE void notificationCallback(const QString &jid);
 
     void authenticate();
     void init();
@@ -248,6 +253,7 @@ public slots:
     void removeAccountFromServer();
     void forceConnection();
     void setLocale(const QString &localeName);
+    void setLocale(int  index);
     int getExifRotation(const QString &image);
     void windowActive();
     bool checkAutostart();
@@ -258,6 +264,20 @@ public slots:
     void unsubscribe(const QString &jid);
     QString getAvatarForJid(const QString &jid);
     void rejectMediaCapture(const QString &path);
+
+    QStringList getLocalesNames();
+    int getCurrentLocaleIndex();
+
+//Settings
+
+private:
+    QSettings *settings;
+
+public slots:
+    Q_INVOKABLE void save(const QString &key, const QVariant &value);
+    Q_INVOKABLE QVariant load(const QString &key, const QVariant &defaultValue = QVariant());
+    Q_INVOKABLE QVariantList loadGroup(const QString &name);
+    Q_INVOKABLE void clearGroup(const QString &name);
 };
 
 #endif // MITAKUULUU_H

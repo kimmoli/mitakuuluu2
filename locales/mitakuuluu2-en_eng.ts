@@ -2,83 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name></name>
-    <message id="gallery-he-details">
-        <location filename="../filemodel/mediasource/Details.qml" line="22"/>
-        <source>Details</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-la-filename">
-        <location filename="../filemodel/mediasource/Details.qml" line="27"/>
-        <source>Filename</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-la-size">
-        <location filename="../filemodel/mediasource/Details.qml" line="32"/>
-        <source>Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-la-width">
-        <location filename="../filemodel/mediasource/Details.qml" line="37"/>
-        <source>Width</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-la-height">
-        <location filename="../filemodel/mediasource/Details.qml" line="42"/>
-        <source>Height</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-la-share">
-        <location filename="../filemodel/mediasource/FullscreenImageView.qml" line="38"/>
-        <source>Share</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-me-details">
-        <location filename="../filemodel/mediasource/FullscreenImageView.qml" line="49"/>
-        <source>Details</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-me-delete">
-        <location filename="../filemodel/mediasource/FullscreenImageView.qml" line="55"/>
-        <location filename="../filemodel/mediasource/GalleryGridPage.qml" line="95"/>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-me-create_ambience">
-        <location filename="../filemodel/mediasource/FullscreenImageView.qml" line="64"/>
-        <source>Create ambience</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-la-add_account">
-        <location filename="../filemodel/mediasource/FullscreenImageView.qml" line="95"/>
-        <source>Add account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-la-deleting">
-        <location filename="../filemodel/mediasource/GalleryGridPage.qml" line="81"/>
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="gallery-la-cancel-deletion">
-        <location filename="../filemodel/mediasource/GalleryGridPage.qml" line="115"/>
-        <source>Cancel</source>
-        <extracomment>RemorseItem cancel help text</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="components_gallery-la-image-thumbnail-loading-failed">
-        <location filename="../filemodel/mediasource/GalleryImage.qml" line="45"/>
-        <source>Oops, can&apos;t display the thumbnail!</source>
-        <extracomment>Thumbnail Image loading failed</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="Mitakuuluu">
-        <location filename="../filemodel/Mitakuuluu2MediaSource.qml" line="10"/>
-        <source>Mitakuuluu</source>
-        <extracomment>Label of the Mitakuuluu album in Jolla Gallery application</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Account</name>
     <message>
         <location filename="../client/qml/Account.qml" line="70"/>
@@ -512,7 +435,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="230"/>
+        <location filename="../client/qml/ContactsPage.qml" line="231"/>
+        <source>Leave group</source>
+        <comment>Contact context menu leave group item</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/ContactsPage.qml" line="232"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation type="unfinished"></translation>
@@ -769,6 +698,12 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message>
+        <location filename="../client/qml/MediaSelector.qml" line="73"/>
+        <source>Image selected</source>
+        <comment>Media selection page title text</comment>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
         <location filename="../client/qml/MediaSelector.qml" line="74"/>
         <source>Audio selected: %n</source>
@@ -777,6 +712,12 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message>
+        <location filename="../client/qml/MediaSelector.qml" line="74"/>
+        <source>Audio selected</source>
+        <comment>Media selection page title text</comment>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
         <location filename="../client/qml/MediaSelector.qml" line="75"/>
         <source>Video selected: %n</source>
@@ -784,6 +725,12 @@
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../client/qml/MediaSelector.qml" line="75"/>
+        <source>Video selected</source>
+        <comment>Media selection page title text</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="76"/>
@@ -816,61 +763,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="186"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="206"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="189"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="209"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="192"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="212"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="195"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="215"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="198"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="218"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="201"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="221"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="204"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="224"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="207"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="227"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="210"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="230"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="213"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="233"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation type="unfinished"></translation>
@@ -1632,163 +1579,174 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="250"/>
+        <location filename="../client/qml/Settings.qml" line="225"/>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="238"/>
+        <source>Restart application to change language</source>
+        <comment>Language changing banner text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="249"/>
         <source>Connection server</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="281"/>
+        <location filename="../client/qml/Settings.qml" line="280"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="289"/>
+        <location filename="../client/qml/Settings.qml" line="288"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="295"/>
+        <location filename="../client/qml/Settings.qml" line="294"/>
         <source>Lock conversation orientation in portrait</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="302"/>
+        <location filename="../client/qml/Settings.qml" line="301"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="308"/>
+        <location filename="../client/qml/Settings.qml" line="307"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="314"/>
+        <location filename="../client/qml/Settings.qml" line="313"/>
         <source>Show notifications when connection changing</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="327"/>
+        <location filename="../client/qml/Settings.qml" line="326"/>
         <source>Show new messages notifications</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="341"/>
+        <location filename="../client/qml/Settings.qml" line="340"/>
         <source>Display messages text in notifications</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="352"/>
+        <location filename="../client/qml/Settings.qml" line="351"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="357"/>
+        <location filename="../client/qml/Settings.qml" line="356"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="360"/>
+        <location filename="../client/qml/Settings.qml" line="359"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="367"/>
+        <location filename="../client/qml/Settings.qml" line="366"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="374"/>
+        <location filename="../client/qml/Settings.qml" line="373"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="387"/>
+        <location filename="../client/qml/Settings.qml" line="386"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="398"/>
+        <location filename="../client/qml/Settings.qml" line="397"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="419"/>
+        <location filename="../client/qml/Settings.qml" line="418"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="433"/>
+        <location filename="../client/qml/Settings.qml" line="432"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="442"/>
+        <location filename="../client/qml/Settings.qml" line="441"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="452"/>
+        <location filename="../client/qml/Settings.qml" line="451"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="488"/>
+        <location filename="../client/qml/Settings.qml" line="487"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="522"/>
+        <location filename="../client/qml/Settings.qml" line="521"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="524"/>
+        <location filename="../client/qml/Settings.qml" line="523"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="538"/>
+        <location filename="../client/qml/Settings.qml" line="537"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="569"/>
+        <location filename="../client/qml/Settings.qml" line="568"/>
         <source>Send logs</source>
         <comment>Log sending page header</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="575"/>
+        <location filename="../client/qml/Settings.qml" line="574"/>
         <source>Your email address</source>
         <comment>Log sending page text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="584"/>
+        <location filename="../client/qml/Settings.qml" line="583"/>
         <source>Enter bug description here. As many information as  possible.</source>
         <comment>Log sending page text</comment>
         <translation type="unfinished"></translation>

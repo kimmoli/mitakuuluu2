@@ -221,29 +221,28 @@ Page {
                 text: qsTr("Common", "Settings page section name")
             }
 
-            /*ComboBox {
+            ComboBox {
                 label: qsTr("Language")
                 menu: ContextMenu {
                     Repeater {
                         width: parent.width
-                        model: localeNames
+                        model: Mitakuuluu.getLocalesNames()
                         delegate: MenuItem {
                             text: modelData
                         }
                     }
                 }
                 onCurrentItemChanged: {
-                    if (pageStack.currentPage.objectName !== "roster") {
-                        settings.setValue("locale", locales[currentIndex])
-                        whatsapp.setLocale(locales[currentIndex])
-                        banner.notify(qsTr("Restart application to change language"))
+                    if (pageStack.currentPage.objectName === "settings") {
+                        Mitakuuluu.setLocale(currentIndex)
+                        banner.notify(qsTr("Restart application to change language", "Language changing banner text"))
                     }
                 }
                 Component.onCompleted: {
                     //console.log("default: " + localeNames[localeIndex] + " locale: " + locales[localeIndex] + " index: " + localeIndex)
-                    currentIndex = parseInt(localeIndex)
+                    currentIndex = Mitakuuluu.getCurrentLocaleIndex()
                 }
-            }*/
+            }
 
             ComboBox {
                 id: connServer

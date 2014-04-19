@@ -12,7 +12,6 @@ QMAKE_EXTRA_TARGETS += ts
 PRE_TARGETDEPS += ts
 
 TRANSLATIONS += \
-    $$TS_FILE \
 #    mitakuuluu2-ru_RU.ts \
     $${NULL}
 

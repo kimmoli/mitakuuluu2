@@ -44,12 +44,10 @@
 
 #include "constants.h"
 
-//#include "dbusobject.h"
 #include "contactsbasemodel.h"
 #include "contactsfiltermodel.h"
 #include "conversationmodel.h"
 #include "mitakuuluu.h"
-#include "settings.h"
 #include "audiorecorder.h"
 
 #include <QDebug>
@@ -58,18 +56,6 @@
 #include <QTranslator>
 
 #include "../logging/logging.h"
-
-static QObject *settings_singleton_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
-{
-    Q_UNUSED(engine);
-    Q_UNUSED(scriptEngine);
-
-    static Settings* settings_singleton = NULL;
-    if (!settings_singleton) {
-        settings_singleton = new Settings();
-    }
-    return settings_singleton;
-}
 
 static QObject *mitakuuluu_singleton_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
@@ -126,7 +112,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<AudioRecorder>("harbour.mitakuuluu2.client", 1, 0, "AudioRecorder");
 
     qmlRegisterSingletonType<ContactsBaseModel>("harbour.mitakuuluu2.client", 1, 0, "ContactsBaseModel", contactsmodel_singleton_provider);
-    qmlRegisterSingletonType<Settings>("harbour.mitakuuluu2.client", 1, 0, "Settings", settings_singleton_provider);
     qmlRegisterSingletonType<Mitakuuluu>("harbour.mitakuuluu2.client", 1, 0, "Mitakuuluu", mitakuuluu_singleton_provider);
 
     qDebug() << "Showing main widow";

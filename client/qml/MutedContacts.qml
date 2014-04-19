@@ -10,7 +10,7 @@ Page {
 
 	onStatusChanged: {
 		if (status == PageStatus.Active) {
-			var mutedList = Settings.group("muting")
+			var mutedList = Mitakuuluu.loadGroup("muting")
 			listModel.clear()
 			for (var i = 0; i < mutedList.length; i++) {
 				if (parseInt(mutedList[i].value) > new Date().getTime())
@@ -117,7 +117,7 @@ Page {
                 }
                 icon.source: "image://theme/icon-m-clear"
                 onClicked: {
-                    Settings.setValue("muting/" + model.jid, 0)
+                    Mitakuuluu.save("muting/" + model.jid, 0)
                     listModel.remove(index)
                 }
             }

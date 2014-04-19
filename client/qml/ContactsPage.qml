@@ -103,7 +103,7 @@ Page {
                                   if (model.jid.indexOf("-") > 0) {
                                       Mitakuuluu.groupLeave(model.jid)
                                   }
-                                  baseModel.deleteContact(model.jid)
+                                  ContactsBaseModel.deleteContact(model.jid)
                               })
             }
 
@@ -227,7 +227,9 @@ Page {
                     }
 
                     MenuItem {
-                        text: qsTr("Delete", "Contact context menu delete contact item")
+                        text: (model.jid.indexOf("-") > 0)
+                                ? qsTr("Leave group", "Contact context menu leave group item")
+                                : qsTr("Delete", "Contact context menu delete contact item")
                         enabled: Mitakuuluu.connectionStatus === Mitakuuluu.LoggedIn
                         onClicked: {
                             remove()

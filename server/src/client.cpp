@@ -2531,10 +2531,10 @@ void Client::saveGroupInfo(const QString &jid, const QString &owner, const QStri
     group["unread"] = getUnreadCount(jid);
     group["lastmessage"] = 0;
     group["blocked"] = getBlocked(jid);
-    //Q_EMIT contactChanged(group);
+    Q_EMIT contactChanged(group);
 
     group["type"] = QueryType::ContactsSaveModel;
-    //group["uuid"] = uuid;
+    group["uuid"] = uuid;
     dbExecutor->queueAction(group);
 
     getPicture(jid);
