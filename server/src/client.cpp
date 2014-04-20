@@ -1013,6 +1013,7 @@ void Client::changeUserName(const QString &newUserName)
 {
     userName = newUserName;
     if (connectionStatus == LoggedIn) {
+        settings->sync();
         bool alwaysOffline = settings->value("settings/alwaysOffline", false).toBool();
         Q_EMIT connectionSetNewUserName(userName, alwaysOffline);
     }
