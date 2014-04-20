@@ -9,7 +9,7 @@ Name:       harbour-mitakuuluu2
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Mitäkuuluu
 Version:    0.5
-Release:    3
+Release:    4
 Group:      Qt/Qt
 License:    WTFPL
 Source0:    %{name}-%{version}.tar.bz2
