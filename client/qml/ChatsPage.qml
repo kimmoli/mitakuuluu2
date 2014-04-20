@@ -93,7 +93,7 @@ Page {
 
         PageHeader {
             id: header
-            title: qsTr("Chats", "Contacts page title")
+            title: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn ? qsTr("Chats", "Contacts page title") : ""
 
             Label {
                 id: headerText
