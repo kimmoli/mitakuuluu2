@@ -11,7 +11,16 @@ QMAKE_EXTRA_TARGETS += ts
 PRE_TARGETDEPS += ts
 
 TRANSLATIONS += \
+    ca.ts \
+    da_DK.ts \
+    de.ts \
+    el.ts \
+    es.ts \
+    fi.ts \
+    fr_FR.ts \
+    it_IT.ts \
     ru_RU.ts \
+    tr_TR.ts \
     $${NULL}
 
 build_translations.target = build_translations
