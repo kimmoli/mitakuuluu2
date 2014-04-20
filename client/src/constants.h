@@ -10,8 +10,8 @@
 
 #define DBNAME "database.db"
 
-#define AUTOSTART_DIR "$HOME/.config/systemd/user/post-user-session.target.wants"
-#define AUTOSTART_NAME "harbour-mitakuuluu2.service"
-#define AUTOSTART_SERVICE "/usr/lib/systemd/user/harbour-mitakuuluu.service"
+#define AUTOSTART_DIR "%1/.config/systemd/user/post-user-session.target.wants"
+#define AUTOSTART_USER "%1/.config/systemd/user/post-user-session.target.wants/harbour-mitakuuluu2.service"
+#define AUTOSTART_SERVICE "/usr/lib/systemd/user/harbour-mitakuuluu2.service"
 
 #endif // CONSTANTS_H
