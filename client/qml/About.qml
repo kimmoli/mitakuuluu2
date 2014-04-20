@@ -192,7 +192,7 @@ Page {
                 width: 300
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
-                    Qt.openUrlExternally("https://github.com/CODeRUS/mitakuuluu/issues?state=open")
+                    Qt.openUrlExternally("https://github.com/CODeRUS/mitakuuluu2/issues?state=open")
                 }
             }
 
