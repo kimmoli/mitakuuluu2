@@ -5,7 +5,8 @@ ContactsFilterModel::ContactsFilterModel(QObject *parent) :
     QSortFilterProxyModel(parent),
     _showActive(false),
     _showUnknown(false),
-    _filter("")
+    _filter(""),
+    _filterContacts()
 {
     QObject::connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(onRowsInserted(QModelIndex,int,int)));
     QObject::connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(onRowsRemoved(QModelIndex,int,int)));
@@ -26,19 +27,26 @@ QVariantMap ContactsFilterModel::get(int itemIndex)
 void ContactsFilterModel::onRowsInserted(const QModelIndex &parent, int first, int last)
 {
     Q_UNUSED(parent);
+    Q_UNUSED(first);
+    Q_UNUSED(last);
     Q_EMIT contactsModelChanged();
 }
 
 void ContactsFilterModel::onRowsRemoved(const QModelIndex &parent, int first, int last)
 {
     Q_UNUSED(parent);
+    Q_UNUSED(first);
+    Q_UNUSED(last);
     Q_EMIT contactsModelChanged();
 }
 
 void ContactsFilterModel::onRowsMoved(const QModelIndex &parent, int start, int end, const QModelIndex &destination, int row)
 {
     Q_UNUSED(parent);
+    Q_UNUSED(start);
+    Q_UNUSED(end);
     Q_UNUSED(destination);
+    Q_UNUSED(row);
     Q_EMIT contactsModelChanged();
 }
 
@@ -46,6 +54,10 @@ bool ContactsFilterModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
 {
     QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
     QString jid = sourceModel()->data(index, Qt::UserRole + 1).toString();
+    if (!_filterContacts.isEmpty()) {
+        if (_filterContacts.contains(jid))
+            return false;
+    }
     if (_showActive && !jid.contains("-")) {
         int lastmessage = sourceModel()->data(index, Qt::UserRole + 14).toInt();
         if (lastmessage == 0)
@@ -127,6 +139,17 @@ void ContactsFilterModel::setHideGroups(bool value)
     changeFilterRole();
 }
 
+QStringList ContactsFilterModel::filterContacts()
+{
+    return _filterContacts;
+}
+
+void ContactsFilterModel::setFilterContacts(const QStringList &value)
+{
+    _filterContacts = value;
+    changeFilterRole();
+}
+
 int ContactsFilterModel::count()
 {
     return rowCount();
@@ -152,6 +175,8 @@ void ContactsFilterModel::changeFilterRole()
         role += 4;
     if (_hideGroups)
         role += 8;
+    if (!_filterContacts.isEmpty())
+        role += 16;
     setFilterRole(role);
 }
 

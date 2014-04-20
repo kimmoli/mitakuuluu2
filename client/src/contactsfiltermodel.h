@@ -14,6 +14,7 @@ class ContactsFilterModel : public QSortFilterProxyModel
     Q_PROPERTY(bool showUnknown READ showUnknown WRITE setShowUnknown FINAL)
     Q_PROPERTY(bool hideGroups READ hideGroups WRITE setHideGroups FINAL)
     Q_PROPERTY(int count READ count NOTIFY countChanged FINAL)
+    Q_PROPERTY(QStringList filterContacts READ filterContacts WRITE setFilterContacts FINAL)
 public:
     explicit ContactsFilterModel(QObject *parent = 0);
 
@@ -45,6 +46,10 @@ private:
     bool _hideGroups;
     bool hideGroups();
     void setHideGroups(bool value);
+
+    QStringList _filterContacts;
+    QStringList filterContacts();
+    void setFilterContacts(const QStringList &value);
 
     int count();
 

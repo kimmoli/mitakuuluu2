@@ -220,7 +220,7 @@ Page {
 
                     MenuItem {
                         text: qsTr("Rename", "Contact context menu profile item")
-                        visible: model.jid.indexOf("-") < 0
+                        visible: model.jid.indexOf("-") < 0 && model.jid !== Mitakuuluu.myJid
                         onClicked: {
                             pageStack.push(Qt.resolvedUrl("RenameContact.qml"), {"jid": model.jid})
                         }
@@ -264,6 +264,7 @@ Page {
         contactsModel: ContactsBaseModel
         showActive: false
         showUnknown: acceptUnknown
+        filterContacts: showMyJid ? [Mitakuuluu.myJid] : []
         onContactsModelChanged: {
             fastScroll.init()
         }
