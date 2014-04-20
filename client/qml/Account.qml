@@ -44,13 +44,14 @@ Dialog {
 
     onAccepted: {
         page.pushname = pushnameArea.text
-        Mitakuuluu.save("account/pushname", pushnameArea.text)
+        Mitakuuluu.save("account/pushname", pushnameArea.text.trim())
         Mitakuuluu.setMyPushname(pushnameArea.text)
+        ContactsBaseModel.setPropertyByJid(Mitakuuluu.myJid, "pushname", pushnameArea.text.trim())
         pushnameArea.focus = false
         page.forceActiveFocus()
 
         page.presence = presenceArea.text
-        Mitakuuluu.save("account/presence", presenceArea.text)
+        Mitakuuluu.save("account/presence", presenceArea.text.trim())
         Mitakuuluu.setMyPresence(presenceArea.text)
         presenceArea.focus = false
         page.forceActiveFocus()
