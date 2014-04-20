@@ -9,6 +9,7 @@ QueryExecutor::QueryExecutor(QObject *parent) :
 {
     m_worker.setCallObject(this);
 
+    // copying old mitakuuluu database to new place
     QString dataDir = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
     QString dataFile = QString("%1/database.db").arg(dataDir);
     QString oldFile = QString("%1/.whatsapp/whatsapp.db").arg(QDir::homePath());
@@ -46,14 +47,11 @@ QueryExecutor::QueryExecutor(QObject *parent) :
         if (!db.tables().contains("contacts")) {
             db.exec("CREATE TABLE contacts (jid TEXT, pushname TEXT, name TEXT, message TEXT, contacttype INTEGER, owner TEXT, subowner TEXT, timestamp INTEGER, subtimestamp INTEGER, avatar TEXT, unread INTEGER, lastmessage INTEGER);");
         }
-        if (transferBase) {
+        else if (transferBase) {
             qDebug() << "Begin transfer old database";
 
             qDebug() << "Tweaking database contacts table";
-            QSqlQuery contacts(db);
-            contacts.prepare("UPDATE contacts SET contacttype=(:contacttype);");
-            contacts.bindValue(":contacttype", 1);
-            contacts.exec();
+            db.exec("UPDATE contacts SET contacttype=1;");
 
             foreach (QString table, db.tables()) {
                 if (table.startsWith("u")) {
@@ -97,9 +95,11 @@ QueryExecutor::QueryExecutor(QObject *parent) :
                     qDebug() << "Transfer database table" << table << "complete";
                 }
                 else if (table == "login") {
+                    // drop old login information from table
                     db.exec("DROP TABLE login;");
                 }
                 else if (table == "muted") {
+                    // drop unused table
                     db.exec("DROP TABLE muted;");
                 }
             }
@@ -494,11 +494,11 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
             qDebug() << "Name:" << name << "Phone:" << phone << "Message" << message << "Jid:" << jid;
 
             QSqlQuery uc;
-            //uc.prepare("UPDATE contacts SET name=(:name), message=(:message), contacttype=(:contacttype), timestamp=(:timestamp) WHERE jid=(:jid);");
-            uc.prepare("UPDATE contacts SET name=(:name), message=(:message) WHERE jid=(:jid);");
+            //uc.prepare("UPDATE contacts SET name=(:name), message=(:message), timestamp=(:timestamp) WHERE jid=(:jid);");
+            uc.prepare("UPDATE contacts SET name=(:name), message=(:message), contacttype=(:contacttype) WHERE jid=(:jid);");
             uc.bindValue(":name", name);
             uc.bindValue(":message", message);
-            //uc.bindValue(":contacttype", 0);
+            uc.bindValue(":contacttype", 1);
             //uc.bindValue(":timestamp", timestamp);
             uc.bindValue(":jid", jid);
             uc.exec();
@@ -514,7 +514,7 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
                 ic.bindValue(":pushname", name);
                 ic.bindValue(":name", name);
                 ic.bindValue(":message", message);
-                ic.bindValue(":contacttype", 0);
+                ic.bindValue(":contacttype", 1);
                 ic.bindValue(":owner", "");
                 ic.bindValue(":subowner", "");
                 ic.bindValue(":timestamp", 0);
@@ -534,7 +534,7 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
                     contact["pushname"] = name;
                     contact["nickname"] = name;
                     contact["message"] = message;
-                    contact["contacttype"] = 0;
+                    contact["contacttype"] = 1;
                     contact["owner"] = QString();
                     contact["subowner"] = QString();
                     contact["timestamp"] = timestamp;
