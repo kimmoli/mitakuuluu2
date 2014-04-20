@@ -31,7 +31,6 @@ protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
 
 private:
-    QString _filter;
     QString filter();
     void setFilter(const QString &newFilter);
 

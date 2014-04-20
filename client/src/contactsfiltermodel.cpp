@@ -5,13 +5,13 @@ ContactsFilterModel::ContactsFilterModel(QObject *parent) :
     QSortFilterProxyModel(parent),
     _showActive(false),
     _showUnknown(false),
-    _filter(""),
     _filterContacts()
 {
     QObject::connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(onRowsInserted(QModelIndex,int,int)));
     QObject::connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(onRowsRemoved(QModelIndex,int,int)));
     QObject::connect(this, SIGNAL(rowsMoved(QModelIndex,int,int,QModelIndex,int)), this, SLOT(onRowsMoved(QModelIndex,int,int,QModelIndex,int)));
 
+    setFilterCaseSensitivity(Qt::CaseInsensitive);
     setFilterRole(Qt::UserRole + 1);
     setSortRole(Qt::UserRole + 1);
     sort(0);
@@ -72,8 +72,13 @@ bool ContactsFilterModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         if (jid.contains("-"))
             return false;
     }
-    QString nickname = sourceModel()->data(index, Qt::UserRole + 4).toString();
-    return nickname.contains(_filter, Qt::CaseInsensitive);
+
+    if (filterRegExp().isEmpty())
+        return true;
+    else {
+        QString nickname = sourceModel()->data(index, Qt::UserRole + 4).toString();
+        return nickname.contains(filterRegExp());
+    }
 }
 
 bool ContactsFilterModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
@@ -90,17 +95,17 @@ bool ContactsFilterModel::lessThan(const QModelIndex &left, const QModelIndex &r
     QString leftString = sourceModel()->data(left, Qt::UserRole + 4).toString();
     QString rightString = sourceModel()->data(right, Qt::UserRole + 4).toString();
 
-    return QString::localeAwareCompare(leftString.toLower(), rightString.toLower()) < 0;
+    return leftString.localeAwareCompare(rightString.toLower()) < 0;
 }
 
 QString ContactsFilterModel::filter()
 {
-    return _filter;
+    return filterRegExp().pattern();
 }
 
 void ContactsFilterModel::setFilter(const QString &newFilter)
 {
-    _filter = newFilter;
+    setFilterFixedString(newFilter);
     changeFilterRole();
     Q_EMIT filterChanged();
 }
@@ -171,12 +176,10 @@ void ContactsFilterModel::changeFilterRole()
         role += 1;
     if (_showActive)
         role += 2;
-    if (!_filter.isEmpty())
-        role += 4;
     if (_hideGroups)
-        role += 8;
+        role += 4;
     if (!_filterContacts.isEmpty())
-        role += 16;
+        role += 8;
     setFilterRole(role);
 }
 
