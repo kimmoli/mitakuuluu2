@@ -185,7 +185,7 @@ Page {
 
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("ConversationPage.qml"), {"initialModel": model})
-                searchField.text = ""
+                //searchField.text = ""
                 contactsModel.filter = ""
             }
 
@@ -264,7 +264,7 @@ Page {
         contactsModel: ContactsBaseModel
         showActive: false
         showUnknown: acceptUnknown
-        filterContacts: showMyJid ? [Mitakuuluu.myJid] : []
+        filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
         onContactsModelChanged: {
             fastScroll.init()
         }
