@@ -64,16 +64,14 @@ ContactsBaseModel::ContactsBaseModel(QObject *parent) :
     QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                           "contactsBlocked", this, SLOT(contactsBlocked(QStringList)));
     QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
-                                          "groupsMuted", this, SLOT(groupsMuted(QStringList)));
-    QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                           "contactsAvailable", this, SLOT(contactsAvailable(QStringList)));
     QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                           "contactTyping", this, SIGNAL(contactTyping(QString)));
     QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                           "contactPaused", this, SIGNAL(contactPaused(QString)));
+
     if (iface) {
         iface->call(QDBus::NoBlock, "getPrivacyList");
-        iface->call(QDBus::NoBlock, "getMutedGroups");
         iface->call(QDBus::NoBlock, "getAvailableJids");
     }
 
@@ -190,11 +188,6 @@ bool ContactsBaseModel::getAvailable(const QString &jid)
 bool ContactsBaseModel::getBlocked(const QString &jid)
 {
     return _blockedContacts.contains(jid);
-}
-
-bool ContactsBaseModel::getMuted(QString jid)
-{
-    return _mutedGroups.contains(jid);
 }
 
 QString ContactsBaseModel::getNicknameBy(const QString &jid, const QString &message, const QString &name, const QString &pushname)
@@ -377,20 +370,6 @@ void ContactsBaseModel::contactsBlocked(const QStringList &jids)
     Q_EMIT dataChanged(index(0), index(_modelData.count() - 1));
 }
 
-void ContactsBaseModel::groupsMuted(const QStringList &jids)
-{
-    _mutedGroups = jids;
-    foreach (const QString &jid, _modelData.keys()) {
-        if (jid.contains("-")) {
-            if (jids.contains(jid))
-                _modelData[jid]["blocked"] = true;
-            else
-                _modelData[jid]["blocked"] = false;
-        }
-    }
-    Q_EMIT dataChanged(index(0), index(_modelData.count() - 1));
-}
-
 void ContactsBaseModel::contactsAvailable(const QStringList &jids)
 {
     _availableContacts = jids;
@@ -455,9 +434,7 @@ void ContactsBaseModel::dbResults(const QVariant &result)
                 QString message = data["message"].toString();
                 qDebug() << "jid:" << jid << pushname << name << message;
                 bool blocked = false;
-                if (jid.contains("-"))
-                    blocked = getMuted(jid);
-                else
+                if (!jid.contains("-"))
                     blocked = getBlocked(jid);
                 data["blocked"] = blocked;
                 bool available = getAvailable(jid);

@@ -48,7 +48,6 @@ public slots:
 private:
     bool getAvailable(const QString &jid);
     bool getBlocked(const QString &jid);
-    bool getMuted(const QString jid);
 
     QString getNicknameBy(const QString &jid, const QString &message, const QString &name, const QString &pushname);
 
@@ -71,7 +70,6 @@ private:
     void checkTotalUnread();
 
     QStringList _blockedContacts;
-    QStringList _mutedGroups;
     QStringList _availableContacts;
 
 signals:
@@ -93,7 +91,6 @@ private slots:
     void messageReceived(const QVariantMap &data);
     void dbResults(const QVariant &result);
     void contactsBlocked(const QStringList &jids);
-    void groupsMuted(const QStringList &jids);
     void contactsAvailable(const QStringList &jids);
     void contactTyping(const QString &jid);
     void contactPaused(const QString &jid);
