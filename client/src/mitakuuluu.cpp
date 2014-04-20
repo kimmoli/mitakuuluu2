@@ -47,8 +47,6 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         _currentLocale = settings->value("settings/locale", QString("%1.qm").arg(QLocale::system().name().split(".").first())).toString();
         setLocale(_currentLocale);
 
-        QDateTime::currentDateTime().toString("dd-MM-yy-hh-mm-ss");
-
         qDebug() << "Connecting to DBus signals";
         iface = new QDBusInterface(SERVER_SERVICE,
                                    SERVER_PATH,
@@ -149,6 +147,7 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
                                               "pong", this, SLOT(onServerPong()));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "simParameters", this, SLOT(onSimParameters(QString, QString)));
+        qDebug() << "Start pinging server";
         pingServer = new QTimer(this);
         QObject::connect(pingServer, SIGNAL(timeout()), this, SLOT(doPingServer()));
         pingServer->setInterval(30000);
@@ -857,30 +856,32 @@ void Mitakuuluu::windowActive()
     }
 }
 
+bool Mitakuuluu::checkLogfile()
+{
+    return QFile("/tmp/mitakuuluu2.log").exists();
+}
+
 bool Mitakuuluu::checkAutostart()
 {
-    //TODO: fix
-    return false;
-
-    //QFile service(AUTOSTART_USER);
-    //return service.exists();
+    QString autostartUser = QString(AUTOSTART_USER).arg(QDir::homePath());
+    QFile service(autostartUser);
+    return service.exists();
 }
 
 void Mitakuuluu::setAutostart(bool enabled)
 {
-    //TODO: fix if valid
-    return;
-
+    QString autostartUser = QString(AUTOSTART_USER).arg(QDir::homePath());
     if (enabled) {
-        QDir dir(AUTOSTART_DIR);
+        QString autostartDir = QString(AUTOSTART_DIR).arg(QDir::homePath());
+        QDir dir(autostartDir);
         if (!dir.exists())
-            dir.mkpath(AUTOSTART_DIR);
-        //QFile service(AUTOSTART_SERVICE);
-        //service.link(AUTOSTART_USER);
+            dir.mkpath(autostartDir);
+        QFile service(AUTOSTART_SERVICE);
+        service.link(autostartUser);
     }
     else {
-        //QFile service(AUTOSTART_USER);
-        //service.remove();
+        QFile service(autostartUser);
+        service.remove();
     }
 }
 

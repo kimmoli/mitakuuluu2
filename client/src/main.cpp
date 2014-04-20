@@ -87,7 +87,11 @@ int main(int argc, char *argv[])
     setuid(getpwnam("nemo")->pw_uid);
     setgid(getgrnam("privileged")->gr_gid);
 
-    qInstallMessageHandler(stdoutHandler);
+    QSettings settings("coderus", "mitakuuluu2");
+    if (settings.value("settings/keepLogs", false).toBool())
+        qInstallMessageHandler(fileHandler);
+    else
+        qInstallMessageHandler(stdoutHandler);
 
     qDebug() << "Starting application";
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));

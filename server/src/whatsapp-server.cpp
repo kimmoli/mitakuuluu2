@@ -24,7 +24,13 @@ int main(int argc, char *argv[])
 {
     setuid(getpwnam("nemo")->pw_uid);
     setgid(getgrnam("privileged")->gr_gid);
-    qInstallMessageHandler(stdoutHandler);
+
+    QSettings settings("coderus", "mitakuuluu2");
+    if (settings.value("settings/keepLogs", false).toBool())
+        qInstallMessageHandler(fileHandler);
+    else
+        qInstallMessageHandler(stdoutHandler);
+
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app->setOrganizationName("harbour-mitakuuluu2");
     app->setApplicationName("harbour-mitakuuluu2");

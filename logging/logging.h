@@ -1,7 +1,12 @@
+#ifndef LOGGING_H
+#define LOGGING_H
+
 #include <QFile>
 #include <QDebug>
 #include <QStandardPaths>
 //#include <systemd/sd-journal.h>
+
+static QString logPath = "/tmp/mitakuuluu2.log";
 
 const char* msgTypeToString(QtMsgType type)
 {
@@ -39,7 +44,7 @@ QString simpleLog(QtMsgType type, const QMessageLogContext &context, const QStri
 
 void writeLog(const QString &message)
 {
-    QFile file(QString("%1/.whatsapp/whatsapp.log").arg(QDir::homePath()));
+    QFile file(logPath);
     if (file.open(QIODevice::Append | QIODevice::Text))
     {
         QTextStream out(&file);
@@ -81,3 +86,5 @@ void journalHandler(QtMsgType type, const QMessageLogContext &context, const QSt
     if (type == QtFatalMsg)
         abort();
 }
+
+#endif // LOGGING_H
