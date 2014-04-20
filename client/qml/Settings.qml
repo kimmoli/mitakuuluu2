@@ -71,8 +71,7 @@ Page {
                 }
             }
             /*MenuItem {
-        		//% "Settings page menu item"
-                text: qsTr("Send logfile to author")
+                text: qsTr("Send logfile to author", "Settings page menu item")
                 onClicked: {
                     whatsapp.sendRecentLogs()
                     page.backNavigation = false
@@ -479,7 +478,7 @@ Page {
 
                 Slider {
                     id: sizeSlider
-                    enabled: resizeBySize
+                    enabled: resizeImages && sizeResize.checked
                     anchors.left: sizeResize.right
                     anchors.right: parent.right
                     maximumValue: 5242880
@@ -513,7 +512,7 @@ Page {
 
                 Slider {
                     id: pixSlider
-                    enabled: !resizeBySize
+                    enabled: resizeImages && pixResize.checked
                     anchors.left: pixResize.right
                     anchors.right: parent.right
                     maximumValue: 9.0
