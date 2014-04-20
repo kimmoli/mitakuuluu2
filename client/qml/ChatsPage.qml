@@ -83,6 +83,12 @@ Page {
                     pageStack.push(Qt.resolvedUrl("Broadcast.qml"))
                 }
             }
+            MenuItem {
+                text: qsTr("Settings", "Main menu item")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("Settings.qml"))
+                }
+            }
         }
 
         PageHeader {
@@ -297,5 +303,6 @@ Page {
         id: contactsModel
         contactsModel: ContactsBaseModel
         showActive: true
+        showUnknown: true
     }
 }
