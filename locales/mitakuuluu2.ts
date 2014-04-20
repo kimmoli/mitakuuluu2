@@ -358,7 +358,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2581"/>
+        <location filename="../server/src/client.cpp" line="2584"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished">
@@ -859,37 +859,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="768"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="765"/>
         <source>Copy</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="772"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="769"/>
         <source>Message copied to clipboard</source>
         <comment>Banner item text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="777"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="774"/>
         <source>Forward</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="786"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="783"/>
         <source>Save to Gallery</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="789"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="786"/>
         <source>File saved as %1</source>
         <comment>Banner text message</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="795"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="792"/>
         <source>Delete</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
