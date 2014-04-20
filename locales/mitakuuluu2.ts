@@ -334,37 +334,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1242"/>
+        <location filename="../server/src/client.cpp" line="1243"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1245"/>
+        <location filename="../server/src/client.cpp" line="1246"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1248"/>
+        <location filename="../server/src/client.cpp" line="1249"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1251"/>
+        <location filename="../server/src/client.cpp" line="1252"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1519"/>
+        <location filename="../server/src/client.cpp" line="1520"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2586"/>
+        <location filename="../server/src/client.cpp" line="2587"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished">
