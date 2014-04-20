@@ -1581,25 +1581,27 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
     QString fname = fileName;
     fname = fname.replace("file://", "");
 
-    // temporary hack to send big jpeg images
     QString ext = fileName.split(".").last();
     QString mime = Utilities::guessMimeType(ext);
     if (mime.startsWith("image")) {
         QString tmp = QString("/var/tmp/%1").arg(fileName.split("/").last());
-        qDebug() << "Original size:" << QString::number(QFile(fileName).size());
+        int originalSize = QFile(fileName).size();
+        qDebug() << "Original" << fileName << "size:" << QString::number(originalSize);
         settings->sync();
         if (settings->value("settings/resizeImages", false).toBool()) {
             bool resizeBySize = settings->value("settings/resizeBySize", true).toBool();
             qDebug() << "resizeBySize:" << (resizeBySize ? "yes" : "no");
             int resizeImagesTo = settings->value("settings/resizeImagesTo", 1024*1024).toInt();
             qDebug() << "resizeImagesTo:" << QString::number(resizeImagesTo);
-            float resizeImagesToMPix = settings->value("settings/resizeImagesToMPix", 5).toFloat();
+            float resizeImagesToMPix = settings->value("settings/resizeImagesToMPix", 5.01).toFloat();
             qDebug() << "resizeImagesToMPix:" << QString::number(resizeImagesToMPix);
-            QImage img(tmp);
-            qDebug() << "w:" << img.width() << "h:" << img.height();
+            QImage img(fname);
+            int originalResolution = img.width() * img.height();
+            int targetResolution = resizeImagesToMPix * 1000000;
+            qDebug() << "w:" << img.width() << "h:" << img.height() << ((double)originalResolution / 1000000);
             QByteArray data;
 
-            if (resizeBySize) {
+            if (resizeBySize && originalSize > resizeImagesTo) {
                 do
                 {
                     data.clear();
@@ -1612,16 +1614,17 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
                 qDebug() << "image w:" << QString::number(img.width())
                          << "h:" << QString::number(img.height())
                          << "s:" << QString::number(data.size());
+                fname = tmp;
             }
-            else {
-                while (img.width() * img.height() > resizeImagesToMPix * 1000000) {
+            else if (originalResolution > targetResolution) {
+                while (img.width() * img.height() > targetResolution) {
                     img = img.scaledToWidth(img.width() - 100, Qt::SmoothTransformation);
                 }
                 img.save(tmp, mime.split("/").last().toLocal8Bit().data(), 90);
                 qDebug() << "image w:" << QString::number(img.width())
                          << "h:" << QString::number(img.height());
+                fname = tmp;
             }
-            fname = tmp;
 
             qDebug() << "Check sharing options";
             if (_mediaStatusHash.contains(fileName)) {
@@ -1633,7 +1636,7 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
             }
         }
 
-        qDebug() << "Result file:" << tmp << "size:" << QString::number(QFile(tmp).size());
+        qDebug() << "Result file:" << fname << "size:" << QString::number(QFile(fname).size());
     }
 
     QFile file(fname);
