@@ -46,7 +46,7 @@ Dialog {
         page.pushname = pushnameArea.text
         Mitakuuluu.save("account/pushname", pushnameArea.text.trim())
         Mitakuuluu.setMyPushname(pushnameArea.text)
-        ContactsBaseModel.setPropertyByJid(Mitakuuluu.myJid, "pushname", pushnameArea.text.trim())
+        ContactsBaseModel.renameContact(Mitakuuluu.myJid, pushnameArea.text.trim())
         pushnameArea.focus = false
         page.forceActiveFocus()
 
