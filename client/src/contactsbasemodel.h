@@ -79,6 +79,7 @@ signals:
 
 private slots:
     void pictureUpdated(const QString &jid, const QString &path);
+    void groupInfo(const QVariantMap &data);
     void contactChanged(const QVariantMap &data);
     void contactSynced(const QVariantMap &data);
     void contactStatus(const QString &jid, const QString &message);

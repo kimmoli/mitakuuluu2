@@ -50,6 +50,8 @@ ContactsBaseModel::ContactsBaseModel(QObject *parent) :
     QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                           "contactLastSeen", this, SLOT(presenceLastSeen(QString, int)));
     QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
+                                          "groupInfo", this, SLOT(groupInfo(QVariantMap)));
+    QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                           "contactChanged", this, SLOT(contactChanged(QVariantMap)));
     QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                           "contactSynced", this, SLOT(contactSynced(QVariantMap)));
@@ -213,6 +215,34 @@ void ContactsBaseModel::pictureUpdated(const QString &jid, const QString &path)
     setPropertyByJid(jid, "avatar", path);
 }
 
+void ContactsBaseModel::groupInfo(const QVariantMap &data)
+{
+    QString jid = data["jid"].toString();
+    if (_modelData.contains(jid)) {
+        _modelData[jid]["nickname"] = data["message"];
+        _modelData[jid]["pushname"] = data["pushname"];
+        _modelData[jid]["owner"] = data["owner"];
+        _modelData[jid]["message"] = data["message"];
+        _modelData[jid]["subowner"] = data["subowner"];
+        _modelData[jid]["subtimestamp"] = data["subtimestamp"];
+        _modelData[jid]["timestamp"] = data["timestamp"];
+        _modelData[jid]["typing"] = false;
+
+        int row = _modelData.keys().indexOf(jid);
+        Q_EMIT dataChanged(index(row), index(row));
+    }
+    else {
+        beginResetModel();
+
+        _modelData[jid] = data;
+        _modelData[jid]["blocked"] = false;
+        _modelData[jid]["available"] = false;
+        _modelData[jid]["nickname"] = data["message"];
+
+        endResetModel();
+    }
+}
+
 void ContactsBaseModel::contactChanged(const QVariantMap &data)
 {
     QVariantMap contact = data;
@@ -225,11 +255,26 @@ void ContactsBaseModel::contactChanged(const QVariantMap &data)
 
     contact["nickname"] = nickname;
     contact["typing"] = false;
+    bool available = getAvailable(jid);
+    contact["available"] = available;
+    bool blocked = false;
+    if (!jid.contains("-"))
+        blocked = getBlocked(jid);
+    contact["blocked"] = blocked;
 
-    _modelData[jid] = contact;
+    if (_modelData.contains(jid)) {
+        _modelData[jid] = contact;
 
-    int row = _modelData.keys().indexOf(jid);
-    Q_EMIT dataChanged(index(row), index(row));
+        int row = _modelData.keys().indexOf(jid);
+        Q_EMIT dataChanged(index(row), index(row));
+    }
+    else {
+        beginResetModel();
+
+        _modelData[jid] = contact;
+
+        endResetModel();
+    }
 }
 
 void ContactsBaseModel::contactSynced(const QVariantMap &data)
