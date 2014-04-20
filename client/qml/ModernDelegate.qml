@@ -289,10 +289,16 @@ MouseArea {
         width: size / 2
         Component.onCompleted: {
             if (model.author === Mitakuuluu.myJid) {
-                anchors.left = mainBg.right
+                if (sentLeft)
+                    anchors.right = mainBg.left
+                else
+                    anchors.left = mainBg.right
             }
             else {
-                anchors.right = mainBg.left
+                if (sentLeft)
+                    anchors.left = mainBg.right
+                else
+                    anchors.right = mainBg.left
             }
         }
         visible: model.watype !== Mitakuuluu.System
@@ -306,10 +312,16 @@ MouseArea {
             y: (arrowBg.size - width) / 2
             Component.onCompleted: {
                 if (model.author === Mitakuuluu.myJid) {
-                    x = 0 - (arrowBg.size - width) - 1
+                    if (sentLeft)
+                        x = (arrowBg.size - width) / 2
+                    else
+                        x = 0 - (arrowBg.size - width) - 1
                 }
                 else {
-                    x = (arrowBg.size - width) / 2
+                    if (sentLeft)
+                        x = 0 - (arrowBg.size - width) - 1
+                    else
+                        x = (arrowBg.size - width) / 2
                 }
             }
         }
@@ -351,10 +363,16 @@ MouseArea {
                 anchors.horizontalCenter = parent.horizontalCenter
             }
             else if (model.author === Mitakuuluu.myJid) {
-                anchors.right = parent.right
+                if (sentLeft)
+                    anchors.left = parent.left
+                else
+                    anchors.right = parent.right
             }
             else {
-                anchors.left = parent.left
+                if (sentLeft)
+                    anchors.right = parent.right
+                else
+                    anchors.left = parent.left
             }
         }
         Loader {

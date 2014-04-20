@@ -107,14 +107,20 @@ ApplicationWindow {
     property bool notifyMessages: false
     onNotifyMessagesChanged: Mitakuuluu.save("settings/notifyMessages", notifyMessages)
 
-    property bool keepLogs: true
+    property bool keepLogs: false
     onKeepLogsChanged: Mitakuuluu.save("settings/keepLogs", keepLogs)
 
     property string mapSource: "here"
     onMapSourceChanged: Mitakuuluu.save("settings/mapSource", mapSource)
 
-    property int automaticDownload: 524288
-    onAutomaticDownloadChanged: Mitakuuluu.save("settings/automaticdownload", automaticDownload)
+    property bool automaticDownload: false
+    onAutomaticDownloadChanged: Mitakuuluu.save("settings/autodownload", automaticDownload)
+
+    property int automaticDownloadBytes: 524288
+    onAutomaticDownloadBytesChanged: Mitakuuluu.save("settings/automaticdownload", automaticDownloadBytes)
+
+    property bool sentLeft: false
+    onSentLeftChanged: Mitakuuluu.save("settings/sentLeft", sentLeft)
 
     property int currentOrientation: pageStack._currentOrientation
 
@@ -210,7 +216,7 @@ ApplicationWindow {
         function transitionDone() {
             if (!pageStack.busy) {
                 pageStack.busyChanged.disconnect(captureReceiver.transitionDone)
-                pageStack.push(Qt.resolvedUrl("SelectContact.qml"))
+                pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"multiple": true})
                 pageStack.currentPage.accepted.connect(captureReceiver.contactsSelected)
                 pageStack.currentPage.rejected.connect(captureReceiver.contactsRejected)
             }
@@ -257,7 +263,7 @@ ApplicationWindow {
         function transitionDone() {
             if (!pageStack.busy) {
                 pageStack.busyChanged.disconnect(locationReceiver.transitionDone)
-                pageStack.push(Qt.resolvedUrl("SelectContact.qml"))
+                pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"multiple": true})
                 pageStack.currentPage.accepted.connect(locationReceiver.contactsSelected)
                 pageStack.currentPage.rejected.connect(locationReceiver.contactsRejected)
             }
@@ -294,7 +300,7 @@ ApplicationWindow {
         function transitionDone() {
             if (!pageStack.busy) {
                 pageStack.busyChanged.disconnect(recorderReceiver.transitionDone)
-                pageStack.push(Qt.resolvedUrl("SelectContact.qml"))
+                pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"multiple": true})
                 pageStack.currentPage.accepted.connect(recorderReceiver.contactsSelected)
                 pageStack.currentPage.rejected.connect(recorderReceiver.contactsRejected)
             }
@@ -336,7 +342,7 @@ ApplicationWindow {
         function transitionDone() {
             if (!pageStack.busy) {
                 pageStack.busyChanged.disconnect(mediaReceiver.transitionDone)
-                pageStack.push(Qt.resolvedUrl("SelectContact.qml"))
+                pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"multiple": true})
                 pageStack.currentPage.accepted.connect(mediaReceiver.contactsSelected)
                 pageStack.currentPage.rejected.connect(mediaReceiver.contactsRejected)
             }
@@ -373,7 +379,7 @@ ApplicationWindow {
         function transitionDone() {
             if (!pageStack.busy) {
                 pageStack.busyChanged.disconnect(textReceiver.transitionDone)
-                pageStack.push(Qt.resolvedUrl("SelectContact.qml"))
+                pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"multiple": true})
                 pageStack.currentPage.accepted.connect(textReceiver.contactsSelected)
                 pageStack.currentPage.rejected.connect(textReceiver.contactsRejected)
             }
@@ -520,12 +526,14 @@ ApplicationWindow {
         threading = Mitakuuluu.load("connection/threading", true)
         hideKeyboard = Mitakuuluu.load("settings/hideKeyboard", false)
         notifyMessages = Mitakuuluu.load("settings/notifyMessages", false)
-        keepLogs = Mitakuuluu.load("settings/keepLogs", true)
+        keepLogs = Mitakuuluu.load("settings/keepLogs", false)
         mapSource = Mitakuuluu.load("settings/mapSource", "here")
         notificationsMuted = Mitakuuluu.load("settings/notificationsMuted", false)
         coverLeftAction = Mitakuuluu.load("settings/coverLeftAction", 4)
         coverRightAction = Mitakuuluu.load("settings/coverRightAction", 3)
-        automaticDownload = Mitakuuluu.load("settings/automaticdownload", 524288)
+        automaticDownload = Mitakuuluu.load("settings/autodownload", false)
+        automaticDownloadBytes = Mitakuuluu.load("settings/automaticdownload", 524288)
+        sentLeft = Mitakuuluu.load("settings/sentLeft", false)
 
         updateCoverActions()
     }

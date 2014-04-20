@@ -70,13 +70,13 @@ Page {
                     pageStack.push(Qt.resolvedUrl("About.qml"))
                 }
             }
-            /*MenuItem {
+            MenuItem {
                 text: qsTr("Send logfile to author", "Settings page menu item")
+                visible: keepLogs && Mitakuuluu.checkLogfile()
                 onClicked: {
-                    whatsapp.sendRecentLogs()
-                    page.backNavigation = false
+                    pageStack.push(Qt.resolvedUrl("SendLogs.qml"))
                 }
-            }*/
+            }
             MenuItem {
                 text: qsTr("Account", "Settings page menu item")
                 onClicked: {
@@ -148,6 +148,12 @@ Page {
                     currentIndex = settings.value("conversationIndex", parseInt(0))
                 }
             }*/
+
+            TextSwitch {
+                checked: sentLeft
+                text: qsTr("Show sent messages at left side", "Settings option name")
+                onClicked: sentLeft = checked
+            }
 
             TextSwitch {
                 checked: notifyActive
@@ -431,17 +437,35 @@ Page {
                 text: qsTr("Media", "Settings page section name")
             }
 
-            Slider {
-                id: downloadSlider
-                anchors.left: parent.left
-                anchors.right: parent.right
-                maximumValue: 10485760
-                minimumValue: 204800
-                label: qsTr("Automatic download bytes", "Settings option name")
-                value: automaticDownload
-                valueText: Format.formatFileSize(parseInt(value))
-                onReleased: {
-                    automaticDownload = parseInt(value)
+            Item {
+                width: parent.width
+                height: downloadSlider.height
+
+                TextSwitch {
+                    id: autoDownload
+                    text: ""
+                    width: Theme.itemSizeSmall
+                    checked: automaticDownload
+                    onClicked: {
+                        automaticDownload = checked
+                    }
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                Slider {
+                    id: downloadSlider
+                    enabled: automaticDownload
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    maximumValue: 10485760
+                    minimumValue: 204800
+                    label: qsTr("Automatic download bytes", "Settings option name")
+                    value: automaticDownloadBytes
+                    valueText: Format.formatFileSize(parseInt(value))
+                    onReleased: {
+                        automaticDownloadBytes = parseInt(value)
+                    }
                 }
             }
 

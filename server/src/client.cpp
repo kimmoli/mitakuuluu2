@@ -2416,9 +2416,11 @@ void Client::onMessageReceived(const FMessage &message)
     acceptUnknown = settings->value(SETTINGS_UNKNOWN, true).toBool();
     if (_contacts.contains(fromAttribute) || acceptUnknown) {
         addMessage(message);
-        int autoBytes = settings->value(SETTINGS_AUTOMATIC_DOWNLOAD, QVariant(DEFAULT_AUTOMATIC_DOWNLOAD)).toInt();
-        if (message.type == FMessage::MediaMessage && message.media_size <= autoBytes) {
-            startDownloadMessage(message);
+        if (settings->value(SETTINGS_AUTOMATIC_DOWNLOAD).toBool()) {
+            int autoBytes = settings->value(SETTINGS_AUTOMATIC_DOWNLOAD_BYTES, QVariant(DEFAULT_AUTOMATIC_DOWNLOAD)).toInt();
+            if (message.type == FMessage::MediaMessage && message.media_size <= autoBytes) {
+                startDownloadMessage(message);
+            }
         }
     }
 }
@@ -2530,7 +2532,7 @@ void Client::saveGroupInfo(const QString &jid, const QString &owner, const QStri
     group["unread"] = getUnreadCount(jid);
     group["lastmessage"] = 0;
     group["blocked"] = getBlocked(jid);
-    Q_EMIT contactChanged(group);
+    Q_EMIT groupInfo(group);
 
     group["type"] = QueryType::ContactsSaveModel;
     group["uuid"] = uuid;
