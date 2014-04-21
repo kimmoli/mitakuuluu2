@@ -95,16 +95,14 @@ void ContactsBaseModel::reloadContact(const QString &jid)
 
 void ContactsBaseModel::setPropertyByJid(const QString &jid, const QString &name, const QVariant &value)
 {
-    if (_modelData.keys().contains(jid)) {
-        if (_modelData.keys().contains(jid)) {
-            int row = _modelData.keys().indexOf(jid);
-            if (name == "avatar") {
-                _modelData[jid][name] = QString();
-                Q_EMIT dataChanged(index(row), index(row));
-            }
-            _modelData[jid][name] = value;
+    if (_modelData.contains(jid)) {
+        int row = _modelData.keys().indexOf(jid);
+        if (name == "avatar") {
+            _modelData[jid][name] = QString();
             Q_EMIT dataChanged(index(row), index(row));
         }
+        _modelData[jid][name] = value;
+        Q_EMIT dataChanged(index(row), index(row));
 
         if (name == "unread")
             checkTotalUnread();
@@ -113,7 +111,7 @@ void ContactsBaseModel::setPropertyByJid(const QString &jid, const QString &name
 
 void ContactsBaseModel::deleteContact(const QString &jid)
 {
-    if (_modelData.keys().contains(jid)) {
+    if (_modelData.contains(jid)) {
         int row = _modelData.keys().indexOf(jid);
         beginRemoveRows(QModelIndex(), row, row);
         _modelData.remove(jid);
@@ -130,7 +128,7 @@ void ContactsBaseModel::deleteContact(const QString &jid)
 
 QVariantMap ContactsBaseModel::getModel(const QString &jid)
 {
-    if (_modelData.keys().contains(jid))
+    if (_modelData.contains(jid))
         return _modelData[jid];
     return QVariantMap();
 }
@@ -281,7 +279,7 @@ void ContactsBaseModel::contactSynced(const QVariantMap &data)
 {
     QVariantMap contact = data;
     QString jid = contact["jid"].toString();
-    if (_modelData.keys().contains(jid)) {
+    if (_modelData.contains(jid)) {
         _modelData[jid]["timestamp"] = contact["timestamp"];
         QString message = contact["message"].toString();
         _modelData[jid]["message"] = message;
@@ -304,7 +302,7 @@ void ContactsBaseModel::contactSynced(const QVariantMap &data)
 
 void ContactsBaseModel::contactStatus(const QString &jid, const QString &message)
 {
-    if (_modelData.keys().contains(jid)) {
+    if (_modelData.contains(jid)) {
         _modelData[jid]["message"] = message;
         int row = _modelData.keys().indexOf(jid);
         dataChanged(index(row), index(row));
@@ -314,7 +312,7 @@ void ContactsBaseModel::contactStatus(const QString &jid, const QString &message
 void ContactsBaseModel::newGroupSubject(const QVariantMap &data)
 {
     QString jid = data["jid"].toString();
-    if (_modelData.keys().contains(jid)) {
+    if (_modelData.contains(jid)) {
         QString message = data["message"].toString();
         QString subowner = data["subowner"].toString();
         int lastmessage = _modelData[jid]["lastmessage"].toInt();
@@ -348,7 +346,7 @@ void ContactsBaseModel::setUnread(const QString &jid, int count)
 
 void ContactsBaseModel::pushnameUpdated(const QString &jid, const QString &pushName)
 {
-    if (_modelData.keys().contains(jid) && (pushName != jid.split("@").first())) {
+    if (_modelData.contains(jid) && (pushName != jid.split("@").first())) {
         setPropertyByJid(jid, "pushname", pushName);
 
         QString nickname = _modelData[jid]["nickname"].toString();
@@ -389,8 +387,9 @@ void ContactsBaseModel::presenceLastSeen(const QString jid, int timestamp)
 void ContactsBaseModel::messageReceived(const QVariantMap &data)
 {
     QString jid = data["jid"].toString();
+    contactPaused(jid);
     int lastmessage = data["timestamp"].toInt();
-    if (_modelData.keys().contains(jid)) {
+    if (_modelData.contains(jid)) {
         _modelData[jid]["lastmessage"] = lastmessage;
 
         int row = _modelData.keys().indexOf(jid);
@@ -430,7 +429,7 @@ void ContactsBaseModel::contactsAvailable(const QStringList &jids)
 
 void ContactsBaseModel::contactTyping(const QString &jid)
 {
-    if (_modelData.keys().contains(jid)) {
+    if (_modelData.contains(jid)) {
         _modelData[jid]["typing"] = true;
 
         int row = _modelData.keys().indexOf(jid);
@@ -440,7 +439,7 @@ void ContactsBaseModel::contactTyping(const QString &jid)
 
 void ContactsBaseModel::contactPaused(const QString &jid)
 {
-    if (_modelData.keys().contains(jid)) {
+    if (_modelData.contains(jid)) {
         _modelData[jid]["typing"] = false;
 
         int row = _modelData.keys().indexOf(jid);
@@ -529,7 +528,7 @@ int ContactsBaseModel::count()
 
 void ContactsBaseModel::renameContact(const QString &jid, const QString &name)
 {
-    if (_modelData.keys().contains(jid)) {
+    if (_modelData.contains(jid)) {
         _modelData[jid]["name"] = name;
         QString pushname = _modelData[jid]["pushname"].toString();
 

@@ -670,6 +670,7 @@ void QueryExecutor::setContactModel(QVariantMap &query)
     sql.bindValue(":timestamp", query["timestamp"]);
     sql.bindValue(":jid", query["jid"]);
     sql.exec();
+    query["exists"] = true;
 
     if (sql.numRowsAffected() == 0) {
         QSqlQuery ic;
@@ -687,6 +688,7 @@ void QueryExecutor::setContactModel(QVariantMap &query)
         ic.bindValue(":unread", 0);
         ic.bindValue(":lastmessage", 0);
         ic.exec();
+        query["exists"] = false;
     }
 
     Q_EMIT actionDone(query);

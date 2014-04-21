@@ -185,9 +185,9 @@ void ConversationModel::copyToClipboard(const QString &msgId)
         return;
     QString text;
     QVariantMap data = _modelData[msgId];
-    int msgtype = data["type"].toInt();
+    int msgtype = data["watype"].toInt();
     if (msgtype == 0) {
-        text = data["message"].toString();
+        text = data["data"].toString();
     }
     else if (msgtype > 0 && msgtype < 4) {
         QString url = data["url"].toString();

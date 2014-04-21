@@ -2539,7 +2539,7 @@ void Client::saveGroupInfo(const QString &jid, const QString &owner, const QStri
     group["uuid"] = uuid;
     dbExecutor->queueAction(group);
 
-    getPicture(jid);
+    //getPicture(jid);
 }
 
 void Client::dbResults(const QVariant &result)
@@ -2549,6 +2549,12 @@ void Client::dbResults(const QVariant &result)
         return;
     int vtype = reply["type"].toInt();
     switch (vtype) {
+    case QueryType::ContactsSaveModel: {
+        if (!reply["exists"].toBool()) {
+            getPicture(reply["jid"].toString());
+        }
+        break;
+    }
     case QueryType::ContactsGetMuted: {
         QVariantMap jids = reply["result"].toMap();
         _contacts = jids;
@@ -2638,7 +2644,7 @@ void Client::dbResults(const QVariant &result)
     case QueryType::ContactsGetJids: {
         _contacts = reply["jids"].toMap();
         foreach (const QString& jid, _contacts.keys()) {
-            requestPresenceSubscription(jid);
+            //requestPresenceSubscription(jid);
             Q_EMIT setUnread(jid, _contacts[jid].toInt());
         }
         break;
