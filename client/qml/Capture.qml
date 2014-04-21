@@ -4,11 +4,12 @@ import harbour.mitakuuluu2.client 1.0
 import QtMultimedia 5.0
 import Sailfish.Media 1.0
 import Sailfish.Gallery 1.0
+import com.jolla.camera 1.0
 
 Dialog {
     id: page
     objectName: "capture"
-    allowedOrientations: Orientation.Portrait
+    allowedOrientations: Orientation.Portrait | Orientation.Landscape
     canNavigateForward: canAccept
     canAccept: false
 
@@ -36,7 +37,15 @@ Dialog {
         camera.cameraState = Camera.UnloadedState
     }
 
+    Rectangle {
+        anchors.fill: header
+        z: 1
+        color: Theme.rgba(Theme.highlightColor, 0.2)
+    }
+
     DialogHeader {
+        id: header
+        z: 1
         title: page.canAccept ? qsTr("Send", "Capture page send title")
                               : qsTr("Camera", "Capture page default title")
     }
@@ -46,51 +55,88 @@ Dialog {
         x:0
         y:0
         anchors.fill: parent
-        orientation: 0
+        orientation: page.orientation == Orientation.Portrait ? 0 : 90
         visible: !page.canAccept
 
-        source: Camera {
-            id: camera
+        source: camera
+    }
 
-            // Set this to Camera.ActiveState to load, and Camera.UnloadedState to unload.
-            //cameraState: Camera.ActiveState
+    Camera {
+        id: camera
 
-            // Options are Camera.CaptureStillImage or Camera.CaptureVideo
-            captureMode: Camera.CaptureStillImage
+        // Set this to Camera.ActiveState to load, and Camera.UnloadedState to unload.
+        //cameraState: Camera.ActiveState
 
-            focus.focusMode: Camera.FocusAuto
-            flash.mode: Camera.FlashAuto
+        // Options are Camera.CaptureStillImage or Camera.CaptureVideo
+        captureMode: Camera.CaptureStillImage
 
-            imageCapture {
-                resolution: "1280x720"
+        focus.focusMode: Camera.FocusAuto
+        flash.mode: Camera.FlashAuto
 
-                onImageCaptured:{
-                }
+        imageCapture {
+            resolution: "1280x720"
 
-                // Called when the image is saved.
-                onImageSaved: {
-                    camera.cameraState = Camera.UnloadedState
-                    console.log("Photo saved to", path)
-                    imagePath = path
-                    page.canAccept = true
-                }
-
-                // Called when a capture fails for some reason.
-                onCaptureFailed: {
-                    console.log("Capture failed")
-                }
-
+            onImageCaptured:{
             }
 
-            // This will tell us when focus lock is gained.
-            onLockStatusChanged: {
-                if (lockStatus == Camera.Locked) {
-                    console.log("locked")
-                    if (shutter.autoMode)
-                        camera.imageCapture.capture()
-                }
+            // Called when the image is saved.
+            onImageSaved: {
+                camera.cameraState = Camera.UnloadedState
+                console.log("Photo saved to", path)
+                imagePath = path
+                page.canAccept = true
+            }
+
+            // Called when a capture fails for some reason.
+            onCaptureFailed: {
+                console.log("Capture failed")
             }
         }
+
+        videoRecorder{
+            resolution: "1280x720"
+            onResolutionChanged: reload()
+            frameRate: 30
+            audioChannels: 2
+            audioSampleRate: 48000
+            audioCodec: "audio/mpeg, mpegversion=(int)4"
+            videoCodec: "video/mpeg, mpegversion=(int)4"
+            mediaContainer: "video/quicktime, variant=(string)iso"
+        }
+
+        // This will tell us when focus lock is gained.
+        onLockStatusChanged: {
+            if (lockStatus == Camera.Locked) {
+                console.log("locked")
+                if (shutter.autoMode)
+                    camera.imageCapture.capture()
+            }
+        }
+    }
+
+    CameraExtensions {
+        id: extensions
+        camera: camera
+
+        device: "primary"
+
+        manufacturer: "Jolla"
+        model: "Jolla"
+
+        rotation: {
+            switch (page.orientation) {
+            case Orientation.Portrait:
+                return 0
+            case Orientation.Landscape:
+                return 90
+            case Orientation.PortraitInverted:
+                return 180
+            case Orientation.LandscapeInverted:
+                return 270
+            }
+        }
+
+        viewfinderResolution: "1280x720"
     }
 
     ImageViewer {
@@ -101,12 +147,13 @@ Dialog {
     }
 
     Rectangle {
+        id: flashButton
         width: Theme.itemSizeMedium
         height: width
         radius: width / 2
         color: flashModeArea.pressed ? Theme.highlightColor : Theme.secondaryHighlightColor
         anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.bottom: captureButton.top
         anchors.margins: Theme.paddingSmall
         visible: !page.canAccept
 
@@ -115,7 +162,6 @@ Dialog {
             source: flashModeIcon(camera.flash.mode)
             anchors.centerIn: parent
             property bool flash: true
-            rotation: 90
 
             function flashModeIcon(mode) {
                 switch (mode) {
@@ -150,9 +196,10 @@ Dialog {
     }
 
     Rectangle {
+        id: captureButton
         width: Theme.itemSizeMedium
         height: width
-        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.margins: Theme.paddingSmall
         radius: width / 2
@@ -164,7 +211,6 @@ Dialog {
             source: "image://theme/icon-camera-shutter-release"
             anchors.centerIn: parent
             property bool autoMode: false
-            rotation: 90
         }
 
         MouseArea {

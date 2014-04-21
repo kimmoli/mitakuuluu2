@@ -55,6 +55,9 @@
 #include <QLocale>
 #include <QTranslator>
 
+#include <gst/gst.h>
+#include <gst/gstpreset.h>
+
 #include "../logging/logging.h"
 
 static QObject *mitakuuluu_singleton_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
@@ -93,12 +96,17 @@ int main(int argc, char *argv[])
     else
         qInstallMessageHandler(stdoutHandler);
 
+    qDebug() << "Init gst presets";
+    gst_init(0, 0);
+    gst_preset_set_app_dir("/usr/share/jolla-camera/presets/");
+
     qDebug() << "Starting application";
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app->setOrganizationName("harbour-mitakuuluu2");
     app->setApplicationName("harbour-mitakuuluu2");
 
     QScopedPointer<QQuickView> view(SailfishApp::createView());
+    view->setTitle("Mitakuuluu");
 
     view->rootContext()->setContextProperty("view", view.data());
     view->rootContext()->setContextProperty("app", app.data());
