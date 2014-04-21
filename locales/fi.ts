@@ -92,7 +92,7 @@
         <location filename="../client/qml/AvatarView.qml" line="45"/>
         <source>Image saved as %1</source>
         <comment>Avatar view image saved to gallery banner</comment>
-        <translation>Kuva tallennettu %1</translation>
+        <translation>Kuva tallennettu nimellä %1</translation>
     </message>
 </context>
 <context>
@@ -137,13 +137,13 @@
 <context>
     <name>Capture</name>
     <message>
-        <location filename="../client/qml/Capture.qml" line="40"/>
+        <location filename="../client/qml/Capture.qml" line="49"/>
         <source>Send</source>
         <comment>Capture page send title</comment>
         <translation>Lähetä</translation>
     </message>
     <message>
-        <location filename="../client/qml/Capture.qml" line="41"/>
+        <location filename="../client/qml/Capture.qml" line="50"/>
         <source>Camera</source>
         <comment>Capture page default title</comment>
         <translation>Kamera</translation>
@@ -155,7 +155,7 @@
         <location filename="../client/qml/ChatsPage.qml" line="19"/>
         <source>Restart engine</source>
         <comment>Main menu action</comment>
-        <translation>Käynnistä sovellus uudestaan</translation>
+        <translation>Käynnistä sovellusmoottori uudestaan</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="20"/>
@@ -191,91 +191,91 @@
         <translation>Ei toimintoa</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="41"/>
+        <location filename="../client/qml/ChatsPage.qml" line="40"/>
         <source>Full quit</source>
         <comment>Main menu action</comment>
-        <translation>Täysi lopetus</translation>
+        <translation>Lopeta</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="44"/>
+        <location filename="../client/qml/ChatsPage.qml" line="43"/>
         <source>Quit and shutdown engine</source>
         <comment>Full quit remorse popup</comment>
-        <translation>Sulje ja sammuta sovellus</translation>
+        <translation>Lopeta ja sammuta sovellus</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="60"/>
+        <location filename="../client/qml/ChatsPage.qml" line="59"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
         <translation>Katkaistaan yhteyttä</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="74"/>
+        <location filename="../client/qml/ChatsPage.qml" line="73"/>
         <source>Muted contacts</source>
         <comment>Main menu action</comment>
         <translation>Mykistetyt henkilöt</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="81"/>
+        <location filename="../client/qml/ChatsPage.qml" line="80"/>
         <source>Broadcast</source>
         <comment>Main menu action</comment>
         <translation>Yleislähetys</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="87"/>
+        <location filename="../client/qml/ChatsPage.qml" line="86"/>
         <source>Settings</source>
         <comment>Main menu item</comment>
         <translation>Asetukset</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="96"/>
+        <location filename="../client/qml/ChatsPage.qml" line="95"/>
         <source>Chats</source>
         <comment>Contacts page title</comment>
         <translation>Keskustelut</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="145"/>
+        <location filename="../client/qml/ChatsPage.qml" line="144"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>Poistu ryhmästä %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="146"/>
+        <location filename="../client/qml/ChatsPage.qml" line="145"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="222"/>
+        <location filename="../client/qml/ChatsPage.qml" line="221"/>
         <source>Typing...</source>
         <comment>Contact status typing text</comment>
         <translation>Kirjoittaa...</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="223"/>
+        <location filename="../client/qml/ChatsPage.qml" line="222"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>Ryhmäkeskustelu</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="242"/>
+        <location filename="../client/qml/ChatsPage.qml" line="241"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>Profiili</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="259"/>
+        <location filename="../client/qml/ChatsPage.qml" line="258"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
-        <translation>Mykistys</translation>
+        <translation>Mykistystoiminto</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="267"/>
+        <location filename="../client/qml/ChatsPage.qml" line="266"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>Poistu ryhmästä</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="268"/>
+        <location filename="../client/qml/ChatsPage.qml" line="267"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>Poista</translation>
@@ -332,37 +332,37 @@
         <translation>Yhdistetty</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1242"/>
+        <location filename="../server/src/client.cpp" line="1243"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Liitytty ryhmään</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1245"/>
+        <location filename="../server/src/client.cpp" line="1246"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
-        <translation>Poistu ryhmästä</translation>
+        <translation>Poistuttu ryhmästä</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1248"/>
+        <location filename="../server/src/client.cpp" line="1249"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Otsikko: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1251"/>
+        <location filename="../server/src/client.cpp" line="1252"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Kuva vaihdettu</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1519"/>
+        <location filename="../server/src/client.cpp" line="1520"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Yhteys katkaistu</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2586"/>
+        <location filename="../server/src/client.cpp" line="2593"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
@@ -371,79 +371,79 @@
 <context>
     <name>ContactsPage</name>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="25"/>
+        <location filename="../client/qml/ContactsPage.qml" line="27"/>
         <source>Create group</source>
         <comment>Contacts page menu item</comment>
         <translation>Luo ryhmä</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="31"/>
+        <location filename="../client/qml/ContactsPage.qml" line="33"/>
         <source>Add contact</source>
         <comment>Contacts page menu item</comment>
         <translation>Lisää henkilö</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="37"/>
+        <location filename="../client/qml/ContactsPage.qml" line="39"/>
         <source>Settings</source>
         <comment>Contacts page menu item</comment>
         <translation>Asetukset</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="46"/>
+        <location filename="../client/qml/ContactsPage.qml" line="48"/>
         <source>Contacts</source>
         <comment>Contacts page title</comment>
         <translation>Henkilöt</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="70"/>
+        <location filename="../client/qml/ContactsPage.qml" line="57"/>
         <source>Search contacts</source>
         <comment>Contacts page search text</comment>
         <translation>Etsi henkilöitä</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="100"/>
+        <location filename="../client/qml/ContactsPage.qml" line="105"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>Poistu ryhmästä %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="101"/>
+        <location filename="../client/qml/ContactsPage.qml" line="106"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="177"/>
+        <location filename="../client/qml/ContactsPage.qml" line="182"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>Ryhmäkeskustelu</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="196"/>
+        <location filename="../client/qml/ContactsPage.qml" line="199"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>Profiili</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="214"/>
+        <location filename="../client/qml/ContactsPage.qml" line="217"/>
         <source>Refresh</source>
         <comment>Contact context menu refresh item</comment>
         <translation>Päivitä</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="222"/>
+        <location filename="../client/qml/ContactsPage.qml" line="225"/>
         <source>Rename</source>
         <comment>Contact context menu profile item</comment>
         <translation>Nimeä</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="231"/>
+        <location filename="../client/qml/ContactsPage.qml" line="234"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>Poistu ryhmästä</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="232"/>
+        <location filename="../client/qml/ContactsPage.qml" line="235"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>Poista</translation>
@@ -458,73 +458,73 @@
         <translation>Sinä</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="231"/>
+        <location filename="../client/qml/ConversationPage.qml" line="232"/>
         <source>Clear all messages</source>
         <comment>Conversation menu item</comment>
         <translation>Poista kaikki viestit</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="233"/>
+        <location filename="../client/qml/ConversationPage.qml" line="234"/>
         <source>Clear all messages</source>
         <comment>Conversation delete all messages remorse popup</comment>
         <translation>Poista kaikki viestit</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="243"/>
+        <location filename="../client/qml/ConversationPage.qml" line="244"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
-        <translation>Mykistys</translation>
+        <translation>Mykistystoiminto</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="249"/>
+        <location filename="../client/qml/ConversationPage.qml" line="250"/>
         <source>Load old conversation</source>
         <comment>Conversation menu item</comment>
         <translation>Lataa vanhemmat viestit</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="296"/>
+        <location filename="../client/qml/ConversationPage.qml" line="297"/>
         <source>Enable location in settings!</source>
         <comment>Banner text if GPS disabled in settings</comment>
         <translation>Ota sijainti käyttöön asetuksissa!</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="321"/>
+        <location filename="../client/qml/ConversationPage.qml" line="323"/>
         <source>Delete</source>
         <comment>Conversation voice recorder delete label</comment>
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="336"/>
-        <source>Hold button for recorfing, release to send</source>
+        <location filename="../client/qml/ConversationPage.qml" line="339"/>
+        <source>Hold button for recording, release to send</source>
         <comment>Conversation voice recorder description label</comment>
-        <translation>Pidä painike painettuna tallentaaksesi, vapauta lähettääksesi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="437"/>
+        <location filename="../client/qml/ConversationPage.qml" line="441"/>
         <source>Typing...</source>
         <comment>Contact typing converstation text</comment>
         <translation>Kirjoittaa...</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="438"/>
+        <location filename="../client/qml/ConversationPage.qml" line="442"/>
         <source>Last seen: %1</source>
         <comment>Last seen converstation text</comment>
         <translation>Viimeksi nähty: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="501"/>
+        <location filename="../client/qml/ConversationPage.qml" line="505"/>
         <source>New message</source>
         <comment>Conversation new message indicator</comment>
         <translation>Uusi viesti</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="537"/>
+        <location filename="../client/qml/ConversationPage.qml" line="533"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation>Napauta tähän kirjoittaaksesi</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="747"/>
+        <location filename="../client/qml/ConversationPage.qml" line="743"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation>Odotetaan koordinaatteja...</translation>
@@ -658,7 +658,7 @@
         <location filename="../client/qml/GroupProfile.qml" line="298"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
-        <translation>Suurin määrä osallistujia</translation>
+        <translation>Maksimimäärä ryhmään osallistujia</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="332"/>
@@ -844,46 +844,52 @@
         <location filename="../client/qml/ModernDelegate.qml" line="202"/>
         <source>Media download started...</source>
         <comment>Conversation message download started banner text</comment>
-        <translation>Median lataus alkanut...</translation>
+        <translation>Mediantiedoston lataus alkanut...</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="207"/>
         <source>Media download canceled.</source>
         <comment>Conversation message download canceled banner text</comment>
-        <translation>Median lataus peruttu.</translation>
+        <translation>Mediantiedoston lataus peruttu.</translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="783"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="732"/>
+        <source>Uploading...</source>
+        <comment>Uploading voice record text</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ModernDelegate.qml" line="784"/>
         <source>Copy</source>
         <comment>Conversation message context menu item</comment>
         <translation>Kopioi</translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="787"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="788"/>
         <source>Message copied to clipboard</source>
         <comment>Banner item text</comment>
         <translation>Viesti kopioitu leikepöydälle</translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="792"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="793"/>
         <source>Forward</source>
         <comment>Conversation message context menu item</comment>
         <translation>Lähetä eteenpäin</translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="801"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="802"/>
         <source>Save to Gallery</source>
         <comment>Conversation message context menu item</comment>
         <translation>Tallenna Galleriaan</translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="804"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="805"/>
         <source>File saved as %1</source>
         <comment>Banner text message</comment>
-        <translation>Tiedosto tallennettu %1</translation>
+        <translation>Kuva tallennettu nimellä %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="810"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="811"/>
         <source>Delete</source>
         <comment>Conversation message context menu item</comment>
         <translation>Poista</translation>
@@ -922,67 +928,85 @@
         <location filename="../client/qml/MutingSelector.qml" line="16"/>
         <source>Muting</source>
         <comment>Contacts muting page title</comment>
-        <translation>Mykistys</translation>
+        <translation>Mykistystoiminto</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="47"/>
         <source>Disabled</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>Poistettu käytöstä</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="48"/>
         <source>5 minutes</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>5 minuuttia</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="49"/>
         <source>10 minutes</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>10 minuuttia</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="50"/>
         <source>20 minutes</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>20 minuuttia</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="51"/>
         <source>30 minutes</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>30 minuuttia</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="52"/>
         <source>60 minutes</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>60 minuuttia</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="53"/>
         <source>2 hours</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>2 tuntia</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="54"/>
         <source>6 hours</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>6 tuntia</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="55"/>
         <source>12 hours</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>12 tuntia</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="56"/>
         <source>24 hours</source>
-        <comment>Comtacts muting duration text</comment>
-        <translation>24 tuntia</translation>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/MutingSelector.qml" line="57"/>
+        <source>1 year</source>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/MutingSelector.qml" line="58"/>
+        <source>20 years</source>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/MutingSelector.qml" line="59"/>
+        <source>100 years</source>
+        <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -997,7 +1021,7 @@
         <location filename="../client/qml/Payments.qml" line="26"/>
         <source>Subscription period:</source>
         <comment>Subscription period text</comment>
-        <translation type="unfinished"/>
+        <translation>Tilauksen pituus:</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="29"/>
@@ -1021,13 +1045,13 @@
         <location filename="../client/qml/Payments.qml" line="50"/>
         <source>Select preferred payment method to purchase WhatsApp service for: +%1</source>
         <comment>Payment method text</comment>
-        <translation type="unfinished"/>
+        <translation>Valitse haluamasi maksutapa ostaaksesi Whatsapp palvelun: +%1</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="91"/>
         <source>PayPal is recommended. Neither PayPal nor Google Wallet requires you to make an account.</source>
         <comment>Payment description text</comment>
-        <translation type="unfinished"/>
+        <translation>PayPalin käyttöä suositellaan. PayPal tai Google Wallet ei vaadi tilin avaamista.</translation>
     </message>
 </context>
 <context>
@@ -1072,7 +1096,7 @@
         <location filename="../client/qml/PrivacyList.qml" line="140"/>
         <source>In international format</source>
         <comment>Phone number text field label</comment>
-        <translation>Kansainvälisellä muodolla</translation>
+        <translation>Kansainvälisessä muodossa</translation>
     </message>
 </context>
 <context>
@@ -1092,7 +1116,9 @@
 
 </source>
         <comment>Red registration failed screen text</comment>
-        <translation type="unfinished"/>
+        <translation>Rekisteröinti epäonnistui
+
+</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="26"/>
@@ -1100,7 +1126,9 @@
 
 </source>
         <comment>Red account expired screen text</comment>
-        <translation type="unfinished"/>
+        <translation>Tili vanhentunut
+
+</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="31"/>
@@ -1108,7 +1136,9 @@
 
 </source>
         <comment>Red code request failed screen text</comment>
-        <translation type="unfinished"/>
+        <translation>Koodin pyytäminen epäonnistui
+
+</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="35"/>
@@ -1120,205 +1150,208 @@
         <location filename="../client/qml/RegistrationPage.qml" line="37"/>
         <source>sms message</source>
         <comment>Activation code requested text information</comment>
-        <translation>Tekstiviesti</translation>
+        <translation>tekstiviestiä</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="38"/>
         <source>voice call</source>
         <comment>Activation code requested text information</comment>
-        <translation>Puhelu</translation>
+        <translation>puhelua</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="43"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="44"/>
         <source>Successfully registered!</source>
         <comment>Registered successfully banner</comment>
         <translation>Rekisteröidytty onnistuneesti!</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="50"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="51"/>
         <source>Cannot detect your country code. You should use international number format for registration.</source>
         <comment>Red wrong number entered screen text</comment>
         <translation>Ei maakoodia havaittu. Syötä numero kansainvälisessä muodossa.</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="68"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="69"/>
         <source>Registration</source>
         <comment>Registration page title</comment>
         <translation>Rekisteröinti</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="74"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="75"/>
         <source>Welcome to Mitakuuluu v%1!
 
 Native WhatsApp-compatible clent for Sailfish OS.
 Before switching to Mitakuuluu please use &lt;Remove account&gt; option in your current application, or do it inside Mitakuuluu after registering.</source>
         <comment>Registration welcome message. %1 stands for version name</comment>
-        <translation type="unfinished"/>
+        <translation>Tervetuloa käyttämään Mitäkuuluu v%1
+
+Natiivi Whatsapp sovellus Sailfish käyttöjärjestelmälle.
+Ennen siirtymistä Mitäkuuluun pariin, käytä &lt;Poista tili&gt; toimintoa nykyisellä sovelluksella, tai tee se Mitäkuuluu:ssa rekisteröitymisen jälkeen.</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="80"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="81"/>
         <source>Select country:</source>
         <comment>Registration country selector label</comment>
         <translation>Valitse maa:</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="100"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="101"/>
         <source>In international format</source>
         <comment>Registration phone number text field label</comment>
         <translation>Kansainvälisessä muodossa</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="126"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="127"/>
         <source>Profile nickname</source>
         <comment>Registration nickname text field label</comment>
-        <translation type="unfinished"/>
+        <translation>Profiilin nimi</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="127"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="128"/>
         <source>Enter your nickname</source>
         <comment>Registration nickname text field placeholder</comment>
-        <translation type="unfinished"/>
+        <translation>Kirjoita nimesi</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="137"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="138"/>
         <source>Protect your registration</source>
         <comment>Registration password field label</comment>
         <translation>Suojaa rekisteröintisi</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="138"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="139"/>
         <source>Random password</source>
         <comment>Registration password field placeolder</comment>
         <translation>Satunnainen salasana</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="152"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="154"/>
         <source>Voice</source>
         <comment>Voice registration button text</comment>
         <translation>Puhelu</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="161"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="163"/>
         <source>Sms</source>
         <comment>Sms registration button text</comment>
         <translation>Teksiviesti</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="177"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="179"/>
         <source>Sms code</source>
         <comment>Registration registration code label</comment>
-        <translation type="unfinished"/>
+        <translation>Koodi tekstiviestillä</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="181"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="183"/>
         <source>Registering account...</source>
         <comment>Registering account text</comment>
         <translation>Rekisteröidään tiliä...</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="276"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="279"/>
         <source>Checking account...</source>
         <comment>Registration checking account text</comment>
         <translation>Tarkistetaan tiliä...</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="293"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="296"/>
         <source>Code successfully requested.</source>
         <comment>Registration information constructor</comment>
         <translation>Koodi pyydetty onnistuneesti.</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="299"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="302"/>
         <source>phone number</source>
         <comment>Registration information constructor</comment>
-        <translation>Puhelinnumero</translation>
-    </message>
-    <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="301"/>
-        <source>secure token</source>
-        <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>puhelinnumero</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="304"/>
-        <source>Too frequent attempts to request the code.</source>
+        <source>secure token</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>varmista merkki</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="306"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="307"/>
+        <source>Too frequent attempts to request the code.</source>
+        <comment>Registration information constructor</comment>
+        <translation>Liian monta toistuvaa yritystä koodin pyytämiseen.</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/RegistrationPage.qml" line="309"/>
         <source>Too many wrong code guesses.</source>
         <comment>Registration information constructor</comment>
         <translation>Liian monta väärää arvausta</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="308"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="311"/>
         <source>Too many attempts. Try again tomorrow.</source>
         <comment>Registration information constructor</comment>
         <translation>Liian monta yritystä. Yritä uudestaan huomenna.</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="310"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="313"/>
         <source>Protocol version outdated, sorry. Please contact me at coderusinbox@gmail.com or via twitter: @icoderus</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Protokollan versio vanhentunut. Ota yhteyttä minuun: coderusinbox@gmail.com tai Twitterin kautta: @ icoderus</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="312"/>
         <location filename="../client/qml/RegistrationPage.qml" line="315"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="318"/>
         <source>Registration code expired. You need to request a new one.</source>
         <comment>Registration information constructor</comment>
         <translation>Rekisteröintikoodi vanhentunut. Pyydä uusi koodi.</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="317"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="320"/>
         <source>Missing request param: %1</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="320"/>
-        <source>Bad parameters passed to code request: %1</source>
-        <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Pyydetty parametri puuttuu: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="323"/>
-        <source>No cell routes for %1 caused by your operator. Please try other method [sms/voice]</source>
+        <source>Bad parameters passed to code request: %1</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Vääriä parametrejä välittyi koodin pyyntöön: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="325"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="326"/>
+        <source>No cell routes for %1 caused by your operator. Please try other method [sms/voice]</source>
+        <comment>Registration information constructor</comment>
+        <translation>Ei mahdollista %1 operattorisi takia. Kokeile toista menetelmää [viesti/puhelu]</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/RegistrationPage.qml" line="328"/>
         <source>making call</source>
         <comment>Registration information constructor</comment>
         <translation>soitetaan puhelua</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="326"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="329"/>
         <source>sending sms</source>
         <comment>Registration information constructor</comment>
         <translation>lähetetään viestiä</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="327"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="330"/>
         <source>Reason: %1</source>
         <translation>Syy: %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/RegistrationPage.qml" line="335"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="338"/>
         <source>%n hours</source>
         <comment>Registration information constructor</comment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/RegistrationPage.qml" line="338"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="341"/>
         <source>%n minutes</source>
         <comment>Registration information constructor</comment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="340"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="343"/>
         <source>You can retry requesting code after %1</source>
         <comment>Registration information constructor</comment>
         <translation>Voit pyytää koodia uudelleen %1 kuluttua</translation>
@@ -1352,7 +1385,8 @@ Before switching to Mitakuuluu please use &lt;Remove account&gt; option in your 
         <source>Your WhatsApp subscription expired.
 Click Renew to purchase one year of WhatsApp service.</source>
         <comment>Renew account page description text</comment>
-        <translation type="unfinished"/>
+        <translation>WhatsApp tilauksesi on vanhentunut.
+Klikkaa Uudista-painiketta ostaaksesi yhden vuoden WhatsApp palvelun.</translation>
     </message>
 </context>
 <context>
@@ -1456,7 +1490,12 @@ Click Renew to purchase one year of WhatsApp service.</source>
 3. Expected some behaviour
 4. Get wrong result</source>
         <comment>Logs sending page email body</comment>
-        <translation type="unfinished"/>
+        <translation>Kirjoita bugin kuvaus tähän.
+
+1. Käynnistit Mitäkuuluun
+2. Teit jotain
+3. Odotit tiettyä toimintoa
+4. Sait väärän toiminnon</translation>
     </message>
 </context>
 <context>
@@ -1507,7 +1546,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="74"/>
         <source>Send logfile to author</source>
         <comment>Settings page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Lähetä lokitiedosto kehittäjälle</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="81"/>
@@ -1537,7 +1576,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="154"/>
         <source>Show sent messages at left side</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Näytä lähetetyt viestit vasemmalla</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="160"/>
@@ -1597,13 +1636,13 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="219"/>
         <source>%1 px</source>
         <comment>Settings option value label</comment>
-        <translation type="unfinished"/>
+        <translation>%1 pt</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="226"/>
         <source>Common</source>
         <comment>Settings page section name</comment>
-        <translation>Yleinen</translation>
+        <translation>Yleiset</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="230"/>
@@ -1635,145 +1674,151 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <translation>Salli sovelluksen lokitietojen tallennus</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="299"/>
+        <location filename="../client/qml/Settings.qml" line="297"/>
+        <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
+        <comment>Allow application logs option description</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="304"/>
         <source>Lock conversation orientation in portrait</source>
         <comment>Settings option name</comment>
         <translation>Lukitse keskustelunäkymä pystyasentoon</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="306"/>
+        <location filename="../client/qml/Settings.qml" line="311"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
         <translation>Näytä itsesi yhteystiedoissa, jos olet paikalla</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="312"/>
+        <location filename="../client/qml/Settings.qml" line="317"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
         <translation>Hyväksy viestit tuntemattomilta henkilöiltä</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="318"/>
+        <location filename="../client/qml/Settings.qml" line="323"/>
         <source>Show notifications when connection changing</source>
         <comment>Settings option name</comment>
         <translation>Näytä ilmoitukset kun yhteys vaihtuu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="331"/>
+        <location filename="../client/qml/Settings.qml" line="336"/>
         <source>Show new messages notifications</source>
         <comment>Settings option name</comment>
         <translation>Näytä uusien viestien ilmoitukset</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="345"/>
+        <location filename="../client/qml/Settings.qml" line="350"/>
         <source>Display messages text in notifications</source>
         <comment>Settings option name</comment>
         <translation>Näytä viestit ilmoituksissa</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="356"/>
+        <location filename="../client/qml/Settings.qml" line="361"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
         <translation>Läsnäolo</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="361"/>
+        <location filename="../client/qml/Settings.qml" line="366"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
         <translation>Näytä läsnäolo</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="364"/>
+        <location filename="../client/qml/Settings.qml" line="369"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
         <translation>Näytä paikalla, kun sovellus on auki</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="371"/>
+        <location filename="../client/qml/Settings.qml" line="376"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
         <translation>Näytä aina paikalla</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="378"/>
+        <location filename="../client/qml/Settings.qml" line="383"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
         <translation>Näytä aina poissa</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="391"/>
+        <location filename="../client/qml/Settings.qml" line="396"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
         <translation>Kansi</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="402"/>
+        <location filename="../client/qml/Settings.qml" line="407"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
         <translation>Vasen toiminto</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="423"/>
+        <location filename="../client/qml/Settings.qml" line="428"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
         <translation>Oikea toiminto</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="437"/>
+        <location filename="../client/qml/Settings.qml" line="442"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
         <translation>Media</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="463"/>
+        <location filename="../client/qml/Settings.qml" line="468"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Automaattinen latauskoko</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="474"/>
+        <location filename="../client/qml/Settings.qml" line="479"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
         <translation>Muuta lähetettävien kuvien kokoa</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="510"/>
+        <location filename="../client/qml/Settings.qml" line="515"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
         <translation>Suurin tiedostokoko</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="544"/>
+        <location filename="../client/qml/Settings.qml" line="549"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
         <translation>Suurin resoluutio megapikseleinä</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="546"/>
+        <location filename="../client/qml/Settings.qml" line="551"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
-        <translation>%1 MP</translation>
+        <translation>%1 mp</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="560"/>
+        <location filename="../client/qml/Settings.qml" line="565"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
         <translation>(*) merkityt valinnat tulevat voimaan vasta uudelleen yhdistämisen jälkeen</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="591"/>
+        <location filename="../client/qml/Settings.qml" line="596"/>
         <source>Send logs</source>
         <comment>Log sending page header</comment>
         <translation>Lähetä lokitiedostot</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="597"/>
+        <location filename="../client/qml/Settings.qml" line="602"/>
         <source>Your email address</source>
         <comment>Log sending page text</comment>
         <translation>Sähköpostiosoitteesi</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="606"/>
+        <location filename="../client/qml/Settings.qml" line="611"/>
         <source>Enter bug description here. As many information as  possible.</source>
         <comment>Log sending page text</comment>
         <translation>Kirjoita bugin kuvaus tähän. Niin paljon tietoa kun mahdollista.</translation>
@@ -1818,7 +1863,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/UserProfile.qml" line="94"/>
         <source>History saved to Documents</source>
         <comment>User profile page history saved banner</comment>
-        <translation>Historia tallennettu Dokumentteihin</translation>
+        <translation>Keskustelu tallennettu Dokumentteihin</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="99"/>
