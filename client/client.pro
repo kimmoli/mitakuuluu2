@@ -4,7 +4,7 @@ target.path = /usr/bin
 QT += sql dbus core multimedia
 CONFIG += sailfishapp link_pkgconfig
 #CONFIG += qml_debug
-PKGCONFIG += sailfishapp libexif
+PKGCONFIG += sailfishapp libexif gstreamer-0.10
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DEFINES += APP_BUILDNUM=\\\"$$RELEASE\\\"
