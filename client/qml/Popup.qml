@@ -4,7 +4,6 @@ import Sailfish.Silica 1.0
 MouseArea {
     id: popup
     anchors.top: parent.top
-    anchors.horizontalCenter: parent.horizontalCenter
     width: parent.width
     height: message.paintedHeight + (Theme.paddingLarge * 2)
     property alias title: message.text
@@ -57,7 +56,7 @@ MouseArea {
         anchors.left: parent.left
         anchors.leftMargin: Theme.paddingLarge
         anchors.right: parent.right
-        anchors.rightMargin: Theme.paddingRight
+        anchors.rightMargin: Theme.paddingLarge
         horizontalAlignment: Text.AlignHCenter
         elide: Text.ElideRight
         wrapMode: Text.Wrap
