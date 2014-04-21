@@ -28,6 +28,7 @@ BuildRequires:  pkgconfig(mlite5)
 BuildRequires:  desktop-file-utils
 BuildRequires:  libexif-devel
 BuildRequires:  pkgconfig(nemotransferengine-qt5)
+BuildRequires:  gstreamer-devel
 
 %description
 Short description of my SailfishOS Application
