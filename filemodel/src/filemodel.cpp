@@ -1,4 +1,5 @@
 #include "filemodel.h"
+#include "recursivesearch.h"
 
 #include <QDateTime>
 #include <QDebug>
@@ -8,6 +9,10 @@
 #include <QImageReader>
 
 #include <QStandardPaths>
+
+#include <QTimer>
+
+#include <QDebug>
 
 Filemodel::Filemodel(QObject *parent) :
     QAbstractListModel(parent)
@@ -25,11 +30,6 @@ Filemodel::Filemodel(QObject *parent) :
     _sorting = true;
     _path = QDir::homePath();
     _filter = QStringList() << "*.*";
-
-    fs = 0;
-
-    _haveImages = false;
-    _haveVideos = false;
 }
 
 Filemodel::~Filemodel()
@@ -64,33 +64,6 @@ void Filemodel::setFilter(const QStringList &filter)
     _filter = filter;
 }
 
-QString &Filemodel::getPath()
-{
-    return _path;
-}
-
-QString &Filemodel::getRpath()
-{
-    return _rpath;
-}
-
-void Filemodel::processRpath(const QString &rpath)
-{
-    if (!fs) {
-        fs = new QFileSystemWatcher(this);
-        connect(fs, SIGNAL(directoryChanged(QString)), this, SLOT(onDirectoryChanged(QString)));
-        connect(fs, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
-    }
-
-    clear();
-
-    if (rpath == "home")
-        _rpath = QDir::homePath() + "/Mitakuuluu";
-    else
-        _rpath = rpath;
-    recursiveSearch(_rpath);
-}
-
 bool Filemodel::getSorting()
 {
     return _sorting;
@@ -101,47 +74,24 @@ void Filemodel::setSorting(bool newSorting)
     _sorting = newSorting;
 }
 
-bool Filemodel::haveImages()
-{
-    return _haveImages;
-}
-
-bool Filemodel::haveVideos()
-{
-    return _haveVideos;
-}
-
 void Filemodel::showRecursive(const QStringList &dirs)
 {
     clear();
 
-    _haveImages = false;
-    Q_EMIT haveImagesChanged();
-    _haveVideos = false;
-    Q_EMIT haveVideosChanged();
-
-    foreach (const QString &path, dirs) {
-        //qDebug() << "Processing folder:" << path;
-        recursiveSearch(path);
-    }
+    RecursiveSearch *recursive = new RecursiveSearch(dirs, _filter, !_sorting);
+    QObject::connect(recursive, SIGNAL(haveFolderData(QVariantList)), this, SLOT(folderDataReceived(QVariantList)));
+    QThread *thread = new QThread(recursive);
+    recursive->moveToThread(thread);
+    QObject::connect(thread, SIGNAL(started()), recursive, SLOT(startSearch()));
+    thread->start();
 }
 
 void Filemodel::processPath(const QString &path)
 {
-    if (fs) {
-        delete fs;
-        fs = 0;
-    }
-
     _path = path;
     if (_path == "home")
         _path = QDir::homePath();
     clear();
-
-    _haveImages = false;
-    Q_EMIT haveImagesChanged();
-    _haveVideos = false;
-    Q_EMIT haveVideosChanged();
 
     //qDebug() << "Processing" << path << _filter;
     QDir dir(path);
@@ -165,15 +115,6 @@ void Filemodel::processPath(const QString &path)
         QMimeType type = db.mimeTypeForFile(info.absoluteFilePath());
         fileInfo["mime"] = type.name();
 
-        if (type.name().startsWith("image")) {
-            _haveImages = true;
-            Q_EMIT haveImagesChanged();
-        }
-        else if (type.name().startsWith("video")) {
-            _haveVideos = true;
-            Q_EMIT haveVideosChanged();
-        }
-
         QImageReader reader(info.absoluteFilePath());
         if (reader.canRead()) {
             fileInfo["width"] = reader.size().width();
@@ -190,84 +131,8 @@ void Filemodel::processPath(const QString &path)
     }
 }
 
-void Filemodel::recursiveSearch(const QString &path)
-{
-    QString mpath = path;
-    if (mpath == "home")
-        mpath = QDir::homePath();
-    else if (mpath == "image") {
-        mpath = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
-    }
-    else if (mpath == "music") {
-        mpath = QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
-    }
-    else if (mpath == "video") {
-        mpath = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
-    }
-    else if (mpath == "sdcard") {
-        mpath = "/media/" + mpath;
-    }
-
-    if (fs)
-        fs->addPath(mpath);
-    //qDebug() << "Processing" << path << _filter;
-    QDir dir(mpath);
-    const QFileInfoList &list = dir.entryInfoList(_filter, QDir::Files | QDir::AllDirs | QDir::NoSymLinks | QDir::NoDot | QDir::NoDotDot, _sorting ? QDir::Time : QDir::Name);
-    foreach (const QFileInfo &info, list) {
-        if (info.isDir()) {
-            //qDebug() << "Recursive search in:" << dir.absolutePath();
-
-            recursiveSearch(info.filePath());
-        }
-        else if (info.isFile()) {
-            //qDebug() << "adding" << info.filePath();
-            QVariantMap fileInfo;
-
-            beginInsertRows(QModelIndex(), _modelData.size(), _modelData.size());
-            fileInfo["name"] = info.fileName();
-            fileInfo["base"] = info.baseName();
-            fileInfo["path"] = info.filePath();
-            fileInfo["size"] = info.size();
-            fileInfo["time"] = info.created().toTime_t();
-            fileInfo["ext"] = info.suffix();
-            fileInfo["dir"] = false;
-
-            QMimeDatabase db;
-            QMimeType type = db.mimeTypeForFile(info.absoluteFilePath());
-            fileInfo["mime"] = type.name();
-
-            if (type.name().startsWith("image")) {
-                _haveImages = true;
-                Q_EMIT haveImagesChanged();
-            }
-            else if (type.name().startsWith("video")) {
-                _haveVideos = true;
-                Q_EMIT haveVideosChanged();
-            }
-
-            QImageReader reader(info.absoluteFilePath());
-            if (reader.canRead()) {
-                fileInfo["width"] = reader.size().width();
-                fileInfo["height"] = reader.size().height();
-            }
-            else {
-                fileInfo["width"] = 0;
-                fileInfo["height"] = 0;
-            }
-
-            _modelData.append(fileInfo);
-            endInsertRows();
-            Q_EMIT countChanged();
-        }
-    }
-}
-
 void Filemodel::clear()
 {
-    if (fs) {
-        fs->removePaths(fs->directories());
-        fs->removePaths(fs->files());
-    }
     beginResetModel();
     _modelData.clear();
     endResetModel();
@@ -303,18 +168,15 @@ QVariantMap Filemodel::get(int index)
     return QVariantMap();
 }
 
-void Filemodel::onDirectoryChanged(const QString &path)
+void Filemodel::folderDataReceived(const QVariantList &data)
 {
-    Q_UNUSED(path);
+    beginInsertRows(QModelIndex(), _modelData.size(), _modelData.size() + data.size() - 1);
 
-    clear();
-    recursiveSearch(_rpath);
-}
+    foreach (const QVariant &fileData, data) {
+        _modelData.append(fileData.toMap());
+    }
 
-void Filemodel::onFileChanged(const QString &path)
-{
-    Q_UNUSED(path);
+    endInsertRows();
 
-    clear();
-    recursiveSearch(_rpath);
+    Q_EMIT countChanged();
 }

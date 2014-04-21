@@ -13,18 +13,15 @@
 #include <QFileInfo>
 #include <QFileInfoList>
 
-#include <QFileSystemWatcher>
+#include <QThread>
 
 class Filemodel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(QStringList filter READ getFilter WRITE setFilter FINAL)
     Q_PROPERTY(QString path READ getPath WRITE processPath FINAL)
-    Q_PROPERTY(QString rpath READ getRpath WRITE processRpath FINAL)
     Q_PROPERTY(bool sorting READ getSorting WRITE setSorting)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
-    Q_PROPERTY(bool haveImages READ haveImages NOTIFY haveImagesChanged)
-    Q_PROPERTY(bool haveVideos READ haveVideos NOTIFY haveVideosChanged)
 
 public:
     enum FileRoles {
@@ -47,8 +44,6 @@ public:
     virtual QHash<int, QByteArray> roleNames() const { return _roles; }
 
 private:
-    void recursiveSearch(const QString &path);
-
     QHash<int, QByteArray> _roles;
     QVector<QVariantMap> _modelData;
 
@@ -62,21 +57,9 @@ private:
     QString& getPath();
     void setPath(const QString &path);
 
-    QString _rpath;
-    QString& getRpath();
-    void processRpath(const QString &rpath);
-
     bool _sorting;
     bool getSorting();
     void setSorting(bool newSorting);
-
-    bool _haveImages;
-    bool haveImages();
-
-    bool _haveVideos;
-    bool haveVideos();
-
-    QFileSystemWatcher *fs;
 
 public slots:
     void showRecursive(const QStringList &dirs);
@@ -86,13 +69,10 @@ public slots:
     QVariantMap get(int index);
 
 private slots:
-    void onDirectoryChanged(const QString &path);
-    void onFileChanged(const QString &path);
+    void folderDataReceived(const QVariantList &data);
 
 signals:
     void countChanged();
-    void haveImagesChanged();
-    void haveVideosChanged();
 
 };
 
