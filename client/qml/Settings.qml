@@ -291,7 +291,12 @@ Page {
             TextSwitch {
                 checked: keepLogs
                 text: qsTr("Allow saving application logs", "Settings option name")
-                onClicked: keepLogs = checked
+                onClicked: {
+                    keepLogs = checked
+                    if (checked) {
+                        banner.notify(qsTr("You need to full quit application to start writing logs. Send logfile to author appear in settings menu.", "Allow application logs option description"))
+                    }
+                }
             }
 
             TextSwitch {
@@ -456,7 +461,7 @@ Page {
                 Slider {
                     id: downloadSlider
                     enabled: automaticDownload
-                    anchors.left: parent.left
+                    anchors.left: autoDownload.right
                     anchors.right: parent.right
                     maximumValue: 10485760
                     minimumValue: 204800
