@@ -32,7 +32,6 @@ Page {
         id: flickView
         anchors.fill: parent
         clip: true
-        interactive: !listView.flicking
         pressDelay: 0
 
         PullDownMenu {

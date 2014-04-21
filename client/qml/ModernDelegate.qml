@@ -81,7 +81,7 @@ MouseArea {
 
     onClicked: {
         if (model.watype == Mitakuuluu.Text) {
-            var links = message.text.match(/<a.*?href=\"(.*?)\">(.*?)<\/a>/gi);
+            var links = textLoader.item.text.match(/<a.*?href=\"(.*?)\">(.*?)<\/a>/gi);
             if (links && links.length > 0) {
                 var urlmodel = []
                 links.forEach(function(link) {
@@ -519,7 +519,7 @@ MouseArea {
         id: textComponent
 
         Label {
-            id: message
+            id: messageLabel
             text: Utilities.linkify(Utilities.emojify(model.data, emojiPath), Theme.highlightColor)
             textFormat: Text.RichText
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -729,6 +729,7 @@ MouseArea {
                 maximumValue: 100
                 stepSize: 1
                 value: model.mediaprogress < 100 ? model.mediaprogress : 0
+                label: model.mediaprogress > 0 && model.mediaprogress < 100 ? qsTr("Uploading...", "Uploading voice record text"): ""
                 enabled: source.length > 0
                 onReleased: player.seek(value)
             }
@@ -781,7 +782,7 @@ MouseArea {
         ContextMenu {
             MenuItem {
                 text: qsTr("Copy", "Conversation message context menu item")
-                visible: conversationModel.getModelByMsgId(model.msgid).mediatype != 4
+                visible: model.watype == 0 || model.watype == 5
                 onClicked: {
                     conversationModel.copyToClipboard(model.msgid)
                     banner.notify(qsTr("Message copied to clipboard", "Banner item text"))

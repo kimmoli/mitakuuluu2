@@ -24,19 +24,20 @@ Page {
         onAccountExpired: {
             busy.hide()
             errorArea.show(qsTr("Account expired\n\n", "Red account expired screen text") + JSON.stringify(reason))
-            //renewDialog.open()
+            //renewDialog.open() // TODO
         }
         onCodeRequestFailed: {
             busy.hide()
             errorArea.show(qsTr("Code request failed\n\n", "Red code request failed screen text") + parseServerReply(serverReply))
         }
         onCodeRequested: {
-            //banner.notify(qsTr("Activation code requested. Wait for %1 soon")
-            busy.show(qsTr("Activation code requested. Wait for %1 soon", "Activation code requested text")
-                      .arg(method === "sms"
-                               ? qsTr("sms message", "Activation code requested text information")
-                               : qsTr("voice call", "Activation code requested text information")))
+            busy.hide()
+            banner.notify(qsTr("Activation code requested. Wait for %1 soon", "Activation code requested text")
+                               .arg(method === "sms"
+                                    ? qsTr("sms message", "Activation code requested text information")
+                                    : qsTr("voice call", "Activation code requested text information")))
             codeField.visible = true
+            codeField.forceActiveFocus()
         }
         onRegistrationComplete: {
             busy.hide()
@@ -147,6 +148,7 @@ Page {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingSmall
+                visible: !codeField.visible
 
                 Button {
                     text: qsTr("Voice", "Voice registration button text")
@@ -221,6 +223,7 @@ Page {
         height: page.height
 
         function show(data) {
+            page.forceActiveFocus()
             text = data
             showAnimation.start()
         }
@@ -255,7 +258,7 @@ Page {
                 fill: parent
                 margins: Theme.paddingLarge
             }
-            color: Theme.rgba("red", Theme.highlightBackgroundOpacity)
+            color: Theme.rgba("red", 0.9)
             radius: Theme.paddingMedium
 
             Label {

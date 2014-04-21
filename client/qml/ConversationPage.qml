@@ -182,6 +182,7 @@ Page {
             }
         }
         onMessageReceived: {
+            typing = false
             if (applicationActive && !blocked && (data.jid === jid) && (data.author != Mitakuuluu.myJid)) {
                 if (notifyActive)
                     vibration.start()
@@ -316,6 +317,7 @@ Page {
                         id: deleteVoiceLabel
                         anchors {
                             top: recordDuration.bottom
+                            topMargin: - Theme.paddingMedium
                             horizontalCenter: recordDuration.horizontalCenter
                         }
                         text: qsTr("Delete", "Conversation voice recorder delete label")
@@ -332,8 +334,10 @@ Page {
                     icon.height: 64
                     property bool voiceReady: false
                     onClicked: {
-                        voiceRecordTimer.stop()
-                        banner.notify(qsTr("Hold button for recorfing, release to send", "Conversation voice recorder description label"))
+                        if (voiceRecordTimer.running) {
+                            voiceRecordTimer.stop()
+                            banner.notify(qsTr("Hold button for recording, release to send", "Conversation voice recorder description label"))
+                        }
                     }
                     onPressed: {
                         voiceRecordTimer.start()
@@ -509,16 +513,8 @@ Page {
             }
 
             onFlickStarted: {
-                if (verticalVelocity < 0)
-                {
-                    iconDown.opacity = 0.0;
-                    iconUp.opacity = 1.0;
-                }
-                else
-                {
-                    iconUp.opacity = 0.0;
-                    iconDown.opacity = 1.0;
-                }
+                iconUp.opacity = 1.0;
+                iconDown.opacity = 1.0;
             }
             onMovementEnded: {
                 hideIconsTimer.start()
@@ -733,7 +729,8 @@ Page {
                 if (positionSource
                         && positionSource.position
                         && positionSource.position.longitudeValid
-                        && positionSource.position.latitudeValid) {
+                        && positionSource.position.latitudeValid
+                        && positionSource.position.coordinate.isValid) {
                     Mitakuuluu.sendLocation(page.jid,
                                             positionSource.position.coordinate.latitude,
                                             positionSource.position.coordinate.longitude,

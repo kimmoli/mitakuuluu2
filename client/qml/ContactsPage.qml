@@ -9,6 +9,9 @@ Page {
 
     onStatusChanged: {
         if (status == PageStatus.Active) {
+            page.forceActiveFocus()
+            searchField.text = ""
+            contactsModel.filter = ""
             fastScroll.init()
         }
     }
@@ -17,7 +20,6 @@ Page {
         id: flickView
         anchors.fill: parent
         clip: true
-        interactive: !listView.flicking
         pressDelay: 0
 
         PullDownMenu {
@@ -46,11 +48,25 @@ Page {
             title: qsTr("Contacts", "Contacts page title")
         }
 
+        SearchField {
+            id: searchField
+            width: parent ? parent.width : Screen.width
+            anchors {
+                top: header.bottom
+            }
+            placeholderText: qsTr("Search contacts", "Contacts page search text")
+            inputMethodHints: Qt.ImhNoPredictiveText
+            onTextChanged: {
+                contactsModel.filter = searchField.text
+                fastScroll.init()
+            }
+        }
+
         SilicaListView {
             id: listView
             model: contactsModel
             delegate: listDelegate
-            anchors.top: header.bottom
+            anchors.top: searchField.bottom
             width: parent.width
             anchors.bottom: parent.bottom
             clip: true
@@ -64,17 +80,6 @@ Page {
                     text: section
                 }
             }
-            header: SearchField {
-                id: searchField
-                width: parent ? parent.width : Screen.width
-                placeholderText: qsTr("Search contacts", "Contacts page search text")
-                inputMethodHints: Qt.ImhNoPredictiveText
-                onTextChanged: {
-                    contactsModel.filter = searchField.text
-                    fastScroll.init()
-                }
-            }
-
             onCountChanged: {
                 fastScroll.init()
             }
@@ -185,8 +190,6 @@ Page {
 
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("ConversationPage.qml"), {"initialModel": model})
-                //searchField.text = ""
-                contactsModel.filter = ""
             }
 
             Component {
