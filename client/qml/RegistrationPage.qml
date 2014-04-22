@@ -33,7 +33,7 @@ Page {
         onCodeRequested: {
             busy.hide()
             banner.notify(qsTr("Activation code requested. Wait for %1 soon", "Activation code requested text")
-                               .arg(method === "sms"
+                               .arg(page.method == "sms"
                                     ? qsTr("sms message", "Activation code requested text information")
                                     : qsTr("voice call", "Activation code requested text information")))
             codeField.visible = true
@@ -75,17 +75,12 @@ Page {
                 text: qsTr("Welcome to Mitakuuluu v%1!\n\nNative WhatsApp-compatible clent for Sailfish OS.\nBefore switching to Mitakuuluu please use <Remove account> option in your current application, or do it inside Mitakuuluu after registering.", "Registration welcome message. %1 stands for version name").arg(appVersion + "-" + appBuildNum)
             }
 
-            ComboBox {
+            RegistrationCombo {
                 id: countrySelect
                 enabled: !codeField.visible
-                label: qsTr("Select country:", "Registration country selector label")
-                menu: ContextMenu {
-                    Repeater {
-                        model: countriesModel
-                        delegate: MenuItem { text: model.name }
-                    }
-                }
-                onCurrentItemChanged: {
+                label: qsTr("Country", "Registration country selector label")
+                model: countriesModel
+                onCurrentIndexChanged: {
                     ccLabel.text = "+" + countriesModel.get(currentIndex).cc
                     phoneField.forceActiveFocus()
                 }
@@ -154,7 +149,7 @@ Page {
                     text: qsTr("Voice", "Voice registration button text")
                     enabled: phoneField.text.length > 0 && pushname.text.length > 0 && !busy.running
                     onClicked: {
-                        method = "voice"
+                        page.method = "voice"
                         doRegister()
                     }
                 }
@@ -163,7 +158,7 @@ Page {
                     text: qsTr("Sms", "Sms registration button text")
                     enabled: phoneField.text.length > 0 && pushname.text.length > 0 && !busy.running
                     onClicked: {
-                        method = "sms"
+                        page.method = "sms"
                         doRegister()
                     }
                 }
@@ -275,7 +270,7 @@ Page {
     }
 
     function doRegister() {
-        Mitakuuluu.regRequest(countriesModel.get(countrySelect.currentIndex).cc, phoneField.text.trim(), method, salt.text)
+        Mitakuuluu.regRequest(countriesModel.get(countrySelect.currentIndex).cc, phoneField.text.trim(), page.method, salt.text)
         busy.show(qsTr("Checking account...", "Registration checking account text"))
     }
 
