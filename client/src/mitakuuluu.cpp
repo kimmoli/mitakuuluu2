@@ -15,17 +15,19 @@
 
 Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
 {
-
+    qDebug() << "Creating dbus...";
     bool ret =
             QDBusConnection::sessionBus().registerService(SERVICE_NAME) &&
             QDBusConnection::sessionBus().registerObject(OBJECT_NAME,
                                                          this,
                                                          QDBusConnection::ExportScriptableSlots);
     if (ret) {
+        qDebug() << "dbus created";
         nam = new QNetworkAccessManager(this);
         _pendingJid = QString();
         connStatus = Unknown;
         translator = 0;
+        _totalUnread = 0;
 
         QStringList locales;
         QStringList localeNames;
@@ -86,7 +88,7 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "contactLastSeen", this, SIGNAL(presenceLastSeen(QString, int)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
-                                              "contactChanged", this, SLOT(onContactChanged(QVariantMap)));
+                                              "contactChanged", this, SIGNAL(contactChanged(QVariantMap)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "contactSynced", this, SIGNAL(contactSynced(QVariantMap)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
@@ -102,7 +104,7 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "groupParticipant", this, SIGNAL(groupParticipant(QString, QString)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
-                                              "groupInfo", this, SIGNAL(groupInfo(QVariantMap)));
+                                              "groupInfo", this, SIGNAL(onGroupInfo(QVariantMap)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "registered", this, SIGNAL(registered()));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
@@ -416,9 +418,6 @@ QString Mitakuuluu::transformPicture(const QString &filename, const QString &jid
     image = image.replace("file://","");
 
     QImage preimg(image);
-    qDebug() << "img" << "w:" << QString::number(preimg.width()) << "h:" << QString::number(preimg.height());
-    qDebug() << "posx:" << QString::number(posX) << "posy:" << QString::number(posY);
-    qDebug() << "sizeW:" << QString::number(sizeW) << "sizeH:" << QString::number(sizeH) << "maxSize:" << maxSize;
 
     if (sizeW == sizeH) {
         preimg = preimg.copy(posX,posY,sizeW,sizeH);
@@ -598,11 +597,10 @@ void Mitakuuluu::onServerPong()
 
 void Mitakuuluu::groupCreated(const QString &gjid)
 {
-    qDebug() << "Group created:" << gjid;
     _pendingGroup = gjid;
 }
 
-void Mitakuuluu::onContactChanged(const QVariantMap &data)
+void Mitakuuluu::onGroupInfo(const QVariantMap &data)
 {
     if (data["jid"].toString() == _pendingGroup) {
         if (!_pendingAvatar.isEmpty()) {
@@ -615,7 +613,7 @@ void Mitakuuluu::onContactChanged(const QVariantMap &data)
         _pendingParticipants.clear();
         _pendingGroup.clear();
     }
-    Q_EMIT contactChanged(data);
+    Q_EMIT groupInfo(data);
 }
 
 void Mitakuuluu::exit()
@@ -673,8 +671,12 @@ QString Mitakuuluu::rotateImage(const QString &path, int rotation)
 QString Mitakuuluu::saveVoice(const QString &path)
 {
     //TODO: remove it
-    qDebug() << "Requested to save" << path << "to gallery";
-    QString savePath = QDir::homePath() + "/Music/Mitakuuluu";
+    QString savePath = QString("%1/Mitakuuluu").arg(QStandardPaths::writableLocation(QStandardPaths::MusicLocation));
+    qDebug() << "Requested to save" << path << "to gallery" << savePath;
+    QDir dir(savePath);
+    if (!dir.exists())
+        dir.mkpath(savePath);
+
     if (!path.contains(savePath)) {
         QString cutpath = path;
         cutpath = cutpath.replace("file://", "");
@@ -691,16 +693,16 @@ QString Mitakuuluu::saveVoice(const QString &path)
 
 QString Mitakuuluu::saveImage(const QString &path)
 {
-    qDebug() << "Requested to save" << path << "to gallery";
     QString images = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+    qDebug() << "Requested to save" << path << "to gallery" << images;
 
     if (!path.contains(images)) {
         QString cutpath = path;
         cutpath = cutpath.replace("file://", "");
         QFile img(cutpath);
         if (img.exists()) {
-            qDebug() << "saveImage" << path;
             QString name = path.split("/").last().split("@").first();
+            qDebug() << "saveImage" << path << "name:" << name;
             img.open(QFile::ReadOnly);
             QString ext = "jpg";
             img.seek(1);

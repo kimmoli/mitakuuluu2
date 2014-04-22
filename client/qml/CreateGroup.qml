@@ -18,6 +18,7 @@ Dialog {
         if (status == DialogStatus.Opened) {
             //groupTitle.text = ""
             groupTitle.forceActiveFocus()
+            fastScroll.init()
         }
     }
 
@@ -31,25 +32,20 @@ Dialog {
         Mitakuuluu.createGroup(groupTitle.text.trim(), avaholder.source, jids)
     }
 
-    DialogHeader {
-        id: header
-        title: qsTr("Create group", "Greate group page title")
-    }
-
     SilicaFlickable {
         id: flick
-        anchors {
-            top: header.bottom
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
+        anchors.fill: parent
         contentHeight: content.height
 
         Column {
             id: content
             width: parent.width
             spacing: Theme.paddingMedium
+
+            DialogHeader {
+                id: header
+                title: qsTr("Create group", "Greate group page title")
+            }
 
             AvatarHolder {
                 id: avaholder
@@ -96,6 +92,14 @@ Dialog {
                 clip: true
                 section.property: "nickname"
                 section.criteria: ViewSection.FirstCharacter
+                section.delegate: Component {
+                    SectionHeader {
+                        text: section
+                    }
+                }
+                onCountChanged: {
+                    fastScroll.init()
+                }
 
                 FastScroll {
                     id: fastScroll
@@ -104,14 +108,18 @@ Dialog {
                 }
             }
         }
-
-        VerticalScrollDecorator {}
     }
 
     ContactsFilterModel {
         id: contactsModel
         contactsModel: ContactsBaseModel
         hideGroups: true
+        showUnknown: acceptUnknown
+        showActive: false
+        filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
+        Component.onCompleted: {
+            init()
+        }
     }
 
     Component {

@@ -190,7 +190,7 @@ private slots:
     void onServerPong();
 
     void groupCreated(const QString &gjid);
-    void onContactChanged(const QVariantMap &data);
+    void onGroupInfo(const QVariantMap &data);
 
 public slots:
     Q_SCRIPTABLE void exit();
