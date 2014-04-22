@@ -271,5 +271,8 @@ Page {
         onContactsModelChanged: {
             fastScroll.init()
         }
+        Component.onCompleted: {
+            init()
+        }
     }
 }

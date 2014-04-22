@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import Sailfish.Silica 1.0
 import harbour.mitakuuluu2.client 1.0
+import "Utilities.js" as Utilities
 
 Page {
 	id: page
@@ -94,7 +95,7 @@ Page {
 	            Label {
 	            	width: parent.width
 	                color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
-	                text: getNicknameByJid(model.jid)
+                    text: Utilities.emojify(getNicknameByJid(model.jid), emojiPath)
 	                elide: Text.ElideRight
 	                truncationMode: TruncationMode.Fade
 	            }

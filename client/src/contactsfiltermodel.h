@@ -20,6 +20,7 @@ public:
 
 public slots:
     Q_INVOKABLE QVariantMap get(int itemIndex);
+    Q_INVOKABLE void init();
 
 private slots:
     void onRowsInserted(const QModelIndex &parent, int first, int last);
@@ -31,6 +32,8 @@ protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
 
 private:
+    bool _initComplete;
+
     QString filter();
     void setFilter(const QString &newFilter);
 
@@ -52,7 +55,6 @@ private:
 
     int count();
 
-    void changeSortRole();
     void changeFilterRole();
 
     ContactsBaseModel *_contactsModel;

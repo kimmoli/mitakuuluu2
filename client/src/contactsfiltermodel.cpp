@@ -1,20 +1,15 @@
 #include "contactsfiltermodel.h"
-#include <QDebug>
 
 ContactsFilterModel::ContactsFilterModel(QObject *parent) :
     QSortFilterProxyModel(parent),
     _showActive(false),
     _showUnknown(false),
-    _filterContacts()
+    _filterContacts(),
+    _initComplete(false)
 {
-    QObject::connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(onRowsInserted(QModelIndex,int,int)));
-    QObject::connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(onRowsRemoved(QModelIndex,int,int)));
-    QObject::connect(this, SIGNAL(rowsMoved(QModelIndex,int,int,QModelIndex,int)), this, SLOT(onRowsMoved(QModelIndex,int,int,QModelIndex,int)));
-
     setFilterCaseSensitivity(Qt::CaseInsensitive);
     setFilterRole(Qt::UserRole + 1);
     setSortRole(Qt::UserRole + 1);
-    sort(0);
 }
 
 QVariantMap ContactsFilterModel::get(int itemIndex)
@@ -22,6 +17,14 @@ QVariantMap ContactsFilterModel::get(int itemIndex)
     QModelIndex sourceIndex = mapToSource(index(itemIndex, 0, QModelIndex()));
     QVariantMap data = _contactsModel->get(sourceIndex.row());
     return data;
+}
+
+void ContactsFilterModel::init()
+{
+    changeFilterRole();
+    setSourceModel(_contactsModel);
+    sort(0);
+    _initComplete = true;
 }
 
 void ContactsFilterModel::onRowsInserted(const QModelIndex &parent, int first, int last)
@@ -106,7 +109,9 @@ QString ContactsFilterModel::filter()
 void ContactsFilterModel::setFilter(const QString &newFilter)
 {
     setFilterFixedString(newFilter);
-    changeFilterRole();
+    if (_initComplete) {
+        changeFilterRole();
+    }
     Q_EMIT filterChanged();
 }
 
@@ -118,8 +123,9 @@ bool ContactsFilterModel::showActive()
 void ContactsFilterModel::setShowActive(bool value)
 {
     _showActive = value;
-    changeSortRole();
-    changeFilterRole();
+    if (_initComplete) {
+        changeFilterRole();
+    }
 }
 
 bool ContactsFilterModel::showUnknown()
@@ -130,7 +136,9 @@ bool ContactsFilterModel::showUnknown()
 void ContactsFilterModel::setShowUnknown(bool value)
 {
     _showUnknown = value;
-    changeFilterRole();
+    if (_initComplete) {
+        changeFilterRole();
+    }
 }
 
 bool ContactsFilterModel::hideGroups()
@@ -141,7 +149,9 @@ bool ContactsFilterModel::hideGroups()
 void ContactsFilterModel::setHideGroups(bool value)
 {
     _hideGroups = value;
-    changeFilterRole();
+    if (_initComplete) {
+        changeFilterRole();
+    }
 }
 
 QStringList ContactsFilterModel::filterContacts()
@@ -152,21 +162,14 @@ QStringList ContactsFilterModel::filterContacts()
 void ContactsFilterModel::setFilterContacts(const QStringList &value)
 {
     _filterContacts = value;
-    changeFilterRole();
+    if (_initComplete) {
+        changeFilterRole();
+    }
 }
 
 int ContactsFilterModel::count()
 {
     return rowCount();
-}
-
-void ContactsFilterModel::changeSortRole()
-{
-    int role = Qt::UserRole + 1;
-    if (_showActive)
-        role += 1;
-    setSortRole(role);
-    sort(0);
 }
 
 void ContactsFilterModel::changeFilterRole()
@@ -191,6 +194,8 @@ ContactsBaseModel *ContactsFilterModel::contactsModel()
 void ContactsFilterModel::setContactsModel(ContactsBaseModel *newModel)
 {
     _contactsModel = newModel;
-    setSourceModel(_contactsModel);
-    Q_EMIT contactsModelChanged();
+    if (_initComplete) {
+        setSourceModel(_contactsModel);
+        Q_EMIT contactsModelChanged();
+    }
 }

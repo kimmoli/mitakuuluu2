@@ -96,6 +96,9 @@ void ContactsBaseModel::reloadContact(const QString &jid)
 void ContactsBaseModel::setPropertyByJid(const QString &jid, const QString &name, const QVariant &value)
 {
     if (_modelData.contains(jid)) {
+        if (_modelData[jid][name] == value)
+            return;
+
         int row = _modelData.keys().indexOf(jid);
         if (name == "avatar") {
             _modelData[jid][name] = QString();
@@ -217,6 +220,17 @@ void ContactsBaseModel::groupInfo(const QVariantMap &data)
 {
     QString jid = data["jid"].toString();
     if (_modelData.contains(jid)) {
+        if (_modelData[jid]["nickname"] == data["message"]
+             && _modelData[jid]["pushname"] == data["pushname"]
+             && _modelData[jid]["owner"] == data["owner"]
+             && _modelData[jid]["message"] == data["message"]
+             && _modelData[jid]["subowner"] == data["subowner"]
+             && _modelData[jid]["subtimestamp"] == data["subtimestamp"]
+             && _modelData[jid]["timestamp"] == data["timestamp"])
+            return;
+        qDebug() << "change group info for" << jid;
+
+
         _modelData[jid]["nickname"] = data["message"];
         _modelData[jid]["pushname"] = data["pushname"];
         _modelData[jid]["owner"] = data["owner"];
@@ -230,11 +244,13 @@ void ContactsBaseModel::groupInfo(const QVariantMap &data)
         Q_EMIT dataChanged(index(row), index(row));
     }
     else {
+        qDebug() << "create group info for" << jid;
         beginResetModel();
 
         _modelData[jid] = data;
         _modelData[jid]["blocked"] = false;
         _modelData[jid]["available"] = false;
+        _modelData[jid]["typing"] = false;
         _modelData[jid]["nickname"] = data["message"];
 
         endResetModel();
@@ -245,6 +261,7 @@ void ContactsBaseModel::contactChanged(const QVariantMap &data)
 {
     QVariantMap contact = data;
     QString jid = contact["jid"].toString();
+    qDebug() << "contact changed" << jid;
 
     QString name = contact["name"].toString();
     QString message = contact["message"].toString();
@@ -261,6 +278,8 @@ void ContactsBaseModel::contactChanged(const QVariantMap &data)
     contact["blocked"] = blocked;
 
     if (_modelData.contains(jid)) {
+        if (_modelData[jid] == contact)
+            return;
         _modelData[jid] = contact;
 
         int row = _modelData.keys().indexOf(jid);
@@ -280,14 +299,14 @@ void ContactsBaseModel::contactSynced(const QVariantMap &data)
     QVariantMap contact = data;
     QString jid = contact["jid"].toString();
     if (_modelData.contains(jid)) {
-        _modelData[jid]["timestamp"] = contact["timestamp"];
-        QString message = contact["message"].toString();
-        _modelData[jid]["message"] = message;
-
+        if (_modelData[jid]["name"] == contact["name"])
+            return;
         QString name = contact["name"].toString();
         QString pushname = _modelData[jid]["pushname"].toString();
 
-        _modelData[jid]["nickname"] = getNicknameBy(jid, message, name, pushname);
+        qDebug() << "contact synced:" << name << pushname << jid;
+
+        _modelData[jid]["nickname"] = getNicknameBy(jid, "", name, pushname);
 
         bool blocked = getBlocked(jid);
         _modelData[jid]["blocked"] = blocked;
@@ -303,6 +322,9 @@ void ContactsBaseModel::contactSynced(const QVariantMap &data)
 void ContactsBaseModel::contactStatus(const QString &jid, const QString &message)
 {
     if (_modelData.contains(jid)) {
+        if (_modelData[jid]["message"].toString() == message)
+            return;
+        qDebug() << "contact status for" << jid << message;
         _modelData[jid]["message"] = message;
         int row = _modelData.keys().indexOf(jid);
         dataChanged(index(row), index(row));
@@ -313,11 +335,13 @@ void ContactsBaseModel::newGroupSubject(const QVariantMap &data)
 {
     QString jid = data["jid"].toString();
     if (_modelData.contains(jid)) {
+        if (_modelData[jid]["message"] == data["message"]
+             && _modelData[jid]["subowner"] == data["subowner"]
+             && _modelData[jid]["subtimestamp"] == data["subtimestamp"])
+            return;
         QString message = data["message"].toString();
         QString subowner = data["subowner"].toString();
-        int lastmessage = _modelData[jid]["lastmessage"].toInt();
         QString subtimestamp = data["subtimestamp"].toString();
-        qDebug() << "Model upgate group subject" << message << "jid:" << jid << "lastmessage:" << QString::number(lastmessage);
 
         _modelData[jid]["message"] = message;
         _modelData[jid]["nickname"] = message;
@@ -326,8 +350,6 @@ void ContactsBaseModel::newGroupSubject(const QVariantMap &data)
 
         int row = _modelData.keys().indexOf(jid);
         Q_EMIT dataChanged(index(row), index(row));
-
-        qDebug() << "New subject saved:" << message << "for jid:" << jid;
     }
 }
 
@@ -347,6 +369,8 @@ void ContactsBaseModel::setUnread(const QString &jid, int count)
 void ContactsBaseModel::pushnameUpdated(const QString &jid, const QString &pushName)
 {
     if (_modelData.contains(jid) && (pushName != jid.split("@").first())) {
+        if (_modelData[jid]["pushname"].toString() == pushName)
+            return;
         setPropertyByJid(jid, "pushname", pushName);
 
         QString nickname = _modelData[jid]["nickname"].toString();
@@ -404,26 +428,32 @@ void ContactsBaseModel::contactsBlocked(const QStringList &jids)
 {
     _blockedContacts = jids;
     foreach (const QString &jid, _modelData.keys()) {
+        if (_modelData[jid]["blocked"].toBool() == jids.contains(jid))
+            continue;
         if (!jid.contains("-")) {
             if (jids.contains(jid))
                 _modelData[jid]["blocked"] = true;
             else
                 _modelData[jid]["blocked"] = false;
         }
+        int row = _modelData.keys().indexOf(jid);
+        Q_EMIT dataChanged(index(row), index(row));
     }
-    Q_EMIT dataChanged(index(0), index(_modelData.count() - 1));
 }
 
 void ContactsBaseModel::contactsAvailable(const QStringList &jids)
 {
     _availableContacts = jids;
     foreach (const QString &jid, _modelData.keys()) {
+        if (_modelData[jid]["available"].toBool() == jids.contains(jid))
+            continue;
         if (jids.contains(jid))
             _modelData[jid]["available"] = true;
         else
             _modelData[jid]["available"] = false;
 
-        Q_EMIT dataChanged(index(0), index(_modelData.count() - 1));
+        int row = _modelData.keys().indexOf(jid);
+        Q_EMIT dataChanged(index(row), index(row));
     }
 }
 
@@ -476,7 +506,7 @@ void ContactsBaseModel::dbResults(const QVariant &result)
                 QString pushname = data["pushname"].toString();
                 QString name = data["name"].toString();
                 QString message = data["message"].toString();
-                qDebug() << "jid:" << jid << pushname << name << message;
+                //qDebug() << "jid:" << jid << pushname << name << message;
                 bool blocked = false;
                 if (!jid.contains("-"))
                     blocked = getBlocked(jid);
@@ -529,6 +559,9 @@ int ContactsBaseModel::count()
 void ContactsBaseModel::renameContact(const QString &jid, const QString &name)
 {
     if (_modelData.contains(jid)) {
+        if (_modelData[jid]["name"].toString() == name)
+            return;
+
         _modelData[jid]["name"] = name;
         QString pushname = _modelData[jid]["pushname"].toString();
 

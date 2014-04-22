@@ -303,5 +303,8 @@ Page {
         contactsModel: ContactsBaseModel
         showActive: true
         showUnknown: true
+        Component.onCompleted: {
+            init()
+        }
     }
 }

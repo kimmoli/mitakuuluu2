@@ -104,6 +104,12 @@ Dialog {
     ContactsFilterModel {
         id: contactsModel
         contactsModel: ContactsBaseModel
+        showActive: false
+        showUnknown: acceptUnknown
+        filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
+        Component.onCompleted: {
+            init()
+        }
     }
 
     Component {

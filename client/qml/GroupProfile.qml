@@ -219,7 +219,7 @@ Page {
         MouseArea {
             anchors.fill: ava
             onClicked: {
-                changeAvatar.show(ava.source)
+                avatarView.show(ava.source)
             }
         }
 

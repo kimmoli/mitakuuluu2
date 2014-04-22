@@ -64,6 +64,12 @@ Dialog {
         id: contactsModel
         contactsModel: ContactsBaseModel
         hideGroups: noGroups
+        showActive: false
+        showUnknown: acceptUnknown
+        filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
+        Component.onCompleted: {
+            init()
+        }
     }
 
     Component {
