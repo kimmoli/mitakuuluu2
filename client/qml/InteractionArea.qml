@@ -195,7 +195,7 @@ Item{
 					Image{
 						id: resizeIndicator
 						anchors{ right: parent.right; bottom: parent.bottom }
-                        source: "/usr/share/harbour-mitakuuluu/images/imageInteractor.png"
+                        source: "/usr/share/harbour-mitakuuluu2/images/imageInteractor.png"
 						height: sourceSize.height / image.scale
 						width: sourceSize.width / image.scale
 						visible: image.status == Image.Ready

@@ -130,13 +130,13 @@ Page {
                 onCurrentItemChanged: {
                     if (pageStack.currentPage.objectName !== "roster") {
                         if (currentIndex == 0) {
-                            conversationTheme = "/usr/share/harbour-mitakuuluu/qml/DefaultDelegate.qml"
+                            conversationTheme = "/usr/share/harbour-mitakuuluu2/qml/DefaultDelegate.qml"
                         }
                         else if (currentIndex == 1) {
-                            conversationTheme = "/usr/share/harbour-mitakuuluu/qml/BubbleDelegate.qml"
+                            conversationTheme = "/usr/share/harbour-mitakuuluu2/qml/BubbleDelegate.qml"
                         }
                         else if (currentIndex == 2) {
-                            conversationTheme = "/usr/share/harbour-mitakuuluu/qml/ModernDelegate.qml"
+                            conversationTheme = "/usr/share/harbour-mitakuuluu2/qml/ModernDelegate.qml"
                         }
                         else {
                             conversationTheme = "/home/nemo/.whatsapp/delegates/" + conversationDelegates[currentIndex - 3]

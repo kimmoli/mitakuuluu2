@@ -12,7 +12,7 @@ Page {
     }
 
     Image {
-        source: "/usr/share/harbour-mitakuuluu/images/hearts-black.png"
+        source: "/usr/share/harbour-mitakuuluu2/images/hearts-black.png"
         anchors.top: parent.top
         anchors.right: parent.right
         fillMode: Image.TileVertically
@@ -86,7 +86,7 @@ Page {
             }
 
             Image {
-                source: "/usr/share/harbour-mitakuuluu/images/openrepos_ware.png"
+                source: "/usr/share/harbour-mitakuuluu2/images/openrepos_ware.png"
                 asynchronous: true
                 cache: true
                 fillMode: Image.PreserveAspectFit
@@ -175,7 +175,7 @@ Page {
                 width: 300
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
-                    Qt.openUrlExternally("https://www.transifex.com/projects/p/mitakuuluu/")
+                    Qt.openUrlExternally("https://www.transifex.com/projects/p/mitakuuluu2/")
                 }
             }
 
