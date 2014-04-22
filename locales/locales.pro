@@ -15,6 +15,7 @@ TRANSLATIONS += \
     da_DK.ts \
     de.ts \
     el.ts \
+    en_US.ts \
     es.ts \
     fi.ts \
     fr_FR.ts \
