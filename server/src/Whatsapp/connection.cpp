@@ -535,12 +535,12 @@ bool Connection::read()
                         QString photoId = child.getAttributeValue("id");
                         if (!photoId.isEmpty()) {
                             QString author = child.getAttributeValue("author");
-                            emit photoIdReceived(from, notify, author, timestamp, photoId);
+                            emit photoIdReceived(from, notify, author, timestamp, photoId, id);
                         }
                     }
                     else if (child.getTag() == "delete") {
                         QString author = child.getAttributeValue("author");
-                        emit photoDeleted(from, notify, author, timestamp);
+                        emit photoDeleted(from, notify, author, timestamp, id);
                     }
                 }
 
@@ -580,7 +580,7 @@ bool Connection::read()
                         //QString event = child.getAttributeValue("event");
                         //if (event == "add") {
                             QString subject = child.getDataString();
-                            Q_EMIT groupNewSubject(from, participant, notify, subject, timestamp);
+                            Q_EMIT groupNewSubject(from, participant, notify, subject, timestamp, id);
                         //}
                     }
                 }
@@ -618,14 +618,14 @@ bool Connection::read()
                             sendGetGroupInfo(from);
                         }
                         else if (!jid.isEmpty()) {
-                            Q_EMIT groupAddUser(from, jid, timestamp);
+                            Q_EMIT groupAddUser(from, jid, timestamp, id);
                         }
                     }
                     else if (child.getTag() == "remove")
                     {
                         QString jid = child.getAttributeValue("jid");
                         if (!jid.isEmpty())
-                            Q_EMIT groupRemoveUser(from, jid, timestamp);
+                            Q_EMIT groupRemoveUser(from, jid, timestamp, id);
                     }
                 }
             }
@@ -846,21 +846,6 @@ void Connection::parseMessageInitialTagAlreadyChecked(ProtocolTreeNode &messageN
         else {}
             counters->increaseCounter(DataCounters::ProtocolBytes, messageNode.getSize(), 0);
     }
-    else if (typeAttribute == "subject")
-    {
-        ProtocolTreeNode bodyNode = messageNode.getChild("body");
-        ProtocolTreeNode notifyNode = messageNode.getChild("notify");
-
-        QString authorName = notifyNode.getAttributeValue("name");
-        QString newSubject = bodyNode.getDataString();
-
-        if (!newSubject.isEmpty())
-            emit groupNewSubject(from, author, authorName, newSubject, attribute_t);
-
-        sendSubjectReceived(from, id);
-
-    }
-
     else if (typeAttribute == "error")
     {
         if (from.right(5) == "@g.us")

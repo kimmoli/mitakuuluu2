@@ -594,8 +594,8 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
 
     connect(connection,SIGNAL(accountExpired(QVariantMap)),this,SLOT(expired(QVariantMap)));
 
-    connect(connection,SIGNAL(groupNewSubject(QString,QString,QString,QString,QString)),
-            this,SLOT(groupNewSubject(QString,QString,QString,QString,QString)));
+    connect(connection,SIGNAL(groupNewSubject(QString,QString,QString,QString,QString,QString)),
+            this,SLOT(groupNewSubject(QString,QString,QString,QString,QString,QString)));
 
     connect(connection,SIGNAL(groupInfoFromList(QString,QString,QString,QString,
                                                 QString,QString,QString)),
@@ -629,8 +629,11 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connect(connection,SIGNAL(mediaUploadAccepted(FMessage)),
             this,SLOT(mediaUploadAccepted(FMessage)));
 
-    connect(connection,SIGNAL(photoIdReceived(QString,QString,QString,QString,QString)),
-            this,SLOT(photoIdReceived(QString,QString,QString,QString,QString)));
+    connect(connection,SIGNAL(photoIdReceived(QString,QString,QString,QString,QString,QString)),
+            this,SLOT(photoIdReceived(QString,QString,QString,QString,QString,QString)));
+
+    connect(connection,SIGNAL(photoDeleted(QString,QString,QString,QString,QString)),
+            this,SLOT(photoDeleted(QString,QString,QString,QString,QString)));
 
     connect(connection,SIGNAL(photoReceived(QString,QByteArray,QString,bool)),
             this,SLOT(photoReceived(QString,QByteArray,QString,bool)));
@@ -638,11 +641,11 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connect(connection,SIGNAL(groupUser(QString,QString)),
             this,SLOT(groupUser(QString,QString)));
 
-    connect(connection,SIGNAL(groupAddUser(QString,QString,QString)),
-            this,SLOT(groupAddUser(QString,QString,QString)));
+    connect(connection,SIGNAL(groupAddUser(QString,QString,QString,QString)),
+            this,SLOT(groupAddUser(QString,QString,QString,QString)));
 
-    connect(connection,SIGNAL(groupRemoveUser(QString,QString,QString)),
-            this,SLOT(groupRemoveUser(QString,QString,QString)));
+    connect(connection,SIGNAL(groupRemoveUser(QString,QString,QString,QString)),
+            this,SLOT(groupRemoveUser(QString,QString,QString,QString)));
 
     connect(connection,SIGNAL(groupError(QString)),
             this,SLOT(groupError(QString)));
@@ -1231,7 +1234,7 @@ void Client::clearNotification()
     }
 }
 
-void Client::groupNotification(const QString &gjid, const QString &jid, int type, const QString &timestamp, QString notification)
+void Client::groupNotification(const QString &gjid, const QString &jid, int type, const QString &timestamp, const QString &notificationId, QString notification)
 {
     qDebug() << "groupNotification" << gjid << "from" << jid << "type" << QString::number(type);
     QString message;
@@ -1253,7 +1256,7 @@ void Client::groupNotification(const QString &gjid, const QString &jid, int type
     }
 
     QVariantMap data;
-    data["msgid"] = QString("%1-x").arg(timestamp);
+    data["msgid"] = QString("%1-%2").arg(timestamp).arg(notificationId);
     data["jid"] = gjid;
     data["author"] = jid;
     data["timestamp"] = timestamp;
@@ -1783,13 +1786,13 @@ void Client::userStatusUpdated(const QString &jid, const QString &message)
     }
 }
 
-void Client::photoIdReceived(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &photoId)
+void Client::photoIdReceived(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &photoId, const QString &notificationId)
 {
     qDebug() << "photoIdReceived for:" << jid << "name:" << alias << "author:" << author << "timestamp:" << timestamp << "id:" << photoId;
     getPicture(jid);
 
     if (jid.contains("-")) {
-        groupNotification(jid, author, PictureSet, timestamp);
+        groupNotification(jid, author, PictureSet, timestamp, notificationId);
     }
 }
 
@@ -1987,7 +1990,7 @@ void Client::groupInfoFromList(const QString &id, const QString &from, const QSt
     saveGroupInfo(from, author, newSubject, subjectOwner, subjectTimestamp.toInt(), creation.toInt());
 }
 
-void Client::groupNewSubject(const QString &from, const QString &author, const QString &authorName, const QString &newSubject, const QString &creation)
+void Client::groupNewSubject(const QString &from, const QString &author, const QString &authorName, const QString &newSubject, const QString &creation, const QString &notificationId)
 {
     qDebug() << "groupNewSubject:" << newSubject << "from:" << from << "author:" << author << "authorName:" << authorName << "creation:" << creation;
 
@@ -2004,7 +2007,7 @@ void Client::groupNewSubject(const QString &from, const QString &author, const Q
 
     updateContactPushname(author, authorName);
 
-    groupNotification(from, author, SubjectSet, creation, newSubject);
+    groupNotification(from, author, SubjectSet, creation, notificationId, newSubject);
 }
 
 void Client::getParticipants(const QString &gjid)
@@ -2129,21 +2132,21 @@ void Client::addGroupParticipants(const QString &gjid, const QStringList &jids)
     }
 }
 
-void Client::groupAddUser(const QString &gjid, const QString &jid, const QString &timestamp)
+void Client::groupAddUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId)
 {
     qDebug() << "groupAddUser" << gjid << "add:" << jid << "timestamp:" << timestamp;
     updateContactPushname(jid, "");
     Q_EMIT groupParticipantAdded(gjid, jid);
 
-    groupNotification(gjid, jid, ParticipantAdded, timestamp);
+    groupNotification(gjid, jid, ParticipantAdded, timestamp, notificationId);
 }
 
-void Client::groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp)
+void Client::groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId)
 {
     qDebug() << "groupRemoveUser" << gjid << "add:" << jid << "timestamp:" << timestamp;
     Q_EMIT groupParticipantRemoved(gjid, jid);
 
-    groupNotification(gjid, jid, ParticipantRemoved, timestamp);
+    groupNotification(gjid, jid, ParticipantRemoved, timestamp, notificationId);
 }
 
 void Client::removeGroupParticipant(const QString &gjid, const QString &jid)

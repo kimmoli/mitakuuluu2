@@ -531,10 +531,10 @@ signals:
      **/
 
     // User photo updated notification received
-    void photoIdReceived(QString jid, QString alias, QString author, QString timestamp, QString photoId);
+    void photoIdReceived(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &photoId, const QString &notificationId);
 
     // User photo has been deleted
-    void photoDeleted(QString jid, QString alias, QString author, QString timestamp);
+    void photoDeleted(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &notificationId);
 
     // User photo has been received
     void photoReceived(const QString &from, const QByteArray &data,
@@ -552,13 +552,13 @@ signals:
 
     // Received a new group subject (and possibly a new group)
     void groupNewSubject(const QString &from, const QString &author, const QString &authorName,
-                         const QString &newSubject, const QString &creation);
+                         const QString &newSubject, const QString &creation, const QString &notificationId);
 
     // User added to a group
-    void groupAddUser(QString from, QString jid, QString timestamp);
+    void groupAddUser(const QString &from, const QString &jid, const QString &timestamp, const QString &notificationId);
 
     // User removed from a group
-    void groupRemoveUser(QString from, QString jid, QString timestamp);
+    void groupRemoveUser(const QString &from, const QString &jid, const QString &timestamp, const QString &notificationId);
 
     // Group left
     void groupLeft(const QString &gjid);

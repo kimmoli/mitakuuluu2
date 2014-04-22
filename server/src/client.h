@@ -298,8 +298,8 @@ private slots:
     void requestPresenceSubscription(const QString &jid);
     void requestPresenceUnsubscription(const QString &jid);
     void groupUser(const QString &gjid, const QString &jid);
-    void groupAddUser(const QString &gjid, const QString &jid, const QString &timestamp);
-    void groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp);
+    void groupAddUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId);
+    void groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId);
     void setPrivacyList();
     void sendVoiceNotePlayed(const FMessage &message);
 
@@ -315,9 +315,9 @@ private slots:
                            const QString &newSubject, const QString &creation,
                            const QString &subjectOwner, const QString &subjectTimestamp);
     void groupNewSubject(const QString &from, const QString &author, const QString &authorName,
-                         const QString &newSubject, const QString &creation);
+                         const QString &newSubject, const QString &creation, const QString &notificationId);
     void photoDeleted(QString jid, QString alias, QString author, QString timestamp);
-    void photoIdReceived(const QString &jid, const QString &name, const QString &author, const QString &timestamp, const QString &pictureId);
+    void photoIdReceived(const QString &jid, const QString &name, const QString &author, const QString &timestamp, const QString &pictureId, const QString &notificationId);
     void photoReceived(const QString &from, const QByteArray &data,
                        const QString &photoId, bool largeFormat);
     void privacyListReceived(const QStringList &list);
@@ -527,7 +527,7 @@ private:
     void notyfyConnectionStatus();
     void clearNotification();
 
-    void groupNotification(const QString &gjid, const QString &jid, int type, const QString &timestamp, QString notification = QString());
+    void groupNotification(const QString &gjid, const QString &jid, int type, const QString &timestamp, const QString &notificationId, QString notification = QString());
 
     void startDownloadMessage(const FMessage &msg);
 
