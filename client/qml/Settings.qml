@@ -238,7 +238,7 @@ Page {
                     }
                 }
                 onCurrentItemChanged: {
-                    if (pageStack.currentPage.objectName === "settings") {
+                    if (pageStack.currentPage.objectName === "settings" || pageStack.currentPage.objectName === "") {
                         Mitakuuluu.setLocale(currentIndex)
                         banner.notify(qsTr("Restart application to change language", "Language changing banner text"))
                     }
