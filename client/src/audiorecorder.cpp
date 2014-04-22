@@ -4,13 +4,12 @@
 #include <QFile>
 #include <QDateTime>
 #include <QUrl>
-
-#define TEMP "/home/nemo/.whatsapp/tempnotes"
+#include <QStandardPaths>
 
 AudioRecorder::AudioRecorder(QObject *parent) :
     QObject(parent)
 {
-    QDir::home().mkpath(TEMP);
+    QDir::home().mkpath(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
     _rec = new QAudioRecorder(this);
     QAudioEncoderSettings settings;
     settings.setCodec("audio/vorbis");
@@ -39,7 +38,9 @@ AudioRecorder::~AudioRecorder()
 
 QString AudioRecorder::getTempPath()
 {
-    return QString("%1/%2.%3").arg(TEMP).arg(QDateTime::currentDateTime().toString("dd_MM_yyyy-hh_mm_ss")).arg(_rec->containerFormat());
+    return QString("%1/%2.%3").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
+                              .arg(QDateTime::currentDateTime().toString("dd_MM_yyyy-hh_mm_ss"))
+                              .arg(_rec->containerFormat());
 }
 
 QString AudioRecorder::path()
