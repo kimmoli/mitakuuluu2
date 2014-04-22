@@ -978,9 +978,6 @@ void Client::syncContactsAvailable(const QVariantList &results)
             QString message = contact["message"].toString();
             qDebug() << "Message" << message << "Jid:" << jid;
 
-            if (results.size() == 1) {
-                Q_EMIT contactSynced(contact);
-            }
             if (jid == myJid) {
                 myStatus = message;
                 settings->setValue(SETTINGS_STATUS,myStatus);

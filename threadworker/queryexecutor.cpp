@@ -486,18 +486,15 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
         QString jid = contact["jid"].toString();
         if (!blocked.contains(jid)) {
             newJids.append(jid);
-            QString message;
             QString phone = contact["phone"].toString();
             QString avatar = contact["avatar"].toString();
             QString name = contact["alias"].toString();
-            int timestamp = 0;
-            qDebug() << "Name:" << name << "Phone:" << phone << "Message" << message << "Jid:" << jid;
+            qDebug() << "Name:" << name << "Phone:" << phone << "Jid:" << jid;
 
             QSqlQuery uc;
             //uc.prepare("UPDATE contacts SET name=(:name), message=(:message), timestamp=(:timestamp) WHERE jid=(:jid);");
-            uc.prepare("UPDATE contacts SET name=(:name), message=(:message), contacttype=(:contacttype) WHERE jid=(:jid);");
+            uc.prepare("UPDATE contacts SET name=(:name), contacttype=(:contacttype) WHERE jid=(:jid);");
             uc.bindValue(":name", name);
-            uc.bindValue(":message", message);
             uc.bindValue(":contacttype", 1);
             //uc.bindValue(":timestamp", timestamp);
             uc.bindValue(":jid", jid);
@@ -513,7 +510,7 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
                 ic.bindValue(":jid", jid);
                 ic.bindValue(":pushname", name);
                 ic.bindValue(":name", name);
-                ic.bindValue(":message", message);
+                ic.bindValue(":message", QString());
                 ic.bindValue(":contacttype", 1);
                 ic.bindValue(":owner", "");
                 ic.bindValue(":subowner", "");
@@ -533,11 +530,11 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
                     contact["name"] = name;
                     contact["pushname"] = name;
                     contact["nickname"] = name;
-                    contact["message"] = message;
+                    contact["message"] = QString();
                     contact["contacttype"] = 1;
                     contact["owner"] = QString();
                     contact["subowner"] = QString();
-                    contact["timestamp"] = timestamp;
+                    contact["timestamp"] = 0;
                     contact["subtimestamp"] = 0;
                     contact["avatar"] = avatar;
                     contact["available"] = false;
@@ -552,8 +549,6 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
                 QVariantMap contact;
                 contact["name"] = name;
                 contact["jid"] = jid;
-                contact["message"] = message;
-                contact["timestamp"] = timestamp;
 
                 query["sync"] = contact;
             }
