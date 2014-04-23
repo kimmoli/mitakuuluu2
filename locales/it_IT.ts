@@ -1114,7 +1114,7 @@
         <location filename="../client/qml/RegistrationCombo.qml" line="75"/>
         <source>Search</source>
         <comment>Registration country selector</comment>
-        <translation type="unfinished"/>
+        <translation>Cerca</translation>
     </message>
 </context>
 <context>
@@ -1201,7 +1201,7 @@ Prima di passare a Mitakuuluu per favore usa l&apos;opzione &lt;Remove account&g
         <location filename="../client/qml/RegistrationPage.qml" line="81"/>
         <source>Country</source>
         <comment>Registration country selector label</comment>
-        <translation type="unfinished"/>
+        <translation>Paese</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="96"/>

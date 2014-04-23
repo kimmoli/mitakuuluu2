@@ -1114,7 +1114,7 @@
         <location filename="../client/qml/RegistrationCombo.qml" line="75"/>
         <source>Search</source>
         <comment>Registration country selector</comment>
-        <translation type="unfinished"/>
+        <translation>Etsi</translation>
     </message>
 </context>
 <context>
@@ -1201,7 +1201,7 @@ Ennen siirtymistä Mitäkuuluun pariin, käytä &lt;Poista tili&gt; toimintoa ny
         <location filename="../client/qml/RegistrationPage.qml" line="81"/>
         <source>Country</source>
         <comment>Registration country selector label</comment>
-        <translation type="unfinished"/>
+        <translation>Maa</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="96"/>
@@ -1686,7 +1686,7 @@ Napauta &apos;Uudista&apos; ostaaksesi Whatsapp palvelun vuodeksi.</translation>
         <location filename="../client/qml/Settings.qml" line="297"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
-        <translation>Sinun täytyy sulkea sovellus kokonaan saadaksesi lokeja. Valitse lähetä lokitiedosto kehittäjälle asetuksien ylävalikosta.</translation>
+        <translation>Sinun täytyy ensin sulkea sovellus kokonaan saadaksesi lokeja. Valitse &apos;Lähetä lokitiedosto kehittäjälle&apos; asetuksien ylävalikosta.</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="304"/>

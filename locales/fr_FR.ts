@@ -1114,7 +1114,7 @@
         <location filename="../client/qml/RegistrationCombo.qml" line="75"/>
         <source>Search</source>
         <comment>Registration country selector</comment>
-        <translation type="unfinished"/>
+        <translation>Rechercher</translation>
     </message>
 </context>
 <context>
@@ -1201,7 +1201,7 @@ Avant de changer pour Mitakuuluu, svp utiliser l&apos;option &lt;Supprimer le co
         <location filename="../client/qml/RegistrationPage.qml" line="81"/>
         <source>Country</source>
         <comment>Registration country selector label</comment>
-        <translation type="unfinished"/>
+        <translation>Pays</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="96"/>
@@ -1503,7 +1503,7 @@ Cliquer sur Renouveller pour acheter un an de service à WhatsApp.</translation>
 
 1. Au démarrage de Mitakuuluu
 2. Fait quelque chose
-3. S&apos;attendait à.
+3. S&apos;attendait à quelque chose
 4. A un mauvais résultat</translation>
     </message>
 </context>
@@ -1686,7 +1686,7 @@ Cliquer sur Renouveller pour acheter un an de service à WhatsApp.</translation>
         <location filename="../client/qml/Settings.qml" line="297"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
-        <translation>Vous devez quitter l&apos;application pour écrire les rapports. Envoyer le fichier de rapport apparait dans le menu des paramètres</translation>
+        <translation>Vous devez quitter l&apos;application pour écrire les rapports. Envoyer le fichier de rapport apparait dans le menu des paramètres.</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="304"/>

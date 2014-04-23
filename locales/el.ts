@@ -161,7 +161,7 @@
         <location filename="../client/qml/ChatsPage.qml" line="20"/>
         <source>Force connect</source>
         <comment>Main menu action</comment>
-        <translation type="unfinished"/>
+        <translation>Εξαναγκαστική σύνδεση</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="21"/>
@@ -224,7 +224,7 @@
         <location filename="../client/qml/ChatsPage.qml" line="86"/>
         <source>Settings</source>
         <comment>Main menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Ρυθμίσεις</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="95"/>
@@ -404,7 +404,7 @@
         <location filename="../client/qml/ContactsPage.qml" line="105"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
-        <translation type="unfinished"/>
+        <translation>Αφήστε την ομάδα %1</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="106"/>
@@ -440,7 +440,7 @@
         <location filename="../client/qml/ContactsPage.qml" line="234"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
-        <translation type="unfinished"/>
+        <translation>Αφήστε την ομάδα</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="235"/>
@@ -497,7 +497,7 @@
         <location filename="../client/qml/ConversationPage.qml" line="339"/>
         <source>Hold button for recording, release to send</source>
         <comment>Conversation voice recorder description label</comment>
-        <translation type="unfinished"/>
+        <translation>Κρατήστε το κουμπί για εγγραφή, αφήστε το για αποστολή</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="441"/>
@@ -583,13 +583,13 @@
         <location filename="../client/qml/Forward.qml" line="64"/>
         <source>Select contacts</source>
         <comment>Forward message page title</comment>
-        <translation type="unfinished"/>
+        <translation>Επιλέξτε επαφές</translation>
     </message>
     <message>
         <location filename="../client/qml/Forward.qml" line="65"/>
         <source>Forward</source>
         <comment>Forward message page title</comment>
-        <translation type="unfinished"/>
+        <translation>Εμπρός</translation>
     </message>
 </context>
 <context>
@@ -715,7 +715,7 @@
         <location filename="../client/qml/MediaSelector.qml" line="73"/>
         <source>Image selected</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"/>
+        <translation>Η εικόνα επιλέχτηκε</translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/MediaSelector.qml" line="74"/>
@@ -727,7 +727,7 @@
         <location filename="../client/qml/MediaSelector.qml" line="74"/>
         <source>Audio selected</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"/>
+        <translation>Ο ήχος έχει επιλεγεί</translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/MediaSelector.qml" line="75"/>
@@ -739,7 +739,7 @@
         <location filename="../client/qml/MediaSelector.qml" line="75"/>
         <source>Video selected</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"/>
+        <translation>Το βίντεο έχει επιλεγεί</translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="76"/>
@@ -856,7 +856,7 @@
         <location filename="../client/qml/ModernDelegate.qml" line="732"/>
         <source>Uploading...</source>
         <comment>Uploading voice record text</comment>
-        <translation type="unfinished"/>
+        <translation>Μεταφόρτωση...</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="784"/>
@@ -934,79 +934,79 @@
         <location filename="../client/qml/MutingSelector.qml" line="47"/>
         <source>Disabled</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>Απενεργοποιημένο</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="48"/>
         <source>5 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>5 λεπτά</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="49"/>
         <source>10 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>10 λεπτά</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="50"/>
         <source>20 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>20 λεπτά</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="51"/>
         <source>30 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>30 λεπτά</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="52"/>
         <source>60 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>60 λεπτά</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="53"/>
         <source>2 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>2 ώρες</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="54"/>
         <source>6 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>6 ώρες</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="55"/>
         <source>12 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>12 ώρες</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="56"/>
         <source>24 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>12 ώρες</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="57"/>
         <source>1 year</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>1 χρόνος</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="58"/>
         <source>20 years</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>20 χρόνια</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="59"/>
         <source>100 years</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>100 χρόνια</translation>
     </message>
 </context>
 <context>
@@ -1045,13 +1045,13 @@
         <location filename="../client/qml/Payments.qml" line="50"/>
         <source>Select preferred payment method to purchase WhatsApp service for: +%1</source>
         <comment>Payment method text</comment>
-        <translation type="unfinished"/>
+        <translation>Επιλέξτε την προτιμώμενη μέθοδο πληρωμής για την αγορά υπηρεσιών WhatsApp: + 1%</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="91"/>
         <source>PayPal is recommended. Neither PayPal nor Google Wallet requires you to make an account.</source>
         <comment>Payment description text</comment>
-        <translation type="unfinished"/>
+        <translation>Το PayPal συνιστάται. Ούτε το PayPal, ούτε το Google Wallet απαιτεί από εσάς να κάνετε ένα λογαριασμό.</translation>
     </message>
 </context>
 <context>
@@ -1114,7 +1114,7 @@
         <location filename="../client/qml/RegistrationCombo.qml" line="75"/>
         <source>Search</source>
         <comment>Registration country selector</comment>
-        <translation type="unfinished"/>
+        <translation>Αναζήτηση</translation>
     </message>
 </context>
 <context>
@@ -1198,7 +1198,7 @@ Before switching to Mitakuuluu please use &lt;Remove account&gt; option in your 
         <location filename="../client/qml/RegistrationPage.qml" line="81"/>
         <source>Country</source>
         <comment>Registration country selector label</comment>
-        <translation type="unfinished"/>
+        <translation>Χώρα</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="96"/>
@@ -1300,32 +1300,32 @@ Before switching to Mitakuuluu please use &lt;Remove account&gt; option in your 
         <location filename="../client/qml/RegistrationPage.qml" line="308"/>
         <source>Protocol version outdated, sorry. Please contact me at coderusinbox@gmail.com or via twitter: @icoderus</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Συγνώμη, η έκδοση πρωτοκόλλου είναι ξεπερασμένη. Παρακαλώ επικοινωνήστε μαζί μου στο coderusinbox@gmail.com ή μέσω twitter: @icoderus</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="310"/>
         <location filename="../client/qml/RegistrationPage.qml" line="313"/>
         <source>Registration code expired. You need to request a new one.</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Ο κωδικός εγγραφής έχει λήξη. Θα πρέπει να ζητήσετε ένα νέο.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="315"/>
         <source>Missing request param: %1</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Λείπει το αίτημα παραμέτρων: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="318"/>
         <source>Bad parameters passed to code request: %1</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Λανθασμένοι παράμετροι πέρασαν στο αίτημα κωδικού: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="321"/>
         <source>No cell routes for %1 caused by your operator. Please try other method [sms/voice]</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Δεν υπάρχουν δρομολογήσεις για 1% που προκαλούνται από το χειριστή σας. Παρακαλώ δοκιμάστε άλλη μέθοδο [sms / φωνή]</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="323"/>
@@ -1360,7 +1360,7 @@ Before switching to Mitakuuluu please use &lt;Remove account&gt; option in your 
         <location filename="../client/qml/RegistrationPage.qml" line="338"/>
         <source>You can retry requesting code after %1</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Ξαναπροσπαθήστε ζητώντας κωδικό μετά %1</translation>
     </message>
 </context>
 <context>
@@ -1430,7 +1430,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/SelectPhonebook.qml" line="50"/>
         <source>Sync all phonebook</source>
         <comment>Add contacts page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Συγχρονίστε όλο τον τηλεφωνικό κατάλογο</translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="58"/>
@@ -1546,7 +1546,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="74"/>
         <source>Send logfile to author</source>
         <comment>Settings page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Αποστολή logfile στον συντάκτη</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="81"/>
@@ -1576,7 +1576,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="154"/>
         <source>Show sent messages at left side</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Εμφάνιση απεσταλμένων μηνυμάτων στην αριστερή πλευρά</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="160"/>
@@ -1594,43 +1594,43 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="174"/>
         <source>Show seconds in messages timestamp</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Εμφάνιση δευτερολέπτων στην ώρα των μηνυμάτων</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="182"/>
         <source>Send messages by Enter</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Αποστολή μηνυμάτων από το Enter</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="188"/>
         <source>Automatically show keyboard when opening conversation</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Αυτόματη εμφάνιση του πληκτρολογίου κατά το άνοιγμα συνομιλίας</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="194"/>
         <source>Hide keyboard after sending message</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Απόκρυψη του πληκτρολογίου μετά την αποστολή του μηνύματος</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="200"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Λήψη μέσων στην Έκθεση</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="201"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
-        <translation type="unfinished"/>
+        <translation>Αν είναι επιλεγμένο αρχεία που λαμβάνονται θα εμφανίζονται στην Έκθεση</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="217"/>
         <source>Chat font size</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Μέγεθος γραμματοσειράς συζήτησης</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="219"/>
@@ -1647,13 +1647,13 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/Settings.qml" line="230"/>
         <source>Language</source>
-        <translation type="unfinished"/>
+        <translation>Γλώσσα</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="243"/>
         <source>Restart application to change language</source>
         <comment>Language changing banner text</comment>
-        <translation type="unfinished"/>
+        <translation>Επανεκκινήστε την εφαρμογή για να γίνει αλλαγή της γλώσσας </translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="254"/>
@@ -1671,49 +1671,49 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="293"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Επιτρέψτε αποθήκευση καταγραφών της εφαρμογής</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="297"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
-        <translation type="unfinished"/>
+        <translation>Θα πρέπει να σταματήστε πλήρως την εφαρμογή να αρχίσει να γράφει στα αρχεία καταγραφής. Η αποστολή αρχείων καταγραφής στον συντάκτη εμφανίζονται στο μενού ρυθμίσεων.</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="304"/>
         <source>Lock conversation orientation in portrait</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Κλείδωμα προσανατολισμού στο πορτρέτο στην συνομιλία</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="311"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Εμφανίστε τον εαυτό σας στη λίστα επαφών, εάν είστε παρών</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="317"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Αποδοχή μηνύματα από άγνωστες επαφές</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="323"/>
         <source>Show notifications when connection changing</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Δείτε ειδοποιήσεις όταν αλλάζετε σύνδεση</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="336"/>
         <source>Show new messages notifications</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Εμφάνιση ειδοποιήσεων για νέα μηνύματα</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="350"/>
         <source>Display messages text in notifications</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Εμφάνιση κειμένου μηνυμάτων στην οθόνη κοινοποιήσεων</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="361"/>
@@ -1731,37 +1731,37 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="369"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
-        <translation type="unfinished"/>
+        <translation>Εμφανιση σε απευθείας σύνδεση, όταν η εφαρμογή είναι ανοιχτή</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="376"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
-        <translation type="unfinished"/>
+        <translation>Εμφάνιση πάντα σε απευθείας σύνδεση</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="383"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
-        <translation type="unfinished"/>
+        <translation>Εμφάνιση πάντα εκτός σύνδεσης</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="396"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
-        <translation type="unfinished"/>
+        <translation>Εξώφυλλο</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="407"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Αριστερή δράση εξωφύλλου</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="428"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Δεξιά δράση εξωφύλλου</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="442"/>
@@ -1773,55 +1773,55 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="468"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Αυτόματη λήψη bytes</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="479"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Αλλαγή μεγέθους στην αποστολή εικόνων</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="515"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Μέγιστο μέγεθος εικόνας από το μέγεθος του αρχείου</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="549"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Μέγιστο μέγεθος εικόνας από την ανάλυση</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="551"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
-        <translation type="unfinished"/>
+        <translation>%1 MPx</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="565"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
-        <translation type="unfinished"/>
+        <translation>Οι επιλογές με αστερίσκο (*) θα τεθούν σε ισχύ μετά την επανασύνδεση</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="596"/>
         <source>Send logs</source>
         <comment>Log sending page header</comment>
-        <translation type="unfinished"/>
+        <translation>Αποστολή αρχείων καταγραφής</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="602"/>
         <source>Your email address</source>
         <comment>Log sending page text</comment>
-        <translation type="unfinished"/>
+        <translation>Η ηλεκτρονική σας διεύθυνση</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="611"/>
         <source>Enter bug description here. As many information as  possible.</source>
         <comment>Log sending page text</comment>
-        <translation type="unfinished"/>
+        <translation>Εισάγετε την περιγραφή του σφάλματος εδώ. Όσο το δυνατόν περισσότερες πληροφορίες.</translation>
     </message>
 </context>
 <context>
@@ -1836,7 +1836,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/ShareUI.qml" line="108"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
-        <translation type="unfinished"/>
+        <translation>Ομάδα συζήτησης </translation>
     </message>
 </context>
 <context>
@@ -1845,67 +1845,68 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/UserProfile.qml" line="82"/>
         <source>Unblock contact</source>
         <comment>User profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Ξεκλείδωμα επαφής</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="83"/>
         <source>Block contact</source>
         <comment>User profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Εμπόδισμα επαφής</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="91"/>
         <source>Save chat history</source>
         <comment>User profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Αποθήκευση ιστορικού συνομιλίας </translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="94"/>
         <source>History saved to Documents</source>
         <comment>User profile page history saved banner</comment>
-        <translation type="unfinished"/>
+        <translation>Το ιστορικό αποθηκεύτηκε στα Documents</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="99"/>
         <source>Save to phonebook</source>
         <comment>User profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Αποθήκευση στον τηλεφωνικό κατάλογο
+</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="107"/>
         <source>Call to contact</source>
         <comment>User profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Κλήση επαφής</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="147"/>
         <source>Nickname: %1</source>
         <comment>User profile page nickname label</comment>
-        <translation type="unfinished"/>
+        <translation>Παρατσούκλι: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="154"/>
         <source>Status: %1</source>
         <comment>User profile page status label</comment>
-        <translation type="unfinished"/>
+        <translation>Κατάσταση: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="162"/>
         <source>Phone: +%1</source>
         <comment>User profile page phone label</comment>
-        <translation type="unfinished"/>
+        <translation>Τηλέφωνο: +%1</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="169"/>
         <source>Contact blocked</source>
         <comment>User profile page contact blocked label</comment>
-        <translation type="unfinished"/>
+        <translation>Η επαφή είναι μπλοκαρισμένη</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="174"/>
         <source>Media</source>
         <comment>User profile page media section name</comment>
-        <translation type="unfinished"/>
+        <translation>Μέσα</translation>
     </message>
 </context>
 </TS>

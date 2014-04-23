@@ -29,7 +29,7 @@
         <location filename="../client/qml/Account.qml" line="94"/>
         <source>Nickname:</source>
         <comment>Account page nickname title</comment>
-        <translation>Nickname:</translation>
+        <translation>Spitzname:</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="126"/>
@@ -77,7 +77,7 @@
         <location filename="../client/qml/Account.qml" line="250"/>
         <source>This action will delete your account information from phone and from WhatsApp server.</source>
         <comment>Account page remove dialog description</comment>
-        <translation>Kontoinformationen werden vom Handy und WhatsApp-Server gelöscht.</translation>
+        <translation>Kontoinformationen werden von dem Handy und dem WhatsApp-Server gelöscht.</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="323"/>
@@ -200,13 +200,13 @@
         <location filename="../client/qml/ChatsPage.qml" line="43"/>
         <source>Quit and shutdown engine</source>
         <comment>Full quit remorse popup</comment>
-        <translation>Mitakuuluu schließt</translation>
+        <translation>Mitakuuluu wird beendet</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="59"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
-        <translation>trennt...</translation>
+        <translation>Verbindung wird getrennt</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="73"/>
@@ -236,7 +236,7 @@
         <location filename="../client/qml/ChatsPage.qml" line="144"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
-        <translation>Verlassen von Gruppe %1</translation>
+        <translation>Gruppe %1 wird verlassen</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="145"/>
@@ -248,7 +248,7 @@
         <location filename="../client/qml/ChatsPage.qml" line="221"/>
         <source>Typing...</source>
         <comment>Contact status typing text</comment>
-        <translation>schreibt...</translation>
+        <translation>Schreibt...</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="222"/>
@@ -404,7 +404,7 @@
         <location filename="../client/qml/ContactsPage.qml" line="105"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
-        <translation>%1 hat die Gruppe verlassen</translation>
+        <translation>Gruppe %1 verlassen</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="106"/>
@@ -479,13 +479,13 @@
         <location filename="../client/qml/ConversationPage.qml" line="250"/>
         <source>Load old conversation</source>
         <comment>Conversation menu item</comment>
-        <translation>ältere Unterhaltung laden</translation>
+        <translation>Ältere Unterhaltung laden</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="297"/>
         <source>Enable location in settings!</source>
         <comment>Banner text if GPS disabled in settings</comment>
-        <translation>Standort in Einstellungen aktivieren!</translation>
+        <translation>Standortabfrage in Einstellungen aktivieren</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="323"/>
@@ -497,19 +497,19 @@
         <location filename="../client/qml/ConversationPage.qml" line="339"/>
         <source>Hold button for recording, release to send</source>
         <comment>Conversation voice recorder description label</comment>
-        <translation>Zum Aufnehmen Symbol drücken, zum Senden loslassen</translation>
+        <translation>Knopf zum Aufnehmen gedrückt halten, zum Senden loslassen</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="441"/>
         <source>Typing...</source>
         <comment>Contact typing converstation text</comment>
-        <translation>schreibt...</translation>
+        <translation>Schreibt...</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="442"/>
         <source>Last seen: %1</source>
         <comment>Last seen converstation text</comment>
-        <translation>zuletzt gesehen: %1</translation>
+        <translation>Zuletzt gesehen: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="505"/>
@@ -521,7 +521,7 @@
         <location filename="../client/qml/ConversationPage.qml" line="533"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
-        <translation>Hier tippen, um Nachricht einzugeben</translation>
+        <translation>Nachricht...</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="744"/>
@@ -548,7 +548,7 @@
         <location filename="../client/qml/CoverPage.qml" line="34"/>
         <source>One unread message</source>
         <comment>Cover item label text</comment>
-        <translation>1 ungelesene Nachricht</translation>
+        <translation>Eine ungelesene Nachricht</translation>
     </message>
     <message>
         <location filename="../client/qml/CoverPage.qml" line="35"/>
@@ -568,7 +568,7 @@
         <location filename="../client/qml/CreateGroup.qml" line="75"/>
         <source>Write name of new group here</source>
         <comment>Create group subject area subtitle</comment>
-        <translation>Gruppenname</translation>
+        <translation>Name der Gruppe</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="252"/>
@@ -688,7 +688,7 @@
         <location filename="../client/qml/Location.qml" line="87"/>
         <source>You need to enable GPS positioning in settings</source>
         <comment>Location send page text</comment>
-        <translation>GPS in Einstellungen aktivieren</translation>
+        <translation>GPS in den Einstellungen aktivieren</translation>
     </message>
     <message>
         <location filename="../client/qml/Location.qml" line="160"/>
@@ -817,7 +817,7 @@
         <location filename="../client/src/mitakuuluu.cpp" line="229"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
-        <translation>registriere...</translation>
+        <translation>Registriere...</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="232"/>
@@ -1045,14 +1045,14 @@
         <location filename="../client/qml/Payments.qml" line="50"/>
         <source>Select preferred payment method to purchase WhatsApp service for: +%1</source>
         <comment>Payment method text</comment>
-        <translation>Zahlungsmethode wählen um Whatsapp für +%1 Jahr/e zu kaufen</translation>
+        <translation>Zahlungsmethode wählen, um WhatsApp für +%1 Jahr(e) zu kaufen</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="91"/>
         <source>PayPal is recommended. Neither PayPal nor Google Wallet requires you to make an account.</source>
         <comment>Payment description text</comment>
         <translation>PayPal wird empfohlen. 
-Weder PayPal noch Google Wallet fordert, die Anlegung eines Benutzerkonto.</translation>
+Weder PayPal, noch Google Wallet erfordern das Erstellen eines Benutzerkontos.</translation>
     </message>
 </context>
 <context>
@@ -1115,7 +1115,7 @@ Weder PayPal noch Google Wallet fordert, die Anlegung eines Benutzerkonto.</tran
         <location filename="../client/qml/RegistrationCombo.qml" line="75"/>
         <source>Search</source>
         <comment>Registration country selector</comment>
-        <translation type="unfinished"/>
+        <translation>Suchen</translation>
     </message>
 </context>
 <context>
@@ -1160,7 +1160,7 @@ Weder PayPal noch Google Wallet fordert, die Anlegung eines Benutzerkonto.</tran
         <location filename="../client/qml/RegistrationPage.qml" line="37"/>
         <source>sms message</source>
         <comment>Activation code requested text information</comment>
-        <translation>SMS</translation>
+        <translation>SMS Nachricht</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="38"/>
@@ -1195,14 +1195,14 @@ Before switching to Mitakuuluu please use &lt;Remove account&gt; option in your 
         <comment>Registration welcome message. %1 stands for version name</comment>
         <translation>Wilkommen bei Mitakuuluu v%1!
 
-Mitakuuluu ist WhatsApp-kompatibler Client für SailfishOS.
-Vor der Nutzung von Mitakuuluu, bitte die Option &lt;Konto entfernen&gt; in der zuletzt verwendeten WhatsApp Anwendung benutzen oder nach der Registrierung in Mitakuuluu durchführen.</translation>
+Mitakuuluu ist ein nativer WhatsApp-kompatibler Client für SailfishOS.
+Vor der Nutzung von Mitakuuluu, bitte die Option &lt;Konto entfernen&gt; in der zuletzt verwendeten WhatsApp-Anwendung benutzen, oder nach der Registrierung in Mitakuuluu durchführen.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="81"/>
         <source>Country</source>
         <comment>Registration country selector label</comment>
-        <translation type="unfinished"/>
+        <translation>Land</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="96"/>
@@ -1214,25 +1214,25 @@ Vor der Nutzung von Mitakuuluu, bitte die Option &lt;Konto entfernen&gt; in der 
         <location filename="../client/qml/RegistrationPage.qml" line="122"/>
         <source>Profile nickname</source>
         <comment>Registration nickname text field label</comment>
-        <translation>Nickname</translation>
+        <translation>Spitzname</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="123"/>
         <source>Enter your nickname</source>
         <comment>Registration nickname text field placeholder</comment>
-        <translation>Nickname eingeben</translation>
+        <translation>Spitznamen eingeben</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="133"/>
         <source>Protect your registration</source>
         <comment>Registration password field label</comment>
-        <translation>Sichere Registierung </translation>
+        <translation>Sichere deine Registierung ab</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="134"/>
         <source>Random password</source>
         <comment>Registration password field placeolder</comment>
-        <translation>zufälliges Passwort</translation>
+        <translation>Zufälliges Passwort</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="149"/>
@@ -1244,7 +1244,7 @@ Vor der Nutzung von Mitakuuluu, bitte die Option &lt;Konto entfernen&gt; in der 
         <location filename="../client/qml/RegistrationPage.qml" line="158"/>
         <source>Sms</source>
         <comment>Sms registration button text</comment>
-        <translation>SMS</translation>
+        <translation>SMS Nachricht</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="174"/>
@@ -1405,7 +1405,7 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/ResizePicture.qml" line="31"/>
         <source>Resize picture</source>
         <comment>Resize picture page title</comment>
-        <translation>Fotos skalieren</translation>
+        <translation>Bild skalieren</translation>
     </message>
 </context>
 <context>
@@ -1465,7 +1465,7 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/SelectPhonebook.qml" line="138"/>
         <source>Search contacts</source>
         <comment>Add contacts page search text</comment>
-        <translation>Kontaktesuche</translation>
+        <translation>Kontaktsuche</translation>
     </message>
 </context>
 <context>
@@ -1503,8 +1503,8 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <translation>Fehlerbeschreibung hier eingeben.
 
 1. Mitakuuluu gestartet
-2. Vorhaben durchgeführt
-3. Programmverhalten erwartet
+2. Etwas gemacht
+3. Bestimmtes Verhalten erwartet
 4. Falsches Resultat erhalten</translation>
     </message>
 </context>
@@ -1520,13 +1520,13 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="24"/>
         <source>Change presence</source>
         <comment>Settings cover action name text</comment>
-        <translation>Onlinestatus</translation>
+        <translation>Online-Status</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="25"/>
         <source>Mute/unmute</source>
         <comment>Settings cover action name text</comment>
-        <translation>Ton an/Ton aus</translation>
+        <translation>Ton an/aus</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="26"/>
@@ -1622,7 +1622,7 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="194"/>
         <source>Hide keyboard after sending message</source>
         <comment>Settings option name</comment>
-        <translation>Tastatur nach Senden einer Nachricht schließen</translation>
+        <translation>Tastatur nach dem Senden einer Nachricht schließen</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="200"/>
@@ -1669,13 +1669,13 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="254"/>
         <source>Connection server</source>
         <comment>Settings option name</comment>
-        <translation>Verbindungsserver</translation>
+        <translation>Server</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="285"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
-        <translation>Autostart</translation>
+        <translation>Automatisch starten</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="293"/>
@@ -1687,7 +1687,7 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="297"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
-        <translation>Das Programm muss komplett geschlossen werden um ein Log-Datei zu schreiben. Log-Datei senden erscheint im Pulleymenü der Einstellung.</translation>
+        <translation>Mitakuuluu muss komplett beendet werden, um die Log-Datei schreiben. &quot;Log-Dateien senden&quot; erscheint im Pulleymenü in den Einstellungen.</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="304"/>
@@ -1765,13 +1765,13 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="407"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
-        <translation>Coveraktion links</translation>
+        <translation>Linke Cover-Aktion</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="428"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
-        <translation>Coveraktion rechts</translation>
+        <translation>Rechte Cover-Aktion</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="442"/>
@@ -1783,7 +1783,7 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="468"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
-        <translation>automatische Downloadgröße</translation>
+        <translation>Automatische Downloadgröße</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="479"/>
@@ -1825,13 +1825,13 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="602"/>
         <source>Your email address</source>
         <comment>Log sending page text</comment>
-        <translation>Email-Adresse eingeben</translation>
+        <translation>E-Mail-Adresse eingeben</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="611"/>
         <source>Enter bug description here. As many information as  possible.</source>
         <comment>Log sending page text</comment>
-        <translation>Fehlerbeschreibung mit so vielen Informationen wie möglich.</translation>
+        <translation>Fehlerbeschreibung mit so vielen Informationen, wie möglich.</translation>
     </message>
 </context>
 <context>
@@ -1891,7 +1891,7 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/UserProfile.qml" line="147"/>
         <source>Nickname: %1</source>
         <comment>User profile page nickname label</comment>
-        <translation>Nickname: %1</translation>
+        <translation>Spitzname: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="154"/>
