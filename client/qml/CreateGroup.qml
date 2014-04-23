@@ -32,29 +32,32 @@ Dialog {
         Mitakuuluu.createGroup(groupTitle.text.trim(), avaholder.source, jids)
     }
 
+    DialogHeader {
+        id: header
+        title: qsTr("Create group", "Greate group page title")
+    }
+
     SilicaFlickable {
         id: flick
-        anchors.fill: parent
-        contentHeight: content.height
+        anchors {
+            top: header.bottom
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
 
-        Column {
-            id: content
+        contentHeight: height
+
+        Row {
+            id: detailsrow
             width: parent.width
+            height: avaholder.height
             spacing: Theme.paddingMedium
-
-            DialogHeader {
-                id: header
-                title: qsTr("Create group", "Greate group page title")
-            }
 
             AvatarHolder {
                 id: avaholder
                 width: Theme.itemSizeMedium
                 height: Theme.itemSizeMedium
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingLarge
-                }
 
                 MouseArea {
                     anchors.fill: parent
@@ -66,46 +69,43 @@ Dialog {
 
             TextField {
                 id: groupTitle
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    margins: Theme.paddingLarge
-                }
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width - avaholder.width - Theme.paddingMedium
                 onTextChanged: checkCanAccept()
                 placeholderText: qsTr("Write name of new group here", "Create group subject area subtitle")
                 EnterKey.enabled: text.length > 0
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: listView.forceActiveFocus()
             }
+        }
 
-            SilicaListView {
-                id: listView
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
-                height: listView.contentHeight
-                interactive: false
+        SilicaListView {
+            id: listView
+            anchors {
+                top: detailsrow.bottom
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
 
-                model: contactsModel
-                delegate: contactsDelegate
-                clip: true
-                section.property: "nickname"
-                section.criteria: ViewSection.FirstCharacter
-                section.delegate: Component {
-                    SectionHeader {
-                        text: section
-                    }
+            model: contactsModel
+            delegate: contactsDelegate
+            clip: true
+            section.property: "nickname"
+            section.criteria: ViewSection.FirstCharacter
+            section.delegate: Component {
+                SectionHeader {
+                    text: section
                 }
-                onCountChanged: {
-                    fastScroll.init()
-                }
+            }
+            onCountChanged: {
+                fastScroll.init()
+            }
 
-                FastScroll {
-                    id: fastScroll
-                    listView: listView
-                    __hasPageHeight: false
-                }
+            FastScroll {
+                id: fastScroll
+                listView: listView
+                __hasPageHeight: false
             }
         }
     }
@@ -117,6 +117,9 @@ Dialog {
         showUnknown: acceptUnknown
         showActive: false
         filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
+        onContactsModelChanged: {
+            fastScroll.init()
+        }
         Component.onCompleted: {
             init()
         }
