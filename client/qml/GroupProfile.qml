@@ -143,13 +143,10 @@ Page {
                 text: qsTr("Add contacts", "Group profile page menu item")
                 enabled: listView.count > 0
                 onClicked: {
-                    selectContact.added.connect(listView.contactAdded)
-                    selectContact.removed.connect(listView.contactRemoved)
-                    selectContact.done.connect(listView.selectFinished)
-                    selectContact.contactsChanged()
-                    selectContact.select(participantsModel)
-                    selectContact.jid = page.jid
-                    selectContact.open()
+                    pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"jid": page.jid, "multiple": true, "selected": participantsModel})
+                    pageStack.currentPage.done.connect(listView.selectFinished)
+                    pageStack.currentPage.added.connect(listView.contactAdded)
+                    pageStack.currentPage.removed.connect(listView.contactRemoved)
                 }
             }
         }
@@ -305,9 +302,9 @@ Page {
             }
 
             function selectFinished() {
-                selectContact.done.disconnect(listView.selectFinished)
-                selectContact.added.disconnect(listView.contactAdded)
-                selectContact.removed.disconnect(listView.contactRemoved)
+                pageStack.currentPage.done.disconnect(listView.selectFinished)
+                pageStack.currentPage.added.disconnect(listView.contactAdded)
+                pageStack.currentPage.removed.disconnect(listView.contactRemoved)
             }
         }
 

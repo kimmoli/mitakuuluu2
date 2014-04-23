@@ -17,10 +17,10 @@ Dialog {
     signal removed(string pjid)
 
     property ListModel selected
-    onSelectedChanged: select(jids)
-    function select(participants) {
-        for (var i = 0; i < participants.count; i ++) {
-            var model = participants.get(i)
+    onSelectedChanged: select(selected)
+    function select(selected) {
+        for (var i = 0; i < selected.count; i ++) {
+            var model = selected.get(i)
             var value = page.jids
             value.splice(0, 0, model.jid)
             page.jids = value

@@ -16,6 +16,8 @@ Page {
 
     onStatusChanged: {
         if (page.status === PageStatus.Inactive && pageStack.depth === 1) {
+            if (positionSource)
+                positionSource.destroy()
             saveText()
             Mitakuuluu.setActiveJid("")
         }
@@ -716,7 +718,7 @@ Page {
 
     function createPositionSource() {
         console.log("creating location component")
-        positionSource = positionSourceComponent.createObject(null)
+        positionSource = positionSourceComponent.createObject(null, {"initialTimestamp": new Date().getTime()})
     }
 
     Component {
@@ -724,25 +726,44 @@ Page {
         PositionSource {
             active: true
             updateInterval : 1000
+            property int initialTimestamp: 0
 
             onPositionChanged: {
-                if (positionSource
-                        && positionSource.position
-                        && positionSource.position.longitudeValid
-                        && positionSource.position.latitudeValid
-                        && positionSource.position.coordinate.isValid) {
-                    Mitakuuluu.sendLocation(page.jid,
-                                            positionSource.position.coordinate.latitude,
-                                            positionSource.position.coordinate.longitude,
-                                            16,
-                                            false)
-                    positionSource.destroy()
+                if (positionSource) {
+                    if (positionSource.position) {
+                        if (positionSource.position.horizontalAccuracyValid) {
+                            console.log("accuracy valid: " + positionSource.position.horizontalAccuracyValid)
+                        }
+                        if (positionSource.position.horizontalAccuracy > 0) {
+                            console.log("good accuracy: " + positionSource.position.horizontalAccuracy)
+                        }
+                        if (positionSource.position.timestamp.getTime() >= initialTimestamp) {
+                            console.log("good timestamp: " + Qt.formatDateTime(positionSource.position.timestamp, "dd.MM.yyyy hh:mm:ss") + "" + positionSource.position.timestamp)
+                        }
+
+                        if (positionSource.position.horizontalAccuracyValid
+                                && positionSource.position.horizontalAccuracy > 0
+                                && positionSource.position.timestamp.getTime() >= initialTimestamp
+                                && positionSource.position.coordinate
+                                && positionSource.position.coordinate.isValid) {
+                            console.log("coordinates valid")
+                            console.log("latitude: " + positionSource.position.coordinate.latitude)
+                            console.log("longitude: " + positionSource.position.coordinate.longitude)
+                            Mitakuuluu.sendLocation(page.jid,
+                                                    positionSource.position.coordinate.latitude,
+                                                    positionSource.position.coordinate.longitude,
+                                                    16,
+                                                    false)
+                            positionSource.active = false
+                            positionSource.destroy()
+                        }
+                    }
                 }
             }
 
             Component.onCompleted: {
                 banner.notify(qsTr("Waiting for coordinates...", "Conversation location sending banner text"))
-                console.log("waiting for coordinates")
+                console.log("waiting for coordinates. initial: " + initialTimestamp)
             }
 
             onSourceErrorChanged: {
