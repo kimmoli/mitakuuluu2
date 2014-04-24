@@ -8,6 +8,8 @@ Disclaimer
 
 WhatsApp is a registered trademark of WhatsApp Inc registered in the U.S. and other countries. This project is an independent work and has not been authorized, sponsored, or otherwise approved by WhatsApp Inc.
 
+* Forum (TMO): http://talk.maemo.org/showthread.php?t=92160
+
 Posting bugreports
 ==========
 
