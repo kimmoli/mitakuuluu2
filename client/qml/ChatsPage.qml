@@ -124,9 +124,8 @@ Page {
             cacheBuffer: page.height * 2
             pressDelay: 0
             spacing: Theme.paddingSmall
-            section.property: "nickname"
-            section.criteria: ViewSection.FirstCharacter
             currentIndex: -1
+            VerticalScrollDecorator {}
         }
     }
 
