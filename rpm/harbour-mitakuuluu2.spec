@@ -98,10 +98,10 @@ systemctl restart mce.service
 %files
 %defattr(-,root,root,-)
 %{_datadir}/dbus-1/services
-/etc/mce
-/etc/profiled
+%config /etc/mce/*.ini
+%config /etc/profiled/*.ini
+%config %{_datadir}/ngfd/events.d/*.ini
 %{_datadir}/lipstick/notificationcategories
-%{_datadir}/ngfd/events.d
 #%{_datadir}/jolla-gallery/mediasources
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps

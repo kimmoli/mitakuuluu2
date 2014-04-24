@@ -29,7 +29,7 @@ notification.files = notification/harbour.mitakuuluu2.notification.conf \
                      notification/harbour.mitakuuluu2.media.conf
 notification.path = /usr/share/lipstick/notificationcategories/
 
-patterns.files = patterns/2014mitakuuluu_led.ini
+patterns.files = patterns/60-mitakuuluu_led.ini
 patterns.path = /etc/mce
 
 events.files = events/mitakuuluu_group.ini \
@@ -37,7 +37,7 @@ events.files = events/mitakuuluu_group.ini \
                events/mitakuuluu_private.ini
 events.path = /usr/share/ngfd/events.d/
 
-profiled.files = profiled/2014.mitakuuluu.ini
+profiled.files = profiled/60.mitakuuluu.ini
 profiled.path = /etc/profiled
 
 systemd.files = systemd/harbour-mitakuuluu2.service
