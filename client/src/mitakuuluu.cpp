@@ -210,7 +210,7 @@ QVariant Mitakuuluu::getProfileValue(const QString &key, const QVariant def)
     return def;
 }
 
-void Mitakuuluu::setProfileValue(const QString &key, const QVariant &value)
+bool Mitakuuluu::setProfileValue(const QString &key, const QVariant &value)
 {
     QDBusMessage reply = profiled->call(PROFILED_SET_VALUE,
                                         QVariant("general"),
@@ -219,6 +219,8 @@ void Mitakuuluu::setProfileValue(const QString &key, const QVariant &value)
 
     if (reply.type() == QDBusMessage::ErrorMessage) {
         qDebug() << Q_FUNC_INFO << "error reply:" << reply.errorName();
+    } else if (reply.arguments().count() > 0) {
+        return reply.arguments().at(0).toBool();
     }
 }
 
@@ -1002,7 +1004,7 @@ void Mitakuuluu::setPrivateTone(const QString &path)
 {
     qDebug() << "setPrivateTone" << path;
 
-    setProfileValue(PROFILEKEY_PRIVATE_TONE, path);
+    qDebug() << "success:" << setProfileValue(PROFILEKEY_PRIVATE_TONE, path);
 
     Q_EMIT privateToneChanged();
 }
@@ -1033,32 +1035,38 @@ void Mitakuuluu::setMediaTone(const QString &path)
 
 bool Mitakuuluu::getPrivateToneEnabled()
 {
-    return getProfileValue(PROFILEKEY_PRIVATE_ENABLED, true).toBool();
+    return getProfileValue(PROFILEKEY_PRIVATE_ENABLED, "On").toString() == "On";
 }
 
 void Mitakuuluu::setPrivateToneEnabled(bool value)
 {
-    setProfileValue(PROFILEKEY_PRIVATE_ENABLED, value);
+    setProfileValue(PROFILEKEY_PRIVATE_ENABLED, value ? "On" : "Off");
+
+    Q_EMIT privateToneEnabledChanged();
 }
 
 bool Mitakuuluu::getGroupToneEnabled()
 {
-    return getProfileValue(PROFILEKEY_GROUP_ENABLED, true).toBool();
+    return getProfileValue(PROFILEKEY_GROUP_ENABLED, "On").toString() == "On";
 }
 
 void Mitakuuluu::setGroupToneEnabled(bool value)
 {
-    setProfileValue(PROFILEKEY_GROUP_ENABLED, value);
+    setProfileValue(PROFILEKEY_GROUP_ENABLED, value ? "On" : "Off");
+
+    Q_EMIT groupToneEnabledChanged();
 }
 
 bool Mitakuuluu::getMediaToneEnabled()
 {
-    return getProfileValue(PROFILEKEY_MEDIA_ENABLED, true).toBool();
+    return getProfileValue(PROFILEKEY_MEDIA_ENABLED, "On").toString() == "On";
 }
 
 void Mitakuuluu::setMediaToneEnabled(bool value)
 {
-    setProfileValue(PROFILEKEY_MEDIA_ENABLED, value);
+    setProfileValue(PROFILEKEY_MEDIA_ENABLED, value ? "On" : "Off");
+
+    Q_EMIT mediaToneEnabledChanged();
 }
 
 QStringList Mitakuuluu::getLocalesNames()

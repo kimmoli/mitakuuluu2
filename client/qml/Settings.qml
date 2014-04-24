@@ -219,16 +219,9 @@ Page {
                 text: qsTr("Common", "Settings page section name")
             }
 
-            TextSwitch {
-                checked: systemNotifications
-                text: qsTr("Use system Chat notifications", "Settings option name")
-                onClicked: systemNotifications = checked
-            }
-
             ValueButton {
                 label: qsTr("Private message", "Settings page Private message tone selection")
-                value: metadataReader.getTitle(Mitakuuluu.privateTone) || qsTr("no sound", "Private message tone not set")
-                visible: !systemNotifications
+                value: Mitakuuluu.privateToneEnabled ? metadataReader.getTitle(Mitakuuluu.privateTone) : qsTr("no sound", "Private message tone not set")
                 onClicked: {
                     var dialog = pageStack.push(dialogComponent, {
                                     activeFilename: Mitakuuluu.privateTone,
@@ -251,8 +244,7 @@ Page {
 
             ValueButton {
                 label: qsTr("Group message", "Settings page Group message tone selection")
-                value: metadataReader.getTitle(Mitakuuluu.groupTone) || qsTr("no sound", "Group message tone not set")
-                visible: !systemNotifications
+                value: Mitakuuluu.groupToneEnabled ? metadataReader.getTitle(Mitakuuluu.groupTone) : qsTr("no sound", "Group message tone not set")
                 onClicked: {
                     var dialog = pageStack.push(dialogComponent, {
                                     activeFilename: Mitakuuluu.groupTone,
@@ -273,8 +265,7 @@ Page {
 
             ValueButton {
                 label: qsTr("Media message", "Settings page Media message tone selection")
-                value: metadataReader.getTitle(Mitakuuluu.mediaTone) || qsTr("no sound", "Medi message tone not set")
-                visible: !systemNotifications
+                value: Mitakuuluu.mediaToneEnabled ? metadataReader.getTitle(Mitakuuluu.mediaTone) : qsTr("no sound", "Medi message tone not set")
                 onClicked: {
                     var dialog = pageStack.push(dialogComponent, {
                                     activeFilename: Mitakuuluu.mediaTone,

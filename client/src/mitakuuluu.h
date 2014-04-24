@@ -111,7 +111,7 @@ public:
 
 private:
     QVariant getProfileValue(const QString &key, QVariant def = QVariant());
-    void setProfileValue(const QString &key, const QVariant &value);
+    bool setProfileValue(const QString &key, const QVariant &value);
 
     int connStatus;
     int connectionStatus();

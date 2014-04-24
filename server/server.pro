@@ -23,8 +23,7 @@ data.files = data/mime-types.tab \
              data/countries.csv
 data.path = /usr/share/harbour-mitakuuluu2/data
 
-notification.files = notification/harbour.mitakuuluu2.message.conf \
-                     notification/harbour.mitakuuluu2.notification.conf \
+notification.files = notification/harbour.mitakuuluu2.notification.conf \
                      notification/harbour.mitakuuluu2.private.conf \
                      notification/harbour.mitakuuluu2.group.conf \
                      notification/harbour.mitakuuluu2.media.conf
@@ -57,8 +56,6 @@ SOURCES += src/whatsapp-server.cpp \
     ../threadworker/threadworker.cpp \
     ../threadworker/queryexecutor.cpp \
     src/client.cpp \
-#    src/qt-json/json.cpp \
-#    src/Transfers/whatsapptransfer.cpp \
     src/Whatsapp/util/utilities.cpp \
     src/Whatsapp/util/messagedigest.cpp \
     src/Whatsapp/util/qtmd5digest.cpp \
@@ -99,8 +96,6 @@ HEADERS += \
     src/version.h \
     src/globalconstants.h \
     src/client.h \
-#    src/qt-json/json.h \
-#    src/Transfers/whatsapptransfer.h \
     src/Whatsapp/util/utilities.h \
     src/Whatsapp/util/messagedigest.h \
     src/Whatsapp/util/qtmd5digest.h \

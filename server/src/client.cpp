@@ -2594,20 +2594,17 @@ void Client::dbResults(const QVariant &result)
                 msg = tr("%n messages unread", "Message notification with unread messages count", unread);
             }
 
-            QString notifyType = "harbour.mitakuuluu2.message";
-            bool systemNotifications = settings->value("settings/systemNotifications", true).toBool();
-            if (!systemNotifications) {
-                bool media = reply["media"].toBool();
-                if (media) {
-                    notifyType = "harbour.mitakuuluu2.media";
+            QString notifyType;
+            bool media = reply["media"].toBool();
+            if (media) {
+                notifyType = "harbour.mitakuuluu2.media";
+            }
+            else {
+                if (jid.contains("-")) {
+                    notifyType = "harbour.mitakuuluu2.group";
                 }
                 else {
-                    if (jid.contains("-")) {
-                        notifyType = "harbour.mitakuuluu2.group";
-                    }
-                    else {
-                        notifyType = "harbour.mitakuuluu2.private";
-                    }
+                    notifyType = "harbour.mitakuuluu2.private";
                 }
             }
 
