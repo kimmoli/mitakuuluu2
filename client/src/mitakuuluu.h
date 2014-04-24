@@ -18,6 +18,27 @@
 #include <libexif/exif-entry.h>
 #include <libexif/exif-data.h>
 
+#include "profile_dbus.h"
+
+#define PROFILEKEY_PRIVATE_TONE     "mitakuuluu.private.tone"
+#define PROFILEKEY_PRIVATE_ENABLED  "mitakuuluu.private.enabled"
+
+#define PROFILEKEY_GROUP_TONE       "mitakuuluu.group.tone"
+#define PROFILEKEY_GROUP_ENABLED    "mitakuuluu.group.enabled"
+
+#define PROFILEKEY_MEDIA_TONE       "mitakuuluu.media.tone"
+#define PROFILEKEY_MEDIA_ENABLED    "mitakuuluu.media.enabled"
+
+#define TONE_FALLBACK               "/usr/share/sounds/jolla-ringtones/stereo/jolla-imtone.wav"
+
+struct MyStructure {
+    QString key, val, type;
+};
+QDBusArgument &operator<<(QDBusArgument &a, const MyStructure &mystruct);
+const QDBusArgument &operator>>(const QDBusArgument &a, MyStructure &mystruct);
+
+Q_DECLARE_METATYPE(MyStructure)
+
 class Mitakuuluu: public QObject
 {
     Q_OBJECT
@@ -32,6 +53,14 @@ class Mitakuuluu: public QObject
     Q_PROPERTY(QString mnc READ mnc NOTIFY mncChanged)
     Q_PROPERTY(int totalUnread READ totalUnread NOTIFY totalUnreadChanged)
     Q_PROPERTY(QString myJid READ myJid NOTIFY myJidChanged)
+
+    Q_PROPERTY(QString mediaTone READ getMediaTone WRITE setMediaTone NOTIFY mediaToneChanged)
+    Q_PROPERTY(QString privateTone READ getPrivateTone WRITE setPrivateTone NOTIFY privateToneChanged)
+    Q_PROPERTY(QString groupTone READ getGroupTone WRITE setGroupTone NOTIFY groupToneChanged)
+
+    Q_PROPERTY(bool mediaToneEnabled READ getMediaToneEnabled WRITE setMediaToneEnabled NOTIFY mediaToneEnabledChanged)
+    Q_PROPERTY(bool privateToneEnabled READ getPrivateToneEnabled WRITE setPrivateToneEnabled NOTIFY privateToneEnabledChanged)
+    Q_PROPERTY(bool groupToneEnabled READ getGroupToneEnabled WRITE setGroupToneEnabled NOTIFY groupToneEnabledChanged)
 
 public:
     enum ConnectionStatus {
@@ -81,6 +110,9 @@ public:
     ~Mitakuuluu();
 
 private:
+    QVariant getProfileValue(const QString &key, QVariant def = QVariant());
+    void setProfileValue(const QString &key, const QVariant &value);
+
     int connStatus;
     int connectionStatus();
 
@@ -116,6 +148,8 @@ private:
     QStringList _locales;
     QStringList _localesNames;
     QString _currentLocale;
+
+    QDBusInterface *profiled;
 
 signals:
     void connectionStatusChanged();
@@ -178,6 +212,14 @@ signals:
 
     void totalUnreadChanged();
 
+    void privateToneChanged();
+    void groupToneChanged();
+    void mediaToneChanged();
+
+    void privateToneEnabledChanged();
+    void groupToneEnabledChanged();
+    void mediaToneEnabledChanged();
+
 private slots:
     void onConnectionStatusChanged(int status);
     void onSimParameters(const QString &mcccode, const QString &mnccode);
@@ -191,6 +233,8 @@ private slots:
 
     void groupCreated(const QString &gjid);
     void onGroupInfo(const QVariantMap &data);
+
+    void handleProfileChanged(bool changed, bool active, QString profile, QList<MyStructure> keyValType);
 
 public slots:
     Q_SCRIPTABLE void exit();
@@ -265,6 +309,20 @@ public slots:
     void unsubscribe(const QString &jid);
     QString getAvatarForJid(const QString &jid);
     void rejectMediaCapture(const QString &path);
+
+    QString getPrivateTone();
+    void setPrivateTone(const QString &path);
+    QString getGroupTone();
+    void setGroupTone(const QString &path);
+    QString getMediaTone();
+    void setMediaTone(const QString &path);
+
+    bool getPrivateToneEnabled();
+    void setPrivateToneEnabled(bool value);
+    bool getGroupToneEnabled();
+    void setGroupToneEnabled(bool value);
+    bool getMediaToneEnabled();
+    void setMediaToneEnabled(bool value);
 
     QStringList getLocalesNames();
     int getCurrentLocaleIndex();

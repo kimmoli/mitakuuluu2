@@ -23,9 +23,23 @@ data.files = data/mime-types.tab \
              data/countries.csv
 data.path = /usr/share/harbour-mitakuuluu2/data
 
-notification.files = notification/harbour.mitakuuluu2.notification.conf \
-                     notification/harbour.mitakuuluu2.message.conf
+notification.files = notification/harbour.mitakuuluu2.message.conf \
+                     notification/harbour.mitakuuluu2.notification.conf \
+                     notification/harbour.mitakuuluu2.private.conf \
+                     notification/harbour.mitakuuluu2.group.conf \
+                     notification/harbour.mitakuuluu2.media.conf
 notification.path = /usr/share/lipstick/notificationcategories/
+
+patterns.files = patterns/2014mitakuuluu_led.ini
+patterns.path = /etc/mce
+
+events.files = events/mitakuuluu_group.ini \
+               events/mitakuuluu_media.ini \
+               events/mitakuuluu_private.ini
+events.path = /usr/share/ngfd/events.d/
+
+profiled.files = profiled/2014.mitakuuluu.ini
+profiled.path = /etc/profiled
 
 systemd.files = systemd/harbour-mitakuuluu2.service
 systemd.path = /usr/lib/systemd/user
@@ -36,7 +50,7 @@ icons.path = /usr/share/harbour-mitakuuluu2/images
 dbus.files = dbus/harbour.mitakuuluu2.server.service
 dbus.path = /usr/share/dbus-1/services
 
-INSTALLS = target data notification icons dbus systemd
+INSTALLS = target data notification patterns events profiled icons dbus systemd
 
 SOURCES += src/whatsapp-server.cpp \
 #    src/heartbeat.cpp \

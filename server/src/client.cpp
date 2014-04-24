@@ -389,6 +389,7 @@ void Client::addMessage(const FMessage &message)
             notify["jid"] = jid;
             notify["pushName"] = message.notify_name;
             notify["type"] = QueryType::ConversationNotifyMessage;
+            notify["media"] = message.media_wa_type != FMessage::Text;
             if (message.type == FMessage::MediaMessage) {
                 switch (message.media_wa_type) {
                 case FMessage::Image: text = tr("Image", "Notification media name text"); break;
@@ -2593,7 +2594,24 @@ void Client::dbResults(const QVariant &result)
                 msg = tr("%n messages unread", "Message notification with unread messages count", unread);
             }
 
-            MNotification *notification = new MNotification("harbour.mitakuuluu2.message", msg, name);
+            QString notifyType = "harbour.mitakuuluu2.message";
+            bool systemNotifications = settings->value("settings/systemNotifications", true).toBool();
+            if (!systemNotifications) {
+                bool media = reply["media"].toBool();
+                if (media) {
+                    notifyType = "harbour.mitakuuluu2.media";
+                }
+                else {
+                    if (jid.contains("-")) {
+                        notifyType = "harbour.mitakuuluu2.group";
+                    }
+                    else {
+                        notifyType = "harbour.mitakuuluu2.private";
+                    }
+                }
+            }
+
+            MNotification *notification = new MNotification(notifyType, msg, name);
             notification->setImage(avatar.isEmpty() ? "/usr/share/harbour-mitakuuluu2/images/notification.png" : avatar);
             MRemoteAction action("harbour.mitakuuluu2.client", "/", "harbour.mitakuuluu2.client", "notificationCallback", QVariantList() << jid);
             notification->setAction(action);

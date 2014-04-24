@@ -122,6 +122,9 @@ ApplicationWindow {
     property bool sentLeft: false
     onSentLeftChanged: Mitakuuluu.save("settings/sentLeft", sentLeft)
 
+    property bool systemNotifications: true
+    onSystemNotificationsChanged: Mitakuuluu.save("settings/systemNotifications", systemNotifications)
+
     property int currentOrientation: pageStack._currentOrientation
 
     /*property PeopleModel allContactsModel: PeopleModel {
@@ -534,6 +537,7 @@ ApplicationWindow {
         automaticDownload = Mitakuuluu.load("settings/autodownload", false)
         automaticDownloadBytes = Mitakuuluu.load("settings/automaticdownload", 524288)
         sentLeft = Mitakuuluu.load("settings/sentLeft", false)
+        systemNotifications = Mitakuuluu.load("settings/systemNotifications", true)
 
         updateCoverActions()
     }

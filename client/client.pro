@@ -42,6 +42,7 @@ SOURCES += \
 HEADERS += \
     ../threadworker/threadworker.h \
     ../threadworker/queryexecutor.h \
+    src/profile_dbus.h \
     src/constants.h \
     src/conversationmodel.h \
     src/mitakuuluu.h \

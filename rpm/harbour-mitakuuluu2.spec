@@ -90,12 +90,18 @@ fi
 # << preun
 
 %post
+# >> post
+systemctl-user restart ngfd.service
+systemctl restart mce.service
 # << post
 
 %files
 %defattr(-,root,root,-)
 %{_datadir}/dbus-1/services
+/etc/mce
+/etc/profiled
 %{_datadir}/lipstick/notificationcategories
+%{_datadir}/ngfd/events.d
 #%{_datadir}/jolla-gallery/mediasources
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps

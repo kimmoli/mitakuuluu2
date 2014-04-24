@@ -100,6 +100,9 @@ int main(int argc, char *argv[])
     gst_init(0, 0);
     gst_preset_set_app_dir("/usr/share/jolla-camera/presets/");
 
+    qDBusRegisterMetaType<MyStructure>();
+    qDBusRegisterMetaType<QList<MyStructure > >();
+
     qDebug() << "Starting application";
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app->setOrganizationName("harbour-mitakuuluu2");

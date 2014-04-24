@@ -13,6 +13,27 @@
 #include <QClipboard>
 #include <QStandardPaths>
 
+Q_DECLARE_METATYPE(QList<MyStructure>)
+
+QDBusArgument &operator<<(QDBusArgument &argument, const MyStructure &mystruct)
+{
+    argument.beginStructure();
+    argument << mystruct.key << mystruct.val << mystruct.type;
+    argument.endStructure();
+    return argument;
+}
+
+// Retrieve the MyStructure data from the D-Bus argument
+const QDBusArgument &operator>>(const QDBusArgument &argument, MyStructure &mystruct)
+{
+    argument.beginStructure();
+    argument >> mystruct.key;
+    argument >> mystruct.val;
+    argument >> mystruct.type;
+    argument.endStructure();
+    return argument;
+}
+
 Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
 {
     qDebug() << "Creating dbus...";
@@ -48,6 +69,12 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         settings = new QSettings("coderus", "mitakuuluu2", this);
         _currentLocale = settings->value("settings/locale", QString("%1.qm").arg(QLocale::system().name().split(".").first())).toString();
         setLocale(_currentLocale);
+
+        QDBusConnection::sessionBus().connect(PROFILED_SERVICE, PROFILED_PATH, PROFILED_INTERFACE,
+                        "profile_changed", QString("bbsa(sss)"), this,
+                        SIGNAL(handleProfileChanged(bool, bool, QString, QList<MyStructure>)));
+
+        profiled = new QDBusInterface(PROFILED_SERVICE, PROFILED_PATH, PROFILED_INTERFACE, QDBusConnection::sessionBus());
 
         qDebug() << "Connecting to DBus signals";
         iface = new QDBusInterface(SERVER_SERVICE,
@@ -167,6 +194,32 @@ Mitakuuluu::~Mitakuuluu()
 {
     if (connStatus == LoggedIn)
         setPresenceUnavailable();
+}
+
+QVariant Mitakuuluu::getProfileValue(const QString &key, const QVariant def)
+{
+    QDBusMessage reply = profiled->call(PROFILED_GET_VALUE,
+                                        QVariant("general"),
+                                        QVariant(key));
+
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        qDebug() << Q_FUNC_INFO << "error reply:" << reply.errorName();
+    } else if (reply.arguments().count() > 0) {
+        return reply.arguments().at(0);
+    }
+    return def;
+}
+
+void Mitakuuluu::setProfileValue(const QString &key, const QVariant &value)
+{
+    QDBusMessage reply = profiled->call(PROFILED_SET_VALUE,
+                                        QVariant("general"),
+                                        QVariant(key),
+                                        value);
+
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        qDebug() << Q_FUNC_INFO << "error reply:" << reply.errorName();
+    }
 }
 
 int Mitakuuluu::connectionStatus()
@@ -609,11 +662,20 @@ void Mitakuuluu::onGroupInfo(const QVariantMap &data)
         if (!_pendingParticipants.isEmpty()) {
             addParticipants(_pendingGroup, _pendingParticipants);
         }
+        Q_EMIT notificationOpenJid(_pendingGroup);
         _pendingAvatar.clear();
         _pendingParticipants.clear();
         _pendingGroup.clear();
     }
     Q_EMIT groupInfo(data);
+}
+
+void Mitakuuluu::handleProfileChanged(bool changed, bool active, QString profile, QList<MyStructure> keyValType)
+{
+    qDebug() << "handleProfileChanged" << changed << active << profile;
+    foreach (MyStructure item, keyValType) {
+        qDebug() << item.type << item.key << item.val;
+    }
 }
 
 void Mitakuuluu::exit()
@@ -927,6 +989,76 @@ void Mitakuuluu::rejectMediaCapture(const QString &path)
     QFile file(path);
     if (file.exists())
         file.remove();
+}
+
+QString Mitakuuluu::getPrivateTone()
+{
+    QString tone = getProfileValue(PROFILEKEY_PRIVATE_TONE, TONE_FALLBACK).toString();
+    qDebug() << "getPrivateTone" << tone;
+    return tone;
+}
+
+void Mitakuuluu::setPrivateTone(const QString &path)
+{
+    qDebug() << "setPrivateTone" << path;
+
+    setProfileValue(PROFILEKEY_PRIVATE_TONE, path);
+
+    Q_EMIT privateToneChanged();
+}
+
+QString Mitakuuluu::getGroupTone()
+{
+    return getProfileValue(PROFILEKEY_GROUP_TONE, TONE_FALLBACK).toString();
+}
+
+void Mitakuuluu::setGroupTone(const QString &path)
+{
+    setProfileValue(PROFILEKEY_GROUP_TONE, path);
+
+    Q_EMIT groupToneChanged();
+}
+
+QString Mitakuuluu::getMediaTone()
+{
+    return getProfileValue(PROFILEKEY_MEDIA_TONE, TONE_FALLBACK).toString();
+}
+
+void Mitakuuluu::setMediaTone(const QString &path)
+{
+    setProfileValue(PROFILEKEY_MEDIA_TONE, path);
+
+    Q_EMIT mediaToneChanged();
+}
+
+bool Mitakuuluu::getPrivateToneEnabled()
+{
+    return getProfileValue(PROFILEKEY_PRIVATE_ENABLED, true).toBool();
+}
+
+void Mitakuuluu::setPrivateToneEnabled(bool value)
+{
+    setProfileValue(PROFILEKEY_PRIVATE_ENABLED, value);
+}
+
+bool Mitakuuluu::getGroupToneEnabled()
+{
+    return getProfileValue(PROFILEKEY_GROUP_ENABLED, true).toBool();
+}
+
+void Mitakuuluu::setGroupToneEnabled(bool value)
+{
+    setProfileValue(PROFILEKEY_GROUP_ENABLED, value);
+}
+
+bool Mitakuuluu::getMediaToneEnabled()
+{
+    return getProfileValue(PROFILEKEY_MEDIA_ENABLED, true).toBool();
+}
+
+void Mitakuuluu::setMediaToneEnabled(bool value)
+{
+    setProfileValue(PROFILEKEY_MEDIA_ENABLED, value);
 }
 
 QStringList Mitakuuluu::getLocalesNames()
