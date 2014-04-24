@@ -560,7 +560,7 @@ MouseArea {
 
             IconButton {
                 anchors.centerIn: parent
-                icon.source: (model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-m-clear" : "image://theme/icon-m-down"
+                icon.source: (model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-l-clear" : "image://theme/icon-l-down"
                 visible: model.local.length == 0
                 onClicked: {
                     if (model.mediaprogress > 0 && model.mediaprogress < 100)
@@ -608,7 +608,7 @@ MouseArea {
 
             IconButton {
                 anchors.centerIn: parent
-                icon.source: (model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-m-clear" : "image://theme/icon-m-down"
+                icon.source: (model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-l-clear" : "image://theme/icon-l-down"
                 visible: model.local.length == 0
                 onClicked: {
                     if (model.mediaprogress > 0 && model.mediaprogress < 100)
@@ -701,7 +701,7 @@ MouseArea {
                 anchors.verticalCenter: parent.verticalCenter
                 icon.source: source.length > 0 ? (player.playbackState == Audio.PlayingState ? "image://theme/icon-m-pause"
                                                                                              : "image://theme/icon-m-play")
-                                               : ((model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-m-clear" : "image://theme/icon-m-down")
+                                               : ((model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-l-clear" : "image://theme/icon-l-down")
                 onClicked: {
                     if (source.length > 0)
                     {

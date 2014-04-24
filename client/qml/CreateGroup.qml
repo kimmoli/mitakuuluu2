@@ -7,7 +7,6 @@ Dialog {
     id: page
     canAccept: false
 
-    property string pendingGroup: ""
     property variant jids: []
 
     function checkCanAccept() {
@@ -16,9 +15,9 @@ Dialog {
 
     onStatusChanged: {
         if (status == DialogStatus.Opened) {
-            //groupTitle.text = ""
-            groupTitle.forceActiveFocus()
-            fastScroll.init()
+            if (groupTitle.text.length == 0) {
+                groupTitle.forceActiveFocus()
+            }
         }
     }
 
@@ -32,26 +31,39 @@ Dialog {
         Mitakuuluu.createGroup(groupTitle.text.trim(), avaholder.source, jids)
     }
 
-    DialogHeader {
-        id: header
-        title: qsTr("Create group", "Greate group page title")
-    }
-
     SilicaFlickable {
         id: flick
-        anchors {
-            top: header.bottom
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
+        anchors.fill: parent
+        pressDelay: 0
+
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Add contacts", "Group profile page menu item")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"jid": page.jid, "noGroups": true, "multiple": true, "selected": participantsModel})
+                    pageStack.currentPage.done.connect(listView.selectFinished)
+                    pageStack.currentPage.itemAdded.connect(listView.contactAdded)
+                    pageStack.currentPage.removed.connect(listView.contactRemoved)
+                }
+            }
         }
 
-        contentHeight: height
+        DialogHeader {
+            id: header
+            title: qsTr("Create group", "Greate group page title")
+        }
 
         Row {
             id: detailsrow
-            width: parent.width
+            anchors {
+                top: header.bottom
+                left: parent.left
+                leftMargin: Theme.paddingLarge
+                right: parent.right
+                rightMargin: Theme.paddingLarge
+            }
             height: avaholder.height
+
             spacing: Theme.paddingMedium
 
             AvatarHolder {
@@ -69,7 +81,7 @@ Dialog {
 
             TextField {
                 id: groupTitle
-                anchors.verticalCenter: parent.verticalCenter
+                anchors.verticalCenter: avaholder.verticalCenter
                 width: parent.width - avaholder.width - Theme.paddingMedium
                 onTextChanged: checkCanAccept()
                 placeholderText: qsTr("Write name of new group here", "Create group subject area subtitle")
@@ -83,29 +95,66 @@ Dialog {
             id: listView
             anchors {
                 top: detailsrow.bottom
+                topMargin: Theme.paddingLarge
                 left: parent.left
                 right: parent.right
                 bottom: parent.bottom
             }
+            pressDelay: 0
 
-            model: contactsModel
-            delegate: contactsDelegate
+            model: participantsModel
+            delegate: listDelegate
             clip: true
-            section.property: "nickname"
-            section.criteria: ViewSection.FirstCharacter
-            section.delegate: Component {
-                SectionHeader {
-                    text: section
+
+            function contactAdded(pmodel) {
+                if (pmodel.jid !== Mitakuuluu.myJid) {
+                    var value = page.jids
+                    value.splice(0, 0, pmodel.jid)
+                    page.jids = value
+                    checkCanAccept()
+
+                    if (listView.count < 51)
+                        participantsModel.append({"jid": pmodel.jid, "name": pmodel.nickname, "avatar": pmodel.avatar})
+                    else
+                        banner.notify(qsTr("Max group participants count reached", "Group profile maximum participants banner"))
                 }
             }
-            onCountChanged: {
-                fastScroll.init()
+
+            function contactRemoved(pjid) {
+                if (pjid !== Mitakuuluu.myJid) {
+                    var value = page.jids
+                    var exists = value.indexOf(pjid)
+                    if (exists != -1) {
+                        value.splice(exists, 1)
+                    }
+                    page.jids = value
+                    checkCanAccept()
+
+                    for (var i = 0; i < participantsModel.count; i++) {
+                        if (participantsModel.get(i).jid == pjid) {
+                            participantsModel.remove(i)
+                        }
+                    }
+                }
             }
 
-            FastScroll {
-                id: fastScroll
-                listView: listView
-                __hasPageHeight: false
+            function selectFinished() {
+                pageStack.currentPage.done.disconnect(listView.selectFinished)
+                pageStack.currentPage.itemAdded.disconnect(listView.contactAdded)
+                pageStack.currentPage.removed.disconnect(listView.contactRemoved)
+            }
+
+            VerticalScrollDecorator {}
+
+            ViewPlaceholder {
+                enabled: listView.count == 0 && _active
+                text: qsTr("Participants list is empty", "Create group empty paricipants list placeholder")
+                property bool _active: false
+                Component.onCompleted: {
+                    flickable = flick
+                    parent = flick.contentItem
+                    _active = true
+                }
             }
         }
     }
@@ -117,28 +166,26 @@ Dialog {
         showUnknown: acceptUnknown
         showActive: false
         filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
-        onContactsModelChanged: {
-            fastScroll.init()
-        }
         Component.onCompleted: {
             init()
         }
     }
 
-    Component {
-        id: contactsDelegate
+    ListModel {
+        id: participantsModel
+    }
 
+    Component {
+        id: listDelegate
         BackgroundItem {
             id: item
             width: parent.width
             height: Theme.itemSizeMedium
-            highlighted: down || checked
-            property bool checked: page.jids.indexOf(model.jid) != -1 || model.jid === Mitakuuluu.myJid
 
             AvatarHolder {
-                id: ava
-                width: Theme.iconSizeLarge
+                id: contactava
                 height: Theme.iconSizeLarge
+                width: Theme.iconSizeLarge
                 source: model.avatar
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge
@@ -146,47 +193,30 @@ Dialog {
             }
 
             Label {
-                id: nickname
+                id: contact
+                anchors.left: contactava.right
+                anchors.leftMargin: Theme.paddingLarge
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: remove.left
+                anchors.rightMargin: Theme.paddingSmall
                 font.pixelSize: Theme.fontSizeMedium
-                text: Utilities.emojify(model.nickname, emojiPath)
-                anchors.left: ava.right
-                anchors.leftMargin: 16
-                anchors.top: parent.top
-                anchors.topMargin: Theme.paddingSmall
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingMedium
-                wrapMode: Text.NoWrap
+                text: Utilities.emojify(model.name, emojiPath)
                 color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
                 truncationMode: TruncationMode.Fade
             }
 
-            Label {
-                id: status
-                font.pixelSize: Theme.fontSizeSmall
-                text: Utilities.emojify(model.message, emojiPath)
-                anchors.left: ava.right
-                anchors.leftMargin: Theme.paddingLarge
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: Theme.paddingSmall
+            IconButton {
+                id: remove
+                width: Theme.iconSizeLarge
+                height: Theme.iconSizeLarge
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingMedium
-                wrapMode: Text.NoWrap
-                color: item.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
-                truncationMode: TruncationMode.Fade
-            }
-
-            onClicked: {
-                if (model.jid !== Mitakuuluu.myJid) {
-                    var value = page.jids
-                    var exists = value.indexOf(jid)
-                    if (exists != -1) {
-                        value.splice(exists, 1)
-                    }
-                    else {
-                        value.splice(0, 0, jid)
-                    }
-                    page.jids = value
-                    checkCanAccept()
+                anchors.rightMargin: Theme.paddingSmall
+                anchors.verticalCenter: parent.verticalCenter
+                visible: model.jid != Mitakuuluu.myJid
+                icon.source: "image://theme/icon-m-clear"
+                highlighted: pressed
+                onClicked: {
+                    participantsModel.remove(index)
                 }
             }
         }

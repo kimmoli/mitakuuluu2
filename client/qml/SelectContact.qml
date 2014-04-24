@@ -12,9 +12,12 @@ Dialog {
     property variant jids: []
     property bool multiple: false
     property bool noGroups: false
+    property bool showMyself: false
 
     signal added(string pjid)
     signal removed(string pjid)
+
+    signal itemAdded(variant pitem)
 
     property ListModel selected
     onSelectedChanged: select(selected)
@@ -66,7 +69,7 @@ Dialog {
         hideGroups: noGroups
         showActive: false
         showUnknown: acceptUnknown
-        filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
+        filterContacts: showMyself ? [] : [Mitakuuluu.myJid]
         Component.onCompleted: {
             init()
         }
@@ -123,7 +126,7 @@ Dialog {
             }
 
             onClicked: {
-                if (page.jids.length > 1 && model.jid.indexOf("-") == -1 && page.jids[0].indexOf("-") == -1) {
+                if ((multiple && noGroups) || (page.jids.length > 1 && model.jid.indexOf("-") == -1 && page.jids[0].indexOf("-") == -1)) {
                     selectMany(model.jid)
                 }
                 else {
@@ -149,12 +152,18 @@ Dialog {
                 else {
                     value.splice(0, 0, jid)
                     page.added(jid)
+                    page.itemAdded(model)
                 }
                 page.jids = value
                 page.canAccept = page.jids.length > 0
             }
 
             function selectOne(jid) {
+                if (page.jids.length > 0) {
+                    page.removed(page.jids[0])
+                }
+                page.added(jid)
+                page.itemAdded(model)
                 page.jids = [model.jid]
                 page.canAccept = page.jids.length > 0
             }

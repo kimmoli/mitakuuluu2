@@ -143,7 +143,7 @@ Page {
                 text: qsTr("Add contacts", "Group profile page menu item")
                 enabled: listView.count > 0
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"jid": page.jid, "multiple": true, "selected": participantsModel})
+                    pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"jid": page.jid, "noGroups": true, "multiple": true, "selected": participantsModel})
                     pageStack.currentPage.done.connect(listView.selectFinished)
                     pageStack.currentPage.added.connect(listView.contactAdded)
                     pageStack.currentPage.removed.connect(listView.contactRemoved)
@@ -306,10 +306,8 @@ Page {
                 pageStack.currentPage.added.disconnect(listView.contactAdded)
                 pageStack.currentPage.removed.disconnect(listView.contactRemoved)
             }
-        }
 
-        VerticalScrollDecorator {
-            flickable: listView
+            VerticalScrollDecorator {}
         }
 
         BusyIndicator {
