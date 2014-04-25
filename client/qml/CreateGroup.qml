@@ -74,7 +74,7 @@ Dialog {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        avatarView.show(avaholder.source)
+                        pageStack.push(avatarPickerPage.createObject(root))
                     }
                 }
             }
@@ -222,70 +222,17 @@ Dialog {
         }
     }
 
-    Rectangle {
-        id: avatarView
-        anchors.fill: parent
-        color: "#40FFFFFF"
-        opacity: 0.0
-        visible: opacity > 0.0
-        onVisibleChanged: {
-            console.log("avatarView " + (visible ? "visible" : "invisible"))
-        }
-        property string imgPath
-        Behavior on opacity {
-            FadeAnimation {}
-        }
-        function show(path) {
-            avaView.source = path
-            avatarView.opacity = 1.0
-            page.backNavigation = false
-        }
-        function hide() {
-            avaView.source = ""
-            avatarView.opacity = 0.0
-            page.backNavigation = true
-        }
-        function resizeAvatar() {
-            pageStack.currentPage.accepted.disconnect(avatarView.resizeAvatar)
-            pageStack.busyChanged.connect(avatarView.transitionDone)
-            imgPath = pageStack.currentPage.selectedFiles[0]
-        }
+    Component {
+        id: avatarPickerPage
 
-        function transitionDone() {
-            if (!pageStack.busy) {
-                pageStack.busyChanged.disconnect(avatarView.transitionDone)
-                pageStack.push(Qt.resolvedUrl("ResizePicture.qml"), {"picture": imgPath, "jid": "new_page", "maximumSize": 480})
-                pageStack.currentPage.accepted.connect(avatarView.setNewAvatar)
-            }
-        }
-        function setNewAvatar() {
-            pageStack.currentPage.accepted.disconnect(avatarView.setNewAvatar)
-            avaView.source = ""
-            avaView.source = pageStack.currentPage.filename
-            avaholder.source = ""
-            avaholder.source = pageStack.currentPage.filename
-        }
-        Image {
-            id: avaView
-            anchors.centerIn: parent
-            asynchronous: true
-            cache: false
-        }
-        MouseArea {
-            enabled: avatarView.visible
-            anchors.fill: parent
-            onClicked: {
-                console.log("avatarview clicked")
-                avatarView.hide()
-            }
-        }
-        Button {
-            anchors.top: avaView.bottom
-            anchors.horizontalCenter: avaView.horizontalCenter
-            text: qsTr("Change", "Avatar view change button text")
-            onClicked: {
-                pageStack.push(Qt.resolvedUrl("MediaSelector.qml"), {"canChangeType": false})
-                pageStack.currentPage.accepted.connect(avatarView.resizeAvatar)
+        AvatarPickerCrop {
+            id: avatarPicker
+            objectName: "avatarPicker"
+
+            onAvatarSourceChanged: {
+                avaholder.source = ""
+                avaholder.source = Mitakuuluu.saveAvatarForJid(Mitakuuluu.myJid, avatarSource)
+                avatarPicker.destroy()
             }
         }
     }
