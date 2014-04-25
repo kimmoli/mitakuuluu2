@@ -968,7 +968,8 @@ int Connection::sendAuth()
 
     AttributeList attrs;
 
-    attrs.insert("xmlns", "urn:ietf:params:xml:ns:xmpp-sasl");
+    //attrs.insert("xmlns", "urn:ietf:params:xml:ns:xmpp-sasl");
+    attrs.insert("passive", "false");
     attrs.insert("mechanism", "WAUTH-2");
     attrs.insert("user", user);
 
@@ -1132,7 +1133,7 @@ void Connection::parseSuccessNode(const ProtocolTreeNode &node)
         connect(socket,SIGNAL(readyRead()),this,SLOT(readNode()));
 
         //sendClientConfig("android");
-        //sendClientConfig("none");
+        sendClientConfig("none");
 
         //sendGetMyStatus();
 
@@ -2453,7 +2454,10 @@ void Connection::sendClientConfig(const QString &platform)
     attrs.insert("platform", platform);
     attrs.insert("lg", language.isEmpty() ? "en" : language);
     attrs.insert("lc", country.isEmpty() ? "US" : country);
-    //attrs.insert("clear", "0");
+    attrs.insert("clear", "1");
+    attrs.insert("preview", "0");
+    attrs.insert("default", "0");
+    attrs.insert("groups", "0");
     configNode.setAttributes(attrs);
 
     ProtocolTreeNode iqNode("iq");
