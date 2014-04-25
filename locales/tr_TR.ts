@@ -562,7 +562,7 @@
         <location filename="../client/qml/CreateGroup.qml" line="41"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Kişi ekle</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="53"/>

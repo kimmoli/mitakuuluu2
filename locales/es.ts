@@ -562,7 +562,7 @@
         <location filename="../client/qml/CreateGroup.qml" line="41"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Añadir contactos</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="53"/>
@@ -580,13 +580,13 @@
         <location filename="../client/qml/CreateGroup.qml" line="119"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
-        <translation type="unfinished"/>
+        <translation>Has alcanzado el límite máximo de participantes</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="151"/>
         <source>Participants list is empty</source>
         <comment>Create group empty paricipants list placeholder</comment>
-        <translation type="unfinished"/>
+        <translation>La lista de participantes está vacía</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="285"/>
@@ -1521,7 +1521,7 @@ Haz click en &quot;Renovar&quot; para comprar un año de servicio.</translation>
 
 1. Se ha iniciado Mitakuuluu
 2. Hizo algo
-3. Ha tenido un comportamiento esperado
+3. Se ha producido comportamiento esperado
 4. Ha obtenido un resultado erróneo</translation>
     </message>
 </context>
@@ -1675,19 +1675,19 @@ Haz click en &quot;Renovar&quot; para comprar un año de servicio.</translation>
         <location filename="../client/qml/Settings.qml" line="230"/>
         <source>no sound</source>
         <comment>Private message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>Sin sonido</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="254"/>
         <source>no sound</source>
         <comment>Group message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>Sin sonido</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="276"/>
         <source>no sound</source>
         <comment>Medi message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>Sin sonido</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="296"/>
@@ -1764,43 +1764,43 @@ Haz click en &quot;Renovar&quot; para comprar un año de servicio.</translation>
         <location filename="../client/qml/Settings.qml" line="224"/>
         <source>Use system Chat notifications</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Usar sistema de notificaciones de chat</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="229"/>
         <source>Private message</source>
         <comment>Settings page Private message tone selection</comment>
-        <translation type="unfinished"/>
+        <translation>Mensaje privado</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="236"/>
         <source>Private message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>Tono de mensaje privado</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="260"/>
         <source>Group message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>Tono de mensaje de grupo</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="282"/>
         <source>Media message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>Tono de mensaje multimedia</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="253"/>
         <source>Group message</source>
         <comment>Settings page Group message tone selection</comment>
-        <translation type="unfinished"/>
+        <translation>Mensaje de grupo</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="275"/>
         <source>Media message</source>
         <comment>Settings page Media message tone selection</comment>
-        <translation type="unfinished"/>
+        <translation>Mensaje multimedia</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="427"/>

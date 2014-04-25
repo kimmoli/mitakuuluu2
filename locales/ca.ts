@@ -176,7 +176,7 @@
         <location filename="../client/qml/ChatsPage.qml" line="27"/>
         <source>Register</source>
         <comment>Main menu action</comment>
-        <translation>Registra</translation>
+        <translation>Registre</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="25"/>
@@ -305,7 +305,7 @@
         <location filename="../server/src/client.cpp" line="398"/>
         <source>Contact</source>
         <comment>Notification media name text</comment>
-        <translation>Contacte</translation>
+        <translation>Contactes</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="399"/>
@@ -335,7 +335,7 @@
         <location filename="../server/src/client.cpp" line="1244"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
-        <translation>S&apos;ha afegit al grup</translation>
+        <translation>S&apos;ha unit al grup</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="1247"/>
@@ -479,7 +479,7 @@
         <location filename="../client/qml/ConversationPage.qml" line="252"/>
         <source>Load old conversation</source>
         <comment>Conversation menu item</comment>
-        <translation>Carrega més conversa anterior</translation>
+        <translation>Carrega més conversa </translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="299"/>
@@ -497,7 +497,7 @@
         <location filename="../client/qml/ConversationPage.qml" line="341"/>
         <source>Hold button for recording, release to send</source>
         <comment>Conversation voice recorder description label</comment>
-        <translation>Mantingueu premut el botó per gravar, allibereu-lo per enviar</translation>
+        <translation>Mantingueu premut el botó per enregistrar, allibereu-lo per enviar</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="443"/>
@@ -515,7 +515,7 @@
         <location filename="../client/qml/ConversationPage.qml" line="507"/>
         <source>New message</source>
         <comment>Conversation new message indicator</comment>
-        <translation>Nou missatge</translation>
+        <translation>Missatge nou</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="535"/>
@@ -562,7 +562,7 @@
         <location filename="../client/qml/CreateGroup.qml" line="41"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Afegeix contactes</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="53"/>
@@ -580,13 +580,13 @@
         <location filename="../client/qml/CreateGroup.qml" line="119"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
-        <translation type="unfinished"/>
+        <translation>S&apos;ha assolit el màxim de participants</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="151"/>
         <source>Participants list is empty</source>
         <comment>Create group empty paricipants list placeholder</comment>
-        <translation type="unfinished"/>
+        <translation>No hi ha cap participant</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="285"/>
@@ -601,7 +601,7 @@
         <location filename="../client/qml/Forward.qml" line="64"/>
         <source>Select contacts</source>
         <comment>Forward message page title</comment>
-        <translation>Selecciona contactes</translation>
+        <translation>Seleccioneu contactes</translation>
     </message>
     <message>
         <location filename="../client/qml/Forward.qml" line="65"/>
@@ -664,19 +664,19 @@
         <location filename="../client/qml/GroupProfile.qml" line="253"/>
         <source>Subject by: %1</source>
         <comment>Group profile subject owner label</comment>
-        <translation>Assumpte de: %1</translation>
+        <translation>Assumpte establert per: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="267"/>
         <source>Subject set: %1</source>
         <comment>Group profile subject timestamp label</comment>
-        <translation>Assumpte establert el: 1%</translation>
+        <translation>Assumpte establert el: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="295"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
-        <translation>S&apos;ha assolit el límit màxim de participants al grup</translation>
+        <translation>S&apos;ha assolit el màxim de participants </translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="327"/>
@@ -712,7 +712,7 @@
         <location filename="../client/qml/Location.qml" line="160"/>
         <source>latitude: %1</source>
         <comment>Location send page text</comment>
-        <translation>latitud: 1%</translation>
+        <translation>latitud: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/Location.qml" line="167"/>
@@ -817,7 +817,7 @@
         <location filename="../client/src/mitakuuluu.cpp" line="273"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
-        <translation>Connectat</translation>
+        <translation>En línia</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="276"/>
@@ -1090,7 +1090,7 @@
         <location filename="../client/qml/PrivacyList.qml" line="69"/>
         <source>Select contacts</source>
         <comment>Privacy list page menu item</comment>
-        <translation>Selecciona contactes</translation>
+        <translation>Seleccioneu contactes</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="80"/>
@@ -1114,7 +1114,7 @@
         <location filename="../client/qml/PrivacyList.qml" line="140"/>
         <source>In international format</source>
         <comment>Phone number text field label</comment>
-        <translation>Format internacional</translation>
+        <translation>Cal escriure el número amb format internacional</translation>
     </message>
 </context>
 <context>
@@ -1132,7 +1132,7 @@
         <location filename="../client/qml/RegistrationCombo.qml" line="75"/>
         <source>Search</source>
         <comment>Registration country selector</comment>
-        <translation type="unfinished"/>
+        <translation>Cerca</translation>
     </message>
 </context>
 <context>
@@ -1213,19 +1213,19 @@ Before switching to Mitakuuluu please use &lt;Remove account&gt; option in your 
         <translation>Benvinguts a Mitakuuluu v%1
 
 Client compatible amb WhatsApp natiu per a SailfishOS.
-Abans de canviar-vos a Mitakuuluu cal que utilitzeu l&apos;opció &lt;Elimina el compte&gt; a la vostre aplicació actual, o fer-ho dins Mitakuuluu després de registrar-vos.</translation>
+Abans de canviar-vos al nou Mitakuuluu cal que utilitzeu l&apos;opció &lt;Elimina el compte&gt; a la vostra aplicació actual. Si utilitzàveu el Mitakuuluu antic, v.0.2 o anterior, també cal que elimineu el compte abans de fer el canvi.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="81"/>
         <source>Country</source>
         <comment>Registration country selector label</comment>
-        <translation type="unfinished"/>
+        <translation>País</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="96"/>
         <source>In international format</source>
         <comment>Registration phone number text field label</comment>
-        <translation>En format internacional</translation>
+        <translation>Cal escriure el número amb format internacional</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="122"/>
@@ -1303,7 +1303,7 @@ Abans de canviar-vos a Mitakuuluu cal que utilitzeu l&apos;opció &lt;Elimina el
         <location filename="../client/qml/RegistrationPage.qml" line="302"/>
         <source>Too frequent attempts to request the code.</source>
         <comment>Registration information constructor</comment>
-        <translation>S&apos;ha excedit la freqüència d&apos;intents de sol·licitud de codi.</translation>
+        <translation>S&apos;ha excedit el número d&apos;intents de sol·licitud de codi.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="304"/>
@@ -1390,7 +1390,7 @@ Abans de canviar-vos a Mitakuuluu cal que utilitzeu l&apos;opció &lt;Elimina el
         <location filename="../client/qml/RenameContact.qml" line="22"/>
         <source>Rename contact</source>
         <comment>Rename contact page title</comment>
-        <translation>Canvia el nom </translation>
+        <translation>Canvieu el nom </translation>
     </message>
     <message>
         <location filename="../client/qml/RenameContact.qml" line="29"/>
@@ -1458,7 +1458,7 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/SelectPhonebook.qml" line="58"/>
         <source>Add number</source>
         <comment>Add contacts page menu item</comment>
-        <translation>Afegeig un número</translation>
+        <translation>Afegeix un número</translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="92"/>
@@ -1651,7 +1651,7 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/Settings.qml" line="194"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
-        <translation>Marcar per fer que els fitxers apareguin a la Galeria</translation>
+        <translation>Si es marca, els fitxers descarregats es mostren a la Galeria</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="210"/>
@@ -1669,25 +1669,25 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/Settings.qml" line="219"/>
         <source>Common</source>
         <comment>Settings page section name</comment>
-        <translation>Comú</translation>
+        <translation>General</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="230"/>
         <source>no sound</source>
         <comment>Private message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>cap so</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="254"/>
         <source>no sound</source>
         <comment>Group message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>cap so</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="276"/>
         <source>no sound</source>
         <comment>Medi message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>cap so</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="296"/>
@@ -1722,7 +1722,7 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/Settings.qml" line="363"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
-        <translation>Cal que sortiu per complet de l&apos;aplicació per poder escriure registres d&apos;error. L&apos;enviament de registres a l&apos;autor es pot trobar al menú de Configuració.</translation>
+        <translation>Cal que sortiu per complet de l&apos;aplicació per poder escriure registres d&apos;error. La forma d&apos;enviament de registres a l&apos;autor es pot trobar al menú de Configuració.</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="370"/>
@@ -1764,43 +1764,43 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/Settings.qml" line="224"/>
         <source>Use system Chat notifications</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Utilitza les notificacions de conversa del sistema</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="229"/>
         <source>Private message</source>
         <comment>Settings page Private message tone selection</comment>
-        <translation type="unfinished"/>
+        <translation>Missatge privat</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="236"/>
         <source>Private message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>To de missatge privat</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="260"/>
         <source>Group message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>To de missatge de grup</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="282"/>
         <source>Media message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>To de missatge multimèdia</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="253"/>
         <source>Group message</source>
         <comment>Settings page Group message tone selection</comment>
-        <translation type="unfinished"/>
+        <translation>Missatge de grup</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="275"/>
         <source>Media message</source>
         <comment>Settings page Media message tone selection</comment>
-        <translation type="unfinished"/>
+        <translation>Missatge multimèdia</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="427"/>
@@ -1836,7 +1836,7 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/Settings.qml" line="462"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
-        <translation>Portada</translation>
+        <translation>Accions de Portada</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="473"/>
@@ -1860,7 +1860,7 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/Settings.qml" line="534"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
-        <translation>Bytes automàtics de descàrrega</translation>
+        <translation>Descàrrega automàtica</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="545"/>
@@ -1872,13 +1872,13 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/Settings.qml" line="581"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
-        <translation>Mida màxima d&apos;imatge segons el volum del fitxer</translation>
+        <translation>Mida màxima del fitxer</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="615"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
-        <translation>Mida màxima d&apos;imatge segons la resolució</translation>
+        <translation>Resolució màxima</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="617"/>
@@ -1890,7 +1890,7 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/Settings.qml" line="631"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
-        <translation>(*) assenyala que cal reiniciar la connexió per activar l&apos;opció</translation>
+        <translation>(*) assenyala que cal reiniciar la connexió per tenir efecte</translation>
     </message>
 </context>
 <context>

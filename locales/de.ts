@@ -335,13 +335,13 @@
         <location filename="../server/src/client.cpp" line="1244"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
-        <translation>Gruppe beigetreten</translation>
+        <translation>Gruppenbeitritt von</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="1247"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
-        <translation>hat die Gruppe verlassen</translation>
+        <translation>Gruppenaustritt von</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="1250"/>
@@ -353,7 +353,7 @@
         <location filename="../server/src/client.cpp" line="1253"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
-        <translation>Gruppenfoto geändert</translation>
+        <translation>Bildänderung durch</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="1521"/>
@@ -562,7 +562,7 @@
         <location filename="../client/qml/CreateGroup.qml" line="41"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Kontakte hinzufügen</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="53"/>
@@ -580,13 +580,13 @@
         <location filename="../client/qml/CreateGroup.qml" line="119"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
-        <translation type="unfinished"/>
+        <translation>Maximale Anzahl an Gruppenmitglieder erreicht</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="151"/>
         <source>Participants list is empty</source>
         <comment>Create group empty paricipants list placeholder</comment>
-        <translation type="unfinished"/>
+        <translation>Mitgliederliste ist leer</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="285"/>
@@ -652,7 +652,7 @@
         <location filename="../client/qml/GroupProfile.qml" line="225"/>
         <source>Owner: %1</source>
         <comment>Group profile owner label</comment>
-        <translation>Gruppenbesitzer: %1</translation>
+        <translation>Gruppenadmin: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="239"/>
@@ -664,13 +664,13 @@
         <location filename="../client/qml/GroupProfile.qml" line="253"/>
         <source>Subject by: %1</source>
         <comment>Group profile subject owner label</comment>
-        <translation>Thema von: %1</translation>
+        <translation>Gruppenthema von: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="267"/>
         <source>Subject set: %1</source>
         <comment>Group profile subject timestamp label</comment>
-        <translation>Thema vom: %1</translation>
+        <translation>letzte Themenänderung: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="295"/>
@@ -1646,13 +1646,13 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="193"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
-        <translation>Medien in der Gallerie speichern</translation>
+        <translation>Medien in der Galerie speichern</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="194"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
-        <translation>Gespeicherte Dateien werden in der Gallerie angezeigt</translation>
+        <translation>Gespeicherte Dateien werden in der Galerie angezeigt</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="210"/>
@@ -1676,19 +1676,19 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="230"/>
         <source>no sound</source>
         <comment>Private message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>Kein Ton</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="254"/>
         <source>no sound</source>
         <comment>Group message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>Kein Ton</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="276"/>
         <source>no sound</source>
         <comment>Medi message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>Kein Ton</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="296"/>
@@ -1765,43 +1765,43 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <location filename="../client/qml/Settings.qml" line="224"/>
         <source>Use system Chat notifications</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Verwende Systembenachrichtigungen</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="229"/>
         <source>Private message</source>
         <comment>Settings page Private message tone selection</comment>
-        <translation type="unfinished"/>
+        <translation>Privatnachricht</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="236"/>
         <source>Private message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>Ton Privatnachrichten</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="260"/>
         <source>Group message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>Ton Gruppennachrichten</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="282"/>
         <source>Media message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>Ton Mediennachrichten</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="253"/>
         <source>Group message</source>
         <comment>Settings page Group message tone selection</comment>
-        <translation type="unfinished"/>
+        <translation>Gruppennachricht</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="275"/>
         <source>Media message</source>
         <comment>Settings page Media message tone selection</comment>
-        <translation type="unfinished"/>
+        <translation>Mediennachrichten</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="427"/>
