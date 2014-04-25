@@ -5,65 +5,52 @@ Page {
     id: page
     objectName: "about"
 
-    onStatusChanged: {
-        if (status === PageStatus.Active) {
-            contentArea.scrollToTop()
-        }
-    }
-
-    Image {
-        source: "/usr/share/harbour-mitakuuluu2/images/hearts-black.png"
-        anchors.top: parent.top
-        anchors.right: parent.right
-        fillMode: Image.TileVertically
-        anchors.bottom: parent.bottom
-        opacity: 0.5
-        asynchronous: true
-        cache: true
-
-        property bool highlighted
-        property string _highlightSource
-        property color highlightColor: Theme.highlightColor
-
-        function updateHighlightSource() {
-            if (state === "") {
-                if (source != "") {
-                    var tmpSource = image.source.toString()
-                    var index = tmpSource.lastIndexOf("?")
-                    if (index !== -1) {
-                        tmpSource = tmpSource.substring(0, index)
-                    }
-                    _highlightSource = tmpSource + "?" + highlightColor
-                } else {
-                    _highlightSource = ""
-                }
-            }
-        }
-
-        onHighlightColorChanged: updateHighlightSource()
-        onSourceChanged: updateHighlightSource()
-        Component.onCompleted: updateHighlightSource()
-
-        states: State {
-            when: image.highlighted && image._highlightSource != ""
-            PropertyChanges {
-                target: image
-                source: image._highlightSource
-            }
-        }
-    }
-
     SilicaFlickable {
         id: contentArea
         anchors.fill: page
-        anchors.leftMargin: Theme.paddingLarge
-        anchors.rightMargin: Theme.paddingLarge
         boundsBehavior: Flickable.DragAndOvershootBounds
         contentHeight: content.height
 
+        Image {
+            source: "/usr/share/harbour-mitakuuluu2/images/hearts-black.png"
+            anchors {
+                top: parent.top
+                topMargin: - page.height
+                bottom: parent.bottom
+                bottomMargin: - page.height
+                right: parent.right
+            }
+            fillMode: Image.TileVertically
+            opacity: 0.5
+            asynchronous: true
+            cache: true
+        }
+
+        TopEaster {
+            anchors {
+                top: parent.top
+                topMargin: - page.height / 3
+                left: parent.left
+                right: parent.right
+            }
+        }
+
+        BottomEaster {
+            anchors {
+                bottom: parent.bottom
+                bottomMargin: - page.height / 3
+                left: parent.left
+                right: parent.right
+            }
+        }
+
         Column {
             id: content
-            width: parent.width
+            anchors {
+                left: parent.left
+                right: parent.right
+                margins: Theme.paddingLarge
+            }
             spacing: Theme.paddingMedium
 
             PageHeader {
