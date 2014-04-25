@@ -714,6 +714,7 @@ void Client::saveRegistrationData(const QVariantMap &result)
     myJid = phoneNumber + "@s.whatsapp.net";
     isRegistered = true;
     Q_EMIT registrationComplete();
+    Q_EMIT myAccount(myJid);
 
     saveAccountData();
 }
@@ -949,12 +950,12 @@ void Client::syncResultsAvailable(const QVariantList &results)
             if (_synccontacts.keys().contains("+" + phone)) {
                 name = _synccontacts["+" + phone].toString();
             }
+            qDebug() << phone << name << avatar;
             item["avatar"] = avatar;
             item["alias"] = name;
 
             contacts[i] = item;
             QString jid = item["jid"].toString();
-            photoRefresh(jid, "", true);
             getContactStatus(jid);
             requestPresenceSubscription(jid);
         }
@@ -1830,9 +1831,9 @@ void Client::photoRefresh(const QString &jid, const QString &expectedPhotoId, bo
     }
 }
 
-void Client::photoDeleted(QString jid, QString alias, QString author, QString timestamp)
+void Client::photoDeleted(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &notificationId)
 {
-    qDebug() << "photoDeleted for:" << jid << "photo:" << alias << "author:" << author << "timestamp:" << timestamp;
+    qDebug() << "photoDeleted for:" << jid << "photo:" << alias << "author:" << author << "timestamp:" << timestamp << notificationId;
 }
 
 void Client::setPhoto(const QString &jid, const QString &path)
@@ -2456,7 +2457,7 @@ void Client::updateNotification(const QString &text)
         qDebug() << "updateNotification:" << text;
         connectionNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
         connectionNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
-        MRemoteAction action("org.coderus.harbour_mitakuuluu", "/", "org.coderus.harbour_mitakuuluu", "notificationCallback", QVariantList() << QString());
+        MRemoteAction action("harbour.mitakuuluu2.client", "/", "harbour.mitakuuluu2.client", "notificationCallback", QVariantList() << QString());
         connectionNotification->setAction(action);
         connectionNotification->publish();
     }
@@ -2719,10 +2720,10 @@ void Client::dbResults(const QVariant &result)
         else if (jids.isEmpty()) {
             //synchronizePhonebook();
         }
-        //QVariantList avatars = reply["avatars"].toList();
-        /*foreach (const QVariant &jid, avatars) {
+        QVariantList avatars = reply["avatars"].toList();
+        foreach (const QVariant &jid, avatars) {
             getPicture(jid.toString());
-        }*/
+        }
         break;
     }
     case QueryType::ConversationGetDownloadMessage: {

@@ -316,7 +316,7 @@ private slots:
                            const QString &subjectOwner, const QString &subjectTimestamp);
     void groupNewSubject(const QString &from, const QString &author, const QString &authorName,
                          const QString &newSubject, const QString &creation, const QString &notificationId);
-    void photoDeleted(QString jid, QString alias, QString author, QString timestamp);
+    void photoDeleted(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &notificationId);
     void photoIdReceived(const QString &jid, const QString &name, const QString &author, const QString &timestamp, const QString &pictureId, const QString &notificationId);
     void photoReceived(const QString &from, const QByteArray &data,
                        const QString &photoId, bool largeFormat);

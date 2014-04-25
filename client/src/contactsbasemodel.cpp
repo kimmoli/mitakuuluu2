@@ -213,7 +213,11 @@ QString ContactsBaseModel::getNicknameBy(const QString &jid, const QString &mess
 
 void ContactsBaseModel::pictureUpdated(const QString &jid, const QString &path)
 {
-    setPropertyByJid(jid, "avatar", path);
+    if (_modelData.contains(jid)
+            && (!_modelData[jid]["avatar"].toString().contains("data/avatars")
+                || path.contains("data/avatars"))) {
+        setPropertyByJid(jid, "avatar", path);
+    }
 }
 
 void ContactsBaseModel::groupInfo(const QVariantMap &data)
@@ -299,7 +303,9 @@ void ContactsBaseModel::contactSynced(const QVariantMap &data)
     QVariantMap contact = data;
     QString jid = contact["jid"].toString();
     if (_modelData.contains(jid)) {
-        if (_modelData[jid]["name"] == contact["name"])
+        if (_modelData[jid]["name"] == contact["name"]
+                && (contact["avatar"].toString().isEmpty()
+                    || contact["avatar"] == _modelData[jid]["avatar"]))
             return;
         QString name = contact["name"].toString();
         QString pushname = _modelData[jid]["pushname"].toString();
@@ -307,6 +313,7 @@ void ContactsBaseModel::contactSynced(const QVariantMap &data)
         qDebug() << "contact synced:" << name << pushname << jid;
 
         _modelData[jid]["nickname"] = getNicknameBy(jid, "", name, pushname);
+        _modelData[jid]["avatar"] = contact["avatar"];
 
         bool blocked = getBlocked(jid);
         _modelData[jid]["blocked"] = blocked;

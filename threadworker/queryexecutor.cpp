@@ -425,7 +425,14 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
 
             QSqlQuery uc;
             //uc.prepare("UPDATE contacts SET name=(:name), message=(:message), timestamp=(:timestamp) WHERE jid=(:jid);");
-            uc.prepare("UPDATE contacts SET name=(:name), contacttype=(:contacttype) WHERE jid=(:jid);");
+            if (!avatar.contains("data/avatars")) {
+                uc.prepare("UPDATE contacts SET name=(:name), contacttype=(:contacttype) WHERE jid=(:jid);");
+                avatars.append(jid);
+            }
+            else {
+                uc.prepare("UPDATE contacts SET name=(:name), contacttype=(:contacttype), avatar=(:avatar) WHERE jid=(:jid);");
+                uc.bindValue(":avatar", avatar);
+            }
             uc.bindValue(":name", name);
             uc.bindValue(":contacttype", 1);
             //uc.bindValue(":timestamp", timestamp);
@@ -480,16 +487,16 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
             else if (results.length() == 1) {
                 QVariantMap contact;
                 contact["name"] = name;
+                contact["avatar"] = avatar;
                 contact["jid"] = jid;
 
                 query["sync"] = contact;
             }
-            if (avatar.isEmpty())
-                avatars.append(jid);
             lastJid = jid;
         }
     }
     query["jids"] = newJids;
+    query["avatars"] = avatars;
 
     Q_EMIT actionDone(query);
 }
@@ -519,11 +526,21 @@ void QueryExecutor::setContactSync(QVariantMap &query)
 
 void QueryExecutor::setContactAvatar(QVariantMap &query)
 {
-    QSqlQuery sql(db);
-    sql.prepare("UPDATE contacts SET avatar=(:avatar) WHERE jid=(:jid);");
-    sql.bindValue(":avatar", query["avatar"]);
-    sql.bindValue(":jid", query["jid"]);
-    sql.exec();
+    QSqlQuery ava(db);
+    ava.prepare("SELECT avatar FROM contacts WHERE jid=(:jid);");
+    ava.bindValue(":jid", query["jid"]);
+    ava.exec();
+
+    if (ava.next()) {
+        QString avatar = ava.value(0).toString();
+        if (!avatar.contains("data/avatars")) {
+            QSqlQuery sql(db);
+            sql.prepare("UPDATE contacts SET avatar=(:avatar) WHERE jid=(:jid);");
+            sql.bindValue(":avatar", query["avatar"]);
+            sql.bindValue(":jid", query["jid"]);
+            sql.exec();
+        }
+    }
 
     Q_EMIT actionDone(query);
 }
