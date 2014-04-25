@@ -81,7 +81,7 @@ ApplicationWindow {
     onDeleteMediaFilesChanged: Mitakuuluu.save("settings/deleteMediaFiles", deleteMediaFiles)
 
     property bool importToGallery: true
-    onImportToGalleryChanged: Mitakuuluu.save("settings/importToGallery", importToGallery)
+    onImportToGalleryChanged: Mitakuuluu.save("settings/importmediatogallery", importToGallery)
 
     property bool showConnectionNotifications: false
     onShowConnectionNotificationsChanged: Mitakuuluu.save("settings/showConnectionNotifications", showConnectionNotifications)
@@ -180,6 +180,12 @@ ApplicationWindow {
         case 5: //voice
             coverActionActive = true
             recordAndSend()
+            pageStack.currentPage.rejected.connect(coverReceiver.operationRejected)
+            appWindow.activate()
+            break
+        case 6: //text
+            coverActionActive = true
+            typeAndSend()
             pageStack.currentPage.rejected.connect(coverReceiver.operationRejected)
             appWindow.activate()
             break
@@ -437,6 +443,8 @@ ApplicationWindow {
             return "../images/icon-cover-location-" + (left ? "left" : "right") + ".png"
         case 5: //recorder
             return "../images/icon-cover-recorder-" + (left ? "left" : "right") + ".png"
+        case 6: //text
+            return "../images/icon-cover-text-" + (left ? "left" : "right") + ".png"
         default:
             return ""
         }

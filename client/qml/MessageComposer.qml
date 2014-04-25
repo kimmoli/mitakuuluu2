@@ -21,7 +21,7 @@ Dialog {
 
     DialogHeader {
         id: header
-        title: qsTr("Broadcast message", "Broadcast text page title")
+        title: qsTr("Text message", "Broadcast text page title")
     }
 
     TextArea {

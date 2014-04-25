@@ -29,7 +29,8 @@ Page {
                         qsTr("Mute/unmute", "Settings cover action name text"),
                         qsTr("Take picture", "Settings cover action name text"),
                         qsTr("Send location", "Settings cover action name text"),
-                        qsTr("Send voice note", "Settings cover action name text")
+                        qsTr("Send voice note", "Settings cover action name text"),
+                        qsTr("Send text", "Settings cover action name text")
                     ]
         }
         return coverNames[index]
@@ -216,7 +217,7 @@ Page {
             }
 
             SectionHeader {
-                text: qsTr("Common", "Settings page section name")
+                text: qsTr("Notifications", "Settings page section name")
             }
 
             ValueButton {
@@ -224,11 +225,11 @@ Page {
                 value: Mitakuuluu.privateToneEnabled ? metadataReader.getTitle(Mitakuuluu.privateTone) : qsTr("no sound", "Private message tone not set")
                 onClicked: {
                     var dialog = pageStack.push(dialogComponent, {
-                                    activeFilename: Mitakuuluu.privateTone,
-                                    activeSoundTitle: value,
-                                    activeSoundSubtitle: qsTr("Private message tone", "Sound chooser description text"),
-                                    noSound: !Mitakuuluu.privateToneEnabled
-                                    })
+                        activeFilename: Mitakuuluu.privateTone,
+                        activeSoundTitle: value,
+                        activeSoundSubtitle: qsTr("Private message tone", "Sound chooser description text"),
+                        noSound: !Mitakuuluu.privateToneEnabled
+                        })
 
                     dialog.accepted.connect(
                        function() {
@@ -242,16 +243,45 @@ Page {
                 }
             }
 
+            ComboBox {
+                label: qsTr("Private message color", "Settings page Private message color selection")
+                menu: ContextMenu {
+                    id: privatePatterns
+                    Repeater {
+                        id: privateItems
+                        width: parent.width
+                        model: patternsModel
+                        delegate: MenuItem { text: model.color }
+                    }
+                }
+                onCurrentItemChanged: {
+                    if (pageStack.currentPage.objectName === "settings" || pageStack.currentPage.objectName === "") {
+                        console.log("private pattern: " + patternsModel.get(currentIndex).name)
+                        Mitakuuluu.privateLedColor = patternsModel.get(currentIndex).name
+                        console.log("success: " + Mitakuuluu.privateLedColor)
+                    }
+                }
+                Component.onCompleted: {
+                    _updating = false
+                    for (var i = 0; i < patternsModel.count; i++) {
+                        if (patternsModel.get(i).name == Mitakuuluu.privateLedColor) {
+                            currentIndex = i
+                            break
+                        }
+                    }
+                }
+            }
+
             ValueButton {
                 label: qsTr("Group message", "Settings page Group message tone selection")
                 value: Mitakuuluu.groupToneEnabled ? metadataReader.getTitle(Mitakuuluu.groupTone) : qsTr("no sound", "Group message tone not set")
                 onClicked: {
                     var dialog = pageStack.push(dialogComponent, {
-                                    activeFilename: Mitakuuluu.groupTone,
-                                    activeSoundTitle: value,
-                                    activeSoundSubtitle: qsTr("Group message tone", "Sound chooser description text"),
-                                    noSound: !Mitakuuluu.groupToneEnabled
-                                    })
+                        activeFilename: Mitakuuluu.groupTone,
+                        activeSoundTitle: value,
+                        activeSoundSubtitle: qsTr("Group message tone", "Sound chooser description text"),
+                        noSound: !Mitakuuluu.groupToneEnabled
+                        })
 
                     dialog.accepted.connect(
                         function() {
@@ -263,16 +293,42 @@ Page {
                 }
             }
 
+            ComboBox {
+                label: qsTr("Group message color", "Settings page Group message color selection")
+                menu: ContextMenu {
+                    Repeater {
+                        width: parent.width
+                        model: patternsModel
+                        delegate: MenuItem { text: model.color }
+                    }
+                }
+                onCurrentItemChanged: {
+                    if (pageStack.currentPage.objectName === "settings" || pageStack.currentPage.objectName === "") {
+                        console.log("group pattern: " + patternsModel.get(currentIndex).name)
+                        Mitakuuluu.groupLedColor = patternsModel.get(currentIndex).name
+                    }
+                }
+                Component.onCompleted: {
+                    _updating = false
+                    for (var i = 0; i < patternsModel.count; i++) {
+                        if (patternsModel.get(i).name == Mitakuuluu.groupLedColor) {
+                            currentIndex = i
+                            break
+                        }
+                    }
+                }
+            }
+
             ValueButton {
                 label: qsTr("Media message", "Settings page Media message tone selection")
                 value: Mitakuuluu.mediaToneEnabled ? metadataReader.getTitle(Mitakuuluu.mediaTone) : qsTr("no sound", "Medi message tone not set")
                 onClicked: {
                     var dialog = pageStack.push(dialogComponent, {
-                                    activeFilename: Mitakuuluu.mediaTone,
-                                    activeSoundTitle: value,
-                                    activeSoundSubtitle: qsTr("Media message tone", "Sound chooser description text"),
-                                    noSound: !Mitakuuluu.mediaToneEnabled
-                                    })
+                        activeFilename: Mitakuuluu.mediaTone,
+                        activeSoundTitle: value,
+                        activeSoundSubtitle: qsTr("Media message tone", "Sound chooser description text"),
+                        noSound: !Mitakuuluu.mediaToneEnabled
+                        })
 
                     dialog.accepted.connect(
                         function() {
@@ -283,6 +339,70 @@ Page {
                         })
                 }
             }
+
+            ComboBox {
+                label: qsTr("Media message color", "Settings page Media message color selection")
+                menu: ContextMenu {
+                    Repeater {
+                        width: parent.width
+                        model: patternsModel
+                        delegate: MenuItem { text: model.color }
+                    }
+                }
+                onCurrentItemChanged: {
+                    if (pageStack.currentPage.objectName === "settings" || pageStack.currentPage.objectName === "") {
+                        console.log("media pattern: " + patternsModel.get(currentIndex).name)
+                        Mitakuuluu.mediaLedColor = patternsModel.get(currentIndex).name
+                    }
+                }
+                Component.onCompleted: {
+                    _updating = false
+                    for (var i = 0; i < patternsModel.count; i++) {
+                        if (patternsModel.get(i).name == Mitakuuluu.mediaLedColor) {
+                            currentIndex = i
+                            break
+                        }
+                    }
+                }
+            }
+
+            TextSwitch {
+                checked: showConnectionNotifications
+                text: qsTr("Show notifications when connection changing", "Settings option name")
+                onClicked: showConnectionNotifications = checked
+            }
+
+            Binding {
+                target: muteSwitch
+                property: "checked"
+                value: !notificationsMuted
+            }
+
+            TextSwitch {
+                id: muteSwitch
+                checked: !notificationsMuted
+                text: qsTr("Show new messages notifications", "Settings option name")
+                onClicked: notificationsMuted = !checked
+            }
+
+            Binding {
+                target: notifySwitch
+                property: "checked"
+                value: notifyMessages
+            }
+
+            TextSwitch {
+                id: notifySwitch
+                checked: notifyMessages
+                enabled: !notificationsMuted
+                text: qsTr("Display messages text in notifications", "Settings option name")
+                onClicked: notifyMessages = checked
+            }
+
+            SectionHeader {
+                text: qsTr("Common", "Settings page section name")
+            }
+
             ComboBox {
                 label: qsTr("Language")
                 menu: ContextMenu {
@@ -375,39 +495,6 @@ Page {
                 onClicked: acceptUnknown = checked
             }
 
-            TextSwitch {
-                checked: showConnectionNotifications
-                text: qsTr("Show notifications when connection changing", "Settings option name")
-                onClicked: showConnectionNotifications = checked
-            }
-
-            Binding {
-                target: muteSwitch
-                property: "checked"
-                value: !notificationsMuted
-            }
-
-            TextSwitch {
-                id: muteSwitch
-                checked: !notificationsMuted
-                text: qsTr("Show new messages notifications", "Settings option name")
-                onClicked: notificationsMuted = !checked
-            }
-
-            Binding {
-                target: notifySwitch
-                property: "checked"
-                value: notifyMessages
-            }
-
-            TextSwitch {
-                id: notifySwitch
-                checked: notifyMessages
-                enabled: !notificationsMuted
-                text: qsTr("Display messages text in notifications", "Settings option name")
-                onClicked: notifyMessages = checked
-            }
-
             /*TextSwitch {
                 checked: threading
                 text: qsTr("Create server connection in separate thread (experimental) (*)")
@@ -465,12 +552,15 @@ Page {
                 menu: ContextMenu {
                     Repeater {
                         width: parent.width
-                        model: 6
+                        model: 7
                         delegate: MenuItem {
                             text: coverActionName(index)
-                            onClicked: coverLeftAction = index
+                            //onClicked: coverLeftAction = index
                         }
                     }
+                }
+                onCurrentItemChanged: {
+                    coverLeftAction = currentIndex
                 }
             }
 
@@ -486,12 +576,15 @@ Page {
                 menu: ContextMenu {
                     Repeater {
                         width: parent.width
-                        model: 6
+                        model: 7
                         delegate: MenuItem {
                             text: coverActionName(index)
-                            onClicked: coverRightAction = index
+                            //onClicked: coverRightAction = index
                         }
                     }
+                }
+                onCurrentItemChanged: {
+                    coverRightAction = currentIndex
                 }
             }
 
@@ -626,6 +719,19 @@ Page {
         }
 
         VerticalScrollDecorator {}
+    }
+
+    ListModel {
+        id: patternsModel
+        Component.onCompleted: {
+            append({"name": "PatternMitakuuluuRed", "color": qsTr("red", "Pattern led color")})
+            append({"name": "PatternMitakuuluuGreen", "color": qsTr("green", "Pattern led color")})
+            append({"name": "PatternMitakuuluuBlue", "color": qsTr("blue", "Pattern led color")})
+            append({"name": "PatternMitakuuluuWhite", "color": qsTr("white", "Pattern led color")})
+            append({"name": "PatternMitakuuluuYellow", "color": qsTr("yellow", "Pattern led color")})
+            append({"name": "PatternMitakuuluuCyan", "color": qsTr("cyan", "Pattern led color")})
+            append({"name": "PatternMitakuuluuPink", "color": qsTr("pink", "Pattern led color")})
+        }
     }
 
     AlarmToneModel {

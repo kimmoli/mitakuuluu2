@@ -37,6 +37,7 @@ Dialog {
         }
         else if (status === DialogStatus.Opened) {
             page.canAccept = false
+            fastScroll.init()
         }
     }
 
@@ -46,16 +47,39 @@ Dialog {
                                 : qsTr("Selected %n contacts", "Select contact page title", jids.length)
     }
 
+    SearchField {
+        id: searchItem
+        width: parent.width
+        anchors.top: title.bottom
+        placeholderText: qsTr("Search", "Contacts selector")
+
+        onTextChanged: {
+            contactsModel.filter = text
+            fastScroll.init()
+        }
+    }
+
     SilicaListView {
         id: listView
-        anchors.fill: page
-        anchors.topMargin: title.height + Theme.paddingSmall
+        anchors {
+            top: searchItem.bottom
+            bottom: parent.bottom
+        }
+        width: parent.width
         model: contactsModel
         delegate: contactsDelegate
         clip: true
         section.property: "nickname"
         section.criteria: ViewSection.FirstCharacter
-
+        section.delegate: Component {
+            SectionHeader {
+                text: section
+            }
+        }
+        currentIndex: -1
+        onCountChanged: {
+            fastScroll.init()
+        }
         FastScroll {
             id: fastScroll
             listView: listView
