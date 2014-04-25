@@ -72,7 +72,7 @@ Page {
                 width: parent.width
                 wrapMode: Text.Wrap
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Welcome to Mitakuuluu v%1!\n\nNative WhatsApp-compatible clent for Sailfish OS.\nBefore switching to Mitakuuluu please use <Remove account> option in your current application, or do it inside Mitakuuluu after registering.", "Registration welcome message. %1 stands for version name").arg(appVersion + "-" + appBuildNum)
+                text: qsTr("Welcome to Mitakuuluu v%1!\n\nNative WhatsApp-compatible clent for Sailfish OS.\nBefore switching to Mitakuuluu from official application please use <Remove account> option in your current application, or do it inside Mitakuuluu after registering.", "Registration welcome message. %1 stands for version name").arg(appVersion + "-" + appBuildNum)
             }
 
             RegistrationCombo {
