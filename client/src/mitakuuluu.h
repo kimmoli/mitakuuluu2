@@ -22,12 +22,15 @@
 
 #define PROFILEKEY_PRIVATE_TONE     "mitakuuluu.private.tone"
 #define PROFILEKEY_PRIVATE_ENABLED  "mitakuuluu.private.enabled"
+#define PROFILEKEY_PRIVATE_PATTERN  "mitakuuluu.private.pattern"
 
 #define PROFILEKEY_GROUP_TONE       "mitakuuluu.group.tone"
 #define PROFILEKEY_GROUP_ENABLED    "mitakuuluu.group.enabled"
+#define PROFILEKEY_GROUP_PATTERN    "mitakuuluu.group.pattern"
 
 #define PROFILEKEY_MEDIA_TONE       "mitakuuluu.media.tone"
 #define PROFILEKEY_MEDIA_ENABLED    "mitakuuluu.media.enabled"
+#define PROFILEKEY_MEDIA_PATTERN    "mitakuuluu.media.pattern"
 
 #define TONE_FALLBACK               "/usr/share/sounds/jolla-ringtones/stereo/jolla-imtone.wav"
 
@@ -61,6 +64,10 @@ class Mitakuuluu: public QObject
     Q_PROPERTY(bool mediaToneEnabled READ getMediaToneEnabled WRITE setMediaToneEnabled NOTIFY mediaToneEnabledChanged)
     Q_PROPERTY(bool privateToneEnabled READ getPrivateToneEnabled WRITE setPrivateToneEnabled NOTIFY privateToneEnabledChanged)
     Q_PROPERTY(bool groupToneEnabled READ getGroupToneEnabled WRITE setGroupToneEnabled NOTIFY groupToneEnabledChanged)
+
+    Q_PROPERTY(QString mediaLedColor READ getMediaLedColor WRITE setMediaLedColor NOTIFY mediaLedColorChanged)
+    Q_PROPERTY(QString privateLedColor READ getPrivateLedColor WRITE setPrivateLedColor NOTIFY privateLedColorChanged)
+    Q_PROPERTY(QString groupLedColor READ getGroupLedColor WRITE setGroupLedColor NOTIFY groupLedColorChanged)
 
 public:
     enum ConnectionStatus {
@@ -112,6 +119,27 @@ public:
 private:
     QVariant getProfileValue(const QString &key, QVariant def = QVariant());
     bool setProfileValue(const QString &key, const QVariant &value);
+
+    QString getPrivateTone();
+    void setPrivateTone(const QString &path);
+    QString getGroupTone();
+    void setGroupTone(const QString &path);
+    QString getMediaTone();
+    void setMediaTone(const QString &path);
+
+    bool getPrivateToneEnabled();
+    void setPrivateToneEnabled(bool value);
+    bool getGroupToneEnabled();
+    void setGroupToneEnabled(bool value);
+    bool getMediaToneEnabled();
+    void setMediaToneEnabled(bool value);
+
+    QString getPrivateLedColor();
+    void setPrivateLedColor(const QString &pattern);
+    QString getGroupLedColor();
+    void setGroupLedColor(const QString &pattern);
+    QString getMediaLedColor();
+    void setMediaLedColor(const QString &pattern);
 
     int connStatus;
     int connectionStatus();
@@ -220,6 +248,10 @@ signals:
     void groupToneEnabledChanged();
     void mediaToneEnabledChanged();
 
+    void privateLedColorChanged();
+    void groupLedColorChanged();
+    void mediaLedColorChanged();
+
 private slots:
     void onConnectionStatusChanged(int status);
     void onSimParameters(const QString &mcccode, const QString &mnccode);
@@ -308,21 +340,8 @@ public slots:
     QString checkIfExists(const QString &path);
     void unsubscribe(const QString &jid);
     QString getAvatarForJid(const QString &jid);
+    QString saveAvatarForJid(const QString &jid, const QString &path);
     void rejectMediaCapture(const QString &path);
-
-    QString getPrivateTone();
-    void setPrivateTone(const QString &path);
-    QString getGroupTone();
-    void setGroupTone(const QString &path);
-    QString getMediaTone();
-    void setMediaTone(const QString &path);
-
-    bool getPrivateToneEnabled();
-    void setPrivateToneEnabled(bool value);
-    bool getGroupToneEnabled();
-    void setGroupToneEnabled(bool value);
-    bool getMediaToneEnabled();
-    void setMediaToneEnabled(bool value);
 
     QStringList getLocalesNames();
     int getCurrentLocaleIndex();

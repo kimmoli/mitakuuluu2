@@ -986,6 +986,17 @@ QString Mitakuuluu::getAvatarForJid(const QString &jid)
     return fname;
 }
 
+QString Mitakuuluu::saveAvatarForJid(const QString &jid, const QString &path)
+{
+    QString dirname = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/avatar";
+    QString toName = QString("%1/%2").arg(dirname).arg(jid);
+    QString fromName = path;
+    fromName.replace("file://", "");
+    QFile(toName).remove();
+    QFile(fromName).copy(toName);
+    return toName;
+}
+
 void Mitakuuluu::rejectMediaCapture(const QString &path)
 {
     QFile file(path);
@@ -1067,6 +1078,42 @@ void Mitakuuluu::setMediaToneEnabled(bool value)
     setProfileValue(PROFILEKEY_MEDIA_ENABLED, value ? "On" : "Off");
 
     Q_EMIT mediaToneEnabledChanged();
+}
+
+QString Mitakuuluu::getPrivateLedColor()
+{
+    return getProfileValue(PROFILEKEY_PRIVATE_PATTERN, "PatternMitakuuluuRed").toString();
+}
+
+void Mitakuuluu::setPrivateLedColor(const QString &pattern)
+{
+    setProfileValue(PROFILEKEY_PRIVATE_PATTERN, pattern);
+
+    Q_EMIT privateLedColorChanged();
+}
+
+QString Mitakuuluu::getGroupLedColor()
+{
+    return getProfileValue(PROFILEKEY_GROUP_PATTERN, "PatternMitakuuluuGreen").toString();
+}
+
+void Mitakuuluu::setGroupLedColor(const QString &pattern)
+{
+    setProfileValue(PROFILEKEY_GROUP_PATTERN, pattern);
+
+    Q_EMIT groupLedColorChanged();
+}
+
+QString Mitakuuluu::getMediaLedColor()
+{
+    return getProfileValue(PROFILEKEY_MEDIA_PATTERN, "PatternMitakuuluuCyan").toString();
+}
+
+void Mitakuuluu::setMediaLedColor(const QString &pattern)
+{
+    setProfileValue(PROFILEKEY_MEDIA_PATTERN, pattern);
+
+    Q_EMIT mediaLedColorChanged();
 }
 
 QStringList Mitakuuluu::getLocalesNames()

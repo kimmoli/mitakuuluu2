@@ -97,18 +97,18 @@ systemctl restart mce.service
 
 %files
 %defattr(-,root,root,-)
-%{_datadir}/dbus-1/services
+%{_datadir}/dbus-1/services/*.service
 %config /etc/mce/*.ini
 %config /etc/profiled/*.ini
 %config %{_datadir}/ngfd/events.d/*.ini
-%{_datadir}/lipstick/notificationcategories
+%config %{_datadir}/lipstick/notificationcategories/*.conf
 #%{_datadir}/jolla-gallery/mediasources
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/86x86/apps
+%{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 %{_datadir}/%{name}
 #/usr/lib/qt5/qml/harbour/mitakuuluu2/sharecontacts
-/usr/lib/nemo-transferengine/plugins
-/usr/lib/systemd/user
+/usr/lib/nemo-transferengine/plugins/*.so
+/usr/lib/systemd/user/*.service
 %{_bindir}
 # >> files
 # << files
