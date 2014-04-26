@@ -30,3 +30,4 @@ Remember time when problem appeared.
 Go to Settings and choose Send logfile to author in pulldown menu.
 Add description as shown in previous, and add time you remembered.
 Send logfile.
+Dont send logfile right after enabling it. It won't contain any useful information. You should reproduce it first.
