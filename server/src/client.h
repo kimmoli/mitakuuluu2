@@ -420,11 +420,11 @@ signals:
     void connectionSendLeaveGroup(const QString &gjid);
     void connectionSendGetPrivacyList();
     void connectionSendSetPrivacyBlockedList(const QStringList &jidList);
-    void connectionSetNewUserName(const QString &push_name, bool hide);
+    void connectionSetNewUserName(const QString &push_name, bool hide, const QString &privacy);
     void connectionSetNewStatus(const QString &status);
-    void connectionSendAvailableForChat(bool hide);
-    void connectionSendAvailable();
-    void connectionSendUnavailable();
+    void connectionSendAvailableForChat(bool hide, const QString &privacy);
+    void connectionSendAvailable(const QString &privacy);
+    void connectionSendUnavailable(const QString &privacy);
     void connectionSendDeleteAccount();
     void connectionSendMessageReceived(const FMessage &message);
     void connectionDisconnect();
@@ -544,7 +544,7 @@ public slots:
     void sendMedia(const QStringList &jids, const QString &fileName, const QString &mediaType);
     void sendMedia(const QStringList &jids, const QString fileName);
     void sendVCard(const QStringList &jids, const QString &name, const QString &vcardData);
-    void sendLocation(const QStringList &jids, const QString &latitude, const QString &longitude,int zoom, bool googlemaps);
+    void sendLocation(const QStringList &jids, const QString &latitude, const QString &longitude, int zoom, const QString &source);
     void getGroupInfo(const QString &jid);
     void getPicture(const QString &jid);
     void setPhoto(const QString &jid, const QString &path);

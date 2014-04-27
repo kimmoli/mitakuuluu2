@@ -391,7 +391,14 @@ bool Connection::read()
                                 QVariantMap contact;
                                 contact["jid"] = jid;
                                 contact["lastseen"] = t;
-                                contact["message"] = list.getDataString();
+                                QString message = list.getDataString();
+                                if (message.isEmpty()) {
+                                    QString code = list.getAttributeValue("code");
+                                    if (code == "401") {
+                                        contact["hidden"] = true;
+                                    }
+                                }
+                                contact["message"] = message;
                                 contacts.append(contact);
                             }
                         }
@@ -414,7 +421,7 @@ bool Connection::read()
                 if (id.startsWith("privacylist"))
                    emit privacyListReceived(QStringList());
                 else if (id.startsWith("get_picture_")) {
-                   /*ProtocolTreeNodeListIterator i(node.getChildren());
+                   ProtocolTreeNodeListIterator i(node.getChildren());
                    while (i.hasNext())
                    {
                        ProtocolTreeNode child = i.next().value();
@@ -422,10 +429,30 @@ bool Connection::read()
                        {
                            QString code = child.getAttributeValue("code");
                            if (code == "401") {
-                               sendSyncContacts(QStringList() << from);
+                               Q_EMIT photoReceived(from, QByteArray(), "hidden", true);
+                           }
+                           else if (code == "404") {
+                               Q_EMIT photoReceived(from, QByteArray(), "empty", true);
                            }
                        }
-                   }*/
+                   }
+                }
+                else if (id.startsWith("last_")) {
+                    ProtocolTreeNodeListIterator i(node.getChildren());
+                    while (i.hasNext())
+                    {
+                        ProtocolTreeNode child = i.next().value();
+                        if (child.getTag() == "error")
+                        {
+                            QString code = child.getAttributeValue("code");
+                            if (code == "405") { //privacy
+                                Q_EMIT lastOnline(from, -1);
+                            }
+                            if (code == "401") { //blocked
+                                Q_EMIT lastOnline(from, -2);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -443,9 +470,8 @@ bool Connection::read()
 
         else if (tag == "presence")
         {
-            QString xmlns = node.getAttributeValue("xmlns");
             QString from = node.getAttributeValue("from");
-            if ((xmlns.isEmpty() || xmlns == "urn:xmpp") && !from.isEmpty())
+            if (!from.isEmpty())
             {
                 QString type = node.getAttributeValue("type");
                 if (type.isEmpty() || type == "available")
@@ -1622,7 +1648,6 @@ void Connection::sendQueryLastOnline(const QString &jid)
     if (jid.contains("-"))
         return;
 
-
     QString id = makeId("last_");
 
     ProtocolTreeNode queryNode("query");
@@ -2432,10 +2457,10 @@ QString Connection::makeId(const QString &prefix)
 
     @param push_name    New user name or alias.
 */
-void Connection::setNewUserName(const QString &push_name, bool hide)
+void Connection::setNewUserName(const QString &push_name, bool hide, QString privacy)
 {
     this->push_name = push_name;
-    sendAvailableForChat(hide);
+    sendAvailableForChat(hide, privacy);
 }
 
 /**
@@ -2497,37 +2522,43 @@ void Connection::sendGetServerProperties()
 /**
     Sends notification that this client is available for chat (online).
 */
-void Connection::sendAvailableForChat(bool hide)
+void Connection::sendAvailableForChat(bool hide, QString privacy)
 {
     ProtocolTreeNode presenceNode("presence");
 
     AttributeList attrs;
     attrs.insert("name", push_name);
     attrs.insert("type", hide ? "unavailable" : "available");
+    if (!privacy.isEmpty())
+        attrs.insert("action", privacy);
     presenceNode.setAttributes(attrs);
 
     int bytes = out->write(presenceNode);
     counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
 }
 
-void Connection::sendAvailable()
+void Connection::sendAvailable(QString privacy)
 {
     ProtocolTreeNode presenceNode("presence");
 
     AttributeList attrs;
     attrs.insert("type", "available");
+    if (!privacy.isEmpty())
+        attrs.insert("action", privacy);
     presenceNode.setAttributes(attrs);
 
     int bytes = out->write(presenceNode);
     counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
 }
 
-void Connection::sendUnavailable()
+void Connection::sendUnavailable(QString privacy)
 {
     ProtocolTreeNode presenceNode("presence");
 
     AttributeList attrs;
     attrs.insert("type", "unavailable");
+    if (!privacy.isEmpty())
+        attrs.insert("action", privacy);
     presenceNode.setAttributes(attrs);
 
     int bytes = out->write(presenceNode);

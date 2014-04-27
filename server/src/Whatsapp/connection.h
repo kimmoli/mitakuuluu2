@@ -277,16 +277,16 @@ public slots:
     void sendPing();
 
     // Changes the user name or alias
-    void setNewUserName(const QString &push_name, bool hide = false);
+    void setNewUserName(const QString &push_name, bool hide = false, QString privacy = QString());
 
     void sendDeleteAccount();
 
     void sendGetServerProperties();
 
     // Sends notification that this client is available for chat (online)
-    void sendAvailableForChat(bool hide = false);
-    void sendAvailable();
-    void sendUnavailable();
+    void sendAvailableForChat(bool hide = false, QString privacy = QString());
+    void sendAvailable(QString privacy = QString());
+    void sendUnavailable(QString privacy = QString());
 
 private:
 

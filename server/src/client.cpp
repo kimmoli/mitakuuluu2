@@ -803,11 +803,11 @@ void Client::connectToServer()
     QObject::connect(this, SIGNAL(connectionSendLeaveGroup(QString)), connection, SLOT(sendLeaveGroup(QString)));
     QObject::connect(this, SIGNAL(connectionSendGetPrivacyList()), connection, SLOT(sendGetPrivacyList()));
     QObject::connect(this, SIGNAL(connectionSendSetPrivacyBlockedList(QStringList)), connection, SLOT(sendSetPrivacyBlockedList(QStringList)));
-    QObject::connect(this, SIGNAL(connectionSetNewUserName(QString,bool)), connection, SLOT(setNewUserName(QString,bool)));
+    QObject::connect(this, SIGNAL(connectionSetNewUserName(QString,bool,QString)), connection, SLOT(setNewUserName(QString,bool,QString)));
     QObject::connect(this, SIGNAL(connectionSetNewStatus(QString)), connection, SLOT(sendSetStatus(QString)));
-    QObject::connect(this, SIGNAL(connectionSendAvailableForChat(bool)), connection, SLOT(sendAvailableForChat(bool)));
-    QObject::connect(this, SIGNAL(connectionSendAvailable()), connection, SLOT(sendAvailable()));
-    QObject::connect(this, SIGNAL(connectionSendUnavailable()), connection, SLOT(sendUnavailable()));
+    QObject::connect(this, SIGNAL(connectionSendAvailableForChat(bool,QString)), connection, SLOT(sendAvailableForChat(bool,QString)));
+    QObject::connect(this, SIGNAL(connectionSendAvailable(QString)), connection, SLOT(sendAvailable(QString)));
+    QObject::connect(this, SIGNAL(connectionSendUnavailable(QString)), connection, SLOT(sendUnavailable(QString)));
     QObject::connect(this, SIGNAL(connectionSendDeleteAccount()), connection, SLOT(sendDeleteAccount()));
     QObject::connect(this, SIGNAL(connectionDisconnect()), connection, SLOT(disconnectAndDelete()));
     QObject::connect(this, SIGNAL(connectionSendGetServerProperties()), connection, SLOT(sendGetServerProperties()));
@@ -981,6 +981,9 @@ void Client::syncContactsAvailable(const QVariantList &results)
             QVariantMap contact = vcontact.toMap();
             QString jid = contact["jid"].toString();
             QString message = contact["message"].toString();
+            if (contact.contains("hidden")) {
+                message = tr("Hidden", "User hidden own status for privacy");
+            }
             qDebug() << "Message" << message << "Jid:" << jid;
 
             if (jid == myJid) {
@@ -1017,7 +1020,8 @@ void Client::changeUserName(const QString &newUserName)
     if (connectionStatus == LoggedIn) {
         settings->sync();
         bool alwaysOffline = settings->value("settings/alwaysOffline", false).toBool();
-        Q_EMIT connectionSetNewUserName(userName, alwaysOffline);
+        QString privacy = settings->value("privacy/lastOnline", "").toString();
+        Q_EMIT connectionSetNewUserName(userName, alwaysOffline, privacy);
     }
 }
 
@@ -1353,7 +1357,23 @@ void Client::sendLocationRequest()
         msg.latitude = location.split(",").first().toDouble();
         msg.longitude = location.split(",").last().toDouble();
         msg.media_wa_type = FMessage::Location;
-        msg.setData(reply->readAll().toBase64());
+
+        QPixmap img;
+        img.loadFromData(reply->readAll());
+        QPainter painter;
+        if (painter.begin(&img)) {
+            QPixmap marker("/usr/share/harbour-mitakuuluu2/images/location-marker.png");
+            QRect targetRect(img.width() / 2 - marker.width() / 2, img.height() / 2 - marker.height() / 2, marker.width(), marker.height());
+            painter.drawPixmap(targetRect, marker, marker.rect());
+            painter.end();
+        }
+
+        QByteArray data;
+        QBuffer buffer(&data);
+        buffer.open(QIODevice::WriteOnly);
+        img.save(&buffer, "JPG", 100);
+
+        msg.setData(data.toBase64());
         if (jids.size() > 1) {
             msg.broadcast = true;
             msg.broadcastJids = jids;
@@ -1718,47 +1738,67 @@ void Client::sendVCard(const QStringList &jids, const QString &name, const QStri
     addMessage(msg);
 }
 
-void Client::sendLocation(const QStringList &jids, const QString &latitude, const QString &longitude, int zoom, bool googlemaps)
+void Client::sendLocation(const QStringList &jids, const QString &latitude, const QString &longitude, int zoom, const QString &source)
 {
-    qDebug() << "sendLocation" << latitude << longitude;
     if (nam && isOnline) {
+        qDebug() << "sendLocation" << latitude << longitude;
+        int w = 128;
+        int h = 128;
         QNetworkRequest req;
-        if (googlemaps) {
+        if (source == "google") {
             QUrlQuery path;
             path.addQueryItem("maptype", "roadmap");
             path.addQueryItem("sensor", "false");
-            path.addQueryItem("markers", QString("color:red|label:.|%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("zoom", QString::number(zoom));
-            path.addQueryItem("size", QString("%1x%2").arg(320).arg(320));
+            path.addQueryItem("size", QString("%1x%2").arg(w).arg(h));
             path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
+            path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("jids", jids.join(","));
             QUrl url("http://maps.googleapis.com/maps/api/staticmap");
             url.setQuery(path);
             req.setUrl(url);
-            qDebug() << "sending location request" << url;
         }
-        else {
-            QString inColor = "red";
-            QString outColor = "white";
-            QString textSize = "15";
+        else if (source == "here") {
             QUrlQuery path;
             path.addQueryItem("app_id", "ZXpeEEIbbZQHDlyl5vEn");
             path.addQueryItem("app_code", "GQvKkpzHomJpzKu-hGxFSQ");
             path.addQueryItem("nord", "");
             path.addQueryItem("f", "0");
-            path.addQueryItem("poix0", QString("%1,%2;%3;%4;%5;%6").arg(latitude).arg(longitude).arg(inColor).arg(outColor).arg(textSize).arg(""));
             path.addQueryItem("z", QString::number(zoom));
-            path.addQueryItem("w", "320");
-            path.addQueryItem("h", "320");
-            path.addQueryItem("poithm", "1");
-            path.addQueryItem("poilbl", "1");
+            path.addQueryItem("w", QString::number(w));
+            path.addQueryItem("h", QString::number(h));
             path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("jids", jids.join(","));
-            QUrl url("http://image.maps.cit.api.here.com/mia/1.6/mapview");
+            QUrl url("https://maps.nlp.nokia.com/mia/1.6/mapview");
             url.setQuery(path);
             req.setUrl(url);
-            qDebug() << "sending location request" << url;
         }
+        else if (source == "nokia") {
+            QUrlQuery path;
+            path.addQueryItem("nord", "");
+            path.addQueryItem("f", "0");
+            path.addQueryItem("z", QString::number(zoom));
+            path.addQueryItem("w", QString::number(w));
+            path.addQueryItem("h", QString::number(h));
+            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
+            path.addQueryItem("jids", jids.join(","));
+            QUrl url("http://m.nok.it");
+            url.setQuery(path);
+            req.setUrl(url);
+        }
+        else if (source == "osm") {
+            QUrlQuery path;
+            path.addQueryItem("maptype", "mapnik");
+            path.addQueryItem("zoom", QString::number(zoom));
+            path.addQueryItem("size", QString("%1x%2").arg(w).arg(h));
+            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
+            path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
+            path.addQueryItem("jids", jids.join(","));
+            QUrl url("https://coderus.openrepos.net/staticmaplite/staticmap.php");
+            url.setQuery(path);
+            req.setUrl(url);
+        }
+        qDebug() << "sending location request" << req.url();
         connect(nam->get(req), SIGNAL(finished()), this, SLOT(sendLocationRequest()));
     }
 }
@@ -1802,17 +1842,32 @@ void Client::photoReceived(const QString &from, const QByteArray &data,
                            const QString &photoId, bool largeFormat)
 {
     qDebug() << "photoReceived from:" << from << "id:" << photoId << "large:" << (largeFormat ? "yes" : "no");
+
     QString dirname = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/avatar";
-    QDir avadir(dirname);
-    if (!avadir.exists())
-        avadir.mkpath(dirname);
-    QString fname = QString("%1/%2").arg(dirname).arg(from);
-    QFile ava(fname);
-    if (ava.exists())
-        ava.remove();
-    if (ava.open(QFile::WriteOnly)) {
-        ava.write(data);
-        ava.close();
+    QString fname;
+
+    if (data.isEmpty()) {
+        if (photoId == "hidden") {
+            fname = "/usr/share/harbour-mitakuuluu2/images/avatar-hidden.png";
+        }
+        else {
+            QFile ava(QString("%1/%2").arg(dirname).arg(from));
+            if (ava.exists())
+                ava.remove();
+        }
+    }
+    else {
+        QDir avadir(dirname);
+        if (!avadir.exists())
+            avadir.mkpath(dirname);
+        fname = QString("%1/%2").arg(dirname).arg(from);
+        QFile ava(fname);
+        if (ava.exists())
+            ava.remove();
+        if (ava.open(QFile::WriteOnly)) {
+            ava.write(data);
+            ava.close();
+        }
     }
     Q_EMIT pictureUpdated(from, fname);
 
@@ -1834,6 +1889,7 @@ void Client::photoRefresh(const QString &jid, const QString &expectedPhotoId, bo
 void Client::photoDeleted(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &notificationId)
 {
     qDebug() << "photoDeleted for:" << jid << "photo:" << alias << "author:" << author << "timestamp:" << timestamp << notificationId;
+    photoReceived(jid, QByteArray(), "empty", true);
 }
 
 void Client::setPhoto(const QString &jid, const QString &path)
@@ -2348,7 +2404,8 @@ void Client::setPresenceAvailable()
 {
     qDebug() << "set presence available";
     if (connectionStatus == LoggedIn) {
-        Q_EMIT connectionSendAvailable();
+        QString privacy = settings->value("privacy/lastOnline", "").toString();
+        Q_EMIT connectionSendAvailable(privacy);
     }
 }
 
@@ -2356,7 +2413,8 @@ void Client::setPresenceUnavailable()
 {
     qDebug() << "set presence unavailable";
     if (connectionStatus == LoggedIn) {
-        Q_EMIT connectionSendUnavailable();
+        QString privacy = settings->value("privacy/lastOnline", "").toString();
+        Q_EMIT connectionSendUnavailable(privacy);
     }
 }
 

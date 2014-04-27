@@ -70,6 +70,7 @@ void BinTreeNodeReader::decodeStream(qint8 flags, qint32 offset, qint32 length)
         offset += 4;
         length -= 4;
         if (!inputKey->decodeMessage(readBuffer, offset-4, offset, length)) {
+            qDebug() << "error decoding message";
             //socket->disconnectFromHost();
             Q_EMIT socketBroken();
         }
@@ -243,7 +244,7 @@ void BinTreeNodeReader::fillArray(QByteArray& buffer, quint32 len)
         int bytesRead = socket->read(data,(needToRead > 1024) ? 1024 : needToRead);
 
         if (bytesRead < 0) {
-            qDebug() << "bytesRead < 0";
+            qDebug() << "bytesRead < 0" << socket->errorString();
             //socket->disconnectFromHost();
             Q_EMIT socketBroken();
             return;
