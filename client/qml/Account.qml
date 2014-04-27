@@ -219,6 +219,7 @@ Dialog {
             width: 128
             height: 128
             source: page.avatar
+            emptySource: "../images/avatar-empty.png"
 
             MouseArea {
                 anchors.fill: parent

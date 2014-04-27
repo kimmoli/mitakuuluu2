@@ -70,6 +70,7 @@ Dialog {
                 id: avaholder
                 width: Theme.itemSizeMedium
                 height: Theme.itemSizeMedium
+                emptySource: "../images/avatar-empty-group.png"
 
                 MouseArea {
                     anchors.fill: parent
@@ -187,6 +188,7 @@ Dialog {
                 height: Theme.iconSizeLarge
                 width: Theme.iconSizeLarge
                 source: model.avatar
+                emptySource: "../images/avatar-empty.png"
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge
                 anchors.verticalCenter: parent.verticalCenter

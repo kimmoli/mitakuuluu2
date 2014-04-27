@@ -74,6 +74,7 @@ Page {
             AvatarHolder {
                 id: ava
                 source: ContactsBaseModel.getModel(model.jid).avatar
+                emptySource: "../images/avatar-empty" + (model.jid.indexOf("-") > 0 ? "-group" : "") + ".png"
                 anchors {
                 	left: parent.left
                 	leftMargin: Theme.paddingLarge

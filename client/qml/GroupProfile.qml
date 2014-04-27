@@ -205,6 +205,7 @@ Page {
             anchors.left: parent.left
             anchors.leftMargin: Theme.paddingMedium
             source: page.avatar
+            emptySource: "../images/avatar-empty-group.png"
         }
 
         BusyIndicator {
@@ -349,6 +350,7 @@ Page {
                 height: Theme.iconSizeLarge
                 width: Theme.iconSizeLarge
                 source: model.avatar
+                emptySource: "../images/avatar-empty.png"
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge
                 anchors.verticalCenter: parent.verticalCenter

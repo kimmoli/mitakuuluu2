@@ -132,6 +132,7 @@ Page {
                 height: Theme.iconSizeLarge * 4
                 anchors.horizontalCenter: parent.horizontalCenter
                 source: page.picture
+                emptySource: "../images/avatar-empty.png"
 
                 MouseArea {
                     anchors.fill: parent

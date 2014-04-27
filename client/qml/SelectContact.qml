@@ -114,6 +114,7 @@ Dialog {
                 width: Theme.iconSizeLarge
                 height: Theme.iconSizeLarge
                 source: model.avatar
+                emptySource: "../images/avatar-empty" + (model.jid.indexOf("-") > 0 ? "-group" : "") + ".png"
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge
                 anchors.verticalCenter: parent.verticalCenter

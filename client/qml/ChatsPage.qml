@@ -165,6 +165,7 @@ Page {
             AvatarHolder {
                 id: ava
                 source: model.avatar == "undefined" ? "" : (model.avatar)
+                emptySource: "../images/avatar-empty" + (model.jid.indexOf("-") > 0 ? "-group" : "") + ".png"
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge
                 anchors.top: parent.top
