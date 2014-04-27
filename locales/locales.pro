@@ -7,8 +7,14 @@ ts.CONFIG += no_check_exist no_link
 ts.output = $$TS_FILE
 ts.input = ..
 
-QMAKE_EXTRA_TARGETS += ts
-PRE_TARGETDEPS += ts
+#make transifex site happy. sigh...
+transifex.commands += sed -i -e \"s@<numerusform></numerusform>@<numerusform></numerusform>\\n            <numerusform></numerusform>@\" $$TS_FILE
+transifex.CONFIG += no_check_exist no_link
+transifex.output = $$TS_FILE
+transifex.input = ..
+
+QMAKE_EXTRA_TARGETS += ts transifex
+PRE_TARGETDEPS += ts transifex
 
 TRANSLATIONS += \
     ca.ts \
