@@ -189,19 +189,49 @@ Page {
                 onClicked: hideKeyboard = checked
             }
 
-            TextSwitch {
-                checked: importToGallery
-                text: qsTr("Download media to Gallery", "Settings option name")
-                description: qsTr("If checked downloaded files will be shown in Gallery", "Settings option description")
-                onClicked: importToGallery = checked
-            }
-
             /*TextSwitch {
                 checked: deleteMediaFiles
                 text: qsTr("Delete media files")
                 description: qsTr("Delete received media files when deleting message")
                 onClicked: deleteMediaFiles = checked
             }*/
+
+            ComboBox {
+                label: qsTr("Map source", "Settings option name")
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("Here", "Map source selection")
+                        onClicked: mapSource = "here"
+                    }
+                    MenuItem {
+                        text: qsTr("Nokia", "Map source selection")
+                        onClicked: mapSource = "nokia"
+                    }
+                    MenuItem {
+                        text: qsTr("Google", "Map source selection")
+                        onClicked: mapSource = "google"
+                    }
+                    MenuItem {
+                        text: qsTr("OpenStreetMaps", "Map source selection")
+                        onClicked: mapSource = "osm"
+                    }
+                }
+                Component.onCompleted: {
+                    if (mapSource == "here") {
+                        currentIndex = 0
+                    }
+                    else if (mapSource == "nokia") {
+                        currentIndex = 1
+                    }
+                    else if (mapSource == "google") {
+                        currentIndex = 2
+                    }
+                    else if (mapSource == "osm") {
+                        currentIndex = 3
+                    }
+                }
+            }
+
 
             Slider {
                 id: fontSlider
@@ -474,6 +504,13 @@ Page {
                         banner.notify(qsTr("You need to full quit application to start writing logs. Send logfile to author appear in settings menu.", "Allow application logs option description"))
                     }
                 }
+            }
+
+            TextSwitch {
+                checked: importToGallery
+                text: qsTr("Download media to Gallery", "Settings option name")
+                description: qsTr("If checked downloaded files will be shown in Gallery", "Settings option description")
+                onClicked: importToGallery = checked
             }
 
             TextSwitch {

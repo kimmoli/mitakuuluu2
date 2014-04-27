@@ -30,9 +30,9 @@ CoverBackground {
     Label {
         id: wacount
         text: registration ? qsTr("Registration", "Cover item label text")
-                           : (Mitakuuluu.totalUnread > 1 ? (qsTr("Unread messages: %n", "Cover item label text", Mitakuuluu.totalUnread))
+                           : (Mitakuuluu.totalUnread > 1 ? (qsTr("Unread messages: %n", "", Mitakuuluu.totalUnread))
                                                          : (Mitakuuluu.totalUnread == 1 ? qsTr("One unread message", "Cover item label text")
-                                                                                        : qsTr("No unread messages")))
+                                                                                        : qsTr("No unread messages", "Cover item label text")))
         font.pixelSize: Theme.fontSizeMedium
         horizontalAlignment: Text.AlignHCenter
         anchors.left: root.left

@@ -335,7 +335,7 @@ public slots:
     bool checkLogfile();
     bool checkAutostart();
     void setAutostart(bool enabled);
-    void sendLocation(const QStringList &jids, const QString &latitude, const QString &longitude, int zoom, bool googlemaps = false);
+    void sendLocation(const QStringList &jids, double latitude, double longitude, int zoom, const QString &source);
     void renewAccount(const QString &method, int years);
     QString checkIfExists(const QString &path);
     void unsubscribe(const QString &jid);

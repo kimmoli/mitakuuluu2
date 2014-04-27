@@ -255,14 +255,12 @@ ApplicationWindow {
         property real latitude: 55.159479
         property real longitude: 61.402796
         property int zoom: 16
-        property bool googlemaps: false
 
         function locationAccepted() {
             pageStack.currentPage.accepted.disconnect(locationReceiver.locationAccepted)
             latitude = pageStack.currentPage.latitude
             longitude = pageStack.currentPage.longitude
             zoom = pageStack.currentPage.zoom
-            googlemaps = pageStack.currentPage.googlemaps
             pageStack.busyChanged.connect(locationReceiver.transitionDone)
         }
 
@@ -283,7 +281,7 @@ ApplicationWindow {
 
         function contactsSelected() {
             contactsRejected()
-            Mitakuuluu.sendLocation(pageStack.currentPage.jids, latitude, longitude, zoom, googlemaps)
+            Mitakuuluu.sendLocation(pageStack.currentPage.jids, latitude, longitude, zoom, mapSource)
         }
     }
 
@@ -447,6 +445,68 @@ ApplicationWindow {
             return "../images/icon-cover-text-" + (left ? "left" : "right") + ".png"
         default:
             return ""
+        }
+    }
+
+    function locationPreview(w, h, lat, lon, z, source) {
+        if (!source || source === undefined || typeof(source) === "undefined")
+            source = "here"
+
+        if (source === "here") {
+            return "https://maps.nlp.nokia.com/mia/1.6/mapview?app_id=ZXpeEEIbbZQHDlyl5vEn&app_code=GQvKkpzHomJpzKu-hGxFSQ&nord&f=0&poithm=1&poilbl=0&ctr="
+                    + lat
+                    + ","
+                    + lon
+                    + "&w=" + w
+                    + "&h=" + h
+                    //+ "&poix0="
+                    //+ lat
+                    //+ ","
+                    //+ lon
+                    //+ ";red;white;20;.;"
+                    + "&z=" + z
+        }
+        else if (source === "osm") {
+            return "https://coderus.openrepos.net/staticmaplite/staticmap.php?maptype=mapnik&center="
+                    + lat
+                    + ","
+                    + lon
+                    + "&size=" + w
+                    + "x" + h
+                    //+ "&markers="
+                    //+ lat
+                    //+ ","
+                    //+ lon
+                    //+ ",ol-marker"
+                    + "&zoom=" + z
+        }
+        else if (source === "google") {
+            return "http://maps.googleapis.com/maps/api/staticmap?maptype=roadmap&sensor=false&"
+                    + "&size=" + w
+                    + "x" + h
+                    //+ "&markers=color:red|label:.|"
+                    //+ lat
+                    //+ ","
+                    //+ lon
+                    + "&center="
+                    + lat
+                    + ","
+                    + lon
+                    + "&zoom=" + z
+        }
+        else if (source === "nokia") {
+            return "http://m.nok.it/?nord&f=0&poithm=1&poilbl=0&ctr="
+                    + lat
+                    + ","
+                    + lon
+                    + "&w=" + w
+                    + "&h=" + h
+                    //+ "&poix0="
+                    //+ lat
+                    //+ ","
+                    //+ lon
+                    //+ ";red;white;20;.;"
+                    + "&z=" + z
         }
     }
 

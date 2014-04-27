@@ -222,64 +222,6 @@ MouseArea {
         }
     }
 
-    function locationPreview(w, h, lat, lon, z, source) {
-        if (!source || source === undefined || typeof(source) === "undefined")
-            source = "here"
-
-        if (source === "here") {
-            return "http://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ZXpeEEIbbZQHDlyl5vEn&app_code=GQvKkpzHomJpzKu-hGxFSQ&nord&f=0&poithm=1&poilbl=0&ctr="
-                    + lat
-                    + ","
-                    + lon
-                    + "&w=" + w
-                    + "&h=" + h
-                    + "&poix0="
-                    + lat
-                    + ","
-                    + lon
-                    + ";red;white;20;.;"
-                    + "&z=" + z
-        }
-        else if (source === "osm") {
-            return "https://coderus.openrepos.net/staticmaplite/staticmap.php?maptype=mapnik&center="
-                    + lat
-                    + ","
-                    + lon
-                    + "&size=" + w
-                    + "x" + h
-                    + "&markers="
-                    + lat
-                    + ","
-                    + lon
-                    + ",ol-marker"
-                    + "&zoom=" + z
-        }
-        else if (source === "google") {
-            return "http://maps.googleapis.com/maps/api/staticmap?maptype=roadmap&sensor=false&"
-                    + "&size=" + w
-                    + "x" + h
-                    + "&markers=color:red|label:.|"
-                    + lat
-                    + ","
-                    + lon
-                    + "&zoom=" + z
-        }
-        else if (source === "nokia") {
-            return "http://m.nok.it/?nord&f=0&poithm=1&poilbl=0&ctr="
-                    + lat
-                    + ","
-                    + lon
-                    + "&w=" + w
-                    + "&h=" + h
-                    + "&poix0="
-                    + lat
-                    + ","
-                    + lon
-                    + ";red;white;20;.;"
-                    + "&z=" + z
-        }
-    }
-
     Item {
         id: arrowBg
         clip: true
@@ -745,6 +687,14 @@ MouseArea {
             asynchronous: true
             cache: true
             smooth: true
+
+            Image {
+                source: "../images/location-marker.png"
+                anchors {
+                    centerIn: parent
+                }
+                visible: locprev.status == Image.Ready
+            }
 
             BusyIndicator {
                 anchors.centerIn: parent

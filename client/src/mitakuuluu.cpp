@@ -951,10 +951,11 @@ void Mitakuuluu::setAutostart(bool enabled)
     }
 }
 
-void Mitakuuluu::sendLocation(const QStringList &jids, const QString &latitude, const QString &longitude, int zoom, bool googlemaps)
+void Mitakuuluu::sendLocation(const QStringList &jids, double latitude, double longitude, int zoom, const QString &source)
 {
     if (iface) {
-        iface->call(QDBus::NoBlock, "sendLocation", jids, latitude, longitude, zoom, googlemaps);
+        qDebug() << "sendLocation" << latitude << longitude;
+        iface->call(QDBus::NoBlock, "sendLocation", jids, QString::number(latitude), QString::number(longitude), zoom, source);
     }
 }
 

@@ -17,7 +17,6 @@ Dialog {
     property real latitude: 55.159479
     property real longitude: 61.402796
     property int zoom: 16
-    property bool googlemaps: false
 
     onStatusChanged: {
         if (status == PageStatus.Inactive && locationEnabled) {
@@ -102,41 +101,25 @@ Dialog {
         asynchronous: true
         cache: true
         fillMode: Image.PreserveAspectFit
-        verticalAlignment: Image.AlignTop
+        verticalAlignment: Image.AlignVCenter
 
         function loadImage() {
             if (positionSource
                     && positionSource.position
                     && positionSource.position.longitudeValid
                     && positionSource.position.latitudeValid) {
-                if (googlemaps) {
-                    locationImg.source = "http://maps.googleapis.com/maps/api/staticmap?zoom=" + page.zoom
-                            + "&size="
-                            + locationImg.width
-                            + "x" + locationImg.height
-                            +"&maptype=roadmap&sensor=false&markers=color:red|label:.|"
-                            + page.latitude
-                            + ","
-                            + page.longitude
-                }
-                else {
-                    locationImg.source = "http://m.nok.it/?ctr="
-                            + page.latitude
-                            + ","
-                            + page.longitude
-                            + "&w=" + locationImg.width
-                            + "&h=" + locationImg.height
-                            + "&poix0="
-                            + page.latitude
-                            + ","
-                            + page.longitude
-                            + ";red;white;20;.;"
-                            + "&z=" + page.zoom
-                            + "&nord&f=0&poithm=1&poilbl=0"
-                }
+                locationImg.source = locationPreview(locationImg.width, locationImg.height, page.latitude, page.longitude, page.zoom, mapSource)
                 console.log("loading: " + locationImg.source)
             }
         }
+    }
+
+    Image {
+        source: "../images/location-marker.png"
+        anchors {
+            centerIn: locationImg
+        }
+        visible: locationImg.status == Image.Ready
     }
 
     /*Rectangle {
@@ -279,10 +262,22 @@ Dialog {
         anchors.top: bt3.bottom
         anchors.right: parent.right
         anchors.margins: Theme.paddingMedium
-        icon.source: googlemaps ? "../images/googlemaps.png" : "../images/heremaps.png"
+        icon.source: "../images/mapicon-" + mapSource + ".png"
         highlighted: pressed
         onClicked: {
-            googlemaps = !googlemaps
+            if (mapSource == "google") {
+                mapSource = "nokia"
+            }
+            else if (mapSource == "nokia") {
+                mapSource = "here"
+            }
+            else if (mapSource == "here") {
+                mapSource = "osm"
+            }
+            else {
+                mapSource = "google"
+            }
+
             locationImg.loadImage()
 
         }

@@ -413,6 +413,7 @@ void ContactsBaseModel::presenceUnavailable(const QString &jid)
 void ContactsBaseModel::presenceLastSeen(const QString jid, int timestamp)
 {
     setPropertyByJid(jid, "timestamp", timestamp);
+    setPropertyByJid(jid, "available", timestamp == 0);
 }
 
 void ContactsBaseModel::messageReceived(const QVariantMap &data)

@@ -49,13 +49,13 @@ Page {
         //console.log("avatar: " + initialModel.avatar)
         avatar = initialModel.avatar
         typing = initialModel.typing
+        lastseconds = parseInt(initialModel.timestamp)
 
         loadText()
         conversationModel.jid = jid
 
         Mitakuuluu.setActiveJid(jid)
         if (!available) {
-            lastseen = timestampToDateTime(initialModel.timestamp)
             Mitakuuluu.requestLastOnline(jid)
         }
     }
@@ -67,7 +67,11 @@ Page {
     property string name: ""
     property string jid: ""
     property string avatar: ""
-    property string lastseen: ""
+    property string lastseen: lastseconds == -2 ? qsTr("Contact blocked you")
+                                                : (lastseconds == -1 ? qsTr("Last online: hidden")
+                                                                     : qsTr("Last seen: %1", "Last seen converstation text")
+                                                                            .arg(timestampToDateTime(lastseconds)))
+    property int lastseconds: 0
     property bool typing: false
 
     function loadText() {
@@ -152,7 +156,7 @@ Page {
         target: Mitakuuluu
         onPresenceAvailable: {
             if (mjid == page.jid) {
-                lastseen = ""
+                lastseconds = new Data().getTime() / 1000
                 available = true
             }
         }
@@ -164,7 +168,8 @@ Page {
         }
         onPresenceLastSeen: {
             if (mjid == page.jid && !page.available) {
-                lastseen = timestampToDateTime(seconds)
+                lastseconds = seconds
+                page.available = seconds == 0
             }
         }
         onPictureUpdated: {
@@ -408,6 +413,7 @@ Page {
                 height: parent.height - (Theme.paddingSmall * 2)
                 width: height
                 source: page.avatar
+                emptySource: "../images/avatar-empty" + (page.jid.indexOf("-") > 0 ? "-group" : "") + ".png"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingSmall
@@ -441,7 +447,7 @@ Page {
                     font.family: Theme.fontFamily
                     text: typing
                             ? qsTr("Typing...", "Contact typing converstation text")
-                            : qsTr("Last seen: %1", "Last seen converstation text").arg(lastseen)
+                            : lastseen
                     visible: typing || (!available && page.jid.indexOf("-") == -1 && text.length > 0)
                 }
             }
@@ -731,29 +737,17 @@ Page {
             onPositionChanged: {
                 if (positionSource) {
                     if (positionSource.position) {
-                        if (positionSource.position.horizontalAccuracyValid) {
-                            console.log("accuracy valid: " + positionSource.position.horizontalAccuracyValid)
-                        }
-                        if (positionSource.position.horizontalAccuracy > 0) {
-                            console.log("good accuracy: " + positionSource.position.horizontalAccuracy)
-                        }
-                        if (positionSource.position.timestamp.getTime() >= initialTimestamp) {
-                            console.log("good timestamp: " + Qt.formatDateTime(positionSource.position.timestamp, "dd.MM.yyyy hh:mm:ss") + "" + positionSource.position.timestamp)
-                        }
-
                         if (positionSource.position.horizontalAccuracyValid
                                 && positionSource.position.horizontalAccuracy > 0
                                 && positionSource.position.timestamp.getTime() >= initialTimestamp
                                 && positionSource.position.coordinate
                                 && positionSource.position.coordinate.isValid) {
-                            console.log("coordinates valid")
-                            console.log("latitude: " + positionSource.position.coordinate.latitude)
-                            console.log("longitude: " + positionSource.position.coordinate.longitude)
+                            console.log("sending coordinates: " + positionSource.position.coordinate.latitude + "," + positionSource.position.coordinate.longitude)
                             Mitakuuluu.sendLocation(page.jid,
                                                     positionSource.position.coordinate.latitude,
                                                     positionSource.position.coordinate.longitude,
                                                     16,
-                                                    false)
+                                                    mapSource)
                             positionSource.active = false
                             positionSource.destroy()
                         }
