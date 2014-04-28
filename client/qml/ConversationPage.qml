@@ -156,7 +156,7 @@ Page {
         target: Mitakuuluu
         onPresenceAvailable: {
             if (mjid == page.jid) {
-                lastseconds = new Data().getTime() / 1000
+                lastseconds = new Date().getTime() / 1000
                 available = true
             }
         }
