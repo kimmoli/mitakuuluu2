@@ -30,6 +30,7 @@ namespace QueryType {
         ContactsRemove,
         ContactsMuteGroup,
         ContactsGetMuted,
+        ContactsGroupParticipants,
         ConversationLoadLast = 100,
         ConversationLoadNext,
         ConversationGetMessage,
@@ -99,6 +100,7 @@ private:
     void getMuted(QVariantMap &query);
     void mediaUploaded(QVariantMap &query);
     void getContactMedia(QVariantMap &query);
+    void groupParticipants(QVariantMap &query);
 
 private:
     ThreadWorker m_worker;

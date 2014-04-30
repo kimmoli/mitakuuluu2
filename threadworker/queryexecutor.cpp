@@ -118,6 +118,10 @@ void QueryExecutor::processQuery(const QVariant &msg)
             getMuted(query);
             break;
         }
+        case QueryType::ContactsGroupParticipants: {
+            groupParticipants(query);
+            break;
+        }
         case QueryType::ConversationGetMessage:
         case QueryType::ConversationGetDownloadMessage: {
             getMessageModel(query);
@@ -356,17 +360,21 @@ void QueryExecutor::setContactPushname(QVariantMap &query)
 
     query["exists"] = true;
 
-    QSqlQuery e(db);
-    e.prepare("UPDATE contacts SET pushname=(:pushname) WHERE jid=(:jid);");
-    e.bindValue(":pushname", jid.contains("-") ? jid : pushName);
-    e.bindValue(":jid", jid);
-    e.exec();
+    QSqlQuery c(db);
+    c.prepare("SELECT pushname FROM contacts WHERE jid=(:jid);");
+    c.bindValue(":jid", jid);
+    c.exec();
 
-    if (e.lastError().type() != QSqlError::NoError) {
-        qDebug() << "Error update setContactPushname:" << e.lastError().text();
+    if (c.next()) {
+        if (!pushName.isEmpty()) {
+            QSqlQuery e(db);
+            e.prepare("UPDATE contacts SET pushname=(:pushname) WHERE jid=(:jid);");
+            e.bindValue(":pushname", jid.contains("-") ? jid : pushName);
+            e.bindValue(":jid", jid);
+            e.exec();
+        }
     }
-
-    if (e.numRowsAffected() == 0) {
+    else {
         QSqlQuery ic(db);
         ic.prepare("INSERT INTO contacts VALUES (:jid, :pushname, :name, :message, :contacttype, :owner, :subowner, :timestamp, :subtimestamp, :avatar, :unread, :lastmessage);");
         ic.bindValue(":jid", jid);
@@ -425,7 +433,7 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
 
             QSqlQuery uc;
             //uc.prepare("UPDATE contacts SET name=(:name), message=(:message), timestamp=(:timestamp) WHERE jid=(:jid);");
-            if (!avatar.contains("data/avatars")) {
+            if (avatar.isEmpty() || avatar.contains("harbour-mitakuuluu2")) {
                 uc.prepare("UPDATE contacts SET name=(:name), contacttype=(:contacttype) WHERE jid=(:jid);");
                 avatars.append(jid);
             }
@@ -533,7 +541,7 @@ void QueryExecutor::setContactAvatar(QVariantMap &query)
 
     if (ava.next()) {
         QString avatar = ava.value(0).toString();
-        if (!avatar.contains("data/avatars")) {
+        if (avatar.isEmpty() || avatar.contains("harbour-mitakuuluu2")) {
             QSqlQuery sql(db);
             sql.prepare("UPDATE contacts SET avatar=(:avatar) WHERE jid=(:jid);");
             sql.bindValue(":avatar", query["avatar"]);
@@ -864,12 +872,55 @@ void QueryExecutor::getContactMedia(QVariantMap &query)
     QVariantList mediaList;
     while (sql.next()) {
         QVariantMap media;
-        media["path"] = sql.value(0);
-        media["mime"] = sql.value(1);
-        mediaList.append(media);
+        QString path = sql.value(0).toString();
+        if (!path.isEmpty()) {
+            media["path"] = path;
+            media["mime"] = sql.value(1);
+            mediaList.append(media);
+        }
     }
     query["media"] = mediaList;
 
+    Q_EMIT actionDone(query);
+}
+
+void QueryExecutor::groupParticipants(QVariantMap &query)
+{
+    //QString jid = query["jid"].toString();
+    QStringList jids = query["jids"].toStringList();
+    QStringList unknown;
+
+    foreach (const QString &pjid, jids) {
+        QSqlQuery q(db);
+        q.prepare("SELECT EXISTS (SELECT 1 FROM contacts WHERE jid=(:jid));");
+        q.bindValue(":jid", pjid);
+        q.exec();
+        if (!q.next() || q.value(0).toInt() == 0) {
+            QSqlQuery ic(db);
+            ic.prepare("INSERT INTO contacts VALUES (:jid, :pushname, :name, :message, :contacttype, :owner, :subowner, :timestamp, :subtimestamp, :avatar, :unread, :lastmessage);");
+            ic.bindValue(":jid", pjid);
+            ic.bindValue(":pushname", pjid.split("@").first());
+            ic.bindValue(":name", "");
+            ic.bindValue(":message", "");
+            ic.bindValue(":contacttype", 0);
+            ic.bindValue(":owner", "");
+            ic.bindValue(":subowner", "");
+            ic.bindValue(":timestamp", 0);
+            ic.bindValue(":subtimestamp", 0);
+            ic.bindValue(":avatar", "");
+            ic.bindValue(":unread", 0);
+            ic.bindValue(":lastmessage", 0);
+            ic.exec();
+
+            if (ic.lastError().type() != QSqlError::NoError) {
+                qDebug() << "Error insert groupParticipants:" << ic.lastError().text();
+            }
+
+            unknown.append(pjid);
+        }
+    }
+
+    query["unknown"] = unknown;
     Q_EMIT actionDone(query);
 }
 
