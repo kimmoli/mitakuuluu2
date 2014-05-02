@@ -67,7 +67,11 @@ Page {
 
             PageHeader {
                 id: header
-                title: "Data counters"
+                title: qsTr("Data counters")
+            }
+
+            SectionHeader {
+                text: qsTr("Messages")
             }
 
             Label {
@@ -80,8 +84,12 @@ Page {
                 width: parent.width
             }
 
+            SectionHeader {
+                text: qsTr("Received data")
+            }
+
             Label {
-                id: msgSentBytes
+                id: totalRecv
                 width: parent.width
             }
 
@@ -91,17 +99,7 @@ Page {
             }
 
             Label {
-                id: imgSent
-                width: parent.width
-            }
-
-            Label {
                 id: imgRecv
-                width: parent.width
-            }
-
-            Label {
-                id: videoSent
                 width: parent.width
             }
 
@@ -111,17 +109,7 @@ Page {
             }
 
             Label {
-                id: audioSent
-                width: parent.width
-            }
-
-            Label {
                 id: audioRecv
-                width: parent.width
-            }
-
-            Label {
-                id: profileSent
                 width: parent.width
             }
 
@@ -131,23 +119,17 @@ Page {
             }
 
             /*Label {
-                id: syncSent
-                width: parent.width
-            }
-
-            Label {
                 id: syncRecv
                 width: parent.width
             }*/
 
             Label {
-                id: protocolSent
+                id: protocolRecv
                 width: parent.width
             }
 
-            Label {
-                id: protocolRecv
-                width: parent.width
+            SectionHeader {
+                text: qsTr("Sent data data")
             }
 
             Label {
@@ -156,7 +138,37 @@ Page {
             }
 
             Label {
-                id: totalRecv
+                id: msgSentBytes
+                width: parent.width
+            }
+
+            Label {
+                id: imgSent
+                width: parent.width
+            }
+
+            Label {
+                id: videoSent
+                width: parent.width
+            }
+
+            Label {
+                id: audioSent
+                width: parent.width
+            }
+
+            Label {
+                id: profileSent
+                width: parent.width
+            }
+
+            /*Label {
+                id: syncSent
+                width: parent.width
+            }*/
+
+            Label {
+                id: protocolSent
                 width: parent.width
             }
         }
