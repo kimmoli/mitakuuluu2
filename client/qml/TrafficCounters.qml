@@ -42,11 +42,7 @@ Page {
 
     SilicaFlickable {
         id: flick
-        anchors {
-            fill: page
-            leftMargin: Theme.paddingLarge
-            rightMargin: Theme.paddingLarge
-        }
+        anchors.fill: page
 
         clip: true
 
@@ -64,7 +60,12 @@ Page {
         Column {
             id: content
             spacing: Theme.paddingMedium
-            width: parent.width
+            anchors {
+                left: parent.left
+                leftMargin: Theme.paddingLarge
+                right: parent.right
+                rightMargin: Theme.paddingLarge
+            }
 
             PageHeader {
                 id: header
