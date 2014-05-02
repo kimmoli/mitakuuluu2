@@ -162,7 +162,7 @@ Page {
     function addMention(mjid) {
         var mention = "@" + getNicknameByJid(mjid) + " "
         sendBox.text += mention
-        sendBox.cursorPosition += mention.length + 2
+        sendBox.cursorPosition += mention.length
         sendBox.forceActiveFocus()
     }
 
