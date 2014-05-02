@@ -1,11 +1,11 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="en_US" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.0">
 <context>
     <name/>
     <message id="components_pickers-he-avatar_picker_title">
         <location filename="../client/qml/AvatarPickerCrop.qml" line="37"/>
         <source>Select avatar</source>
         <extracomment>Title for avatar picker for selecting avatar</extracomment>
-        <translation>Select Avatar</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -14,31 +14,31 @@
         <location filename="../client/qml/Account.qml" line="71"/>
         <source>Remove account</source>
         <comment>Account page menu item</comment>
-        <translation>Remove account</translation>
+        <translation>Odstranit účet</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="78"/>
         <source>Renew subscription</source>
         <comment>Account page menu item</comment>
-        <translation>Renew subscription</translation>
+        <translation>Obnovit předplatné</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="88"/>
         <source>Account</source>
         <comment>Account page title</comment>
-        <translation>Account</translation>
+        <translation>Účet</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="89"/>
         <source>Save</source>
         <comment>Account page accept button text</comment>
-        <translation>Save</translation>
+        <translation>Uložit</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="94"/>
         <source>Nickname:</source>
         <comment>Account page nickname title</comment>
-        <translation>Username:</translation>
+        <translation>Přezdívka:</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="126"/>
@@ -50,43 +50,43 @@
         <location filename="../client/qml/Account.qml" line="158"/>
         <source>Created: %1</source>
         <comment>Account page created title</comment>
-        <translation>Created: %1</translation>
+        <translation>Vytvořeno: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="172"/>
         <source>Expiration: %1</source>
         <comment>Account page expiration title</comment>
-        <translation>Expiration: %1</translation>
+        <translation>Expirace: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="186"/>
         <source>Account is active</source>
         <comment>Account page account active label</comment>
-        <translation>Account is active</translation>
+        <translation>Účet je aktivní</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="187"/>
         <source>Account is blocked</source>
         <comment>Account page account blocked label</comment>
-        <translation>Account is blocked</translation>
+        <translation>Účet je zablokován</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="201"/>
         <source>Account type: %1</source>
         <comment>Account page account type label</comment>
-        <translation>Account type: %1</translation>
+        <translation>Typ účtu: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="243"/>
         <source>Remove account</source>
         <comment>Account page remove dialog title</comment>
-        <translation>Remove account</translation>
+        <translation>Odstranit účet</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="251"/>
         <source>This action will delete your account information from phone and from WhatsApp server.</source>
         <comment>Account page remove dialog description</comment>
-        <translation>This will delete your account information from your phone and from the WhatsApp server.</translation>
+        <translation>Tato akce vymaže informace o účtu z vašeho telefonu i z WhatsApp serveru.</translation>
     </message>
 </context>
 <context>
@@ -113,7 +113,7 @@
         <location filename="../client/qml/AvatarView.qml" line="45"/>
         <source>Image saved as %1</source>
         <comment>Avatar view image saved to gallery banner</comment>
-        <translation>Image saved as %1</translation>
+        <translation>Obrázek uložen jako %1</translation>
     </message>
 </context>
 <context>
@@ -122,7 +122,7 @@
         <location filename="../client/qml/Broadcast.qml" line="17"/>
         <source>Broadcast</source>
         <comment>Broadcast page title</comment>
-        <translation>Broadcast</translation>
+        <translation>Vysílání</translation>
     </message>
     <message>
         <location filename="../client/qml/Broadcast.qml" line="22"/>
@@ -134,25 +134,25 @@
         <location filename="../client/qml/Broadcast.qml" line="32"/>
         <source>Media</source>
         <comment>Broadcast page media item</comment>
-        <translation>Media</translation>
+        <translation>Média</translation>
     </message>
     <message>
         <location filename="../client/qml/Broadcast.qml" line="42"/>
         <source>Location</source>
         <comment>Broadcast page location item</comment>
-        <translation>Location</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../client/qml/Broadcast.qml" line="52"/>
         <source>Voice</source>
         <comment>Broadcast page voice item</comment>
-        <translation>Voice</translation>
+        <translation>Hlas</translation>
     </message>
     <message>
         <location filename="../client/qml/Broadcast.qml" line="62"/>
         <source>Camera</source>
         <comment>Broadcast page camera item</comment>
-        <translation>Camera</translation>
+        <translation>Fotoaparát</translation>
     </message>
 </context>
 <context>
@@ -161,13 +161,13 @@
         <location filename="../client/qml/Capture.qml" line="49"/>
         <source>Send</source>
         <comment>Capture page send title</comment>
-        <translation>Send</translation>
+        <translation>Poslat</translation>
     </message>
     <message>
         <location filename="../client/qml/Capture.qml" line="50"/>
         <source>Camera</source>
         <comment>Capture page default title</comment>
-        <translation>Camera</translation>
+        <translation>Fotoaparát</translation>
     </message>
 </context>
 <context>
@@ -176,13 +176,13 @@
         <location filename="../client/qml/ChatsPage.qml" line="19"/>
         <source>Restart engine</source>
         <comment>Main menu action</comment>
-        <translation>Restart engine</translation>
+        <translation>Restart aplikace</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="20"/>
         <source>Force connect</source>
         <comment>Main menu action</comment>
-        <translation>Force connect</translation>
+        <translation>Vynutit spojení</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="21"/>
@@ -190,116 +190,116 @@
         <location filename="../client/qml/ChatsPage.qml" line="23"/>
         <source>Disconnect</source>
         <comment>Main menu action</comment>
-        <translation>Disconnect</translation>
+        <translation>Odpojit</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="24"/>
         <location filename="../client/qml/ChatsPage.qml" line="27"/>
         <source>Register</source>
         <comment>Main menu action</comment>
-        <translation>Register</translation>
+        <translation>Registrovat</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="25"/>
         <source>Connect</source>
         <comment>Main menu action</comment>
-        <translation>Connect</translation>
+        <translation>Připojit</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="26"/>
         <source>No action</source>
         <comment>Main menu action</comment>
-        <translation>No action</translation>
+        <translation>Žádná akce</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="40"/>
         <source>Full quit</source>
         <comment>Main menu action</comment>
-        <translation>Full quit</translation>
+        <translation>Ukončit aplikaci</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="43"/>
         <source>Quit and shutdown engine</source>
         <comment>Full quit remorse popup</comment>
-        <translation>Quit and shutdown engine</translation>
+        <translation>Odhlásit a ukončit aplikaci</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="59"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
-        <translation>Disconnecting</translation>
+        <translation>Odpojování</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="73"/>
         <source>Muted contacts</source>
         <comment>Main menu action</comment>
-        <translation>Muted contacts</translation>
+        <translation>Ztlumené kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="80"/>
         <source>Broadcast</source>
         <comment>Main menu action</comment>
-        <translation>Broadcast</translation>
+        <translation>Vysílání</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="86"/>
         <source>Settings</source>
         <comment>Main menu item</comment>
-        <translation>Settings</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="95"/>
         <source>Chats</source>
         <comment>Contacts page title</comment>
-        <translation>Chats</translation>
+        <translation>Konverzace</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="143"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
-        <translation>Leave group %1</translation>
+        <translation>Opustit skupinu %1</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="144"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
-        <translation>Delete</translation>
+        <translation>Smazat</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="226"/>
         <source>Typing...</source>
         <comment>Contact status typing text</comment>
-        <translation>Typing...</translation>
+        <translation>Píše ...</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="227"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
-        <translation>Group chat</translation>
+        <translation>Skupinová konverzace</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="246"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
-        <translation>Profile</translation>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="263"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
-        <translation>Muting</translation>
+        <translation>Ztlumení</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="271"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
-        <translation>Leave group</translation>
+        <translation>Opustit skupinu</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="272"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
-        <translation>Delete</translation>
+        <translation>Smazat</translation>
     </message>
 </context>
 <context>
@@ -308,13 +308,13 @@
         <location filename="../server/src/client.cpp" line="395"/>
         <source>Image</source>
         <comment>Notification media name text</comment>
-        <translation>Image</translation>
+        <translation>Obrázek</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="396"/>
         <source>Audio</source>
         <comment>Notification media name text</comment>
-        <translation>Audio</translation>
+        <translation>Zvuk</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="397"/>
@@ -326,73 +326,73 @@
         <location filename="../server/src/client.cpp" line="398"/>
         <source>Contact</source>
         <comment>Notification media name text</comment>
-        <translation>Contact</translation>
+        <translation>Kontakt</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="399"/>
         <source>Location</source>
         <comment>Notification media name text</comment>
-        <translation>Location</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="400"/>
         <source>Voice</source>
         <comment>Notification media name text</comment>
-        <translation>Voice</translation>
+        <translation>Hlas</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="401"/>
         <source>System</source>
         <comment>Notification media name text</comment>
-        <translation>System</translation>
+        <translation>Systém</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="668"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
-        <translation>Connected</translation>
+        <translation>Připojeno</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="987"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
-        <translation type="unfinished"/>
+        <translation>Skrytý</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="1258"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
-        <translation>Joined the group</translation>
+        <translation>Připojeno ke skupině</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="1261"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
-        <translation>Left the group</translation>
+        <translation>Skupina opuštěna</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="1264"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
-        <translation>Subject: %1</translation>
+        <translation>Předmět: %1</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="1267"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
-        <translation>Picture changed</translation>
+        <translation>Obrázek změněn</translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="1595"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
-        <translation>Disconnected</translation>
+        <translation>Odpojeno</translation>
     </message>
     <message numerus="yes">
         <location filename="../server/src/client.cpp" line="2768"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -401,79 +401,79 @@
         <location filename="../client/qml/ContactsPage.qml" line="27"/>
         <source>Create group</source>
         <comment>Contacts page menu item</comment>
-        <translation>Create group</translation>
+        <translation>Vytvořit skupinu</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="33"/>
         <source>Add contact</source>
         <comment>Contacts page menu item</comment>
-        <translation>Add contact</translation>
+        <translation>Přidat kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="39"/>
         <source>Settings</source>
         <comment>Contacts page menu item</comment>
-        <translation>Settings</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="48"/>
         <source>Contacts</source>
         <comment>Contacts page title</comment>
-        <translation>Contacts</translation>
+        <translation>Kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="57"/>
         <source>Search contacts</source>
         <comment>Contacts page search text</comment>
-        <translation>Search contacts</translation>
+        <translation>Vyhledat kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="105"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
-        <translation>Leave group %1</translation>
+        <translation>Opustit skupinu %1</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="106"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
-        <translation>Delete</translation>
+        <translation>Smazat</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="188"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
-        <translation>Group chat</translation>
+        <translation>Skupinová konverzace</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="205"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
-        <translation>Profile</translation>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="223"/>
         <source>Refresh</source>
         <comment>Contact context menu refresh item</comment>
-        <translation>Refresh</translation>
+        <translation>Obnovit</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="231"/>
         <source>Rename</source>
         <comment>Contact context menu profile item</comment>
-        <translation>Rename</translation>
+        <translation>Přejmenovat</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="240"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
-        <translation>Leave group</translation>
+        <translation>Opustit skupinu</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="241"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
-        <translation>Delete</translation>
+        <translation>Smazat</translation>
     </message>
 </context>
 <context>
@@ -482,61 +482,61 @@
         <location filename="../client/qml/ConversationPage.qml" line="94"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
-        <translation>You</translation>
+        <translation>Ty</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="253"/>
         <source>Clear all messages</source>
         <comment>Conversation menu item</comment>
-        <translation>Delete all messages</translation>
+        <translation>Vymazat všechny zprávy</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="255"/>
         <source>Clear all messages</source>
         <comment>Conversation delete all messages remorse popup</comment>
-        <translation>Delete all messages</translation>
+        <translation>Vymazat všechny zprávy</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="265"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
-        <translation>Muting</translation>
+        <translation>Ztlumení</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="271"/>
         <source>Load old conversation</source>
         <comment>Conversation menu item</comment>
-        <translation>Load old conversation</translation>
+        <translation>Nahrát starou konverzaci</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="318"/>
         <source>Enable location in settings!</source>
         <comment>Banner text if GPS disabled in settings</comment>
-        <translation>Enable Location in Settings!</translation>
+        <translation>Povolte polohu v nastavení!</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="344"/>
         <source>Delete</source>
         <comment>Conversation voice recorder delete label</comment>
-        <translation>Delete</translation>
+        <translation>Smazat</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="360"/>
         <source>Hold button for recording, release to send</source>
         <comment>Conversation voice recorder description label</comment>
-        <translation>Hold button to start recording, release to send</translation>
+        <translation>Nahrávat držením tlačítka, uvolněním poslat</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="463"/>
         <source>Typing...</source>
         <comment>Contact typing converstation text</comment>
-        <translation>Typing...</translation>
+        <translation>Píše...</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="79"/>
         <source>Last seen: %1</source>
         <comment>Last seen converstation text</comment>
-        <translation>Last seen: %1</translation>
+        <translation>Naposledy aktivní: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="77"/>
@@ -552,19 +552,19 @@
         <location filename="../client/qml/ConversationPage.qml" line="527"/>
         <source>New message</source>
         <comment>Conversation new message indicator</comment>
-        <translation>New message</translation>
+        <translation>Nová zpráva</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="555"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
-        <translation>Tap here to start typing</translation>
+        <translation>Klepněte zde pro psaní zprávy</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="773"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
-        <translation>Waiting for coordinates...</translation>
+        <translation>Čekání na souřadnice</translation>
     </message>
 </context>
 <context>
@@ -573,24 +573,24 @@
         <location filename="../client/qml/CoverPage.qml" line="32"/>
         <source>Registration</source>
         <comment>Cover item label text</comment>
-        <translation>Registration</translation>
+        <translation>Registrace</translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/CoverPage.qml" line="33"/>
         <source>Unread messages: %n</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/CoverPage.qml" line="35"/>
         <source>No unread messages</source>
         <comment>Cover item label text</comment>
-        <translation type="unfinished"/>
+        <translation>Žádné nepřečtené zprávy</translation>
     </message>
     <message>
         <location filename="../client/qml/CoverPage.qml" line="34"/>
         <source>One unread message</source>
         <comment>Cover item label text</comment>
-        <translation>One unread message</translation>
+        <translation>Jedna nepřečtená zpráva</translation>
     </message>
 </context>
 <context>
@@ -599,31 +599,31 @@
         <location filename="../client/qml/CreateGroup.qml" line="41"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
-        <translation>Add contacts</translation>
+        <translation>Přidat kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="53"/>
         <source>Create group</source>
         <comment>Greate group page title</comment>
-        <translation>Create group</translation>
+        <translation>Vytvořit skupinu</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="88"/>
         <source>Write name of new group here</source>
         <comment>Create group subject area subtitle</comment>
-        <translation>Type the name of the new group</translation>
+        <translation>Zde napište jméno nové skupiny</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="120"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
-        <translation>Max group participants count reached</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="152"/>
         <source>Participants list is empty</source>
         <comment>Create group empty paricipants list placeholder</comment>
-        <translation>Participants list is empty</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -632,13 +632,13 @@
         <location filename="../client/qml/Forward.qml" line="64"/>
         <source>Select contacts</source>
         <comment>Forward message page title</comment>
-        <translation>Select contacts</translation>
+        <translation>Zvolit kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/Forward.qml" line="65"/>
         <source>Forward</source>
         <comment>Forward message page title</comment>
-        <translation>Forward</translation>
+        <translation>Přeposlat</translation>
     </message>
 </context>
 <context>
@@ -647,25 +647,25 @@
         <location filename="../client/qml/GroupProfile.qml" line="57"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
-        <translation>You</translation>
+        <translation>Ty</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="166"/>
         <source>Save chat history</source>
         <comment>Group profile page menu item</comment>
-        <translation>Save chat history</translation>
+        <translation>Uložit historii konverzace</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="169"/>
         <source>History saved to Documents</source>
         <comment>Banner notification text</comment>
-        <translation>History saved to Documents</translation>
+        <translation>Historie uložena do složky Documents</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="139"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
-        <translation>Add contacts</translation>
+        <translation>Přidat kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="151"/>
@@ -681,49 +681,49 @@
         <location filename="../client/qml/GroupProfile.qml" line="176"/>
         <source>Group profile</source>
         <comment>Group profile page title</comment>
-        <translation>Group profile</translation>
+        <translation>Profil skupiny</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="187"/>
         <source>Subject: </source>
         <comment>Group profile subject label</comment>
-        <translation>Subject: </translation>
+        <translation>Předmět:</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="246"/>
         <source>Owner: %1</source>
         <comment>Group profile owner label</comment>
-        <translation>Owner: %1</translation>
+        <translation>Vlastník: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="260"/>
         <source>Creation: %1</source>
         <comment>Group profile creation label</comment>
-        <translation>Creation: %1</translation>
+        <translation>Vytvořeno: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="274"/>
         <source>Subject by: %1</source>
         <comment>Group profile subject owner label</comment>
-        <translation>Subject by: %1</translation>
+        <translation>Předmět nastavil: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="288"/>
         <source>Subject set: %1</source>
         <comment>Group profile subject timestamp label</comment>
-        <translation>Subject set: %1</translation>
+        <translation>Předmět nastaven: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="317"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
-        <translation>Max group participants count reached</translation>
+        <translation>Dosažen max. počet členů skupiny</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="349"/>
         <source>Fetching participants...</source>
         <comment>Group profile loading text</comment>
-        <translation>Getting participants...</translation>
+        <translation>Načítání členů ...</translation>
     </message>
 </context>
 <context>
@@ -732,7 +732,7 @@
         <location filename="../client/qml/InteractionArea.qml" line="86"/>
         <source>Error loading image</source>
         <comment>Image component error loading text</comment>
-        <translation>Error loading image</translation>
+        <translation>Chyba nahrávání obrázku</translation>
     </message>
 </context>
 <context>
@@ -741,19 +741,19 @@
         <location filename="../client/qml/Location.qml" line="86"/>
         <source>You need to enable GPS positioning in settings</source>
         <comment>Location send page text</comment>
-        <translation>You need to enable GPS Positioning in Settings</translation>
+        <translation>Musíte povolit získání GPS polohy v nastavení telefonu</translation>
     </message>
     <message>
         <location filename="../client/qml/Location.qml" line="143"/>
         <source>latitude: %1</source>
         <comment>Location send page text</comment>
-        <translation>latitude: %1</translation>
+        <translation>Zem. šířka: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/Location.qml" line="150"/>
         <source>longitude: %1</source>
         <comment>Location send page text</comment>
-        <translation>longitude: %1</translation>
+        <translation>Zem. délka: %1</translation>
     </message>
 </context>
 <context>
@@ -762,49 +762,49 @@
         <location filename="../client/qml/MediaSelector.qml" line="73"/>
         <source>Images selected: %n</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="73"/>
         <source>Image selected</source>
         <comment>Media selection page title text</comment>
-        <translation>Image selected</translation>
+        <translation>Obrázek zvolen</translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/MediaSelector.qml" line="74"/>
         <source>Audio selected: %n</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="74"/>
         <source>Audio selected</source>
         <comment>Media selection page title text</comment>
-        <translation>Audio selected</translation>
+        <translation>Zvuk zvolen</translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/MediaSelector.qml" line="75"/>
         <source>Video selected: %n</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="75"/>
         <source>Video selected</source>
         <comment>Media selection page title text</comment>
-        <translation>Video selected</translation>
+        <translation>Video zvoleno</translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="76"/>
         <source>Images</source>
         <comment>Media selection page title text</comment>
-        <translation>Images</translation>
+        <translation>Obrázky</translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="77"/>
         <source>Audio</source>
         <comment>Media selection page title text</comment>
-        <translation>Audio</translation>
+        <translation>Zvuk</translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="78"/>
@@ -819,7 +819,7 @@
         <location filename="../client/qml/MessageComposer.qml" line="24"/>
         <source>Text message</source>
         <comment>Broadcast text page title</comment>
-        <translation>Text Message</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -828,61 +828,61 @@
         <location filename="../client/src/mitakuuluu.cpp" line="265"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
-        <translation>Unknown</translation>
+        <translation>Není známo</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="268"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
-        <translation>Waiting for connection</translation>
+        <translation>Čekání na spojení</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="271"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
-        <translation>Connecting...</translation>
+        <translation>Připojování...</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="274"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
-        <translation>Authenticating...</translation>
+        <translation>Přihlašování...</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="277"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
-        <translation>Logged in</translation>
+        <translation>Přihlášeno</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="280"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
-        <translation>Login failed!</translation>
+        <translation>Přihlášení selhalo!</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="283"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
-        <translation>Disconnected</translation>
+        <translation>Odpojeno</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="286"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
-        <translation>Registering...</translation>
+        <translation>Registrování...</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="289"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
-        <translation>Registration failed!</translation>
+        <translation>Registrace selhala!</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="292"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
-        <translation>Account expired!</translation>
+        <translation>Platnost účtu vypršela!</translation>
     </message>
 </context>
 <context>
@@ -891,61 +891,61 @@
         <location filename="../client/qml/ModernDelegate.qml" line="144"/>
         <source>Remove message</source>
         <comment>Conversation message remorse text</comment>
-        <translation>Remove message</translation>
+        <translation>Odstranit zprávu</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="230"/>
         <source>Media download started...</source>
         <comment>Conversation message download started banner text</comment>
-        <translation>Media download started...</translation>
+        <translation>Stahování započato ...</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="235"/>
         <source>Media download canceled.</source>
         <comment>Conversation message download canceled banner text</comment>
-        <translation>Media download canceled.</translation>
+        <translation>Stahování zrušeno.</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="702"/>
         <source>Uploading...</source>
         <comment>Uploading voice record text</comment>
-        <translation>Uploading...</translation>
+        <translation>Odesílání...</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="762"/>
         <source>Copy</source>
         <comment>Conversation message context menu item</comment>
-        <translation>Copy</translation>
+        <translation>Kopírovat</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="766"/>
         <source>Message copied to clipboard</source>
         <comment>Banner item text</comment>
-        <translation>Message copied to clipboard</translation>
+        <translation>Zpráva zkopírována do schránky</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="771"/>
         <source>Forward</source>
         <comment>Conversation message context menu item</comment>
-        <translation>Forward</translation>
+        <translation>Přeposlat</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="780"/>
         <source>Save to Gallery</source>
         <comment>Conversation message context menu item</comment>
-        <translation>Save to Gallery</translation>
+        <translation>Uložit do Galerie</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="783"/>
         <source>File saved as %1</source>
         <comment>Banner text message</comment>
-        <translation>File saved as %1</translation>
+        <translation>Soubor uložen jako %1</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="789"/>
         <source>Delete</source>
         <comment>Conversation message context menu item</comment>
-        <translation>Delete</translation>
+        <translation>Smazat</translation>
     </message>
 </context>
 <context>
@@ -954,25 +954,25 @@
         <location filename="../client/qml/MutedContacts.qml" line="29"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
-        <translation>You</translation>
+        <translation>Ty</translation>
     </message>
     <message>
         <location filename="../client/qml/MutedContacts.qml" line="55"/>
         <source>Muted contacts</source>
         <comment>Contacts muting title text</comment>
-        <translation>Muted contacts</translation>
+        <translation>Ztlumené kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/MutedContacts.qml" line="59"/>
         <source>You have no muted contacts</source>
         <comment>Empty muted contacts list placeholder</comment>
-        <translation>You have no muted contacts</translation>
+        <translation>Nemáte žádné kontakty ztlumené</translation>
     </message>
     <message>
         <location filename="../client/qml/MutedContacts.qml" line="106"/>
         <source>Expiration: %1</source>
         <comment>Contacts muting expiration text</comment>
-        <translation>Expiration: %1</translation>
+        <translation>Expirace: %1</translation>
     </message>
 </context>
 <context>
@@ -981,85 +981,85 @@
         <location filename="../client/qml/MutingSelector.qml" line="16"/>
         <source>Muting</source>
         <comment>Contacts muting page title</comment>
-        <translation>Muting</translation>
+        <translation>Ztlumení</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="47"/>
         <source>Disabled</source>
         <comment>Contacts muting duration text</comment>
-        <translation>Disabled</translation>
+        <translation>Zakázáno</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="48"/>
         <source>5 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation>5 minutes</translation>
+        <translation>5 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="49"/>
         <source>10 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation>10 minutes</translation>
+        <translation>10 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="50"/>
         <source>20 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation>20 minutes</translation>
+        <translation>20 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="51"/>
         <source>30 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation>30 minutes</translation>
+        <translation>30 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="52"/>
         <source>60 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation>60 minutes</translation>
+        <translation>60 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="53"/>
         <source>2 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation>2 hours</translation>
+        <translation>2 hodiny</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="54"/>
         <source>6 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation>6 hours</translation>
+        <translation>6 hodin</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="55"/>
         <source>12 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation>12 hours</translation>
+        <translation>12 hodin</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="56"/>
         <source>24 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation>24 hours</translation>
+        <translation>24 hodin</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="57"/>
         <source>1 year</source>
         <comment>Contacts muting duration text</comment>
-        <translation>1 year</translation>
+        <translation>1 rok</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="58"/>
         <source>20 years</source>
         <comment>Contacts muting duration text</comment>
-        <translation>20 years</translation>
+        <translation>20 let</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="59"/>
         <source>100 years</source>
         <comment>Contacts muting duration text</comment>
-        <translation>100 years</translation>
+        <translation>100 let</translation>
     </message>
 </context>
 <context>
@@ -1068,43 +1068,43 @@
         <location filename="../client/qml/Payments.qml" line="15"/>
         <source>Payment</source>
         <comment>Payment page title</comment>
-        <translation>Payment</translation>
+        <translation>Platba</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="26"/>
         <source>Subscription period:</source>
         <comment>Subscription period text</comment>
-        <translation>Subscription period:</translation>
+        <translation>Období předplatného:</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="29"/>
         <source>1 year ($0.99)</source>
         <comment>1 year subscription text</comment>
-        <translation>1 year ($0.99)</translation>
+        <translation>1 rok ($0.99)</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="32"/>
         <source>3 years ($2.67) *10% off</source>
         <comment>3 years subscription text</comment>
-        <translation>3 years ($2.67) *10% off</translation>
+        <translation>3 roky ($2.67) *10% sleva</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="35"/>
         <source>5 years ($3.71) *25% off</source>
         <comment>5 years subscription text</comment>
-        <translation>5 years ($3.71) *25% off</translation>
+        <translation>5 let ($3.71) *25% sleva</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="50"/>
         <source>Select preferred payment method to purchase WhatsApp service for: +%1</source>
         <comment>Payment method text</comment>
-        <translation>Select preferred payment method to purchase WhatsApp service for: +%1</translation>
+        <translation>Vyberte preferovaný způsob platby služby WhatsApp na: +%1</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="91"/>
         <source>PayPal is recommended. Neither PayPal nor Google Wallet requires you to make an account.</source>
         <comment>Payment description text</comment>
-        <translation>PayPal is recommended. Neither PayPal nor Google Wallet require you to create an account.</translation>
+        <translation>PayPal je doporučen. PayPal ani Google Wallet nevyžadují vytvoření účtu.</translation>
     </message>
 </context>
 <context>
@@ -1113,43 +1113,43 @@
         <location filename="../client/qml/PrivacyList.qml" line="23"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
-        <translation>You</translation>
+        <translation>Ty</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="61"/>
         <source>Add number</source>
         <comment>Privacy list page menu item</comment>
-        <translation>Add number</translation>
+        <translation>Přidat číslo</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="69"/>
         <source>Select contacts</source>
         <comment>Privacy list page menu item</comment>
-        <translation>Select contacts</translation>
+        <translation>Zvolit kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="80"/>
         <source>Blacklist</source>
         <comment>Privacy list page title</comment>
-        <translation>Blacklist</translation>
+        <translation>Seznam blokovaných</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="104"/>
         <source>Blacklist is empty</source>
         <comment>Privacy empty list placeholder text</comment>
-        <translation>Blacklist is empty</translation>
+        <translation>Seznam blokovaných je prázdný</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="131"/>
         <source>Add to blacklist</source>
         <comment>Privacy list adding contact page title</comment>
-        <translation>Add to Blacklist</translation>
+        <translation>Přidat na seznam blokovaných</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="140"/>
         <source>In international format</source>
         <comment>Phone number text field label</comment>
-        <translation>Use international country code</translation>
+        <translation>V mezinárodním formátu</translation>
     </message>
 </context>
 <context>
@@ -1158,7 +1158,7 @@
         <location filename="../client/qml/Recorder.qml" line="51"/>
         <source>Voice note</source>
         <comment>Voice recorder page title</comment>
-        <translation>Voice note</translation>
+        <translation>Hlasová zpráva</translation>
     </message>
 </context>
 <context>
@@ -1167,7 +1167,7 @@
         <location filename="../client/qml/RegistrationCombo.qml" line="75"/>
         <source>Search</source>
         <comment>Registration country selector</comment>
-        <translation>Search</translation>
+        <translation>Hledat</translation>
     </message>
 </context>
 <context>
@@ -1178,7 +1178,7 @@
 
 </source>
         <comment>Red registration failed screen text</comment>
-        <translation>Registration failed
+        <translation>Registrace selhala
 
 </translation>
     </message>
@@ -1188,7 +1188,7 @@
 
 </source>
         <comment>Red account expired screen text</comment>
-        <translation>Account expired
+        <translation>Platnost účtu vypršela
 
 </translation>
     </message>
@@ -1198,7 +1198,7 @@
 
 </source>
         <comment>Red code request failed screen text</comment>
-        <translation>Code request failed
+        <translation>Žádost o kód selhala
 
 </translation>
     </message>
@@ -1206,37 +1206,37 @@
         <location filename="../client/qml/RegistrationPage.qml" line="35"/>
         <source>Activation code requested. Wait for %1 soon</source>
         <comment>Activation code requested text</comment>
-        <translation>Activation code requested. Wait for %1 soon</translation>
+        <translation>Aktivační kód vyžádán. Čekejte %1</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="37"/>
         <source>sms message</source>
         <comment>Activation code requested text information</comment>
-        <translation>text message</translation>
+        <translation>sms zpráva</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="38"/>
         <source>voice call</source>
         <comment>Activation code requested text information</comment>
-        <translation>voice call</translation>
+        <translation>hovor</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="44"/>
         <source>Successfully registered!</source>
         <comment>Registered successfully banner</comment>
-        <translation>Successfully registered!</translation>
+        <translation>Úspěšně zaregistrováno!</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="51"/>
         <source>Cannot detect your country code. You should use international number format for registration.</source>
         <comment>Red wrong number entered screen text</comment>
-        <translation>Cannot detect your country code. You must use international country code for registration.</translation>
+        <translation>Nelze zjistit kód vaší země. Pro registraci použijte číslo v mezinárodním formátu.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="69"/>
         <source>Registration</source>
         <comment>Registration page title</comment>
-        <translation>Registration</translation>
+        <translation>Registrace</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="75"/>
@@ -1245,52 +1245,49 @@
 Native WhatsApp-compatible clent for Sailfish OS.
 Before switching to Mitakuuluu from official application please use &lt;Remove account&gt; option in your current application, or do it inside Mitakuuluu after registering.</source>
         <comment>Registration welcome message. %1 stands for version name</comment>
-        <translation>Welcome to Mitakuuluu v%1!
-
-Native WhatsApp-compatible client for SailfishOS.
-Before switching to Mitakuuluu from the official application, please use the &lt;Remove account&gt; option in your current application, or do it inside Mitakuuluu after registering.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="81"/>
         <source>Country</source>
         <comment>Registration country selector label</comment>
-        <translation>Country</translation>
+        <translation>Země</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="96"/>
         <source>In international format</source>
         <comment>Registration phone number text field label</comment>
-        <translation>Use international country code</translation>
+        <translation>V mezinárodním formátu</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="122"/>
         <source>Profile nickname</source>
         <comment>Registration nickname text field label</comment>
-        <translation>Profile username</translation>
+        <translation>Přezdívka profilu</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="123"/>
         <source>Enter your nickname</source>
         <comment>Registration nickname text field placeholder</comment>
-        <translation>Enter your username</translation>
+        <translation>Zadejte vaši přezdívku</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="133"/>
         <source>Protect your registration</source>
         <comment>Registration password field label</comment>
-        <translation>Protect your registration</translation>
+        <translation>Ochrana vaší registrace</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="134"/>
         <source>Random password</source>
         <comment>Registration password field placeolder</comment>
-        <translation>Random password</translation>
+        <translation>Náhodné heslo</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="149"/>
         <source>Voice</source>
         <comment>Voice registration button text</comment>
-        <translation>Voice</translation>
+        <translation>Hlas</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="158"/>
@@ -1302,121 +1299,121 @@ Before switching to Mitakuuluu from the official application, please use the &lt
         <location filename="../client/qml/RegistrationPage.qml" line="174"/>
         <source>Sms code</source>
         <comment>Registration registration code label</comment>
-        <translation>SMS Code</translation>
+        <translation>SMS kód</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="178"/>
         <source>Registering account...</source>
         <comment>Registering account text</comment>
-        <translation>Registering account...</translation>
+        <translation>Registrace účtu...</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="274"/>
         <source>Checking account...</source>
         <comment>Registration checking account text</comment>
-        <translation>Checking account...</translation>
+        <translation>Kontrola účtu...</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="291"/>
         <source>Code successfully requested.</source>
         <comment>Registration information constructor</comment>
-        <translation>Code successfully requested.</translation>
+        <translation>Kód úspěšně vyžádán.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="297"/>
         <source>phone number</source>
         <comment>Registration information constructor</comment>
-        <translation>phone number</translation>
+        <translation>telefonní číslo</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="299"/>
         <source>secure token</source>
         <comment>Registration information constructor</comment>
-        <translation>secure token</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="302"/>
         <source>Too frequent attempts to request the code.</source>
         <comment>Registration information constructor</comment>
-        <translation>Too frequent attempts to request the code.</translation>
+        <translation>Příliš časté pokusy o požadavek na kód.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="304"/>
         <source>Too many wrong code guesses.</source>
         <comment>Registration information constructor</comment>
-        <translation>Too many wrong code guesses.</translation>
+        <translation>Příliš mnoho špatných zadání kódu.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="306"/>
         <source>Too many attempts. Try again tomorrow.</source>
         <comment>Registration information constructor</comment>
-        <translation>Too many attempts. Try again tomorrow.</translation>
+        <translation>Příliš mnoho pokusů. Zkuste znovu zítra.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="308"/>
         <source>Protocol version outdated, sorry. Please contact me at coderusinbox@gmail.com or via twitter: @icoderus</source>
         <comment>Registration information constructor</comment>
-        <translation>Sorry, Protocol Version outdated. Please drop me a mail at coderusinbox@gmail.com or hit me up at Twitter: @icoderus</translation>
+        <translation>Zastaralá verze protokolu. Kontaktujte mě na emailu coderusinbox@gmail.com nebo přes  twitter: @icoderus</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="310"/>
         <location filename="../client/qml/RegistrationPage.qml" line="313"/>
         <source>Registration code expired. You need to request a new one.</source>
         <comment>Registration information constructor</comment>
-        <translation>Registration Code expired. You need to request a new one.</translation>
+        <translation>Registrační kód vypršel. Požádejte o nový.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="315"/>
         <source>Missing request param: %1</source>
         <comment>Registration information constructor</comment>
-        <translation>Missing request param: %1</translation>
+        <translation>V žádosti chybí položka: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="318"/>
         <source>Bad parameters passed to code request: %1</source>
         <comment>Registration information constructor</comment>
-        <translation>Bad parameters passed to code request: %1</translation>
+        <translation>V žádosti o kód předány špatné parametry: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="321"/>
         <source>No cell routes for %1 caused by your operator. Please try other method [sms/voice]</source>
         <comment>Registration information constructor</comment>
-        <translation>No cell routes for %1 caused by your operator. Please try other method [SMS/Voice]</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="323"/>
         <source>making call</source>
         <comment>Registration information constructor</comment>
-        <translation>calling</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="324"/>
         <source>sending sms</source>
         <comment>Registration information constructor</comment>
-        <translation>sending text message</translation>
+        <translation>odesílá se sms</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="325"/>
         <source>Reason: %1</source>
-        <translation>Reason: %1</translation>
+        <translation>Důvod: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/RegistrationPage.qml" line="333"/>
         <source>%n hours</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/RegistrationPage.qml" line="336"/>
         <source>%n minutes</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="338"/>
         <source>You can retry requesting code after %1</source>
         <comment>Registration information constructor</comment>
-        <translation>You can retry requesting a code after %1</translation>
+        <translation>Požádat o kód můžete znovu za %1</translation>
     </message>
 </context>
 <context>
@@ -1425,13 +1422,13 @@ Before switching to Mitakuuluu from the official application, please use the &lt
         <location filename="../client/qml/RenameContact.qml" line="22"/>
         <source>Rename contact</source>
         <comment>Rename contact page title</comment>
-        <translation>Rename contact</translation>
+        <translation>Přejmenovat kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/RenameContact.qml" line="29"/>
         <source>Enter new name</source>
         <comment>Registration information constructor</comment>
-        <translation>Type the new name</translation>
+        <translation>Zadejte nové jméno</translation>
     </message>
 </context>
 <context>
@@ -1440,15 +1437,15 @@ Before switching to Mitakuuluu from the official application, please use the &lt
         <location filename="../client/qml/RenewDialog.qml" line="15"/>
         <source>Renew</source>
         <comment>Renew account page title</comment>
-        <translation>Renew</translation>
+        <translation>Přejmenovat</translation>
     </message>
     <message>
         <location filename="../client/qml/RenewDialog.qml" line="22"/>
         <source>Your WhatsApp subscription expired.
 Click Renew to purchase one year of WhatsApp service.</source>
         <comment>Renew account page description text</comment>
-        <translation>Your WhatsApp subscription expired.
-Click Renew to purchase one year of WhatsApp service.</translation>
+        <translation>Vaše předplatné WhatsApp vypršelo.
+Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translation>
     </message>
 </context>
 <context>
@@ -1457,7 +1454,7 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/ResizePicture.qml" line="31"/>
         <source>Resize picture</source>
         <comment>Resize picture page title</comment>
-        <translation>Resize picture</translation>
+        <translation>Zmenšit obrázek</translation>
     </message>
 </context>
 <context>
@@ -1466,25 +1463,25 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/SelectContact.qml" line="46"/>
         <source>Select contacts</source>
         <comment>Select contact page title</comment>
-        <translation>Select contacts</translation>
+        <translation>Zvolit kontakty</translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/SelectContact.qml" line="47"/>
         <source>Selected %n contacts</source>
         <comment>Select contact page title</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/SelectContact.qml" line="54"/>
         <source>Search</source>
         <comment>Contacts selector</comment>
-        <translation>Search</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/SelectContact.qml" line="141"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
-        <translation>Group chat</translation>
+        <translation>Skupinová konverzace</translation>
     </message>
 </context>
 <context>
@@ -1493,37 +1490,37 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/SelectPhonebook.qml" line="50"/>
         <source>Sync all phonebook</source>
         <comment>Add contacts page menu item</comment>
-        <translation>Sync Contacts List</translation>
+        <translation>Synchronizovat celý adresář</translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="58"/>
         <source>Add number</source>
         <comment>Add contacts page menu item</comment>
-        <translation>Add number</translation>
+        <translation>Přidat číslo</translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="92"/>
         <source>Sync contact</source>
         <comment>Add contacts page title</comment>
-        <translation>Sync contact</translation>
+        <translation>Synchronizovat kontakt</translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/SelectPhonebook.qml" line="93"/>
         <source>Sync %n contacts</source>
         <comment>Add contacts page title</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="94"/>
         <source>Select contacts</source>
         <comment>Add contacts page title</comment>
-        <translation>Select contacts</translation>
+        <translation>Zvolit kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="138"/>
         <source>Search contacts</source>
         <comment>Add contacts page search text</comment>
-        <translation>Search contacts</translation>
+        <translation>Hledat kontakty</translation>
     </message>
 </context>
 <context>
@@ -1532,19 +1529,19 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/SendContactCard.qml" line="34"/>
         <source>Send contact</source>
         <comment>Send contact card page title</comment>
-        <translation>Send contact</translation>
+        <translation>Odeslat kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/SendContactCard.qml" line="35"/>
         <source>Select contact</source>
         <comment>Send contact card page title</comment>
-        <translation>Select contact</translation>
+        <translation>Zvolit kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/SendContactCard.qml" line="42"/>
         <source>Search contacts</source>
         <comment>Send contact card page search text</comment>
-        <translation>Search contacts</translation>
+        <translation>Hledat kontakty</translation>
     </message>
 </context>
 <context>
@@ -1553,61 +1550,61 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/Settings.qml" line="27"/>
         <source>Quit</source>
         <comment>Settings cover action name text</comment>
-        <translation>Quit</translation>
+        <translation>Odejít</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="28"/>
         <source>Change presence</source>
         <comment>Settings cover action name text</comment>
-        <translation>Change presence</translation>
+        <translation>Změnit stav</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="29"/>
         <source>Mute/unmute</source>
         <comment>Settings cover action name text</comment>
-        <translation>Mute/Unmute</translation>
+        <translation>Ztlumit/zrušit ztlumení</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="30"/>
         <source>Take picture</source>
         <comment>Settings cover action name text</comment>
-        <translation>Take Picture</translation>
+        <translation>Vyfotit</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="31"/>
         <source>Send location</source>
         <comment>Settings cover action name text</comment>
-        <translation>Send location</translation>
+        <translation>Odeslat polohu</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="32"/>
         <source>Send voice note</source>
         <comment>Settings cover action name text</comment>
-        <translation>Send Voice Note</translation>
+        <translation>Odeslat hlasovou zprávu</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="33"/>
         <source>Send text</source>
         <comment>Settings cover action name text</comment>
-        <translation>Send Text</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="62"/>
         <source>About</source>
         <comment>Settings page menu item</comment>
-        <translation>About</translation>
+        <translation>O aplikaci</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="68"/>
         <source>Send logfile to author</source>
         <comment>Settings page menu item</comment>
-        <translation>Send Log File to author</translation>
+        <translation>Odeslat logy autorovi</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="75"/>
         <source>Account</source>
         <comment>Settings page menu item</comment>
-        <translation>Account</translation>
+        <translation>Účet</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="81"/>
@@ -1619,61 +1616,61 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/Settings.qml" line="87"/>
         <source>Blacklist</source>
         <comment>Settings page menu item</comment>
-        <translation>Blacklist</translation>
+        <translation>Seznam blokovamých</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="102"/>
         <source>Settings</source>
         <comment>Settings page title</comment>
-        <translation>Settings</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="106"/>
         <source>Conversation</source>
         <comment>Settings page section name</comment>
-        <translation>Conversation</translation>
+        <translation>Konverzace</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="154"/>
         <source>Show sent messages at left side</source>
         <comment>Settings option name</comment>
-        <translation>Show Sent Messages on the left side</translation>
+        <translation>Odeslané zprávy zobrazit na levé straně</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="160"/>
         <source>Vibrate in active conversation</source>
         <comment>Settings option name</comment>
-        <translation>Vibrate in Active conversation</translation>
+        <translation>Vibrovar při aktivní konverzaci</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="167"/>
         <source>Show messages timestamp</source>
         <comment>Settings option name</comment>
-        <translation>Show timestamp of messages</translation>
+        <translation>Ukazovat časy zpráv</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="174"/>
         <source>Show seconds in messages timestamp</source>
         <comment>Settings option name</comment>
-        <translation>Show seconds in messages timestamp</translation>
+        <translation>Ukazovat sekundy v časech zpráv</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="182"/>
         <source>Send messages by Enter</source>
         <comment>Settings option name</comment>
-        <translation>Hit Enter to send messages</translation>
+        <translation>Odesílat zprávy klávesou Enter</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="188"/>
         <source>Automatically show keyboard when opening conversation</source>
         <comment>Settings option name</comment>
-        <translation>Automatically show keyboard when opening conversation</translation>
+        <translation>Automaticky vysunout klávesnici při otevření konverzace</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="194"/>
         <source>Hide keyboard after sending message</source>
         <comment>Settings option name</comment>
-        <translation>Hide keyboard after sending message</translation>
+        <translation>Schovat klávesnici po odeslání zprávy</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="206"/>
@@ -1697,13 +1694,13 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/Settings.qml" line="235"/>
         <source>Google</source>
         <comment>Map source selection</comment>
-        <translation type="unfinished"/>
+        <translation>Google</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="236"/>
         <source>OpenStreetMaps</source>
         <comment>Map source selection</comment>
-        <translation type="unfinished"/>
+        <translation>OpenStreetMaps</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="237"/>
@@ -1739,19 +1736,19 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/Settings.qml" line="527"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
-        <translation>Download media to Gallery</translation>
+        <translation>Stahovat média do Galerie</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="528"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
-        <translation>If checked, downloaded files will be shown in Gallery</translation>
+        <translation>Soubory budou zobrazeny v Galerii</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="250"/>
         <source>Chat font size</source>
         <comment>Settings option name</comment>
-        <translation>Chat font size</translation>
+        <translation>Velikost písma v konverzaci</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="252"/>
@@ -1763,288 +1760,288 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/Settings.qml" line="259"/>
         <source>Notifications</source>
         <comment>Settings page section name</comment>
-        <translation>Notifications</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="442"/>
         <source>Common</source>
         <comment>Settings page section name</comment>
-        <translation>Common</translation>
+        <translation>Obecné</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="774"/>
         <source>red</source>
         <comment>Pattern led color</comment>
-        <translation>red</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="775"/>
         <source>green</source>
         <comment>Pattern led color</comment>
-        <translation>green</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="776"/>
         <source>blue</source>
         <comment>Pattern led color</comment>
-        <translation>blue</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="777"/>
         <source>white</source>
         <comment>Pattern led color</comment>
-        <translation>white</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="778"/>
         <source>yellow</source>
         <comment>Pattern led color</comment>
-        <translation>yellow</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="779"/>
         <source>cyan</source>
         <comment>Pattern led color</comment>
-        <translation>cyan</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="780"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
-        <translation>pink</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="264"/>
         <source>no sound</source>
         <comment>Private message tone not set</comment>
-        <translation>no sound</translation>
+        <translation>žádný zvuk</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="286"/>
         <source>Private message color</source>
         <comment>Settings page Private message color selection</comment>
-        <translation>Private Message color</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="316"/>
         <source>no sound</source>
         <comment>Group message tone not set</comment>
-        <translation>no sound</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="336"/>
         <source>Group message color</source>
         <comment>Settings page Group message color selection</comment>
-        <translation>Group Message color</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="363"/>
         <source>no sound</source>
         <comment>Medi message tone not set</comment>
-        <translation>no sound</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="383"/>
         <source>Media message color</source>
         <comment>Settings page Media message color selection</comment>
-        <translation>Media Message color</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="446"/>
         <source>Language</source>
-        <translation>App Language</translation>
+        <translation>Jazyk</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="459"/>
         <source>Restart application to change language</source>
         <comment>Language changing banner text</comment>
-        <translation>Restart the app to change the language</translation>
+        <translation>Pro změnu jazyka restartujte aplikaci</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="470"/>
         <source>Connection server</source>
         <comment>Settings option name</comment>
-        <translation>Connection Server</translation>
+        <translation>Server připojení</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="508"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
-        <translation>Autostart</translation>
+        <translation>Automatický start</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="516"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
-        <translation>Allow saving Application Logs</translation>
+        <translation>Ukládat logy aplikace</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="520"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
-        <translation>You need to fully quit the app to start the writing of logs. Send the log file to the author, using the setting that appears in the Settings menu.</translation>
+        <translation>Aby se logy začaly zapisovat, musíte restartovat aplikaci. Odeslání logů se zobrazí v menu nastavení.</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="534"/>
         <source>Lock conversation orientation in portrait</source>
         <comment>Settings option name</comment>
-        <translation>Lock conversation orientation in portrait</translation>
+        <translation>Uzamknout display v konverzaci na výšku</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="541"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
-        <translation>Show yourself in the Contacts List, if present</translation>
+        <translation>Zobrazit mne v seznamu kontaktů pokud jsem online</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="547"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
-        <translation>Accept messages from unknown contacts</translation>
+        <translation>Přijímat zprávy od neznámých kontaktů</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="410"/>
         <source>Show notifications when connection changing</source>
         <comment>Settings option name</comment>
-        <translation>Show notifications upon connection changes</translation>
+        <translation>Zobrazit upozornění při změně připojení</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="423"/>
         <source>Show new messages notifications</source>
         <comment>Settings option name</comment>
-        <translation>Show notifications for new messages</translation>
+        <translation>Ukazovat upozornění na nové zprávy</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="437"/>
         <source>Display messages text in notifications</source>
         <comment>Settings option name</comment>
-        <translation>Display messages text in notifications</translation>
+        <translation>Zobrazovat text zprávy v upozornění</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="263"/>
         <source>Private message</source>
         <comment>Settings page Private message tone selection</comment>
-        <translation>Private Message</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="269"/>
         <source>Private message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation>Private Message sound</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="321"/>
         <source>Group message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation>Group Message Sound</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="368"/>
         <source>Media message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation>Media Message sound</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="315"/>
         <source>Group message</source>
         <comment>Settings page Group message tone selection</comment>
-        <translation>Group Message</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="362"/>
         <source>Media message</source>
         <comment>Settings page Media message tone selection</comment>
-        <translation>Media Message</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="552"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
-        <translation>Presence</translation>
+        <translation>Stav</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="557"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
-        <translation>Display presence</translation>
+        <translation>Zobrazit stav</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="560"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
-        <translation>Display Online when app is open</translation>
+        <translation>Online jen když je aplikace otevřená</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="567"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
-        <translation>Always display Online</translation>
+        <translation>Vždy zobrazovat online</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="574"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
-        <translation>Always display Offline</translation>
+        <translation>Vždy zobrazovat offline</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="587"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
-        <translation>Cover</translation>
+        <translation>Náhled</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="598"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
-        <translation>Left Cover Action</translation>
+        <translation>Akce levé strany</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="622"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
-        <translation>Right Cover Action</translation>
+        <translation>Akce pravé strany</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="639"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
-        <translation>Media</translation>
+        <translation>Média</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="665"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
-        <translation>Automatic download bytes</translation>
+        <translation>Automaticky stáhnout bajtů</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="676"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
-        <translation>Resize images upon sending</translation>
+        <translation>Změnit velikost odesílaného obrázku</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="712"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
-        <translation>Maximum image size by file size</translation>
+        <translation>Max velikost obrázku podle velikosti</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="746"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
-        <translation>Maximum image size by resolution</translation>
+        <translation>Max velikost obrázku podle rozlišení</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="748"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
-        <translation>%1 MP</translation>
+        <translation>%1 MPx</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="762"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
-        <translation>Settings marked with (*) will only go into effect after restarting the app</translation>
+        <translation>Volby označené (*) se uplatní až po restartu aplikace</translation>
     </message>
 </context>
 <context>
@@ -2053,13 +2050,13 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/ShareUI.qml" line="53"/>
         <source>Selected: %n</source>
         <comment>Sharing menu title text</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/ShareUI.qml" line="108"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
-        <translation>Group chat</translation>
+        <translation>Skupinová konverzace</translation>
     </message>
 </context>
 <context>
@@ -2176,31 +2173,31 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/UserProfile.qml" line="81"/>
         <source>Unblock contact</source>
         <comment>User profile page menu item</comment>
-        <translation>Unblock Contact</translation>
+        <translation>Odblokovat kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="82"/>
         <source>Block contact</source>
         <comment>User profile page menu item</comment>
-        <translation>Block Contact</translation>
+        <translation>Blokovat kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="105"/>
         <source>Save chat history</source>
         <comment>User profile page menu item</comment>
-        <translation>Save Chat History</translation>
+        <translation>Uložit historii konverzace</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="108"/>
         <source>History saved to Documents</source>
         <comment>User profile page history saved banner</comment>
-        <translation>History saved to Documents</translation>
+        <translation>Historie uložena do složky Documents</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="147"/>
         <source>Nickname: %1</source>
         <comment>User profile page nickname label</comment>
-        <translation>Username: %1</translation>
+        <translation>Přezdívka: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="158"/>
@@ -2212,7 +2209,7 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/UserProfile.qml" line="170"/>
         <source>Contact blocked</source>
         <comment>User profile page contact blocked label</comment>
-        <translation>Contact blocked</translation>
+        <translation>Kontakt blokován</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="90"/>
@@ -2238,7 +2235,7 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/UserProfile.qml" line="195"/>
         <source>Media</source>
         <comment>User profile page media section name</comment>
-        <translation>Media</translation>
+        <translation>Média</translation>
     </message>
 </context>
 </TS>
