@@ -1613,7 +1613,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="81"/>
         <source>Traffic counter</source>
         <comment>Settings page menu item</comment>
-        <translation>Счетчик данных</translation>
+        <translation>Счетчики данных</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="87"/>
