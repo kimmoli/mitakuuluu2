@@ -50,7 +50,6 @@ Page {
             if (pjid === page.jid) {
                 mediaListModel.clear()
                 for (var i = 0; i < mediaList.length; i++) {
-                    console.log(JSON.stringify(mediaList[i]))
                     mediaListModel.append(mediaList[i])
                 }
             }
@@ -88,36 +87,32 @@ Page {
             }
 
             MenuItem {
+                text: qsTr("Change background")
+                onClicked: {
+                    pageStack.push(backgroundPickerPage.createObject(root))
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Clear background")
+                onClicked: {
+                    Mitakuuluu.save("wallpaper/" + page.jid, "unset")
+                    Theme.clearBackgroundImage()
+                }
+            }
+
+            MenuItem {
                 text: qsTr("Save chat history", "User profile page menu item")
                 onClicked: {
                     conversationModel.saveHistory(page.jid, page.pushname)
                     banner.notify(qsTr("History saved to Documents", "User profile page history saved banner"))
                 }
             }
-
-            MenuItem {
-                text: qsTr("Save to phonebook", "User profile page menu item")
-                onClicked: {
-                    Mitakuuluu.openProfile(pushname, "+" + phone)
-                }
-
-            }
-
-            MenuItem {
-                text: qsTr("Call to contact", "User profile page menu item")
-                onClicked: {
-                    Qt.openUrlExternally("tel:+" + page.jid.split("@")[0])
-                }
-            }
         }
 
         Column {
             id: content
-            anchors {
-                left: parent.left
-                right: parent.right
-                margins: Theme.paddingLarge
-            }
+            width: parent.width
 
             spacing: Theme.paddingMedium
 
@@ -144,31 +139,56 @@ Page {
 
             Label {
                 id: pushnameLabel
-                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
                 text: qsTr("Nickname: %1", "User profile page nickname label").arg(Utilities.emojify(pushname, emojiPath))
                 textFormat: Text.RichText
             }
 
             Label {
                 id: presenceLabel
-                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
                 text: qsTr("Status: %1", "User profile page status label").arg(Utilities.emojify(presence, emojiPath))
                 textFormat: Text.RichText
                 wrapMode: Text.WordWrap
             }
 
             Label {
-                id: phoneLabel
-                width: parent.width
-                text: qsTr("Phone: +%1", "User profile page phone label").arg(phone)
-                textFormat: Text.RichText
-            }
-
-            Label {
                 id: ifBlocked
-                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
                 text: qsTr("Contact blocked", "User profile page contact blocked label")
                 visible: page.blocked
+            }
+
+            IconItem {
+                width: parent.width
+                icon.source: "image://theme/icon-l-answer"
+                icon.height: Theme.itemSizeSmall
+                name: qsTr("Call +%1").arg(phone)
+                onClicked: {
+                    Qt.openUrlExternally("tel:+" + phone)
+                }
+            }
+
+            IconItem {
+                width: parent.width
+                icon.source: "image://theme/icon-m-people"
+                icon.height: Theme.itemSizeSmall
+                name: qsTr("Save +%1").arg(phone)
+                onClicked: {
+                    Mitakuuluu.openProfile(pushname, "+" + phone)
+                }
             }
 
             SectionHeader {
@@ -181,7 +201,7 @@ Page {
                 anchors {
                     left: parent.left
                     right: parent.right
-                    margins: - Theme.paddingLarge
+                    margins: Theme.paddingLarge
                 }
 
                 delegate: gridDelegate
@@ -253,6 +273,24 @@ Page {
             }
             onClicked: {
                 Qt.openUrlExternally(model.path)
+            }
+        }
+    }
+
+    Component {
+        id: backgroundPickerPage
+
+        AvatarPickerCrop {
+            id: avatarPicker
+            objectName: "backgroundPicker"
+            aspectRatio: 0.562
+
+            onAvatarSourceChanged: {
+                console.log("background from: " + avatarSource)
+                var wallpaper = Mitakuuluu.saveWallpaper(avatarSource, page.jid)
+                Mitakuuluu.save("wallpaper/" + page.jid, wallpaper)
+                Theme.setBackgroundImage(Qt.resolvedUrl(wallpaper), Screen.width, Screen.height)
+                avatarPicker.destroy()
             }
         }
     }

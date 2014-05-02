@@ -57,7 +57,7 @@ Dialog {
             MenuItem {
                 text: qsTr("Add number", "Add contacts page menu item")
                 onClicked: {
-                    addContact.open(true, false)
+                    pageStack.replace(Qt.resolvedUrl("AddContact.qml"))
                 }
             }
 

@@ -1,12 +1,14 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import Sailfish.Silica.private 1.0
 
 BackgroundItem {
     id: root
 
     property alias name: label.text
-    property url iconSource
+    property alias icon: image
 
+    width: parent.width
     implicitHeight: Theme.itemSizeSmall
 
     Row {
@@ -16,11 +18,39 @@ BackgroundItem {
         spacing: Theme.paddingMedium
 
         Image {
-            id: icon
-            anchors.verticalCenter: parent.verticalCenter
-            source: (root.highlighted && root.iconSource != "")
-                    ? root.iconSource + "?" + Theme.highlightColor
-                    : root.iconSource
+            id: image
+
+            fillMode: Image.PreserveAspectCrop
+
+            property string _highlightSource
+            property color highlightColor: Theme.highlightColor
+
+            function updateHighlightSource() {
+                if (state === "") {
+                    if (source != "") {
+                        var tmpSource = image.source.toString()
+                        var index = tmpSource.lastIndexOf("?")
+                        if (index !== -1) {
+                            tmpSource = tmpSource.substring(0, index)
+                        }
+                        _highlightSource = tmpSource + "?" + highlightColor
+                    } else {
+                        _highlightSource = ""
+                    }
+                }
+            }
+
+            onHighlightColorChanged: updateHighlightSource()
+            onSourceChanged: updateHighlightSource()
+            Component.onCompleted: updateHighlightSource()
+
+            states: State {
+                when: root.highlighted && image._highlightSource != ""
+                PropertyChanges {
+                    target: image
+                    source: image._highlightSource
+                }
+            }
         }
         Label {
             id: label

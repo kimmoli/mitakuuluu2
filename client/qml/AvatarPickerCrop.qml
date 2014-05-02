@@ -11,12 +11,16 @@ ImagePickerPage {
     // Readonly
     property bool cropping: _cropDialog ? _cropDialog.cropping : false
     property Page _cropDialog
+    property string targetDir: "/tmp"
+    property double aspectRatio: 1.0
 
     function _customSelectionHandler(model, index, selected) {
         model.updateSelected(index, selected)
         var selectedContentProperties = model.get(index)
         // Hardcoded path will be removed once get JB5266 fixed
-        var target = "/tmp/" + selectedContentProperties.fileName
+        console.log("selected: " + selectedContentProperties.fileName)
+        var target = root.targetDir + "/" + selectedContentProperties.fileName
+        console.log("target: " + target)
         _cropDialog = imageEditPage.createObject(root, {
                                                         acceptDestination: pageStack.previousPage(root),
                                                         acceptDestinationAction: PageStackAction.Pop,
@@ -52,7 +56,7 @@ ImagePickerPage {
 
                 editOperation: ImageEditor.Crop
                 isPortrait: splitView.isPortrait
-                aspectRatio: 1.0
+                aspectRatio: root.aspectRatio
                 splitView: avatarCropDialog
                 anchors.fill: parent
                 active: !splitView.splitOpen

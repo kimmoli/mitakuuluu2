@@ -64,12 +64,15 @@ Page {
 
     Connections {
         target: Mitakuuluu
-        onGroupParticipant: {
+        onGroupParticipants: {
             if (gjid == page.jid) {
-                var model = ContactsBaseModel.getModel(pjid)
-                participantsModel.append({"jid": model.jid,
-                                          "name": getNicknameByJid(model.jid),
-                                          "avatar": model.avatar})
+                for (var i = 0; i < pjids.length; i++) {
+                    console.log("group " + gjid + " user " + pjids[i])
+                    var model = ContactsBaseModel.getModel(pjids[i])
+                    participantsModel.append({"jid": model.jid,
+                                              "name": getNicknameByJid(model.jid),
+                                              "avatar": model.avatar})
+                }
             }
         }
         /*onGroupInfo: {
@@ -129,25 +132,41 @@ Page {
     SilicaFlickable {
         id: flickable
         anchors.fill: page
+        pressDelay: 0
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("Save chat history", "Group profile page menu item")
-                onClicked: {
-                    conversationModel.saveHistory(page.jid, page.subject)
-                    banner.notify(qsTr("History saved to Documents", "Banner notification text"))
-                }
-            }
-
-            MenuItem {
                 text: qsTr("Add contacts", "Group profile page menu item")
                 enabled: listView.count > 0
-                visible: pageOwnerJid === Mitakuuluu.myJid
+                visible: page.ownerJid === Mitakuuluu.myJid
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("SelectContact.qml"), {"jid": page.jid, "noGroups": true, "multiple": true, "selected": participantsModel})
                     pageStack.currentPage.done.connect(listView.selectFinished)
                     pageStack.currentPage.added.connect(listView.contactAdded)
                     pageStack.currentPage.removed.connect(listView.contactRemoved)
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Change background")
+                onClicked: {
+                    pageStack.push(backgroundPickerPage.createObject(root))
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Clear background")
+                onClicked: {
+                    Mitakuuluu.save("wallpaper/" + page.jid, "unset")
+                    Theme.clearBackgroundImage()
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Save chat history", "Group profile page menu item")
+                onClicked: {
+                    conversationModel.saveHistory(page.jid, page.subject)
+                    banner.notify(qsTr("History saved to Documents", "Banner notification text"))
                 }
             }
         }
@@ -288,6 +307,7 @@ Page {
             width: page.isPortrait ? page.width : (page.width / 2)
             model: participantsModel
             delegate: listDelegate
+            pressDelay: 0
 
             function contactAdded(pjid) {
                 if (pjid !== Mitakuuluu.myJid) {
@@ -344,6 +364,8 @@ Page {
             id: item
             width: parent.width
             height: Theme.itemSizeMedium
+            highlightedColor: Theme.rgba((model.jid == page.ownerJid && !down) ? "lime" : Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
+            highlighted: model.jid == page.ownerJid || down
 
             AvatarHolder {
                 id: contactava
@@ -383,6 +405,25 @@ Page {
                     Mitakuuluu.removeParticipant(page.jid, model.jid)
                     participantsModel.remove(index)
                 }
+            }
+        }
+    }
+
+    Component {
+        id: backgroundPickerPage
+
+        AvatarPickerCrop {
+            id: avatarPicker
+            objectName: "backgroundPicker"
+            aspectRatio: 0.562
+
+            onAvatarSourceChanged: {
+                console.log("background from: " + avatarSource)
+                var wallpaper = Mitakuuluu.saveWallpaper(avatarSource, page.jid)
+                Mitakuuluu.save("wallpaper/" + page.jid, wallpaper)
+                Theme.setBackgroundImage(Qt.resolvedUrl(wallpaper), Screen.width, Screen.height)
+
+                avatarPicker.destroy()
             }
         }
     }

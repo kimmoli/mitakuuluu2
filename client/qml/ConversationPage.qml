@@ -20,6 +20,7 @@ Page {
                 positionSource.destroy()
             saveText()
             Mitakuuluu.setActiveJid("")
+            Theme.clearBackgroundImage()
         }
         else if (page.status === PageStatus.Active) {
             if (pageStack._currentContainer.attachedContainer == null) {
@@ -30,33 +31,39 @@ Page {
                     pageStack.pushAttached(Qt.resolvedUrl("UserProfile.qml"), {"conversationModel": conversationModel, "jid": jid})
                 }
             }
+            var wallpaper = Mitakuuluu.load("wallpaper/" + page.jid, "unset")
+            if (wallpaper !== "unset") {
+                Theme.setBackgroundImage(Qt.resolvedUrl(wallpaper), Screen.width, Screen.height)
+            }
         }
     }
 
     property variant initialModel
     onInitialModelChanged: {
-        //console.log("should load model")
-        //console.log("jid: " + initialModel.jid)
-        jid = initialModel.jid
-        //console.log("name: " + initialModel.name)
-        name = initialModel.nickname
-        //console.log("available: " + initialModel.available)
-        available = initialModel.available
-        //console.log("blocked: " + initialModel.blocked)
-        blocked = initialModel.blocked
-        //console.log("muted: " + initialModel.muted)
-        //muted = initialModel.muted
-        //console.log("avatar: " + initialModel.avatar)
-        avatar = initialModel.avatar
-        typing = initialModel.typing
-        lastseconds = parseInt(initialModel.timestamp)
+        if (page.status == PageStatus.Inactive) {
+            //console.log("should load model")
+            //console.log("jid: " + initialModel.jid)
+            jid = initialModel.jid
+            //console.log("name: " + initialModel.name)
+            name = initialModel.nickname
+            //console.log("available: " + initialModel.available)
+            available = initialModel.available
+            //console.log("blocked: " + initialModel.blocked)
+            blocked = initialModel.blocked
+            //console.log("muted: " + initialModel.muted)
+            //muted = initialModel.muted
+            //console.log("avatar: " + initialModel.avatar)
+            avatar = initialModel.avatar
+            typing = initialModel.typing
+            lastseconds = parseInt(initialModel.timestamp)
 
-        loadText()
-        conversationModel.jid = jid
+            loadText()
+            conversationModel.jid = jid
 
-        Mitakuuluu.setActiveJid(jid)
-        if (!available) {
-            Mitakuuluu.requestLastOnline(jid)
+            Mitakuuluu.setActiveJid(jid)
+            if (!available) {
+                Mitakuuluu.requestLastOnline(jid)
+            }
         }
     }
 
@@ -150,6 +157,13 @@ Page {
         else {
             return "data:image/jpeg;base64," + model.mediathumb
         }
+    }
+
+    function addMention(mjid) {
+        var mention = "@" + getNicknameByJid(mjid) + " "
+        sendBox.text += mention
+        sendBox.cursorPosition += mention.length + 2
+        sendBox.forceActiveFocus()
     }
 
     Connections {

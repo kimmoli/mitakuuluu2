@@ -274,8 +274,23 @@ Dialog {
             else if (mapSource == "here") {
                 mapSource = "osm"
             }
-            else {
+            else if (mapSource == "osm"){
                 mapSource = "google"
+            }
+            else if (mapSource == "google"){
+                mapSource = "bing"
+            }
+            else if (mapSource == "bing"){
+                mapSource = "mapquest"
+            }
+            else if (mapSource == "mapquest"){
+                mapSource = "yandex"
+            }
+            else if (mapSource == "yandex"){
+                mapSource = "yandexuser"
+            }
+            else {
+                mapSource = "2gis"
             }
 
             locationImg.loadImage()

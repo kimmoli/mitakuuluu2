@@ -144,7 +144,12 @@ Page {
                                                          : qsTr("Delete", "Delete contact remorse action text"),
                               function() {
                                   if (model.jid.indexOf("-") > 0) {
-                                      Mitakuuluu.groupLeave(model.jid)
+                                      if (model.owner === Mitakuuluu.myJid) {
+                                          Mitakuuluu.groupRemove(model.jid)
+                                      }
+                                      else {
+                                          Mitakuuluu.groupLeave(model.jid)
+                                      }
                                   }
                                   ContactsBaseModel.deleteContact(model.jid)
                               })

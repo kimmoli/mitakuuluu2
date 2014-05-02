@@ -217,7 +217,7 @@ signals:
     void mediaDownloadProgress(const QString &mjid, const QString &msgId, int progress);
     void mediaDownloadFinished(const QString &mjid, const QString &msgId, const QString &path);
     void mediaDownloadFailed(const QString &mjid, const QString &msgId);
-    void groupParticipant(const QString &gjid, const QString &pjid);
+    void groupParticipants(const QString &gjid, const QStringList &pjids);
     void groupInfo(const QVariantMap &group);
     void participantAdded(const QString &gjid, const QString &pjid);
     void participantRemoved(const QString &gjid, const QString &pjid);
@@ -232,6 +232,7 @@ signals:
     void groupsMuted(const QStringList &jids);
     void codeReceived();
     void dissectError();
+    void networkUsage(const QVariantList &networkUsage);
 
     void replyCrashed(bool isCrashed);
     void myAccount(const QString &account);
@@ -294,6 +295,7 @@ public slots:
     void setGroupSubject(const QString &gjid, const QString &subject);
     void createGroup(const QString &subject, const QString &picture, const QStringList &participants);
     void groupLeave(const QString &gjid);
+    void groupRemove(const QString &gjid);
     void setPicture(const QString &jid, const QString &path);
     void removeParticipant(const QString &gjid, const QString &jid);
     void addParticipant(const QString &gjid, const QString &jid);
@@ -320,6 +322,7 @@ public slots:
     QString rotateImage(const QString &path, int rotation);
     QString saveVoice(const QString &path);
     QString saveImage(const QString &path);
+    QString saveWallpaper(const QString &path, const QString &jid);
     void openProfile(const QString &name, const QString &phone, const QString avatar = QString());
     void removeAccount();
     void syncContacts(const QStringList &numbers, const QStringList &names, const QStringList &avatars);
@@ -342,6 +345,7 @@ public slots:
     QString getAvatarForJid(const QString &jid);
     QString saveAvatarForJid(const QString &jid, const QString &path);
     void rejectMediaCapture(const QString &path);
+    void getNetworkUsage();
 
     QStringList getLocalesNames();
     int getCurrentLocaleIndex();

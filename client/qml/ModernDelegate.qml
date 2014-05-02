@@ -80,6 +80,24 @@ MouseArea {
     }
 
     onClicked: {
+        if (page.isGroup) {
+            singleTimer.start()
+        }
+        else {
+            singleAction()
+        }
+    }
+    onPressAndHold: {
+        showMenu()
+    }
+    onDoubleClicked: {
+        if (singleTimer.running) {
+            singleTimer.stop()
+            doubleAction()
+        }
+    }
+
+    function singleAction() {
         if (model.watype == Mitakuuluu.Text) {
             var links = textLoader.item.text.match(/<a.*?href=\"(.*?)\">(.*?)<\/a>/gi);
             if (links && links.length > 0) {
@@ -96,8 +114,18 @@ MouseArea {
             openMedia()
         }
     }
-    onPressAndHold: {
-        showMenu()
+
+    function doubleAction() {
+        page.addMention(model.author)
+    }
+
+    Timer {
+        id: singleTimer
+        repeat: false
+        interval: 300
+        onTriggered: {
+            singleAction()
+        }
     }
 
     onMenuOpenChanged: {

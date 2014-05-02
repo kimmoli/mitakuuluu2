@@ -129,7 +129,7 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "connectionStatusChanged", this, SIGNAL(onConnectionStatusChanged(int)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
-                                              "groupParticipant", this, SIGNAL(groupParticipant(QString, QString)));
+                                              "groupParticipants", this, SIGNAL(groupParticipants(QString, QStringList)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "groupInfo", this, SIGNAL(onGroupInfo(QVariantMap)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
@@ -176,6 +176,8 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
                                               "pong", this, SLOT(onServerPong()));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "simParameters", this, SLOT(onSimParameters(QString, QString)));
+        QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
+                                              "networkUsage", this, SIGNAL(networkUsage(QVariantList)));
         qDebug() << "Start pinging server";
         pingServer = new QTimer(this);
         QObject::connect(pingServer, SIGNAL(timeout()), this, SLOT(doPingServer()));
@@ -203,7 +205,7 @@ QVariant Mitakuuluu::getProfileValue(const QString &key, const QVariant def)
                                         QVariant(key));
 
     if (reply.type() == QDBusMessage::ErrorMessage) {
-        qDebug() << Q_FUNC_INFO << "error reply:" << reply.errorName();
+        qDebug() << "error reply:" << reply.errorName();
     } else if (reply.arguments().count() > 0) {
         return reply.arguments().at(0);
     }
@@ -218,7 +220,7 @@ bool Mitakuuluu::setProfileValue(const QString &key, const QVariant &value)
                                         value);
 
     if (reply.type() == QDBusMessage::ErrorMessage) {
-        qDebug() << Q_FUNC_INFO << "error reply:" << reply.errorName();
+        qDebug() << "error reply:" << reply.errorName();
     } else if (reply.arguments().count() > 0) {
         return reply.arguments().at(0).toBool();
     }
@@ -434,6 +436,12 @@ void Mitakuuluu::groupLeave(const QString &gjid)
 {
     if (iface)
         iface->call(QDBus::NoBlock, "requestLeaveGroup", gjid);
+}
+
+void Mitakuuluu::groupRemove(const QString &gjid)
+{
+    if (iface)
+        iface->call(QDBus::NoBlock, "requestRemoveGroup", gjid);
 }
 
 void Mitakuuluu::setPicture(const QString &jid, const QString &path)
@@ -777,7 +785,29 @@ QString Mitakuuluu::saveImage(const QString &path)
             QString destination = QString("%1/%2.%3").arg(images).arg(name).arg(ext);
             img.copy(cutpath, destination);
             qDebug() << "destination:" << destination;
-            return name;
+            return destination;
+        }
+    }
+    return path;
+}
+
+QString Mitakuuluu::saveWallpaper(const QString &path, const QString &jid)
+{
+    QString wallpapers = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/wallpapers";
+    if (!QDir(wallpapers).exists())
+        QDir::home().mkpath(wallpapers);
+
+    if (!path.contains(wallpapers)) {
+        QString cutpath = path;
+        cutpath = cutpath.replace("file://", "");
+        QFile img(cutpath);
+        if (img.exists()) {
+            img.open(QFile::ReadOnly);
+            img.close();
+            QString destination = QString("%1/%2").arg(wallpapers).arg(jid);
+            img.copy(cutpath, destination);
+            qDebug() << "destination:" << destination;
+            return destination;
         }
     }
     return path;
@@ -1003,6 +1033,13 @@ void Mitakuuluu::rejectMediaCapture(const QString &path)
     QFile file(path);
     if (file.exists())
         file.remove();
+}
+
+void Mitakuuluu::getNetworkUsage()
+{
+    if (iface) {
+        iface->call(QDBus::NoBlock, "getNetworkUsage");
+    }
 }
 
 QString Mitakuuluu::getPrivateTone()

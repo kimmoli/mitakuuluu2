@@ -508,6 +508,50 @@ ApplicationWindow {
                     //+ ";red;white;20;.;"
                     + "&z=" + z
         }
+        else if (source === "bing") {
+            return "http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/"
+                    + lat
+                    + ","
+                    + lon
+                    + "/"
+                    + z
+                    + "?mapSize=" + w
+                    + "," + h
+                    + "&key=AvkH1TAJ9k4dkzOELMutZbk_t3L4ImPPW5LXDvw16XNRd5U36a018XJo2Z1jsPbW"
+        }
+        else if (source === "mapquest") {
+            return "http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd%7Cluur2q0y2q%2Cbw%3Do5-9abn5f"
+                    + "&center="+ lat
+                    + "," + lon
+                    + "&zoom=" + z
+                    + "&size=" + w
+                    + "," + h
+                    + "&type=map&imagetype=png"
+        }
+        else if (source === "yandexuser") {
+            return "http://static-maps.yandex.ru/1.x/"
+                    + "?ll=" + lon
+                    + "," + lat
+                    + "&z=" + z
+                    + "&l=pmap&size=" + Math.min(w, 450)
+                    + "," + Math.min(h, 450)
+        }
+        else if (source === "yandex") {
+            return "http://static-maps.yandex.ru/1.x/"
+                    + "?ll=" + lon
+                    + "," + lat
+                    + "&z=" + z
+                    + "&l=map&size=" + Math.min(w, 450)
+                    + "," + Math.min(h, 450)
+        }
+        else if (source === "2gis") {
+            return "http://static.maps.api.2gis.ru/1.0"
+                    + "?center=" + lon
+                    + "," + lat
+                    + "&zoom=" + z
+                    + "&size=" + w
+                    + "," + h
+        }
     }
 
     function shutdownEngine() {

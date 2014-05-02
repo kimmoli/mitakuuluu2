@@ -78,6 +78,12 @@ Page {
                 }
             }
             MenuItem {
+                text: qsTr("Traffic counter", "Settings page menu item")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("TrafficCounters.qml"))
+                }
+            }
+            MenuItem {
                 text: qsTr("Blacklist", "Settings page menu item")
                 enabled: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
                 onClicked: {
@@ -199,39 +205,42 @@ Page {
             ComboBox {
                 label: qsTr("Map source", "Settings option name")
                 menu: ContextMenu {
-                    MenuItem {
-                        text: qsTr("Here", "Map source selection")
-                        onClicked: mapSource = "here"
+                    Repeater {
+                        width: parent.width
+                        model: mapSourceModel
+                        delegate: MenuItem { text: model.name }
                     }
-                    MenuItem {
-                        text: qsTr("Nokia", "Map source selection")
-                        onClicked: mapSource = "nokia"
-                    }
-                    MenuItem {
-                        text: qsTr("Google", "Map source selection")
-                        onClicked: mapSource = "google"
-                    }
-                    MenuItem {
-                        text: qsTr("OpenStreetMaps", "Map source selection")
-                        onClicked: mapSource = "osm"
+                }
+                onCurrentItemChanged: {
+                    if (pageStack.currentPage.objectName === "settings" || pageStack.currentPage.objectName === "") {
+                        mapSource = mapSourceModel.get(currentIndex).value
                     }
                 }
                 Component.onCompleted: {
-                    if (mapSource == "here") {
-                        currentIndex = 0
-                    }
-                    else if (mapSource == "nokia") {
-                        currentIndex = 1
-                    }
-                    else if (mapSource == "google") {
-                        currentIndex = 2
-                    }
-                    else if (mapSource == "osm") {
-                        currentIndex = 3
+                    _updating = false
+                    for (var i = 0; i < mapSourceModel.count; i++) {
+                        if (mapSourceModel.get(i).value == mapSource) {
+                            currentIndex = i
+                            break
+                        }
                     }
                 }
             }
 
+            ListModel {
+                id: mapSourceModel
+                Component.onCompleted: {
+                    append({name: qsTr("Here", "Map source selection"), value: "here"})
+                    append({name: qsTr("Nokia", "Map source selection"), value: "nokia"})
+                    append({name: qsTr("Google", "Map source selection"), value: "google"})
+                    append({name: qsTr("OpenStreetMaps", "Map source selection"), value: "osm"})
+                    append({name: qsTr("Bing", "Map source selection"), value: "bing"})
+                    append({name: qsTr("MapQuest", "Map source selection"), value: "mapquest"})
+                    append({name: qsTr("Yandex", "Map source selection"), value: "yandex"})
+                    append({name: qsTr("Yandex usermap", "Map source selection"), value: "yandexuser"})
+                    append({name: qsTr("2Gis", "Map source selection"), value: "2gis"})
+                }
+            }
 
             Slider {
                 id: fontSlider
@@ -467,6 +476,12 @@ Page {
                         }
                     }
                     MenuItem {
+                        text: "c1.whatsapp.net"
+                        onClicked: {
+                            connectionServer = "c1.whatsapp.net"
+                        }
+                    }
+                    MenuItem {
                         text: "c2.whatsapp.net"
                         onClicked: {
                             connectionServer = "c2.whatsapp.net"
@@ -481,8 +496,9 @@ Page {
                 }
                 Component.onCompleted: {
                     currentIndex = (connectionServer == "c.whatsapp.net" ? 0
-                                  :(connectionServer == "c2.whatsapp.net" ? 1
-                                                                          : 2))
+                                : (connectionServer == "c1.whatsapp.net" ? 1
+                                : (connectionServer == "c2.whatsapp.net" ? 2
+                                                                         : 3)))
                 }
             }
 
@@ -531,12 +547,6 @@ Page {
                 text: qsTr("Accept messages from unknown contacts", "Settings option name")
                 onClicked: acceptUnknown = checked
             }
-
-            /*TextSwitch {
-                checked: threading
-                text: qsTr("Create server connection in separate thread (experimental) (*)")
-                onClicked: threading = checked
-            }*/
 
             SectionHeader {
                 text: qsTr("Presence", "Settings page section name")
