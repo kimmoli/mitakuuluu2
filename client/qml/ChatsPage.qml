@@ -139,20 +139,27 @@ Page {
             ListView.onRemove: animateRemoval(item)
             menu: contextMenu
 
-            function remove() {
-                remorseAction(model.jid.indexOf("-") > 0 ? qsTr("Leave group %1", "Group leave remorse action text").arg(model.nickname)
-                                                         : qsTr("Delete", "Delete contact remorse action text"),
-                              function() {
-                                  if (model.jid.indexOf("-") > 0) {
-                                      if (model.owner === Mitakuuluu.myJid) {
-                                          Mitakuuluu.groupRemove(model.jid)
-                                      }
-                                      else {
-                                          Mitakuuluu.groupLeave(model.jid)
-                                      }
-                                  }
-                                  ContactsBaseModel.deleteContact(model.jid)
-                              })
+            function removeContact() {
+                remorseAction(qsTr("Delete", "Delete contact remorse action text"),
+                function() {
+                    ContactsBaseModel.deleteContact(model.jid)
+                })
+            }
+
+            function leaveGroup() {
+                remorseAction(qsTr("Leave group %1", "Group leave remorse action text").arg(model.nickname),
+                function() {
+                    Mitakuuluu.groupLeave(model.jid)
+                    ContactsBaseModel.deleteContact(model.jid)
+                })
+            }
+
+            function removeGroup() {
+                remorseAction(qsTr("Delete group %1", "Group delete remorse action text").arg(model.nickname),
+                function() {
+                    Mitakuuluu.groupRemove(model.jid)
+                    ContactsBaseModel.deleteContact(model.jid)
+                })
             }
 
             Rectangle {
@@ -267,12 +274,24 @@ Page {
                     }
 
                     MenuItem {
+                        text: qsTr("Delete group", "Contact context menu delete group item")
+                        enabled: Mitakuuluu.connectionStatus === Mitakuuluu.LoggedIn
+                        visible: model.owner === Mitakuuluu.myJid
+                        onClicked: {
+                            removeGroup()
+                        }
+                    }
+
+                    MenuItem {
                         text: (model.jid.indexOf("-") > 0)
                                 ? qsTr("Leave group", "Contact context menu leave group item")
                                 : qsTr("Delete", "Contact context menu delete contact item")
                         enabled: Mitakuuluu.connectionStatus === Mitakuuluu.LoggedIn
                         onClicked: {
-                            remove()
+                            if (model.jid.indexOf("-") > 0)
+                                leaveGroup()
+                            else
+                                removeContact()
                         }
                     }
 
