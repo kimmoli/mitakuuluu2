@@ -322,7 +322,7 @@ private slots:
                        const QString &photoId, bool largeFormat);
     void privacyListReceived(const QStringList &list);
 
-    void sendLocationRequest(QNetworkReply *reply);
+    void sendLocationRequest();
 
     void mediaUploadAccepted(const FMessage &message);
     void mediaUploadStarted(MediaUpload *mediaUpload, const FMessage &msg);
@@ -502,6 +502,9 @@ private:
     QString waversion;
 
     QTranslator translator;
+
+    QStringList pendingLocationJids;
+    QStringList pendingLocationCoordinates;
 
     /** ***********************************************************************
      ** Private methods

@@ -1347,22 +1347,25 @@ void Client::ready()
     }
 }
 
-void Client::sendLocationRequest(QNetworkReply *reply)
+void Client::sendLocationRequest()
 {
     qDebug() << "Location request finished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
     if (reply && reply->error() == QNetworkReply::NoError) {
         QUrl url = reply->url();
         qDebug() << "Location requiest url:" << url;
         QUrlQuery urlQuery(url);
         QString location = urlQuery.queryItemValue("ctr");
         qDebug() << "Location:" << location;
-        QStringList jids = urlQuery.queryItemValue("jids").split(",");
+        QStringList jids = pendingLocationJids;
+        pendingLocationJids.clear();
         QString jid = jids.size() > 1 ? "broadcast" : jids.first();
         FMessage msg(jid, true);
         msg.status = FMessage::Unsent;
         msg.type = FMessage::MediaMessage;
-        msg.latitude = location.split(",").first().toDouble();
-        msg.longitude = location.split(",").last().toDouble();
+        msg.latitude = pendingLocationCoordinates.first().toDouble();
+        msg.longitude = pendingLocationCoordinates.last().toDouble();
+        pendingLocationCoordinates.clear();
         msg.media_wa_type = FMessage::Location;
 
         QPixmap img;
@@ -1797,6 +1800,8 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
         qDebug() << "sendLocation" << latitude << longitude;
         int w = 128;
         int h = 128;
+        pendingLocationJids = jids;
+        pendingLocationCoordinates = QStringList() << latitude << longitude;
         QNetworkRequest req;
         if (source == "google") {
             QUrlQuery path;
@@ -1804,9 +1809,7 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
             path.addQueryItem("sensor", "false");
             path.addQueryItem("zoom", QString::number(zoom));
             path.addQueryItem("size", QString("%1x%2").arg(w).arg(h));
-            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
-            path.addQueryItem("jids", jids.join(","));
             QUrl url("http://maps.googleapis.com/maps/api/staticmap");
             url.setQuery(path);
             req.setUrl(url);
@@ -1821,7 +1824,6 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
             path.addQueryItem("w", QString::number(w));
             path.addQueryItem("h", QString::number(h));
             path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
-            path.addQueryItem("jids", jids.join(","));
             QUrl url("https://maps.nlp.nokia.com/mia/1.6/mapview");
             url.setQuery(path);
             req.setUrl(url);
@@ -1834,7 +1836,6 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
             path.addQueryItem("w", QString::number(w));
             path.addQueryItem("h", QString::number(h));
             path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
-            path.addQueryItem("jids", jids.join(","));
             QUrl url("http://m.nok.it");
             url.setQuery(path);
             req.setUrl(url);
@@ -1844,10 +1845,16 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
             path.addQueryItem("maptype", "mapnik");
             path.addQueryItem("zoom", QString::number(zoom));
             path.addQueryItem("size", QString("%1x%2").arg(w).arg(h));
-            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
-            path.addQueryItem("jids", jids.join(","));
             QUrl url("https://coderus.openrepos.net/staticmaplite/staticmap.php");
+            url.setQuery(path);
+            req.setUrl(url);
+        }
+        else if (source == "bing") {
+            QUrlQuery path;
+            path.addQueryItem("key", "AvkH1TAJ9k4dkzOELMutZbk_t3L4ImPPW5LXDvw16XNRd5U36a018XJo2Z1jsPbW");
+            path.addQueryItem("mapSize", QString("%1,%2").arg(w).arg(h));
+            QUrl url(QString("http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/%1,%2/%3").arg(latitude).arg(longitude).arg(zoom));
             url.setQuery(path);
             req.setUrl(url);
         }
@@ -1858,9 +1865,7 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
             path.addQueryItem("imagetype", "png");
             path.addQueryItem("zoom", QString::number(zoom));
             path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
-            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
-            path.addQueryItem("jids", jids.join(","));
             QUrl url("http://www.mapquestapi.com/staticmap/v4/getmap");
             url.setQuery(path);
             req.setUrl(url);
@@ -1870,9 +1875,7 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
             path.addQueryItem("l", "pmap");
             path.addQueryItem("z", QString::number(zoom));
             path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
-            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("ll", QString("%1,%2").arg(longitude).arg(latitude));
-            path.addQueryItem("jids", jids.join(","));
             QUrl url("http://static-maps.yandex.ru/1.x");
             url.setQuery(path);
             req.setUrl(url);
@@ -1882,9 +1885,7 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
             path.addQueryItem("l", "map");
             path.addQueryItem("z", QString::number(zoom));
             path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
-            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("ll", QString("%1,%2").arg(longitude).arg(latitude));
-            path.addQueryItem("jids", jids.join(","));
             QUrl url("http://static-maps.yandex.ru/1.x");
             url.setQuery(path);
             req.setUrl(url);
@@ -1893,9 +1894,7 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
             QUrlQuery path;
             path.addQueryItem("zoom", QString::number(zoom));
             path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
-            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("center", QString("%1,%2").arg(longitude).arg(latitude));
-            path.addQueryItem("jids", jids.join(","));
             QUrl url("http://static.maps.api.2gis.ru/1.0");
             url.setQuery(path);
             req.setUrl(url);
