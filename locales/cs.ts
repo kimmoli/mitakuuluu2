@@ -254,49 +254,61 @@
         <translation>Konverzace</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="143"/>
+        <location filename="../client/qml/ChatsPage.qml" line="150"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>Opustit skupinu %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="144"/>
+        <location filename="../client/qml/ChatsPage.qml" line="143"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>Smazat</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="226"/>
+        <location filename="../client/qml/ChatsPage.qml" line="158"/>
+        <source>Delete group %1</source>
+        <comment>Group delete remorse action text</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ChatsPage.qml" line="233"/>
         <source>Typing...</source>
         <comment>Contact status typing text</comment>
         <translation>Píše ...</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="227"/>
+        <location filename="../client/qml/ChatsPage.qml" line="234"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>Skupinová konverzace</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="246"/>
+        <location filename="../client/qml/ChatsPage.qml" line="253"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>Profil</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="263"/>
+        <location filename="../client/qml/ChatsPage.qml" line="270"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
         <translation>Ztlumení</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="271"/>
+        <location filename="../client/qml/ChatsPage.qml" line="277"/>
+        <source>Delete group</source>
+        <comment>Contact context menu delete group item</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ChatsPage.qml" line="287"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>Opustit skupinu</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="272"/>
+        <location filename="../client/qml/ChatsPage.qml" line="288"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>Smazat</translation>
@@ -383,13 +395,13 @@
         <translation>Obrázek změněn</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1595"/>
+        <location filename="../server/src/client.cpp" line="1598"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Odpojeno</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2768"/>
+        <location filename="../server/src/client.cpp" line="2767"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
@@ -428,49 +440,61 @@
         <translation>Vyhledat kontakty</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="105"/>
+        <location filename="../client/qml/ContactsPage.qml" line="112"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>Opustit skupinu %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="106"/>
+        <location filename="../client/qml/ContactsPage.qml" line="105"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>Smazat</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="188"/>
+        <location filename="../client/qml/ContactsPage.qml" line="120"/>
+        <source>Delete group %1</source>
+        <comment>Group delete remorse action text</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ContactsPage.qml" line="195"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>Skupinová konverzace</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="205"/>
+        <location filename="../client/qml/ContactsPage.qml" line="212"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>Profil</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="223"/>
+        <location filename="../client/qml/ContactsPage.qml" line="230"/>
         <source>Refresh</source>
         <comment>Contact context menu refresh item</comment>
         <translation>Obnovit</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="231"/>
+        <location filename="../client/qml/ContactsPage.qml" line="238"/>
         <source>Rename</source>
         <comment>Contact context menu profile item</comment>
         <translation>Přejmenovat</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="240"/>
+        <location filename="../client/qml/ContactsPage.qml" line="246"/>
+        <source>Delete group</source>
+        <comment>Contact context menu delete group item</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ContactsPage.qml" line="256"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>Opustit skupinu</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="241"/>
+        <location filename="../client/qml/ContactsPage.qml" line="257"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>Smazat</translation>
@@ -2062,107 +2086,107 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
 <context>
     <name>TrafficCounters</name>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="21"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="22"/>
         <source>Messages received: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="22"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="23"/>
         <source>Messages sent: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="23"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="24"/>
         <source>Messages bytes received: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="24"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="25"/>
         <source>Messages bytes sent: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="25"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="26"/>
         <source>Image bytes received: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="26"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="27"/>
         <source>Image bytes sent: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="27"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="28"/>
         <source>Video bytes received: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="28"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="29"/>
         <source>Video bytes sent: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="29"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="30"/>
         <source>Audio bytes received: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="30"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="31"/>
         <source>Audio bytes sent: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="31"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="32"/>
         <source>Profile bytes received: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="32"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="33"/>
         <source>Profile bytes sent: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="35"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="36"/>
         <source>Protocol bytes received: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="36"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="37"/>
         <source>Protocol bytes sent: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="37"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="38"/>
         <source>Total bytes received: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="38"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="39"/>
         <source>Total bytes sent: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="56"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="53"/>
         <source>Reset counters</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="70"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="72"/>
         <source>Data counters</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="74"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="76"/>
         <source>Messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="88"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="90"/>
         <source>Received data</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/TrafficCounters.qml" line="132"/>
+        <location filename="../client/qml/TrafficCounters.qml" line="134"/>
         <source>Sent data data</source>
         <translation type="unfinished"/>
     </message>
