@@ -297,7 +297,7 @@ private slots:
     void photoRefresh(const QString &jid, const QString &expectedPhotoId, bool largeFormat);
     void requestPresenceSubscription(const QString &jid);
     void requestPresenceUnsubscription(const QString &jid);
-    void groupUser(const QString &gjid, const QString &jid);
+    void groupUsers(const QString &gjid, const QStringList &jids);
     void groupAddUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId);
     void groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId);
     void setPrivacyList();
@@ -322,7 +322,7 @@ private slots:
                        const QString &photoId, bool largeFormat);
     void privacyListReceived(const QStringList &list);
 
-    void sendLocationRequest();
+    void sendLocationRequest(QNetworkReply *reply);
 
     void mediaUploadAccepted(const FMessage &message);
     void mediaUploadStarted(MediaUpload *mediaUpload, const FMessage &msg);
@@ -378,7 +378,7 @@ signals:
     void uploadProgress(const QString &jid, const QString &msgId, int percent);
     void uploadFinished(const QString &jid, const QString &msgId, const QString &remoteUrl);
     void uploadFailed(const QString &jid, const QString &msgId);
-    void groupParticipant(const QString &jid, const QString &participant);
+    void groupParticipants(const QString &jid, const QStringList &participants);
     void groupParticipantAdded(const QString &jid, const QString &participant);
     void groupParticipantRemoved(const QString &jid, const QString &participant);
     void groupInfo(const QVariantMap &group);
@@ -418,6 +418,7 @@ signals:
     void connectionUpdateGroupChats();
     void connectionSendSetGroupSubject(const QString &gjid, const QString &subject);
     void connectionSendLeaveGroup(const QString &gjid);
+    void connectionSendRemoveGroup(const QString &gjid);
     void connectionSendGetPrivacyList();
     void connectionSendSetPrivacyBlockedList(const QStringList &jidList);
     void connectionSetNewUserName(const QString &push_name, bool hide, const QString &privacy);
@@ -429,6 +430,7 @@ signals:
     void connectionSendMessageReceived(const FMessage &message);
     void connectionDisconnect();
     void connectionSendGetServerProperties();
+    void connectionSendGetClientConfig();
     void connectionSendComposing(const QString &jid, const QString &media);
     void connectionSendPaused(const QString &jid, const QString &media);
     void networkUsage(const QVariantList &networkUsage);
@@ -574,7 +576,8 @@ public slots:
     void blockOrUnblockContact(const QString &jid);
     void sendBlockedJids(const QStringList &jids);
     void muteOrUnmute(const QString &jid, int expire);
-    void requestLeaveGroup(const QString &jid);
+    void requestLeaveGroup(const QString &gjid);
+    void requestRemoveGroup(const QString &gjid);
     void setPicture(const QString &jid, const QString &path);
     void getContactStatus(const QString &jid);
     void refreshContact(const QString &jid);

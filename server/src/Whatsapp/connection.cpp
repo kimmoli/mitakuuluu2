@@ -173,6 +173,10 @@ void Connection::login(const QByteArray &nextChallenge)
 */
 bool Connection::read()
 {
+    if (connTimeout) {
+        connTimeout->start();
+    }
+
     ProtocolTreeNode node;
     bool pictureReceived = false;
 
@@ -222,6 +226,8 @@ bool Connection::read()
             }
             else if (type == "result")
             {
+                QStringList groupParticipants;
+
                 ProtocolTreeNodeListIterator i(node.getChildren());
                 while (i.hasNext())
                 {
@@ -407,8 +413,13 @@ bool Connection::read()
 
                     else if (child.getTag() == "participant" && id.startsWith("get_participants_")) {
                         QString jid = child.getAttributeValue("jid");
-                        Q_EMIT groupUser(from, jid);
+                        groupParticipants.append(jid);
+                        //Q_EMIT groupUser(from, jid);
                     }
+                }
+
+                if (!groupParticipants.isEmpty()) {
+                    Q_EMIT groupUsers(from, groupParticipants);
                 }
 
                 if (id.startsWith("privacy_")) {
@@ -918,7 +929,8 @@ void Connection::connectionClosed()
         connTimeout->deleteLater();
     }
     qDebug() << "Connection closed";
-    disconnectAndDelete();
+    Q_EMIT needReconnect();
+    //disconnectAndDelete();
 }
 
 void Connection::socketError(QAbstractSocket::SocketError error)
@@ -1165,11 +1177,13 @@ void Connection::parseSuccessNode(const ProtocolTreeNode &node)
 
         Q_EMIT authSuccess(creation, expiration, kind, accountstatus, nextChallenge);
 
+        // ugly hack. if no activity on socket until 15 minutes 5 seconds it will be reconnected.
+        // server sends self pings to clients every 15 minutes. 5 seconds added as network delay.
         connTimeout = new QTimer(this);
-        connTimeout->setInterval(90000);
         connTimeout->setSingleShot(false);
-        QObject::connect(connTimeout, SIGNAL(timeout()), this, SLOT(sendServerPing()));
-        //connTimeout->start();
+        connTimeout->setInterval(905000);
+        QObject::connect(connTimeout, SIGNAL(timeout()), this, SIGNAL(needReconnect()));
+        connTimeout->start();
     }
     else {
         Q_EMIT authFailed();
@@ -2470,7 +2484,6 @@ void Connection::setNewUserName(const QString &push_name, bool hide, QString pri
 */
 void Connection::sendClientConfig(const QString &platform)
 {
-
     QString id = makeId("config_");
 
     AttributeList attrs;
@@ -2480,15 +2493,38 @@ void Connection::sendClientConfig(const QString &platform)
     attrs.insert("lg", language.isEmpty() ? "en" : language);
     attrs.insert("lc", country.isEmpty() ? "US" : country);
     attrs.insert("clear", "1");
-    attrs.insert("preview", "0");
-    attrs.insert("default", "0");
-    attrs.insert("groups", "0");
+    attrs.insert("preview", "1");
+    attrs.insert("default", "1");
+    attrs.insert("groups", "1");
+    attrs.insert("id", "none");
+    attrs.insert("version", "3");
     configNode.setAttributes(attrs);
 
     ProtocolTreeNode iqNode("iq");
     attrs.clear();
     attrs.insert("id", id);
     attrs.insert("type", "set");
+    attrs.insert("to", domain);
+    attrs.insert("xmlns", "urn:xmpp:whatsapp:push");
+    iqNode.setAttributes(attrs);
+    iqNode.addChild(configNode);
+
+    int bytes = out->write(iqNode);
+    counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
+}
+
+void Connection::getClientConfig()
+{
+    QString id = makeId("get_config_");
+
+    AttributeList attrs;
+
+    ProtocolTreeNode configNode("config");
+
+    ProtocolTreeNode iqNode("iq");
+    attrs.clear();
+    attrs.insert("id", id);
+    attrs.insert("type", "get");
     attrs.insert("to", domain);
     attrs.insert("xmlns", "urn:xmpp:whatsapp:push");
     iqNode.setAttributes(attrs);

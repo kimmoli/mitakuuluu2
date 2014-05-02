@@ -639,8 +639,8 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connect(connection,SIGNAL(photoReceived(QString,QByteArray,QString,bool)),
             this,SLOT(photoReceived(QString,QByteArray,QString,bool)));
 
-    connect(connection,SIGNAL(groupUser(QString,QString)),
-            this,SLOT(groupUser(QString,QString)));
+    connect(connection,SIGNAL(groupUsers(QString,QStringList)),
+            this,SLOT(groupUsers(QString,QStringList)));
 
     connect(connection,SIGNAL(groupAddUser(QString,QString,QString,QString)),
             this,SLOT(groupAddUser(QString,QString,QString,QString)));
@@ -676,8 +676,8 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     pendingMessagesTimer->setSingleShot(true);
 
     Q_EMIT connectionSendGetServerProperties();
+    Q_EMIT connectionSendGetClientConfig();
     Q_EMIT connectionSendGetPrivacyList();
-    Q_EMIT connectionUpdateGroupChats();
 
     this->userName = settings->value(SETTINGS_USERNAME, this->myJid.split("@").first()).toString();
     changeUserName(this->userName);
@@ -801,6 +801,7 @@ void Client::connectToServer()
     QObject::connect(this, SIGNAL(connectionUpdateGroupChats()), connection, SLOT(updateGroupChats()));
     QObject::connect(this, SIGNAL(connectionSendSetGroupSubject(QString,QString)), connection, SLOT(sendSetGroupSubject(QString,QString)));
     QObject::connect(this, SIGNAL(connectionSendLeaveGroup(QString)), connection, SLOT(sendLeaveGroup(QString)));
+    QObject::connect(this, SIGNAL(connectionSendRemoveGroup(QString)), connection, SLOT(sendRemoveGroup(QString)));
     QObject::connect(this, SIGNAL(connectionSendGetPrivacyList()), connection, SLOT(sendGetPrivacyList()));
     QObject::connect(this, SIGNAL(connectionSendSetPrivacyBlockedList(QStringList)), connection, SLOT(sendSetPrivacyBlockedList(QStringList)));
     QObject::connect(this, SIGNAL(connectionSetNewUserName(QString,bool,QString)), connection, SLOT(setNewUserName(QString,bool,QString)));
@@ -811,6 +812,7 @@ void Client::connectToServer()
     QObject::connect(this, SIGNAL(connectionSendDeleteAccount()), connection, SLOT(sendDeleteAccount()));
     QObject::connect(this, SIGNAL(connectionDisconnect()), connection, SLOT(disconnectAndDelete()));
     QObject::connect(this, SIGNAL(connectionSendGetServerProperties()), connection, SLOT(sendGetServerProperties()));
+    QObject::connect(this, SIGNAL(connectionSendGetClientConfig()), connection, SLOT(getClientConfig()));
     QObject::connect(this, SIGNAL(connectionSendComposing(QString,QString)), connection, SLOT(sendComposing(QString,QString)));
     QObject::connect(this, SIGNAL(connectionSendPaused(QString,QString)), connection, SLOT(sendPaused(QString,QString)));
 
@@ -1129,6 +1131,13 @@ void Client::requestLeaveGroup(const QString &gjid)
     }
 }
 
+void Client::requestRemoveGroup(const QString &gjid)
+{
+    if (connectionStatus == LoggedIn) {
+        Q_EMIT connectionSendRemoveGroup(gjid);
+    }
+}
+
 void Client::setPicture(const QString &jid, const QString &path)
 {
     qDebug() << "requested setPicture" << path << "for" << jid;
@@ -1338,12 +1347,10 @@ void Client::ready()
     }
 }
 
-void Client::sendLocationRequest()
+void Client::sendLocationRequest(QNetworkReply *reply)
 {
     qDebug() << "Location request finished";
-    QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
     if (reply && reply->error() == QNetworkReply::NoError) {
-        reply->manager()->deleteLater();
         QUrl url = reply->url();
         qDebug() << "Location requiest url:" << url;
         QUrlQuery urlQuery(url);
@@ -1443,6 +1450,29 @@ void Client::mediaUploadFinished(MediaUpload *mediaUpload, const FMessage &msg)
     mediaUpload->deleteLater();
 
     _mediaProgress.remove(msg.key.id);
+
+    // Increase counters
+    int type;
+    switch (msg.media_wa_type)
+    {
+        case FMessage::Image:
+            type = DataCounters::ImageBytes;
+            break;
+
+        case FMessage::Audio:
+            type = DataCounters::AudioBytes;
+            break;
+
+        case FMessage::Video:
+            type = DataCounters::VideoBytes;
+            break;
+
+        default:
+            type = DataCounters::ProtocolBytes;
+            break;
+    }
+
+    Client::dataCounters.increaseCounter(type, 0, msg.media_size);
 }
 
 void Client::mediaDownloadFinished(MediaDownload *mediaDownload, const FMessage &msg)
@@ -1464,6 +1494,29 @@ void Client::mediaDownloadFinished(MediaDownload *mediaDownload, const FMessage 
     QObject::disconnect(mediaDownload, 0, 0, 0);
     _mediaDownloadHash[msg.key.id]->deleteLater();
     _mediaDownloadHash[msg.key.id] = 0;
+
+    // Increase counters
+    int type;
+    switch (msg.media_wa_type)
+    {
+        case FMessage::Image:
+            type = DataCounters::ImageBytes;
+            break;
+
+        case FMessage::Audio:
+            type = DataCounters::AudioBytes;
+            break;
+
+        case FMessage::Video:
+            type = DataCounters::VideoBytes;
+            break;
+
+        default:
+            type = DataCounters::ProtocolBytes;
+            break;
+    }
+
+    Client::dataCounters.increaseCounter(type, msg.media_size, 0);
 
 }
 
@@ -1795,6 +1848,55 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
             path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
             path.addQueryItem("jids", jids.join(","));
             QUrl url("https://coderus.openrepos.net/staticmaplite/staticmap.php");
+            url.setQuery(path);
+            req.setUrl(url);
+        }
+        else if (source == "mapquest") {
+            QUrlQuery path;
+            path.addQueryItem("key", "Fmjtd%7Cluur2q0y2q%2Cbw%3Do5-9abn5f");
+            path.addQueryItem("type", "map");
+            path.addQueryItem("imagetype", "png");
+            path.addQueryItem("zoom", QString::number(zoom));
+            path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
+            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
+            path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
+            path.addQueryItem("jids", jids.join(","));
+            QUrl url("http://www.mapquestapi.com/staticmap/v4/getmap");
+            url.setQuery(path);
+            req.setUrl(url);
+        }
+        else if (source == "yandexuser") {
+            QUrlQuery path;
+            path.addQueryItem("l", "pmap");
+            path.addQueryItem("z", QString::number(zoom));
+            path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
+            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
+            path.addQueryItem("ll", QString("%1,%2").arg(longitude).arg(latitude));
+            path.addQueryItem("jids", jids.join(","));
+            QUrl url("http://static-maps.yandex.ru/1.x");
+            url.setQuery(path);
+            req.setUrl(url);
+        }
+        else if (source == "yandex") {
+            QUrlQuery path;
+            path.addQueryItem("l", "map");
+            path.addQueryItem("z", QString::number(zoom));
+            path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
+            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
+            path.addQueryItem("ll", QString("%1,%2").arg(longitude).arg(latitude));
+            path.addQueryItem("jids", jids.join(","));
+            QUrl url("http://static-maps.yandex.ru/1.x");
+            url.setQuery(path);
+            req.setUrl(url);
+        }
+        else if (source == "2gis") {
+            QUrlQuery path;
+            path.addQueryItem("zoom", QString::number(zoom));
+            path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
+            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
+            path.addQueryItem("center", QString("%1,%2").arg(longitude).arg(latitude));
+            path.addQueryItem("jids", jids.join(","));
+            QUrl url("http://static.maps.api.2gis.ru/1.0");
             url.setQuery(path);
             req.setUrl(url);
         }
@@ -2165,11 +2267,20 @@ void Client::expired(const QVariantMap &result)
     Q_EMIT accountExpired(result);
 }
 
-void Client::groupUser(const QString &gjid, const QString &jid)
+void Client::groupUsers(const QString &gjid, const QStringList &jids)
 {
-    qDebug() << "groupUser" << gjid << "jid:" << jid;
-    updateContactPushname(jid, "");
-    Q_EMIT groupParticipant(gjid, jid);
+    qDebug() << "groupUsers" << gjid << "jid:" << jids;
+
+    QVariantMap query;
+    query["uuid"] = uuid;
+    query["type"] = QueryType::ContactsGroupParticipants;
+    query["jid"] = gjid;
+    query["jids"] = jids;
+    dbExecutor->queueAction(query);
+
+    //Q_EMIT connectionSendSyncContacts(jids);
+
+    Q_EMIT groupParticipants(gjid, jids);
 }
 
 void Client::addGroupParticipant(const QString &gjid, const QString &jid)
@@ -2255,6 +2366,7 @@ void Client::forwardMessage(const QStringList &jids, const QVariantMap &model)
             msg.broadcast = true;
             msg.broadcastJids = jids;
         }
+        msg.remote_resource = model["author"].toString();
         msg.media_wa_type = msgtype;
         msg.status = FMessage::Uploaded;
         msg.media_size = model["size"].toInt();
@@ -2262,11 +2374,14 @@ void Client::forwardMessage(const QStringList &jids, const QVariantMap &model)
         msg.media_name = model["name"].toString();
         msg.media_url = model["url"].toString();
         msg.local_file_uri = model["local"].toString();
-        msg.setData(model["data"].toString());
+        msg.setData(QByteArray::fromBase64(model["data"].toString().toUtf8()));
         msg.latitude = model["latitude"].toDouble();
         msg.longitude = model["longitude"].toDouble();
         msg.media_duration_seconds = model["duration"].toInt();
+        msg.media_width = model["width"].toInt();
+        msg.media_height = model["height"].toInt();
         queueMessage(msg);
+        msg.setData(model["data"].toString());
         addMessage(msg);
     }
 }
@@ -2721,6 +2836,9 @@ void Client::dbResults(const QVariant &result)
             //requestPresenceSubscription(jid);
             Q_EMIT setUnread(jid, _contacts[jid].toInt());
         }
+        if (_contacts.isEmpty()) {
+            Q_EMIT connectionUpdateGroupChats();
+        }
         break;
     }
     case QueryType::ContactsSyncContacts: {
@@ -2825,6 +2943,13 @@ void Client::dbResults(const QVariant &result)
         if (!reply["exists"].toBool()) {
             QString jid = reply["jid"].toString();
             getGroupInfo(jid);
+        }
+        break;
+    }
+    case QueryType::ContactsGroupParticipants: {
+        QStringList unknown = reply["unknown"].toStringList();
+        if (!unknown.isEmpty()) {
+            Q_EMIT connectionSendSyncContacts(unknown);
         }
         break;
     }

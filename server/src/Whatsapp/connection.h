@@ -288,6 +288,10 @@ public slots:
     void sendAvailable(QString privacy = QString());
     void sendUnavailable(QString privacy = QString());
 
+    // Sends the client configuration
+    void sendClientConfig(const QString &platform);
+    void getClientConfig();
+
 private:
 
     /** ***********************************************************************
@@ -453,9 +457,6 @@ private:
 
     // Constructs an id
     QString makeId(const QString &prefix);
-
-    // Sends the client configuration
-    void sendClientConfig(const QString &platform);
 
 signals:
     void connected();
