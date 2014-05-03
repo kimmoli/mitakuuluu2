@@ -5,10 +5,6 @@ import harbour.mitakuuluu2.client 1.0
 Dialog {
     id: renewDialog
 
-    Mitakuuluu {
-        id: mitakuuluu
-    }
-
     onAccepted: mitakuuluu.renewAccount()
 
     DialogHeader {

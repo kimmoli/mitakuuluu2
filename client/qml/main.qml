@@ -122,6 +122,15 @@ ApplicationWindow {
     property bool sentLeft: false
     onSentLeftChanged: Mitakuuluu.save("settings/sentLeft", sentLeft)
 
+    property bool autoDownloadWlan: false
+    onAutoDownloadWlanChanged: Mitakuuluu.save("settings/autoDownloadWlan", autoDownloadWlan)
+
+    property bool resizeWlan: false
+    onResizeWlanChanged: Mitakuuluu.save("settings/resizeWlan", resizeWlan)
+
+    property bool systemNotifier: false
+    onSystemNotifierChanged: Mitakuuluu.save("settings/systemNotifier", systemNotifier)
+
     property int currentOrientation: pageStack._currentOrientation
 
     /*property PeopleModel allContactsModel: PeopleModel {
@@ -646,6 +655,9 @@ ApplicationWindow {
         automaticDownload = Mitakuuluu.load("settings/autodownload", false)
         automaticDownloadBytes = Mitakuuluu.load("settings/automaticdownload", 524288)
         sentLeft = Mitakuuluu.load("settings/sentLeft", false)
+        autoDownloadWlan = Mitakuuluu.load("settings/autoDownloadWlan", false)
+        resizeWlan = Mitakuuluu.load("settings/resizeWlan", false)
+        systemNotifier = Mitakuuluu.load("settings/systemNotifier", false)
 
         updateCoverActions()
     }

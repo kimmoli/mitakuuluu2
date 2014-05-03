@@ -265,8 +265,16 @@ Page {
                 text: qsTr("Notifications", "Settings page section name")
             }
 
+            TextSwitch {
+                width: parent.width
+                text: qsTr("Use system Chat notifier", "Settings option name")
+                checked: systemNotifier
+                onClicked: systemNotifier = checked
+            }
+
             ValueButton {
                 label: qsTr("Private message", "Settings page Private message tone selection")
+                enabled: !systemNotifier
                 value: Mitakuuluu.privateToneEnabled ? metadataReader.getTitle(Mitakuuluu.privateTone) : qsTr("no sound", "Private message tone not set")
                 onClicked: {
                     var dialog = pageStack.push(dialogComponent, {
@@ -290,6 +298,7 @@ Page {
 
             ComboBox {
                 label: qsTr("Private message color", "Settings page Private message color selection")
+                enabled: !systemNotifier
                 menu: ContextMenu {
                     id: privatePatterns
                     Repeater {
@@ -319,6 +328,7 @@ Page {
 
             ValueButton {
                 label: qsTr("Group message", "Settings page Group message tone selection")
+                enabled: !systemNotifier
                 value: Mitakuuluu.groupToneEnabled ? metadataReader.getTitle(Mitakuuluu.groupTone) : qsTr("no sound", "Group message tone not set")
                 onClicked: {
                     var dialog = pageStack.push(dialogComponent, {
@@ -340,6 +350,7 @@ Page {
 
             ComboBox {
                 label: qsTr("Group message color", "Settings page Group message color selection")
+                enabled: !systemNotifier
                 menu: ContextMenu {
                     Repeater {
                         width: parent.width
@@ -366,6 +377,7 @@ Page {
 
             ValueButton {
                 label: qsTr("Media message", "Settings page Media message tone selection")
+                enabled: !systemNotifier
                 value: Mitakuuluu.mediaToneEnabled ? metadataReader.getTitle(Mitakuuluu.mediaTone) : qsTr("no sound", "Medi message tone not set")
                 onClicked: {
                     var dialog = pageStack.push(dialogComponent, {
@@ -387,6 +399,7 @@ Page {
 
             ComboBox {
                 label: qsTr("Media message color", "Settings page Media message color selection")
+                enabled: !systemNotifier
                 menu: ContextMenu {
                     Repeater {
                         width: parent.width
@@ -672,6 +685,14 @@ Page {
             }
 
             TextSwitch {
+                text: qsTr("Auto download on WLAN only", "Settings option name")
+                width: parent.width
+                checked: autoDownloadWlan
+                enabled: automaticDownload
+                onClicked: autoDownloadWlan = checked
+            }
+
+            TextSwitch {
                 checked: resizeImages
                 text: qsTr("Resize sending images", "Settings option name")
                 onClicked: {
@@ -681,6 +702,14 @@ Page {
                         pixResize.checked = false
                     }
                 }
+            }
+
+            TextSwitch {
+                text: qsTr("Resize on WLAN only", "Settings option name")
+                width: parent.width
+                checked: resizeWlan
+                enabled: resizeImages
+                onClicked: resizeWlan = checked
             }
 
             Item {

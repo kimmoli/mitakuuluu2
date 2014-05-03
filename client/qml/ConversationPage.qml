@@ -479,7 +479,7 @@ Page {
             cacheBuffer: height * 2
             pressDelay: 0
             spacing: Theme.paddingMedium
-            interactive: true
+            interactive: contentHeight > height
             currentIndex: -1
             verticalLayoutDirection: ListView.BottomToTop
             delegate: Component {

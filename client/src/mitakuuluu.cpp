@@ -805,6 +805,7 @@ QString Mitakuuluu::saveWallpaper(const QString &path, const QString &jid)
             img.open(QFile::ReadOnly);
             img.close();
             QString destination = QString("%1/%2").arg(wallpapers).arg(jid);
+            QFile(destination).remove();
             img.copy(cutpath, destination);
             qDebug() << "destination:" << destination;
             return destination;

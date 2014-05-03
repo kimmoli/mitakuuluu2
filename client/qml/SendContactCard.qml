@@ -19,6 +19,28 @@ Dialog {
 
     canAccept: false
 
+    function accept() {
+        if (canAccept) {
+            _dialogDone(DialogResult.Accepted)
+        }
+        else {
+            negativeFeedback()
+        }
+
+        // Attempt to navigate even if it will fail, so that feedback can be generated
+        pageStack.navigateForward()
+    }
+
+    property bool cantAcceptReally: pageStack._forwardFlickDifference > 0 && pageStack._preventForwardNavigation
+    onCantAcceptReallyChanged: {
+        if (cantAcceptReally)
+            negativeFeedback()
+    }
+
+    function negativeFeedback() {
+        banner.notify("You should select contacts!", "Send contact page cant accept feedback")
+    }
+
     onStatusChanged: {
         if (status == DialogStatus.Opened) {
             allContactsModel.search("")

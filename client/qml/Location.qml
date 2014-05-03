@@ -14,6 +14,28 @@ Dialog {
 
     canAccept: false
 
+    function accept() {
+        if (canAccept) {
+            _dialogDone(DialogResult.Accepted)
+        }
+        else {
+            negativeFeedback()
+        }
+
+        // Attempt to navigate even if it will fail, so that feedback can be generated
+        pageStack.navigateForward()
+    }
+
+    property bool cantAcceptReally: pageStack._forwardFlickDifference > 0 && pageStack._preventForwardNavigation
+    onCantAcceptReallyChanged: {
+        if (cantAcceptReally)
+            negativeFeedback()
+    }
+
+    function negativeFeedback() {
+        banner.notify(qsTr("Coordinates not available", "Location page cant accept feedback"))
+    }
+
     property real latitude: 55.159479
     property real longitude: 61.402796
     property int zoom: 16

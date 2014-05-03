@@ -353,8 +353,13 @@ MouseArea {
             id: imageLoader
 
             property int activeWidth: visible ? width : 0
-            width: Math.min(model.width, maxWidth)
-            height: model.height / (model.width / width)
+            property int displayWidth: rotated ? model.height : model.width
+            property int displayHeight: rotated ? model.width : model.height
+            width: Math.min(displayWidth, maxWidth)
+            height: displayHeight / (displayWidth / width)
+
+            property string ext: model.local.toLowerCase().split(".").pop()
+            property bool rotated: ext === "jpg" || ext === "jpeg" ? (Mitakuuluu.getExifRotation(model.local) == 90) : false
 
             active: false
             visible: active
@@ -545,6 +550,8 @@ MouseArea {
             IconButton {
                 anchors.centerIn: parent
                 icon.source: (model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-l-clear" : "image://theme/icon-l-down"
+                icon.width: Theme.itemSizeMedium
+                icon.height: Theme.itemSizeMedium
                 visible: model.local.length == 0
                 onClicked: {
                     if (model.mediaprogress > 0 && model.mediaprogress < 100)
@@ -683,9 +690,10 @@ MouseArea {
             IconButton {
                 id: playButton
                 anchors.verticalCenter: parent.verticalCenter
-                icon.source: source.length > 0 ? (player.playbackState == Audio.PlayingState ? "image://theme/icon-m-pause"
-                                                                                             : "image://theme/icon-m-play")
-                                               : ((model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-l-clear" : "image://theme/icon-l-down")
+                icon.source: player.source.length > 0 ? (player.playbackState == Audio.PlayingState ? "image://theme/icon-m-pause"
+                                                                                                    : "image://theme/icon-m-play")
+                                                      : ((model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-l-clear"
+                                                                                                                : "image://theme/icon-l-down")
                 onClicked: {
                     if (source.length > 0)
                     {

@@ -13,6 +13,33 @@ Dialog {
         page.canAccept = groupTitle.text.trim().length > 0 && jids.length > 0
     }
 
+    function accept() {
+        if (canAccept) {
+            _dialogDone(DialogResult.Accepted)
+        }
+        else {
+            negativeFeedback()
+        }
+
+        // Attempt to navigate even if it will fail, so that feedback can be generated
+        pageStack.navigateForward()
+    }
+
+    property bool cantAcceptReally: pageStack._forwardFlickDifference > 0 && pageStack._preventForwardNavigation
+    onCantAcceptReallyChanged: {
+        if (cantAcceptReally)
+            negativeFeedback()
+    }
+
+    function negativeFeedback() {
+        if (groupTitle.text.trim().length == 0) {
+            groupTitle.forceActiveFocus()
+        }
+        if (jids.length == 0) {
+            banner.notify(qsTr("You should add participants!", "Create group page cant accept feedback"))
+        }
+    }
+
     onStatusChanged: {
         if (status == DialogStatus.Opened) {
             if (groupTitle.text.length == 0) {

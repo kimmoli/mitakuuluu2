@@ -18,6 +18,28 @@ Dialog {
     }
     canAccept: nameField.text.trim().length > 0
 
+    function accept() {
+        if (canAccept) {
+            _dialogDone(DialogResult.Accepted)
+        }
+        else {
+            negativeFeedback()
+        }
+
+        // Attempt to navigate even if it will fail, so that feedback can be generated
+        pageStack.navigateForward()
+    }
+
+    property bool cantAcceptReally: pageStack._forwardFlickDifference > 0 && pageStack._preventForwardNavigation
+    onCantAcceptReallyChanged: {
+        if (cantAcceptReally)
+            negativeFeedback()
+    }
+
+    function negativeFeedback() {
+        nameField.forceActiveFocus()
+    }
+
     DialogHeader {
         title: qsTr("Rename contact", "Rename contact page title")
     }

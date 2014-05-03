@@ -25,6 +25,7 @@ ConversationModel::ConversationModel(QObject *parent) :
     _keys << "duration";
     _keys << "width";
     _keys << "height";
+    _keys << "rotation";
     _keys << "hash";
     _keys << "mime";
     _keys << "broadcast";

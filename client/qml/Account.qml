@@ -18,6 +18,36 @@ Dialog {
                && (pushnameArea.text.length > 0)
                && (presenceArea.text.length > 0)
 
+    function accept() {
+        if (canAccept) {
+            _dialogDone(DialogResult.Accepted)
+        }
+        else {
+            negativeFeedback()
+        }
+
+        // Attempt to navigate even if it will fail, so that feedback can be generated
+        pageStack.navigateForward()
+    }
+
+    property bool cantAcceptReally: pageStack._forwardFlickDifference > 0 && pageStack._preventForwardNavigation
+    onCantAcceptReallyChanged: {
+        if (cantAcceptReally)
+            negativeFeedback()
+    }
+
+    function negativeFeedback() {
+        if (Mitakuuluu.connectionStatus != Mitakuuluu.LoggedIn) {
+            banner.notify(qsTr("You should be online!", "Account page cant accept feedback"))
+        }
+        if (pushnameArea.text.trim().length == 0) {
+            pushnameArea.forceActiveFocus()
+        }
+        if (presenceArea.text.trim().length == 0) {
+            presenceArea.forceActiveFocus()
+        }
+    }
+
     Connections {
         target: Mitakuuluu
 

@@ -12,6 +12,33 @@ Dialog {
     }
     canAccept: (phoneField.text.trim().length > 0) && (aliasField.text.trim().length > 0)
 
+    function accept() {
+        if (canAccept) {
+            _dialogDone(DialogResult.Accepted)
+        }
+        else {
+            negativeFeedback()
+        }
+
+        // Attempt to navigate even if it will fail, so that feedback can be generated
+        pageStack.navigateForward()
+    }
+
+    property bool cantAcceptReally: pageStack._forwardFlickDifference > 0 && pageStack._preventForwardNavigation
+    onCantAcceptReallyChanged: {
+        if (cantAcceptReally)
+            negativeFeedback()
+    }
+
+    function negativeFeedback() {
+        if (phoneField.text.trim().length == 0) {
+            phoneField.forceActiveFocus()
+        }
+        if (aliasField.text.trim().length == 0) {
+            aliasField.forceActiveFocus()
+        }
+    }
+
     onDone: {
         phoneField.focus = false
         aliasField.focus = false

@@ -9,6 +9,28 @@ Dialog {
 
     canAccept: false
 
+    function accept() {
+        if (canAccept) {
+            _dialogDone(DialogResult.Accepted)
+        }
+        else {
+            negativeFeedback()
+        }
+
+        // Attempt to navigate even if it will fail, so that feedback can be generated
+        pageStack.navigateForward()
+    }
+
+    property bool cantAcceptReally: pageStack._forwardFlickDifference > 0 && pageStack._preventForwardNavigation
+    onCantAcceptReallyChanged: {
+        if (cantAcceptReally)
+            negativeFeedback()
+    }
+
+    function negativeFeedback() {
+        banner.notify(qsTr("Recorder is not ready!", "Recorder page cant accept feedback"))
+    }
+
     property bool broadcastMode: false
     property AudioRecorder recorder
     property Audio player
