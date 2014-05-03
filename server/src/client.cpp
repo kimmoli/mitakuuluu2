@@ -1660,7 +1660,7 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
         qDebug() << "Original" << fileName << "size:" << QString::number(originalSize);
         settings->sync();
         if (settings->value("settings/resizeImages", false).toBool()
-                && !(settings->value("settings/resizeWlan").toBool() && activeNetworkType == QNetworkConfiguration::BearerWLAN)) {
+                && (settings->value("settings/resizeWlan").toBool() || activeNetworkType != QNetworkConfiguration::BearerWLAN)) {
             bool resizeBySize = settings->value("settings/resizeBySize", true).toBool();
             qDebug() << "resizeBySize:" << (resizeBySize ? "yes" : "no");
             int resizeImagesTo = settings->value("settings/resizeImagesTo", 1024*1024).toInt();
