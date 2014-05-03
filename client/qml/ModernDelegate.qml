@@ -37,7 +37,11 @@ MouseArea {
     property variant highlightColor: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
 
     property int maxWidth: parent.width - Theme.itemSizeLarge
-    //onMaxWidthChanged: changeMessageWidth()
+    onMaxWidthChanged: {
+        if (textLoader.active) {
+            textLoader.item.relayout()
+        }
+    }
 
     DragFilter.screenMargin: Theme.paddingLarge
     onPressed: item.DragFilter.begin(mouse.x, mouse.y)
@@ -495,10 +499,20 @@ MouseArea {
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font.pixelSize: fontSize
             color: down ? Theme.highlightColor : Theme.primaryColor
-            onPaintedWidthChanged: {
-                if (paintedWidth > maxWidth) {
+            property int fullWidth: 0
+            Component.onCompleted: {
+                fullWidth = paintedWidth
+                relayout()
+            }
+            function relayout() {
+                wrapMode = Text.NoWrap
+                if (fullWidth > maxWidth) {
                     width = maxWidth
                 }
+                else {
+                    width = fullWidth
+                }
+                wrapMode = Text.WrapAtWordBoundaryOrAnywhere
             }
         }
     }
