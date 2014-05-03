@@ -54,7 +54,7 @@ Dialog {
     }
 
     function negativeFeedback() {
-        banner.notify(qsTr("You should select contacts!"))
+        banner.notify(qsTr("You should select contacts!", "Select phonebook page cant accept feedback"))
     }
 
     onAccepted: {

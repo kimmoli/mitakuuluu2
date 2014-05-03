@@ -705,11 +705,11 @@ Page {
             }
 
             TextSwitch {
-                text: qsTr("Resize on WLAN only", "Settings option name")
+                text: qsTr("Don't resize on WLAN", "Settings option name")
                 width: parent.width
-                checked: resizeWlan
+                checked: !resizeWlan
                 enabled: resizeImages
-                onClicked: resizeWlan = checked
+                onClicked: resizeWlan = !checked
             }
 
             Item {
