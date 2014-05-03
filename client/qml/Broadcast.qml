@@ -18,7 +18,7 @@ Page {
 
             IconItem {
                 width: parent.width
-                iconSource: "image://theme/icon-m-message"
+                icon.source: "image://theme/icon-m-message"
                 name: qsTr("Text", "Broadcast page text message item")
                 onClicked: {
                     pageStack.pop(undefined, PageStackAction.Immediate)
@@ -28,7 +28,7 @@ Page {
 
             IconItem {
                 width: parent.width
-                iconSource: "image://theme/icon-m-media"
+                icon.source: "image://theme/icon-m-media"
                 name: qsTr("Media", "Broadcast page media item")
                 onClicked: {
                     pageStack.pop(undefined, PageStackAction.Immediate)
@@ -38,7 +38,7 @@ Page {
 
             IconItem {
                 width: parent.width
-                iconSource: "image://theme/icon-m-gps"
+                icon.source: "image://theme/icon-m-gps"
                 name: qsTr("Location", "Broadcast page location item")
                 onClicked: {
                     pageStack.pop(undefined, PageStackAction.Immediate)
@@ -48,7 +48,7 @@ Page {
 
             IconItem {
                 width: parent.width
-                iconSource: "image://theme/icon-m-mic"
+                icon.source: "image://theme/icon-m-mic"
                 name: qsTr("Voice", "Broadcast page voice item")
                 onClicked: {
                     pageStack.pop(undefined, PageStackAction.Immediate)
@@ -58,7 +58,7 @@ Page {
 
             IconItem {
                 width: parent.width
-                iconSource: "image://theme/icon-m-camera"
+                icon.source: "image://theme/icon-m-camera"
                 name: qsTr("Camera", "Broadcast page camera item")
                 onClicked: {
                     pageStack.pop(undefined, PageStackAction.Immediate)
