@@ -503,7 +503,7 @@ MouseArea {
             id: messageLabel
             text: Utilities.linkify(Utilities.emojify(model.data, emojiPath), Theme.highlightColor)
             textFormat: Text.RichText
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            wrapMode: Text.NoWrap
             font.pixelSize: fontSize
             color: down ? Theme.highlightColor : Theme.primaryColor
             property int fullWidth: 0
@@ -517,7 +517,7 @@ MouseArea {
                     width = maxWidth
                 }
                 else {
-                    width = fullWidth
+                    width = fullWidth + 1
                 }
                 wrapMode = Text.WrapAtWordBoundaryOrAnywhere
             }
