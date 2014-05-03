@@ -227,6 +227,12 @@ Page {
                 }
             }
 
+            TextSwitch {
+                checked: lockPortrait
+                text: qsTr("Lock conversation orientation in portrait", "Settings option name")
+                onClicked: lockPortrait = checked
+            }
+
             ListModel {
                 id: mapSourceModel
                 Component.onCompleted: {
@@ -527,12 +533,6 @@ Page {
                 text: qsTr("Download media to Gallery", "Settings option name")
                 description: qsTr("If checked downloaded files will be shown in Gallery", "Settings option description")
                 onClicked: importToGallery = checked
-            }
-
-            TextSwitch {
-                checked: lockPortrait
-                text: qsTr("Lock conversation orientation in portrait", "Settings option name")
-                onClicked: lockPortrait = checked
             }
 
             TextSwitch {
