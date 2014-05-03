@@ -441,7 +441,7 @@ MouseArea {
             Row {
                 id: statusinfo
                 height: time.paintedHeight
-                width: time.paintedWidth + deliveryStatus.width
+                width: time.width + deliveryStatus.width
                 anchors.right: parent.right
 
                 Label {
@@ -449,6 +449,8 @@ MouseArea {
                     text: timestampToTime(model.timestamp)
                     font.pixelSize: fontSize - 4
                     color: down ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                    width: visible ? paintedWidth : 0
+                    visible: showTimestamp
                 }
 
                 Loader {
