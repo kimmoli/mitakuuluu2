@@ -51,6 +51,8 @@
 #include "Whatsapp/phonereg.h"
 #include "Whatsapp/fmessage.h"
 
+#include "Whatsapp/maprequest.h"
+
 #include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusReply>
@@ -322,7 +324,8 @@ private slots:
                        const QString &photoId, bool largeFormat);
     void privacyListReceived(const QStringList &list);
 
-    void sendLocationRequest();
+    void sendLocationRequest(const QByteArray &mapData, const QString &latitude, const QString &longitude, const QStringList &jids, MapRequest* sender);
+    void mapError(MapRequest* sender);
 
     void mediaUploadAccepted(const FMessage &message);
     void mediaUploadStarted(MediaUpload *mediaUpload, const FMessage &msg);
@@ -451,6 +454,7 @@ private:
     QSqlDatabase db;
     QString lastError;
     QString activeNetworkID;
+    QNetworkConfiguration::BearerType activeNetworkType;
     qint64 lastCountersWrite;
     PhoneReg *reg;
 
@@ -502,9 +506,6 @@ private:
     QString waversion;
 
     QTranslator translator;
-
-    QStringList pendingLocationJids;
-    QStringList pendingLocationCoordinates;
 
     /** ***********************************************************************
      ** Private methods

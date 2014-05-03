@@ -488,6 +488,7 @@ void Client::networkStatusChanged(bool isOnline)
     if (!isOnline)
     {
         activeNetworkID.clear();
+        activeNetworkType = QNetworkConfiguration::BearerUnknown;
         if (connectionStatus == Connected || connectionStatus == LoggedIn)
             connectionClosed();
     }
@@ -552,6 +553,7 @@ void Client::updateActiveNetworkID()
             if (conf.state() == QNetworkConfiguration::Active)
             {
                 activeNetworkID = conf.identifier();
+                activeNetworkType = conf.bearerType();
                 qDebug() << "Current active connection:" << activeNetworkID;
                 return;
             }
@@ -1347,56 +1349,46 @@ void Client::ready()
     }
 }
 
-void Client::sendLocationRequest()
+void Client::sendLocationRequest(const QByteArray &mapData, const QString &latitude, const QString &longitude,
+                                 const QStringList &jids, MapRequest* sender)
 {
     qDebug() << "Location request finished";
-    QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
-    if (reply && reply->error() == QNetworkReply::NoError) {
-        QUrl url = reply->url();
-        qDebug() << "Location requiest url:" << url;
-        QUrlQuery urlQuery(url);
-        QString location = urlQuery.queryItemValue("ctr");
-        qDebug() << "Location:" << location;
-        QStringList jids = pendingLocationJids;
-        pendingLocationJids.clear();
-        QString jid = jids.size() > 1 ? "broadcast" : jids.first();
-        FMessage msg(jid, true);
-        msg.status = FMessage::Unsent;
-        msg.type = FMessage::MediaMessage;
-        msg.latitude = pendingLocationCoordinates.first().toDouble();
-        msg.longitude = pendingLocationCoordinates.last().toDouble();
-        pendingLocationCoordinates.clear();
-        msg.media_wa_type = FMessage::Location;
+    QString jid = jids.size() > 1 ? "broadcast" : jids.first();
+    FMessage msg(jid, true);
+    msg.status = FMessage::Unsent;
+    msg.type = FMessage::MediaMessage;
+    msg.latitude = latitude.toDouble();
+    msg.longitude = longitude.toDouble();
+    msg.media_wa_type = FMessage::Location;
 
-        QPixmap img;
-        img.loadFromData(reply->readAll());
-        QPainter painter;
-        if (painter.begin(&img)) {
-            QPixmap marker("/usr/share/harbour-mitakuuluu2/images/location-marker.png");
-            QRect targetRect(img.width() / 2 - marker.width() / 2, img.height() / 2 - marker.height() / 2, marker.width(), marker.height());
-            painter.drawPixmap(targetRect, marker, marker.rect());
-            painter.end();
-        }
-
-        QByteArray data;
-        QBuffer buffer(&data);
-        buffer.open(QIODevice::WriteOnly);
-        img.save(&buffer, "JPG", 100);
-
-        msg.setData(data.toBase64());
-        if (jids.size() > 1) {
-            msg.broadcast = true;
-            msg.broadcastJids = jids;
-        }
-        queueMessage(msg);
-        addMessage(msg);
+    QPixmap img;
+    img.loadFromData(mapData);
+    QPainter painter;
+    if (painter.begin(&img)) {
+        QPixmap marker("/usr/share/harbour-mitakuuluu2/images/location-marker.png");
+        QRect targetRect(img.width() / 2 - marker.width() / 2, img.height() / 2 - marker.height() / 2, marker.width(), marker.height());
+        painter.drawPixmap(targetRect, marker, marker.rect());
+        painter.end();
     }
-    else {
-        if (!reply)
-            qDebug() << "Null reply pointer";
-        else
-            qDebug() << "Reply error:" << reply->errorString();
+
+    QByteArray data;
+    QBuffer buffer(&data);
+    buffer.open(QIODevice::WriteOnly);
+    img.save(&buffer, "JPG", 100);
+
+    msg.setData(data.toBase64());
+    if (jids.size() > 1) {
+        msg.broadcast = true;
+        msg.broadcastJids = jids;
     }
+    queueMessage(msg);
+    addMessage(msg);
+    sender->deleteLater();
+}
+
+void Client::mapError(MapRequest *sender)
+{
+    sender->deleteLater();
 }
 
 void Client::mediaUploadAccepted(const FMessage &message)
@@ -1667,7 +1659,8 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
         int originalSize = QFile(fileName).size();
         qDebug() << "Original" << fileName << "size:" << QString::number(originalSize);
         settings->sync();
-        if (settings->value("settings/resizeImages", false).toBool()) {
+        if (settings->value("settings/resizeImages", false).toBool()
+                && !(settings->value("settings/resizeWlan").toBool() && activeNetworkType == QNetworkConfiguration::BearerWLAN)) {
             bool resizeBySize = settings->value("settings/resizeBySize", true).toBool();
             qDebug() << "resizeBySize:" << (resizeBySize ? "yes" : "no");
             int resizeImagesTo = settings->value("settings/resizeImagesTo", 1024*1024).toInt();
@@ -1800,107 +1793,23 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
         qDebug() << "sendLocation" << latitude << longitude;
         int w = 128;
         int h = 128;
-        pendingLocationJids = jids;
-        pendingLocationCoordinates = QStringList() << latitude << longitude;
-        QNetworkRequest req;
-        if (source == "google") {
-            QUrlQuery path;
-            path.addQueryItem("maptype", "roadmap");
-            path.addQueryItem("sensor", "false");
-            path.addQueryItem("zoom", QString::number(zoom));
-            path.addQueryItem("size", QString("%1x%2").arg(w).arg(h));
-            path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
-            QUrl url("http://maps.googleapis.com/maps/api/staticmap");
-            url.setQuery(path);
-            req.setUrl(url);
+
+        MapRequest *mapRequest = new MapRequest(source, latitude, longitude, zoom, w, h, jids, this);
+        QObject::connect(mapRequest, SIGNAL(mapAvailable(QByteArray,QString,QString,QStringList,MapRequest*)),
+                         this, SLOT(sendLocationRequest(QByteArray,QString,QString,QStringList,MapRequest*)));
+        QObject::connect(mapRequest, SIGNAL(requestError(MapRequest*)), this, SLOT(mapError(MapRequest*)));
+
+        settings->sync();
+        bool threading = settings->value(SETTINGS_THREADING, true).toBool();
+        if (threading) {
+            QThread *thread = new QThread(connection);
+            mapRequest->moveToThread(thread);
+            QObject::connect(thread, SIGNAL(started()), mapRequest, SLOT(doRequest()));
+            thread->start();
         }
-        else if (source == "here") {
-            QUrlQuery path;
-            path.addQueryItem("app_id", "ZXpeEEIbbZQHDlyl5vEn");
-            path.addQueryItem("app_code", "GQvKkpzHomJpzKu-hGxFSQ");
-            path.addQueryItem("nord", "");
-            path.addQueryItem("f", "0");
-            path.addQueryItem("z", QString::number(zoom));
-            path.addQueryItem("w", QString::number(w));
-            path.addQueryItem("h", QString::number(h));
-            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
-            QUrl url("https://maps.nlp.nokia.com/mia/1.6/mapview");
-            url.setQuery(path);
-            req.setUrl(url);
+        else {
+            mapRequest->doRequest();
         }
-        else if (source == "nokia") {
-            QUrlQuery path;
-            path.addQueryItem("nord", "");
-            path.addQueryItem("f", "0");
-            path.addQueryItem("z", QString::number(zoom));
-            path.addQueryItem("w", QString::number(w));
-            path.addQueryItem("h", QString::number(h));
-            path.addQueryItem("ctr", QString("%1,%2").arg(latitude).arg(longitude));
-            QUrl url("http://m.nok.it");
-            url.setQuery(path);
-            req.setUrl(url);
-        }
-        else if (source == "osm") {
-            QUrlQuery path;
-            path.addQueryItem("maptype", "mapnik");
-            path.addQueryItem("zoom", QString::number(zoom));
-            path.addQueryItem("size", QString("%1x%2").arg(w).arg(h));
-            path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
-            QUrl url("https://coderus.openrepos.net/staticmaplite/staticmap.php");
-            url.setQuery(path);
-            req.setUrl(url);
-        }
-        else if (source == "bing") {
-            QUrlQuery path;
-            path.addQueryItem("key", "AvkH1TAJ9k4dkzOELMutZbk_t3L4ImPPW5LXDvw16XNRd5U36a018XJo2Z1jsPbW");
-            path.addQueryItem("mapSize", QString("%1,%2").arg(w).arg(h));
-            QUrl url(QString("http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/%1,%2/%3").arg(latitude).arg(longitude).arg(zoom));
-            url.setQuery(path);
-            req.setUrl(url);
-        }
-        else if (source == "mapquest") {
-            QUrlQuery path;
-            path.addQueryItem("key", "Fmjtd%7Cluur2q0y2q%2Cbw%3Do5-9abn5f");
-            path.addQueryItem("type", "map");
-            path.addQueryItem("imagetype", "png");
-            path.addQueryItem("zoom", QString::number(zoom));
-            path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
-            path.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
-            QUrl url("http://www.mapquestapi.com/staticmap/v4/getmap");
-            url.setQuery(path);
-            req.setUrl(url);
-        }
-        else if (source == "yandexuser") {
-            QUrlQuery path;
-            path.addQueryItem("l", "pmap");
-            path.addQueryItem("z", QString::number(zoom));
-            path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
-            path.addQueryItem("ll", QString("%1,%2").arg(longitude).arg(latitude));
-            QUrl url("http://static-maps.yandex.ru/1.x");
-            url.setQuery(path);
-            req.setUrl(url);
-        }
-        else if (source == "yandex") {
-            QUrlQuery path;
-            path.addQueryItem("l", "map");
-            path.addQueryItem("z", QString::number(zoom));
-            path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
-            path.addQueryItem("ll", QString("%1,%2").arg(longitude).arg(latitude));
-            QUrl url("http://static-maps.yandex.ru/1.x");
-            url.setQuery(path);
-            req.setUrl(url);
-        }
-        else if (source == "2gis") {
-            QUrlQuery path;
-            path.addQueryItem("zoom", QString::number(zoom));
-            path.addQueryItem("size", QString("%1,%2").arg(w).arg(h));
-            path.addQueryItem("center", QString("%1,%2").arg(longitude).arg(latitude));
-            QUrl url("http://static.maps.api.2gis.ru/1.0");
-            url.setQuery(path);
-            req.setUrl(url);
-        }
-        qDebug() << "sending location request" << req.url();
-        connect(nam->get(req), SIGNAL(finished()), this, SLOT(sendLocationRequest()));
     }
 }
 
@@ -2593,7 +2502,8 @@ void Client::onMessageReceived(const FMessage &message)
         addMessage(message);
         if (settings->value(SETTINGS_AUTOMATIC_DOWNLOAD).toBool()) {
             int autoBytes = settings->value(SETTINGS_AUTOMATIC_DOWNLOAD_BYTES, QVariant(DEFAULT_AUTOMATIC_DOWNLOAD)).toInt();
-            if (message.type == FMessage::MediaMessage && message.media_size <= autoBytes) {
+            if (message.type == FMessage::MediaMessage && message.media_size <= autoBytes
+                    && (activeNetworkType == QNetworkConfiguration::BearerWLAN || !settings->value("settings/autoDownloadWlan").toBool())) {
                 startDownloadMessage(message);
             }
         }
@@ -2767,17 +2677,21 @@ void Client::dbResults(const QVariant &result)
                 msg = tr("%n messages unread", "Message notification with unread messages count", unread);
             }
 
-            QString notifyType;
-            bool media = reply["media"].toBool();
-            if (media) {
-                notifyType = "harbour.mitakuuluu2.media";
-            }
-            else {
-                if (jid.contains("-")) {
-                    notifyType = "harbour.mitakuuluu2.group";
+            QString notifyType = "harbour.mitakuuluu2.message";
+
+            bool systemNotifier = settings->value("settings/systemNotifier", false).toBool();
+            if (!systemNotifier) {
+                bool media = reply["media"].toBool();
+                if (media) {
+                    notifyType = "harbour.mitakuuluu2.media";
                 }
                 else {
-                    notifyType = "harbour.mitakuuluu2.private";
+                    if (jid.contains("-")) {
+                        notifyType = "harbour.mitakuuluu2.group";
+                    }
+                    else {
+                        notifyType = "harbour.mitakuuluu2.private";
+                    }
                 }
             }
 
@@ -2832,7 +2746,7 @@ void Client::dbResults(const QVariant &result)
     case QueryType::ContactsGetJids: {
         _contacts = reply["jids"].toMap();
         foreach (const QString& jid, _contacts.keys()) {
-            //requestPresenceSubscription(jid);
+            requestPresenceSubscription(jid);
             Q_EMIT setUnread(jid, _contacts[jid].toInt());
         }
         if (_contacts.isEmpty()) {

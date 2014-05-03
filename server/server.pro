@@ -23,7 +23,8 @@ data.files = data/mime-types.tab \
              data/countries.csv
 data.path = /usr/share/harbour-mitakuuluu2/data
 
-notification.files = notification/harbour.mitakuuluu2.notification.conf \
+notification.files = notification/harbour.mitakuuluu2.message.conf \
+                     notification/harbour.mitakuuluu2.notification.conf \
                      notification/harbour.mitakuuluu2.private.conf \
                      notification/harbour.mitakuuluu2.group.conf \
                      notification/harbour.mitakuuluu2.media.conf
@@ -87,7 +88,8 @@ SOURCES += src/whatsapp-server.cpp \
     src/Whatsapp/multipartuploader.cpp \
     src/Whatsapp/httprequestv2.cpp \
     src/Whatsapp/mediadownload.cpp \
-    src/Whatsapp/util/datacounters.cpp
+    src/Whatsapp/util/datacounters.cpp \
+    src/Whatsapp/maprequest.cpp
 
 HEADERS += \
 #    src/heartbeat.h \
@@ -128,7 +130,8 @@ HEADERS += \
     src/Whatsapp/httprequestv2.h \
     src/Whatsapp/mediadownload.h \
     src/Whatsapp/util/datacounters.h \
-    ../logging/logging.h
+    ../logging/logging.h \
+    src/Whatsapp/maprequest.h
 
 OTHER_FILES += $$files(rpm/*) \
     rpm/server.spec \
