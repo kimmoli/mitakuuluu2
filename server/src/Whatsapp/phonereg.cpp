@@ -45,8 +45,8 @@ PhoneReg::PhoneReg(const QString& cc, const QString& number, const QString& meth
     this->method = method;
     this->smscode = smscode;
     this->smscode = this->smscode.replace("-", "");
-    this->mcc = mcc.rightJustified(3, "0");
-    this->mnc = mnc.rightJustified(3, "0");
+    this->mcc = mcc.rightJustified(3, '0');
+    this->mnc = mnc.rightJustified(3, '0');
 
     // Generate a new id
 
