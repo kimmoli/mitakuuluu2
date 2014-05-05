@@ -2085,7 +2085,7 @@ void Client::getParticipants(const QString &gjid)
     }
 }
 
-void Client::regRequest(const QString &cc, const QString &phone, const QString &method, const QString &password)
+void Client::regRequest(const QString &cc, const QString &phone, const QString &method, const QString &password, const QString &mcc, const QString &mnc)
 {
     qDebug() << "reg/request/" + method + "/" + cc + phone;
 
@@ -2094,7 +2094,7 @@ void Client::regRequest(const QString &cc, const QString &phone, const QString &
         reg = 0;
     }
 
-    reg = new PhoneReg(cc,phone,method,"",password);
+    reg = new PhoneReg(cc,phone,method,"",password,mcc,mnc);
 
     connect(reg,SIGNAL(finished(QVariantMap)),
             this,SLOT(registrationFinished(QVariantMap)));

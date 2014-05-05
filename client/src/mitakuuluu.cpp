@@ -405,10 +405,10 @@ void Mitakuuluu::getGroupInfo(const QString &jid)
         iface->call(QDBus::NoBlock, "getGroupInfo", jid);
 }
 
-void Mitakuuluu::regRequest(const QString &cc, const QString &phone, const QString &method, const QString &password)
+void Mitakuuluu::regRequest(const QString &cc, const QString &phone, const QString &method, const QString &password, const QString &mcc, const QString &mnc)
 {
     if (iface)
-        iface->call(QDBus::NoBlock, "regRequest", cc, phone, method, password);
+        iface->call(QDBus::NoBlock, "regRequest", cc, phone, method, password, mcc, mnc);
 }
 
 void Mitakuuluu::enterCode(const QString &cc, const QString &phone, const QString &code)

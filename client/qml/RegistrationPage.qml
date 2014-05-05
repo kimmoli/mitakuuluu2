@@ -270,7 +270,7 @@ Page {
     }
 
     function doRegister() {
-        Mitakuuluu.regRequest(countriesModel.get(countrySelect.currentIndex).cc, phoneField.text.trim(), page.method, salt.text)
+        Mitakuuluu.regRequest(countriesModel.get(countrySelect.currentIndex).cc, phoneField.text.trim(), page.method, salt.text, Mitakuuluu.mcc, Mitakuuluu.mnc)
         busy.show(qsTr("Checking account...", "Registration checking account text"))
     }
 

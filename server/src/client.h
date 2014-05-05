@@ -571,7 +571,7 @@ public slots:
     void cancelDownload(const QString &msgId, const QString &jid);
     void createGroupChat(const QString &subject);
     void getParticipants(const QString &gjid);
-    void regRequest(const QString &cc, const QString &phone, const QString &method, const QString &password);
+    void regRequest(const QString &cc, const QString &phone, const QString &method, const QString &password, const QString &mcc, const QString &mnc);
     void enterCode(const QString &cc, const QString &phone, const QString &smscode);
     void setGroupSubject(const QString &gjid, const QString &subject);
     void removeGroupParticipant(const QString &gjid, const QString &jid);

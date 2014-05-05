@@ -41,7 +41,8 @@ class PhoneReg : public QObject
     Q_OBJECT
 public:
     explicit PhoneReg(const QString& cc, const QString& number, const QString& method = "sms",
-                      const QString& smscode = "", const QString& password = "", QObject *parent = 0);
+                      const QString& smscode = "", const QString& password = "",
+                      const QString& mcc = "", const QString& mnc = "", QObject *parent = 0);
 
 signals:
     void finished(const QVariantMap& reply);
@@ -66,6 +67,8 @@ private:
     QString cc;
     QString id;
     QString smscode;
+    QString mcc;
+    QString mnc;
 
     SMSListener *listener;
     WARequest *request;

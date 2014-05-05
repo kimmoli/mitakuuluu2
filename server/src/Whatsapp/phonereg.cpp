@@ -36,7 +36,8 @@
 #include "../client.h"
 
 PhoneReg::PhoneReg(const QString& cc, const QString& number, const QString& method,
-                   const QString& smscode, const QString& password, QObject *parent) :
+                   const QString& smscode, const QString& password,
+                   const QString &mcc, const QString &mnc, QObject *parent) :
     QObject(parent)
 {
     this->cc = cc;
@@ -44,6 +45,8 @@ PhoneReg::PhoneReg(const QString& cc, const QString& number, const QString& meth
     this->method = method;
     this->smscode = smscode;
     this->smscode = this->smscode.replace("-", "");
+    this->mcc = mcc;
+    this->mnc = mnc;
 
     // Generate a new id
 
@@ -73,15 +76,15 @@ void PhoneReg::startCodeRequest()
     request = new WARequest(this, "code");
     request->addParam("cc", cc);
     request->addParam("in", number);
-    //request->addParam("reason","next-method");
-    request->addParam("reason", "self-send-jailbroken");
+    request->addParam("reason", "next-method");
+    //request->addParam("reason", "self-send-jailbroken");
     request->addParam("method", method);
-    request->addParam("mcc", "000");
-    request->addParam("mnc", "000");
+    request->addParam("mcc", mcc);
+    request->addParam("mnc", mnc);
     request->addParam("lg", "en");
     request->addParam("lc", "US");
     request->addParam("token", Utilities::getTokenAndroid(number));
-    request->addParam("id",id);
+    request->addParam("id", id);
 
     connect(request,SIGNAL(finished(QVariantMap)),
             this,SLOT(onCodeRequestDone(QVariantMap)));
