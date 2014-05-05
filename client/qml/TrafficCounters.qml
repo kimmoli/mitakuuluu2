@@ -131,7 +131,7 @@ Page {
             }
 
             SectionHeader {
-                text: qsTr("Sent data data")
+                text: qsTr("Sent data")
             }
 
             Label {

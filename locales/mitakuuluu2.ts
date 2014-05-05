@@ -181,142 +181,142 @@
 <context>
     <name>ChatsPage</name>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="19"/>
+        <location filename="../client/qml/ChatsPage.qml" line="20"/>
         <source>Restart engine</source>
         <comment>Main menu action</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="20"/>
+        <location filename="../client/qml/ChatsPage.qml" line="21"/>
         <source>Force connect</source>
         <comment>Main menu action</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="21"/>
         <location filename="../client/qml/ChatsPage.qml" line="22"/>
         <location filename="../client/qml/ChatsPage.qml" line="23"/>
+        <location filename="../client/qml/ChatsPage.qml" line="24"/>
         <source>Disconnect</source>
         <comment>Main menu action</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="24"/>
-        <location filename="../client/qml/ChatsPage.qml" line="27"/>
+        <location filename="../client/qml/ChatsPage.qml" line="25"/>
+        <location filename="../client/qml/ChatsPage.qml" line="28"/>
         <source>Register</source>
         <comment>Main menu action</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="25"/>
+        <location filename="../client/qml/ChatsPage.qml" line="26"/>
         <source>Connect</source>
         <comment>Main menu action</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="26"/>
+        <location filename="../client/qml/ChatsPage.qml" line="27"/>
         <source>No action</source>
         <comment>Main menu action</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="40"/>
+        <location filename="../client/qml/ChatsPage.qml" line="41"/>
         <source>Full quit</source>
         <comment>Main menu action</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="43"/>
+        <location filename="../client/qml/ChatsPage.qml" line="44"/>
         <source>Quit and shutdown engine</source>
         <comment>Full quit remorse popup</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="59"/>
+        <location filename="../client/qml/ChatsPage.qml" line="60"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="73"/>
+        <location filename="../client/qml/ChatsPage.qml" line="74"/>
         <source>Muted contacts</source>
         <comment>Main menu action</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="80"/>
+        <location filename="../client/qml/ChatsPage.qml" line="81"/>
         <source>Broadcast</source>
         <comment>Main menu action</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="86"/>
+        <location filename="../client/qml/ChatsPage.qml" line="87"/>
         <source>Settings</source>
         <comment>Main menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="95"/>
+        <location filename="../client/qml/ChatsPage.qml" line="96"/>
         <source>Chats</source>
         <comment>Contacts page title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="150"/>
+        <location filename="../client/qml/ChatsPage.qml" line="153"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="143"/>
+        <location filename="../client/qml/ChatsPage.qml" line="146"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="158"/>
+        <location filename="../client/qml/ChatsPage.qml" line="161"/>
         <source>Delete group %1</source>
         <comment>Group delete remorse action text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="233"/>
+        <location filename="../client/qml/ChatsPage.qml" line="304"/>
         <source>Typing...</source>
         <comment>Contact status typing text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="234"/>
+        <location filename="../client/qml/ChatsPage.qml" line="305"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="253"/>
+        <location filename="../client/qml/ChatsPage.qml" line="324"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="270"/>
+        <location filename="../client/qml/ChatsPage.qml" line="341"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="277"/>
+        <location filename="../client/qml/ChatsPage.qml" line="348"/>
         <source>Delete group</source>
         <comment>Contact context menu delete group item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="287"/>
+        <location filename="../client/qml/ChatsPage.qml" line="358"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="288"/>
+        <location filename="../client/qml/ChatsPage.qml" line="359"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation type="unfinished"></translation>
@@ -421,91 +421,91 @@
 <context>
     <name>ContactsPage</name>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="27"/>
+        <location filename="../client/qml/ContactsPage.qml" line="28"/>
         <source>Create group</source>
         <comment>Contacts page menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="33"/>
+        <location filename="../client/qml/ContactsPage.qml" line="34"/>
         <source>Add contact</source>
         <comment>Contacts page menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="39"/>
+        <location filename="../client/qml/ContactsPage.qml" line="40"/>
         <source>Settings</source>
         <comment>Contacts page menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="48"/>
+        <location filename="../client/qml/ContactsPage.qml" line="49"/>
         <source>Contacts</source>
         <comment>Contacts page title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="57"/>
+        <location filename="../client/qml/ContactsPage.qml" line="58"/>
         <source>Search contacts</source>
         <comment>Contacts page search text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="112"/>
+        <location filename="../client/qml/ContactsPage.qml" line="116"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="105"/>
+        <location filename="../client/qml/ContactsPage.qml" line="109"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="120"/>
+        <location filename="../client/qml/ContactsPage.qml" line="124"/>
         <source>Delete group %1</source>
         <comment>Group delete remorse action text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="195"/>
+        <location filename="../client/qml/ContactsPage.qml" line="267"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="212"/>
+        <location filename="../client/qml/ContactsPage.qml" line="284"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="230"/>
+        <location filename="../client/qml/ContactsPage.qml" line="302"/>
         <source>Refresh</source>
         <comment>Contact context menu refresh item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="238"/>
+        <location filename="../client/qml/ContactsPage.qml" line="310"/>
         <source>Rename</source>
         <comment>Contact context menu profile item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="246"/>
+        <location filename="../client/qml/ContactsPage.qml" line="318"/>
         <source>Delete group</source>
         <comment>Contact context menu delete group item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="256"/>
+        <location filename="../client/qml/ContactsPage.qml" line="328"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="257"/>
+        <location filename="../client/qml/ContactsPage.qml" line="329"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation type="unfinished"></translation>
@@ -977,43 +977,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="724"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="726"/>
         <source>Uploading...</source>
         <comment>Uploading voice record text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="784"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="786"/>
         <source>Copy</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="788"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="790"/>
         <source>Message copied to clipboard</source>
         <comment>Banner item text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="793"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="795"/>
         <source>Forward</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="802"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="804"/>
         <source>Save to Gallery</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="805"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="807"/>
         <source>File saved as %1</source>
         <comment>Banner text message</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="811"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="813"/>
         <source>Delete</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
@@ -1827,19 +1827,19 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="270"/>
+        <location filename="../client/qml/Settings.qml" line="298"/>
         <source>Use system Chat notifier</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="546"/>
+        <location filename="../client/qml/Settings.qml" line="547"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="547"/>
+        <location filename="../client/qml/Settings.qml" line="548"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
         <translation type="unfinished"></translation>
@@ -1863,126 +1863,126 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="461"/>
+        <location filename="../client/qml/Settings.qml" line="462"/>
         <source>Common</source>
         <comment>Settings page section name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="708"/>
+        <location filename="../client/qml/Settings.qml" line="709"/>
         <source>Don&apos;t resize on WLAN</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="803"/>
+        <location filename="../client/qml/Settings.qml" line="804"/>
         <source>red</source>
         <comment>Pattern led color</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="804"/>
+        <location filename="../client/qml/Settings.qml" line="805"/>
         <source>green</source>
         <comment>Pattern led color</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="805"/>
+        <location filename="../client/qml/Settings.qml" line="806"/>
         <source>blue</source>
         <comment>Pattern led color</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="806"/>
+        <location filename="../client/qml/Settings.qml" line="807"/>
         <source>white</source>
         <comment>Pattern led color</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="807"/>
+        <location filename="../client/qml/Settings.qml" line="808"/>
         <source>yellow</source>
         <comment>Pattern led color</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="808"/>
+        <location filename="../client/qml/Settings.qml" line="809"/>
         <source>cyan</source>
         <comment>Pattern led color</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="809"/>
+        <location filename="../client/qml/Settings.qml" line="810"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="278"/>
+        <location filename="../client/qml/Settings.qml" line="306"/>
         <source>no sound</source>
         <comment>Private message tone not set</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="300"/>
+        <location filename="../client/qml/Settings.qml" line="328"/>
         <source>Private message color</source>
         <comment>Settings page Private message color selection</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="332"/>
+        <location filename="../client/qml/Settings.qml" line="360"/>
         <source>no sound</source>
         <comment>Group message tone not set</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="352"/>
+        <location filename="../client/qml/Settings.qml" line="380"/>
         <source>Group message color</source>
         <comment>Settings page Group message color selection</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="381"/>
+        <location filename="../client/qml/Settings.qml" line="409"/>
         <source>no sound</source>
         <comment>Medi message tone not set</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="401"/>
+        <location filename="../client/qml/Settings.qml" line="429"/>
         <source>Media message color</source>
         <comment>Settings page Media message color selection</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="465"/>
+        <location filename="../client/qml/Settings.qml" line="466"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="478"/>
+        <location filename="../client/qml/Settings.qml" line="479"/>
         <source>Restart application to change language</source>
         <comment>Language changing banner text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="489"/>
+        <location filename="../client/qml/Settings.qml" line="490"/>
         <source>Connection server</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="527"/>
+        <location filename="../client/qml/Settings.qml" line="528"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="535"/>
+        <location filename="../client/qml/Settings.qml" line="536"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="539"/>
+        <location filename="../client/qml/Settings.qml" line="540"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
         <translation type="unfinished"></translation>
@@ -1994,163 +1994,163 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="554"/>
+        <location filename="../client/qml/Settings.qml" line="555"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="560"/>
+        <location filename="../client/qml/Settings.qml" line="561"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="429"/>
+        <location filename="../client/qml/Settings.qml" line="457"/>
         <source>Show notifications when connection changing</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="442"/>
+        <location filename="../client/qml/Settings.qml" line="277"/>
         <source>Show new messages notifications</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="456"/>
+        <location filename="../client/qml/Settings.qml" line="291"/>
         <source>Display messages text in notifications</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="276"/>
+        <location filename="../client/qml/Settings.qml" line="304"/>
         <source>Private message</source>
         <comment>Settings page Private message tone selection</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="283"/>
+        <location filename="../client/qml/Settings.qml" line="311"/>
         <source>Private message tone</source>
         <comment>Sound chooser description text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="337"/>
+        <location filename="../client/qml/Settings.qml" line="365"/>
         <source>Group message tone</source>
         <comment>Sound chooser description text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="386"/>
+        <location filename="../client/qml/Settings.qml" line="414"/>
         <source>Media message tone</source>
         <comment>Sound chooser description text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="330"/>
+        <location filename="../client/qml/Settings.qml" line="358"/>
         <source>Group message</source>
         <comment>Settings page Group message tone selection</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="379"/>
+        <location filename="../client/qml/Settings.qml" line="407"/>
         <source>Media message</source>
         <comment>Settings page Media message tone selection</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="565"/>
+        <location filename="../client/qml/Settings.qml" line="566"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="570"/>
+        <location filename="../client/qml/Settings.qml" line="571"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="573"/>
+        <location filename="../client/qml/Settings.qml" line="574"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="580"/>
+        <location filename="../client/qml/Settings.qml" line="581"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="587"/>
+        <location filename="../client/qml/Settings.qml" line="588"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="600"/>
+        <location filename="../client/qml/Settings.qml" line="601"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="611"/>
+        <location filename="../client/qml/Settings.qml" line="612"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="635"/>
+        <location filename="../client/qml/Settings.qml" line="636"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="652"/>
+        <location filename="../client/qml/Settings.qml" line="653"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="688"/>
+        <location filename="../client/qml/Settings.qml" line="689"/>
         <source>Auto download on WLAN only</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="678"/>
+        <location filename="../client/qml/Settings.qml" line="679"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="697"/>
+        <location filename="../client/qml/Settings.qml" line="698"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="741"/>
+        <location filename="../client/qml/Settings.qml" line="742"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="775"/>
+        <location filename="../client/qml/Settings.qml" line="776"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="777"/>
+        <location filename="../client/qml/Settings.qml" line="778"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="791"/>
+        <location filename="../client/qml/Settings.qml" line="792"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
         <translation type="unfinished"></translation>
@@ -2278,7 +2278,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="134"/>
-        <source>Sent data data</source>
+        <source>Sent data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
