@@ -9,6 +9,22 @@
         <extracomment>Title for avatar picker for selecting avatar</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message id="components_gallery-he-crop">
+        <location filename="../client/qml/CropEditPreview.qml" line="76"/>
+        <source>Crop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="components_gallery-he-rotate">
+        <location filename="../client/qml/CropEditPreview.qml" line="79"/>
+        <source>Rotate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="sailfish-components-gallery-la_image-loading-error">
+        <location filename="../client/qml/CropEditPreview.qml" line="135"/>
+        <source>Oops, image error!</source>
+        <extracomment>Image to be edited can&apos;t be opened</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Account</name>
@@ -1614,6 +1630,11 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/SelectPhonebook.qml" line="160"/>
         <source>Search contacts</source>
         <comment>Add contacts page search text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/SelectPhonebook.qml" line="244"/>
+        <source>Unnamed contact</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

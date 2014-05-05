@@ -7,6 +7,22 @@
         <extracomment>Title for avatar picker for selecting avatar</extracomment>
         <translation>Επιλογή avatar</translation>
     </message>
+    <message id="components_gallery-he-crop">
+        <location filename="../client/qml/CropEditPreview.qml" line="76"/>
+        <source>Crop</source>
+        <translation type="unfinished"/>
+    </message>
+    <message id="components_gallery-he-rotate">
+        <location filename="../client/qml/CropEditPreview.qml" line="79"/>
+        <source>Rotate</source>
+        <translation type="unfinished"/>
+    </message>
+    <message id="sailfish-components-gallery-la_image-loading-error">
+        <location filename="../client/qml/CropEditPreview.qml" line="135"/>
+        <source>Oops, image error!</source>
+        <extracomment>Image to be edited can't be opened</extracomment>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Account</name>
@@ -179,142 +195,142 @@
 <context>
     <name>ChatsPage</name>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="19"/>
+        <location filename="../client/qml/ChatsPage.qml" line="20"/>
         <source>Restart engine</source>
         <comment>Main menu action</comment>
         <translation>Επανεκκίνηση μηχανής</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="20"/>
+        <location filename="../client/qml/ChatsPage.qml" line="21"/>
         <source>Force connect</source>
         <comment>Main menu action</comment>
         <translation>Εξαναγκαστική σύνδεση</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="21"/>
         <location filename="../client/qml/ChatsPage.qml" line="22"/>
         <location filename="../client/qml/ChatsPage.qml" line="23"/>
+        <location filename="../client/qml/ChatsPage.qml" line="24"/>
         <source>Disconnect</source>
         <comment>Main menu action</comment>
         <translation>Αποσύνδεση</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="24"/>
-        <location filename="../client/qml/ChatsPage.qml" line="27"/>
+        <location filename="../client/qml/ChatsPage.qml" line="25"/>
+        <location filename="../client/qml/ChatsPage.qml" line="28"/>
         <source>Register</source>
         <comment>Main menu action</comment>
         <translation>Εγγράφω</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="25"/>
+        <location filename="../client/qml/ChatsPage.qml" line="26"/>
         <source>Connect</source>
         <comment>Main menu action</comment>
         <translation>Σύνδεση</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="26"/>
+        <location filename="../client/qml/ChatsPage.qml" line="27"/>
         <source>No action</source>
         <comment>Main menu action</comment>
         <translation>Καμία ενέργεια</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="40"/>
+        <location filename="../client/qml/ChatsPage.qml" line="41"/>
         <source>Full quit</source>
         <comment>Main menu action</comment>
         <translation>Πλήρης τερματισμός</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="43"/>
+        <location filename="../client/qml/ChatsPage.qml" line="44"/>
         <source>Quit and shutdown engine</source>
         <comment>Full quit remorse popup</comment>
         <translation>Τερματισμός και κλείσιμο μηχανής</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="59"/>
+        <location filename="../client/qml/ChatsPage.qml" line="60"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
         <translation>Αποσυνδέοντας </translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="73"/>
+        <location filename="../client/qml/ChatsPage.qml" line="74"/>
         <source>Muted contacts</source>
         <comment>Main menu action</comment>
         <translation>Επαφές σε σίγαση</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="80"/>
+        <location filename="../client/qml/ChatsPage.qml" line="81"/>
         <source>Broadcast</source>
         <comment>Main menu action</comment>
         <translation>Μετάδοση</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="86"/>
+        <location filename="../client/qml/ChatsPage.qml" line="87"/>
         <source>Settings</source>
         <comment>Main menu item</comment>
         <translation>Ρυθμίσεις</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="95"/>
+        <location filename="../client/qml/ChatsPage.qml" line="96"/>
         <source>Chats</source>
         <comment>Contacts page title</comment>
         <translation>Συζητήσεις</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="151"/>
+        <location filename="../client/qml/ChatsPage.qml" line="153"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>Αφήστε την ομάδα %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="144"/>
+        <location filename="../client/qml/ChatsPage.qml" line="146"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>Διαγραφή</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="159"/>
+        <location filename="../client/qml/ChatsPage.qml" line="161"/>
         <source>Delete group %1</source>
         <comment>Group delete remorse action text</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="267"/>
+        <location filename="../client/qml/ChatsPage.qml" line="304"/>
         <source>Typing...</source>
         <comment>Contact status typing text</comment>
         <translation>Πληκτρολογώντας...</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="268"/>
+        <location filename="../client/qml/ChatsPage.qml" line="305"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>Ομάδα συζήτησης</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="287"/>
+        <location filename="../client/qml/ChatsPage.qml" line="324"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>Προφίλ</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="304"/>
+        <location filename="../client/qml/ChatsPage.qml" line="341"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
         <translation>Σίγαση</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="311"/>
+        <location filename="../client/qml/ChatsPage.qml" line="348"/>
         <source>Delete group</source>
         <comment>Contact context menu delete group item</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="321"/>
+        <location filename="../client/qml/ChatsPage.qml" line="358"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>Αφήστε την ομάδα</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="322"/>
+        <location filename="../client/qml/ChatsPage.qml" line="359"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>Διαγραφή</translation>
@@ -416,91 +432,91 @@
 <context>
     <name>ContactsPage</name>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="27"/>
+        <location filename="../client/qml/ContactsPage.qml" line="28"/>
         <source>Create group</source>
         <comment>Contacts page menu item</comment>
         <translation>Δημιουργία ομάδας</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="33"/>
+        <location filename="../client/qml/ContactsPage.qml" line="34"/>
         <source>Add contact</source>
         <comment>Contacts page menu item</comment>
         <translation>Προσθήκη επαφής</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="39"/>
+        <location filename="../client/qml/ContactsPage.qml" line="40"/>
         <source>Settings</source>
         <comment>Contacts page menu item</comment>
         <translation>Ρυθμίσεις</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="48"/>
+        <location filename="../client/qml/ContactsPage.qml" line="49"/>
         <source>Contacts</source>
         <comment>Contacts page title</comment>
         <translation>Επαφές</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="57"/>
+        <location filename="../client/qml/ContactsPage.qml" line="58"/>
         <source>Search contacts</source>
         <comment>Contacts page search text</comment>
         <translation>Αναζήτηση επαφών</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="114"/>
+        <location filename="../client/qml/ContactsPage.qml" line="116"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>Αφήστε την ομάδα %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="107"/>
+        <location filename="../client/qml/ContactsPage.qml" line="109"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>Διαγραφή</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="122"/>
+        <location filename="../client/qml/ContactsPage.qml" line="124"/>
         <source>Delete group %1</source>
         <comment>Group delete remorse action text</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="230"/>
+        <location filename="../client/qml/ContactsPage.qml" line="267"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>Oμάδα συζήτησης</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="247"/>
+        <location filename="../client/qml/ContactsPage.qml" line="284"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>Προφίλ</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="265"/>
+        <location filename="../client/qml/ContactsPage.qml" line="302"/>
         <source>Refresh</source>
         <comment>Contact context menu refresh item</comment>
         <translation>Ανανέωση</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="273"/>
+        <location filename="../client/qml/ContactsPage.qml" line="310"/>
         <source>Rename</source>
         <comment>Contact context menu profile item</comment>
         <translation>Μετονομάζω</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="281"/>
+        <location filename="../client/qml/ContactsPage.qml" line="318"/>
         <source>Delete group</source>
         <comment>Contact context menu delete group item</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="291"/>
+        <location filename="../client/qml/ContactsPage.qml" line="328"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>Αφήστε την ομάδα</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="292"/>
+        <location filename="../client/qml/ContactsPage.qml" line="329"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>Διαγραφή</translation>
@@ -1596,6 +1612,11 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <source>Search contacts</source>
         <comment>Add contacts page search text</comment>
         <translation>Αναζήτηση επαφών</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/SelectPhonebook.qml" line="242"/>
+        <source>Unnamed contact</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
