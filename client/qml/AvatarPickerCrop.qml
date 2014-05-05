@@ -51,7 +51,7 @@ ImagePickerPage {
             allowedOrientations: root.allowedOrientations
             splitOpen: false
             avatarCrop: true
-            foreground: ImageEditPreview {
+            foreground: CropEditPreview {
                 id: imageEditPreview
 
                 editOperation: ImageEditor.Crop
