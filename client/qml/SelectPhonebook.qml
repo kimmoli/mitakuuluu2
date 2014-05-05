@@ -133,7 +133,7 @@ Dialog {
             pressDelay: 0
             spacing: Theme.paddingMedium
             section {
-                property: "displayLabel"
+                property: "sectionBucket"
                 criteria: ViewSection.FirstCharacter
                 delegate: sectionDelegate
             }
@@ -189,6 +189,60 @@ Dialog {
                     highlighted: down || checked
                     property bool checked: page.numbers.indexOf(number) != -1
                     property string number: person.phoneDetails[index].normalizedNumber
+
+                    // while nemo-qml-plugin-contacts bug not fixed
+                    // https://github.com/nemomobile/nemo-qml-plugin-contacts/issues/103
+                    function generateDisplayLabel() {
+                        var displayLabel = ""
+
+                        var nameStr1 = null
+                        var nameStr2 = null
+                        if (allContactsModel.displayLabelOrder == PeopleModel.LastNameFirst) {
+                            nameStr1 = person.lastName
+                            nameStr2 = person.firstName
+                        } else {
+                            nameStr1 = person.firstName
+                            nameStr2 = person.lastName
+                        }
+
+                        if (nameStr1)
+                            displayLabel += nameStr1
+
+                        if (nameStr2) {
+                            if (displayLabel.length > 0)
+                                displayLabel += " "
+                            displayLabel += nameStr2
+                        }
+
+                        if (displayLabel.length > 0) {
+                            return displayLabel;
+                        }
+
+                        // Try to generate a label from the contact details, in our preferred order
+
+                        for (var i=0; i<person.nicknameDetails.length; i++) {
+                            if (person.nicknameDetails[i].nickname) {
+                                return person.nicknameDetails[i].nickname
+                            }
+                        }
+
+                        if (person.displayLabel)
+                            return person.displayLabel
+
+                        if (person.emailDetails)
+                            return person.emailDetails.address
+
+                        if (person.companyName)
+                            return person.companyName
+
+                        for (var i=0; person.phoneDetails.length; i++) {
+                            if (person.phoneDetails[i].normalizedNumber) {
+                                return person.phoneDetails[i].normalizedNumber
+                            }
+                        }
+
+                        return qsTr("Unnamed contact");
+                    }
 
                     onClicked: {
                         var vnumbers = page.numbers
@@ -246,7 +300,7 @@ Dialog {
                             width: parent.width
                             wrapMode: Text.NoWrap
                             elide: Text.ElideRight
-                            text: displayLabel
+                            text: innerItem.generateDisplayLabel()
                             color: innerItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                         }
 
