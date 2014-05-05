@@ -12,6 +12,7 @@ Page {
             if (pageStack._currentContainer.attachedContainer == null) {
                 pageStack.pushAttached(Qt.resolvedUrl("ContactsPage.qml"))
             }
+            listView.recheckMuting()
         }
     }
 
@@ -125,6 +126,7 @@ Page {
             pressDelay: 0
             spacing: Theme.paddingSmall
             currentIndex: -1
+            signal recheckMuting
             VerticalScrollDecorator {}
         }
     }
@@ -135,9 +137,10 @@ Page {
             id: item
             width: ListView.view.width
             contentHeight: Theme.itemSizeMedium
-            //visible: model.visible ? (model.jid !== Mitakuuluu.myJid || showMyJid) : false
             ListView.onRemove: animateRemoval(item)
             menu: contextMenu
+            property bool muted: false
+            property Timer mutingTimer
 
             function removeContact() {
                 remorseAction(qsTr("Delete", "Delete contact remorse action text"),
@@ -160,6 +163,53 @@ Page {
                     Mitakuuluu.groupRemove(model.jid)
                     ContactsBaseModel.deleteContact(model.jid)
                 })
+            }
+
+            Connections {
+                target: listView
+                onRecheckMuting: {
+                    checkMuting()
+                }
+            }
+
+            Component.onCompleted: {
+                checkMuting()
+            }
+
+            function checkMuting() {
+                var timeNow = new Date().getTime()
+                var mutingInterval = Mitakuuluu.load("muting/" + model.jid, timeNow)
+                if (parseInt(mutingInterval) > timeNow) {
+                    if (!mutingTimer) {
+                        mutingTimer = mutingTimerComponent.createObject(null, {"interval": parseInt(mutingInterval) - new Date().getTime(), "running": true})
+                        muted = true
+                    }
+                }
+                else {
+                    if (mutingTimer) {
+                        removeMuting()
+                    }
+                }
+            }
+
+            Component.onDestruction: {
+                removeMuting()
+            }
+
+            function removeMuting() {
+                if (item.mutingTimer)
+                    item.mutingTimer.destroy()
+                muted = false
+            }
+
+            Component {
+                id: mutingTimerComponent
+                Timer {
+                    onTriggered: {
+                        item.muted = false
+                        item.mutingTimer.destroy()
+                    }
+                }
             }
 
             Rectangle {
@@ -203,6 +253,27 @@ Page {
                         font.pixelSize: Theme.fontSizeExtraSmall
                         text: model.unread
                         color: Theme.primaryColor
+                    }
+                }
+
+                Rectangle {
+                    width: Theme.iconSizeSmall
+                    height: Theme.iconSizeSmall
+                    smooth: true
+                    radius: Theme.iconSizeSmall / 4
+                    border.width: 1
+                    border.color: Theme.highlightColor
+                    color: Theme.secondaryHighlightColor
+                    visible: item.muted
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+
+                    Image {
+                        source: "image://theme/icon-m-speaker-mute"
+                        smooth: true
+                        width: Theme.iconSizeSmall
+                        height: Theme.iconSizeSmall
+                        anchors.centerIn: parent
                     }
                 }
             }
