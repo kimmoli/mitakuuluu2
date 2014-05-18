@@ -316,13 +316,25 @@ bool Connection::read()
                                         ? FMessage::Uploading
                                         : FMessage::Uploaded;
                             message.media_url = child.getAttributeValue("url");
-                            message.media_mime_type = child.getAttributeValue("mimetype");
-                            if (message.media_wa_type == FMessage::Video ||
-                                message.media_wa_type == FMessage::Audio)
-                            {
-                                QString duration = child.getAttributeValue("duration");
-                                message.media_duration_seconds =
-                                        (duration.isEmpty()) ? 0 : duration.toInt();
+                            if (child.getTag() == "duplicate") {
+                                message.media_mime_type = child.getAttributeValue("mimetype");
+                                if (message.media_wa_type == FMessage::Video ||
+                                    message.media_wa_type == FMessage::Audio)
+                                {
+                                    QString duration = child.getAttributeValue("duration");
+                                    message.media_duration_seconds =
+                                            (duration.isEmpty()) ? 0 : duration.toInt();
+                                }
+                                if (message.media_wa_type == FMessage::Image ||
+                                    message.media_wa_type == FMessage::Audio)
+                                {
+                                    QString width = child.getAttributeValue("width");
+                                    QString height = child.getAttributeValue("height");
+                                    if (!width.isEmpty() && !height.isEmpty()) {
+                                        message.media_width = width.toInt();
+                                        message.media_height = height.toInt();
+                                    }
+                                }
                             }
 
                             store.remove(k);

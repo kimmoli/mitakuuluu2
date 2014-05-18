@@ -59,6 +59,9 @@
 
 #include <QImageReader>
 
+#include <QMediaPlayer>
+#include <QMediaMetaData>
+
 /** ***********************************************************************
  ** Static global members
  **/
@@ -351,7 +354,7 @@ void Client::addMessage(const FMessage &message)
         data["mime"] = message.media_mime_type;
         data["duration"] = message.media_duration_seconds;
         if (message.media_wa_type == FMessage::Image && !message.local_file_uri.isEmpty()) {
-            if (message.media_width == 0 || message.media_height == 0) {
+            if (message.media_width <= 0 || message.media_height <= 0) {
                 QImageReader img(message.local_file_uri);
                 data["width"] = img.size().width();
                 data["height"] = img.size().height();
@@ -359,6 +362,23 @@ void Client::addMessage(const FMessage &message)
             else {
                 data["width"] = message.media_width;
                 data["height"] = message.media_height;
+            }
+        }
+        else if (message.media_wa_type == FMessage::Video && !message.local_file_uri.isEmpty()) {
+            if (message.media_width <= 0 || message.media_height <= 0) {
+                QMediaPlayer player;
+                qDebug() << "should get metadata for:" << message.local_file_uri;
+                player.setMedia(QUrl::fromLocalFile(message.local_file_uri));
+                while (!player.availableMetaData().contains(QMediaMetaData::Resolution)) {
+                    qDebug() << "waiting for video metadata";
+                    QEventLoop loop;
+                    QObject::connect(&player, SIGNAL(metaDataChanged()), &loop, SLOT(quit()));
+                    loop.exec();
+                }
+                QSize resolution = player.metaData(QMediaMetaData::Resolution).toSize();
+                qDebug() << "video metadata available:" << resolution;
+                data["width"] = resolution.width();
+                data["height"] = resolution.height();
             }
         }
         else {
@@ -1305,6 +1325,19 @@ void Client::groupNotification(const QString &gjid, const QString &jid, int type
     data["type"] = QueryType::ConversationSaveMessage;
     data["uuid"] = uuid;
     dbExecutor->queueAction(data);
+
+    qDebug() << "should show notification?" << "author:" << jid << "jid:" << gjid << "activeJid:" << _activeJid << "myJid:" << myJid;
+    if ((jid != myJid) && (jid != _activeJid)) {
+        qDebug() << "show notification for:" << data["msgid"].toString() << "jid:" << jid;
+        QVariantMap notify;
+        notify["jid"] = jid;
+        notify["pushName"] = QString();
+        notify["type"] = QueryType::ConversationNotifyMessage;
+        notify["media"] = false;
+        notify["msg"] = message;
+        notify["uuid"] = uuid;
+        dbExecutor->queueAction(notify);
+    }
 }
 
 void Client::startDownloadMessage(const FMessage &msg)
@@ -1415,7 +1448,7 @@ void Client::mediaUploadAccepted(const FMessage &message)
         QThread *thread = new QThread(mediaUpload);
         mediaUpload->moveToThread(thread);
         QObject::connect(thread, SIGNAL(started()), mediaUpload, SLOT(upload()));
-        thread->start(QThread::LowPriority);
+        thread->start();
     }
     else {
         qDebug() << "Starting uploader in internal thread";
@@ -1861,7 +1894,7 @@ void Client::photoReceived(const QString &from, const QByteArray &data,
             fname = "/usr/share/harbour-mitakuuluu2/images/avatar-hidden.png";
         }
         else {
-            QFile ava(QString("%1/%2").arg(dirname).arg(from));
+            QFile ava(QString("%1/%2-%3").arg(dirname).arg(from).arg(photoId));
             if (ava.exists())
                 ava.remove();
         }
@@ -1870,7 +1903,7 @@ void Client::photoReceived(const QString &from, const QByteArray &data,
         QDir avadir(dirname);
         if (!avadir.exists())
             avadir.mkpath(dirname);
-        fname = QString("%1/%2").arg(dirname).arg(from);
+        fname = QString("%1/%2-%3").arg(dirname).arg(from).arg(photoId);
         QFile ava(fname);
         if (ava.exists())
             ava.remove();

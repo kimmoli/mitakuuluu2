@@ -1,7 +1,7 @@
 TARGET = harbour-mitakuuluu2-server
 target.path = /usr/bin
 
-QT += dbus sql quick qml
+QT += dbus sql quick qml multimedia
 CONFIG += Qt5Contacts link_pkgconfig
 PKGCONFIG += Qt5Contacts sailfishapp
 LIBS += -lmlite5
