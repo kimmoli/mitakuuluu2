@@ -25,13 +25,16 @@ private:
     QStringList _filters;
     bool _sortName;
 
+    bool _active;
+
 signals:
     void haveFileData(const QVariantMap &data);
     void haveFolderData(const QVariantList &data);
+    void completed();
 
 public slots:
     void startSearch();
-
+    void stopSearch();
 };
 
 #endif // RECURSIVESEARCH_H

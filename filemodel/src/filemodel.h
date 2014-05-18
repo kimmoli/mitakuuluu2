@@ -73,6 +73,7 @@ private slots:
 
 signals:
     void countChanged();
+    void stopSearch();
 
 };
 

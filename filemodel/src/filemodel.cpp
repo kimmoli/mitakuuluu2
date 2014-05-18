@@ -76,9 +76,12 @@ void Filemodel::setSorting(bool newSorting)
 
 void Filemodel::showRecursive(const QStringList &dirs)
 {
+    Q_EMIT stopSearch();
+
     clear();
 
     RecursiveSearch *recursive = new RecursiveSearch(dirs, _filter, !_sorting);
+    QObject::connect(this, SIGNAL(stopSearch()), recursive, SLOT(stopSearch()));
     QObject::connect(recursive, SIGNAL(haveFolderData(QVariantList)), this, SLOT(folderDataReceived(QVariantList)));
     QThread *thread = new QThread(recursive);
     recursive->moveToThread(thread);
