@@ -29,6 +29,11 @@ Page {
         return array[value]
     }
 
+    Connections {
+        target: ContactsBaseModel
+        onTotalUnreadChanged: listView.recheckMuting()
+    }
+
     SilicaFlickable {
         id: flickView
         anchors.fill: parent

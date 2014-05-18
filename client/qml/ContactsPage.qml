@@ -17,6 +17,11 @@ Page {
         }
     }
 
+    Connections {
+        target: ContactsBaseModel
+        onTotalUnreadChanged: listView.recheckMuting()
+    }
+
     SilicaFlickable {
         id: flickView
         anchors.fill: parent
@@ -364,6 +369,7 @@ Page {
         contactsModel: ContactsBaseModel
         showActive: false
         showUnknown: acceptUnknown
+        hideGroups: true
         filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
         onContactsModelChanged: {
             fastScroll.init()
