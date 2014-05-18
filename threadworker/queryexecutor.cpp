@@ -184,6 +184,10 @@ void QueryExecutor::processQuery(const QVariant &msg)
             getContactMedia(query);
             break;
         }
+        case QueryType::ConversationGetCount: {
+            getConversationCount(query);
+            break;
+        }
         default: {
             break;
         }
@@ -272,7 +276,7 @@ void QueryExecutor::messageNotify(QVariantMap &query)
 {
     QString jid = query["jid"].toString();
     QSqlQuery sql(db);
-    sql.prepare("SELECT name, message, avatar, unread from contacts where jid=(:jid);");
+    sql.prepare("SELECT name, message, avatar, unread, pushname from contacts where jid=(:jid);");
     sql.bindValue(":jid", jid);
     sql.exec();
     if (sql.next()) {
@@ -280,6 +284,7 @@ void QueryExecutor::messageNotify(QVariantMap &query)
         QString name = sql.value(0).toString();
         QString message = sql.value(1).toString();
         int unread = sql.value(3).toInt();
+        QString pushname = sql.value(4).toString();
         query["unread"] = unread;
         query["avatar"] = sql.value(2);
         QString nickname = pushName;
@@ -287,6 +292,8 @@ void QueryExecutor::messageNotify(QVariantMap &query)
             nickname = message;
         else if (name != jid.split("@").first() && !name.isEmpty())
             nickname = name;
+        else if (!pushname.isEmpty())
+            nickname = pushname;
         else if (pushName.isEmpty())
             nickname = jid.split("@").first();
         query["name"] = nickname;
@@ -433,7 +440,7 @@ void QueryExecutor::setContactsResults(QVariantMap &query)
 
             QSqlQuery uc;
             //uc.prepare("UPDATE contacts SET name=(:name), message=(:message), timestamp=(:timestamp) WHERE jid=(:jid);");
-            if (avatar.isEmpty() || avatar.contains("harbour-mitakuuluu2")) {
+            if (avatar.isEmpty() || avatar.contains("harbour-mitakuuluu2") || avatar.contains("image://")) {
                 uc.prepare("UPDATE contacts SET name=(:name), contacttype=(:contacttype) WHERE jid=(:jid);");
                 avatars.append(jid);
             }
@@ -541,7 +548,7 @@ void QueryExecutor::setContactAvatar(QVariantMap &query)
 
     if (ava.next()) {
         QString avatar = ava.value(0).toString();
-        if (avatar.isEmpty() || avatar.contains("harbour-mitakuuluu2")) {
+        if (avatar.isEmpty() || avatar.contains("harbour-mitakuuluu2") || avatar.contains("image://")) {
             QSqlQuery sql(db);
             sql.prepare("UPDATE contacts SET avatar=(:avatar) WHERE jid=(:jid);");
             sql.bindValue(":avatar", query["avatar"]);
@@ -921,6 +928,23 @@ void QueryExecutor::groupParticipants(QVariantMap &query)
     }
 
     query["unknown"] = unknown;
+    Q_EMIT actionDone(query);
+}
+
+void QueryExecutor::getConversationCount(QVariantMap &query)
+{
+    QString table = query["table"].toString();
+
+    QSqlQuery c(db);
+    c.prepare(QString("SELECT COUNT(*) FROM u%1;").arg(table));
+    c.exec();
+
+    int count = 0;
+    if (c.next()) {
+        count = c.value(0).toInt();
+    }
+    query["count"] = count;
+
     Q_EMIT actionDone(query);
 }
 

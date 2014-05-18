@@ -46,7 +46,8 @@ class ConversationModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(QString jid READ getJid WRITE loadLastConversation FINAL)
-    Q_PROPERTY(int count READ count FINAL)
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
+    Q_PROPERTY(int allCount READ allCount NOTIFY allCountChanged)
 public:
     ConversationModel(QObject *parent = 0);
     ~ConversationModel();
@@ -92,6 +93,10 @@ private:
 
     QString uuid;
 
+    int _allCount;
+    int allCount();
+    void getAllCount();
+
     QString makeTimestampDate(int timestamp);
 
 private slots:
@@ -108,6 +113,9 @@ signals:
     void lastMessageToBeChanged(const QString &mjid);
     void lastMessageChanged(const QString &mjid, bool force);
     void mediaListReceived(const QString &pjid, const QVariantList &mediaList);
+
+    void countChanged();
+    void allCountChanged();
 
 };
 

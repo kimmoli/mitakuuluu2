@@ -75,11 +75,14 @@ void ConversationModel::loadLastConversation(QString newjid)
         _downloadData = reply.value();
     jid = newjid;
     table = jid.split("@").first().replace("-", "g");
+
     QVariantMap query;
     query["type"] = QueryType::ConversationLoadLast;
     query["table"] = table;
     query["uuid"] = uuid;
     dbExecutor->queueAction(query);
+
+    getAllCount();
 }
 
 int ConversationModel::rowCount(const QModelIndex &parent) const
@@ -148,12 +151,16 @@ void ConversationModel::deleteMessage(const QString &msgId, const QString &myJid
     _sortedTimestampMsgidList.removeAt(rowIndex);
     endRemoveRows();
 
+    Q_EMIT countChanged();
+
     QVariantMap query;
     query["type"] = QueryType::ConversationRemoveMessage;
     query["table"] = table;
     query["msgid"] = msgId;
     query["uuid"] = uuid;
     dbExecutor->queueAction(query);
+
+    getAllCount();
 }
 
 QVariantMap ConversationModel::get(int index)
@@ -222,6 +229,9 @@ void ConversationModel::removeConversation(const QString &rjid)
         endResetModel();
         Q_EMIT lastMessageChanged(rjid, true);
     }
+
+    Q_EMIT countChanged();
+
     QVariantMap query;
     query["type"] = QueryType::ConversationRemoveAll;
     query["jid"] = rjid;
@@ -267,6 +277,20 @@ int ConversationModel::getIndexByMsgId(const QString &msgId)
     return -1;
 }
 
+int ConversationModel::allCount()
+{
+    return _allCount;
+}
+
+void ConversationModel::getAllCount()
+{
+    QVariantMap cnt;
+    cnt["type"] = QueryType::ConversationGetCount;
+    cnt["table"] = table;
+    cnt["uuid"] = uuid;
+    dbExecutor->queueAction(cnt);
+}
+
 QString ConversationModel::makeTimestampDate(int timestamp)
 {
     return QDateTime::fromTime_t(timestamp).toString("dd MMM yyyy");
@@ -301,6 +325,9 @@ void ConversationModel::onMessageReceived(const QVariantMap &data)
             _modelData[msgId]["section"] = makeTimestampDate(timestamp);
             dataChanged(index(row), index(row));
         }
+
+        Q_EMIT countChanged();
+        getAllCount();
     }
 }
 
@@ -369,6 +396,9 @@ void ConversationModel::dbResults(const QVariant &result)
             //endInsertRows();
         }
         endResetModel();
+
+        Q_EMIT countChanged();
+
         _loadingBusy = false;
         Q_EMIT lastMessageChanged(jid, true);
         break;
@@ -395,6 +425,9 @@ void ConversationModel::dbResults(const QVariant &result)
             qSort(_sortedTimestampMsgidList);
             endInsertRows();
         }
+
+        Q_EMIT countChanged();
+
         _loadingBusy = false;
         Q_EMIT lastMessageChanged(jid, false);
         break;
@@ -404,6 +437,11 @@ void ConversationModel::dbResults(const QVariant &result)
         if (mediaList.size() > 0) {
             Q_EMIT mediaListReceived(jid, mediaList);
         }
+        break;
+    }
+    case QueryType::ConversationGetCount: {
+        _allCount = reply["count"].toInt();
+        Q_EMIT allCountChanged();
         break;
     }
     default: {

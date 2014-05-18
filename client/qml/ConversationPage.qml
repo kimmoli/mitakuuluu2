@@ -269,7 +269,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("Load old conversation", "Conversation menu item")
-                visible: conversationView.count > 19
+                visible: conversationView.count < conversationModel.allCount
                 onClicked: {
                     conversationModel.loadOldConversation(20)
                 }
