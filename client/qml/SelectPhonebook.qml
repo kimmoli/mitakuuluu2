@@ -181,14 +181,29 @@ Dialog {
             Repeater {
                 id: internal
                 width: parent.width
-                model: person.phoneDetails.length
+                property variant effectiveIndecies: constructIndecies()
+                function constructIndecies() {
+                    var indecies = []
+                    var effectiveNumbers = []
+                    var numbers = person.phoneDetails
+                    for (var i = 0; i < numbers.length; i++) {
+                        var normalized = numbers[i].normalizedNumber
+                        if (effectiveNumbers.indexOf(normalized) < 0) {
+                            indecies.splice(0, 0, i)
+                            effectiveNumbers.splice(0, 0, normalized)
+                        }
+                    }
+                    return indecies
+                }
+
+                model: effectiveIndecies.length
                 delegate: BackgroundItem {
                     id: innerItem
                     width: parent.width
                     height: Theme.itemSizeMedium
                     highlighted: down || checked
                     property bool checked: page.numbers.indexOf(number) != -1
-                    property string number: person.phoneDetails[index].normalizedNumber
+                    property string number: person.phoneDetails[effectiveIndecies[index]].normalizedNumber
 
                     // while nemo-qml-plugin-contacts bug not fixed
                     // https://github.com/nemomobile/nemo-qml-plugin-contacts/issues/103
