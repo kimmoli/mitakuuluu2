@@ -10,7 +10,6 @@ Image {
     fillMode: Image.PreserveAspectCrop
     asynchronous: true
     cache: false
-    clip: true
 
     property alias color: dummy.color
     property alias emptySource: empty.source

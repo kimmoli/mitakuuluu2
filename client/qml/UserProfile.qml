@@ -132,7 +132,8 @@ Page {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        avatarView.show(page.picture)
+                        //avatarView.show(page.picture)
+                        pageStack.push(Qt.resolvedUrl("AvatarHistory.qml"), {"jid": page.jid, "avatar": page.picture, "owner": false})
                     }
                 }
             }
@@ -175,6 +176,7 @@ Page {
                 width: parent.width
                 icon.source: "image://theme/icon-l-answer"
                 icon.height: Theme.itemSizeSmall
+                icon.width: Theme.itemSizeSmall
                 name: qsTr("Call +%1").arg(phone)
                 onClicked: {
                     Qt.openUrlExternally("tel:+" + phone)
@@ -185,6 +187,7 @@ Page {
                 width: parent.width
                 icon.source: "image://theme/icon-m-people"
                 icon.height: Theme.itemSizeSmall
+                icon.width: Theme.itemSizeSmall
                 name: qsTr("Save +%1").arg(phone)
                 onClicked: {
                     Mitakuuluu.openProfile(pushname, "+" + phone)

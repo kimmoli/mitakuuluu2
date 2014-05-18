@@ -32,6 +32,7 @@ Item {
 
     function crop()
     {
+        console.log("cropping image")
         editInProgress = true
         editor.crop(Qt.size(editor.width, editor.height),
                     Qt.size(zoomableImage.contentWidth, zoomableImage.contentHeight),
@@ -178,6 +179,7 @@ Item {
 
         onCropped: {
             editInProgress = false
+            console.log("crop ended: " + success)
             if (success) {
                 if (aspectRatioType !== "avatar") {
                     preview.source = editor.target

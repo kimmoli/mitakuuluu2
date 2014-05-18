@@ -53,10 +53,15 @@ Dialog {
 
         onPictureUpdated: {
             if (pjid === Mitakuuluu.myJid) {
-                page.avatar = ""
-                page.avatar = path
+                avatarSet(path)
             }
         }
+    }
+
+    function avatarSet(avatarPath) {
+        console.log("updated avatar: " + avatarPath)
+        page.avatar = ""
+        page.avatar = avatarPath
     }
 
     onStatusChanged: {
@@ -254,7 +259,8 @@ Dialog {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    pageStack.push(avatarPickerPage.createObject(root))
+                    var avatarHistory = pageStack.push(Qt.resolvedUrl("AvatarHistory.qml"), {"jid": Mitakuuluu.myJid, "avatar": page.avatar, "owner": true})
+                    avatarHistory.avatarSet.connect(page.avatarSet)
                 }
             }
         }
@@ -289,24 +295,6 @@ Dialog {
             //pageStack.replace(removePage)
             Mitakuuluu.removeAccountFromServer()
             Mitakuuluu.clearGroup("account")
-        }
-    }
-
-    Component {
-        id: avatarPickerPage
-
-        AvatarPickerCrop {
-            id: avatarPicker
-            objectName: "avatarPicker"
-
-            onAvatarSourceChanged: {
-                console.log("avatar from: " + avatarSource)
-                page.avatar = ""
-                page.avatar = Mitakuuluu.saveAvatarForJid(Mitakuuluu.myJid, avatarSource)
-                console.log("avatar to: " + page.avatar)
-                Mitakuuluu.setPicture(Mitakuuluu.myJid, page.avatar)
-                avatarPicker.destroy()
-            }
         }
     }
 }

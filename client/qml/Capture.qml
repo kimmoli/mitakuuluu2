@@ -17,10 +17,19 @@ Dialog {
 
     property bool broadcastMode: true
 
+    property alias cameraState: camera.cameraState
+
+    function _captureHandler() {
+        console.log("Photo saved to", imagePath)
+        page.canAccept = true
+    }
+
     onStatusChanged: {
         if (status == PageStatus.Inactive) {
-            console.log("deactivating camera")
-            camera.cameraState = Camera.UnloadedState
+            if (camera.cameraState != Camera.UnloadedState) {
+                console.log("deactivating camera")
+                camera.cameraState = Camera.UnloadedState
+            }
         }
         else if (status == PageStatus.Active && !canAccept) {
             console.log("activating camera")
@@ -29,12 +38,15 @@ Dialog {
     }
 
     onRejected: {
+        console.log("capture rejected")
         Mitakuuluu.rejectMediaCapture(imagePath)
     }
 
     Component.onDestruction: {
-        console.log("camera destruction")
-        camera.cameraState = Camera.UnloadedState
+        if (camera.cameraState != Camera.UnloadedState) {
+            console.log("camera destruction")
+            camera.cameraState = Camera.UnloadedState
+        }
     }
 
     Rectangle {
@@ -82,9 +94,8 @@ Dialog {
             // Called when the image is saved.
             onImageSaved: {
                 camera.cameraState = Camera.UnloadedState
-                console.log("Photo saved to", path)
                 imagePath = path
-                page.canAccept = true
+                _captureHandler()
             }
 
             // Called when a capture fails for some reason.

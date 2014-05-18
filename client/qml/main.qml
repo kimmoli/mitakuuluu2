@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import QtFeedback 5.0
 import org.nemomobile.configuration 1.0
 import harbour.mitakuuluu2.client 1.0
+import Sailfish.Gallery.private 1.0
 
 ApplicationWindow {
     id: appWindow
@@ -596,6 +597,67 @@ ApplicationWindow {
         }
         if (applicationActive) {
             Mitakuuluu.windowActive()
+        }
+    }
+
+    property Page _cropDialog
+    function openAvatarCrop(sourceImage, targetImage, targetJid, destinationPage) {
+        _cropDialog = imageEditPage.createObject(appWindow, {
+                                                        acceptDestination: destinationPage,
+                                                        acceptDestinationAction: PageStackAction.Pop,
+                                                        source: sourceImage,
+                                                        target: targetImage,
+                                                        jid: targetJid
+                                                       }
+                                                 )
+        return pageStack.push(_cropDialog)
+    }
+    
+    Component {
+        id: imageEditPage
+
+        CropDialog {
+            id: avatarCropDialog
+            objectName: "avatarCrop"
+            allowedOrientations: Orientation.Portrait
+
+            property alias source: imageEditPreview.source
+            property alias target: imageEditPreview.target
+            property alias cropping: imageEditPreview.editInProgress
+            property variant selectedContentProperties
+            property alias orientation: imageEditPreview.orientation
+
+            property string jid
+            signal avatarSet(string avatarPath)
+
+            splitOpen: false
+            avatarCrop: true
+            foreground: CropEditPreview {
+                id: imageEditPreview
+
+                editOperation: ImageEditor.Crop
+                isPortrait: splitView.isPortrait
+                aspectRatio: 1.0
+                splitView: avatarCropDialog
+                anchors.fill: parent
+                active: !splitView.splitOpen
+                explicitWidth: avatarCropDialog.width
+                explicitHeight: avatarCropDialog.height
+            }
+
+            onEdited: {
+                console.log("edit target: " + target)
+                var avatar = Mitakuuluu.saveAvatarForJid(avatarCropDialog.jid, target)
+                console.log("edit avatar: " + avatar)
+                Mitakuuluu.setPicture(avatarCropDialog.jid, avatar)
+                avatarCropDialog.avatarSet(avatar)
+                _cropDialog = null
+            }
+
+            onCropRequested: {
+                console.log("crop requested")
+                imageEditPreview.crop()
+            }
         }
     }
 

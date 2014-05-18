@@ -41,6 +41,7 @@ ImagePickerPage {
 
         CropDialog {
             id: avatarCropDialog
+            objectName: "avatarCrop"
 
             property alias source: imageEditPreview.source
             property alias target: imageEditPreview.target
@@ -75,4 +76,3 @@ ImagePickerPage {
         }
     }
 }
- 
