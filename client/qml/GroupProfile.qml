@@ -237,7 +237,7 @@ Page {
         MouseArea {
             anchors.fill: ava
             onClicked: {
-                pageStack.push(avatarPickerPage.createObject(root))
+                pageStack.push(Qt.resolvedUrl("AvatarHistory.qml"), {"jid": page.jid, "avatar": page.avatar, "owner": page.ownerJid == Mitakuuluu.myJid})
             }
         }
 
@@ -437,7 +437,7 @@ Page {
 
             onAvatarSourceChanged: {
                 page.avatar = ""
-                page.avatar = Mitakuuluu.saveAvatarForJid(Mitakuuluu.myJid, avatarSource)
+                page.avatar = Mitakuuluu.saveAvatarForJid(page.jid, avatarSource)
                 Mitakuuluu.setPicture(page.jid, page.avatar)
                 avatarPicker.destroy()
             }
