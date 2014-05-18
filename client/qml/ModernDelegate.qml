@@ -32,6 +32,8 @@ MouseArea {
     property Item _urlmenuItem: null
     property bool urlmenuOpen: _urlmenuItem != null && _urlmenuItem._open
 
+    property Item fakeClipboardObject: null
+
     property variant messageColor: down ? highlightColor : contactColor
     property variant contactColor: Theme.rgba(getContactColor(model.author), Theme.highlightBackgroundOpacity)
     property variant highlightColor: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
@@ -251,6 +253,22 @@ MouseArea {
         }
         else if (model.watype == Mitakuuluu.Location) {
             Qt.openUrlExternally("geo:" + model.latitude + "," + model.longitude)
+        }
+    }
+
+    function copyToClipboard() {
+        var text = ""
+        if (model.watype == Mitakuuluu.Text) {
+            text = model.data
+        }
+        else if (model.watype == Mitakuuluu.Location) {
+            text = "https://maps.google.com/maps?q=loc:" + model.latitude + "," + model.longitude
+        }
+        else if (model.watype >= Mitakuuluu.Image && model.watype <= Mitakuuluu.Video) {
+            text = model.url
+        }
+        if (text.length > 0) {
+            fakeClipboardObject = fakeClipboardComponent.createObject(null, {"clipboard": text})
         }
     }
 
@@ -784,10 +802,10 @@ MouseArea {
         ContextMenu {
             MenuItem {
                 text: qsTr("Copy", "Conversation message context menu item")
-                visible: model.watype == 0 || model.watype == 5
+                visible: model.watype == Mitakuuluu.Text || model.watype == Mitakuuluu.Location
                 onClicked: {
-                    conversationModel.copyToClipboard(model.msgid)
-                    banner.notify(qsTr("Message copied to clipboard", "Banner item text"))
+                    //conversationModel.copyToClipboard(model.msgid)
+                    copyToClipboard()
                 }
             }
 
@@ -800,11 +818,11 @@ MouseArea {
             }
 
             MenuItem {
-                visible: model.local.indexOf(".whatsapp") > 0
+                visible: model.local.indexOf(".cache") > 0
                 text: qsTr("Save to Gallery", "Conversation message context menu item")
                 onClicked: {
                     var fname = Mitakuuluu.saveImage(model.local)
-                    banner.notify(qsTr("File saved as %1", "Banner text message").arg(fname))
+                    banner.notify(qsTr("Media saved as %1", "Banner text message").arg(fname))
                 }
             }
 
@@ -816,6 +834,22 @@ MouseArea {
                         Mitakuuluu.cancelDownload(model.msgid, page.jid)
                     remove()
                 }
+            }
+        }
+    }
+
+    Component {
+        id: fakeClipboardComponent
+        TextEdit {
+            id: fakeClipboard
+            visible: false
+            property string clipboard
+            Component.onCompleted: {
+                text = clipboard
+                selectAll()
+                copy()
+                banner.notify(qsTr("Message copied to clipboard", "Banner item text"))
+                fakeClipboardObject.destroy()
             }
         }
     }
