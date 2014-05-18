@@ -215,7 +215,7 @@ void ContactsBaseModel::pictureUpdated(const QString &jid, const QString &path)
 {
     if (_modelData.contains(jid)) {
         QString avatar = _modelData[jid]["avatar"].toString();
-        if (avatar.isEmpty() || avatar.contains("harbour-mitakuuluu2")) {
+        if (avatar.isEmpty() || avatar.contains("harbour-mitakuuluu2") || avatar.contains("image://")) {
             setPropertyByJid(jid, "avatar", path);
         }
     }
@@ -424,6 +424,7 @@ void ContactsBaseModel::messageReceived(const QVariantMap &data)
     int lastmessage = data["timestamp"].toInt();
     if (_modelData.contains(jid)) {
         _modelData[jid]["lastmessage"] = lastmessage;
+        _modelData[jid]["typing"] = false;
 
         int row = _modelData.keys().indexOf(jid);
         Q_EMIT dataChanged(index(row), index(row));
