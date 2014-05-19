@@ -30,6 +30,13 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                text: qsTr("Blacklist", "Contacts page menu item")
+                enabled: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("PrivacyList.qml"))
+                }
+            }
+            MenuItem {
                 text: qsTr("Create group", "Contacts page menu item")
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("CreateGroup.qml"))

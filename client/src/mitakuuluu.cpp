@@ -186,6 +186,8 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         pingServer->start();
         qDebug() << "Sending ready to daemon";
         iface->call(QDBus::NoBlock, "ready");
+
+        checkWhatsappStatus();
     }
     else {
         QGuiApplication::exit(1);
@@ -688,6 +690,35 @@ void Mitakuuluu::handleProfileChanged(bool changed, bool active, QString profile
     }
 }
 
+void Mitakuuluu::onWhatsappStatus()
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
+    if (reply->error() == QNetworkReply::NoError) {
+        QByteArray json = reply->readAll();
+        QJsonParseError error;
+        QJsonDocument doc = QJsonDocument::fromJson(json, &error);
+        if (error.error == QJsonParseError::NoError) {
+            QVariantMap mapResult = doc.toVariant().toMap();
+            Q_EMIT whatsappStatusReply(mapResult);
+            /*
+            {"email":{"available":true},
+            "last":{"available":true},
+            "sync":{"available":true},
+            "chat":{"available":true},
+            "group":{"available":true},
+            "multimedia":{"available":true},
+            "online":{"available":true},
+            "profile":{"available":true},
+            "push":{"available":true},
+            "registration":{"available":true},
+            "status":{"available":true},
+            "broadcast":{"available":true},
+            "version":{"available":true}}
+            */
+        }
+    }
+}
+
 void Mitakuuluu::exit()
 {
     qDebug() << "Remote command requested exit";
@@ -1167,6 +1198,12 @@ int Mitakuuluu::getCurrentLocaleIndex()
     }
     else
         return 0;
+}
+
+void Mitakuuluu::checkWhatsappStatus()
+{
+    connect(nam->get(QNetworkRequest(QUrl("https://www.whatsapp.com/status.php?v=2"))),
+            SIGNAL(finished()), this, SLOT(onWhatsappStatus()));
 }
 
 // Settings

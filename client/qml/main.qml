@@ -683,6 +683,17 @@ ApplicationWindow {
                 pageStack.push(Qt.resolvedUrl("ConversationPage.qml"), {"initialModel": ContactsBaseModel.getModel(njid)}, PageStackAction.Immediate)
             }
         }
+        onWhatsappStatusReply: {
+            var offlineFeatures = []
+            for (var key in features) {
+                if (!features[key].available) {
+                    offlineFeatures.splice(0, 0, key)
+                }
+            }
+            if (pageStack.currentPage.objectName != "statusFeatures" && offlineFeatures.length > 0) {
+                banner.notify(qsTr("Server experiencing problems with following feature(s): %1").arg(offlineFeatures.join(", ")))
+            }
+        }
     }
 
     Component.onCompleted: {

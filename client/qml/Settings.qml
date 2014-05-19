@@ -65,16 +65,9 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Send logfile to author", "Settings page menu item")
-                visible: keepLogs && Mitakuuluu.checkLogfile()
+                text: qsTr("System status", "Settings page menu item")
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("SendLogs.qml"))
-                }
-            }
-            MenuItem {
-                text: qsTr("Account", "Settings page menu item")
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("Account.qml"))
+                    pageStack.push(Qt.resolvedUrl("StatusFeatures.qml"))
                 }
             }
             MenuItem {
@@ -84,10 +77,16 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Blacklist", "Settings page menu item")
-                enabled: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
+                text: qsTr("Account", "Settings page menu item")
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("PrivacyList.qml"))
+                    pageStack.push(Qt.resolvedUrl("Account.qml"))
+                }
+            }
+            MenuItem {
+                text: qsTr("Send logfile to author", "Settings page menu item")
+                visible: keepLogs && Mitakuuluu.checkLogfile()
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("SendLogs.qml"))
                 }
             }
         }

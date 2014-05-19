@@ -253,6 +253,8 @@ signals:
     void groupLedColorChanged();
     void mediaLedColorChanged();
 
+    void whatsappStatusReply(const QVariantMap &features);
+
 private slots:
     void onConnectionStatusChanged(int status);
     void onSimParameters(const QString &mcccode, const QString &mnccode);
@@ -268,6 +270,8 @@ private slots:
     void onGroupInfo(const QVariantMap &data);
 
     void handleProfileChanged(bool changed, bool active, QString profile, QList<MyStructure> keyValType);
+
+    void onWhatsappStatus();
 
 public slots:
     Q_SCRIPTABLE void exit();
@@ -349,6 +353,8 @@ public slots:
 
     QStringList getLocalesNames();
     int getCurrentLocaleIndex();
+
+    void checkWhatsappStatus();
 
 //Settings
 
