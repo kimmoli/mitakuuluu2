@@ -122,9 +122,8 @@ Page {
 
                     MenuItem {
                         objectName: "deleteItem"
-                        //% "Delete"
                         visible: avatarGrid.expandItem.source != page.avatar
-                        text: qsTrId("gallery-me-delete")
+                        text: qsTr("Delete")
                         onClicked: avatarGrid.expandItem.remove()
                     }
                 }
@@ -181,7 +180,7 @@ Page {
                 remorse.horizontalAlignment = Text.AlignHCenter
 
                 remorse.execute(remorseContainerComponent.createObject(item),
-                                qsTrId("gallery-la-deleting"),
+                                qsTr("Deleting avatar file"),
                                 function() {
                                     filemodel.remove(avatarGrid.expandIndex)
                                     if (avatarGrid.expandIndex == 0) {
@@ -205,9 +204,7 @@ Page {
     Component {
         id: removalComponent
         RemorseItem {
-            //: RemorseItem cancel help text
-            //% "Cancel"
-            cancelText: qsTrId("gallery-la-cancel-deletion")
+            cancelText: qsTr("Cancel")
         }
     }
 }
