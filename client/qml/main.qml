@@ -4,6 +4,7 @@ import QtFeedback 5.0
 import org.nemomobile.configuration 1.0
 import harbour.mitakuuluu2.client 1.0
 import Sailfish.Gallery.private 1.0
+import QtSensors 5.0
 
 ApplicationWindow {
     id: appWindow
@@ -11,6 +12,31 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("CoverPage.qml")
     initialPage: (Mitakuuluu.load("account/phoneNumber", "unregistered") === "unregistered") ?
                      Qt.resolvedUrl("RegistrationPage.qml") : Qt.resolvedUrl("ChatsPage.qml")
+
+    property bool hidden: true
+    onHiddenChanged: {
+        console.log("hide contacts: " + hidden)
+    }
+
+    property variant hiddenList: []
+    onHiddenListChanged: {
+        console.log("hidden contacts: " + JSON.stringify(hiddenList))
+    }
+
+    function updateHidden(hjid) {
+        var toHide = []
+        toHide = hiddenList
+        var index = toHide.indexOf(hjid)
+        var secure = index >= 0
+        if (secure) {
+            toHide.splice(index, 1)
+        }
+        else {
+            toHide.splice(0, 0, hjid)
+        }
+        hiddenList = toHide
+        Mitakuuluu.save("hidden/" + hjid, !secure)
+    }
 
     property bool sendByEnter: false
     onSendByEnterChanged: Mitakuuluu.save("settings/sendByEnter", sendByEnter)
@@ -598,6 +624,10 @@ ApplicationWindow {
         if (applicationActive) {
             Mitakuuluu.windowActive()
         }
+
+        if (!applicationActive) {
+            hidden = true
+        }
     }
 
     property Page _cropDialog
@@ -612,7 +642,7 @@ ApplicationWindow {
                                                  )
         return pageStack.push(_cropDialog)
     }
-    
+
     Component {
         id: imageEditPage
 
@@ -732,6 +762,16 @@ ApplicationWindow {
         resizeWlan = Mitakuuluu.load("settings/resizeWlan", false)
         systemNotifier = Mitakuuluu.load("settings/systemNotifier", false)
 
+        var hiddenContacts = Mitakuuluu.loadGroup("hidden")
+        var toHide = []
+        for (var i = 0; i < hiddenContacts.length; i++) {
+            var val = hiddenContacts[i].value == "true"
+            if (val)
+                toHide.splice(0, 0, hiddenContacts[i].jid)
+        }
+        hiddenList = toHide
+        hidden = true
+
         updateCoverActions()
     }
 
@@ -747,6 +787,15 @@ ApplicationWindow {
         fadeTime: 250
         attackIntensity: 0.0
         fadeIntensity: 0.0
+    }
+
+    SensorGesture {
+        id: shake
+        gestures: ["QtSensors.shake", "QtSensors.shake2", "QtSensors.doubletap"]
+        enabled: applicationActive && hidden && hiddenList.length > 0
+        onDetected:{
+            hidden = false
+        }
     }
 }
 

@@ -377,7 +377,7 @@ Page {
         showActive: false
         showUnknown: acceptUnknown
         hideGroups: true
-        filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
+        filterContacts: showMyJid ? (hidden ? hiddenList : []) : (hidden ? hiddenList.splice(0, 0, Mitakuuluu.MyJid) : [Mitakuuluu.MyJid])
         onContactsModelChanged: {
             fastScroll.init()
         }

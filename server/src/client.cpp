@@ -62,6 +62,8 @@
 #include <QMediaPlayer>
 #include <QMediaMetaData>
 
+#include "../qexifimageheader/qexifimageheader.h"
+
 /** ***********************************************************************
  ** Static global members
  **/
@@ -1690,6 +1692,7 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
     if (mime.startsWith("image")) {
         QString tmp = QString("/var/tmp/%1").arg(fileName.split("/").last());
         int originalSize = QFile(fileName).size();
+
         qDebug() << "Original" << fileName << "size:" << QString::number(originalSize);
         settings->sync();
         if (settings->value("settings/resizeImages", false).toBool()
@@ -1729,6 +1732,13 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
                 qDebug() << "image w:" << QString::number(img.width())
                          << "h:" << QString::number(img.height());
                 fname = tmp;
+            }
+
+            if (fileName.toLower().endsWith(".jpg") || fileName.toLower().endsWith(".jpeg")) {
+                QExifImageHeader exif(fileName);
+                QExifImageHeader newExif(fname);
+                newExif.setValue(QExifImageHeader::Orientation, exif.value(QExifImageHeader::Orientation));
+                newExif.saveToJpeg(fname);
             }
 
             qDebug() << "Check sharing options";

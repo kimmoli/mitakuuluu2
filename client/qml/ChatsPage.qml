@@ -146,6 +146,7 @@ Page {
             menu: contextMenu
             property bool muted: false
             property Timer mutingTimer
+            property bool secure: hiddenList.indexOf(model.jid) >= 0
 
             function removeContact() {
                 remorseAction(qsTr("Delete", "Delete contact remorse action text"),
@@ -281,6 +282,27 @@ Page {
                         anchors.centerIn: parent
                     }
                 }
+
+                Rectangle {
+                    width: Theme.iconSizeSmall
+                    height: Theme.iconSizeSmall
+                    smooth: true
+                    radius: Theme.iconSizeSmall / 4
+                    border.width: 1
+                    border.color: Theme.highlightColor
+                    color: Theme.secondaryHighlightColor
+                    visible: item.secure
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
+
+                    Image {
+                        source: "image://theme/icon-s-secure"
+                        smooth: true
+                        width: Theme.iconSizeSmall
+                        height: Theme.iconSizeSmall
+                        anchors.centerIn: parent
+                    }
+                }
             }
 
             Column {
@@ -348,6 +370,12 @@ Page {
                             pageStack.push(Qt.resolvedUrl("MutingSelector.qml"), {"jid": model.jid})
                         }
                     }
+                    MenuItem {
+                        text: item.secure ? qsTr("Un-hide contact") : qsTr("Hide contact")
+                        onClicked: {
+                            updateHidden(model.jid)
+                        }
+                    }
 
                     MenuItem {
                         text: qsTr("Delete group", "Contact context menu delete group item")
@@ -403,6 +431,7 @@ Page {
         contactsModel: ContactsBaseModel
         showActive: true
         showUnknown: true
+        filterContacts: hidden ? hiddenList : []
         Component.onCompleted: {
             init()
         }

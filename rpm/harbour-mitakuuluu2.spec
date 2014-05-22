@@ -8,15 +8,16 @@ Name:       harbour-mitakuuluu2
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Mitäkuuluu
-Version:    0.6
-Release:    8
+Version:    0.7.0
+Release:    1
 Group:      Qt/Qt
 License:    WTFPL
 Source0:    %{name}-%{version}.tar.bz2
-Requires:   sailfishsilica-qt5 libexif
+Requires:   sailfishsilica-qt5
 #Requires:   qtcontacts-sqlite-qt5 >= 0.1.37
 Requires:   nemo-transferengine-qt5
 Requires:   declarative-transferengine-qt5 >= 0.0.44
+Requires:   qt5-qtsensors-plugin-gestures-sensor, qt5-qtsensors-plugin-gestures-shake
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
@@ -26,7 +27,6 @@ BuildRequires:  pkgconfig(sailfishapp)
 #BuildRequires:  pkgconfig(qtcontacts-sqlite-qt5-extensions) >= 0.1.41
 BuildRequires:  pkgconfig(mlite5)
 BuildRequires:  desktop-file-utils
-BuildRequires:  libexif-devel
 BuildRequires:  pkgconfig(nemotransferengine-qt5)
 BuildRequires:  gstreamer-devel
 

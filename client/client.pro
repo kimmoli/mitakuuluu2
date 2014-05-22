@@ -1,10 +1,10 @@
 TARGET = harbour-mitakuuluu2
 target.path = /usr/bin
 
-QT += sql dbus core multimedia
+QT += sql dbus core multimedia sensors
 CONFIG += sailfishapp link_pkgconfig
 #CONFIG += qml_debug
-PKGCONFIG += sailfishapp libexif gstreamer-0.10
+PKGCONFIG += sailfishapp gstreamer-0.10 Qt5Sensors
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DEFINES += APP_BUILDNUM=\\\"$$RELEASE\\\"
@@ -33,6 +33,7 @@ SOURCES += \
     src/audiorecorder.cpp \
     ../threadworker/threadworker.cpp \
     ../threadworker/queryexecutor.cpp \
+    ../qexifimageheader/qexifimageheader.cpp \
     src/conversationmodel.cpp \
     src/mitakuuluu.cpp \
     src/contactsfiltermodel.cpp \
@@ -42,6 +43,7 @@ SOURCES += \
 HEADERS += \
     ../threadworker/threadworker.h \
     ../threadworker/queryexecutor.h \
+    ../qexifimageheader/qexifimageheader.h \
     src/profile_dbus.h \
     src/constants.h \
     src/conversationmodel.h \

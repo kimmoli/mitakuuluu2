@@ -14,11 +14,9 @@
 #include <QFileInfo>
 #include <QFileInfoList>
 
-#include <libexif/exif-loader.h>
-#include <libexif/exif-entry.h>
-#include <libexif/exif-data.h>
-
 #include "profile_dbus.h"
+
+#include "../qexifimageheader/qexifimageheader.h"
 
 #define PROFILEKEY_PRIVATE_TONE     "mitakuuluu.private.tone"
 #define PROFILEKEY_PRIVATE_ENABLED  "mitakuuluu.private.enabled"

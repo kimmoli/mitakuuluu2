@@ -2,7 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.mitakuuluu2.client 1.0
 import QtLocation 5.0
-import QtPositioning 5.0
+import QtPositioning 5.1
 import "Utilities.js" as Utilities
 
 Page {
@@ -749,23 +749,21 @@ Page {
             property int initialTimestamp: 0
 
             onPositionChanged: {
-                if (positionSource) {
-                    if (positionSource.position) {
-                        if (positionSource.position.horizontalAccuracyValid
-                                && positionSource.position.horizontalAccuracy > 0
-                                && positionSource.position.timestamp.getTime() >= initialTimestamp
-                                && positionSource.position.coordinate
-                                && positionSource.position.coordinate.isValid) {
-                            console.log("sending coordinates: " + positionSource.position.coordinate.latitude + "," + positionSource.position.coordinate.longitude)
-                            Mitakuuluu.sendLocation(page.jid,
-                                                    positionSource.position.coordinate.latitude,
-                                                    positionSource.position.coordinate.longitude,
-                                                    16,
-                                                    mapSource)
-                            positionSource.active = false
-                            positionSource.destroy()
-                        }
-                    }
+                if (positionSource
+                        && positionSource.position
+                        && positionSource.position.horizontalAccuracyValid
+                        && positionSource.position.horizontalAccuracy > 0
+                        && positionSource.position.timestamp.getTime() >= initialTimestamp
+                        && positionSource.position.coordinate
+                        && positionSource.position.coordinate.isValid) {
+                    console.log("sending coordinates: " + positionSource.position.coordinate.latitude + "," + positionSource.position.coordinate.longitude)
+                    Mitakuuluu.sendLocation(page.jid,
+                                            positionSource.position.coordinate.latitude,
+                                            positionSource.position.coordinate.longitude,
+                                            16,
+                                            mapSource)
+                    positionSource.active = false
+                    positionSource.destroy()
                 }
             }
 

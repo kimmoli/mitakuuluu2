@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.1
 import Sailfish.Silica 1.0
 import harbour.mitakuuluu2.client 1.0
 import QtMultimedia 5.0
@@ -236,6 +236,7 @@ Dialog {
                 console.log("shutter released")
                 shutter.autoMode = false
                 if (camera.lockStatus == Camera.Locked) {
+                    extensions.captureTime = new Date()
                     camera.imageCapture.capture()
                 }
             }

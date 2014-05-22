@@ -56,6 +56,7 @@ SOURCES += src/whatsapp-server.cpp \
 #    src/heartbeat.cpp \
     ../threadworker/threadworker.cpp \
     ../threadworker/queryexecutor.cpp \
+    ../qexifimageheader/qexifimageheader.cpp \
     src/client.cpp \
     src/Whatsapp/util/utilities.cpp \
     src/Whatsapp/util/messagedigest.cpp \
@@ -95,6 +96,7 @@ HEADERS += \
 #    src/heartbeat.h \
     ../threadworker/threadworker.h \
     ../threadworker/queryexecutor.h \
+    ../qexifimageheader/qexifimageheader.h \
     src/version.h \
     src/globalconstants.h \
     src/client.h \
