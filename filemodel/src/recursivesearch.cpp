@@ -34,7 +34,7 @@ void RecursiveSearch::recursiveSearch(const QString &folder)
 
     QVariantList folderData;
 
-    qDebug() << "Recursive search in:" << mpath << "filter:" << _filters;
+    //qDebug() << "Recursive search in:" << mpath << "filter:" << _filters;
 
     QDir dir(mpath);
     const QFileInfoList &list = dir.entryInfoList(_filters, QDir::Files | QDir::AllDirs | QDir::NoSymLinks | QDir::NoDot | QDir::NoDotDot, _sortName ? QDir::Name : QDir::Time);
@@ -45,7 +45,7 @@ void RecursiveSearch::recursiveSearch(const QString &folder)
             recursiveSearch(info.filePath());
         }
         else if (info.isFile()) {
-            qDebug() << "adding" << info.filePath();
+            //qDebug() << "adding" << info.filePath();
             QVariantMap fileData;
 
             fileData["name"] = info.fileName();

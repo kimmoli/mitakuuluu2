@@ -194,7 +194,7 @@ Page {
             anchors.left: subjectLabel.right
             anchors.right: parent.right
             text: page.subject
-
+            errorHighlight: text.length == 0
             EnterKey.enabled: text.trim().length > 0
             EnterKey.highlighted: EnterKey.enabled
             EnterKey.iconSource: "image://theme/icon-m-enter-next"

@@ -23,8 +23,8 @@ Page {
         }
         onAccountExpired: {
             busy.hide()
-            errorArea.show(qsTr("Account expired\n\n", "Red account expired screen text") + JSON.stringify(reason))
-            //renewDialog.open() // TODO
+            banner.notify(qsTr("Account expired\n\n", "Red account expired screen text") + JSON.stringify(reason))
+            pageStack.push(Qt.resolvedUrl("Payments.qml"))
         }
         onCodeRequestFailed: {
             busy.hide()
@@ -56,6 +56,17 @@ Page {
         id: view
         anchors.fill: parent
         contentHeight: content.height
+
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("I have code")
+                enabled: phoneField.text.length > 0 && pushname.text.length > 0 && !busy.running
+                onClicked: {
+                    codeField.visible = true
+                    codeField.forceActiveFocus()
+                }
+            }
+        }
 
         Column {
             id: content
@@ -90,6 +101,7 @@ Page {
                 id: phoneField
                 width: parent.width
                 enabled: !codeField.visible
+                errorHighlight: text.length == 0
                 textLeftMargin: ccLabel.paintedWidth + Theme.paddingLarge
                 inputMethodHints: Qt.ImhDialableCharactersOnly
                 validator: RegExpValidator{ regExp: /[0-9]*/;}
@@ -121,6 +133,7 @@ Page {
                 width: parent.width
                 label: qsTr("Profile nickname", "Registration nickname text field label")
                 placeholderText: qsTr("Enter your nickname", "Registration nickname text field placeholder")
+                errorHighlight: text.length == 0
                 EnterKey.enabled: text.length > 0
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: page.forceActiveFocus()
@@ -169,6 +182,7 @@ Page {
                 visible: false
                 enabled: !busy.running
                 width: parent.width
+                errorHighlight: text.length == 0
                 validator: RegExpValidator { regExp: /^[0-9]{6}$/; }
                 inputMethodHints: Qt.ImhDigitsOnly
                 label: qsTr("Sms code", "Registration registration code label")

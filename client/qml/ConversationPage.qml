@@ -281,79 +281,71 @@ Page {
 
             _activeHeight: mediaSendRow.height
 
-            Row {
-                id: mediaSendRow
-                x: width > parent.width ? 0 : ((parent.width - width) / 2)
+            Item {
+                width: parent.width
                 height: Theme.itemSizeMedium
-                spacing: Theme.paddingSmall
 
-                IconButton {
-                    icon.source: "image://theme/icon-m-image"
+                Row {
+                    id: mediaSendRow
+                    x: width > parent.width ? 0 : ((parent.width - width) / 2)
+                    height: parent.height
+                    spacing: Theme.paddingSmall
                     visible: !audioRecorder
-                    onClicked: {
-                        pushMedia.hide()
-                        pageStack.push(Qt.resolvedUrl("MediaSelector.qml"), {"mode": "image", "datesort": true, "multiple": true})
-                        pageStack.currentPage.accepted.connect(mediaReceiver.mediaAccepted)
-                    }
-                }
 
-                IconButton {
-                    icon.source: "image://theme/icon-camera-shutter-release"
-                    visible: !audioRecorder
-                    onClicked: {
-                        pushMedia.hide()
-                        pageStack.push(Qt.resolvedUrl("Capture.qml"), {"broadcastMode": false})
-                        pageStack.currentPage.accepted.connect(captureReceiver.captureAccepted)
-                    }
-                }
-
-                IconButton {
-                    icon.source: "image://theme/icon-m-gps"
-                    visible: !audioRecorder
-                    onClicked: {
-                        pushMedia.hide()
-                        if (locationEnabled)
-                            positionSourceCreationTimer.start()
-                        else
-                            banner.notify(qsTr("Enable location in settings!", "Banner text if GPS disabled in settings"))
-                    }
-                }
-
-                Item {
-                    height: 64
-                    width: 64 * 3 + Theme.paddingSmall
-                    visible: audioRecorder
-
-                    Label {
-                        id: recordDuration
-                        anchors {
-                            left: parent.left
-                            verticalCenter: parent.verticalCenter
+                    IconButton {
+                        icon.source: "image://theme/icon-m-image"
+                        onClicked: {
+                            pushMedia.hide()
+                            pageStack.push(Qt.resolvedUrl("MediaSelector.qml"), {"mode": "image", "datesort": true, "multiple": true})
+                            pageStack.currentPage.accepted.connect(mediaReceiver.mediaAccepted)
                         }
-                        text: audioRecorder ? (Format.formatDuration(audioRecorder.duration / 1000, Format.DurationShort)) : ""
-                        font.pixelSize: Theme.fontSizeLarge
                     }
 
-                    Label {
-                        id: deleteVoiceLabel
-                        anchors {
-                            top: recordDuration.bottom
-                            topMargin: - Theme.paddingMedium
-                            horizontalCenter: recordDuration.horizontalCenter
+                    IconButton {
+                        icon.source: "image://theme/icon-camera-shutter-release"
+                        onClicked: {
+                            pushMedia.hide()
+                            pageStack.push(Qt.resolvedUrl("Capture.qml"), {"broadcastMode": false})
+                            pageStack.currentPage.accepted.connect(captureReceiver.captureAccepted)
                         }
-                        text: qsTr("Delete", "Conversation voice recorder delete label")
-                        color: Theme.secondaryColor
-                        visible: !voiceSend.containsMouse
-                        font.pixelSize: Theme.fontSizeTiny
+                    }
+
+                    IconButton {
+                        icon.source: "image://theme/icon-m-gps"
+                        onClicked: {
+                            pushMedia.hide()
+                            if (locationEnabled)
+                                positionSourceCreationTimer.start()
+                            else
+                                banner.notify(qsTr("Enable location in settings!", "Banner text if GPS disabled in settings"))
+                        }
+                    }
+
+                    Item {
+                        id: voicePlaceholder
+                        width: Theme.itemSizeSmall
+                        height: Theme.itemSizeSmall
+                    }
+
+                    IconButton {
+                        icon.source: "image://theme/icon-m-people"
+                        onClicked: {
+                            pushMedia.hide()
+                            pageStack.push(Qt.resolvedUrl("SendContactCard.qml"))
+                            pageStack.currentPage.accepted.connect(vcardReceiver.contactAccepted)
+                        }
                     }
                 }
 
                 IconButton {
                     id: voiceSend
-                    icon.source: "image://theme/icon-cover-unmute"
-                    icon.width: 64
-                    icon.height: 64
-                    property bool voiceReady: false
+                    icon.source: "image://theme/icon-m-mic"
+                    icon.anchors.centerIn: undefined
+                    icon.anchors.verticalCenter: voiceSend.verticalCenter
+
+                    x: voicePlaceholder.x + mediaSendRow.x
+                    width: audioRecorder ? (64 * 3 + mediaSendRow.spacing) : Theme.itemSizeSmall
+
                     onClicked: {
                         if (voiceRecordTimer.running) {
                             voiceRecordTimer.stop()
@@ -380,24 +372,40 @@ Page {
                         page.backNavigation = true
                     }
                     onPositionChanged: {
-                        recordDuration.anchors.leftMargin = mouse.x
-                        recordDuration.color = containsMouse ? Theme.primaryColor : "red"
+                        recordDuration.anchors.leftMargin = mouse.x - (Theme.itemSizeSmall * 2)
+                        durationLabel.color = containsMouse ? Theme.primaryColor : "red"
                     }
                 }
 
                 Item {
-                    width: 64
+                    id: recordDuration
                     height: 64
+                    width: 64 * 2
+                    anchors.left: voiceSend.left
+                    anchors.leftMargin: - (Theme.itemSizeSmall * 2)
                     visible: audioRecorder
-                }
 
-                IconButton {
-                    icon.source: "image://theme/icon-m-people"
-                    visible: !audioRecorder
-                    onClicked: {
-                        pushMedia.hide()
-                        pageStack.push(Qt.resolvedUrl("SendContactCard.qml"))
-                        pageStack.currentPage.accepted.connect(vcardReceiver.contactAccepted)
+                    Label {
+                        id: durationLabel
+                        anchors {
+                            left: parent.left
+                            verticalCenter: parent.verticalCenter
+                        }
+                        text: audioRecorder ? (Format.formatDuration(audioRecorder.duration / 1000, Format.DurationShort)) : ""
+                        font.pixelSize: Theme.fontSizeLarge
+                    }
+
+                    Label {
+                        id: deleteVoiceLabel
+                        anchors {
+                            top: durationLabel.bottom
+                            topMargin: - Theme.paddingMedium
+                            horizontalCenter: durationLabel.horizontalCenter
+                        }
+                        text: !voiceSend.containsMouse ? qsTr("Release to delete", "Conversation voice recorder delete label")
+                                                       : qsTr("Release to send", "Conversation voice recorder delete label")
+                        color: Theme.secondaryColor
+                        font.pixelSize: Theme.fontSizeTiny
                     }
                 }
             }
@@ -713,6 +721,7 @@ Page {
         audioRecorder = recorderComponent.createObject(null)
         audioRecorder.record()
         recordDuration.anchors.leftMargin = 0
+        durationLabel.color = Theme.primaryColor
     }
 
     Component {

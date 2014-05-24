@@ -1193,6 +1193,10 @@ void Mitakuuluu::save(const QString &key, const QVariant &value)
         settings->setValue(key, value);
         settings->sync();
     }
+
+    if (iface) {
+        iface->call(QDBus::NoBlock, "settingsChanged");
+    }
 }
 
 QVariant Mitakuuluu::load(const QString &key, const QVariant &defaultValue)

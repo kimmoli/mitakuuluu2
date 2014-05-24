@@ -112,6 +112,7 @@ Dialog {
                 anchors.verticalCenter: avaholder.verticalCenter
                 width: parent.width - avaholder.width - Theme.paddingMedium
                 onTextChanged: checkCanAccept()
+                errorHighlight: text.length == 0
                 placeholderText: qsTr("Write name of new group here", "Create group subject area subtitle")
                 EnterKey.enabled: text.length > 0
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"

@@ -78,6 +78,7 @@ Dialog {
                 inputMethodHints: Qt.ImhDialableCharactersOnly
                 placeholderText: qsTr("1234567890")
                 validator: RegExpValidator{ regExp: /[0-9]*/;}
+                errorHighlight: text.length == 0
                 EnterKey.enabled: acceptableInput && (text.trim().length > 0)
                 EnterKey.highlighted: acceptableInput && (text.trim().length > 0)
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -95,6 +96,7 @@ Dialog {
             id: aliasField
             width: parent.width
             placeholderText: qsTr("Enter contact name here")
+            errorHighlight: text.length == 0
             EnterKey.enabled: true//addContact.canAccept
             EnterKey.highlighted: text.length > 0 //addContact.canAccept
             EnterKey.iconSource: "image://theme/icon-m-enter-next"

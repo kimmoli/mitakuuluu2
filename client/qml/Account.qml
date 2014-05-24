@@ -139,6 +139,7 @@ Dialog {
             anchors.left: pushnameLabel.right
             anchors.right: parent.right
             text: page.pushname
+            errorHighlight: text.length == 0
             EnterKey.enabled: false//text.trim().length > 0
             EnterKey.highlighted: EnterKey.enabled
             //EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -171,6 +172,7 @@ Dialog {
             anchors.left: presenceLabel.right
             anchors.right: parent.right
             text: page.presence
+            errorHighlight: text.length == 0
             EnterKey.enabled: false//text.trim().length > 0
             EnterKey.highlighted: EnterKey.enabled
             //EnterKey.iconSource: "image://theme/icon-m-enter-next"

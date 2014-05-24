@@ -27,7 +27,10 @@ desktops.path = /usr/share/applications
 icons.files = $${TARGET}.png
 icons.path = /usr/share/icons/hicolor/86x86/apps
 
-INSTALLS = images dbus emoji qmls desktops icons
+presets.files = presets
+presets.path = /usr/share/harbour-mitakuuluu2
+
+INSTALLS = images dbus emoji qmls desktops icons presets
 
 SOURCES += \
     src/audiorecorder.cpp \

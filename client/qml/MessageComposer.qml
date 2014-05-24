@@ -48,6 +48,7 @@ Dialog {
 
     TextArea {
         id: textArea
+        errorHighlight: text.length == 0
         anchors {
             top: header.bottom
             left: parent.left

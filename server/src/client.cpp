@@ -261,6 +261,8 @@ Client::~Client()
 */
 void Client::readSettings()
 {
+    settings->sync();
+
     this->wanokiascratch1 = settings->value(SETTINGS_SCRATCH1, BUILD_KEY).toString();
     this->wanokiascratch2 = settings->value(SETTINGS_SCRATCH2, BUILD_HASH).toString();
     this->wandroidscratch1 = settings->value(SETTINGS_SCRATCH3, ANDROID_TT).toString();
@@ -284,6 +286,32 @@ void Client::readSettings()
 
     // Last Synchronization
     this->lastSync = settings->value(SETTINGS_LAST_SYNC).toLongLong();
+
+    alwaysOffline = settings->value("settings/alwaysOffline", false).toBool();
+
+    resizeImages = settings->value("settings/resizeImages", false).toBool();
+    resizeWlan = settings->value("settings/resizeWlan").toBool();
+    resizeBySize = settings->value("settings/resizeBySize", true).toBool();
+    resizeImagesTo = settings->value("settings/resizeImagesTo", 1024*1024).toInt();
+    resizeImagesToMPix = settings->value("settings/resizeImagesToMPix", 5.01).toFloat();
+
+    autoDownloadMedia = settings->value(SETTINGS_AUTOMATIC_DOWNLOAD).toBool();
+    autoBytes = settings->value(SETTINGS_AUTOMATIC_DOWNLOAD_BYTES, QVariant(DEFAULT_AUTOMATIC_DOWNLOAD)).toInt();
+    autoDownloadWlan = settings->value("settings/autoDownloadWlan").toBool();
+
+    notificationsMuted = settings->value("settings/notificationsMuted", false).toBool();
+    notifyMessages = settings->value("settings/notifyMessages", false).toBool();
+    systemNotifier = settings->value("settings/systemNotifier", false).toBool();
+
+    showConnectionNotifications = settings->value("settings/showConnectionNotifications", false).toBool();
+
+    groupOfflineMessages = settings->value("settings/groupOfflineMessages", true).toBool();
+
+    settings->beginGroup("muting");
+    foreach (const QString &key, settings->childKeys()) {
+        mutingList[key] = settings->value(key, 0).toULongLong();
+    }
+    settings->endGroup();
 
     // Read counters
     dataCounters.readCounters();
@@ -405,7 +433,7 @@ void Client::addMessage(const FMessage &message)
         dbExecutor->queueAction(data);
 
         qDebug() << "should show notification?" << "author:" << author << "jid:" << jid << "activeJid:" << _activeJid << "myJid:" << myJid;
-        if ((author != myJid) && (author != _activeJid) && (jid != _activeJid)) {
+        if ((!message.offline || !groupOfflineMessages) && (author != myJid) && (author != _activeJid) && (jid != _activeJid)) {
             qDebug() << "show notification for:" << message.key.id << "jid:" << jid;
             QVariantMap notify;
             notify["jid"] = jid;
@@ -465,6 +493,26 @@ void Client::onSimParameters(QDBusPendingCallWatcher *call)
     Q_EMIT simParameters(mcc, mnc);
 
     call->deleteLater();
+}
+
+void Client::notifyOfflineMessages(int count)
+{
+    QString text = tr("Offline messages: %n", "", count);
+    connectionNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
+    connectionNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
+    MRemoteAction action("harbour.mitakuuluu2.client", "/", "harbour.mitakuuluu2.client", "notificationCallback", QVariantList() << QString());
+    connectionNotification->setAction(action);
+    connectionNotification->publish();
+}
+
+void Client::notifyOfflineNotifications(int count)
+{
+    QString text = tr("Offline notifications: %n", "", count);
+    connectionNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
+    connectionNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
+    MRemoteAction action("harbour.mitakuuluu2.client", "/", "harbour.mitakuuluu2.client", "notificationCallback", QVariantList() << QString());
+    connectionNotification->setAction(action);
+    connectionNotification->publish();
 }
 
 int Client::getUnreadCount(const QString &jid)
@@ -619,8 +667,8 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
 
     connect(connection,SIGNAL(accountExpired(QVariantMap)),this,SLOT(expired(QVariantMap)));
 
-    connect(connection,SIGNAL(groupNewSubject(QString,QString,QString,QString,QString,QString)),
-            this,SLOT(groupNewSubject(QString,QString,QString,QString,QString,QString)));
+    connect(connection,SIGNAL(groupNewSubject(QString,QString,QString,QString,QString,QString,bool)),
+            this,SLOT(groupNewSubject(QString,QString,QString,QString,QString,QString,bool)));
 
     connect(connection,SIGNAL(groupInfoFromList(QString,QString,QString,QString,
                                                 QString,QString,QString)),
@@ -654,8 +702,8 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connect(connection,SIGNAL(mediaUploadAccepted(FMessage)),
             this,SLOT(mediaUploadAccepted(FMessage)));
 
-    connect(connection,SIGNAL(photoIdReceived(QString,QString,QString,QString,QString,QString)),
-            this,SLOT(photoIdReceived(QString,QString,QString,QString,QString,QString)));
+    connect(connection,SIGNAL(photoIdReceived(QString,QString,QString,QString,QString,QString,bool)),
+            this,SLOT(photoIdReceived(QString,QString,QString,QString,QString,QString,bool)));
 
     connect(connection,SIGNAL(photoDeleted(QString,QString,QString,QString,QString)),
             this,SLOT(photoDeleted(QString,QString,QString,QString,QString)));
@@ -666,11 +714,11 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connect(connection,SIGNAL(groupUsers(QString,QStringList)),
             this,SLOT(groupUsers(QString,QStringList)));
 
-    connect(connection,SIGNAL(groupAddUser(QString,QString,QString,QString)),
-            this,SLOT(groupAddUser(QString,QString,QString,QString)));
+    connect(connection,SIGNAL(groupAddUser(QString,QString,QString,QString,bool)),
+            this,SLOT(groupAddUser(QString,QString,QString,QString,bool)));
 
-    connect(connection,SIGNAL(groupRemoveUser(QString,QString,QString,QString)),
-            this,SLOT(groupRemoveUser(QString,QString,QString,QString)));
+    connect(connection,SIGNAL(groupRemoveUser(QString,QString,QString,QString,bool)),
+            this,SLOT(groupRemoveUser(QString,QString,QString,QString,bool)));
 
     connect(connection,SIGNAL(groupError(QString)),
             this,SLOT(groupError(QString)));
@@ -688,6 +736,10 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connect(connection,SIGNAL(contactsSynced(QVariantList)), this, SLOT(syncResultsAvailable(QVariantList)));
 
     connect(connection,SIGNAL(syncFinished()), this, SIGNAL(synchronizationFinished()));
+
+    connect(connection, SIGNAL(notifyOfflineMessages(int)), this, SLOT(notifyOfflineMessages(int)));
+
+    connect(connection, SIGNAL(notifyOfflineNotifications(int)), this, SLOT(notifyOfflineNotifications(int)));
 
     updateNotification(tr("Connected", "System connection notification"));
 
@@ -848,16 +900,10 @@ void Client::connectToServer()
 
     QObject::connect(connection, SIGNAL(socketBroken()), this, SLOT(destroyConnection()));
 
-    bool threading = settings->value(SETTINGS_THREADING, true).toBool();
-    if (threading) {
-        QThread *thread = new QThread(connection);
-        connection->moveToThread(thread);
-        QObject::connect(thread, SIGNAL(started()), connection, SLOT(init()));
-        thread->start();
-    }
-    else {
-        connection->init();
-    }
+    QThread *thread = new QThread(connection);
+    connection->moveToThread(thread);
+    QObject::connect(thread, SIGNAL(started()), connection, SLOT(init()));
+    thread->start();
 }
 
 void Client::connected()
@@ -1044,10 +1090,7 @@ void Client::changeUserName(const QString &newUserName)
 {
     userName = newUserName;
     if (connectionStatus == LoggedIn) {
-        settings->sync();
-        bool alwaysOffline = settings->value("settings/alwaysOffline", false).toBool();
-        QString privacy = settings->value("privacy/lastOnline", "").toString();
-        Q_EMIT connectionSetNewUserName(userName, alwaysOffline, privacy);
+        Q_EMIT connectionSetNewUserName(userName, alwaysOffline, false);
     }
 }
 
@@ -1344,10 +1387,6 @@ void Client::groupNotification(const QString &gjid, const QString &jid, int type
 
 void Client::startDownloadMessage(const FMessage &msg)
 {
-    // Automatic import of downloaded media into gallery
-    this->importMediaToGallery = settings->value(SETTINGS_IMPORT_TO_GALLERY,
-                                                  QVariant(DEFAULT_IMPORT_TO_GALLERY)).toBool();
-
     MediaDownload *mediaDownload = new MediaDownload(msg);
 
     connect(mediaDownload,SIGNAL(progress(FMessage,float)),
@@ -1361,16 +1400,10 @@ void Client::startDownloadMessage(const FMessage &msg)
 
     _mediaDownloadHash[msg.key.id] = mediaDownload;
 
-    bool threading = settings->value(SETTINGS_THREADING, true).toBool();
-    if (threading) {
-        QThread *thread = new QThread(mediaDownload);
-        mediaDownload->moveToThread(thread);
-        QObject::connect(thread, SIGNAL(started()), mediaDownload, SLOT(backgroundTransfer()));
-        thread->start();
-    }
-    else {
-        mediaDownload->backgroundTransfer();
-    }
+    QThread *thread = new QThread(mediaDownload);
+    mediaDownload->moveToThread(thread);
+    QObject::connect(thread, SIGNAL(started()), mediaDownload, SLOT(backgroundTransfer()));
+    thread->start();
 }
 
 void Client::ready()
@@ -1444,18 +1477,11 @@ void Client::mediaUploadAccepted(const FMessage &message)
     connect(mediaUpload,SIGNAL(httpError(MediaUpload*, FMessage)),
             this,SLOT(httpErrorHandler(MediaUpload*, FMessage)));
 
-    bool threading = settings->value(SETTINGS_THREADING, true).toBool();
-    if (threading) {
-        qDebug() << "Starting uploader in external thread";
-        QThread *thread = new QThread(mediaUpload);
-        mediaUpload->moveToThread(thread);
-        QObject::connect(thread, SIGNAL(started()), mediaUpload, SLOT(upload()));
-        thread->start();
-    }
-    else {
-        qDebug() << "Starting uploader in internal thread";
-        mediaUpload->upload();
-    }
+    qDebug() << "Starting uploader in external thread";
+    QThread *thread = new QThread(mediaUpload);
+    mediaUpload->moveToThread(thread);
+    QObject::connect(thread, SIGNAL(started()), mediaUpload, SLOT(upload()));
+    thread->start();
 }
 
 void Client::mediaUploadStarted(MediaUpload *mediaUpload, const FMessage &msg)
@@ -1597,6 +1623,7 @@ int Client::currentStatus()
 
 void Client::recheckAccountAndConnect()
 {
+    settings->sync();
     this->phoneNumber = settings->value(SETTINGS_PHONENUMBER, QString()).toString();
     this->myJid = settings->value(SETTINGS_MYJID, QString("%1@s.whatsapp.net").arg(this->phoneNumber)).toString();
     this->password = settings->value(SETTINGS_PASSWORD, QString()).toString();
@@ -1670,6 +1697,11 @@ void Client::unsubscribe(const QString &jid)
     }
 }
 
+void Client::settingsChanged()
+{
+    readSettings();
+}
+
 void Client::sendText(const QString &jid, const QString &message)
 {
     FMessage msg(jid, true);
@@ -1684,24 +1716,20 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
 {
     FMessage msg(JID_DOMAIN, true);
 
-    QString fname = fileName;
-    fname = fname.replace("file://", "");
+    QString file = fileName;
+    file = file.replace("file://", "");
+    QString fname = file;
 
-    QString ext = fileName.split(".").last();
+    QString ext = file.split(".").last();
     QString mime = Utilities::guessMimeType(ext);
     if (mime.startsWith("image")) {
-        QString tmp = QString("/var/tmp/%1").arg(fileName.split("/").last());
-        int originalSize = QFile(fileName).size();
+        QString tmp = QString("/var/tmp/%1").arg(file.split("/").last());
+        int originalSize = QFile(file).size();
 
-        qDebug() << "Original" << fileName << "size:" << QString::number(originalSize);
-        settings->sync();
-        if (settings->value("settings/resizeImages", false).toBool()
-                && (settings->value("settings/resizeWlan").toBool() || activeNetworkType != QNetworkConfiguration::BearerWLAN)) {
-            bool resizeBySize = settings->value("settings/resizeBySize", true).toBool();
+        qDebug() << "Original" << file << "size:" << QString::number(originalSize);
+        if (resizeImages && (resizeWlan || activeNetworkType != QNetworkConfiguration::BearerWLAN)) {
             qDebug() << "resizeBySize:" << (resizeBySize ? "yes" : "no");
-            int resizeImagesTo = settings->value("settings/resizeImagesTo", 1024*1024).toInt();
             qDebug() << "resizeImagesTo:" << QString::number(resizeImagesTo);
-            float resizeImagesToMPix = settings->value("settings/resizeImagesToMPix", 5.01).toFloat();
             qDebug() << "resizeImagesToMPix:" << QString::number(resizeImagesToMPix);
             QImage img(fname);
             int originalResolution = img.width() * img.height();
@@ -1734,31 +1762,31 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
                 fname = tmp;
             }
 
-            if (fileName.toLower().endsWith(".jpg") || fileName.toLower().endsWith(".jpeg")) {
-                QExifImageHeader exif(fileName);
+            if (file.toLower().endsWith(".jpg") || file.toLower().endsWith(".jpeg")) {
+                QExifImageHeader exif(file);
                 QExifImageHeader newExif(fname);
                 newExif.setValue(QExifImageHeader::Orientation, exif.value(QExifImageHeader::Orientation));
                 newExif.saveToJpeg(fname);
             }
 
             qDebug() << "Check sharing options";
-            if (_mediaStatusHash.contains(fileName)) {
-                qDebug() << "Sharing" << fileName;
-                _mediaNameHash[fname] = _mediaNameHash[fileName];
+            if (_mediaStatusHash.contains(file)) {
+                qDebug() << "Sharing" << file;
+                _mediaNameHash[fname] = _mediaNameHash[file];
                 _mediaStatusHash[fname] = true;
-                _mediaStatusHash.remove(fileName);
-                _mediaNameHash.remove(fileName);
+                _mediaStatusHash.remove(file);
+                _mediaNameHash.remove(file);
             }
         }
 
         qDebug() << "Result file:" << fname << "size:" << QString::number(QFile(fname).size());
     }
 
-    QFile file(fname);
+    QFile mfile(fname);
 
     msg.status = FMessage::Unsent;
     msg.type = FMessage::RequestMediaMessage;
-    msg.media_size = file.size();
+    msg.media_size = mfile.size();
     msg.media_wa_type = waType;
     msg.media_name = fname;
     if (jids.size() > 1) {
@@ -1769,14 +1797,14 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
     else {
         msg.remote_resource = jids.first();
     }
-    msg.local_file_uri = fileName;
+    msg.local_file_uri = file;
 
     // We still don't know the duration in seconds
     msg.media_duration_seconds = 0;
 
-    if (file.open(QIODevice::ReadOnly))
+    if (mfile.open(QIODevice::ReadOnly))
     {
-        QByteArray bytes = file.readAll();
+        QByteArray bytes = mfile.readAll();
         SHA256Context sha256;
 
         SHA256Reset(&sha256);
@@ -1787,7 +1815,7 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
         SHA256Result(&sha256, reinterpret_cast<uint8_t *>(result.data()));
         msg.setData(result.toBase64());
 
-        file.close();
+        mfile.close();
     }
 
     queueMessage(msg);
@@ -1842,17 +1870,10 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
                          this, SLOT(sendLocationRequest(QByteArray,QString,QString,QStringList,MapRequest*)));
         QObject::connect(mapRequest, SIGNAL(requestError(MapRequest*)), this, SLOT(mapError(MapRequest*)));
 
-        settings->sync();
-        bool threading = settings->value(SETTINGS_THREADING, true).toBool();
-        if (threading) {
-            QThread *thread = new QThread(connection);
-            mapRequest->moveToThread(thread);
-            QObject::connect(thread, SIGNAL(started()), mapRequest, SLOT(doRequest()));
-            thread->start();
-        }
-        else {
-            mapRequest->doRequest();
-        }
+        QThread *thread = new QThread(connection);
+        mapRequest->moveToThread(thread);
+        QObject::connect(thread, SIGNAL(started()), mapRequest, SLOT(doRequest()));
+        thread->start();
     }
 }
 
@@ -1881,12 +1902,12 @@ void Client::userStatusUpdated(const QString &jid, const QString &message)
     }
 }
 
-void Client::photoIdReceived(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &photoId, const QString &notificationId)
+void Client::photoIdReceived(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &photoId, const QString &notificationId, bool offline)
 {
     qDebug() << "photoIdReceived for:" << jid << "name:" << alias << "author:" << author << "timestamp:" << timestamp << "id:" << photoId;
     getPicture(jid);
 
-    if (jid.contains("-")) {
+    if ((!offline || !groupOfflineMessages) && jid.contains("-")) {
         groupNotification(jid, author, PictureSet, timestamp, notificationId);
     }
 }
@@ -2101,7 +2122,7 @@ void Client::groupInfoFromList(const QString &id, const QString &from, const QSt
     saveGroupInfo(from, author, newSubject, subjectOwner, subjectTimestamp.toInt(), creation.toInt());
 }
 
-void Client::groupNewSubject(const QString &from, const QString &author, const QString &authorName, const QString &newSubject, const QString &creation, const QString &notificationId)
+void Client::groupNewSubject(const QString &from, const QString &author, const QString &authorName, const QString &newSubject, const QString &creation, const QString &notificationId, bool offline)
 {
     qDebug() << "groupNewSubject:" << newSubject << "from:" << from << "author:" << author << "authorName:" << authorName << "creation:" << creation;
 
@@ -2118,7 +2139,9 @@ void Client::groupNewSubject(const QString &from, const QString &author, const Q
 
     updateContactPushname(author, authorName);
 
-    groupNotification(from, author, SubjectSet, creation, notificationId, newSubject);
+    if (!offline || !groupOfflineMessages) {
+        groupNotification(from, author, SubjectSet, creation, notificationId, newSubject);
+    }
 }
 
 void Client::getParticipants(const QString &gjid)
@@ -2252,21 +2275,25 @@ void Client::addGroupParticipants(const QString &gjid, const QStringList &jids)
     }
 }
 
-void Client::groupAddUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId)
+void Client::groupAddUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId, bool offline)
 {
     qDebug() << "groupAddUser" << gjid << "add:" << jid << "timestamp:" << timestamp;
     updateContactPushname(jid, "");
     Q_EMIT groupParticipantAdded(gjid, jid);
 
-    groupNotification(gjid, jid, ParticipantAdded, timestamp, notificationId);
+    if (!offline || !groupOfflineMessages) {
+        groupNotification(gjid, jid, ParticipantAdded, timestamp, notificationId);
+    }
 }
 
-void Client::groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId)
+void Client::groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId, bool offline)
 {
     qDebug() << "groupRemoveUser" << gjid << "add:" << jid << "timestamp:" << timestamp;
     Q_EMIT groupParticipantRemoved(gjid, jid);
 
-    groupNotification(gjid, jid, ParticipantRemoved, timestamp, notificationId);
+    if (!offline || !groupOfflineMessages) {
+        groupNotification(gjid, jid, ParticipantRemoved, timestamp, notificationId);
+    }
 }
 
 void Client::removeGroupParticipant(const QString &gjid, const QString &jid)
@@ -2470,8 +2497,7 @@ void Client::setPresenceAvailable()
 {
     qDebug() << "set presence available";
     if (connectionStatus == LoggedIn) {
-        QString privacy = settings->value("privacy/lastOnline", "").toString();
-        Q_EMIT connectionSendAvailable(privacy);
+        Q_EMIT connectionSendAvailable(false);
     }
 }
 
@@ -2479,8 +2505,7 @@ void Client::setPresenceUnavailable()
 {
     qDebug() << "set presence unavailable";
     if (connectionStatus == LoggedIn) {
-        QString privacy = settings->value("privacy/lastOnline", "").toString();
-        Q_EMIT connectionSendUnavailable(privacy);
+        Q_EMIT connectionSendUnavailable(false);
     }
 }
 
@@ -2540,13 +2565,11 @@ void Client::onMessageReceived(const FMessage &message)
         updateContactPushname(message.remote_resource, pushName);
     }
 
-    acceptUnknown = settings->value(SETTINGS_UNKNOWN, true).toBool();
     if (_contacts.contains(fromAttribute) || acceptUnknown) {
         addMessage(message);
-        if (settings->value(SETTINGS_AUTOMATIC_DOWNLOAD).toBool()) {
-            int autoBytes = settings->value(SETTINGS_AUTOMATIC_DOWNLOAD_BYTES, QVariant(DEFAULT_AUTOMATIC_DOWNLOAD)).toInt();
+        if (autoDownloadMedia) {
             if (message.type == FMessage::MediaMessage && message.media_size <= autoBytes
-                    && (activeNetworkType == QNetworkConfiguration::BearerWLAN || !settings->value("settings/autoDownloadWlan").toBool())) {
+                    && (activeNetworkType == QNetworkConfiguration::BearerWLAN || !autoDownloadWlan)) {
                 startDownloadMessage(message);
             }
         }
@@ -2578,7 +2601,7 @@ void Client::updateNotification(const QString &text)
         }
         connectionNotification = 0;
     }
-    if (settings->value("settings/showConnectionNotifications", false).toBool()) {
+    if (showConnectionNotifications) {
         qDebug() << "updateNotification:" << text;
         connectionNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
         connectionNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
@@ -2706,15 +2729,14 @@ void Client::dbResults(const QVariant &result)
         unread++;
         setUnreadCount(jid, unread);
 
-        settings->sync();
-        bool notificationsMuted = settings->value("settings/notificationsMuted", false).toBool();
-        qlonglong muted = settings->value(QString("muting/%1").arg(jid), 0).toLongLong();
+        qlonglong muted = 0;
+        if (mutingList.contains(jid)) {
+            muted = mutingList[jid];
+        }
         qlonglong msecs = QDateTime::currentDateTime().toMSecsSinceEpoch();
 
         if (!notificationsMuted && (!_contacts.contains(jid) || (muted < msecs))) {
             qDebug() << "MNotification";
-            settings->sync();
-            bool notifyMessages = settings->value("settings/notifyMessages", false).toBool();
             QString msg = reply["msg"].toString();
             if (!notifyMessages) {
                 msg = tr("%n messages unread", "Message notification with unread messages count", unread);
@@ -2722,7 +2744,6 @@ void Client::dbResults(const QVariant &result)
 
             QString notifyType = "harbour.mitakuuluu2.message";
 
-            bool systemNotifier = settings->value("settings/systemNotifier", false).toBool();
             if (!systemNotifier) {
                 bool media = reply["media"].toBool();
                 if (media) {

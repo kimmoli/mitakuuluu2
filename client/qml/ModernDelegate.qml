@@ -587,6 +587,7 @@ MouseArea {
         id: videoComponent
         Item {
             id: videoItem
+            property bool ready: model.mediaprogress == 0 || model.mediaprogress == 100
             Loader {
                 id: vidprev
                 anchors.fill: parent
@@ -596,7 +597,7 @@ MouseArea {
 
             Image {
                 source: "image://theme/icon-m-play"
-                visible: model.local.length > 0
+                visible: model.local.length > 0 && ready
                 anchors.centerIn: parent
                 asynchronous: true
                 cache: true
@@ -619,8 +620,10 @@ MouseArea {
 
             IconButton {
                 anchors.centerIn: parent
-                icon.source: (model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-l-clear" : "image://theme/icon-l-down"
-                visible: model.local.length == 0
+                //icon.source: (model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-l-clear" : "image://theme/icon-l-down"
+                icon.source: ready ? "image://theme/icon-l-down" : "image://theme/icon-l-clear"
+
+                visible: model.local.length == 0 || !ready
                 onClicked: {
                     if (model.mediaprogress > 0 && model.mediaprogress < 100)
                         cancelMedia()
@@ -699,7 +702,6 @@ MouseArea {
                 }
                 onPositionChanged: {
                     playerSeek.value = position
-                    playerSeek.valueText = Format.formatDuration(position / 1000, Format.DurationShort)
                 }
                 onStatusChanged: {
                     if (status == Audio.EndOfMedia)
@@ -710,10 +712,12 @@ MouseArea {
             IconButton {
                 id: playButton
                 anchors.verticalCenter: parent.verticalCenter
-                icon.source: player.source.length > 0 ? (player.playbackState == Audio.PlayingState ? "image://theme/icon-m-pause"
+                icon.source: playerItem.source.length > 0 ? (player.playbackState == Audio.PlayingState ? "image://theme/icon-m-pause"
                                                                                                     : "image://theme/icon-m-play")
                                                       : ((model.mediaprogress > 0 && model.mediaprogress < 100) ? "image://theme/icon-l-clear"
                                                                                                                 : "image://theme/icon-l-down")
+                icon.height: 64
+                icon.width: 64
                 onClicked: {
                     if (source.length > 0)
                     {
@@ -735,14 +739,16 @@ MouseArea {
 
             Slider {
                 id: playerSeek
+                property bool ready: model.mediaprogress == 0 || model.mediaprogress == 100
                 anchors.verticalCenter: parent.verticalCenter
                 width: maxWidth - playButton.width
                 minimumValue: 0
                 maximumValue: 100
                 stepSize: 1
-                value: model.mediaprogress < 100 ? model.mediaprogress : 0
-                label: model.mediaprogress > 0 && model.mediaprogress < 100 ? qsTr("Uploading...", "Uploading voice record text"): ""
-                enabled: source.length > 0
+                value: ready ? player.position : model.mediaprogress
+                valueText: ready ? Format.formatDuration(value / 1000, Format.DurationShort) : (model.mediaprogress + "%")
+                label: ready ? "" : qsTr("Uploading...", "Uploading voice record text")
+                enabled: ready
                 onReleased: player.seek(value)
             }
         }

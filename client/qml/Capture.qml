@@ -5,6 +5,8 @@ import QtMultimedia 5.0
 import Sailfish.Media 1.0
 import Sailfish.Gallery 1.0
 import com.jolla.camera 1.0
+import org.nemomobile.time 1.0
+import org.nemomobile.thumbnailer 1.0
 
 Dialog {
     id: page
@@ -19,8 +21,12 @@ Dialog {
 
     property alias cameraState: camera.cameraState
 
+    property int _recordingDuration: ((clock.enabled ? clock.time : page._endTime) - page._startTime) / 1000
+    property var _startTime: new Date()
+    property var _endTime: _startTime
+
     function _captureHandler() {
-        console.log("Photo saved to", imagePath)
+        console.log("Capture saved to", imagePath)
         page.canAccept = true
     }
 
@@ -82,11 +88,14 @@ Dialog {
         // Options are Camera.CaptureStillImage or Camera.CaptureVideo
         captureMode: Camera.CaptureStillImage
 
-        focus.focusMode: Camera.FocusAuto
+        focus {
+            focusMode: Camera.FocusContinuous
+            focusPointMode: Camera.FocusPointAuto
+        }
         flash.mode: Camera.FlashAuto
 
         imageCapture {
-            resolution: "1280x720"
+            resolution: extensions.viewfinderResolution
 
             onImageCaptured:{
             }
@@ -105,14 +114,13 @@ Dialog {
         }
 
         videoRecorder{
-            resolution: "1280x720"
-            onResolutionChanged: reload()
+            resolution: extensions.viewfinderResolution
             frameRate: 30
             audioChannels: 2
             audioSampleRate: 48000
             audioCodec: "audio/mpeg, mpegversion=(int)4"
             videoCodec: "video/mpeg, mpegversion=(int)4"
-            mediaContainer: "video/quicktime, variant=(string)iso"
+            mediaContainer: "video/h264, variant=(string)iso"
         }
 
         // This will tell us when focus lock is gained.
@@ -123,6 +131,18 @@ Dialog {
                     camera.imageCapture.capture()
             }
         }
+
+        function _finishRecording() {
+            console.log("recording state: " + videoRecorder.recorderState)
+            if (videoRecorder.recorderState == CameraRecorder.StoppedState) {
+                console.log("finish recordig")
+                videoRecorder.recorderStateChanged.disconnect(_finishRecording)
+                camera.cameraState = Camera.UnloadedState
+                imagePath = videoRecorder.outputLocation
+                _captureHandler()
+            }
+        }
+
     }
 
     CameraExtensions {
@@ -130,6 +150,10 @@ Dialog {
         camera: camera
 
         device: "primary"
+        viewfinderResolution: "1280x720"
+
+        onViewfinderResolutionChanged: reloadTimer.unload()
+        onDeviceChanged: reloadTimer.unload()
 
         manufacturer: "Jolla"
         model: "Jolla"
@@ -146,15 +170,155 @@ Dialog {
                 return 270
             }
         }
-
-        viewfinderResolution: "1280x720"
     }
 
-    ImageViewer {
-        id: prev
+    Loader {
+        id: previewLoader
         anchors.fill: parent
-        source: imagePath
-        visible: page.canAccept
+        active: page.canAccept
+        sourceComponent: camera.captureMode == Camera.CaptureStillImage ? imagePreviewComponent : videoPreviewComponent
+    }
+
+    Component {
+        id: imagePreviewComponent
+        ImageViewer {
+            id: prev
+            source: imagePath
+            visible: page.canAccept
+        }
+    }
+
+    Component {
+        id: videoPreviewComponent
+        Thumbnail {
+            fillMode: Image.PreserveAspectFit
+            source: imagePath
+            sourceSize.width: width
+            sourceSize.height: height
+            clip: true
+            smooth: true
+            mimeType: "video/h264"
+        }
+    }
+
+    /*Rectangle {
+        id: cameraModeButton
+        width: Theme.itemSizeMedium
+        height: width
+        radius: width / 2
+        color: cameraModeArea.pressed ? Theme.highlightColor : Theme.secondaryHighlightColor
+        anchors.left: parent.left
+        anchors.top: header.bottom
+        anchors.margins: Theme.paddingSmall
+        visible: !page.canAccept
+
+        Image {
+            id: cameraModeSource
+            source: camera.captureMode == Camera.CaptureStillImage ? "image://theme/icon-camera-camera-mode"
+                                                                   : "image://theme/icon-camera-video"
+            anchors.centerIn: parent
+            property bool flash: true
+        }
+
+        MouseArea {
+            id: cameraModeArea
+            anchors.fill: parent
+            onClicked: {
+                if (camera.captureMode == Camera.CaptureStillImage) {
+                    camera.captureMode = Camera.CaptureVideo
+                    extensions.viewfinderResolution = "640x480"
+                }
+                else {
+                    camera.captureMode = Camera.CaptureStillImage
+                    extensions.viewfinderResolution = "1280x720"
+                }
+            }
+        }
+    }*/
+
+    Rectangle {
+        id: cameraSourceButton
+        width: Theme.itemSizeMedium
+        height: width
+        radius: width / 2
+        color: cameraSourceArea.pressed ? Theme.highlightColor : Theme.secondaryHighlightColor
+        anchors.right: parent.right
+        anchors.bottom: flashButton.top
+        anchors.margins: Theme.paddingSmall
+        visible: !page.canAccept
+
+        Image {
+            id: cameraSource
+            source: "image://theme/icon-camera-front-camera"
+            anchors.centerIn: parent
+            property bool flash: true
+        }
+
+        MouseArea {
+            id: cameraSourceArea
+            anchors.fill: parent
+            onClicked: {
+                if (extensions.device == "primary") {
+                    extensions.device = "secondary"
+                }
+                else {
+                    extensions.device = "primary"
+                }
+            }
+        }
+    }
+
+    Timer {
+        id: reloadTimer
+        interval: 10
+        function unload() {
+            camera.cameraState = Camera.UnloadedState
+            start()
+        }
+        onTriggered: camera.cameraState = Camera.ActiveState
+    }
+
+    Item {
+        anchors.right: parent.right
+        anchors.top: header.bottom
+        anchors.margins: Theme.paddingSmall
+        width: timerLabel.implicitWidth + (2 * Theme.paddingMedium)
+        height: timerLabel.implicitHeight + (2 * Theme.paddingSmall)
+        opacity: camera.captureMode == Camera.CaptureVideo ? 1 : 0
+        Behavior on opacity { FadeAnimation {} }
+
+        Rectangle {
+            radius: Theme.paddingSmall / 2
+
+            anchors.fill: parent
+            color: Theme.highlightBackgroundColor
+            opacity: 0.6
+        }
+        Label {
+            id: timerLabel
+
+            anchors.centerIn: parent
+
+            text: Format.formatDuration(
+                      page._recordingDuration,
+                      page._recordingDuration >= 3600 ? Formatter.DurationLong : Formatter.DurationShort)
+            font.pixelSize: Theme.fontSizeMedium
+
+        }
+
+        WallClock {
+            id: clock
+            updateFrequency: WallClock.Second
+            enabled: camera.videoRecorder.recorderState == CameraRecorder.RecordingState
+            onEnabledChanged: {
+                if (enabled) {
+                    page._startTime = clock.time
+                    page._endTime = page._startTime
+                } else {
+                    page._endTime = page._startTime
+                }
+            }
+        }
     }
 
     Rectangle {
@@ -219,7 +383,9 @@ Dialog {
 
         Image {
             id: shutter
-            source: "image://theme/icon-camera-shutter-release"
+            source: camera.captureMode == Camera.CaptureStillImage ? "image://theme/icon-camera-shutter-release"
+                                                                   : (camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? "image://theme/icon-camera-record"
+                                                                                                                                        : "image://theme/icon-camera-stop")
             anchors.centerIn: parent
             property bool autoMode: false
         }
@@ -228,22 +394,43 @@ Dialog {
             id: shutterArea
             anchors.fill: parent
             onPressed: {
-                console.log("shutter pressed")
-                shutter.autoMode = false
-                camera.searchAndLock()
+                if (camera.captureMode == Camera.CaptureStillImage) {
+                    console.log("shutter pressed")
+                    shutter.autoMode = false
+                    if (camera.captureMode == Camera.CaptureStillImage
+                            && camera.lockStatus == Camera.Unlocked) {
+                        camera.searchAndLock()
+                    }
+                }
             }
             onReleased: {
-                console.log("shutter released")
-                shutter.autoMode = false
-                if (camera.lockStatus == Camera.Locked) {
-                    extensions.captureTime = new Date()
-                    camera.imageCapture.capture()
+                if (camera.captureMode == Camera.CaptureStillImage) {
+                    console.log("shutter released")
+                    shutter.autoMode = false
+                    if (camera.lockStatus == Camera.Locked) {
+                        extensions.captureTime = new Date()
+                        camera.imageCapture.capture()
+                    }
                 }
             }
             onClicked: {
-                console.log("shutter clicked")
-                shutter.autoMode = true
-                camera.searchAndLock()
+                if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
+                    camera.videoRecorder.stop()
+                } else if (camera.captureMode == Camera.CaptureStillImage) {
+
+                    console.log("shutter clicked")
+                    shutter.autoMode = true
+
+                    extensions.captureTime = new Date()
+
+                    camera.imageCapture.capture()
+                } else {
+                    extensions.captureTime = new Date()
+                    camera.videoRecorder.record()
+                    if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
+                        camera.videoRecorder.recorderStateChanged.connect(camera._finishRecording)
+                    }
+                }
             }
         }
     }

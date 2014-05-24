@@ -97,6 +97,9 @@ Connection::Connection(const QString &server, int port, const QString &domain, c
     this->iqid = 0;
     this->counters = counters;
     this->myJid = user + "@" + JID_DOMAIN;
+
+    offlineMessages = 0;
+    offlineNotifications = 0;
 }
 
 void Connection::init()
@@ -488,6 +491,16 @@ bool Connection::read()
                 if (child.getTag() == "dirty") {
                     sendCleanDirty(QStringList() << child.getAttributeValue("type"));
                 }
+                else if (child.getTag() == "offline") {
+                    if (offlineMessages > 0) {
+                        Q_EMIT notifyOfflineMessages(offlineMessages);
+                        offlineMessages = 0;
+                    }
+                    if (offlineNotifications > 0) {
+                        Q_EMIT notifyOfflineNotifications(offlineNotifications);
+                        offlineNotifications = 0;
+                    }
+                }
             }
         }
 
@@ -559,6 +572,10 @@ bool Connection::read()
             QString participant = node.getAttributeValue("participant");
             QString id = node.getAttributeValue("id");
             QString notify = node.getAttributeValue("notify");
+            bool offline = node.getAttributeValue("offline").isEmpty();
+            if (offline) {
+                offlineNotifications += 1;
+            }
             if (!notify.isEmpty()) {
                 if (from.contains("-")) {
                     if (!participant.isEmpty())
@@ -584,12 +601,12 @@ bool Connection::read()
                         QString photoId = child.getAttributeValue("id");
                         if (!photoId.isEmpty()) {
                             QString author = child.getAttributeValue("author");
-                            emit photoIdReceived(from, notify, author, timestamp, photoId, id);
+                            emit photoIdReceived(from, notify, author, timestamp, photoId, id, offline);
                         }
                     }
                     else if (child.getTag() == "delete") {
                         QString author = child.getAttributeValue("author");
-                        emit photoDeleted(from, notify, author, timestamp, id);
+                        emit photoDeleted(from, notify, author, timestamp, id, offline);
                     }
                 }
 
@@ -629,7 +646,7 @@ bool Connection::read()
                         //QString event = child.getAttributeValue("event");
                         //if (event == "add") {
                             QString subject = child.getDataString();
-                            Q_EMIT groupNewSubject(from, participant, notify, subject, timestamp, id);
+                            Q_EMIT groupNewSubject(from, participant, notify, subject, timestamp, id, offline);
                         //}
                     }
                 }
@@ -667,14 +684,14 @@ bool Connection::read()
                             sendGetGroupInfo(from);
                         }
                         else if (!jid.isEmpty()) {
-                            Q_EMIT groupAddUser(from, jid, timestamp, id);
+                            Q_EMIT groupAddUser(from, jid, timestamp, id, offline);
                         }
                     }
                     else if (child.getTag() == "remove")
                     {
                         QString jid = child.getAttributeValue("jid");
                         if (!jid.isEmpty())
-                            Q_EMIT groupRemoveUser(from, jid, timestamp, id);
+                            Q_EMIT groupRemoveUser(from, jid, timestamp, id, offline);
                     }
                 }
             }
@@ -701,7 +718,6 @@ bool Connection::read()
 void Connection::parseMessageInitialTagAlreadyChecked(ProtocolTreeNode &messageNode)
 {
     ChatMessageType msgType = Unknown;
-    QString media;
 
     QString id = messageNode.getAttributeValue("id");
     QString attribute_t = messageNode.getAttributeValue("t");
@@ -715,6 +731,10 @@ void Connection::parseMessageInitialTagAlreadyChecked(ProtocolTreeNode &messageN
     QString offline = messageNode.getAttributeValue("offline");
     QString retry = messageNode.getAttributeValue("retry");
     QString typeAttribute = messageNode.getAttributeValue("type");
+
+    if (!offline.isEmpty()) {
+        offlineMessages += 1;
+    }
 
     if (typeAttribute == "text" || typeAttribute == "media")
     {
@@ -810,14 +830,6 @@ void Connection::parseMessageInitialTagAlreadyChecked(ProtocolTreeNode &messageN
                 msgType = MessageReceived;
                 sendMessageReceived(message);
             }
-            else if (child.getTag() == "broadcast")
-            {
-                message.broadcast = true;
-            }
-            else if (!offline.isEmpty())
-            {
-                message.offline = true;
-            }
             else if (child.getTag() == "x")
             {
                 QString xmlns = child.getAttributeValue("xmlns");
@@ -872,6 +884,8 @@ void Connection::parseMessageInitialTagAlreadyChecked(ProtocolTreeNode &messageN
             }
         }
         message.broadcast = broadcast;
+        message.offline = !offline.isEmpty();
+
         switch (msgType)
         {
             case MessageReceived:

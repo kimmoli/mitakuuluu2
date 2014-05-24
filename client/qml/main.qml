@@ -158,6 +158,9 @@ ApplicationWindow {
     property bool systemNotifier: false
     onSystemNotifierChanged: Mitakuuluu.save("settings/systemNotifier", systemNotifier)
 
+    property bool groupOfflineMessages: true
+    onGroupOfflineMessagesChanged: Mitakuuluu.save("settings/groupOfflineMessages", groupOfflineMessages)
+
     property int currentOrientation: pageStack._currentOrientation
 
     /*property PeopleModel allContactsModel: PeopleModel {
@@ -761,6 +764,7 @@ ApplicationWindow {
         autoDownloadWlan = Mitakuuluu.load("settings/autoDownloadWlan", false)
         resizeWlan = Mitakuuluu.load("settings/resizeWlan", false)
         systemNotifier = Mitakuuluu.load("settings/systemNotifier", false)
+        groupOfflineMessages = Mitakuuluu.load("settings/groupOfflineMessages", true)
 
         var hiddenContacts = Mitakuuluu.loadGroup("hidden")
         var toHide = []

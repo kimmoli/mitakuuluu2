@@ -360,6 +360,9 @@ private:
     // Connection timeout timer
     QTimer *connTimeout;
 
+    int offlineMessages;
+    int offlineNotifications;
+
 
     /** ***********************************************************************
      ** Private methods
@@ -532,10 +535,10 @@ signals:
      **/
 
     // User photo updated notification received
-    void photoIdReceived(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &photoId, const QString &notificationId);
+    void photoIdReceived(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &photoId, const QString &notificationId, bool offile = false);
 
     // User photo has been deleted
-    void photoDeleted(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &notificationId);
+    void photoDeleted(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &notificationId, bool offline = false);
 
     // User photo has been received
     void photoReceived(const QString &from, const QByteArray &data,
@@ -553,13 +556,13 @@ signals:
 
     // Received a new group subject (and possibly a new group)
     void groupNewSubject(const QString &from, const QString &author, const QString &authorName,
-                         const QString &newSubject, const QString &creation, const QString &notificationId);
+                         const QString &newSubject, const QString &creation, const QString &notificationId, bool offline = false);
 
     // User added to a group
-    void groupAddUser(const QString &from, const QString &jid, const QString &timestamp, const QString &notificationId);
+    void groupAddUser(const QString &from, const QString &jid, const QString &timestamp, const QString &notificationId, bool offline = false);
 
     // User removed from a group
-    void groupRemoveUser(const QString &from, const QString &jid, const QString &timestamp, const QString &notificationId);
+    void groupRemoveUser(const QString &from, const QString &jid, const QString &timestamp, const QString &notificationId, bool offline = false);
 
     // Group left
     void groupLeft(const QString &gjid);
@@ -586,6 +589,9 @@ signals:
     /** ***********************************************************************
      ** General signals
      **/
+
+    void notifyOfflineMessages(int count);
+    void notifyOfflineNotifications(int count);
 
     void loginFailed();
 };

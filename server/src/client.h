@@ -300,8 +300,8 @@ private slots:
     void requestPresenceSubscription(const QString &jid);
     void requestPresenceUnsubscription(const QString &jid);
     void groupUsers(const QString &gjid, const QStringList &jids);
-    void groupAddUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId);
-    void groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId);
+    void groupAddUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId, bool offline);
+    void groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId, bool offline);
     void setPrivacyList();
     void sendVoiceNotePlayed(const FMessage &message);
 
@@ -317,9 +317,9 @@ private slots:
                            const QString &newSubject, const QString &creation,
                            const QString &subjectOwner, const QString &subjectTimestamp);
     void groupNewSubject(const QString &from, const QString &author, const QString &authorName,
-                         const QString &newSubject, const QString &creation, const QString &notificationId);
+                         const QString &newSubject, const QString &creation, const QString &notificationId, bool offline);
     void photoDeleted(const QString &jid, const QString &alias, const QString &author, const QString &timestamp, const QString &notificationId);
-    void photoIdReceived(const QString &jid, const QString &name, const QString &author, const QString &timestamp, const QString &pictureId, const QString &notificationId);
+    void photoIdReceived(const QString &jid, const QString &name, const QString &author, const QString &timestamp, const QString &pictureId, const QString &notificationId, bool offline);
     void photoReceived(const QString &from, const QByteArray &data,
                        const QString &photoId, bool largeFormat);
     void privacyListReceived(const QStringList &list);
@@ -347,6 +347,9 @@ private slots:
     void updateContactPushname(const QString &jid, const QString &pushName);
 
     void onSimParameters(QDBusPendingCallWatcher *call);
+
+    void notifyOfflineMessages(int count);
+    void notifyOfflineNotifications(int count);
 
 signals:
     void authFail(const QString &username, const QString &reason);
@@ -515,6 +518,23 @@ private:
      ** Settings
      **/
 
+    bool alwaysOffline;
+    bool resizeImages;
+    bool resizeWlan;
+    bool resizeBySize;
+    int resizeImagesTo;
+    float resizeImagesToMPix;
+    bool autoDownloadMedia;
+    int autoBytes;
+    bool autoDownloadWlan;
+    bool showConnectionNotifications;
+    bool notificationsMuted;
+    bool notifyMessages;
+    bool systemNotifier;
+    bool groupOfflineMessages;
+
+    QMap<QString, qlonglong> mutingList;
+
     // Reads the global settings and store them in the public static members
     void readSettings();
     void saveAccountData();
@@ -616,6 +636,8 @@ public slots:
 
     void renewAccount(const QString &method, int years);
     void unsubscribe(const QString &jid);
+
+    void settingsChanged();
 };
 
 #endif // CLIENTTHREAD_H
