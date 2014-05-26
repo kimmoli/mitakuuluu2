@@ -203,7 +203,7 @@ Dialog {
                     height: Theme.itemSizeMedium
                     highlighted: down || checked
                     property bool checked: page.numbers.indexOf(number) != -1
-                    property string number: person.phoneDetails[effectiveIndecies[index]].normalizedNumber
+                    property string number: person.phoneDetails[internal.effectiveIndecies[index]].normalizedNumber
 
                     // while nemo-qml-plugin-contacts bug not fixed
                     // https://github.com/nemomobile/nemo-qml-plugin-contacts/issues/103

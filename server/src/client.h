@@ -351,6 +351,8 @@ private slots:
     void notifyOfflineMessages(int count);
     void notifyOfflineNotifications(int count);
 
+    void contactsAvailable(const QStringList &contacts, const QVariantMap &labels, const QVariantMap &avatars);
+
 signals:
     void authFail(const QString &username, const QString &reason);
     void authSuccess(const QString &username);

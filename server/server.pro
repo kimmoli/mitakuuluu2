@@ -90,7 +90,8 @@ SOURCES += src/whatsapp-server.cpp \
     src/Whatsapp/httprequestv2.cpp \
     src/Whatsapp/mediadownload.cpp \
     src/Whatsapp/util/datacounters.cpp \
-    src/Whatsapp/maprequest.cpp
+    src/Whatsapp/maprequest.cpp \
+    src/contactsfetch.cpp
 
 HEADERS += \
 #    src/heartbeat.h \
@@ -133,7 +134,8 @@ HEADERS += \
     src/Whatsapp/mediadownload.h \
     src/Whatsapp/util/datacounters.h \
     ../logging/logging.h \
-    src/Whatsapp/maprequest.h
+    src/Whatsapp/maprequest.h \
+    src/contactsfetch.h
 
 OTHER_FILES += $$files(rpm/*) \
     rpm/server.spec \

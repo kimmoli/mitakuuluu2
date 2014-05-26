@@ -62,6 +62,8 @@
 #include <QMediaPlayer>
 #include <QMediaMetaData>
 
+#include "contactsfetch.h"
+
 #include "../qexifimageheader/qexifimageheader.h"
 
 /** ***********************************************************************
@@ -941,52 +943,30 @@ void Client::synchronizeContacts()
     }
 }
 
-void Client::synchronizePhonebook()
+void Client::contactsAvailable(const QStringList &contacts, const QVariantMap &labels, const QVariantMap &avatars)
 {
-    // Contacts syncer
-    contactManager = new QContactManager(this);
-    QList<QContact> results = contactManager->contacts();
-    qDebug() << "Phone numbers retreived. Processing" << QString::number(results.size()) << "contacts.";
-    QStringList syncList;
-    _synccontacts.clear();
-    _syncavatars.clear();
-    for (int i = 0; i < results.size(); ++i) {
-        QString avatar;
-        QList<QContactAvatar> avatars = results.at(i).details<QContactAvatar>();
-        QList<QContactDisplayLabel> labels = results.at(i).details<QContactDisplayLabel>();
-        QString label;
-        if (labels.size() > 0 && !labels.first().isEmpty())
-            label = labels.first().label();
-        if (avatars.length() > 0 && !avatars.first().isEmpty())
-            avatar = avatars.first().imageUrl().toString();
-        foreach (QContactPhoneNumber number, results.at(i).details<QContactPhoneNumber>()) {
-            if (!number.isEmpty()) {
-                QString phone = QContactPhoneNumber(number).number();
-                phone = phone.replace(QRegExp("/[^0-9+]/g"),"");
-                if (!phone.isEmpty()) {
-                    qDebug() << "phone:" << phone;
-                    if (!syncList.contains(phone)) {
-                        _synccontacts[phone] = label;
-                        _syncavatars[phone] = avatar;
-                        syncList.append(phone);
-                    }
-                    if (!phone.contains("+") && !syncList.contains("+" + phone)) {
-                        _synccontacts["+" + phone] = label;
-                        _syncavatars["+" + phone] = avatar;
-                        syncList.append("+" + phone);
-                    }
-                }
-            }
-        }
-    }
-    contactManager->deleteLater();
-    if (syncList.length() > 0) {
-        Q_EMIT connectionSendSyncContacts(syncList);
+    qDebug() << "received" << contacts.size() << "contacts";
+    _synccontacts = labels;
+    _syncavatars = avatars;
+
+    if (contacts.length() > 0) {
+        Q_EMIT connectionSendSyncContacts(contacts);
     }
 
     qint64 now = QDateTime::currentMSecsSinceEpoch();
     lastSync = now;
     settings->setValue(SETTINGS_LAST_SYNC, lastSync);
+}
+
+void Client::synchronizePhonebook()
+{
+    // Contacts syncer
+    ContactsFetch *contacts = new ContactsFetch(0);
+    QThread *thread = new QThread(contacts);
+    contacts->moveToThread(thread);
+    QObject::connect(thread, SIGNAL(started()), contacts, SLOT(allContacts()));
+    QObject::connect(contacts, SIGNAL(contactsAvailable(QStringList,QVariantMap,QVariantMap)), this, SLOT(contactsAvailable(QStringList,QVariantMap,QVariantMap)));
+    thread->start();
 }
 
 void Client::setActiveJid(const QString &jid)
