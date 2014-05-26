@@ -1070,7 +1070,7 @@ void Client::changeUserName(const QString &newUserName)
 {
     userName = newUserName;
     if (connectionStatus == LoggedIn) {
-        Q_EMIT connectionSetNewUserName(userName, alwaysOffline, false);
+        Q_EMIT connectionSetNewUserName(userName, alwaysOffline, QString());
     }
 }
 
@@ -1717,6 +1717,18 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
             qDebug() << "w:" << img.width() << "h:" << img.height() << ((double)originalResolution / 1000000);
             QByteArray data;
 
+            int orientation = 0;
+            if (file.toLower().endsWith(".jpg") || file.toLower().endsWith(".jpeg")) {
+                QExifImageHeader exif(file);
+                orientation = exif.value(QExifImageHeader::Orientation).toSignedLong();
+                if (orientation == 6) {
+                    orientation = 90;
+                }
+                else {
+                    orientation = 0;
+                }
+            }
+
             if (resizeBySize && originalSize > resizeImagesTo) {
                 do
                 {
@@ -1724,9 +1736,14 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
                     QBuffer out(&data);
                     out.open(QIODevice::WriteOnly);
                     img = img.scaledToWidth(img.width() - 100, Qt::SmoothTransformation);
-                    img.save(&out, mime.split("/").last().toLocal8Bit().data(), 90);
+                    img.save(&out, mime.split("/").last().toUtf8().data(), 90);
                 } while (data.size() > resizeImagesTo);
-                img.save(tmp, mime.split("/").last().toLocal8Bit().data(), 90);
+                if (orientation != 0) {
+                    QTransform rotation;
+                    rotation.rotate(orientation);
+                    img = img.transformed(rotation, Qt::SmoothTransformation);
+                }
+                img.save(tmp, mime.split("/").last().toUtf8().data(), 90);
                 qDebug() << "image w:" << QString::number(img.width())
                          << "h:" << QString::number(img.height())
                          << "s:" << QString::number(data.size());
@@ -1736,17 +1753,15 @@ void Client::sendMedia(const QStringList &jids, const QString &fileName, int waT
                 while (img.width() * img.height() > targetResolution) {
                     img = img.scaledToWidth(img.width() - 100, Qt::SmoothTransformation);
                 }
-                img.save(tmp, mime.split("/").last().toLocal8Bit().data(), 90);
+                if (orientation != 0) {
+                    QTransform rotation;
+                    rotation.rotate(orientation);
+                    img = img.transformed(rotation, Qt::SmoothTransformation);
+                }
+                img.save(tmp, mime.split("/").last().toUtf8().data(), 90);
                 qDebug() << "image w:" << QString::number(img.width())
                          << "h:" << QString::number(img.height());
                 fname = tmp;
-            }
-
-            if (file.toLower().endsWith(".jpg") || file.toLower().endsWith(".jpeg")) {
-                QExifImageHeader exif(file);
-                QExifImageHeader newExif(fname);
-                newExif.setValue(QExifImageHeader::Orientation, exif.value(QExifImageHeader::Orientation));
-                newExif.saveToJpeg(fname);
             }
 
             qDebug() << "Check sharing options";
@@ -2016,7 +2031,7 @@ void Client::exit()
     connectionStatus = Disconnected;
     Q_EMIT connectionStatusChanged(connectionStatus);
     QGuiApplication::exit(0);
-    system("killall harbour-mitakuuluu-server");
+    qDebug() << system("killall harbour-mitakuuluu2-server");
 }
 
 void Client::broadcastSend(const QStringList &jids, const QString &message)
@@ -2477,7 +2492,7 @@ void Client::setPresenceAvailable()
 {
     qDebug() << "set presence available";
     if (connectionStatus == LoggedIn) {
-        Q_EMIT connectionSendAvailable(false);
+        Q_EMIT connectionSendAvailable(QString());
     }
 }
 
@@ -2485,7 +2500,7 @@ void Client::setPresenceUnavailable()
 {
     qDebug() << "set presence unavailable";
     if (connectionStatus == LoggedIn) {
-        Q_EMIT connectionSendUnavailable(false);
+        Q_EMIT connectionSendUnavailable(QString());
     }
 }
 
