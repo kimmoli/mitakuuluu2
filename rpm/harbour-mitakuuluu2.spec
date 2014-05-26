@@ -14,17 +14,13 @@ Group:      Qt/Qt
 License:    WTFPL
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5
-#Requires:   qtcontacts-sqlite-qt5 >= 0.1.37
 Requires:   nemo-transferengine-qt5
 Requires:   declarative-transferengine-qt5 >= 0.0.44
 Requires:   qt5-qtsensors-plugin-gestures-sensor, qt5-qtsensors-plugin-gestures-shake
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
-#BuildRequires:  pkgconfig(Qt5Contacts)
 BuildRequires:  pkgconfig(sailfishapp)
-#BuildRequires:  pkgconfig(contactcache-qt5) >= 0.0.61
-#BuildRequires:  pkgconfig(qtcontacts-sqlite-qt5-extensions) >= 0.1.41
 BuildRequires:  pkgconfig(mlite5)
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(nemotransferengine-qt5)
@@ -102,11 +98,9 @@ systemctl restart mce.service
 %config /etc/profiled/*.ini
 %config %{_datadir}/ngfd/events.d/*.ini
 %config %{_datadir}/lipstick/notificationcategories/*.conf
-#%{_datadir}/jolla-gallery/mediasources
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 %{_datadir}/%{name}
-#/usr/lib/qt5/qml/harbour/mitakuuluu2/sharecontacts
 /usr/lib/nemo-transferengine/plugins/*.so
 /usr/lib/systemd/user/*.service
 %{_bindir}
