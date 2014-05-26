@@ -17,22 +17,27 @@ QMAKE_EXTRA_TARGETS += ts transifex
 PRE_TARGETDEPS += ts transifex
 
 TRANSLATIONS += \
-    es.ts \
-    zh_HK.ts \
-    fr_FR.ts \
-    zh_CN.ts \
-    it_IT.ts \
-    ru_RU.ts \
-    nl_BE.ts \
-    da_DK.ts \
-    fi.ts \
-    en_US.ts \
-    nl.ts \
-    de.ts \
-    el.ts \
-    tr_TR.ts \
-    cs.ts \
     ca.ts \
+    crh.ts \
+    cs.ts \
+    da_DK.ts \
+    de.ts \
+    de_CH.ts \
+    de_DE.ts \
+    el.ts \
+    en_US.ts \
+    es.ts \
+    fi.ts \
+    fr_FR.ts \
+    it_IT.ts \
+    nl.ts \
+    nl_BE.ts \
+    ru_RU.ts \
+    sl_SI.ts \
+    sv_SE.ts \
+    tr_TR.ts \
+    zh_CN.ts \
+    zh_HK.ts \
     $${NULL}
 
 build_translations.target = build_translations
