@@ -463,12 +463,12 @@
     <message numerus="yes">
         <location filename="../server/src/client.cpp" line="498"/>
         <source>Offline messages: %n</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Offline-viestejä: %n</numerusform><numerusform>Offline-viestejä: %n</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../server/src/client.cpp" line="508"/>
         <source>Offline notifications: %n</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Offline-ilmoituksia: %n</numerusform><numerusform>Offline-ilmoituksia: %n</numerusform></translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="742"/>
@@ -688,13 +688,13 @@
         <location filename="../client/qml/ConversationPage.qml" line="405"/>
         <source>Release to delete</source>
         <comment>Conversation voice recorder delete label</comment>
-        <translation type="unfinished"/>
+        <translation>Vapauta poistaaksesi</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="406"/>
         <source>Release to send</source>
         <comment>Conversation voice recorder delete label</comment>
-        <translation type="unfinished"/>
+        <translation>Vapauta lähettääksesi</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="535"/>
@@ -1413,7 +1413,7 @@
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="62"/>
         <source>I have code</source>
-        <translation type="unfinished"/>
+        <translation>Minulla on koodi</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="80"/>
@@ -2307,7 +2307,7 @@ Napauta &apos;Uudista&apos; ostaaksesi Whatsapp palvelun vuodeksi.</translation>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
         <source>available</source>
-        <translation>Paikalla</translation>
+        <translation>käytettävissä</translation>
     </message>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="60"/>
@@ -2364,7 +2364,7 @@ Napauta &apos;Uudista&apos; ostaaksesi Whatsapp palvelun vuodeksi.</translation>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="68"/>
         <source>Push: %1</source>
-        <translation>Ilmoituksia: %1</translation>
+        <translation>Ilmoitukset: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="69"/>

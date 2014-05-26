@@ -421,49 +421,49 @@
 <context>
     <name>Client</name>
     <message>
-        <location filename="../server/src/client.cpp" line="445"/>
+        <location filename="../server/src/client.cpp" line="447"/>
         <source>Image</source>
         <comment>Notification media name text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="446"/>
+        <location filename="../server/src/client.cpp" line="448"/>
         <source>Audio</source>
         <comment>Notification media name text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="447"/>
+        <location filename="../server/src/client.cpp" line="449"/>
         <source>Video</source>
         <comment>Notification media name text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="448"/>
+        <location filename="../server/src/client.cpp" line="450"/>
         <source>Contact</source>
         <comment>Notification media name text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="449"/>
+        <location filename="../server/src/client.cpp" line="451"/>
         <source>Location</source>
         <comment>Notification media name text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="450"/>
+        <location filename="../server/src/client.cpp" line="452"/>
         <source>Voice</source>
         <comment>Notification media name text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="451"/>
+        <location filename="../server/src/client.cpp" line="453"/>
         <source>System</source>
         <comment>Notification media name text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="500"/>
+        <location filename="../server/src/client.cpp" line="502"/>
         <source>Offline messages: %n</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -471,7 +471,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="510"/>
+        <location filename="../server/src/client.cpp" line="512"/>
         <source>Offline notifications: %n</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -479,49 +479,49 @@
         </translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="744"/>
+        <location filename="../server/src/client.cpp" line="746"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1057"/>
+        <location filename="../server/src/client.cpp" line="1037"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1325"/>
+        <location filename="../server/src/client.cpp" line="1305"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1328"/>
+        <location filename="../server/src/client.cpp" line="1308"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1331"/>
+        <location filename="../server/src/client.cpp" line="1311"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1334"/>
+        <location filename="../server/src/client.cpp" line="1314"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1652"/>
+        <location filename="../server/src/client.cpp" line="1632"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2742"/>
+        <location filename="../server/src/client.cpp" line="2722"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished">

@@ -463,12 +463,12 @@
     <message numerus="yes">
         <location filename="../server/src/client.cpp" line="498"/>
         <source>Offline messages: %n</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Offline zpráva: %n</numerusform><numerusform>Offline zprávy: %n</numerusform><numerusform>Offline zpráv: %n</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../server/src/client.cpp" line="508"/>
         <source>Offline notifications: %n</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Offline upozornění: %n</numerusform><numerusform>Offline upozornění: %n</numerusform><numerusform>Offline upozornění: %n</numerusform></translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="742"/>
@@ -510,7 +510,7 @@
         <location filename="../server/src/client.cpp" line="1650"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
-        <translation>Odpojeno</translation>
+        <translation>Offline</translation>
     </message>
     <message numerus="yes">
         <location filename="../server/src/client.cpp" line="2740"/>
@@ -688,13 +688,13 @@
         <location filename="../client/qml/ConversationPage.qml" line="405"/>
         <source>Release to delete</source>
         <comment>Conversation voice recorder delete label</comment>
-        <translation type="unfinished"/>
+        <translation>Uvolnit pro vymazání</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="406"/>
         <source>Release to send</source>
         <comment>Conversation voice recorder delete label</comment>
-        <translation type="unfinished"/>
+        <translation>Uvolnit pro odeslání</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="535"/>
@@ -1413,7 +1413,7 @@
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="62"/>
         <source>I have code</source>
-        <translation type="unfinished"/>
+        <translation>Mám kód</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="80"/>

@@ -214,7 +214,7 @@
         <location filename="../client/qml/Broadcast.qml" line="17"/>
         <source>Broadcast</source>
         <comment>Broadcast page title</comment>
-        <translation>Udsend</translation>
+        <translation>Rundsend</translation>
     </message>
     <message>
         <location filename="../client/qml/Broadcast.qml" line="22"/>
@@ -331,7 +331,7 @@
         <location filename="../client/qml/ChatsPage.qml" line="86"/>
         <source>Broadcast</source>
         <comment>Main menu action</comment>
-        <translation>Annoncer</translation>
+        <translation>Rundsend</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="92"/>
@@ -2364,7 +2364,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <source>Broadcast: %1</source>
-        <translation type="unfinished"/>
+        <translation>Rundsend: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>

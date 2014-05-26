@@ -463,12 +463,12 @@
     <message numerus="yes">
         <location filename="../server/src/client.cpp" line="498"/>
         <source>Offline messages: %n</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Offline bericht: %n</numerusform><numerusform>Offline berichten: %n</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../server/src/client.cpp" line="508"/>
         <source>Offline notifications: %n</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Offline notificatie: %n</numerusform><numerusform>Offline notificaties: %n</numerusform></translation>
     </message>
     <message>
         <location filename="../server/src/client.cpp" line="742"/>
@@ -688,13 +688,13 @@
         <location filename="../client/qml/ConversationPage.qml" line="405"/>
         <source>Release to delete</source>
         <comment>Conversation voice recorder delete label</comment>
-        <translation type="unfinished"/>
+        <translation>Laat los om te verwijderen</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="406"/>
         <source>Release to send</source>
         <comment>Conversation voice recorder delete label</comment>
-        <translation type="unfinished"/>
+        <translation>Laat los om te versturen</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="535"/>
@@ -1412,7 +1412,7 @@
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="62"/>
         <source>I have code</source>
-        <translation type="unfinished"/>
+        <translation>Ik heb een code ontvangen</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="80"/>
@@ -1764,7 +1764,7 @@ Klik op &quot;Vernieuw&quot; om met een jaar te verlengen.</translation>
         <location filename="../client/qml/Settings.qml" line="29"/>
         <source>Mute/unmute</source>
         <comment>Settings cover action name text</comment>
-        <translation>In- en uitschakelen</translation>
+        <translation>Meldingen uit/aan</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="30"/>
