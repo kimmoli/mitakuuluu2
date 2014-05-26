@@ -120,7 +120,7 @@ Dialog {
             audioSampleRate: 48000
             audioCodec: "audio/mpeg, mpegversion=(int)4"
             videoCodec: "video/mpeg, mpegversion=(int)4"
-            mediaContainer: "video/h264, variant=(string)iso"
+            mediaContainer: "video/quicktime, variant=(string)iso"
         }
 
         // This will tell us when focus lock is gained.
@@ -197,7 +197,7 @@ Dialog {
             sourceSize.height: height
             clip: true
             smooth: true
-            mimeType: "video/h264"
+            mimeType: "video/quicktime"
         }
     }
 
