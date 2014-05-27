@@ -151,7 +151,7 @@
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="56"/>
         <source>Select picture</source>
-        <translation type="unfinished"/>
+        <translation>Vælg billede</translation>
     </message>
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="66"/>
@@ -171,7 +171,7 @@
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="115"/>
         <source>Save to Gallery</source>
-        <translation type="unfinished"/>
+        <translation>Gem i Galleri</translation>
     </message>
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="119"/>
@@ -390,12 +390,12 @@
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="374"/>
         <source>Un-hide contact</source>
-        <translation type="unfinished"/>
+        <translation>Vis kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="374"/>
         <source>Hide contact</source>
-        <translation type="unfinished"/>
+        <translation>Skjul kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="381"/>
@@ -753,7 +753,7 @@
         <location filename="../client/qml/CreateGroup.qml" line="68"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Tilføj kontakter</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="80"/>
@@ -830,7 +830,7 @@
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="151"/>
         <source>Change background</source>
-        <translation type="unfinished"/>
+        <translation>Skift baggrund</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="158"/>
@@ -964,7 +964,7 @@
         <location filename="../client/qml/MediaSelector.qml" line="97"/>
         <source>Video selected</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"/>
+        <translation>Video valgt</translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="98"/>
@@ -976,7 +976,7 @@
         <location filename="../client/qml/MediaSelector.qml" line="99"/>
         <source>Audio</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"/>
+        <translation>Lyd</translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="100"/>
@@ -1171,7 +1171,7 @@
         <location filename="../client/qml/MutingSelector.qml" line="49"/>
         <source>10 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>10 minutter</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="50"/>
@@ -1183,7 +1183,7 @@
         <location filename="../client/qml/MutingSelector.qml" line="51"/>
         <source>30 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>30 minutter</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="52"/>
@@ -1219,7 +1219,7 @@
         <location filename="../client/qml/MutingSelector.qml" line="57"/>
         <source>1 year</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>1år</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="58"/>
@@ -1428,13 +1428,13 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="92"/>
         <source>Country</source>
         <comment>Registration country selector label</comment>
-        <translation type="unfinished"/>
+        <translation>Land</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="108"/>
         <source>In international format</source>
         <comment>Registration phone number text field label</comment>
-        <translation type="unfinished"/>
+        <translation>I internationalt format</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="134"/>
@@ -1458,7 +1458,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="147"/>
         <source>Random password</source>
         <comment>Registration password field placeolder</comment>
-        <translation type="unfinished"/>
+        <translation>Tilfældigt kodeord</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="162"/>
@@ -1584,7 +1584,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="350"/>
         <source>%n minutes</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minut</numerusform><numerusform>%n minutter</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="352"/>
@@ -1639,7 +1639,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/SelectContact.qml" line="30"/>
         <source>You should select contacts!</source>
         <comment>Select contact page cant accept feedback</comment>
-        <translation type="unfinished"/>
+        <translation>Du skal vælge kontakter</translation>
     </message>
     <message>
         <location filename="../client/qml/SelectContact.qml" line="68"/>
@@ -1869,7 +1869,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="238"/>
         <source>Here</source>
         <comment>Map source selection</comment>
-        <translation type="unfinished"/>
+        <translation>Her</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="239"/>
@@ -1881,7 +1881,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="240"/>
         <source>Google</source>
         <comment>Map source selection</comment>
-        <translation type="unfinished"/>
+        <translation>Google</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="241"/>
@@ -2013,7 +2013,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="809"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
-        <translation type="unfinished"/>
+        <translation>pink</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="305"/>
@@ -2031,7 +2031,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="359"/>
         <source>no sound</source>
         <comment>Group message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>ingen lyd</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="379"/>
@@ -2043,7 +2043,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="408"/>
         <source>no sound</source>
         <comment>Medi message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>ingen lyd</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="428"/>
@@ -2072,7 +2072,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="527"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Autostart</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="535"/>
@@ -2280,7 +2280,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="60"/>
         <source>Email: %1</source>
-        <translation type="unfinished"/>
+        <translation>E-post: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="60"/>
@@ -2369,7 +2369,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <source>Status: %1</source>
-        <translation type="unfinished"/>
+        <translation>Status: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
@@ -2382,7 +2382,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="22"/>
         <source>Messages received: %1</source>
-        <translation type="unfinished"/>
+        <translation>Meddelelser modtaget: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="23"/>
@@ -2472,12 +2472,12 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="76"/>
         <source>Messages</source>
-        <translation type="unfinished"/>
+        <translation>Meddelelser</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="90"/>
         <source>Received data</source>
-        <translation type="unfinished"/>
+        <translation>Modtaget data</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="134"/>
