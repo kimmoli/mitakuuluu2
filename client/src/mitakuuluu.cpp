@@ -822,6 +822,44 @@ QString Mitakuuluu::saveImage(const QString &path)
     return path;
 }
 
+QString Mitakuuluu::saveMedia(const QString &path, int watype)
+{
+    QString location;
+    switch (watype) {
+    case Image: {
+        location = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+        break;
+    }
+    case Audio: {
+        location = QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
+        break;
+    }
+    case Video: {
+        location = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
+    }
+    default: {
+        location = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+        break;
+    }
+    }
+    qDebug() << "Requested to save" << path << "to gallery" << location;
+
+    if (!path.contains(location)) {
+        QString cutpath = path;
+        cutpath = cutpath.replace("file://", "");
+        QFile file(cutpath);
+        if (file.exists()) {
+            QString name = path.split("/").last().split("@").first();
+            qDebug() << "saveMedia" << path << "name:" << name;
+            QString destination = QString("%1/%2").arg(location).arg(name);
+            file.copy(cutpath, destination);
+            qDebug() << "destination:" << destination;
+            return destination;
+        }
+    }
+    return path;
+}
+
 QString Mitakuuluu::saveWallpaper(const QString &path, const QString &jid)
 {
     QString wallpapers = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/wallpapers";

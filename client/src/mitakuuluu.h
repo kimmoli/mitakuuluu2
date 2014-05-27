@@ -324,6 +324,7 @@ public slots:
     QString rotateImage(const QString &path, int rotation);
     QString saveVoice(const QString &path);
     QString saveImage(const QString &path);
+    QString saveMedia(const QString &path, int watype);
     QString saveWallpaper(const QString &path, const QString &jid);
     void openProfile(const QString &name, const QString &phone, const QString avatar = QString());
     void removeAccount();

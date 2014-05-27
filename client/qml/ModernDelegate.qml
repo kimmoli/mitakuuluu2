@@ -827,7 +827,7 @@ MouseArea {
                 visible: model.local.indexOf(".cache") > 0
                 text: qsTr("Save to Gallery", "Conversation message context menu item")
                 onClicked: {
-                    var fname = Mitakuuluu.saveImage(model.local)
+                    var fname = Mitakuuluu.saveMedia(model.local, model.watype)
                     banner.notify(qsTr("Media saved as %1", "Banner text message").arg(fname))
                 }
             }
