@@ -291,6 +291,8 @@ void Client::readSettings()
 
     alwaysOffline = settings->value("settings/alwaysOffline", false).toBool();
 
+    this->importMediaToGallery = settings->value("settings/importmediatogallery", true).toBool();
+
     resizeImages = settings->value("settings/resizeImages", false).toBool();
     resizeWlan = settings->value("settings/resizeWlan").toBool();
     resizeBySize = settings->value("settings/resizeBySize", true).toBool();
