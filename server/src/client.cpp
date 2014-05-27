@@ -2715,6 +2715,7 @@ void Client::dbResults(const QVariant &result)
         qDebug() << "show notification";
         QString jid = reply["jid"].toString();
         QString avatar = reply["avatar"].toString();
+        avatar = avatar.replace("file://", "");
         QString name = reply["name"].toString();
         if (_notificationJid[jid]) {
             _notificationJid[jid]->remove();
@@ -2731,11 +2732,11 @@ void Client::dbResults(const QVariant &result)
         qlonglong msecs = QDateTime::currentDateTime().toMSecsSinceEpoch();
 
         if (!notificationsMuted && (!_contacts.contains(jid) || (muted < msecs))) {
-            qDebug() << "MNotification";
             QString msg = reply["msg"].toString();
             if (!notifyMessages) {
                 msg = tr("%n messages unread", "Message notification with unread messages count", unread);
             }
+            qDebug() << "MNotification" << msg << name << avatar;
 
             QString notifyType = "harbour.mitakuuluu2.message";
 
