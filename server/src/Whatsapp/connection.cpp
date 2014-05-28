@@ -572,7 +572,7 @@ bool Connection::read()
             QString participant = node.getAttributeValue("participant");
             QString id = node.getAttributeValue("id");
             QString notify = node.getAttributeValue("notify");
-            bool offline = node.getAttributeValue("offline").isEmpty();
+            bool offline = !node.getAttributeValue("offline").isEmpty();
             if (offline) {
                 offlineNotifications += 1;
             }
@@ -728,11 +728,11 @@ void Connection::parseMessageInitialTagAlreadyChecked(ProtocolTreeNode &messageN
         from = author;
         broadcast = true;
     }
-    QString offline = messageNode.getAttributeValue("offline");
+    bool offline = !messageNode.getAttributeValue("offline").isEmpty();
     QString retry = messageNode.getAttributeValue("retry");
     QString typeAttribute = messageNode.getAttributeValue("type");
 
-    if (!offline.isEmpty()) {
+    if (offline) {
         offlineMessages += 1;
     }
 
@@ -741,7 +741,7 @@ void Connection::parseMessageInitialTagAlreadyChecked(ProtocolTreeNode &messageN
         ProtocolTreeNodeListIterator i(messageNode.getChildren());
 
         FMessage message;
-        if (offline.isEmpty())
+        if (!offline)
             message.timestamp = QDateTime::currentDateTime().toTime_t();
         else
             message.timestamp = attribute_t.toLongLong();
@@ -884,7 +884,7 @@ void Connection::parseMessageInitialTagAlreadyChecked(ProtocolTreeNode &messageN
             }
         }
         message.broadcast = broadcast;
-        message.offline = !offline.isEmpty();
+        message.offline = offline;
 
         switch (msgType)
         {

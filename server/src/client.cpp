@@ -436,28 +436,35 @@ void Client::addMessage(const FMessage &message)
         data["uuid"] = uuid;
         dbExecutor->queueAction(data);
 
-        qDebug() << "should show notification?" << "author:" << author << "jid:" << jid << "activeJid:" << _activeJid << "myJid:" << myJid;
-        if ((!message.offline || !groupOfflineMessages) && (author != myJid) && (author != _activeJid) && (jid != _activeJid)) {
-            qDebug() << "show notification for:" << message.key.id << "jid:" << jid;
-            QVariantMap notify;
-            notify["jid"] = jid;
-            notify["pushName"] = message.notify_name;
-            notify["type"] = QueryType::ConversationNotifyMessage;
-            notify["media"] = message.media_wa_type != FMessage::Text;
-            if (message.type == FMessage::MediaMessage) {
-                switch (message.media_wa_type) {
-                case FMessage::Image: text = tr("Image", "Notification media name text"); break;
-                case FMessage::Audio: text = tr("Audio", "Notification media name text"); break;
-                case FMessage::Video: text = tr("Video", "Notification media name text"); break;
-                case FMessage::Contact: text = tr("Contact", "Notification media name text"); break;
-                case FMessage::Location: text = tr("Location", "Notification media name text"); break;
-                case FMessage::Voice: text = tr("Voice", "Notification media name text"); break;
-                default: text = tr("System", "Notification media name text"); break;
+        qDebug() << "should show notification?" << "author:" << author << "jid:" << jid << "activeJid:" << _activeJid << "myJid:" << myJid << "offline:" << message.offline;
+        if ((author != myJid) && (author != _activeJid) && (jid != _activeJid)) {
+            if (!message.offline || !groupOfflineMessages) {
+                qDebug() << "show notification for:" << message.key.id << "jid:" << jid;
+                QVariantMap notify;
+                notify["jid"] = jid;
+                notify["pushName"] = message.notify_name;
+                notify["type"] = QueryType::ConversationNotifyMessage;
+                notify["media"] = message.media_wa_type != FMessage::Text;
+                if (message.type == FMessage::MediaMessage) {
+                    switch (message.media_wa_type) {
+                    case FMessage::Image: text = tr("Image", "Notification media name text"); break;
+                    case FMessage::Audio: text = tr("Audio", "Notification media name text"); break;
+                    case FMessage::Video: text = tr("Video", "Notification media name text"); break;
+                    case FMessage::Contact: text = tr("Contact", "Notification media name text"); break;
+                    case FMessage::Location: text = tr("Location", "Notification media name text"); break;
+                    case FMessage::Voice: text = tr("Voice", "Notification media name text"); break;
+                    default: text = tr("System", "Notification media name text"); break;
+                    }
                 }
+                notify["msg"] = text;
+                notify["uuid"] = uuid;
+                dbExecutor->queueAction(notify);
             }
-            notify["msg"] = text;
-            notify["uuid"] = uuid;
-            dbExecutor->queueAction(notify);
+            else {
+                int unread = getUnreadCount(jid);
+                unread++;
+                setUnreadCount(jid, unread);
+            }
         }
     }
 }
@@ -502,21 +509,21 @@ void Client::onSimParameters(QDBusPendingCallWatcher *call)
 void Client::notifyOfflineMessages(int count)
 {
     QString text = tr("Offline messages: %n", "", count);
-    connectionNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
-    connectionNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
+    offlineMesagesNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
+    offlineMesagesNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
     MRemoteAction action("harbour.mitakuuluu2.client", "/", "harbour.mitakuuluu2.client", "notificationCallback", QVariantList() << QString());
-    connectionNotification->setAction(action);
-    connectionNotification->publish();
+    offlineMesagesNotification->setAction(action);
+    offlineMesagesNotification->publish();
 }
 
 void Client::notifyOfflineNotifications(int count)
 {
     QString text = tr("Offline notifications: %n", "", count);
-    connectionNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
-    connectionNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
+    offlineNotificationsNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
+    offlineNotificationsNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
     MRemoteAction action("harbour.mitakuuluu2.client", "/", "harbour.mitakuuluu2.client", "notificationCallback", QVariantList() << QString());
-    connectionNotification->setAction(action);
-    connectionNotification->publish();
+    offlineNotificationsNotification->setAction(action);
+    offlineNotificationsNotification->publish();
 }
 
 int Client::getUnreadCount(const QString &jid)
@@ -981,6 +988,24 @@ void Client::setActiveJid(const QString &jid)
         _notificationJid[jid]->remove();
         _notificationJid[jid] = 0;
     }
+    /*if (connectionNotification) {
+        if (connectionNotification->isPublished()) {
+            connectionNotification->remove();
+        }
+        connectionNotification = 0;
+    }*/
+    if (offlineMesagesNotification) {
+        if (offlineMesagesNotification->isPublished()) {
+            offlineMesagesNotification->remove();
+        }
+        offlineMesagesNotification = 0;
+    }
+    if (offlineNotificationsNotification) {
+        if (offlineNotificationsNotification->isPublished()) {
+            offlineNotificationsNotification->remove();
+        }
+        offlineNotificationsNotification = 0;
+    }
 }
 
 void Client::syncResultsAvailable(const QVariantList &results)
@@ -1298,7 +1323,7 @@ void Client::clearNotification()
     }
 }
 
-void Client::groupNotification(const QString &gjid, const QString &jid, int type, const QString &timestamp, const QString &notificationId, QString notification)
+void Client::groupNotification(const QString &gjid, const QString &jid, int type, const QString &timestamp, const QString &notificationId, bool offline, QString notification)
 {
     qDebug() << "groupNotification" << gjid << "from" << jid << "type" << QString::number(type);
     QString message;
@@ -1353,17 +1378,24 @@ void Client::groupNotification(const QString &gjid, const QString &jid, int type
     data["uuid"] = uuid;
     dbExecutor->queueAction(data);
 
-    qDebug() << "should show notification?" << "author:" << jid << "jid:" << gjid << "activeJid:" << _activeJid << "myJid:" << myJid;
-    if ((jid != myJid) && (jid != _activeJid)) {
-        qDebug() << "show notification for:" << data["msgid"].toString() << "jid:" << jid;
-        QVariantMap notify;
-        notify["jid"] = jid;
-        notify["pushName"] = QString();
-        notify["type"] = QueryType::ConversationNotifyMessage;
-        notify["media"] = false;
-        notify["msg"] = message;
-        notify["uuid"] = uuid;
-        dbExecutor->queueAction(notify);
+    qDebug() << "should show notification?" << "author:" << jid << "jid:" << gjid << "activeJid:" << _activeJid << "myJid:" << myJid << "offline:" << offline;
+    if ((jid != myJid) && (gjid != _activeJid)) {
+        if (!offline || !groupOfflineMessages) {
+            qDebug() << "show notification for:" << data["msgid"].toString() << "jid:" << jid;
+            QVariantMap notify;
+            notify["jid"] = gjid;
+            notify["pushName"] = QString();
+            notify["type"] = QueryType::ConversationNotifyMessage;
+            notify["media"] = false;
+            notify["msg"] = message;
+            notify["uuid"] = uuid;
+            dbExecutor->queueAction(notify);
+        }
+        else {
+            int unread = getUnreadCount(gjid);
+            unread++;
+            setUnreadCount(gjid, unread);
+        }
     }
 }
 
@@ -1904,8 +1936,8 @@ void Client::photoIdReceived(const QString &jid, const QString &alias, const QSt
     qDebug() << "photoIdReceived for:" << jid << "name:" << alias << "author:" << author << "timestamp:" << timestamp << "id:" << photoId;
     getPicture(jid);
 
-    if ((!offline || !groupOfflineMessages) && jid.contains("-")) {
-        groupNotification(jid, author, PictureSet, timestamp, notificationId);
+    if (jid.contains("-")) {
+        groupNotification(jid, author, PictureSet, timestamp, notificationId, offline);
     }
 }
 
@@ -2136,9 +2168,7 @@ void Client::groupNewSubject(const QString &from, const QString &author, const Q
 
     updateContactPushname(author, authorName);
 
-    if (!offline || !groupOfflineMessages) {
-        groupNotification(from, author, SubjectSet, creation, notificationId, newSubject);
-    }
+    groupNotification(from, author, SubjectSet, creation, notificationId, offline, newSubject);
 }
 
 void Client::getParticipants(const QString &gjid)
@@ -2278,9 +2308,7 @@ void Client::groupAddUser(const QString &gjid, const QString &jid, const QString
     updateContactPushname(jid, "");
     Q_EMIT groupParticipantAdded(gjid, jid);
 
-    if (!offline || !groupOfflineMessages) {
-        groupNotification(gjid, jid, ParticipantAdded, timestamp, notificationId);
-    }
+    groupNotification(gjid, jid, ParticipantAdded, timestamp, notificationId, offline);
 }
 
 void Client::groupRemoveUser(const QString &gjid, const QString &jid, const QString &timestamp, const QString &notificationId, bool offline)
@@ -2288,9 +2316,7 @@ void Client::groupRemoveUser(const QString &gjid, const QString &jid, const QStr
     qDebug() << "groupRemoveUser" << gjid << "add:" << jid << "timestamp:" << timestamp;
     Q_EMIT groupParticipantRemoved(gjid, jid);
 
-    if (!offline || !groupOfflineMessages) {
-        groupNotification(gjid, jid, ParticipantRemoved, timestamp, notificationId);
-    }
+    groupNotification(gjid, jid, ParticipantRemoved, timestamp, notificationId, offline);
 }
 
 void Client::removeGroupParticipant(const QString &gjid, const QString &jid)

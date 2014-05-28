@@ -502,6 +502,8 @@ private:
     QContactManager *contactManager;
 
     MNotification *connectionNotification;
+    MNotification *offlineMesagesNotification;
+    MNotification *offlineNotificationsNotification;
     void updateNotification(const QString &text);
 
     QVariantMap _mediaProgress;
@@ -555,7 +557,7 @@ private:
     void notyfyConnectionStatus();
     void clearNotification();
 
-    void groupNotification(const QString &gjid, const QString &jid, int type, const QString &timestamp, const QString &notificationId, QString notification = QString());
+    void groupNotification(const QString &gjid, const QString &jid, int type, const QString &timestamp, const QString &notificationId, bool offline = false, QString notification = QString());
 
     void startDownloadMessage(const FMessage &msg);
 
