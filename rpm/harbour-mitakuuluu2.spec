@@ -39,10 +39,6 @@ Short description of my SailfishOS Application
 # >> build pre
 # << build pre
 
-%qtc_qmake5  \
-    VERSION=%{version} \
-    RELEASE=%{release}
-
 %qtc_make %{?_smp_mflags}
 
 # >> build post

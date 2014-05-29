@@ -67,6 +67,8 @@ class Mitakuuluu: public QObject
     Q_PROPERTY(QString privateLedColor READ getPrivateLedColor WRITE setPrivateLedColor NOTIFY privateLedColorChanged)
     Q_PROPERTY(QString groupLedColor READ getGroupLedColor WRITE setGroupLedColor NOTIFY groupLedColorChanged)
 
+    Q_PROPERTY(QString version READ version FINAL)
+
 public:
     enum ConnectionStatus {
         Unknown,
@@ -138,6 +140,9 @@ private:
     void setGroupLedColor(const QString &pattern);
     QString getMediaLedColor();
     void setMediaLedColor(const QString &pattern);
+
+    QString version();
+    QString _version;
 
     int connStatus;
     int connectionStatus();
@@ -270,6 +275,8 @@ private slots:
     void handleProfileChanged(bool changed, bool active, QString profile, QList<MyStructure> keyValType);
 
     void onWhatsappStatus();
+
+    void readVersion();
 
 public slots:
     Q_SCRIPTABLE void exit();

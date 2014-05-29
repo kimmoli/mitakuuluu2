@@ -188,6 +188,16 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         iface->call(QDBus::NoBlock, "ready");
 
         checkWhatsappStatus();
+
+        QProcess *app = new QProcess(this);
+        app->start("/bin/rpm", QStringList() << "-qa" << "--queryformat" << "%{version}-%{release}" <<  "harbour-mitakuuluu2");
+        if (app->bytesAvailable() > 0) {
+            _version = app->readAll();
+        }
+        else {
+            _version = "n/a";
+            connect(app, SIGNAL(readyRead()), this, SLOT(readVersion()));
+        }
     }
     else {
         QGuiApplication::exit(1);
@@ -578,11 +588,12 @@ void Mitakuuluu::sendRecentLogs()
 
 void Mitakuuluu::shutdown()
 {
+    qDebug() << "shutdown";
     pingServer->stop();
     if (iface)
         iface->call(QDBus::NoBlock, "exit");
-    system("killall -9 harbour-mitakuuluu2-server");
-    system("killall -9 harbour-mitakuuluu2");
+    qDebug() << system("killall -9 harbour-mitakuuluu2-server");
+    qDebug() << system("killall -9 harbour-mitakuuluu2");
 }
 
 void Mitakuuluu::isCrashed()
@@ -716,6 +727,14 @@ void Mitakuuluu::onWhatsappStatus()
             "version":{"available":true}}
             */
         }
+    }
+}
+
+void Mitakuuluu::readVersion()
+{
+    QProcess *app = qobject_cast<QProcess*>(sender());
+    if (app && app->bytesAvailable() > 0) {
+        _version = app->readAll();
     }
 }
 
@@ -1201,6 +1220,11 @@ void Mitakuuluu::setMediaLedColor(const QString &pattern)
     setProfileValue(PROFILEKEY_MEDIA_PATTERN, pattern);
 
     Q_EMIT mediaLedColorChanged();
+}
+
+QString Mitakuuluu::version()
+{
+    return _version;
 }
 
 QStringList Mitakuuluu::getLocalesNames()

@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import Sailfish.Silica 1.0
+import harbour.mitakuuluu2.client 1.0
 
 Page {
     id: page
@@ -57,7 +58,7 @@ Page {
                 title: "About Mitäkuuluu"
             }
             Label {
-                text: "v" + appVersion + "-" + appBuildNum
+                text: "v" + Mitakuuluu.version
                 font.pixelSize: Theme.fontSizeMedium
                 width: parent.width
                 horizontalAlignment: Text.AlignHCenter

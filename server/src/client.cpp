@@ -151,7 +151,12 @@ QNetworkAccessManager* Client::nam;
 */
 Client::Client(QObject *parent) : QObject(parent)
 {
-    qDebug() << "version" << QString("v%1-%2").arg(APP_VERSION).arg(APP_BUILDNUM);
+    QProcess app;
+    app.start("/bin/rpm", QStringList() << "-qa" << "--queryformat" << "%{version}-%{release}" <<  "harbour-mitakuuluu2");
+    if (app.bytesAvailable() <= 0) {
+        app.waitForFinished(5000);
+    }
+    qDebug() << "App version:" << app.readAll();
 
     reg = 0;
     dbExecutor = 0;

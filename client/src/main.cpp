@@ -216,9 +216,6 @@ int main(int argc, char *argv[])
 
     view->rootContext()->setContextProperty("emojiPath", "/usr/share/harbour-mitakuuluu2/emoji/");
 
-    view->rootContext()->setContextProperty("appVersion", APP_VERSION);
-    view->rootContext()->setContextProperty("appBuildNum", APP_BUILDNUM);
-
     view->engine()->addImportPath("/usr/share/harbour-mitakuuluu2/qml");
 
     qDebug() << "Registering QML types";

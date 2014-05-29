@@ -11,9 +11,6 @@ INCLUDEPATH += /usr/include/mlite5
 INCLUDEPATH += /usr/include/qt5/QtContacts
 INCLUDEPATH += src/
 
-DEFINES += APP_VERSION=\\\"$$VERSION\\\"
-DEFINES += APP_BUILDNUM=\\\"$$RELEASE\\\"
-
 #gui.files = qml
 #gui.path = /usr/share/harbour-mitakuuluu2
 

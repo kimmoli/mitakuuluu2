@@ -6,9 +6,6 @@ CONFIG += sailfishapp link_pkgconfig
 #CONFIG += qml_debug
 PKGCONFIG += sailfishapp gstreamer-0.10 Qt5Sensors
 
-DEFINES += APP_VERSION=\\\"$$VERSION\\\"
-DEFINES += APP_BUILDNUM=\\\"$$RELEASE\\\"
-
 images.files = images/
 images.path = /usr/share/harbour-mitakuuluu2
 
