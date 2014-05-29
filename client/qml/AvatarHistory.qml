@@ -171,7 +171,7 @@ Page {
                 console.log("set avatar from history: " + model.path)
                 page.setAvatar(model.path)
                 Mitakuuluu.setPicture(page.jid, model.path)
-                pageStack.pop(_parentPage)
+                pageStack.pop()
             }
             function remove() {
                 var remorse = removalComponent.createObject(null)
