@@ -3,7 +3,7 @@ target.path = /usr/bin
 
 QT += dbus sql quick qml multimedia
 CONFIG += Qt5Contacts link_pkgconfig
-PKGCONFIG += Qt5Contacts sailfishapp
+PKGCONFIG += Qt5Contacts sailfishapp contactcache-qt5 qtcontacts-sqlite-qt5-extensions
 LIBS += -lmlite5
 
 INCLUDEPATH += /usr/include/sailfishapp

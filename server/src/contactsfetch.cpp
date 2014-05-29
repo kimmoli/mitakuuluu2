@@ -1,4 +1,5 @@
 #include "contactsfetch.h"
+#include <contactcache-qt5/seasidecache.h>
 
 ContactsFetch::ContactsFetch(QObject *parent) :
     QObject(parent)
@@ -15,13 +16,11 @@ void ContactsFetch::allContacts()
     QVariantMap syncAvatars;
     for (int i = 0; i < results.size(); ++i) {
         QString avatar;
-        QList<QContactAvatar> avatars = results.at(i).details<QContactAvatar>();
         QList<QContactDisplayLabel> labels = results.at(i).details<QContactDisplayLabel>();
         QString label;
         if (labels.size() > 0 && !labels.first().isEmpty())
             label = labels.first().label();
-        if (avatars.length() > 0 && !avatars.first().isEmpty())
-            avatar = avatars.first().imageUrl().toString();
+        avatar = SeasideCache::filteredAvatarUrl(results.at(i)).toString(QUrl::RemoveScheme);
         foreach (QContactPhoneNumber number, results.at(i).details<QContactPhoneNumber>()) {
             if (!number.isEmpty()) {
                 QString phone = QContactPhoneNumber(number).number();
