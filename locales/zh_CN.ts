@@ -419,101 +419,101 @@
 <context>
     <name>Client</name>
     <message>
-        <location filename="../server/src/client.cpp" line="450"/>
+        <location filename="../server/src/client.cpp" line="455"/>
         <source>Image</source>
         <comment>Notification media name text</comment>
         <translation>图片</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="451"/>
+        <location filename="../server/src/client.cpp" line="456"/>
         <source>Audio</source>
         <comment>Notification media name text</comment>
         <translation>音频</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="452"/>
+        <location filename="../server/src/client.cpp" line="457"/>
         <source>Video</source>
         <comment>Notification media name text</comment>
         <translation>视频</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="453"/>
+        <location filename="../server/src/client.cpp" line="458"/>
         <source>Contact</source>
         <comment>Notification media name text</comment>
         <translation>联系人</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="454"/>
+        <location filename="../server/src/client.cpp" line="459"/>
         <source>Location</source>
         <comment>Notification media name text</comment>
         <translation>位置</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="455"/>
+        <location filename="../server/src/client.cpp" line="460"/>
         <source>Voice</source>
         <comment>Notification media name text</comment>
         <translation>语音</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="456"/>
+        <location filename="../server/src/client.cpp" line="461"/>
         <source>System</source>
         <comment>Notification media name text</comment>
         <translation>系统</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="511"/>
+        <location filename="../server/src/client.cpp" line="516"/>
         <source>Offline messages: %n</source>
         <translation><numerusform>离线消息：%n</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="521"/>
+        <location filename="../server/src/client.cpp" line="526"/>
         <source>Offline notifications: %n</source>
         <translation><numerusform>离线提醒：%n</numerusform></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="755"/>
+        <location filename="../server/src/client.cpp" line="760"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
         <translation>已连接</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1064"/>
+        <location filename="../server/src/client.cpp" line="1069"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1332"/>
+        <location filename="../server/src/client.cpp" line="1337"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>加入群组</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1335"/>
+        <location filename="../server/src/client.cpp" line="1340"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>已离开群组</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1338"/>
+        <location filename="../server/src/client.cpp" line="1343"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>主题：%1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1341"/>
+        <location filename="../server/src/client.cpp" line="1346"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>图片已改变</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1666"/>
+        <location filename="../server/src/client.cpp" line="1671"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>已断开连接</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2765"/>
+        <location filename="../server/src/client.cpp" line="2770"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n条未读消息</numerusform></translation>
@@ -997,61 +997,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="267"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="277"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation>未知状态</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="270"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="280"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation>正在等待连接</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="273"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="283"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation>正在连接……</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="276"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="286"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation>正在认证……</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="279"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="289"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation>登入</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="282"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="292"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation>登入失败！</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="285"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="295"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation>已断开连接</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="288"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="298"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation>正在注册……</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="291"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="301"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation>注册失败！</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="294"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="304"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation>账户已过期！</translation>
@@ -1342,6 +1342,11 @@
 <context>
     <name>RegistrationCombo</name>
     <message>
+        <location filename="../client/qml/RegistrationCombo.qml" line="15"/>
+        <source>Select country</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../client/qml/RegistrationCombo.qml" line="75"/>
         <source>Search</source>
         <comment>Registration country selector</comment>
@@ -1488,109 +1493,115 @@ Sailfish OS 原生 WhatsApp 客户端。
         <translation>正在注册账户……</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="288"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="289"/>
         <source>Checking account...</source>
         <comment>Registration checking account text</comment>
         <translation>正在检测账户……</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="305"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="292"/>
+        <source>You should select country first!</source>
+        <comment>Registration banner text</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/RegistrationPage.qml" line="310"/>
         <source>Code successfully requested.</source>
         <comment>Registration information constructor</comment>
         <translation>激活码获取成功。</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="311"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="316"/>
         <source>phone number</source>
         <comment>Registration information constructor</comment>
         <translation>电话号码</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="313"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="318"/>
         <source>secure token</source>
         <comment>Registration information constructor</comment>
         <translation>加密口令</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="316"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="321"/>
         <source>Too frequent attempts to request the code.</source>
         <comment>Registration information constructor</comment>
         <translation>请求注册码过于频繁。</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="318"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="323"/>
         <source>Too many wrong code guesses.</source>
         <comment>Registration information constructor</comment>
         <translation>尝试错误注册码过多。</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="320"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="325"/>
         <source>Too many attempts. Try again tomorrow.</source>
         <comment>Registration information constructor</comment>
         <translation>系统繁忙。请明天再试。</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="322"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="327"/>
         <source>Protocol version outdated, sorry. Please contact me at coderusinbox@gmail.com or via twitter: @icoderus</source>
         <comment>Registration information constructor</comment>
         <translation>协议版本过期，抱歉。请发送电邮到 coderusinbox@gmail.com 或在 Twitter 上 @icoderus 以联系作者</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="324"/>
-        <location filename="../client/qml/RegistrationPage.qml" line="327"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="329"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="332"/>
         <source>Registration code expired. You need to request a new one.</source>
         <comment>Registration information constructor</comment>
         <translation>注册码过期。你需要获取新的注册码。</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="329"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="334"/>
         <source>Missing request param: %1</source>
         <comment>Registration information constructor</comment>
         <translation>缺少获取注册码需要的参数：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="332"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="337"/>
         <source>Bad parameters passed to code request: %1</source>
         <comment>Registration information constructor</comment>
         <translation>获取注册码出现的错误参数：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="335"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="340"/>
         <source>No cell routes for %1 caused by your operator. Please try other method [sms/voice]</source>
         <comment>Registration information constructor</comment>
         <translation>因为你的运营商原因而不能提供呼叫转接到%1。请尝试其他方式，如[短信/语音]</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="337"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="342"/>
         <source>making call</source>
         <comment>Registration information constructor</comment>
         <translation>拨打电话</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="338"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="343"/>
         <source>sending sms</source>
         <comment>Registration information constructor</comment>
         <translation>发送SMS</translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="339"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="344"/>
         <source>Reason: %1</source>
         <translation>原因：%1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/RegistrationPage.qml" line="347"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="352"/>
         <source>%n hours</source>
         <comment>Registration information constructor</comment>
         <translation><numerusform>%n小时</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/RegistrationPage.qml" line="350"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="355"/>
         <source>%n minutes</source>
         <comment>Registration information constructor</comment>
         <translation><numerusform>%n分钟</numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/RegistrationPage.qml" line="352"/>
+        <location filename="../client/qml/RegistrationPage.qml" line="357"/>
         <source>You can retry requesting code after %1</source>
         <comment>Registration information constructor</comment>
         <translation>你可以尝试%1后再次获取激活码</translation>
@@ -1927,7 +1938,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="284"/>
         <source>Group offline messages</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>群组离线消息</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="305"/>
