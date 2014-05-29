@@ -12,7 +12,7 @@ ValueButton {
 
     property ListModel model
 
-    value: currentIndex < 0 ? "" : countriesModel.get(currentIndex).name
+    value: currentIndex < 0 ? qsTr("Select country") : countriesModel.get(currentIndex).name
 
     onCurrentIndexChanged: {
         _currentIndexSet = true

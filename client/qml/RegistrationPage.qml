@@ -284,8 +284,13 @@ Page {
     }
 
     function doRegister() {
-        Mitakuuluu.regRequest(countriesModel.get(countrySelect.currentIndex).cc, phoneField.text.trim(), page.method, salt.text, Mitakuuluu.mcc, Mitakuuluu.mnc)
-        busy.show(qsTr("Checking account...", "Registration checking account text"))
+        if (countrySelect.currentIndex >= 0) {
+            Mitakuuluu.regRequest(countriesModel.get(countrySelect.currentIndex).cc, phoneField.text.trim(), page.method, salt.text, Mitakuuluu.mcc, Mitakuuluu.mnc)
+            busy.show(qsTr("Checking account...", "Registration checking account text"))
+        }
+        else {
+            banner.notify(qsTr("You should select country first!", "Registration banner text"))
+        }
     }
 
     function loadCountryCode(mcccode) {
