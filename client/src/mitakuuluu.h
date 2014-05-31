@@ -67,7 +67,7 @@ class Mitakuuluu: public QObject
     Q_PROPERTY(QString privateLedColor READ getPrivateLedColor WRITE setPrivateLedColor NOTIFY privateLedColorChanged)
     Q_PROPERTY(QString groupLedColor READ getGroupLedColor WRITE setGroupLedColor NOTIFY groupLedColorChanged)
 
-    Q_PROPERTY(QString version READ version FINAL)
+    Q_PROPERTY(QString version READ version NOTIFY versionChanged)
 
 public:
     enum ConnectionStatus {
@@ -188,6 +188,7 @@ signals:
     void mccChanged();
     void mncChanged();
     void myJidChanged();
+    void versionChanged();
 
     void activeChanged();
     void messageReceived(const QVariantMap &data);
@@ -257,6 +258,8 @@ signals:
     void mediaLedColorChanged();
 
     void whatsappStatusReply(const QVariantMap &features);
+
+    void androidReady(const QVariantMap &creds);
 
 private slots:
     void onConnectionStatusChanged(int status);
@@ -361,6 +364,9 @@ public slots:
     int getCurrentLocaleIndex();
 
     void checkWhatsappStatus();
+
+    void checkAndroid();
+    void importCredentials(const QVariantMap &data);
 
 //Settings
 

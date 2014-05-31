@@ -564,6 +564,7 @@ private:
 public slots:
     void ready();
 
+    void saveCredentials(const QVariantMap &data);
     void connectionClosed();
     int currentStatus();
     bool isNetworkAvailable();

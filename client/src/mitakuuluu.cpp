@@ -193,6 +193,7 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         app->start("/bin/rpm", QStringList() << "-qa" << "--queryformat" << "%{version}-%{release}" <<  "harbour-mitakuuluu2");
         if (app->bytesAvailable() > 0) {
             _version = app->readAll();
+            Q_EMIT versionChanged();
         }
         else {
             _version = "n/a";
@@ -236,6 +237,7 @@ bool Mitakuuluu::setProfileValue(const QString &key, const QVariant &value)
     } else if (reply.arguments().count() > 0) {
         return reply.arguments().at(0).toBool();
     }
+    return false;
 }
 
 int Mitakuuluu::connectionStatus()
@@ -735,6 +737,7 @@ void Mitakuuluu::readVersion()
     QProcess *app = qobject_cast<QProcess*>(sender());
     if (app && app->bytesAvailable() > 0) {
         _version = app->readAll();
+        Q_EMIT versionChanged();
     }
 }
 
@@ -749,7 +752,6 @@ void Mitakuuluu::notificationCallback(const QString &jid)
     _pendingJid = jid;
     Q_EMIT notificationOpenJid(jid);
 }
-
 
 void Mitakuuluu::sendMedia(const QStringList &jids, const QString &path)
 {
@@ -1245,6 +1247,29 @@ void Mitakuuluu::checkWhatsappStatus()
 {
     connect(nam->get(QNetworkRequest(QUrl("https://www.whatsapp.com/status.php?v=2"))),
             SIGNAL(finished()), this, SLOT(onWhatsappStatus()));
+}
+
+void Mitakuuluu::checkAndroid()
+{
+    QProcess proc;
+    proc.start("/usr/bin/harbour-mitakuuluu2-helper");
+    proc.waitForFinished(5000);
+    if (proc.exitCode() == 0) {
+        QStringList data = QString(proc.readAll()).split(",");
+        QVariantMap creds;
+        creds["cc"] = data.at(0);
+        creds["number"] = data.at(1);
+        creds["login"] = QString("%1%2").arg(data.at(0)).arg(data.at(1));
+        creds["pw"] = data.at(2);
+        Q_EMIT androidReady(creds);
+    }
+}
+
+void Mitakuuluu::importCredentials(const QVariantMap &data)
+{
+    if (iface) {
+        iface->call(QDBus::NoBlock, "saveCredentials", data);
+    }
 }
 
 // Settings

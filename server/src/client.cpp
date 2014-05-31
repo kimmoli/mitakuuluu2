@@ -1436,6 +1436,11 @@ void Client::ready()
     }
 }
 
+void Client::saveCredentials(const QVariantMap &data)
+{
+    saveRegistrationData(data);
+}
+
 void Client::sendLocationRequest(const QByteArray &mapData, const QString &latitude, const QString &longitude,
                                  const QStringList &jids, MapRequest* sender)
 {

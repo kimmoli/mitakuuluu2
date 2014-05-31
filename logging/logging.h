@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QDebug>
 #include <QStandardPaths>
+#include <QDateTime>
 //#include <systemd/sd-journal.h>
 
 static QString logPath = "/tmp/mitakuuluu2.log";
@@ -20,6 +21,8 @@ const char* msgTypeToString(QtMsgType type)
     case QtFatalMsg:
         return "F";
         //abort();
+    default:
+        return "D";
     }
 }
 
@@ -60,6 +63,7 @@ void printLog(const QString &message)
 
 void journalLog(const QString &message)
 {
+    Q_UNUSED(message);
     //sd_journal_print(0, "test", NULL);
     //sd_journal_send(message.toUtf8().constData(), NULL);
 }

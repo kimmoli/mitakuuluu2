@@ -100,6 +100,8 @@ systemctl restart mce.service
 %{_datadir}/%{name}
 /usr/lib/nemo-transferengine/plugins/*.so
 /usr/lib/systemd/user/*.service
-%{_bindir}
+%attr(4755, root, root) %{_bindir}/harbour-mitakuuluu2-helper
+%{_bindir}/harbour-mitakuuluu2-server
+%{_bindir}/harbour-mitakuuluu2
 # >> files
 # << files
