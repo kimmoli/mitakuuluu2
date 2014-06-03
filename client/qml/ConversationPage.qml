@@ -546,27 +546,22 @@ Page {
             }
 
             function scrollToTop() {
-                scrollUpTimer.start()
+                if (!conversationView.atYBeginning)
+                    scrollUpTimer.start()
             }
             function scrollToBottom() {
-                scrollDownTimer.start()
+                if (!conversationView.atYEnd)
+                    scrollDownTimer.start()
             }
 
-            Loader {
-                id: quickScrollLoader
-                active: !conversationView.hasOwnProperty("quickScroll")
-                sourceComponent: quickScrollComponent
-            }
-
-            Component {
-                id: quickScrollComponent
-                QuickScroll {
-                    id: quickScrollItem
-                    flickable: conversationView
-                    Component.onCompleted: {
-                        console.log("own quick scroll loaded")
-                    }
+            onFlickStarted: {
+                if (!conversationView.hasOwnProperty("quickScroll") || !conversationView.quickScroll) {
+                    iconUp.opacity = 1.0;
+                    iconDown.opacity = 1.0;
                 }
+            }
+            onMovementEnded: {
+                hideIconsTimer.start()
             }
 
             VerticalScrollDecorator {
@@ -579,18 +574,6 @@ Page {
                     onMovingChanged: if (!moving && vscroll._inBounds) restart()
                     interval: 300
                 }
-            }
-        }
-
-        MouseArea {
-            id: stopScroll
-            visible: scrollUpTimer.running || scrollDownTimer.running
-            anchors.fill: conversationView
-            onPressed: {
-                if (scrollUpTimer.running)
-                    scrollUpTimer.stop()
-                if (scrollDownTimer.running)
-                    scrollDownTimer.stop()
             }
         }
 
@@ -652,6 +635,54 @@ Page {
                 saveText()
             }
         }
+
+        MouseArea {
+            id: stopScroll
+            visible: scrollUpTimer.running || scrollDownTimer.running
+            anchors.fill: conversationView
+            onPressed: {
+                if (scrollUpTimer.running)
+                    scrollUpTimer.stop()
+                if (scrollDownTimer.running)
+                    scrollDownTimer.stop()
+            }
+        }
+
+        IconButton {
+            id: iconUp
+            y: parent.height / 2 - height
+            anchors {
+                right: parent.right
+                rightMargin: Theme.paddingMedium
+            }
+            icon.source: "image://theme/icon-l-up"
+            visible: opacity > 0.0
+            opacity: 0.0
+            onClicked: {
+                conversationView.scrollToTop()
+            }
+            Behavior on opacity {
+                FadeAnimation {}
+            }
+        }
+
+        IconButton {
+            id: iconDown
+            y: parent.height / 2 + height
+            anchors {
+                right: parent.right
+                rightMargin: Theme.paddingMedium
+            }
+            icon.source: "image://theme/icon-l-down"
+            visible: opacity > 0.0
+            opacity: 0.0
+            onClicked: {
+                conversationView.scrollToBottom()
+            }
+            Behavior on opacity {
+                FadeAnimation {}
+            }
+        }
     }
 
     RemorsePopup {
@@ -675,6 +706,15 @@ Page {
     }
 
     Timer {
+        id: hideIconsTimer
+        interval: 3000
+        onTriggered: {
+            iconUp.opacity = 0.0
+            iconDown.opacity = 0.0
+        }
+    }
+
+    Timer {
         id: scrollDownTimer
         interval: 1
         repeat: true
@@ -682,6 +722,7 @@ Page {
             conversationView.contentY += 100
             if (conversationView.atYEnd) {
                 scrollDownTimer.stop()
+                iconDown.opacity = 0.0
                 conversationView.returnToBounds()
             }
         }
@@ -695,6 +736,7 @@ Page {
             conversationView.contentY -= 100
             if (conversationView.atYBeginning) {
                 scrollUpTimer.stop()
+                iconUp.opacity = 0.0
                 conversationView.returnToBounds()
             }
         }
