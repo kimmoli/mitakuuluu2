@@ -157,6 +157,8 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "contactsBlocked", this, SIGNAL(contactsBlocked(QStringList)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
+                                              "privacySettings", this, SIGNAL(privacySettings(QVariantMap)));
+        QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "contactTyping", this, SIGNAL(contactTyping(QString)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "contactPaused", this, SIGNAL(contactPaused(QString)));
@@ -363,6 +365,12 @@ QString Mitakuuluu::shouldOpenJid()
     return _pendingJid;
 }
 
+void Mitakuuluu::startRecording(const QString &jid)
+{
+    if (iface)
+        iface->call(QDBus::NoBlock, "startRecording", jid);
+}
+
 void Mitakuuluu::startTyping(const QString &jid)
 {
     if (iface)
@@ -540,6 +548,12 @@ void Mitakuuluu::sendBlockedJids(const QStringList &jids)
         iface->call(QDBus::NoBlock, "sendBlockedJids", jids);
 }
 
+void Mitakuuluu::setPrivacySettings(const QString &category, const QString &value)
+{
+    if (iface)
+        iface->call(QDBus::NoBlock, "setPrivacySettings", category, value);
+}
+
 void Mitakuuluu::muteOrUnmuteGroup(const QString &jid)
 {
     if (iface)
@@ -556,6 +570,12 @@ void Mitakuuluu::getPrivacyList()
 {
     if (iface)
         iface->call(QDBus::NoBlock, "getPrivacyList");
+}
+
+void Mitakuuluu::getPrivacySettings()
+{
+    if (iface)
+        iface->call(QDBus::NoBlock, "getPrivacySettings");
 }
 
 void Mitakuuluu::getMutedGroups()

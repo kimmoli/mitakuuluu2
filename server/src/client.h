@@ -323,6 +323,7 @@ private slots:
     void photoReceived(const QString &from, const QByteArray &data,
                        const QString &photoId, bool largeFormat);
     void privacyListReceived(const QStringList &list);
+    void privacySettingsReceived(const QVariantMap &values);
 
     void sendLocationRequest(const QByteArray &mapData, const QString &latitude, const QString &longitude, const QStringList &jids, MapRequest* sender);
     void mapError(MapRequest* sender);
@@ -349,7 +350,6 @@ private slots:
     void onSimParameters(QDBusPendingCallWatcher *call);
 
     void notifyOfflineMessages(int count);
-    void notifyOfflineNotifications(int count);
 
     void contactsAvailable(const QStringList &contacts, const QVariantMap &labels, const QVariantMap &avatars);
 
@@ -392,6 +392,7 @@ signals:
     void groupInfo(const QVariantMap &group);
     void groupCreated(const QString &jid);
     void contactsBlocked(const QStringList &jids);
+    void privacySettings(const QVariantMap &values);
     void contactsMuted(const QVariantMap &jids);
     void contactsAvailable(const QStringList &jids);
     void avatarChanged(const QString &jid, const QString &avatar);
@@ -429,11 +430,13 @@ signals:
     void connectionSendRemoveGroup(const QString &gjid);
     void connectionSendGetPrivacyList();
     void connectionSendSetPrivacyBlockedList(const QStringList &jidList);
-    void connectionSetNewUserName(const QString &push_name, bool hide, const QString &privacy);
+    void connectionSendGetPrivacySettings();
+    void connectionSendSetPrivacySettings(const QString &category, const QString &value);
+    void connectionSetNewUserName(const QString &push_name, bool hide);
     void connectionSetNewStatus(const QString &status);
-    void connectionSendAvailableForChat(bool hide, const QString &privacy);
-    void connectionSendAvailable(const QString &privacy);
-    void connectionSendUnavailable(const QString &privacy);
+    void connectionSendAvailableForChat(bool hide);
+    void connectionSendAvailable();
+    void connectionSendUnavailable();
     void connectionSendDeleteAccount();
     void connectionSendMessageReceived(const FMessage &message);
     void connectionDisconnect();
@@ -484,10 +487,14 @@ private:
 
     // Internal
     QStringList _blocked;
+    QVariantMap _privacy;
     QVariantMap _mutedGroups;
     QString _activeJid;
     QVariantMap _contacts;
     QHash<QString, int> _unreadCount;
+    int _totalUnread;
+    int _pendingCount;
+    //QHash<QString, MNotification*> _offlineMessages;
     QStringList _availableJids;
     QHash<QString, MNotification*> _notificationJid;
     QHash<QString, QString> _mediaJidHash;
@@ -535,7 +542,6 @@ private:
     bool notificationsMuted;
     bool notifyMessages;
     bool systemNotifier;
-    bool groupOfflineMessages;
 
     QMap<QString, qlonglong> mutingList;
 
@@ -560,6 +566,8 @@ private:
     void groupNotification(const QString &gjid, const QString &jid, int type, const QString &timestamp, const QString &notificationId, bool offline = false, QString notification = QString());
 
     void startDownloadMessage(const FMessage &msg);
+
+    void showOfflineNotifications();
 
 public slots:
     void ready();
@@ -586,6 +594,7 @@ public slots:
     void startSharing(const QStringList &jids, const QString &name, const QString &data);
     QString getMyAccount();
     void startTyping(const QString &jid);
+    void startRecording(const QString &jid);
     void endTyping(const QString &jid);
     bool getAvailable(const QString &jid);
     bool getBlocked(const QString &jid);
@@ -604,6 +613,7 @@ public slots:
     void addGroupParticipants(const QString &gjid, const QStringList &jids);
     void blockOrUnblockContact(const QString &jid);
     void sendBlockedJids(const QStringList &jids);
+    void setPrivacySettings(const QString &category, const QString &value);
     void muteOrUnmute(const QString &jid, int expire);
     void requestLeaveGroup(const QString &gjid);
     void requestRemoveGroup(const QString &gjid);
@@ -612,7 +622,9 @@ public slots:
     void refreshContact(const QString &jid);
     void requestQueryLastOnline(const QString &jid);
     void requestPrivacyList();
+    void requestPrivacySettings();
     void getPrivacyList();
+    void getPrivacySettings();
     void getMutedGroups();
     void getAvailableJids();
     void forwardMessage(const QStringList &jids, const QVariantMap &model);

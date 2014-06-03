@@ -38,12 +38,14 @@ Page {
             }
             MenuItem {
                 text: qsTr("Create group", "Contacts page menu item")
+                enabled: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("CreateGroup.qml"))
                 }
             }
             MenuItem {
                 text: qsTr("Add contact", "Contacts page menu item")
+                enabled: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("SelectPhonebook.qml"))
                 }

@@ -226,6 +226,7 @@ signals:
     void participantAdded(const QString &gjid, const QString &pjid);
     void participantRemoved(const QString &gjid, const QString &pjid);
     void contactsBlocked(const QStringList &list);
+    void privacySettings(const QVariantMap &values);
     void activeJidChanged(const QString &ajid);
     void contactTyping(const QString &cjid);
     void contactPaused(const QString &cjid);
@@ -294,6 +295,7 @@ public slots:
     void syncContactList();
     void setActiveJid(const QString &jid);
     QString shouldOpenJid();
+    void startRecording(const QString &jid);
     void startTyping(const QString &jid);
     void endTyping(const QString &jid);
     void downloadMedia(const QString &msgId, const QString &jid);
@@ -317,9 +319,11 @@ public slots:
     void copyToClipboard(const QString &text);
     void blockOrUnblockContact(const QString &jid);
     void sendBlockedJids(const QStringList &jids);
+    void setPrivacySettings(const QString &category, const QString &value);
     void muteOrUnmuteGroup(const QString &jid);
     void muteGroups(const QStringList &jids);
     void getPrivacyList();
+    void getPrivacySettings();
     void getMutedGroups();
     void forwardMessage(const QStringList &jids, const QString &jid, const QString &msgid);
     void setMyPushname(const QString &pushname);

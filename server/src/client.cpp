@@ -158,6 +158,8 @@ Client::Client(QObject *parent) : QObject(parent)
     }
     qDebug() << "App version:" << app.readAll();
 
+    qDebug() << "Locale" << QLocale::system().name();
+
     reg = 0;
     dbExecutor = 0;
     manager = 0;
@@ -165,6 +167,10 @@ Client::Client(QObject *parent) : QObject(parent)
     connectionThread = 0;
     contactManager = 0;
     connectionNotification = 0;
+
+    _privacy = QVariantMap();
+    _totalUnread = 0;
+    _pendingCount = 0;
 
     this->settings = new QSettings("coderus", "mitakuuluu2", this);
     readSettings();
@@ -279,7 +285,7 @@ void Client::readSettings()
     this->waversion = settings->value(SETTINGS_WAVERSION, USER_AGENT_VERSION).toString();
     this->waresource = QString("Android-%1-443").arg(this->waversion);
     this->wauseragent = QString("WhatsApp/%1 Android/4.2.1 Device/GalaxyS3").arg(this->waversion);
-    qDebug() << "UA:" << this->wauseragent;
+    //qDebug() << "UA:" << this->wauseragent;
 
     this->acceptUnknown = settings->value(SETTINGS_UNKNOWN, true).toBool();
 
@@ -313,8 +319,6 @@ void Client::readSettings()
     systemNotifier = settings->value("settings/systemNotifier", false).toBool();
 
     showConnectionNotifications = settings->value("settings/showConnectionNotifications", false).toBool();
-
-    groupOfflineMessages = settings->value("settings/groupOfflineMessages", true).toBool();
 
     settings->beginGroup("muting");
     foreach (const QString &key, settings->childKeys()) {
@@ -443,33 +447,32 @@ void Client::addMessage(const FMessage &message)
 
         qDebug() << "should show notification?" << "author:" << author << "jid:" << jid << "activeJid:" << _activeJid << "myJid:" << myJid << "offline:" << message.offline;
         if ((author != myJid) && (author != _activeJid) && (jid != _activeJid)) {
-            if (!message.offline || !groupOfflineMessages) {
-                qDebug() << "show notification for:" << message.key.id << "jid:" << jid;
-                QVariantMap notify;
-                notify["jid"] = jid;
-                notify["pushName"] = message.notify_name;
-                notify["type"] = QueryType::ConversationNotifyMessage;
-                notify["media"] = message.media_wa_type != FMessage::Text;
-                if (message.type == FMessage::MediaMessage) {
-                    switch (message.media_wa_type) {
-                    case FMessage::Image: text = tr("Image", "Notification media name text"); break;
-                    case FMessage::Audio: text = tr("Audio", "Notification media name text"); break;
-                    case FMessage::Video: text = tr("Video", "Notification media name text"); break;
-                    case FMessage::Contact: text = tr("Contact", "Notification media name text"); break;
-                    case FMessage::Location: text = tr("Location", "Notification media name text"); break;
-                    case FMessage::Voice: text = tr("Voice", "Notification media name text"); break;
-                    default: text = tr("System", "Notification media name text"); break;
-                    }
+            int unread = getUnreadCount(jid);
+            unread++;
+            setUnreadCount(jid, unread);
+
+            if (message.type == FMessage::MediaMessage) {
+                switch (message.media_wa_type) {
+                case FMessage::Image: text = tr("Image", "Notification media name text"); break;
+                case FMessage::Audio: text = tr("Audio", "Notification media name text"); break;
+                case FMessage::Video: text = tr("Video", "Notification media name text"); break;
+                case FMessage::Contact: text = tr("Contact", "Notification media name text"); break;
+                case FMessage::Location: text = tr("Location", "Notification media name text"); break;
+                case FMessage::Voice: text = tr("Voice", "Notification media name text"); break;
+                default: text = tr("System", "Notification media name text"); break;
                 }
-                notify["msg"] = text;
-                notify["uuid"] = uuid;
-                dbExecutor->queueAction(notify);
             }
-            else {
-                int unread = getUnreadCount(jid);
-                unread++;
-                setUnreadCount(jid, unread);
-            }
+
+            qDebug() << "show notification for:" << message.key.id << "jid:" << jid;
+            QVariantMap notify;
+            notify["jid"] = jid;
+            notify["pushName"] = message.notify_name;
+            notify["type"] = QueryType::ConversationNotifyMessage;
+            notify["media"] = message.media_wa_type != FMessage::Text;
+            notify["msg"] = text;
+            notify["uuid"] = uuid;
+            notify["offline"] = message.offline;
+            dbExecutor->queueAction(notify);
         }
     }
 }
@@ -513,22 +516,17 @@ void Client::onSimParameters(QDBusPendingCallWatcher *call)
 
 void Client::notifyOfflineMessages(int count)
 {
-    QString text = tr("Offline messages: %n", "", count);
+    qDebug() << "Set offline messages:" << count << "pending:" << _pendingCount;
+    _totalUnread = count;
+
+    if (_totalUnread == _pendingCount)
+        showOfflineNotifications();
+    /*QString text = tr("Offline messages: %n", "", count);
     offlineMesagesNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
     offlineMesagesNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
     MRemoteAction action("harbour.mitakuuluu2.client", "/", "harbour.mitakuuluu2.client", "notificationCallback", QVariantList() << QString());
     offlineMesagesNotification->setAction(action);
-    offlineMesagesNotification->publish();
-}
-
-void Client::notifyOfflineNotifications(int count)
-{
-    QString text = tr("Offline notifications: %n", "", count);
-    offlineNotificationsNotification = new MNotification("harbour.mitakuuluu2.notification", text, "Mitakuuluu");
-    offlineNotificationsNotification->setImage("/usr/share/themes/base/meegotouch/icons/harbour-mitakuuluu-popup.png");
-    MRemoteAction action("harbour.mitakuuluu2.client", "/", "harbour.mitakuuluu2.client", "notificationCallback", QVariantList() << QString());
-    offlineNotificationsNotification->setAction(action);
-    offlineNotificationsNotification->publish();
+    offlineMesagesNotification->publish();*/
 }
 
 int Client::getUnreadCount(const QString &jid)
@@ -742,6 +740,9 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connect(connection,SIGNAL(privacyListReceived(QStringList)),
             this,SLOT(privacyListReceived(QStringList)));
 
+    connect(connection,SIGNAL(privacySettingsReceived(QVariantMap)),
+            this,SLOT(privacySettingsReceived(QVariantMap)));
+
     connect(connection,SIGNAL(contactAdded(QString)),
             this,SLOT(newContactAdded(QString)));
 
@@ -754,8 +755,6 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connect(connection,SIGNAL(syncFinished()), this, SIGNAL(synchronizationFinished()));
 
     connect(connection, SIGNAL(notifyOfflineMessages(int)), this, SLOT(notifyOfflineMessages(int)));
-
-    connect(connection, SIGNAL(notifyOfflineNotifications(int)), this, SLOT(notifyOfflineNotifications(int)));
 
     updateNotification(tr("Connected", "System connection notification"));
 
@@ -770,6 +769,7 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     Q_EMIT connectionSendGetServerProperties();
     Q_EMIT connectionSendGetClientConfig();
     Q_EMIT connectionSendGetPrivacyList();
+    Q_EMIT connectionSendGetPrivacySettings();
 
     this->userName = settings->value(SETTINGS_USERNAME, this->myJid.split("@").first()).toString();
     changeUserName(this->userName);
@@ -896,11 +896,13 @@ void Client::connectToServer()
     QObject::connect(this, SIGNAL(connectionSendRemoveGroup(QString)), connection, SLOT(sendRemoveGroup(QString)));
     QObject::connect(this, SIGNAL(connectionSendGetPrivacyList()), connection, SLOT(sendGetPrivacyList()));
     QObject::connect(this, SIGNAL(connectionSendSetPrivacyBlockedList(QStringList)), connection, SLOT(sendSetPrivacyBlockedList(QStringList)));
-    QObject::connect(this, SIGNAL(connectionSetNewUserName(QString,bool,QString)), connection, SLOT(setNewUserName(QString,bool,QString)));
+    QObject::connect(this, SIGNAL(connectionSendGetPrivacySettings()), connection, SLOT(sendGetPrivacySettings()));
+    QObject::connect(this, SIGNAL(connectionSendSetPrivacySettings(QString,QString)), connection, SLOT(sendSetPrivacySettings(QString,QString)));
+    QObject::connect(this, SIGNAL(connectionSetNewUserName(QString,bool)), connection, SLOT(setNewUserName(QString,bool)));
     QObject::connect(this, SIGNAL(connectionSetNewStatus(QString)), connection, SLOT(sendSetStatus(QString)));
-    QObject::connect(this, SIGNAL(connectionSendAvailableForChat(bool,QString)), connection, SLOT(sendAvailableForChat(bool,QString)));
-    QObject::connect(this, SIGNAL(connectionSendAvailable(QString)), connection, SLOT(sendAvailable(QString)));
-    QObject::connect(this, SIGNAL(connectionSendUnavailable(QString)), connection, SLOT(sendUnavailable(QString)));
+    QObject::connect(this, SIGNAL(connectionSendAvailableForChat(bool)), connection, SLOT(sendAvailableForChat(bool)));
+    QObject::connect(this, SIGNAL(connectionSendAvailable()), connection, SLOT(sendAvailable()));
+    QObject::connect(this, SIGNAL(connectionSendUnavailable()), connection, SLOT(sendUnavailable()));
     QObject::connect(this, SIGNAL(connectionSendDeleteAccount()), connection, SLOT(sendDeleteAccount()));
     QObject::connect(this, SIGNAL(connectionDisconnect()), connection, SLOT(disconnectAndDelete()));
     QObject::connect(this, SIGNAL(connectionSendGetServerProperties()), connection, SLOT(sendGetServerProperties()));
@@ -993,24 +995,6 @@ void Client::setActiveJid(const QString &jid)
         _notificationJid[jid]->remove();
         _notificationJid[jid] = 0;
     }
-    /*if (connectionNotification) {
-        if (connectionNotification->isPublished()) {
-            connectionNotification->remove();
-        }
-        connectionNotification = 0;
-    }*/
-    if (offlineMesagesNotification) {
-        if (offlineMesagesNotification->isPublished()) {
-            offlineMesagesNotification->remove();
-        }
-        offlineMesagesNotification = 0;
-    }
-    if (offlineNotificationsNotification) {
-        if (offlineNotificationsNotification->isPublished()) {
-            offlineNotificationsNotification->remove();
-        }
-        offlineNotificationsNotification = 0;
-    }
 }
 
 void Client::syncResultsAvailable(const QVariantList &results)
@@ -1102,7 +1086,7 @@ void Client::changeUserName(const QString &newUserName)
 {
     userName = newUserName;
     if (connectionStatus == LoggedIn) {
-        Q_EMIT connectionSetNewUserName(userName, alwaysOffline, QString());
+        Q_EMIT connectionSetNewUserName(userName, alwaysOffline);
     }
 }
 
@@ -1384,23 +1368,16 @@ void Client::groupNotification(const QString &gjid, const QString &jid, int type
     dbExecutor->queueAction(data);
 
     qDebug() << "should show notification?" << "author:" << jid << "jid:" << gjid << "activeJid:" << _activeJid << "myJid:" << myJid << "offline:" << offline;
-    if ((jid != myJid) && (gjid != _activeJid)) {
-        if (!offline || !groupOfflineMessages) {
-            qDebug() << "show notification for:" << data["msgid"].toString() << "jid:" << jid;
-            QVariantMap notify;
-            notify["jid"] = gjid;
-            notify["pushName"] = QString();
-            notify["type"] = QueryType::ConversationNotifyMessage;
-            notify["media"] = false;
-            notify["msg"] = message;
-            notify["uuid"] = uuid;
-            dbExecutor->queueAction(notify);
-        }
-        else {
-            int unread = getUnreadCount(gjid);
-            unread++;
-            setUnreadCount(gjid, unread);
-        }
+    if (!offline && (jid != myJid) && (gjid != _activeJid)) {
+        qDebug() << "show notification for:" << data["msgid"].toString() << "jid:" << jid;
+        QVariantMap notify;
+        notify["jid"] = gjid;
+        notify["pushName"] = QString();
+        notify["type"] = QueryType::ConversationNotifyMessage;
+        notify["media"] = false;
+        notify["msg"] = message;
+        notify["uuid"] = uuid;
+        dbExecutor->queueAction(notify);
     }
 }
 
@@ -1425,6 +1402,21 @@ void Client::startDownloadMessage(const FMessage &msg)
     thread->start();
 }
 
+void Client::showOfflineNotifications()
+{
+    foreach (const QString &jid, _notificationJid.keys()) {
+        if (_notificationJid[jid]) {
+            qDebug() << "valid notification for" << jid << _notificationJid[jid]->body() << "published:" << _notificationJid[jid]->isPublished();
+            _notificationJid[jid]->publish();
+        }
+        else {
+            qDebug() << "invalid notification for" << jid;
+        }
+    }
+    _totalUnread = 0;
+    _pendingCount = 0;
+}
+
 void Client::ready()
 {
     qDebug() << "Client loaded and requested initial data";
@@ -1438,7 +1430,7 @@ void Client::ready()
 
 void Client::saveCredentials(const QVariantMap &data)
 {
-    saveRegistrationData(data);
+    registrationSuccessful(data);
 }
 
 void Client::sendLocationRequest(const QByteArray &mapData, const QString &latitude, const QString &longitude,
@@ -2048,6 +2040,13 @@ void Client::startTyping(const QString &jid)
     }
 }
 
+void Client::startRecording(const QString &jid)
+{
+    if (connectionStatus == LoggedIn) {
+        Q_EMIT connectionSendComposing(jid, "audio");
+    }
+}
+
 void Client::endTyping(const QString &jid)
 {
     if (connectionStatus == LoggedIn) {
@@ -2348,9 +2347,21 @@ void Client::requestPrivacyList()
     }
 }
 
+void Client::requestPrivacySettings()
+{
+    if (connectionStatus == LoggedIn) {
+        Q_EMIT connectionSendGetPrivacySettings();
+    }
+}
+
 void Client::getPrivacyList()
 {
     Q_EMIT contactsBlocked(_blocked);
+}
+
+void Client::getPrivacySettings()
+{
+    Q_EMIT privacySettings(_privacy);
 }
 
 void Client::getMutedGroups()
@@ -2430,6 +2441,13 @@ void Client::sendBlockedJids(const QStringList &jids)
     Q_EMIT contactsBlocked(_blocked);
 }
 
+void Client::setPrivacySettings(const QString &category, const QString &value)
+{
+    _privacy[category] = value;
+    if (connectionStatus == LoggedIn)
+        Q_EMIT connectionSendSetPrivacySettings(category, value);
+}
+
 void Client::muteOrUnmute(const QString &jid, int expire)
 {
     qDebug() << "muteOrUnmuteGroup" << jid;
@@ -2460,6 +2478,12 @@ void Client::privacyListReceived(const QStringList &list)
     }
     _blocked = list;
     Q_EMIT contactsBlocked(list);
+}
+
+void Client::privacySettingsReceived(const QVariantMap &values)
+{
+    _privacy = values;
+    Q_EMIT privacySettings(_privacy);
 }
 
 void Client::newContactAdded(QString jid)
@@ -2530,7 +2554,7 @@ void Client::setPresenceAvailable()
 {
     qDebug() << "set presence available";
     if (connectionStatus == LoggedIn) {
-        Q_EMIT connectionSendAvailable(QString());
+        Q_EMIT connectionSendAvailable();
     }
 }
 
@@ -2538,7 +2562,7 @@ void Client::setPresenceUnavailable()
 {
     qDebug() << "set presence unavailable";
     if (connectionStatus == LoggedIn) {
-        Q_EMIT connectionSendUnavailable(QString());
+        Q_EMIT connectionSendUnavailable();
     }
 }
 
@@ -2754,14 +2778,15 @@ void Client::dbResults(const QVariant &result)
         QString jid = reply["jid"].toString();
         QString avatar = reply["avatar"].toString();
         avatar = avatar.replace("file://", "");
+        avatar = avatar.replace("///", "/");
         QString name = reply["name"].toString();
         if (_notificationJid[jid]) {
             _notificationJid[jid]->remove();
             _notificationJid[jid] = 0;
         }
         int unread = getUnreadCount(jid);
-        unread++;
-        setUnreadCount(jid, unread);
+        //unread++;
+        //setUnreadCount(jid, unread);
 
         qlonglong muted = 0;
         if (mutingList.contains(jid)) {
@@ -2797,12 +2822,28 @@ void Client::dbResults(const QVariant &result)
             notification->setImage(avatar.isEmpty() ? "/usr/share/harbour-mitakuuluu2/images/notification.png" : avatar);
             MRemoteAction action("harbour.mitakuuluu2.client", "/", "harbour.mitakuuluu2.client", "notificationCallback", QVariantList() << jid);
             notification->setAction(action);
-            notification->publish();
-            if (_notificationJid.contains(jid) && _notificationJid[jid]) {
-                _notificationJid[jid]->remove();
-                _notificationJid[jid] = 0;
+
+            if (reply["offline"].toBool()) {
+                if (_notificationJid.contains(jid) && _notificationJid[jid]) {
+                    delete _notificationJid[jid];
+                    _notificationJid[jid] = 0;
+                }
+                _notificationJid[jid] = notification;
+
+                _pendingCount += 1;
+                qDebug() << "notify pending" << _pendingCount << "unread" << _totalUnread;
+
+                if (_totalUnread == _pendingCount)
+                    showOfflineNotifications();
             }
-            _notificationJid[jid] = notification;
+            else {
+                notification->publish();
+                if (_notificationJid.contains(jid) && _notificationJid[jid]) {
+                    _notificationJid[jid]->remove();
+                    _notificationJid[jid] = 0;
+                }
+                _notificationJid[jid] = notification;
+            }
         }
         break;
     }
@@ -2983,7 +3024,7 @@ void Client::waversionRequestFinished()
 void Client::scratchRequestFinished()
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
-    if (reply->error() == QNetworkReply::NoError) {
+    if (reply && reply->error() == QNetworkReply::NoError) {
         QByteArray json = reply->readAll();
         QJsonParseError error;
         QJsonDocument doc = QJsonDocument::fromJson(json, &error);

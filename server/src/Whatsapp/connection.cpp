@@ -97,9 +97,6 @@ Connection::Connection(const QString &server, int port, const QString &domain, c
     this->iqid = 0;
     this->counters = counters;
     this->myJid = user + "@" + JID_DOMAIN;
-
-    offlineMessages = 0;
-    offlineNotifications = 0;
 }
 
 void Connection::init()
@@ -124,7 +121,7 @@ void Connection::init()
 void Connection::disconnectAndDelete()
 {
     qDebug() << "disconnectAndDelete";
-    //Q_EMIT socketBroken();
+    Q_EMIT disconnected();
     disconnect(this,0,0,0);
     disconnect(socket,0,0,0);
     socket->disconnectFromHost();
@@ -308,6 +305,20 @@ bool Connection::read()
                             qDebug() << "xmlns type:" << xmlns;
                         }
                     }
+
+                    else if (child.getTag() == "privacy" && id.startsWith("privacysettings_")) {
+                        QVariantMap values;
+                        ProtocolTreeNodeListIterator j(child.getChildren());
+                        while (j.hasNext())
+                        {
+                            ProtocolTreeNode group = j.next().value();
+                            if (group.getTag() == "category") {
+                                values[group.getAttributeValue("name")] = group.getAttributeValue("value");
+                            }
+                        }
+                        Q_EMIT privacySettingsReceived(values);
+                    }
+
                     else if (child.getTag() == "media" || child.getTag() == "duplicate")
                     {
                         Key k(JID_DOMAIN,true,id);
@@ -492,14 +503,7 @@ bool Connection::read()
                     sendCleanDirty(QStringList() << child.getAttributeValue("type"));
                 }
                 else if (child.getTag() == "offline") {
-                    if (offlineMessages > 0) {
-                        Q_EMIT notifyOfflineMessages(offlineMessages);
-                        offlineMessages = 0;
-                    }
-                    if (offlineNotifications > 0) {
-                        Q_EMIT notifyOfflineNotifications(offlineNotifications);
-                        offlineNotifications = 0;
-                    }
+                    Q_EMIT notifyOfflineMessages(child.getAttributeValue("count").toInt());
                 }
             }
         }
@@ -573,9 +577,6 @@ bool Connection::read()
             QString id = node.getAttributeValue("id");
             QString notify = node.getAttributeValue("notify");
             bool offline = !node.getAttributeValue("offline").isEmpty();
-            if (offline) {
-                offlineNotifications += 1;
-            }
             if (!notify.isEmpty()) {
                 if (from.contains("-")) {
                     if (!participant.isEmpty())
@@ -731,10 +732,6 @@ void Connection::parseMessageInitialTagAlreadyChecked(ProtocolTreeNode &messageN
     bool offline = !messageNode.getAttributeValue("offline").isEmpty();
     QString retry = messageNode.getAttributeValue("retry");
     QString typeAttribute = messageNode.getAttributeValue("type");
-
-    if (offline) {
-        offlineMessages += 1;
-    }
 
     if (typeAttribute == "text" || typeAttribute == "media")
     {
@@ -963,7 +960,7 @@ void Connection::socketError(QAbstractSocket::SocketError error)
 {
     IOException e(error);
     qDebug() << "There was an IO error:" << e.toString();
-    //Q_EMIT disconnected();
+    Q_EMIT disconnected();
     if (error == QAbstractSocket::RemoteHostClosedError)
         Q_EMIT needReconnect();
     //else
@@ -1091,8 +1088,6 @@ QByteArray Connection::readFeaturesUntilChallengeOrSuccess(int *bytes)
 
     QByteArray data;
     bool moreNodes;
-    bool server_supports_receipts_acks = false;
-    int server_properties_version = -1;
 
     while ((moreNodes = in->nextTree(node)))
     {
@@ -1100,17 +1095,6 @@ QByteArray Connection::readFeaturesUntilChallengeOrSuccess(int *bytes)
 
         if (node.getTag() == "stream:features")
         {
-            ProtocolTreeNode receiptAcksNode = node.getChild("receipt_acks");
-            ProtocolTreeNode propsNode = node.getChild("props");
-
-            // ToDo: What can we do with this?
-            server_supports_receipts_acks = receiptAcksNode.getTag() == "receipt_acks";
-
-            if (propsNode.getTag() == "props")
-            {
-                // ToDo: What can we do with this?
-                server_properties_version = propsNode.getAttributeValue("version").toInt();
-            }
         }
 
         if (node.getTag() == "challenge")
@@ -1572,14 +1556,18 @@ ProtocolTreeNode Connection::getMessageNode(const FMessage &message, const Proto
 
     @param message      FMessage object containing the message to be acknowledged.
 */
-void Connection::sendMessageReceived(const FMessage &message)
+void Connection::sendMessageReceived(const FMessage &message, const QString &type)
 {
     AttributeList attrs;
 
     ProtocolTreeNode messageNode("receipt");
     attrs.clear();
-    attrs.insert("to",message.key.remote_jid);
+    QString resource = message.broadcast ? message.remote_resource : message.key.remote_jid;
+    attrs.insert("to",resource);
     attrs.insert("id",message.key.id);
+    if (!type.isEmpty()) {
+        attrs.insert("type", type);
+    }
 
     messageNode.setAttributes(attrs);
 
@@ -2424,6 +2412,54 @@ void Connection::sendSetPrivacyBlockedList(const QStringList &jidList)
     counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
 }
 
+void Connection::sendGetPrivacySettings()
+{
+    QString id = makeId("privacysettings_");
+
+    AttributeList attrs;
+
+    ProtocolTreeNode iqNode("iq");
+    attrs.clear();
+    attrs.insert("id",id);
+    attrs.insert("to",JID_DOMAIN);
+    attrs.insert("type","get");
+    attrs.insert("xmlns","privacy");
+    iqNode.setAttributes(attrs);
+
+    ProtocolTreeNode privacyNode("privacy");
+    iqNode.addChild(privacyNode);
+
+    int bytes = out->write(iqNode);
+    counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
+}
+
+void Connection::sendSetPrivacySettings(const QString &name, const QString &value)
+{
+    QString id = makeId("setprivacy_");
+
+    AttributeList attrs;
+
+    ProtocolTreeNode iqNode("iq");
+    attrs.clear();
+    attrs.insert("id",id);
+    attrs.insert("to",JID_DOMAIN);
+    attrs.insert("type","set");
+    attrs.insert("xmlns","privacy");
+    iqNode.setAttributes(attrs);
+
+    ProtocolTreeNode privacyNode("privacy");
+    ProtocolTreeNode categoryNode("category");
+    attrs.clear();
+    attrs.insert("name", name);
+    attrs.insert("value", value);
+    categoryNode.setAttributes(attrs);
+    privacyNode.addChild(categoryNode);
+    iqNode.addChild(privacyNode);
+
+    int bytes = out->write(iqNode);
+    counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
+}
+
 /** ***********************************************************************
  ** General methods
  **/
@@ -2497,10 +2533,10 @@ QString Connection::makeId(const QString &prefix)
 
     @param push_name    New user name or alias.
 */
-void Connection::setNewUserName(const QString &push_name, bool hide, QString privacy)
+void Connection::setNewUserName(const QString &push_name, bool hide)
 {
     this->push_name = push_name;
-    sendAvailableForChat(hide, privacy);
+    sendAvailableForChat(hide);
 }
 
 /**
@@ -2584,43 +2620,37 @@ void Connection::sendGetServerProperties()
 /**
     Sends notification that this client is available for chat (online).
 */
-void Connection::sendAvailableForChat(bool hide, QString privacy)
+void Connection::sendAvailableForChat(bool hide)
 {
     ProtocolTreeNode presenceNode("presence");
 
     AttributeList attrs;
     attrs.insert("name", push_name);
     attrs.insert("type", hide ? "unavailable" : "available");
-    if (!privacy.isEmpty())
-        attrs.insert("action", privacy);
     presenceNode.setAttributes(attrs);
 
     int bytes = out->write(presenceNode);
     counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
 }
 
-void Connection::sendAvailable(QString privacy)
+void Connection::sendAvailable()
 {
     ProtocolTreeNode presenceNode("presence");
 
     AttributeList attrs;
     attrs.insert("type", "available");
-    if (!privacy.isEmpty())
-        attrs.insert("action", privacy);
     presenceNode.setAttributes(attrs);
 
     int bytes = out->write(presenceNode);
     counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
 }
 
-void Connection::sendUnavailable(QString privacy)
+void Connection::sendUnavailable()
 {
     ProtocolTreeNode presenceNode("presence");
 
     AttributeList attrs;
     attrs.insert("type", "unavailable");
-    if (!privacy.isEmpty())
-        attrs.insert("action", privacy);
     presenceNode.setAttributes(attrs);
 
     int bytes = out->write(presenceNode);

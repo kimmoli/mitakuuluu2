@@ -116,6 +116,13 @@ Dialog {
                     pageStack.push(Qt.resolvedUrl("Payments.qml"))
                 }
             }
+            MenuItem {
+                text: qsTr("Privacy settings", "Account page menu item")
+                visible: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("PrivacySettings.qml"))
+                }
+            }
         }
 
         DialogHeader {

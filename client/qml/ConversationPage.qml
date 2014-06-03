@@ -278,6 +278,7 @@ Page {
 
         PushUpMenu {
             id: pushMedia
+            visible: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
 
             _activeHeight: mediaSendRow.height
 
@@ -353,11 +354,13 @@ Page {
                         }
                     }
                     onPressed: {
+                        Mitakuuluu.startRecording(page.jid)
                         voiceRecordTimer.start()
                         page.forwardNavigation = false
                         page.backNavigation = false
                     }
                     onReleased: {
+                        Mitakuuluu.stopTyping()
                         if (audioRecorder) {
                             audioRecorder.stop()
                             if (containsMouse) {

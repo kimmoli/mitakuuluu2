@@ -277,14 +277,6 @@ Page {
                 onClicked: notificationsMuted = !checked
             }
 
-            TextSwitch {
-                width: parent.width
-                enabled: !notificationsMuted
-                checked: groupOfflineMessages
-                text: qsTr("Group offline messages", "Settings option name")
-                onClicked: groupOfflineMessages = checked
-            }
-
             Binding {
                 target: notifySwitch
                 property: "checked"

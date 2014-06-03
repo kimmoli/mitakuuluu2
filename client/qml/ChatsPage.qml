@@ -77,6 +77,7 @@ Page {
 
             MenuItem {
                 text: qsTr("Muted contacts", "Main menu action")
+                enabled: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("MutedContacts.qml"))
                 }
@@ -84,6 +85,7 @@ Page {
 
             MenuItem {
                 text: qsTr("Broadcast", "Main menu action")
+                enabled: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("Broadcast.qml"))
                 }

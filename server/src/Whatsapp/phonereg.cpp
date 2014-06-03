@@ -76,13 +76,16 @@ void PhoneReg::startCodeRequest()
     request = new WARequest(this, "code");
     request->addParam("cc", cc);
     request->addParam("in", number);
-    request->addParam("reason", "next-method");
-    //request->addParam("reason", "self-send-jailbroken");
+    //request->addParam("reason", "next-method");
+    request->addParam("reason", "self-send-jailbroken");
     request->addParam("method", method);
     request->addParam("mcc", mcc);
     request->addParam("mnc", mnc);
-    request->addParam("lg", "en");
-    request->addParam("lc", "US");
+    QString locale = QLocale::system().name();
+    QString lg = locale.split("_").first();
+    QString lc = locale.split("_").length() > 1 ? locale.split("_").last() : "";
+    request->addParam("lg", lc.isEmpty() ? "en" : lg);
+    request->addParam("lc", lc.isEmpty() ? "US" : lc);
     request->addParam("token", Utilities::getTokenAndroid(number));
     request->addParam("id", id);
 

@@ -265,6 +265,9 @@ public slots:
     // Sends a request to set the privacy list
     void sendSetPrivacyBlockedList(const QStringList &jidList);
 
+    void sendGetPrivacySettings();
+    void sendSetPrivacySettings(const QString &name, const QString &value);
+
 
     /** ***********************************************************************
      ** General slots
@@ -277,16 +280,16 @@ public slots:
     void sendPing();
 
     // Changes the user name or alias
-    void setNewUserName(const QString &push_name, bool hide = false, QString privacy = QString());
+    void setNewUserName(const QString &push_name, bool hide = false);
 
     void sendDeleteAccount();
 
     void sendGetServerProperties();
 
     // Sends notification that this client is available for chat (online)
-    void sendAvailableForChat(bool hide = false, QString privacy = QString());
-    void sendAvailable(QString privacy = QString());
-    void sendUnavailable(QString privacy = QString());
+    void sendAvailableForChat(bool hide = false);
+    void sendAvailable();
+    void sendUnavailable();
 
     // Sends the client configuration
     void sendClientConfig(const QString &platform);
@@ -360,9 +363,6 @@ private:
     // Connection timeout timer
     QTimer *connTimeout;
 
-    int offlineMessages;
-    int offlineNotifications;
-
 
     /** ***********************************************************************
      ** Private methods
@@ -425,7 +425,7 @@ private:
     ProtocolTreeNode getMessageNode(const FMessage &message, const ProtocolTreeNode &child);
 
     // Send a message received acknowledgement
-    void sendMessageReceived(const FMessage &message);
+    void sendMessageReceived(const FMessage &message, const QString &type = "");
 
     // Send a notification received acknowledgement
     void sendNotificationReceived(const QString &to, const QString &id, const QString &from, const QString &participant, const QString &type, const ProtocolTreeNode &childNode = ProtocolTreeNode());
@@ -586,12 +586,13 @@ signals:
     // Privacy list received
     void privacyListReceived(const QStringList &list);
 
+    void privacySettingsReceived(const QVariantMap &values);
+
     /** ***********************************************************************
      ** General signals
      **/
 
     void notifyOfflineMessages(int count);
-    void notifyOfflineNotifications(int count);
 
     void loginFailed();
 };
