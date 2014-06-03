@@ -1,4 +1,4 @@
-import QtQuick 2.0
+﻿import QtQuick 2.1
 import Sailfish.Silica 1.0
 import harbour.mitakuuluu2.client 1.0
 import QtLocation 5.0
@@ -545,15 +545,53 @@ Page {
                 }
             }
 
-            onFlickStarted: {
-                iconUp.opacity = 1.0;
-                iconDown.opacity = 1.0;
+            function scrollToTop() {
+                scrollUpTimer.start()
             }
-            onMovementEnded: {
-                hideIconsTimer.start()
+            function scrollToBottom() {
+                scrollDownTimer.start()
             }
 
-            VerticalScrollDecorator {}
+            Loader {
+                id: quickScrollLoader
+                active: !conversationView.hasOwnProperty("quickScroll")
+                sourceComponent: quickScrollComponent
+            }
+
+            Component {
+                id: quickScrollComponent
+                QuickScroll {
+                    id: quickScrollItem
+                    flickable: conversationView
+                    Component.onCompleted: {
+                        console.log("own quick scroll loaded")
+                    }
+                }
+            }
+
+            VerticalScrollDecorator {
+                id: vscroll
+                opacity: (timer.moving && _inBounds) || timer.running || scrollUpTimer.running || scrollDownTimer.running ? 1.0 : 0.0
+
+                Timer {
+                    id: timer
+                    property bool moving: conversationView.movingVertically
+                    onMovingChanged: if (!moving && vscroll._inBounds) restart()
+                    interval: 300
+                }
+            }
+        }
+
+        MouseArea {
+            id: stopScroll
+            visible: scrollUpTimer.running || scrollDownTimer.running
+            anchors.fill: conversationView
+            onPressed: {
+                if (scrollUpTimer.running)
+                    scrollUpTimer.stop()
+                if (scrollDownTimer.running)
+                    scrollDownTimer.stop()
+            }
         }
 
         EmojiTextArea {
@@ -614,44 +652,6 @@ Page {
                 saveText()
             }
         }
-
-        IconButton {
-            id: iconUp
-            anchors {
-                top: header.bottom
-                right: parent.right
-                margins: Theme.paddingMedium
-            }
-            icon.source: "image://theme/icon-l-up"
-            visible: opacity > 0.0
-            opacity: 0.0
-            onClicked: {
-                if (!conversationView.atYBeginning)
-                    scrollUpTimer.start()
-            }
-            Behavior on opacity {
-                FadeAnimation {}
-            }
-        }
-
-        IconButton {
-            id: iconDown
-            anchors {
-                bottom: sendBox.top
-                right: parent.right
-                margins: Theme.paddingMedium
-            }
-            icon.source: "image://theme/icon-l-down"
-            visible: opacity > 0.0
-            opacity: 0.0
-            onClicked: {
-                if (!conversationView.atYEnd)
-                    scrollDownTimer.start()
-            }
-            Behavior on opacity {
-                FadeAnimation {}
-            }
-        }
     }
 
     RemorsePopup {
@@ -675,15 +675,6 @@ Page {
     }
 
     Timer {
-        id: hideIconsTimer
-        interval: 3000
-        onTriggered: {
-            iconUp.opacity = 0.0
-            iconDown.opacity = 0.0
-        }
-    }
-
-    Timer {
         id: scrollDownTimer
         interval: 1
         repeat: true
@@ -691,7 +682,6 @@ Page {
             conversationView.contentY += 100
             if (conversationView.atYEnd) {
                 scrollDownTimer.stop()
-                iconDown.opacity = 0.0
                 conversationView.returnToBounds()
             }
         }
@@ -705,7 +695,6 @@ Page {
             conversationView.contentY -= 100
             if (conversationView.atYBeginning) {
                 scrollUpTimer.stop()
-                iconUp.opacity = 0.0
                 conversationView.returnToBounds()
             }
         }
