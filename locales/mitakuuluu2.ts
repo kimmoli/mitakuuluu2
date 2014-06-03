@@ -511,7 +511,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2800"/>
+        <location filename="../server/src/client.cpp" line="2827"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished">
@@ -704,13 +704,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="566"/>
+        <location filename="../client/qml/ConversationPage.qml" line="604"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="783"/>
+        <location filename="../client/qml/ConversationPage.qml" line="772"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation type="unfinished"></translation>
@@ -1098,36 +1098,42 @@
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="810"/>
+        <source>Resend message</source>
+        <comment>Conversation message context menu item</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/ModernDelegate.qml" line="819"/>
         <source>Copy</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="831"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="840"/>
         <source>Media saved as %1</source>
         <comment>Banner text message</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="857"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="866"/>
         <source>Message copied to clipboard</source>
         <comment>Banner item text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="819"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="828"/>
         <source>Forward</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="828"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="837"/>
         <source>Save to Gallery</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="837"/>
+        <location filename="../client/qml/ModernDelegate.qml" line="846"/>
         <source>Delete</source>
         <comment>Conversation message context menu item</comment>
         <translation type="unfinished"></translation>
