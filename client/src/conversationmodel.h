@@ -71,6 +71,7 @@ public slots:
     QVariantMap getModelByMsgId(const QString &msgId);
     void copyToClipboard(const QString &msgId);
     void forwardMessage(const QStringList &jids, const QString &msgId);
+    void resendMessage(const QString &jid, const QString& msgId);
     void removeConversation(const QString &rjid);
     int count();
     void saveHistory(const QString &sjid, const QString &sname);

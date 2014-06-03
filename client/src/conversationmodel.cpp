@@ -220,6 +220,14 @@ void ConversationModel::forwardMessage(const QStringList &jids, const QString &m
     }
 }
 
+void ConversationModel::resendMessage(const QString &jid, const QString &msgId)
+{
+    if (iface) {
+        QVariantMap model = getModelByMsgId(msgId);
+        iface->call(QDBus::NoBlock, "resendMessage", jid, model);
+    }
+}
+
 void ConversationModel::removeConversation(const QString &rjid)
 {
     if (jid == rjid) {

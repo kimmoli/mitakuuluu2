@@ -123,6 +123,7 @@ void QueryExecutor::processQuery(const QVariant &msg)
             break;
         }
         case QueryType::ConversationGetMessage:
+        case QueryType::ConversationResendMessage:
         case QueryType::ConversationGetDownloadMessage: {
             getMessageModel(query);
             break;

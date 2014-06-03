@@ -2408,6 +2408,33 @@ void Client::forwardMessage(const QStringList &jids, const QVariantMap &model)
     }
 }
 
+void Client::resendMessage(const QString &jid, const QVariantMap &model)
+{
+    FMessage msg(jid, true, model["msgid"].toString());
+    int msgtype = model["watype"].toInt();
+    msg.type = msgtype == FMessage::Text ? FMessage::BodyMessage : FMessage::MediaMessage;
+    msg.remote_resource = model["author"].toString();
+    msg.media_wa_type = msgtype;
+    msg.status = FMessage::Uploaded;
+    msg.media_size = model["size"].toInt();
+    msg.media_mime_type = model["mime"].toString();
+    msg.media_name = model["name"].toString();
+    msg.media_url = model["url"].toString();
+    msg.local_file_uri = model["local"].toString();
+    if (msg.type == FMessage::MediaMessage) {
+        msg.setData(QByteArray::fromBase64(model["data"].toString().toUtf8()));
+    }
+    else {
+        msg.setData(model["data"].toString());
+    }
+    msg.latitude = model["latitude"].toDouble();
+    msg.longitude = model["longitude"].toDouble();
+    msg.media_duration_seconds = model["duration"].toInt();
+    msg.media_width = model["width"].toInt();
+    msg.media_height = model["height"].toInt();
+    queueMessage(msg);
+}
+
 void Client::setPrivacyList()
 {
     qDebug() << "Blocked people count:" << QString::number(_blocked.size());

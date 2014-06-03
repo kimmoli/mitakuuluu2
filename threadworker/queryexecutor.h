@@ -45,6 +45,7 @@ namespace QueryType {
         ConversationMediaUploaded,
         ConversationGetMedia,
         ConversationGetCount,
+        ConversationResendMessage,
         AccountGetData = 200,
         AccountSetData,
         AccountRemoveData,

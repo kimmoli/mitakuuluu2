@@ -628,6 +628,7 @@ public slots:
     void getMutedGroups();
     void getAvailableJids();
     void forwardMessage(const QStringList &jids, const QVariantMap &model);
+    void resendMessage(const QString &jid, const QVariantMap &model);
     void changeStatus(const QString &newStatus);
     void changeUserName(const QString &newUserName);
     void sendRecentLogs();

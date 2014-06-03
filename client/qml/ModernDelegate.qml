@@ -807,6 +807,15 @@ MouseArea {
         id: componentContextMenu
         ContextMenu {
             MenuItem {
+                text: qsTr("Resend message", "Conversation message context menu item")
+                visible: model.status < Mitakuuluu.ReceivedByServer
+                enabled: Mitakuuluu.connectionStatus === Mitakuuluu.LoggedIn
+                onClicked: {
+                    conversationModel.resendMessage(page.jid, model.msgid)
+                }
+            }
+
+            MenuItem {
                 text: qsTr("Copy", "Conversation message context menu item")
                 visible: model.watype == Mitakuuluu.Text || model.watype == Mitakuuluu.Location
                 onClicked: {
