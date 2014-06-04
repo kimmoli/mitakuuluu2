@@ -467,49 +467,49 @@
         <translation>Sistem</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="759"/>
+        <location filename="../server/src/client.cpp" line="760"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
         <translation>Povezano</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1053"/>
+        <location filename="../server/src/client.cpp" line="1056"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Skrito</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1321"/>
+        <location filename="../server/src/client.cpp" line="1324"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Pridruženi skupini</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1324"/>
+        <location filename="../server/src/client.cpp" line="1327"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Zapustil skupino</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1327"/>
+        <location filename="../server/src/client.cpp" line="1330"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Zadeva: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1330"/>
+        <location filename="../server/src/client.cpp" line="1333"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Slika je spremenjena</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1668"/>
+        <location filename="../server/src/client.cpp" line="1671"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Brez povezave</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2826"/>
+        <location filename="../server/src/client.cpp" line="2830"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n neprebrano sporočilo</numerusform><numerusform>%n neprebrani sporočili</numerusform><numerusform>%n neprebrana sporočila</numerusform><numerusform>%n neprebranih sporočil</numerusform></translation>
@@ -699,13 +699,13 @@
         <translation>Novo sporočilo</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="566"/>
+        <location filename="../client/qml/ConversationPage.qml" line="587"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation>Tapnite za vnos novega sporočila</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="783"/>
+        <location filename="../client/qml/ConversationPage.qml" line="814"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation>Čakam na koordinate ...</translation>
@@ -993,61 +993,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="281"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="287"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation>Neznano</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="284"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="290"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation>Čakam na povezavo ...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="287"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="293"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation>Povezujem ...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="290"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="296"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation>Avtentikacija ...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="293"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="299"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation>Prijavljen</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="296"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation>Neuspešna prijava!</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="299"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation>Povezave prekinjena</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation>Registriram ...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation>Neuspešna registracija!</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation>Račun je potekel!</translation>
@@ -1349,17 +1349,22 @@
         <translation>Profilna slika</translation>
     </message>
     <message>
-        <location filename="../client/qml/PrivacySettings.qml" line="128"/>
+        <location filename="../client/qml/PrivacySettings.qml" line="123"/>
+        <source>If you don&apos;t share your Last seen, you won&apos;t be able to see other people&apos;s Last seen</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/PrivacySettings.qml" line="139"/>
         <source>Everybody</source>
         <translation>Vsi</translation>
     </message>
     <message>
-        <location filename="../client/qml/PrivacySettings.qml" line="129"/>
+        <location filename="../client/qml/PrivacySettings.qml" line="140"/>
         <source>Contacts</source>
         <translation>Stiki</translation>
     </message>
     <message>
-        <location filename="../client/qml/PrivacySettings.qml" line="130"/>
+        <location filename="../client/qml/PrivacySettings.qml" line="141"/>
         <source>Nobody</source>
         <translation>Nihče</translation>
     </message>

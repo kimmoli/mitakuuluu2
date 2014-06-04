@@ -467,49 +467,49 @@
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="759"/>
+        <location filename="../server/src/client.cpp" line="760"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1053"/>
+        <location filename="../server/src/client.cpp" line="1056"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Versteckt</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1321"/>
+        <location filename="../server/src/client.cpp" line="1324"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Gruppenbeitritt von</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1324"/>
+        <location filename="../server/src/client.cpp" line="1327"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Gruppenaustritt von</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1327"/>
+        <location filename="../server/src/client.cpp" line="1330"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Thema: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1330"/>
+        <location filename="../server/src/client.cpp" line="1333"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Bildänderung durch</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1668"/>
+        <location filename="../server/src/client.cpp" line="1671"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Offline</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2826"/>
+        <location filename="../server/src/client.cpp" line="2830"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>Eine ungelesene Nachricht</numerusform><numerusform>%n ungelesene Nachrichten</numerusform></translation>
@@ -699,13 +699,13 @@
         <translation>Neue Nachricht</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="566"/>
+        <location filename="../client/qml/ConversationPage.qml" line="587"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation>Nachricht hier eingeben...</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="783"/>
+        <location filename="../client/qml/ConversationPage.qml" line="814"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation>Warte auf Koordinaten...</translation>
@@ -993,61 +993,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="281"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="287"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation>Unbekannt</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="284"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="290"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation>Warte auf Verbindung</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="287"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="293"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation>Verbinde...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="290"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="296"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation>Authentifizierung...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="293"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="299"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="296"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation>Login fehlgeschlagen!</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="299"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation>Registriere...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation>Regestrierung fehlgeschlagen!</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation>Mitgliedschaft abgelaufen!</translation>
@@ -1350,17 +1350,22 @@ Weder PayPal, noch Google Wallet erfordern das Erstellen eines Benutzerkontos.</
         <translation>Profilbild</translation>
     </message>
     <message>
-        <location filename="../client/qml/PrivacySettings.qml" line="128"/>
+        <location filename="../client/qml/PrivacySettings.qml" line="123"/>
+        <source>If you don&apos;t share your Last seen, you won&apos;t be able to see other people&apos;s Last seen</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/PrivacySettings.qml" line="139"/>
         <source>Everybody</source>
         <translation>Jeder</translation>
     </message>
     <message>
-        <location filename="../client/qml/PrivacySettings.qml" line="129"/>
+        <location filename="../client/qml/PrivacySettings.qml" line="140"/>
         <source>Contacts</source>
         <translation>Kontakte</translation>
     </message>
     <message>
-        <location filename="../client/qml/PrivacySettings.qml" line="130"/>
+        <location filename="../client/qml/PrivacySettings.qml" line="141"/>
         <source>Nobody</source>
         <translation>Niemand</translation>
     </message>

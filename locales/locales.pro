@@ -32,6 +32,7 @@ TRANSLATIONS += \
     it_IT.ts \
     nl.ts \
     nl_BE.ts \
+    pl.ts \
     ru_RU.ts \
     sl_SI.ts \
     sv_SE.ts \
