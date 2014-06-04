@@ -66,9 +66,9 @@ Page {
                     }
                 }
                 onCurrentIndexChanged: {
-                    if (page.status == PageStatus.Active) {
+                    if (menu._expanded) {
                         console.log("last seen privacy: " + privacyIndexToValue(currentIndex))
-                        Mitakuuluu.setPrivacySettings("last", p-rivacyIndexToValue(currentIndex))
+                        Mitakuuluu.setPrivacySettings("last", privacyIndexToValue(currentIndex))
                     }
                 }
             }
@@ -86,7 +86,7 @@ Page {
                     }
                 }
                 onCurrentIndexChanged: {
-                    if (page.status == PageStatus.Active) {
+                    if (menu._expanded) {
                         console.log("status privacy: " + privacyIndexToValue(currentIndex))
                         Mitakuuluu.setPrivacySettings("status", privacyIndexToValue(currentIndex))
                     }
@@ -106,11 +106,22 @@ Page {
                     }
                 }
                 onCurrentIndexChanged: {
-                    if (page.status == PageStatus.Active) {
+                    if (menu._expanded) {
                         console.log("profile photo privacy: " + privacyIndexToValue(currentIndex))
                         Mitakuuluu.setPrivacySettings("profile", privacyIndexToValue(currentIndex))
                     }
                 }
+            }
+
+            Label {
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                wrapMode: Text.Wrap
+                text: qsTr("If you don't share your Last seen, you won't be able to see other people's Last seen")
+                font.pixelSize: Theme.fontSizeSmall
             }
         }
     }
