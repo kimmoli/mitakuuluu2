@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2013 Naikel Aparicio. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -105,15 +105,15 @@ void Connection::init()
     this->out = new BinTreeNodeWriter(socket, dictionary, this);
     this->in = new BinTreeNodeReader(socket, dictionary, this);
 
-    QObject::connect(this->out, SIGNAL(socketBroken()), this, SLOT(disconnectAndDelete()));
-    QObject::connect(this->in, SIGNAL(socketBroken()), this, SLOT(disconnectAndDelete()));
+    QObject::connect(this->out, SIGNAL(socketBroken()), this, SLOT(finalCleanup()));
+    QObject::connect(this->in, SIGNAL(socketBroken()), this, SLOT(finalCleanup()));
 
     qDebug() << "Connecting to" << server;
 
     connect(socket,SIGNAL(connected()),this,SLOT(connectedToServer()));
     connect(socket,SIGNAL(error(QAbstractSocket::SocketError)),
             this,SLOT(socketError(QAbstractSocket::SocketError)));
-    connect(socket,SIGNAL(disconnected()),this,SLOT(connectionClosed()));
+    connect(socket,SIGNAL(disconnected()),this,SLOT(finalCleanup()));
 
     socket->connectToHost(server, port);
 }
@@ -121,12 +121,17 @@ void Connection::init()
 void Connection::disconnectAndDelete()
 {
     qDebug() << "disconnectAndDelete";
-    Q_EMIT disconnected();
-    disconnect(this,0,0,0);
     disconnect(socket,0,0,0);
     socket->disconnectFromHost();
+    finalCleanup();
+}
+
+void Connection::finalCleanup()
+{
+    disconnect(this,0,0,0);
     socket->deleteLater();
     this->deleteLater();
+    Q_EMIT disconnected();
 }
 
 /**
@@ -952,19 +957,14 @@ void Connection::connectionClosed()
         connTimeout->deleteLater();
     }
     qDebug() << "Connection closed";
-    Q_EMIT needReconnect();
-    //disconnectAndDelete();
+    disconnectAndDelete();
 }
 
 void Connection::socketError(QAbstractSocket::SocketError error)
 {
     IOException e(error);
     qDebug() << "There was an IO error:" << e.toString();
-    Q_EMIT disconnected();
-    if (error == QAbstractSocket::RemoteHostClosedError)
-        Q_EMIT needReconnect();
-    //else
-    //    Q_EMIT socketBroken();
+    finalCleanup();
 }
 
 void Connection::readNode()
@@ -1192,7 +1192,7 @@ void Connection::parseSuccessNode(const ProtocolTreeNode &node)
         connTimeout = new QTimer(this);
         connTimeout->setSingleShot(false);
         connTimeout->setInterval(905000);
-        QObject::connect(connTimeout, SIGNAL(timeout()), this, SIGNAL(needReconnect()));
+        QObject::connect(connTimeout, SIGNAL(timeout()), this, SLOT(disconnectAndDelete()));
         connTimeout->start();
     }
     else {

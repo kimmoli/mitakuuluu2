@@ -64,6 +64,8 @@ private:
     KeyStream *outputKey;
     bool crypto;
 
+    void harakiri();
+
     // Writer methods
     void startBuffer();
     void processBuffer();

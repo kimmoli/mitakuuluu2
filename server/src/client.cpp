@@ -580,7 +580,8 @@ void Client::networkStatusChanged(bool isOnline)
     {
         updateActiveNetworkID();
         if (connectionStatus == Disconnected || connectionStatus == WaitingForConnection)
-            verifyAndConnect();
+            QTimer::singleShot(2000, this, SLOT(verifyAndConnect()));
+            //verifyAndConnect();
     }
 }
 
@@ -935,6 +936,8 @@ void Client::disconnected()
     dataCounters.writeCounters();
     connectionStatus = Disconnected;
     Q_EMIT connectionStatusChanged(connectionStatus);
+
+    networkStatusChanged(isOnline);
 }
 
 void Client::destroyConnection()

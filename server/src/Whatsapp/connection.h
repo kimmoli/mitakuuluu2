@@ -156,6 +156,7 @@ public slots:
     void init();
 
     void disconnectAndDelete();
+    void finalCleanup();
 
     /** ***********************************************************************
      ** Message handling

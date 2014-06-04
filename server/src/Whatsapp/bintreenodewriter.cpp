@@ -1,4 +1,4 @@
-/* Copyright 2013 Naikel Aparicio. All rights reserved.
+﻿/* Copyright 2013 Naikel Aparicio. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -107,8 +107,7 @@ void BinTreeNodeWriter::processBuffer()
     qint64 num3 = writeBuffer.size() - 3 - dataBegin;
     if (num3 > 0x1000000) {
         qDebug() << "Buffer too large:" << QString::number(num3);
-        //socket->disconnectFromHost();
-        Q_EMIT socketBroken();
+        harakiri();
     }
 
     if (crypto)
@@ -132,8 +131,7 @@ void BinTreeNodeWriter::flushBuffer(bool flushNetwork)
     //qDebug() << ">> " + QString(writeBuffer.toHex());
     if ((socket->write(writeBuffer)) == -1) {
         qDebug() << "error writing buffer";
-        //socket->disconnectFromHost();
-        Q_EMIT socketBroken();
+        harakiri();
     }
 
     if (flushNetwork)
@@ -151,8 +149,7 @@ void BinTreeNodeWriter::realWrite8(quint8 c)
     //qDebug() << ">> " + QString::number(c,16);
     if ((socket->write((char *)&c,1)) == -1) {
         qDebug() << "error writing buffer";
-        //socket->disconnectFromHost();
-        Q_EMIT socketBroken();
+        harakiri();
     }
 }
 
@@ -349,4 +346,12 @@ void BinTreeNodeWriter::setOutputKey(KeyStream *outputKey)
 void BinTreeNodeWriter::setCrypto(bool crypto)
 {
     this->crypto = crypto;
+}
+
+void BinTreeNodeWriter::harakiri()
+{
+    QObject::disconnect(socket, 0, 0, 0);
+    socket->disconnectFromHost();
+    writeBuffer.clear();
+    Q_EMIT socketBroken();
 }

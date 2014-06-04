@@ -63,16 +63,14 @@ void BinTreeNodeReader::decodeStream(qint8 flags, qint32 offset, qint32 length)
     {
         if (length < 4) {
             qDebug() << "Invalid length 0x" << QString::number(length,16);
-            //socket->disconnectFromHost();
-            Q_EMIT socketBroken();
+            harakiri();
         }
 
         offset += 4;
         length -= 4;
         if (!inputKey->decodeMessage(readBuffer, offset-4, offset, length)) {
             qDebug() << "error decoding message";
-            //socket->disconnectFromHost();
-            Q_EMIT socketBroken();
+            harakiri();
         }
 
         readBuffer = readBuffer.right(length);
@@ -91,8 +89,7 @@ int BinTreeNodeReader::readStreamStart()
     in >> tag;
     if (tag != 1) {
         qDebug() << "Expecting STREAM_START in readStreamStart.";
-        //socket->disconnectFromHost();
-        Q_EMIT socketBroken();
+        harakiri();
     }
 
     int attribCount = (size - 2 + size % 2) / 2;
@@ -191,8 +188,7 @@ quint32 BinTreeNodeReader::readListSize(qint32 token, QDataStream& in)
         size = readInt16(in);
     else {
         qDebug() << "Invalid list size in readListSize: token 0x" << QString::number(token,16);
-        //socket->disconnectFromHost();
-        Q_EMIT socketBroken();
+        harakiri();
     }
 
     return size;
@@ -233,8 +229,7 @@ void BinTreeNodeReader::fillArray(QByteArray& buffer, quint32 len)
     if (!ready)
     {
         qDebug() << "fillArray() not ready / timed out";
-        //socket->disconnectFromHost();
-        Q_EMIT socketBroken();
+        harakiri();
     }
 
 
@@ -245,8 +240,7 @@ void BinTreeNodeReader::fillArray(QByteArray& buffer, quint32 len)
 
         if (bytesRead < 0) {
             qDebug() << "bytesRead < 0" << socket->errorString();
-            //socket->disconnectFromHost();
-            Q_EMIT socketBroken();
+            harakiri();
             return;
         }
         if (bytesRead == 0) {
@@ -274,8 +268,7 @@ bool BinTreeNodeReader::readString(int token, QByteArray& s, QDataStream& in)
 
     if (token == -1) {
         qDebug() << "-1 token in readString";
-        //socket->disconnectFromHost();
-        Q_EMIT socketBroken();
+        harakiri();
     }
 
     if (token > 2 && token < 0xf5)
@@ -315,12 +308,10 @@ bool BinTreeNodeReader::readString(int token, QByteArray& s, QDataStream& in)
                 return true;
             }
             qDebug() << "readString couldn't reconstruct jid.";
-            //socket->disconnectFromHost();
-            Q_EMIT socketBroken();
+            harakiri();
     }
     qDebug() << "readString invalid token" << QString::number(token);
-    //socket->disconnectFromHost();
-    Q_EMIT socketBroken();
+    harakiri();
     return false;
 }
 
@@ -340,8 +331,7 @@ bool BinTreeNodeReader::getToken(int token, QByteArray &s, QDataStream& in)
     }
 
     qDebug() << "Invalid token/length in getToken.";
-    //socket->disconnectFromHost();
-    Q_EMIT socketBroken();
+    harakiri();
 }
 
 quint8 BinTreeNodeReader::readInt8(QDataStream& in)
@@ -448,6 +438,14 @@ qint32 BinTreeNodeReader::readInt24(QDataStream& in)
 void BinTreeNodeReader::setInputKey(KeyStream *inputKey)
 {
     this->inputKey = inputKey;
+}
+
+void BinTreeNodeReader::harakiri()
+{
+    QObject::disconnect(socket, 0, 0, 0);
+    socket->disconnectFromHost();
+    readBuffer.clear();
+    Q_EMIT socketBroken();
 }
 
 

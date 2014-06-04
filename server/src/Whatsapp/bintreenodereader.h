@@ -61,6 +61,8 @@ private:
     QByteArray readBuffer;
     KeyStream *inputKey;
 
+    void harakiri();
+
     // Reader methods
     int getOneToplevelStream();
     void decodeStream(qint8 flags, qint32 offset, qint32 length);
