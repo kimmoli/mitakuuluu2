@@ -237,7 +237,7 @@ Page {
         MouseArea {
             anchors.fill: ava
             onClicked: {
-                pageStack.push(Qt.resolvedUrl("AvatarHistory.qml"), {"jid": page.jid, "avatar": page.avatar, "owner": page.ownerJid == Mitakuuluu.myJid})
+                pageStack.push(Qt.resolvedUrl("AvatarHistory.qml"), {"jid": page.jid, "avatar": page.avatar, "owner": true})
             }
         }
 
