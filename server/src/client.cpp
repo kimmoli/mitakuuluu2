@@ -933,6 +933,8 @@ void Client::connected()
 
 void Client::disconnected()
 {
+    qDebug() << "Client disconnected";
+
     dataCounters.writeCounters();
     connectionStatus = Disconnected;
     Q_EMIT connectionStatusChanged(connectionStatus);

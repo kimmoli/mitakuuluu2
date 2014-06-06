@@ -128,10 +128,10 @@ void Connection::disconnectAndDelete()
 
 void Connection::finalCleanup()
 {
-    disconnect(this,0,0,0);
     socket->deleteLater();
-    this->deleteLater();
     Q_EMIT disconnected();
+    disconnect(this,0,0,0);
+    this->deleteLater();
 }
 
 /**
