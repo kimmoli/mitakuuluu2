@@ -561,7 +561,8 @@ Page {
                 }
             }
             onMovementEnded: {
-                hideIconsTimer.start()
+                if (iconUp.visible || iconDown.visible)
+                    hideIconsTimer.start()
             }
 
             VerticalScrollDecorator {
