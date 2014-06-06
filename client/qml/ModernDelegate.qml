@@ -40,7 +40,7 @@ MouseArea {
 
     property int maxWidth: parent.width - Theme.itemSizeLarge
     onMaxWidthChanged: {
-        if (textLoader.active) {
+        if (textLoader.active && textLoader.item) {
             textLoader.item.relayout()
         }
     }
@@ -808,7 +808,7 @@ MouseArea {
         ContextMenu {
             MenuItem {
                 text: qsTr("Resend message", "Conversation message context menu item")
-                visible: model.status < Mitakuuluu.ReceivedByServer
+                visible: model.author === Mitakuuluu.myJid && model.status < Mitakuuluu.ReceivedByServer
                 enabled: Mitakuuluu.connectionStatus === Mitakuuluu.LoggedIn
                 onClicked: {
                     conversationModel.resendMessage(page.jid, model.msgid)
