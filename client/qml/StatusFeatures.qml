@@ -5,6 +5,7 @@ import harbour.mitakuuluu2.client 1.0
 Page {
     id: page
     objectName: "statusFeatures"
+    property bool loading: false
 
     QtObject {
         id: serverFeatures
@@ -26,6 +27,7 @@ Page {
 
     onStatusChanged: {
         if (status == PageStatus.Active) {
+            page.loading = true
             Mitakuuluu.checkWhatsappStatus()
         }
     }
@@ -33,10 +35,10 @@ Page {
     Connections {
         target: Mitakuuluu
         onWhatsappStatusReply: {
-            var offlineFeatures = []
             for (var key in features) {
                 serverFeatures[key] = features[key].available
             }
+            page.loading = false
         }
     }
 
@@ -73,5 +75,12 @@ Page {
         }
 
         VerticalScrollDecorator{}
+    }
+
+    BusyIndicator {
+        size: BusyIndicatorSize.Large
+        anchors.centerIn: parent
+        visible: page.loading
+        running: visible
     }
 }
