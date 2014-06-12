@@ -4,7 +4,7 @@ import QtFeedback 5.0
 import org.nemomobile.configuration 1.0
 import harbour.mitakuuluu2.client 1.0
 import Sailfish.Gallery.private 1.0
-import QtSensors 5.0
+import QtSensors 5.1
 
 ApplicationWindow {
     id: appWindow

@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 
     qDebug() << "Init gst presets";
     gst_init(0, 0);
-    gst_preset_set_app_dir("/usr/share/harbour-mitakuuluu2/presets/");
+    gst_preset_set_app_dir("/usr/share/harbour-mitakuuluu2/presets");
 
     qDBusRegisterMetaType<MyStructure>();
     qDBusRegisterMetaType<QList<MyStructure > >();
