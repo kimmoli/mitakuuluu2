@@ -2,16 +2,18 @@ import QtQuick 2.1
 import Sailfish.Silica 1.0
 import harbour.mitakuuluu2.client 1.0
 import QtMultimedia 5.0
-import Sailfish.Media 1.0
 import Sailfish.Gallery 1.0
 import com.jolla.camera 1.0
 import org.nemomobile.time 1.0
 import org.nemomobile.thumbnailer 1.0
+import QtSensors 5.1
 
 Dialog {
     id: page
     objectName: "capture"
-    allowedOrientations: Orientation.Portrait | Orientation.Landscape
+
+    allowedOrientations: Orientation.Landscape
+
     canNavigateForward: canAccept
     canAccept: false
 
@@ -24,6 +26,9 @@ Dialog {
     property int _recordingDuration: ((clock.enabled ? clock.time : page._endTime) - page._startTime) / 1000
     property var _startTime: new Date()
     property var _endTime: _startTime
+
+    property bool _complete
+    property bool _unload
 
     function _captureHandler() {
         console.log("Capture saved to", imagePath)
@@ -38,14 +43,17 @@ Dialog {
             }
         }
         else if (status == PageStatus.Active && !canAccept) {
-            console.log("activating camera")
-            camera.cameraState = Camera.ActiveState
         }
     }
 
     onRejected: {
         console.log("capture rejected")
         Mitakuuluu.rejectMediaCapture(imagePath)
+    }
+
+    Component.onCompleted: {
+        Mitakuuluu.setCamera(camera)
+        page._complete = true
     }
 
     Component.onDestruction: {
@@ -55,38 +63,45 @@ Dialog {
         }
     }
 
-    Rectangle {
-        anchors.fill: header
-        z: 1
-        color: Theme.rgba(Theme.highlightColor, 0.2)
+    function reload() {
+        if (page._complete) {
+            page._unload = true;
+        }
     }
 
-    DialogHeader {
-        id: header
-        z: 1
-        title: page.canAccept ? qsTr("Send", "Capture page send title")
-                              : qsTr("Camera", "Capture page default title")
+    Timer {
+        id: reloadTimer
+        interval: 100
+        running: page._unload && camera.cameraStatus == Camera.UnloadedStatus
+        onTriggered: {
+            page._unload = false
+        }
     }
 
-    GStreamerVideoOutput {
-        id:mPreview
-        x:0
-        y:0
+    VideoOutput {
+        id: mPreview
+        x: 0
+        y: 0
+        z: -1
+        width: page.width
+        height: page.height
         anchors.fill: parent
+        fillMode: VideoOutput.PreserveAspectCrop
         orientation: page.orientation == Orientation.Portrait ? 0 : 90
         visible: !page.canAccept
-
         source: camera
+        property bool mirror: extensions.device == "secondary"
     }
 
     Camera {
         id: camera
 
-        // Set this to Camera.ActiveState to load, and Camera.UnloadedState to unload.
-        //cameraState: Camera.ActiveState
+        cameraState: page._complete && !page._unload
+                    ? Camera.ActiveState
+                    : Camera.UnloadedState
 
-        // Options are Camera.CaptureStillImage or Camera.CaptureVideo
         captureMode: Camera.CaptureStillImage
+        onCaptureModeChanged: reload()
 
         focus {
             focusMode: Camera.FocusContinuous
@@ -115,12 +130,14 @@ Dialog {
 
         videoRecorder{
             resolution: extensions.viewfinderResolution
-            frameRate: 30
-            audioChannels: 2
-            audioSampleRate: 48000
-            audioCodec: "audio/mpeg, mpegversion=(int)4"
             videoCodec: "video/mpeg, mpegversion=(int)4"
-            mediaContainer: "video/quicktime, variant=(string)iso"
+            mediaContainer: extensions.device == "secondary" ? "video/quicktime, variant=(string)iso" : "video/x-matroska"
+
+            onRecorderStateChanged: {
+                if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
+                    console.log("saved to: " + camera.videoRecorder.outputLocation)
+                }
+            }
         }
 
         // This will tell us when focus lock is gained.
@@ -142,7 +159,6 @@ Dialog {
                 _captureHandler()
             }
         }
-
     }
 
     CameraExtensions {
@@ -150,26 +166,15 @@ Dialog {
         camera: camera
 
         device: "primary"
-        viewfinderResolution: "1280x720"
+        onDeviceChanged: reload()
 
-        onViewfinderResolutionChanged: reloadTimer.unload()
-        onDeviceChanged: reloadTimer.unload()
+        viewfinderResolution: camera.captureMode == Camera.CaptureStillImage ? "1280x720" : "640x480"
+
 
         manufacturer: "Jolla"
         model: "Jolla"
 
-        rotation: {
-            switch (page.orientation) {
-            case Orientation.Portrait:
-                return 0
-            case Orientation.Landscape:
-                return 90
-            case Orientation.PortraitInverted:
-                return 180
-            case Orientation.LandscapeInverted:
-                return 270
-            }
-        }
+        rotation: sensor.rotationAngle
     }
 
     Loader {
@@ -184,7 +189,6 @@ Dialog {
         ImageViewer {
             id: prev
             source: imagePath
-            visible: page.canAccept
         }
     }
 
@@ -197,85 +201,51 @@ Dialog {
             sourceSize.height: height
             clip: true
             smooth: true
-            mimeType: "video/quicktime"
+            mimeType: extensions.device == "secondary" ? "video/quicktime" : "video/x-matroska"
         }
     }
 
-    /*Rectangle {
+    CircleButton {
         id: cameraModeButton
-        width: Theme.itemSizeMedium
-        height: width
-        radius: width / 2
-        color: cameraModeArea.pressed ? Theme.highlightColor : Theme.secondaryHighlightColor
+
         anchors.left: parent.left
         anchors.top: header.bottom
         anchors.margins: Theme.paddingSmall
         visible: !page.canAccept
+        rotation: sensor.rotationAngle - 90
 
-        Image {
-            id: cameraModeSource
-            source: camera.captureMode == Camera.CaptureStillImage ? "image://theme/icon-camera-camera-mode"
+        iconSource: camera.captureMode == Camera.CaptureStillImage ? "image://theme/icon-camera-camera-mode"
                                                                    : "image://theme/icon-camera-video"
-            anchors.centerIn: parent
-            property bool flash: true
-        }
 
-        MouseArea {
-            id: cameraModeArea
-            anchors.fill: parent
-            onClicked: {
-                if (camera.captureMode == Camera.CaptureStillImage) {
-                    camera.captureMode = Camera.CaptureVideo
-                    extensions.viewfinderResolution = "640x480"
-                }
-                else {
-                    camera.captureMode = Camera.CaptureStillImage
-                    extensions.viewfinderResolution = "1280x720"
-                }
+        onClicked: {
+            if (camera.captureMode == Camera.CaptureStillImage) {
+                camera.captureMode = Camera.CaptureVideo
             }
-        }
-    }*/
-
-    Rectangle {
-        id: cameraSourceButton
-        width: Theme.itemSizeMedium
-        height: width
-        radius: width / 2
-        color: cameraSourceArea.pressed ? Theme.highlightColor : Theme.secondaryHighlightColor
-        anchors.right: parent.right
-        anchors.bottom: flashButton.top
-        anchors.margins: Theme.paddingSmall
-        visible: !page.canAccept
-
-        Image {
-            id: cameraSource
-            source: "image://theme/icon-camera-front-camera"
-            anchors.centerIn: parent
-            property bool flash: true
-        }
-
-        MouseArea {
-            id: cameraSourceArea
-            anchors.fill: parent
-            onClicked: {
-                if (extensions.device == "primary") {
-                    extensions.device = "secondary"
-                }
-                else {
-                    extensions.device = "primary"
-                }
+            else {
+                camera.captureMode = Camera.CaptureStillImage
             }
         }
     }
 
-    Timer {
-        id: reloadTimer
-        interval: 10
-        function unload() {
-            camera.cameraState = Camera.UnloadedState
-            start()
+    CircleButton {
+        id: cameraSourceButton
+
+        anchors.left: parent.left
+        anchors.top: cameraModeButton.bottom
+        anchors.margins: Theme.paddingSmall
+        visible: !page.canAccept
+        rotation: sensor.rotationAngle - 90
+
+        iconSource: "image://theme/icon-camera-front-camera"
+
+        onClicked: {
+            if (extensions.device == "primary") {
+                extensions.device = "secondary"
+            }
+            else {
+                extensions.device = "primary"
+            }
         }
-        onTriggered: camera.cameraState = Camera.ActiveState
     }
 
     Item {
@@ -283,14 +253,23 @@ Dialog {
         anchors.top: header.bottom
         anchors.margins: Theme.paddingSmall
         width: timerLabel.implicitWidth + (2 * Theme.paddingMedium)
-        height: timerLabel.implicitHeight + (2 * Theme.paddingSmall)
-        opacity: camera.captureMode == Camera.CaptureVideo ? 1 : 0
-        Behavior on opacity { FadeAnimation {} }
+        height: timerLabel.implicitWidth + (2 * Theme.paddingMedium)
+        visible: camera.captureMode == Camera.CaptureVideo
+        rotation: sensor.rotationAngle - 90
+
+        Behavior on rotation {
+            NumberAnimation {
+                duration: 500
+                easing.type: Easing.InOutQuad
+                properties: "rotation"
+            }
+        }
 
         Rectangle {
             radius: Theme.paddingSmall / 2
-
-            anchors.fill: parent
+            anchors.centerIn: parent
+            width: timerLabel.implicitWidth + (2 * Theme.paddingMedium)
+            height: timerLabel.implicitHeight + (2 * Theme.paddingSmall)
             color: Theme.highlightBackgroundColor
             opacity: 0.6
         }
@@ -321,117 +300,178 @@ Dialog {
         }
     }
 
-    Rectangle {
+    CircleButton {
         id: flashButton
-        width: Theme.itemSizeMedium
-        height: width
-        radius: width / 2
-        color: flashModeArea.pressed ? Theme.highlightColor : Theme.secondaryHighlightColor
+
+        anchors.top: header.bottom
         anchors.right: parent.right
-        anchors.bottom: captureButton.top
         anchors.margins: Theme.paddingSmall
-        visible: !page.canAccept
+        visible: camera.captureMode == Camera.CaptureStillImage && !page.canAccept
+        rotation: sensor.rotationAngle - 90
 
-        Image {
-            id: flashMode
-            source: flashModeIcon(camera.flash.mode)
-            anchors.centerIn: parent
-            property bool flash: true
+        iconSource: flashModeIcon(camera.flash.mode)
 
-            function flashModeIcon(mode) {
-                switch (mode) {
-                case Camera.FlashAuto:
-                    return "image://theme/icon-camera-flash-automatic"
-                case Camera.FlashOff:
-                    return "image://theme/icon-camera-flash-off"
-                default:
-                    return "image://theme/icon-camera-flash-on"
-                }
-            }
-
-            function nextFlashMode(mode) {
-                switch (mode) {
-                case Camera.FlashAuto:
-                    return Camera.FlashOff
-                case Camera.FlashOff:
-                    return Camera.FlashOn
-                case Camera.FlashOn:
-                    return Camera.FlashAuto
-                default:
-                    return Camera.FlashOff
-                }
+        function flashModeIcon(mode) {
+            switch (mode) {
+            case Camera.FlashAuto:
+                return "image://theme/icon-camera-flash-automatic"
+            case Camera.FlashOff:
+                return "image://theme/icon-camera-flash-off"
+            default:
+                return "image://theme/icon-camera-flash-on"
             }
         }
 
-        MouseArea {
-            id: flashModeArea
-            anchors.fill: parent
-            onClicked: camera.flash.mode = flashMode.nextFlashMode(camera.flash.mode)
+        function nextFlashMode(mode) {
+            switch (mode) {
+            case Camera.FlashAuto:
+                return Camera.FlashOff
+            case Camera.FlashOff:
+                return Camera.FlashOn
+            case Camera.FlashOn:
+                return Camera.FlashAuto
+            default:
+                return Camera.FlashOff
+            }
+        }
+
+        onClicked: camera.flash.mode = flashMode.nextFlashMode(camera.flash.mode)
+    }
+
+    CircleButton {
+        id: shutter
+        property bool autoMode: false
+
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.margins: Theme.paddingSmall
+        visible: !page.canAccept
+        rotation: sensor.rotationAngle - 90
+
+        iconSource: camera.captureMode == Camera.CaptureStillImage ? "image://theme/icon-camera-shutter-release"
+                                                                   : (camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? "image://theme/icon-camera-record"
+                                                                                                                                        : "image://theme/icon-camera-stop")
+
+        onPressed: {
+            if (camera.captureMode == Camera.CaptureStillImage) {
+                console.log("shutter pressed")
+                shutter.autoMode = false
+                if (camera.captureMode == Camera.CaptureStillImage
+                        && camera.lockStatus == Camera.Unlocked) {
+                    camera.searchAndLock()
+                }
+            }
+        }
+        onReleased: {
+            if (camera.captureMode == Camera.CaptureStillImage) {
+                console.log("shutter released")
+                shutter.autoMode = false
+                if (camera.lockStatus == Camera.Locked) {
+                    extensions.captureTime = new Date()
+                    camera.imageCapture.capture()
+                }
+            }
+        }
+        onClicked: {
+            if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
+                camera.videoRecorder.stop()
+            } else if (camera.captureMode == Camera.CaptureStillImage) {
+
+                console.log("shutter clicked")
+                shutter.autoMode = true
+
+                extensions.captureTime = new Date()
+
+                camera.imageCapture.capture()
+            } else {
+                extensions.captureTime = new Date()
+                camera.videoRecorder.record()
+                if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
+                    camera.videoRecorder.recorderStateChanged.connect(camera._finishRecording)
+                }
+            }
+        }
+    }
+
+    Image {
+        id: wrongOrientationPhone
+        source: "image://theme/icon-push-display-off?" + Theme.highlightColor
+        anchors.centerIn: parent
+        rotation: rotatePhoneTimer.showmode > 1 ? 0 : 90
+        visible: rotatePhoneTimer.running
+
+        Behavior on rotation {
+            NumberAnimation {
+                duration: 1000
+                easing.type: Easing.InOutQuad
+                properties: "rotation"
+            }
+        }
+    }
+
+    Image {
+        id: wrongOrientationCircle
+        source: "image://theme/icon-push-restart?" + (rotation == 0 ? "#00FF00" : "#FF0000")
+        anchors.centerIn: parent
+        rotation: rotatePhoneTimer.showmode > 1 ? 0 : 90
+        visible: rotatePhoneTimer.running
+
+        Behavior on rotation {
+            NumberAnimation {
+                duration: 1000
+                easing.type: Easing.InOutQuad
+                properties: "rotation"
+            }
+        }
+    }
+
+    Image {
+        source: "image://theme/icon-header-" + (wrongOrientationCircle.rotation == 0 ? "accept?#00FF00" : "cancel?#FF0000")
+        anchors.centerIn: parent
+        visible: rotatePhoneTimer.running
+        rotation: sensor.rotationAngle - 90
+    }
+
+    Timer {
+        id: rotatePhoneTimer
+        property int showmode: 0
+        interval: 1000
+        running: extensions.device == "primary" && camera.captureMode == Camera.CaptureVideo && sensor.rotationAngle != 90
+        repeat: true
+        onTriggered: {
+            showmode++
+            if (showmode == 4)
+                showmode = 0
+        }
+    }
+
+    OrientationSensor {
+        id: sensor
+        active: true
+        property int rotationAngle: reading.orientation ? _getOrientation(reading.orientation) : 0
+        function _getOrientation(value) {
+            switch (value) {
+            case 1:
+                return 0
+            case 2:
+                return 180
+            case 3:
+                return 270
+            default:
+                return 90
+            }
         }
     }
 
     Rectangle {
-        id: captureButton
-        width: Theme.itemSizeMedium
-        height: width
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.margins: Theme.paddingSmall
-        radius: width / 2
-        color: shutterArea.pressed ? Theme.highlightColor : Theme.secondaryHighlightColor
-        visible: !page.canAccept
+        anchors.fill: header
+        z: 1
+        color: Theme.rgba(Theme.highlightColor, 0.2)
+    }
 
-        Image {
-            id: shutter
-            source: camera.captureMode == Camera.CaptureStillImage ? "image://theme/icon-camera-shutter-release"
-                                                                   : (camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? "image://theme/icon-camera-record"
-                                                                                                                                        : "image://theme/icon-camera-stop")
-            anchors.centerIn: parent
-            property bool autoMode: false
-        }
-
-        MouseArea {
-            id: shutterArea
-            anchors.fill: parent
-            onPressed: {
-                if (camera.captureMode == Camera.CaptureStillImage) {
-                    console.log("shutter pressed")
-                    shutter.autoMode = false
-                    if (camera.captureMode == Camera.CaptureStillImage
-                            && camera.lockStatus == Camera.Unlocked) {
-                        camera.searchAndLock()
-                    }
-                }
-            }
-            onReleased: {
-                if (camera.captureMode == Camera.CaptureStillImage) {
-                    console.log("shutter released")
-                    shutter.autoMode = false
-                    if (camera.lockStatus == Camera.Locked) {
-                        extensions.captureTime = new Date()
-                        camera.imageCapture.capture()
-                    }
-                }
-            }
-            onClicked: {
-                if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
-                    camera.videoRecorder.stop()
-                } else if (camera.captureMode == Camera.CaptureStillImage) {
-
-                    console.log("shutter clicked")
-                    shutter.autoMode = true
-
-                    extensions.captureTime = new Date()
-
-                    camera.imageCapture.capture()
-                } else {
-                    extensions.captureTime = new Date()
-                    camera.videoRecorder.record()
-                    if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
-                        camera.videoRecorder.recorderStateChanged.connect(camera._finishRecording)
-                    }
-                }
-            }
-        }
+    DialogHeader {
+        id: header
+        title: page.canAccept ? qsTr("Send", "Capture page send title")
+                              : qsTr("Camera", "Capture page default title")
     }
 }

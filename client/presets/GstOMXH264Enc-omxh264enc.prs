@@ -1,6 +1,6 @@
 [_presets_]
 version=0.10
-element-name=GstOMXMPEG4VideoEnc-omxmpeg4videoenc
+element-name=GstOMXH264Enc-omxh264enc
 
 [vga]
 control-rate=1
