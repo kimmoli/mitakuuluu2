@@ -363,6 +363,7 @@ public slots:
     QString saveAvatarForJid(const QString &jid, const QString &path);
     void rejectMediaCapture(const QString &path);
     void getNetworkUsage();
+    void resetNetworkUsage();
 
     QStringList getLocalesNames();
     int getCurrentLocaleIndex();

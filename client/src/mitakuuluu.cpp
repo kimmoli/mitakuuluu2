@@ -1138,6 +1138,13 @@ void Mitakuuluu::getNetworkUsage()
     }
 }
 
+void Mitakuuluu::resetNetworkUsage()
+{
+    if (iface) {
+        iface->call(QDBus::NoBlock, "resetNetworkUsage");
+    }
+}
+
 QString Mitakuuluu::getPrivateTone()
 {
     QString tone = getProfileValue(PROFILEKEY_PRIVATE_TONE, TONE_FALLBACK).toString();
