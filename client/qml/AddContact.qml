@@ -42,7 +42,6 @@ Dialog {
     onDone: {
         phoneField.focus = false
         aliasField.focus = false
-        roster.forceActiveFocus()
     }
 
     onAccepted: {

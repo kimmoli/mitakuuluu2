@@ -347,6 +347,7 @@ void QueryExecutor::saveConversationMessage(QVariantMap &query)
     i.bindValue(":duration", query["duration"]);
     i.bindValue(":width", query["width"]);
     i.bindValue(":height", query["height"]);
+    i.bindValue(":hash", query.contains("hash") ? query["hash"] : QString());
     i.bindValue(":mime", query["mime"]);
     i.bindValue(":broadcast", query["broadcast"].toBool() ? 1 : 0);
     i.bindValue(":live", query["live"].toBool() ? 1 : 0);
