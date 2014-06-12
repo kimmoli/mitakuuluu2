@@ -360,7 +360,7 @@ Page {
                         page.backNavigation = false
                     }
                     onReleased: {
-                        Mitakuuluu.stopTyping()
+                        Mitakuuluu.endTyping()
                         if (audioRecorder) {
                             audioRecorder.stop()
                             if (containsMouse) {
