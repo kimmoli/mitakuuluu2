@@ -358,9 +358,11 @@ Page {
                         voiceRecordTimer.start()
                         page.forwardNavigation = false
                         page.backNavigation = false
+                        recordDuration.anchors.leftMargin = mouse.x - (Theme.itemSizeSmall * 2)
+                        durationLabel.color = Theme.primaryColor
                     }
                     onReleased: {
-                        Mitakuuluu.endTyping()
+                        Mitakuuluu.endTyping(page.jid)
                         if (audioRecorder) {
                             audioRecorder.stop()
                             if (containsMouse) {
