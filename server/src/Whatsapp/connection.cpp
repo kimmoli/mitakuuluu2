@@ -991,11 +991,6 @@ void Connection::readNode()
     }
 }
 
-void Connection::sendServerPing()
-{
-    sendQueryLastOnline(myJid);
-}
-
 /** ***********************************************************************
  ** Authentication methods
  **/
@@ -1033,7 +1028,7 @@ int Connection::sendFeatures()
 /**
     Sends the authentication request.
 
-    This method implements the WAUTH WhatsApp protocol of authentication.
+    This method implements the WAUTH-2 WhatsApp protocol of authentication.
 
     @return     number of bytes written to the socket.
 */
@@ -1085,7 +1080,9 @@ QByteArray Connection::getAuthBlob(QByteArray &nonce)
     qint64 totalSeconds = QDateTime::currentMSecsSinceEpoch() / 1000;
     list.append(QString::number(totalSeconds).toUtf8());
     list.append(QString("WhatsApp/%1 Android/4.2.1 Device/GalaxyS3").arg(version));
-    //list.append(QString(" MccMnc/%2%3").arg(mcc).arg(mnc));
+    if (!mcc.isEmpty() && !mnc.isEmpty()) {
+        list.append(QString(" MccMnc/%2%3").arg(mcc).arg(mnc));
+    }
 
     outputKey->encodeMessage(list, 0, 4, list.length()-4);
 

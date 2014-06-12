@@ -150,8 +150,6 @@ private slots:
     // Read next node
     void readNode();
 
-    void sendServerPing();
-
 public slots:
 
     /** ***********************************************************************
