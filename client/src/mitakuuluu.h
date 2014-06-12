@@ -372,6 +372,8 @@ public slots:
     void checkAndroid();
     void importCredentials(const QVariantMap &data);
 
+    void setCamera(QObject *camera);
+
 //Settings
 
 private:

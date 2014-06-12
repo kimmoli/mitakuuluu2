@@ -12,6 +12,12 @@
 #include <QGuiApplication>
 #include <QClipboard>
 #include <QStandardPaths>
+#include <QMediaService>
+#include <QMediaObject>
+#include <QVideoEncoderSettingsControl>
+#include <QVideoEncoderSettings>
+#include <QAudioEncoderSettingsControl>
+#include <QAudioEncoderSettings>
 
 Q_DECLARE_METATYPE(QList<MyStructure>)
 
@@ -1289,6 +1295,36 @@ void Mitakuuluu::importCredentials(const QVariantMap &data)
 {
     if (iface) {
         iface->call(QDBus::NoBlock, "saveCredentials", data);
+    }
+}
+
+void Mitakuuluu::setCamera(QObject *camera)
+{
+    QMediaObject *mediaObject = camera
+            ? qobject_cast<QMediaObject *>(camera->property("mediaObject").value<QObject *>())
+            : 0;
+
+    if (mediaObject && mediaObject->service()) {
+
+        QAudioEncoderSettingsControl *audioEncoder = mediaObject->service()->requestControl<QAudioEncoderSettingsControl *>();
+        if (audioEncoder) {
+            QAudioEncoderSettings settings = audioEncoder->audioSettings();
+            settings.setBitRate(128000);
+            settings.setSampleRate(48000);
+            settings.setChannelCount(2);
+            audioEncoder->setAudioSettings(settings);
+        }
+
+        QVideoEncoderSettingsControl *videoEncoder = mediaObject->service()->requestControl<QVideoEncoderSettingsControl *>();
+        if (videoEncoder) {
+            QVideoEncoderSettings settings = videoEncoder->videoSettings();
+            settings.setEncodingOption(QLatin1String("preset"), QLatin1String("vga"));
+            settings.setBitRate(2000000);
+            settings.setEncodingMode(QMultimedia::ConstantBitRateEncoding);
+            settings.setFrameRate(30);
+            settings.setQuality(QMultimedia::HighQuality);
+            videoEncoder->setVideoSettings(settings);
+        }
     }
 }
 
