@@ -45,7 +45,7 @@ CoverBackground {
     }
 
     CoverActionList {
-        enabled: !registration && !coverActionActive
+        enabled: !registration && !coverActionActive && Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
 
         CoverAction {
             iconSource: coverIconLeft
