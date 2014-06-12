@@ -516,6 +516,7 @@
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -728,6 +729,7 @@
         <source>Unread messages: %n</source>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -938,6 +940,7 @@
         <comment>Media selection page title text</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -952,6 +955,7 @@
         <comment>Media selection page title text</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -966,6 +970,7 @@
         <comment>Media selection page title text</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1653,6 +1658,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <comment>Registration information constructor</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1661,6 +1667,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <comment>Registration information constructor</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1730,6 +1737,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <comment>Select contact page title</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1777,6 +1785,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <comment>Add contacts page title</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -2344,6 +2353,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <comment>Sharing menu title text</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+ <numerusform></numerusform>
         </translation>
     </message>
     <message>

@@ -132,17 +132,17 @@
 <context>
     <name>AddContact</name>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="63"/>
+        <location filename="../client/qml/AddContact.qml" line="62"/>
         <source>Add contact</source>
         <translation>Afegeix contactes</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="79"/>
+        <location filename="../client/qml/AddContact.qml" line="78"/>
         <source>1234567890</source>
         <translation>1234567890</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="98"/>
+        <location filename="../client/qml/AddContact.qml" line="97"/>
         <source>Enter contact name here</source>
         <translation>Introduïu el nom del contacte aquí</translation>
     </message>
@@ -256,13 +256,13 @@
 <context>
     <name>Capture</name>
     <message>
-        <location filename="../client/qml/Capture.qml" line="67"/>
+        <location filename="../client/qml/Capture.qml" line="474"/>
         <source>Send</source>
         <comment>Capture page send title</comment>
         <translation>Envia</translation>
     </message>
     <message>
-        <location filename="../client/qml/Capture.qml" line="68"/>
+        <location filename="../client/qml/Capture.qml" line="475"/>
         <source>Camera</source>
         <comment>Capture page default title</comment>
         <translation>Càmera</translation>
@@ -473,43 +473,43 @@
         <translation>En línia</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1056"/>
+        <location filename="../server/src/client.cpp" line="1058"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Ocult</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1324"/>
+        <location filename="../server/src/client.cpp" line="1326"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>S&apos;ha unit al grup</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1327"/>
+        <location filename="../server/src/client.cpp" line="1329"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Ha deixat el grup</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1330"/>
+        <location filename="../server/src/client.cpp" line="1332"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Assumpte: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1333"/>
+        <location filename="../server/src/client.cpp" line="1335"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>La imatge ha canviat</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1671"/>
+        <location filename="../server/src/client.cpp" line="1673"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Fora de línia</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2830"/>
+        <location filename="../server/src/client.cpp" line="2832"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n missatge sense llegir</numerusform><numerusform>%n missatges sense llegir</numerusform></translation>
@@ -699,13 +699,13 @@
         <translation>Missatge nou</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="587"/>
+        <location filename="../client/qml/ConversationPage.qml" line="588"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation>Premeu aquí per escriure</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="814"/>
+        <location filename="../client/qml/ConversationPage.qml" line="815"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation>S&apos;estan esperant les coordenades...</translation>
@@ -1083,7 +1083,7 @@
         <location filename="../client/qml/ModernDelegate.qml" line="810"/>
         <source>Resend message</source>
         <comment>Conversation message context menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Torna a enviar</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="819"/>
@@ -1351,7 +1351,7 @@
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="123"/>
         <source>If you don&apos;t share your Last seen, you won&apos;t be able to see other people&apos;s Last seen</source>
-        <translation type="unfinished"/>
+        <translation>Ocultar el vostre &apos;Últim cop vist&apos; també provocarà que no pogueu veure el dels altres</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="139"/>
@@ -2344,18 +2344,16 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
 <context>
     <name>StatusFeatures</name>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="58"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
         <source>System status</source>
         <translation>Estat del sistema</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <source>Email: %1</source>
         <translation>Correu electrònic: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2367,12 +2365,12 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>available</source>
         <translation>disponible</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2384,66 +2382,68 @@ Cal que cliqueu &apos;Renova&apos; per adquirir un any de servei de WhatsApp.</t
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>unavailable</source>
         <translation>no disponible</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <source>Last: %1</source>
         <translation>Últim cop vist: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
         <source>Sync: %1</source>
         <translation>Sincronització: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
         <source>Chat: %1</source>
         <translation>Conversa: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
         <source>Group: %1</source>
         <translation>Grup: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
         <source>Multimedia: %1</source>
         <translation>Multimèdia: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
         <source>Online: %1</source>
         <translation>En línia: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
         <source>Profile: %1</source>
         <translation>Perfil: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <source>Push: %1</source>
         <translation>Tramesa automàtica: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <source>Registration: %1</source>
         <translation>Registre: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
         <source>Broadcast: %1</source>
         <translation>Multidifusió: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
         <source>Status: %1</source>
         <translation>Estat: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>Version: %1</source>
         <translation>Versió: %1</translation>
     </message>

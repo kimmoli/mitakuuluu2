@@ -60,7 +60,7 @@
         <location filename="../client/qml/Account.qml" line="120"/>
         <source>Privacy settings</source>
         <comment>Account page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>隐私设定</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="130"/>
@@ -132,17 +132,17 @@
 <context>
     <name>AddContact</name>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="63"/>
+        <location filename="../client/qml/AddContact.qml" line="62"/>
         <source>Add contact</source>
         <translation>添加联系人</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="79"/>
+        <location filename="../client/qml/AddContact.qml" line="78"/>
         <source>1234567890</source>
         <translation>1234567890</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="98"/>
+        <location filename="../client/qml/AddContact.qml" line="97"/>
         <source>Enter contact name here</source>
         <translation>在这里输入联系人姓名</translation>
     </message>
@@ -256,13 +256,13 @@
 <context>
     <name>Capture</name>
     <message>
-        <location filename="../client/qml/Capture.qml" line="67"/>
+        <location filename="../client/qml/Capture.qml" line="474"/>
         <source>Send</source>
         <comment>Capture page send title</comment>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../client/qml/Capture.qml" line="68"/>
+        <location filename="../client/qml/Capture.qml" line="475"/>
         <source>Camera</source>
         <comment>Capture page default title</comment>
         <translation>相机</translation>
@@ -473,43 +473,43 @@
         <translation>已连接</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1056"/>
+        <location filename="../server/src/client.cpp" line="1058"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1324"/>
+        <location filename="../server/src/client.cpp" line="1326"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>加入群组</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1327"/>
+        <location filename="../server/src/client.cpp" line="1329"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>已离开群组</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1330"/>
+        <location filename="../server/src/client.cpp" line="1332"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>主题：%1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1333"/>
+        <location filename="../server/src/client.cpp" line="1335"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>图片已改变</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1671"/>
+        <location filename="../server/src/client.cpp" line="1673"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>已断开连接</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2830"/>
+        <location filename="../server/src/client.cpp" line="2832"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n条未读消息</numerusform></translation>
@@ -699,13 +699,13 @@
         <translation>新消息</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="587"/>
+        <location filename="../client/qml/ConversationPage.qml" line="588"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation>点击这里查看消息</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="814"/>
+        <location filename="../client/qml/ConversationPage.qml" line="815"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation>正在等待协调……</translation>
@@ -1083,7 +1083,7 @@
         <location filename="../client/qml/ModernDelegate.qml" line="810"/>
         <source>Resend message</source>
         <comment>Conversation message context menu item</comment>
-        <translation type="unfinished"/>
+        <translation>重新发送消息</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="819"/>
@@ -1331,42 +1331,42 @@
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="54"/>
         <source>Privacy</source>
-        <translation type="unfinished"/>
+        <translation>隐私</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="59"/>
         <source>Last seen</source>
-        <translation type="unfinished"/>
+        <translation>最后出现</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="79"/>
         <source>Status</source>
-        <translation type="unfinished"/>
+        <translation>状态</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="99"/>
         <source>Profile photo</source>
-        <translation type="unfinished"/>
+        <translation>简介图片</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="123"/>
         <source>If you don&apos;t share your Last seen, you won&apos;t be able to see other people&apos;s Last seen</source>
-        <translation type="unfinished"/>
+        <translation>如果你不分享自己的最后出现信息，你就不能查看他人的最后出现信息。</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="139"/>
         <source>Everybody</source>
-        <translation type="unfinished"/>
+        <translation>所有人</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="140"/>
         <source>Contacts</source>
-        <translation type="unfinished"/>
+        <translation>联系人</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="141"/>
         <source>Nobody</source>
-        <translation type="unfinished"/>
+        <translation>没有人</translation>
     </message>
 </context>
 <context>
@@ -1403,7 +1403,7 @@
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="18"/>
         <source>Importing Android account</source>
-        <translation type="unfinished"/>
+        <translation>导入 Android 帐户</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="27"/>
@@ -2338,18 +2338,16 @@ Click Renew to purchase one year of WhatsApp service.</source>
 <context>
     <name>StatusFeatures</name>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="58"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
         <source>System status</source>
         <translation>系统状态</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <source>Email: %1</source>
         <translation>电邮：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2361,12 +2359,12 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>available</source>
         <translation>可用</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2378,66 +2376,68 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>unavailable</source>
         <translation>不可用</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <source>Last: %1</source>
         <translation>最后：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
         <source>Sync: %1</source>
         <translation>同步：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
         <source>Chat: %1</source>
         <translation>聊天：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
         <source>Group: %1</source>
         <translation>群组：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
         <source>Multimedia: %1</source>
         <translation>多媒体：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
         <source>Online: %1</source>
         <translation>在线：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
         <source>Profile: %1</source>
         <translation>简介：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <source>Push: %1</source>
         <translation>推送：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <source>Registration: %1</source>
         <translation>注册：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
         <source>Broadcast: %1</source>
         <translation>广播：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
         <source>Status: %1</source>
         <translation>状态：%1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>Version: %1</source>
         <translation>版本：%1</translation>
     </message>

@@ -60,7 +60,7 @@
         <location filename="../client/qml/Account.qml" line="120"/>
         <source>Privacy settings</source>
         <comment>Account page menu item</comment>
-        <translation>Sokromá nastavení</translation>
+        <translation>Nastavení soukromí</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="130"/>
@@ -132,17 +132,17 @@
 <context>
     <name>AddContact</name>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="63"/>
+        <location filename="../client/qml/AddContact.qml" line="62"/>
         <source>Add contact</source>
         <translation>Přidat kontakt</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="79"/>
+        <location filename="../client/qml/AddContact.qml" line="78"/>
         <source>1234567890</source>
         <translation>1234567890</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="98"/>
+        <location filename="../client/qml/AddContact.qml" line="97"/>
         <source>Enter contact name here</source>
         <translation>Zde zadejte název kontaktu</translation>
     </message>
@@ -256,13 +256,13 @@
 <context>
     <name>Capture</name>
     <message>
-        <location filename="../client/qml/Capture.qml" line="67"/>
+        <location filename="../client/qml/Capture.qml" line="474"/>
         <source>Send</source>
         <comment>Capture page send title</comment>
         <translation>Poslat</translation>
     </message>
     <message>
-        <location filename="../client/qml/Capture.qml" line="68"/>
+        <location filename="../client/qml/Capture.qml" line="475"/>
         <source>Camera</source>
         <comment>Capture page default title</comment>
         <translation>Fotoaparát</translation>
@@ -473,43 +473,43 @@
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1056"/>
+        <location filename="../server/src/client.cpp" line="1058"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Skrytý</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1324"/>
+        <location filename="../server/src/client.cpp" line="1326"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Připojeno ke skupině</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1327"/>
+        <location filename="../server/src/client.cpp" line="1329"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Skupina opuštěna</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1330"/>
+        <location filename="../server/src/client.cpp" line="1332"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Předmět: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1333"/>
+        <location filename="../server/src/client.cpp" line="1335"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Obrázek změněn</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1671"/>
+        <location filename="../server/src/client.cpp" line="1673"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Offline</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2830"/>
+        <location filename="../server/src/client.cpp" line="2832"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n nepřečtená zpráva</numerusform><numerusform>%n nepřečtené zprávy</numerusform><numerusform>%n nepřečtených zpráv</numerusform></translation>
@@ -699,13 +699,13 @@
         <translation>Nová zpráva</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="587"/>
+        <location filename="../client/qml/ConversationPage.qml" line="588"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation>Klepněte zde pro psaní zprávy</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="814"/>
+        <location filename="../client/qml/ConversationPage.qml" line="815"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation>Čekání na souřadnice...</translation>
@@ -1083,7 +1083,7 @@
         <location filename="../client/qml/ModernDelegate.qml" line="810"/>
         <source>Resend message</source>
         <comment>Conversation message context menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Znovu odeslat zprávu</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="819"/>
@@ -1351,7 +1351,7 @@
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="123"/>
         <source>If you don&apos;t share your Last seen, you won&apos;t be able to see other people&apos;s Last seen</source>
-        <translation type="unfinished"/>
+        <translation>Jestliže nesdílíte vaši aktivitu (Naposledy aktivní), nelze vidět aktivitu ostatních lidí.</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="139"/>
@@ -2344,18 +2344,16 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
 <context>
     <name>StatusFeatures</name>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="58"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
         <source>System status</source>
         <translation>Systémový status</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <source>Email: %1</source>
         <translation>Email: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2367,12 +2365,12 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>available</source>
         <translation>dostupný</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2384,66 +2382,68 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>unavailable</source>
         <translation>nedostupný</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <source>Last: %1</source>
         <translation>Poslední: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
         <source>Sync: %1</source>
         <translation>Synchronizace: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
         <source>Chat: %1</source>
         <translation>Konverzace: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
         <source>Group: %1</source>
         <translation>Skupina: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
         <source>Multimedia: %1</source>
         <translation>Multimedia: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
         <source>Online: %1</source>
         <translation>Online: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
         <source>Profile: %1</source>
         <translation>Profil: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <source>Push: %1</source>
         <translation>Tlačit: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <source>Registration: %1</source>
         <translation>Registrace: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
         <source>Broadcast: %1</source>
         <translation>Vysílání: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
         <source>Status: %1</source>
         <translation>Status: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>Version: %1</source>
         <translation>Verze: %1</translation>
     </message>

@@ -5,17 +5,17 @@
         <location filename="../client/qml/AvatarPickerCrop.qml" line="37"/>
         <source>Select avatar</source>
         <extracomment>Title for avatar picker for selecting avatar</extracomment>
-        <translation type="unfinished"/>
+        <translation>Wybierz awatar</translation>
     </message>
     <message id="components_gallery-he-crop">
         <location filename="../client/qml/CropEditPreview.qml" line="77"/>
         <source>Crop</source>
-        <translation type="unfinished"/>
+        <translation>Przytnij</translation>
     </message>
     <message id="components_gallery-he-rotate">
         <location filename="../client/qml/CropEditPreview.qml" line="80"/>
         <source>Rotate</source>
-        <translation type="unfinished"/>
+        <translation>Obróć</translation>
     </message>
     <message id="sailfish-components-gallery-la_image-loading-error">
         <location filename="../client/qml/CropEditPreview.qml" line="136"/>
@@ -60,7 +60,7 @@
         <location filename="../client/qml/Account.qml" line="120"/>
         <source>Privacy settings</source>
         <comment>Account page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Ustawienia prywatności</translation>
     </message>
     <message>
         <location filename="../client/qml/Account.qml" line="130"/>
@@ -132,19 +132,19 @@
 <context>
     <name>AddContact</name>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="63"/>
+        <location filename="../client/qml/AddContact.qml" line="62"/>
         <source>Add contact</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="79"/>
+        <location filename="../client/qml/AddContact.qml" line="78"/>
         <source>1234567890</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="98"/>
+        <location filename="../client/qml/AddContact.qml" line="97"/>
         <source>Enter contact name here</source>
-        <translation type="unfinished"/>
+        <translation>Podaj nazwę kontaktu</translation>
     </message>
 </context>
 <context>
@@ -152,12 +152,12 @@
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="52"/>
         <source>Avatar</source>
-        <translation type="unfinished"/>
+        <translation>Awatar</translation>
     </message>
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="56"/>
         <source>Select picture</source>
-        <translation type="unfinished"/>
+        <translation>Wybierz obraz</translation>
     </message>
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="66"/>
@@ -187,7 +187,7 @@
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="126"/>
         <source>Delete</source>
-        <translation type="unfinished"/>
+        <translation>Usuń</translation>
     </message>
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="133"/>
@@ -197,12 +197,12 @@
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="183"/>
         <source>Deleting avatar file</source>
-        <translation type="unfinished"/>
+        <translation>Usuwam awatar</translation>
     </message>
     <message>
         <location filename="../client/qml/AvatarHistory.qml" line="207"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Anuluj</translation>
     </message>
 </context>
 <context>
@@ -256,13 +256,13 @@
 <context>
     <name>Capture</name>
     <message>
-        <location filename="../client/qml/Capture.qml" line="67"/>
+        <location filename="../client/qml/Capture.qml" line="474"/>
         <source>Send</source>
         <comment>Capture page send title</comment>
         <translation>Wyślij</translation>
     </message>
     <message>
-        <location filename="../client/qml/Capture.qml" line="68"/>
+        <location filename="../client/qml/Capture.qml" line="475"/>
         <source>Camera</source>
         <comment>Capture page default title</comment>
         <translation>Zdjęcie</translation>
@@ -343,7 +343,7 @@
         <location filename="../client/qml/ChatsPage.qml" line="94"/>
         <source>Settings</source>
         <comment>Main menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="103"/>
@@ -401,7 +401,7 @@
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="376"/>
         <source>Hide contact</source>
-        <translation type="unfinished"/>
+        <translation>Ukryj kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="383"/>
@@ -473,43 +473,43 @@
         <translation>Połączono</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1056"/>
+        <location filename="../server/src/client.cpp" line="1058"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1324"/>
+        <location filename="../server/src/client.cpp" line="1326"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
-        <translation type="unfinished"/>
+        <translation>Dołączył do grupy</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1327"/>
+        <location filename="../server/src/client.cpp" line="1329"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
-        <translation type="unfinished"/>
+        <translation>Opuścił grupę</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1330"/>
+        <location filename="../server/src/client.cpp" line="1332"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Temat: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1333"/>
+        <location filename="../server/src/client.cpp" line="1335"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
-        <translation type="unfinished"/>
+        <translation>Zmieniono obrazek</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1671"/>
+        <location filename="../server/src/client.cpp" line="1673"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Rozłączono</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2830"/>
+        <location filename="../server/src/client.cpp" line="2832"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n nieprzeczytana wiadomość</numerusform><numerusform>%n nieprzeczytane wiadomości</numerusform><numerusform>%n nieprzeczytanych wiadomości</numerusform></translation>
@@ -563,13 +563,13 @@
         <location filename="../client/qml/ContactsPage.qml" line="33"/>
         <source>Blacklist</source>
         <comment>Contacts page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Czarna lista</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="138"/>
         <source>Delete group %1</source>
         <comment>Group delete remorse action text</comment>
-        <translation type="unfinished"/>
+        <translation>Usuń grupę %1</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="281"/>
@@ -605,7 +605,7 @@
         <location filename="../client/qml/ContactsPage.qml" line="342"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
-        <translation type="unfinished"/>
+        <translation>Opuść grupę</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="343"/>
@@ -626,31 +626,31 @@
         <location filename="../client/qml/ConversationPage.qml" line="253"/>
         <source>Clear all messages</source>
         <comment>Conversation menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Usuń wszystkie wiadomości</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="255"/>
         <source>Clear all messages</source>
         <comment>Conversation delete all messages remorse popup</comment>
-        <translation type="unfinished"/>
+        <translation>Usuwam wszystkie wiadomośc</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="265"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
-        <translation type="unfinished"/>
+        <translation>Wyciszam kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="271"/>
         <source>Load old conversation</source>
         <comment>Conversation menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Wczytaj starsze wiadomości</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="321"/>
         <source>Enable location in settings!</source>
         <comment>Banner text if GPS disabled in settings</comment>
-        <translation type="unfinished"/>
+        <translation>Włącz lokalizację w ustawieniach!</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="353"/>
@@ -668,7 +668,7 @@
         <location filename="../client/qml/ConversationPage.qml" line="79"/>
         <source>Last seen: %1</source>
         <comment>Last seen converstation text</comment>
-        <translation type="unfinished"/>
+        <translation>Ostatnio dostępny: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="77"/>
@@ -699,16 +699,16 @@
         <translation>Nowa wiadomość</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="587"/>
+        <location filename="../client/qml/ConversationPage.qml" line="588"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
-        <translation type="unfinished"/>
+        <translation>Dotknij tutaj, aby wprowadzić wiadomość</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="814"/>
+        <location filename="../client/qml/ConversationPage.qml" line="815"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
-        <translation type="unfinished"/>
+        <translation>Oczekuję na współrzędne</translation>
     </message>
 </context>
 <context>
@@ -749,19 +749,19 @@
         <location filename="../client/qml/CreateGroup.qml" line="68"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Dodaj kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="80"/>
         <source>Create group</source>
         <comment>Greate group page title</comment>
-        <translation type="unfinished"/>
+        <translation>Załóż grupę</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="116"/>
         <source>Write name of new group here</source>
         <comment>Create group subject area subtitle</comment>
-        <translation type="unfinished"/>
+        <translation>Wpisz nazwę grupy</translation>
     </message>
     <message>
         <location filename="../client/qml/CreateGroup.qml" line="148"/>
@@ -809,19 +809,19 @@
         <location filename="../client/qml/GroupProfile.qml" line="166"/>
         <source>Save chat history</source>
         <comment>Group profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Zapisz historię rozmowy</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="169"/>
         <source>History saved to Documents</source>
         <comment>Banner notification text</comment>
-        <translation type="unfinished"/>
+        <translation>Historia zapisana w Dokumentach</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="139"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Dodaj kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="151"/>
@@ -837,49 +837,49 @@
         <location filename="../client/qml/GroupProfile.qml" line="176"/>
         <source>Group profile</source>
         <comment>Group profile page title</comment>
-        <translation type="unfinished"/>
+        <translation>Profil grupy</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="187"/>
         <source>Subject: </source>
         <comment>Group profile subject label</comment>
-        <translation type="unfinished"/>
+        <translation>Temat:</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="246"/>
         <source>Owner: %1</source>
         <comment>Group profile owner label</comment>
-        <translation type="unfinished"/>
+        <translation>Właściciel: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="260"/>
         <source>Creation: %1</source>
         <comment>Group profile creation label</comment>
-        <translation type="unfinished"/>
+        <translation>Utworzona: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="274"/>
         <source>Subject by: %1</source>
         <comment>Group profile subject owner label</comment>
-        <translation type="unfinished"/>
+        <translation>Temat zdefiniował: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="288"/>
         <source>Subject set: %1</source>
         <comment>Group profile subject timestamp label</comment>
-        <translation type="unfinished"/>
+        <translation>Temat zdefiniowano: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="317"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
-        <translation type="unfinished"/>
+        <translation>Osiągnięto maksymalną liczbę uczestników</translation>
     </message>
     <message>
         <location filename="../client/qml/GroupProfile.qml" line="349"/>
         <source>Fetching participants...</source>
         <comment>Group profile loading text</comment>
-        <translation type="unfinished"/>
+        <translation>Pobieram uczestników...</translation>
     </message>
 </context>
 <context>
@@ -888,7 +888,7 @@
         <location filename="../client/qml/InteractionArea.qml" line="86"/>
         <source>Error loading image</source>
         <comment>Image component error loading text</comment>
-        <translation type="unfinished"/>
+        <translation>Błąd wczytywania obrazka</translation>
     </message>
 </context>
 <context>
@@ -897,25 +897,25 @@
         <location filename="../client/qml/Location.qml" line="36"/>
         <source>Coordinates not available</source>
         <comment>Location page cant accept feedback</comment>
-        <translation type="unfinished"/>
+        <translation>Współrzędne nie są dostępne</translation>
     </message>
     <message>
         <location filename="../client/qml/Location.qml" line="108"/>
         <source>You need to enable GPS positioning in settings</source>
         <comment>Location send page text</comment>
-        <translation type="unfinished"/>
+        <translation>Włącz pozycjonowanie GPS w ustawieniach</translation>
     </message>
     <message>
         <location filename="../client/qml/Location.qml" line="165"/>
         <source>latitude: %1</source>
         <comment>Location send page text</comment>
-        <translation type="unfinished"/>
+        <translation>szerokość: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/Location.qml" line="172"/>
         <source>longitude: %1</source>
         <comment>Location send page text</comment>
-        <translation type="unfinished"/>
+        <translation>wysokość: %1</translation>
     </message>
 </context>
 <context>
@@ -966,19 +966,19 @@
         <location filename="../client/qml/MediaSelector.qml" line="98"/>
         <source>Images</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"/>
+        <translation>Zdjęćia</translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="99"/>
         <source>Audio</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"/>
+        <translation>Audio</translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="100"/>
         <source>Video</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"/>
+        <translation>Wideo</translation>
     </message>
 </context>
 <context>
@@ -996,7 +996,7 @@
         <location filename="../client/src/mitakuuluu.cpp" line="287"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
-        <translation type="unfinished"/>
+        <translation>Nieznany</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="290"/>
@@ -1083,7 +1083,7 @@
         <location filename="../client/qml/ModernDelegate.qml" line="810"/>
         <source>Resend message</source>
         <comment>Conversation message context menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Wyślij wiadomość ponownie</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="819"/>
@@ -1134,19 +1134,19 @@
         <location filename="../client/qml/MutedContacts.qml" line="55"/>
         <source>Muted contacts</source>
         <comment>Contacts muting title text</comment>
-        <translation type="unfinished"/>
+        <translation>Wyciszone kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/MutedContacts.qml" line="59"/>
         <source>You have no muted contacts</source>
         <comment>Empty muted contacts list placeholder</comment>
-        <translation type="unfinished"/>
+        <translation>Brak wyciszonych kontaktów</translation>
     </message>
     <message>
         <location filename="../client/qml/MutedContacts.qml" line="106"/>
         <source>Expiration: %1</source>
         <comment>Contacts muting expiration text</comment>
-        <translation type="unfinished"/>
+        <translation>Wygasa: %1</translation>
     </message>
 </context>
 <context>
@@ -1155,7 +1155,7 @@
         <location filename="../client/qml/MutingSelector.qml" line="16"/>
         <source>Muting</source>
         <comment>Contacts muting page title</comment>
-        <translation type="unfinished"/>
+        <translation>Wyciszanie</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="47"/>
@@ -1167,73 +1167,73 @@
         <location filename="../client/qml/MutingSelector.qml" line="48"/>
         <source>5 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>5 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="49"/>
         <source>10 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>10 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="50"/>
         <source>20 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>20 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="51"/>
         <source>30 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>30 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="52"/>
         <source>60 minutes</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>60 minut</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="53"/>
         <source>2 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>2 godziny</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="54"/>
         <source>6 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>6 godzin</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="55"/>
         <source>12 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>12 godzin</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="56"/>
         <source>24 hours</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>24 godziny</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="57"/>
         <source>1 year</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>1 rok</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="58"/>
         <source>20 years</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>20 lat</translation>
     </message>
     <message>
         <location filename="../client/qml/MutingSelector.qml" line="59"/>
         <source>100 years</source>
         <comment>Contacts muting duration text</comment>
-        <translation type="unfinished"/>
+        <translation>100 lat</translation>
     </message>
 </context>
 <context>
@@ -1242,13 +1242,13 @@
         <location filename="../client/qml/Payments.qml" line="15"/>
         <source>Payment</source>
         <comment>Payment page title</comment>
-        <translation type="unfinished"/>
+        <translation>Płatność</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="26"/>
         <source>Subscription period:</source>
         <comment>Subscription period text</comment>
-        <translation type="unfinished"/>
+        <translation>Okres subskrypcji:</translation>
     </message>
     <message>
         <location filename="../client/qml/Payments.qml" line="29"/>
@@ -1287,43 +1287,43 @@
         <location filename="../client/qml/PrivacyList.qml" line="23"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
-        <translation type="unfinished"/>
+        <translation>Ty</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="61"/>
         <source>Add number</source>
         <comment>Privacy list page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Dodaj numer</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="69"/>
         <source>Select contacts</source>
         <comment>Privacy list page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Wybierz kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="80"/>
         <source>Blacklist</source>
         <comment>Privacy list page title</comment>
-        <translation type="unfinished"/>
+        <translation>Czarna lista</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="104"/>
         <source>Blacklist is empty</source>
         <comment>Privacy empty list placeholder text</comment>
-        <translation type="unfinished"/>
+        <translation>Czarna lista jest pusta</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="131"/>
         <source>Add to blacklist</source>
         <comment>Privacy list adding contact page title</comment>
-        <translation type="unfinished"/>
+        <translation>Dodaj do czarnej listy</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacyList.qml" line="140"/>
         <source>In international format</source>
         <comment>Phone number text field label</comment>
-        <translation type="unfinished"/>
+        <translation>Format międzynarodowy</translation>
     </message>
 </context>
 <context>
@@ -1341,12 +1341,12 @@
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="79"/>
         <source>Status</source>
-        <translation type="unfinished"/>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="99"/>
         <source>Profile photo</source>
-        <translation type="unfinished"/>
+        <translation>Zdjęcie profilowe</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="123"/>
@@ -1361,12 +1361,12 @@
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="140"/>
         <source>Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="141"/>
         <source>Nobody</source>
-        <translation type="unfinished"/>
+        <translation>Nikt</translation>
     </message>
 </context>
 <context>
@@ -1381,7 +1381,7 @@
         <location filename="../client/qml/Recorder.qml" line="73"/>
         <source>Voice note</source>
         <comment>Voice recorder page title</comment>
-        <translation type="unfinished"/>
+        <translation>Notatka głosowa</translation>
     </message>
 </context>
 <context>
@@ -1395,7 +1395,7 @@
         <location filename="../client/qml/RegistrationCombo.qml" line="75"/>
         <source>Search</source>
         <comment>Registration country selector</comment>
-        <translation type="unfinished"/>
+        <translation>Wyszkukaj</translation>
     </message>
 </context>
 <context>
@@ -1403,7 +1403,7 @@
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="18"/>
         <source>Importing Android account</source>
-        <translation type="unfinished"/>
+        <translation>Import konta Androida</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="27"/>
@@ -1437,13 +1437,13 @@
         <location filename="../client/qml/RegistrationPage.qml" line="41"/>
         <source>Activation code requested. Wait for %1 soon</source>
         <comment>Activation code requested text</comment>
-        <translation type="unfinished"/>
+        <translation>Poproszono o kod aktywacyjny. Wkrótce otrzymasz %1</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="43"/>
         <source>sms message</source>
         <comment>Activation code requested text information</comment>
-        <translation type="unfinished"/>
+        <translation>wiadomość sms</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="44"/>
@@ -1455,7 +1455,7 @@
         <location filename="../client/qml/RegistrationPage.qml" line="50"/>
         <source>Successfully registered!</source>
         <comment>Registered successfully banner</comment>
-        <translation type="unfinished"/>
+        <translation>Rejestracja udana!</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="57"/>
@@ -1466,7 +1466,7 @@
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="68"/>
         <source>I have code</source>
-        <translation type="unfinished"/>
+        <translation>Już mam kod</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="86"/>
@@ -1487,7 +1487,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="98"/>
         <source>Country</source>
         <comment>Registration country selector label</comment>
-        <translation type="unfinished"/>
+        <translation>Kraj</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="114"/>
@@ -1517,7 +1517,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="153"/>
         <source>Random password</source>
         <comment>Registration password field placeolder</comment>
-        <translation type="unfinished"/>
+        <translation>Losowe hasło</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="168"/>
@@ -1529,7 +1529,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="177"/>
         <source>Sms</source>
         <comment>Sms registration button text</comment>
-        <translation type="unfinished"/>
+        <translation>Sms</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="194"/>
@@ -1541,7 +1541,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="198"/>
         <source>Registering account...</source>
         <comment>Registering account text</comment>
-        <translation type="unfinished"/>
+        <translation>Rejestruję konto...</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="299"/>
@@ -1565,7 +1565,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="326"/>
         <source>phone number</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>numer telefonu</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="328"/>
@@ -1589,7 +1589,7 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="335"/>
         <source>Too many attempts. Try again tomorrow.</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"/>
+        <translation>Zbyt wiele prób. Spróbuj ponownie jutro.</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="337"/>
@@ -1643,13 +1643,13 @@ Before switching to Mitakuuluu from official application please use &lt;Remove a
         <location filename="../client/qml/RegistrationPage.qml" line="362"/>
         <source>%n hours</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n godzina</numerusform><numerusform>%n godziny</numerusform><numerusform>%n godzin</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/RegistrationPage.qml" line="365"/>
         <source>%n minutes</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minuta</numerusform><numerusform>%n minuty</numerusform><numerusform>%n minut</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="367"/>
@@ -1716,19 +1716,19 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/SelectContact.qml" line="69"/>
         <source>Selected %n contacts</source>
         <comment>Select contact page title</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Wybrano %n kontakt</numerusform><numerusform>Wybrano %n kontakty</numerusform><numerusform>Wybrano %n kontaktów</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/SelectContact.qml" line="76"/>
         <source>Search</source>
         <comment>Contacts selector</comment>
-        <translation type="unfinished"/>
+        <translation>Szukaj</translation>
     </message>
     <message>
         <location filename="../client/qml/SelectContact.qml" line="163"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
-        <translation type="unfinished"/>
+        <translation>Rozmowa grupowa</translation>
     </message>
 </context>
 <context>
@@ -1749,25 +1749,25 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/SelectPhonebook.qml" line="80"/>
         <source>Add number</source>
         <comment>Add contacts page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Dodaj numer</translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="114"/>
         <source>Sync contact</source>
         <comment>Add contacts page title</comment>
-        <translation type="unfinished"/>
+        <translation>Synchronizuj kontakty</translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/SelectPhonebook.qml" line="115"/>
         <source>Sync %n contacts</source>
         <comment>Add contacts page title</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Zsynchronizowano %n kontakt</numerusform><numerusform>Zsynchronizowano %n kontakty</numerusform><numerusform>Zsynchronizowano %n kontaktów</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="116"/>
         <source>Select contacts</source>
         <comment>Add contacts page title</comment>
-        <translation type="unfinished"/>
+        <translation>Wybierz kontakty</translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="160"/>
@@ -1808,7 +1808,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="27"/>
         <source>Quit</source>
         <comment>Settings cover action name text</comment>
-        <translation type="unfinished"/>
+        <translation>Wyjdź</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="28"/>
@@ -1850,7 +1850,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="62"/>
         <source>About</source>
         <comment>Settings page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>O programie</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="86"/>
@@ -1862,7 +1862,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="80"/>
         <source>Account</source>
         <comment>Settings page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Konto</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="74"/>
@@ -1874,7 +1874,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="101"/>
         <source>Settings</source>
         <comment>Settings page title</comment>
-        <translation type="unfinished"/>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="105"/>
@@ -1904,25 +1904,25 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="173"/>
         <source>Show seconds in messages timestamp</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Pokaż sekundy w czasach wiadomości</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="181"/>
         <source>Send messages by Enter</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Klawisz Enter wysyła wiadomość</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="187"/>
         <source>Automatically show keyboard when opening conversation</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Po otwarciu rozmowy automatycznie pokaż klawiaturę</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="193"/>
         <source>Hide keyboard after sending message</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Ukryj klawiaturę po wysłaniu wiadomości</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="205"/>
@@ -1976,13 +1976,13 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="245"/>
         <source>Yandex usermap</source>
         <comment>Map source selection</comment>
-        <translation type="unfinished"/>
+        <translation>Yandex usermap</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="246"/>
         <source>2Gis</source>
         <comment>Map source selection</comment>
-        <translation type="unfinished"/>
+        <translation>2Gis</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="297"/>
@@ -2006,7 +2006,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="255"/>
         <source>Chat font size</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Rozmiar czcionki wiadomości</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="68"/>
@@ -2024,7 +2024,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="264"/>
         <source>Notifications</source>
         <comment>Settings page section name</comment>
-        <translation type="unfinished"/>
+        <translation>Powiadomienia</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="461"/>
@@ -2042,13 +2042,13 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="803"/>
         <source>red</source>
         <comment>Pattern led color</comment>
-        <translation type="unfinished"/>
+        <translation>czerwony</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="804"/>
         <source>green</source>
         <comment>Pattern led color</comment>
-        <translation type="unfinished"/>
+        <translation>zielony</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="805"/>
@@ -2072,19 +2072,19 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="808"/>
         <source>cyan</source>
         <comment>Pattern led color</comment>
-        <translation type="unfinished"/>
+        <translation>turkusowy</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="809"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
-        <translation type="unfinished"/>
+        <translation>różowy</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="305"/>
         <source>no sound</source>
         <comment>Private message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>bez dźwięku</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="327"/>
@@ -2096,7 +2096,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="359"/>
         <source>no sound</source>
         <comment>Group message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>bez dźwięku</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="379"/>
@@ -2108,7 +2108,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="408"/>
         <source>no sound</source>
         <comment>Medi message tone not set</comment>
-        <translation type="unfinished"/>
+        <translation>bez dźwięku</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="428"/>
@@ -2143,7 +2143,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="535"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Pozwól na zapisywanie logów aplikacji</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="539"/>
@@ -2185,7 +2185,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="290"/>
         <source>Display messages text in notifications</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Wyświetl tekst wiadomości w powiadomieniu</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="303"/>
@@ -2203,7 +2203,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="364"/>
         <source>Group message tone</source>
         <comment>Sound chooser description text</comment>
-        <translation type="unfinished"/>
+        <translation>Dźwięk wiadomości grupowej</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="413"/>
@@ -2293,7 +2293,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="697"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
-        <translation type="unfinished"/>
+        <translation>Zmień rozmiar wysyłanych obrazów</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="741"/>
@@ -2311,13 +2311,13 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="777"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
-        <translation type="unfinished"/>
+        <translation>%1 MPx</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="791"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
-        <translation type="unfinished"/>
+        <translation>Zmiana opcji oznaczonych gwiazdką (*) wymaga pełnego restartu aplikacji</translation>
     </message>
 </context>
 <context>
@@ -2338,18 +2338,16 @@ Click Renew to purchase one year of WhatsApp service.</source>
 <context>
     <name>StatusFeatures</name>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="58"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
         <source>System status</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <source>Email: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2361,12 +2359,12 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>available</source>
-        <translation type="unfinished"/>
+        <translation>dostępny</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2378,68 +2376,70 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>unavailable</source>
-        <translation type="unfinished"/>
+        <translation>niedostępny</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <source>Last: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
         <source>Sync: %1</source>
-        <translation type="unfinished"/>
+        <translation>Synchronizacja: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
         <source>Chat: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
         <source>Group: %1</source>
-        <translation type="unfinished"/>
+        <translation>Grupy: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
         <source>Multimedia: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
         <source>Online: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
         <source>Profile: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <source>Push: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <source>Registration: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
-        <source>Broadcast: %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
-        <source>Status: %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <source>Broadcast: %1</source>
+        <translation>Rozgłaszanie</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <source>Status: %1</source>
+        <translation>Status: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>Version: %1</source>
-        <translation type="unfinished"/>
+        <translation>Wersja: %1</translation>
     </message>
 </context>
 <context>
@@ -2537,7 +2537,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="76"/>
         <source>Messages</source>
-        <translation type="unfinished"/>
+        <translation>Wiadomości</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="90"/>
@@ -2547,7 +2547,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="134"/>
         <source>Sent data</source>
-        <translation type="unfinished"/>
+        <translation>Wysłane dane</translation>
     </message>
 </context>
 <context>
@@ -2562,13 +2562,13 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/UserProfile.qml" line="82"/>
         <source>Block contact</source>
         <comment>User profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Zablokuj kontakt</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="105"/>
         <source>Save chat history</source>
         <comment>User profile page menu item</comment>
-        <translation type="unfinished"/>
+        <translation>Zapisz historię rozmowy</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="108"/>
@@ -2602,7 +2602,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="97"/>
         <source>Clear background</source>
-        <translation type="unfinished"/>
+        <translation>Wyczyść tło</translation>
     </message>
     <message>
         <location filename="../client/qml/UserProfile.qml" line="180"/>

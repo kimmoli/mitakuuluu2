@@ -132,17 +132,17 @@
 <context>
     <name>AddContact</name>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="63"/>
+        <location filename="../client/qml/AddContact.qml" line="62"/>
         <source>Add contact</source>
         <translation>Προσθήκη επαφής</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="79"/>
+        <location filename="../client/qml/AddContact.qml" line="78"/>
         <source>1234567890</source>
         <translation>1234567890</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="98"/>
+        <location filename="../client/qml/AddContact.qml" line="97"/>
         <source>Enter contact name here</source>
         <translation>Πληκτρολογήστε το όνομα της επαφής εδώ</translation>
     </message>
@@ -256,13 +256,13 @@
 <context>
     <name>Capture</name>
     <message>
-        <location filename="../client/qml/Capture.qml" line="67"/>
+        <location filename="../client/qml/Capture.qml" line="474"/>
         <source>Send</source>
         <comment>Capture page send title</comment>
         <translation>Αποστολή</translation>
     </message>
     <message>
-        <location filename="../client/qml/Capture.qml" line="68"/>
+        <location filename="../client/qml/Capture.qml" line="475"/>
         <source>Camera</source>
         <comment>Capture page default title</comment>
         <translation>Φωτογραφική μηχανή</translation>
@@ -473,46 +473,46 @@
         <translation>Συνδεμένος</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1056"/>
+        <location filename="../server/src/client.cpp" line="1058"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Κρυφό</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1324"/>
+        <location filename="../server/src/client.cpp" line="1326"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Ένταξη στην ομάδα</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1327"/>
+        <location filename="../server/src/client.cpp" line="1329"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Αποχώρηση από την ομάδα</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1330"/>
+        <location filename="../server/src/client.cpp" line="1332"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Θέμα: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1333"/>
+        <location filename="../server/src/client.cpp" line="1335"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Η εικόνα άλλαξε</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1671"/>
+        <location filename="../server/src/client.cpp" line="1673"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Αποσυνδεμένο</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2830"/>
+        <location filename="../server/src/client.cpp" line="2832"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n μήνυμα δεν έχει διαβαστεί</numerusform><numerusform>%n μηνύματα δεν έχουν διαβαστεί</numerusform></translation>
     </message>
 </context>
 <context>
@@ -699,13 +699,13 @@
         <translation>Νέο μήνυμα</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="587"/>
+        <location filename="../client/qml/ConversationPage.qml" line="588"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation>Πατήστε εδώ για να εισάγετε το μήνυμα</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="814"/>
+        <location filename="../client/qml/ConversationPage.qml" line="815"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation>Περιμένοντας για τις συντεταγμένες...</translation>
@@ -722,7 +722,7 @@
     <message numerus="yes">
         <location filename="../client/qml/CoverPage.qml" line="33"/>
         <source>Unread messages: %n</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Μη διαβασμένο μήνυμα: %n</numerusform><numerusform>Μη διαβασμένα μηνύματα: %n</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/CoverPage.qml" line="35"/>
@@ -930,7 +930,7 @@
         <location filename="../client/qml/MediaSelector.qml" line="95"/>
         <source>Images selected: %n</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Επιλεγμένη εικόνα: %n</numerusform><numerusform>Επιλεγμένες εικόνες: %n</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="95"/>
@@ -942,7 +942,7 @@
         <location filename="../client/qml/MediaSelector.qml" line="96"/>
         <source>Audio selected: %n</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Επιλεγμένο ηχητικό: %n</numerusform><numerusform>Επιλεγμένα ηχητικά: %n</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="96"/>
@@ -954,7 +954,7 @@
         <location filename="../client/qml/MediaSelector.qml" line="97"/>
         <source>Video selected: %n</source>
         <comment>Media selection page title text</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Επιλεγμένο βίντεο: %n</numerusform><numerusform>Επιλεγμένα βίντεο: %n</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/MediaSelector.qml" line="97"/>
@@ -1095,7 +1095,7 @@
         <location filename="../client/qml/ModernDelegate.qml" line="840"/>
         <source>Media saved as %1</source>
         <comment>Banner text message</comment>
-        <translation type="unfinished"/>
+        <translation>Αποθήκευση πολυμέσου ως %1</translation>
     </message>
     <message>
         <location filename="../client/qml/ModernDelegate.qml" line="866"/>
@@ -1351,7 +1351,7 @@
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="123"/>
         <source>If you don&apos;t share your Last seen, you won&apos;t be able to see other people&apos;s Last seen</source>
-        <translation type="unfinished"/>
+        <translation>Αν δεν κοινοποιείστε την Τελευταία εμφάνιση σας, δεν θα μπορείτε να δείτε την Τελευταία εμφάνιση άλλων χρηστών.</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="139"/>
@@ -1648,13 +1648,13 @@ WhatsApp-συμβατή εφαρμογή για Sailfish OS.
         <location filename="../client/qml/RegistrationPage.qml" line="362"/>
         <source>%n hours</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n ώρα</numerusform><numerusform>%n ώρες</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../client/qml/RegistrationPage.qml" line="365"/>
         <source>%n minutes</source>
         <comment>Registration information constructor</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n λεπτό</numerusform><numerusform>%n λεπτά</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="367"/>
@@ -1722,7 +1722,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/SelectContact.qml" line="69"/>
         <source>Selected %n contacts</source>
         <comment>Select contact page title</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Επιλογή %n επαφής</numerusform><numerusform>Επιλογή %n επαφών</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/SelectContact.qml" line="76"/>
@@ -1767,7 +1767,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/SelectPhonebook.qml" line="115"/>
         <source>Sync %n contacts</source>
         <comment>Add contacts page title</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Συγχρονισμός %n επαφής</numerusform><numerusform>Συγχρονισμός %n επαφών</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/SelectPhonebook.qml" line="116"/>
@@ -2332,7 +2332,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/ShareUI.qml" line="53"/>
         <source>Selected: %n</source>
         <comment>Sharing menu title text</comment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Επιλεγμένο: %n</numerusform><numerusform>Επιλεγμένα: %n</numerusform></translation>
     </message>
     <message>
         <location filename="../client/qml/ShareUI.qml" line="108"/>
@@ -2344,18 +2344,16 @@ Click Renew to purchase one year of WhatsApp service.</source>
 <context>
     <name>StatusFeatures</name>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="58"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
         <source>System status</source>
         <translation>Κατάσταση συστήματος</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <source>Email: %1</source>
         <translation>Ηλεκτρονικό ταχυδρομείο: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2367,12 +2365,12 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>available</source>
         <translation>διαθέσιμο </translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2384,66 +2382,68 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>unavailable</source>
         <translation>μη διαθέσιμο</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <source>Last: %1</source>
         <translation>Τελευταίο: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
         <source>Sync: %1</source>
         <translation>Συγχρονισμός: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
         <source>Chat: %1</source>
         <translation>Συνομιλία: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
         <source>Group: %1</source>
         <translation>Ομαδα: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
         <source>Multimedia: %1</source>
         <translation>Πολυμέσα: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
         <source>Online: %1</source>
         <translation>Σε σύνδεση: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
         <source>Profile: %1</source>
         <translation>Προφίλ: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <source>Push: %1</source>
         <translation>Προώθηση: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <source>Registration: %1</source>
         <translation>Εγγραφή: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
         <source>Broadcast: %1</source>
         <translation>Μετάδοση: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
         <source>Status: %1</source>
         <translation>Κατάσταση: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>Version: %1</source>
         <translation>Έκδοση: %1</translation>
     </message>
@@ -2498,37 +2498,37 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="31"/>
         <source>Audio bytes sent: %1</source>
-        <translation type="unfinished"/>
+        <translation>Αριθμός ηχητικών bytes που στάλθηκαν: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="32"/>
         <source>Profile bytes received: %1</source>
-        <translation type="unfinished"/>
+        <translation>Ληφθέντα bytes πρωτοκόλλου: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="33"/>
         <source>Profile bytes sent: %1</source>
-        <translation type="unfinished"/>
+        <translation>Απεσταλμένα bytes προφίλ: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="36"/>
         <source>Protocol bytes received: %1</source>
-        <translation type="unfinished"/>
+        <translation>Ληφθέντα bytes πρωτοκόλλου: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="37"/>
         <source>Protocol bytes sent: %1</source>
-        <translation type="unfinished"/>
+        <translation>Αριθμός απεσταλμένων bytes πρωτοκόλλου: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="38"/>
         <source>Total bytes received: %1</source>
-        <translation type="unfinished"/>
+        <translation>Συνολικός αριθμός ληφθέντων bytes: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="39"/>
         <source>Total bytes sent: %1</source>
-        <translation type="unfinished"/>
+        <translation>Συνολικός αριθμός απεσταλμένων bytes: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/TrafficCounters.qml" line="53"/>
