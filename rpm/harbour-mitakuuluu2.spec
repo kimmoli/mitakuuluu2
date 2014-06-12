@@ -40,6 +40,7 @@ Short description of my SailfishOS Application
 # >> build pre
 # << build pre
 
+%qtc_qmake5
 %qtc_make %{?_smp_mflags}
 
 # >> build post
@@ -100,8 +101,6 @@ systemctl restart mce.service
 %{_datadir}/%{name}
 /usr/lib/nemo-transferengine/plugins/*.so
 /usr/lib/systemd/user/*.service
-%attr(4755, root, root) %{_bindir}/harbour-mitakuuluu2-helper
-%{_bindir}/harbour-mitakuuluu2-server
-%{_bindir}/harbour-mitakuuluu2
+%attr(4755, root, root) %{_bindir}
 # >> files
 # << files
