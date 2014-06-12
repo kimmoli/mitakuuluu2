@@ -52,6 +52,8 @@
 #include "fmessage.h"
 #include "funstore.h"
 
+#include "keepalive/backgroundactivity.h"
+
 // QtMobility namespace
 //QTM_USE_NAMESPACE
 
@@ -139,6 +141,9 @@ public:
 private slots:
     void connectedToServer();
     void connectionClosed();
+
+    void checkActivity();
+    void wakeupStopped();
 
     void socketError(QAbstractSocket::SocketError error);
 
@@ -363,7 +368,8 @@ private:
 
     // Connection timeout timer
     QTimer *connTimeout;
-
+    BackgroundActivity *keepalive;
+    uint _lastActivity;
 
     /** ***********************************************************************
      ** Private methods

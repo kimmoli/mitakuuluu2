@@ -17,6 +17,7 @@ Requires:   sailfishsilica-qt5
 Requires:   nemo-transferengine-qt5
 Requires:   declarative-transferengine-qt5 >= 0.0.44
 Requires:   qt5-qtdeclarative-import-sensors qt5-qtsensors-plugin-gestures-sensor, qt5-qtsensors-plugin-gestures-shake
+Requires:   libkeepalive
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
@@ -26,6 +27,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(nemotransferengine-qt5)
 BuildRequires:  gstreamer-devel
 BuildRequires:  libcontacts-qt5-devel qtcontacts-sqlite-qt5-extensions
+BuildRequires:  libkeepalive-devel
 
 %description
 Short description of my SailfishOS Application

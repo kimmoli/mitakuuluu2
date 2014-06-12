@@ -178,9 +178,10 @@ void Connection::login(const QByteArray &nextChallenge)
 */
 bool Connection::read()
 {
-    if (connTimeout) {
-        connTimeout->start();
-    }
+    //if (connTimeout) {
+    //    connTimeout->start();
+    //}
+    _lastActivity = QDateTime::currentDateTime().toTime_t();
 
     ProtocolTreeNode node;
     bool pictureReceived = false;
@@ -952,12 +953,27 @@ void Connection::connectedToServer()
 
 void Connection::connectionClosed()
 {
-    if (connTimeout && connTimeout->isActive()) {
-        connTimeout->stop();
-        connTimeout->deleteLater();
-    }
+    //if (connTimeout && connTimeout->isActive()) {
+    //    connTimeout->stop();
+    //    connTimeout->deleteLater();
+    //}
     qDebug() << "Connection closed";
     disconnectAndDelete();
+}
+
+void Connection::checkActivity()
+{
+    uint now = QDateTime::currentDateTime().toTime_t();
+    qDebug() << "wakeup check activity. now:" << now << "last:" << _lastActivity;
+    if ((now - _lastActivity) > 905) {
+        qDebug() << "should reconnect";
+        disconnectAndDelete();
+    }
+}
+
+void Connection::wakeupStopped()
+{
+    qDebug() << "WAKEUP STOPPED! WHAT SHOULD I DO NOW!?";
 }
 
 void Connection::socketError(QAbstractSocket::SocketError error)
@@ -1189,11 +1205,19 @@ void Connection::parseSuccessNode(const ProtocolTreeNode &node)
 
         // ugly hack. if no activity on socket until 15 minutes 5 seconds it will be reconnected.
         // server sends self pings to clients every 15 minutes. 5 seconds added as network delay.
-        connTimeout = new QTimer(this);
-        connTimeout->setSingleShot(false);
-        connTimeout->setInterval(905000);
-        QObject::connect(connTimeout, SIGNAL(timeout()), this, SLOT(disconnectAndDelete()));
-        connTimeout->start();
+        //connTimeout = new QTimer(this);
+        //connTimeout->setSingleShot(false);
+        //connTimeout->setInterval(905000);
+        //QObject::connect(connTimeout, SIGNAL(timeout()), this, SLOT(disconnectAndDelete()));
+        //connTimeout->start();
+
+        _lastActivity = QDateTime::currentDateTime().toTime_t();
+
+        keepalive = new BackgroundActivity(this);
+        connect(keepalive, SIGNAL(running()), this, SLOT(checkActivity()));
+        connect(keepalive, SIGNAL(stopped()), this, SLOT(wakeupStopped()));
+        keepalive->setWakeupFrequency(BackgroundActivity::TenMinutes);
+        keepalive->run();
     }
     else {
         Q_EMIT authFailed();
