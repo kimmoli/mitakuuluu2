@@ -14,6 +14,14 @@ Page {
             contactsModel.filter = ""
             fastScroll.init()
             listView.recheckMuting()
+
+            var firstStartContacts = Mitakuuluu.load("settings/firstStartContacts", true)
+            if (firstStartContacts) {
+                horizontalHint.stop()
+                horizontalHint.direction = TouchInteraction.Right
+                horizontalHint.start()
+                Mitakuuluu.save("settings/firstStartContacts", false)
+            }
         }
     }
 
@@ -106,6 +114,19 @@ Page {
                 __hasPageHeight: false
             }
         }
+    }
+
+    InteractionHintLabel {
+        id: hintLabel
+        anchors.bottom: page.bottom
+        Behavior on opacity { FadeAnimation { duration: 1000 } }
+        text: qsTr("Flick right to return to Chats page")
+    }
+
+    TouchInteractionHint {
+        id: horizontalHint
+        loops: Animation.Infinite
+        anchors.verticalCenter: page.verticalCenter
     }
 
     Component {

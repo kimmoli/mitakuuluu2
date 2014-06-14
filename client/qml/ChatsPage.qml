@@ -13,6 +13,14 @@ Page {
                 pageStack.pushAttached(Qt.resolvedUrl("ContactsPage.qml"))
             }
             listView.recheckMuting()
+
+            var firstStartChats = Mitakuuluu.load("settings/firstStartChats", true)
+            if (firstStartChats) {
+                horizontalHint.stop()
+                horizontalHint.direction = TouchInteraction.Left
+                horizontalHint.start()
+                Mitakuuluu.save("settings/firstStartChats", false)
+            }
         }
     }
 
@@ -136,6 +144,19 @@ Page {
             signal recheckMuting
             VerticalScrollDecorator {}
         }
+    }
+
+    InteractionHintLabel {
+        id: hintLabel
+        anchors.bottom: page.bottom
+        Behavior on opacity { FadeAnimation { duration: 1000 } }
+        text: qsTr("Flick left to access Contacts page")
+    }
+
+    TouchInteractionHint {
+        id: horizontalHint
+        loops: Animation.Infinite
+        anchors.verticalCenter: page.verticalCenter
     }
 
     Component {
