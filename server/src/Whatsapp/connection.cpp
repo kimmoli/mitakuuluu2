@@ -1123,6 +1123,17 @@ QByteArray Connection::readFeaturesUntilChallengeOrSuccess(int *bytes)
             parseSuccessNode(node);
             return data;
         }
+
+        if (node.getTag() == "failure")
+        {
+            ProtocolTreeNodeListIterator i(node.getChildren());
+            while (i.hasNext())
+            {
+                ProtocolTreeNode child = i.next().value();
+                qDebug() << "failure tag:" << child.getTag();
+            }
+            Q_EMIT authFailed();
+        }
     }
 
     return data;
