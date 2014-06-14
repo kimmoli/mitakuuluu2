@@ -1289,12 +1289,14 @@ void Mitakuuluu::checkAndroid()
     proc.waitForFinished(5000);
     if (proc.exitCode() == 0) {
         QStringList data = QString(proc.readAll()).split(",");
-        QVariantMap creds;
-        creds["cc"] = data.at(0);
-        creds["number"] = data.at(1);
-        creds["login"] = QString("%1%2").arg(data.at(0)).arg(data.at(1));
-        creds["pw"] = data.at(2);
-        Q_EMIT androidReady(creds);
+        if (data.length() > 1) {
+            QVariantMap creds;
+            creds["cc"] = data.at(0);
+            creds["number"] = data.at(1);
+            creds["login"] = QString("%1%2").arg(data.at(0)).arg(data.at(1));
+            creds["pw"] = data.at(2);
+            Q_EMIT androidReady(creds);
+        }
     }
 }
 
@@ -1316,8 +1318,8 @@ void Mitakuuluu::setCamera(QObject *camera)
         QAudioEncoderSettingsControl *audioEncoder = mediaObject->service()->requestControl<QAudioEncoderSettingsControl *>();
         if (audioEncoder) {
             QAudioEncoderSettings settings = audioEncoder->audioSettings();
-            settings.setBitRate(128000);
-            settings.setSampleRate(48000);
+            settings.setBitRate(64000);
+            settings.setSampleRate(12000);
             settings.setChannelCount(2);
             audioEncoder->setAudioSettings(settings);
         }
