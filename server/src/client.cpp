@@ -936,10 +936,12 @@ void Client::disconnected()
     qDebug() << "Client disconnected";
 
     dataCounters.writeCounters();
-    connectionStatus = Disconnected;
-    Q_EMIT connectionStatusChanged(connectionStatus);
 
-    networkStatusChanged(isOnline);
+    if (connectionStatus != Disconnected) {
+        connectionStatus = Disconnected;
+        Q_EMIT connectionStatusChanged(connectionStatus);
+        networkStatusChanged(isOnline);
+    }
 }
 
 void Client::destroyConnection()
@@ -1667,8 +1669,8 @@ void Client::disconnect()
         setPresenceUnavailable();
     }
     qDebug() << "Freeing up the socket.";
-    Q_EMIT connectionDisconnect();
     connectionStatus = Disconnected;
+    Q_EMIT connectionDisconnect();
     Q_EMIT connectionStatusChanged(connectionStatus);
     updateNotification(tr("Disconnected", "System connection notification"));
 }
@@ -2075,8 +2077,8 @@ bool Client::getBlocked(const QString &jid)
 void Client::exit()
 {
     dataCounters.writeCounters();
-    Q_EMIT connectionDisconnect();
     connectionStatus = Disconnected;
+    Q_EMIT connectionDisconnect();
     Q_EMIT connectionStatusChanged(connectionStatus);
     QGuiApplication::exit(0);
     qDebug() << system("killall harbour-mitakuuluu2-server");
