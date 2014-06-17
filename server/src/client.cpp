@@ -639,7 +639,7 @@ void Client::updateActiveNetworkID()
             {
                 activeNetworkID = conf.identifier();
                 activeNetworkType = conf.bearerType();
-                qDebug() << "Current active connection:" << activeNetworkID;
+                qDebug() << "Current active connection:" << activeNetworkID << conf.name();
                 return;
             }
         }
