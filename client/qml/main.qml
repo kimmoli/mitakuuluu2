@@ -160,11 +160,6 @@ ApplicationWindow {
 
     property int currentOrientation: pageStack._currentOrientation
 
-    /*property PeopleModel allContactsModel: PeopleModel {
-        filterType: PeopleModel.FilterAll
-        requiredProperty: PeopleModel.PhoneNumberRequired
-    }*/
-
     property string coverIconLeft: "../images/icon-cover-location-left.png"
     property string coverIconRight: "../images/icon-cover-camera-right.png"
     property bool coverActionActive: false
@@ -202,24 +197,32 @@ ApplicationWindow {
             notificationsMuted = !notificationsMuted
             break
         case 3: //camera
+            if (Mitakuuluu.connectionStatus !== Mitakuuluu.LoggedIn)
+                return
             coverActionActive = true
             captureAndSend()
             pageStack.currentPage.rejected.connect(coverReceiver.operationRejected)
             appWindow.activate()
             break
         case 4: //location
+            if (Mitakuuluu.connectionStatus !== Mitakuuluu.LoggedIn)
+                return
             coverActionActive = true
             locateAndSend()
             pageStack.currentPage.rejected.connect(coverReceiver.operationRejected)
             appWindow.activate()
             break
         case 5: //voice
+            if (Mitakuuluu.connectionStatus !== Mitakuuluu.LoggedIn)
+                return
             coverActionActive = true
             recordAndSend()
             pageStack.currentPage.rejected.connect(coverReceiver.operationRejected)
             appWindow.activate()
             break
         case 6: //text
+            if (Mitakuuluu.connectionStatus !== Mitakuuluu.LoggedIn)
+                return
             coverActionActive = true
             typeAndSend()
             pageStack.currentPage.rejected.connect(coverReceiver.operationRejected)
