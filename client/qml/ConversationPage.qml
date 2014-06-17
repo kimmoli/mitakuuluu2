@@ -35,6 +35,16 @@ Page {
             if (wallpaper !== "unset") {
                 Theme.setBackgroundImage(Qt.resolvedUrl(wallpaper), Screen.width, Screen.height)
             }
+
+            var firstStartConversation = Mitakuuluu.load("settings/firstStartConversation", true)
+            if (firstStartConversation) {
+                horizontalHint.stop()
+                horizontalHint.direction = TouchInteraction.Left
+                horizontalHint.start()
+                Mitakuuluu.save("settings/firstStartConversation", false)
+            }
+            horizontalHint.visible = firstStartConversation
+            hintLabel.visible = firstStartConversation
         }
     }
 
@@ -686,6 +696,21 @@ Page {
                 FadeAnimation {}
             }
         }
+    }
+
+    InteractionHintLabel {
+        id: hintLabel
+        anchors.bottom: page.bottom
+        Behavior on opacity { FadeAnimation { duration: 1000 } }
+        text: qsTr("Flick left to access Contact details")
+        visible: false
+    }
+
+    TouchInteractionHint {
+        id: horizontalHint
+        loops: Animation.Infinite
+        anchors.verticalCenter: page.verticalCenter
+        visible: false
     }
 
     RemorsePopup {

@@ -22,6 +22,8 @@ Page {
                 horizontalHint.start()
                 Mitakuuluu.save("settings/firstStartContacts", false)
             }
+            horizontalHint.visible = firstStartChats
+            hintLabel.visible = firstStartChats
         }
     }
 
@@ -121,12 +123,14 @@ Page {
         anchors.bottom: page.bottom
         Behavior on opacity { FadeAnimation { duration: 1000 } }
         text: qsTr("Flick right to return to Chats page")
+        visible: false
     }
 
     TouchInteractionHint {
         id: horizontalHint
         loops: Animation.Infinite
         anchors.verticalCenter: page.verticalCenter
+        visible: false
     }
 
     Component {
