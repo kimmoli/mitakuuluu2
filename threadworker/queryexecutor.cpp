@@ -730,9 +730,7 @@ void QueryExecutor::removeAllMessages(QVariantMap &query)
 
 void QueryExecutor::saveConversation(QVariantMap &query)
 {
-    //TODO FIX IT!
     QString table = query["table"].toString();
-    QString jid = query["jid"].toString();
 
     QString docs = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/Mitakuuluu/";
 
@@ -746,10 +744,10 @@ void QueryExecutor::saveConversation(QVariantMap &query)
         QSqlQuery sql(QString("SELECT * FROM u%1 ORDER BY timestamp ASC;").arg(table), db);
         while (sql.next()) {
             QVariantMap message;
-            QString jid = message["author"].toString();
             for (int i = 0; i < sql.record().count(); i ++) {
                 message[sql.record().fieldName(i)] = sql.value(i);
             }
+            QString jid = message["author"].toString();
             QString timestamp = QDateTime::fromTime_t(message["timestamp"].toInt()).toString("dd MMM hh:mm:ss");
             QString text;
             switch (message["watype"].toInt()) {
@@ -770,10 +768,10 @@ void QueryExecutor::saveConversation(QVariantMap &query)
                 nq.prepare("SELECT pushname, name, message FROM contacts where jid=(:jid);");
                 nq.bindValue(":jid", jid);
                 nq.exec();
-                if (sql.next()) {
-                    QString pushname = sql.value(0).toString();
-                    QString name = sql.value(1).toString();
-                    QString message = sql.value(2).toString();
+                if (nq.next()) {
+                    QString pushname = nq.value(0).toString();
+                    QString name = nq.value(1).toString();
+                    QString message = nq.value(2).toString();
                     if (jid.contains("-")) {
                         nickname = message;
                     }
@@ -797,7 +795,7 @@ void QueryExecutor::saveConversation(QVariantMap &query)
                 fmt = QString("%1 <%2>: %3").arg(timestamp).arg(nickname).arg(text);
             }
             else {
-                fmt = QString("[%1] %2: %2").arg(timestamp).arg(nickname).arg(text);
+                fmt = QString("[%1] %2: %3").arg(timestamp).arg(nickname).arg(text);
             }
             out << fmt << "\n";
         }
