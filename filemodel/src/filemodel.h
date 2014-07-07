@@ -15,12 +15,11 @@
 
 #include <QThread>
 
-class Filemodel : public QAbstractListModel
+class FileSourceModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(QStringList filter READ getFilter WRITE setFilter FINAL)
     Q_PROPERTY(QString path READ getPath WRITE processPath FINAL)
-    Q_PROPERTY(bool sorting READ getSorting WRITE setSorting)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
 
 public:
@@ -36,8 +35,8 @@ public:
         ImageWidthRole,
         ImageHeightRole
     };
-    explicit Filemodel(QObject *parent = 0);
-    virtual ~Filemodel();
+    explicit FileSourceModel(QObject *parent = 0);
+    virtual ~FileSourceModel();
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
@@ -56,10 +55,6 @@ private:
     QString _path;
     QString& getPath();
     void setPath(const QString &path);
-
-    bool _sorting;
-    bool getSorting();
-    void setSorting(bool newSorting);
 
 public slots:
     void showRecursive(const QStringList &dirs);

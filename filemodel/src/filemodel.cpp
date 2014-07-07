@@ -14,7 +14,7 @@
 
 #include <QDebug>
 
-Filemodel::Filemodel(QObject *parent) :
+FileSourceModel::FileSourceModel(QObject *parent) :
     QAbstractListModel(parent)
 {
     _roles[NameRole] = "name";
@@ -27,23 +27,22 @@ Filemodel::Filemodel(QObject *parent) :
     _roles[DirRole] = "dir";
     _roles[ImageWidthRole] = "width";
     _roles[ImageHeightRole] = "height";
-    _sorting = true;
     _path = QDir::homePath();
     _filter = QStringList() << "*.*";
 }
 
-Filemodel::~Filemodel()
+FileSourceModel::~FileSourceModel()
 {
     _modelData.clear();
 }
 
-int Filemodel::rowCount(const QModelIndex &parent) const
+int FileSourceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return _modelData.count();
 }
 
-QVariant Filemodel::data(const QModelIndex &index, int role) const
+QVariant FileSourceModel::data(const QModelIndex &index, int role) const
 {
     //qDebug() << "get" << QString::number(index.row()) << _roles[role];
     int row = index.row();
@@ -53,34 +52,24 @@ QVariant Filemodel::data(const QModelIndex &index, int role) const
     return _modelData[index.row()][_roles[role]];
 }
 
-QStringList &Filemodel::getFilter()
+QStringList &FileSourceModel::getFilter()
 {
     return _filter;
 }
 
-void Filemodel::setFilter(const QStringList &filter)
+void FileSourceModel::setFilter(const QStringList &filter)
 {
     //qDebug() << "set filter:" << filter;
     _filter = filter;
 }
 
-bool Filemodel::getSorting()
-{
-    return _sorting;
-}
-
-void Filemodel::setSorting(bool newSorting)
-{
-    _sorting = newSorting;
-}
-
-void Filemodel::showRecursive(const QStringList &dirs)
+void FileSourceModel::showRecursive(const QStringList &dirs)
 {
     Q_EMIT stopSearch();
 
     clear();
 
-    RecursiveSearch *recursive = new RecursiveSearch(dirs, _filter, !_sorting);
+    RecursiveSearch *recursive = new RecursiveSearch(dirs, _filter);
     QObject::connect(this, SIGNAL(stopSearch()), recursive, SLOT(stopSearch()));
     QObject::connect(recursive, SIGNAL(haveFolderData(QVariantList)), this, SLOT(folderDataReceived(QVariantList)));
     QThread *thread = new QThread(recursive);
@@ -89,7 +78,7 @@ void Filemodel::showRecursive(const QStringList &dirs)
     thread->start();
 }
 
-void Filemodel::processPath(const QString &path)
+void FileSourceModel::processPath(const QString &path)
 {
     _path = path;
     if (_path == "home")
@@ -98,7 +87,7 @@ void Filemodel::processPath(const QString &path)
 
     //qDebug() << "Processing" << path << _filter;
     QDir dir(path);
-    const QFileInfoList &list = dir.entryInfoList(_filter, QDir::AllDirs | QDir::NoDot | QDir::NoSymLinks | QDir::Files, (_sorting ? QDir::Time : QDir::Name) | QDir::DirsFirst);
+    const QFileInfoList &list = dir.entryInfoList(_filter, QDir::AllDirs | QDir::NoDot | QDir::NoSymLinks | QDir::Files, QDir::NoSort | QDir::DirsFirst);
     foreach (const QFileInfo &info, list) {
         //qDebug() << "adding" << info.absoluteFilePath();
         if (dir.isRoot() && info.fileName() == "..")
@@ -134,19 +123,19 @@ void Filemodel::processPath(const QString &path)
     }
 }
 
-void Filemodel::clear()
+void FileSourceModel::clear()
 {
     beginResetModel();
     _modelData.clear();
     endResetModel();
 }
 
-int Filemodel::count()
+int FileSourceModel::count()
 {
     return _modelData.size();
 }
 
-bool Filemodel::remove(int index)
+bool FileSourceModel::remove(int index)
 {
     if (index > -1 && index < _modelData.size()) {
         QFile file(_modelData[index]["path"].toString());
@@ -164,14 +153,14 @@ bool Filemodel::remove(int index)
         return false;
 }
 
-QVariantMap Filemodel::get(int index)
+QVariantMap FileSourceModel::get(int index)
 {
     if (index > -1 && index < _modelData.size())
         return _modelData[index];
     return QVariantMap();
 }
 
-void Filemodel::folderDataReceived(const QVariantList &data)
+void FileSourceModel::folderDataReceived(const QVariantList &data)
 {
     beginInsertRows(QModelIndex(), _modelData.size(), _modelData.size() + data.size() - 1);
 

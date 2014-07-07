@@ -7,6 +7,8 @@ Dialog {
     id: page
     objectName: "mediaSelector"
 
+    property FileSourceModel sourceModel
+
     canAccept: false
 
     function accept() {
@@ -33,7 +35,6 @@ Dialog {
 
     property bool multiple: false
     property bool filesystem: false
-    property bool datesort: false
     property bool canChangeType: true
 
     property variant selectedFiles: []
@@ -46,24 +47,29 @@ Dialog {
 
     onStatusChanged: {
         if (status == DialogStatus.Opened) {
-            initialize()
+            initialize(false)
         }
     }
 
     function initialize(sorting) {
+        if (sourceModel)
+            sourceModel.destroy()
+
+        var filter = ["*.*"]
         if (_mode === "image") {
-            filemodel.filter = _imagesFilter
+            filter = _imagesFilter
         }
         else if (_mode === "video") {
-            filemodel.filter = _videosFilter
+            filter = _videosFilter
         }
         else if (_mode === "music") {
-            filemodel.filter = _audiosFilter
+            filter = _audiosFilter
         }
 
-        filemodel.sorting = sorting || datesort
-
-        filemodel.showRecursive([_mode, "sdcard"])
+        sourceModel = fileModelComponent.createObject(page, {"filter": filter})
+        filemodel.sorting = sorting
+        filemodel.fileModel = sourceModel
+        sourceModel.showRecursive([_mode, "sdcard"])
     }
 
     function fileSelect(selection) {
@@ -86,7 +92,12 @@ Dialog {
         page.canAccept = page.selectedFiles.length > 0
     }
 
-    Filemodel {
+    Component {
+        id: fileModelComponent
+        FileSourceModel {}
+    }
+
+    FileSortModel {
         id: filemodel
     }
 
@@ -126,12 +137,12 @@ Dialog {
                 smooth: true
             }
             onClicked: {
-                var sort = datesort
+                var sort = false
                 if (page._mode === "image")
                     page._mode = "video"
                 else if (page._mode === "video") {
                     page._mode = "music"
-                    sort = false
+                    sort = true
                 }
                 else
                     page._mode = "image"
