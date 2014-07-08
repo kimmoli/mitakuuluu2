@@ -297,6 +297,13 @@ Dialog {
                     wrapMode: Text.WordWrap
                     horizontalAlignment: Text.AlignHCenter
                 }
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: qsTr("No, remove only local information")
+                    onClicked: {
+                        Mitakuuluu.removeAccountLocally()
+                    }
+                }
             }
         }
         onAccepted: {
