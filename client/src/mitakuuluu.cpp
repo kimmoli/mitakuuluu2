@@ -72,8 +72,8 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         _locales =  locales.isEmpty() ? QStringList() << "en.qm" : locales;
         _localesNames = localeNames.isEmpty() ? QStringList() << "Engineering english" : localeNames;
 
-        settings = new QSettings("coderus", "mitakuuluu2", this);
-        _currentLocale = settings->value("settings/locale", QString("%1.qm").arg(QLocale::system().name().split(".").first())).toString();
+        QSettings settings("coderus", "mitakuuluu2");
+        _currentLocale = settings.value("settings/locale", QString("%1.qm").arg(QLocale::system().name().split(".").first())).toString();
         setLocale(_currentLocale);
 
         QDBusConnection::sessionBus().connect(PROFILED_SERVICE, PROFILED_PATH, PROFILED_INTERFACE,
@@ -198,7 +198,8 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         checkWhatsappStatus();
 
         QProcess *app = new QProcess(this);
-        app->start("/bin/rpm", QStringList() << "-qa" << "--queryformat" << "%{version}-%{release}" <<  "harbour-mitakuuluu2");
+        //app->start("/bin/rpm", QStringList() << "-qa" << "--queryformat" << "%{version}-%{release}" <<  "harbour-mitakuuluu2");
+        app->start("/bin/rpm", QStringList() << "-qa" << "--queryformat" << "%{version}" <<  "harbour-mitakuuluu2");
         if (app->bytesAvailable() > 0) {
             _version = app->readAll();
             Q_EMIT versionChanged();
@@ -991,6 +992,17 @@ void Mitakuuluu::removeAccountFromServer()
     if (iface) {
         iface->call(QDBus::NoBlock, "removeAccountFromServer");
     }
+    removeAccountLocally();
+}
+
+void Mitakuuluu::removeAccountLocally()
+{
+    QSettings settings("coderus", "mitakuuluu2");
+    settings.remove("account");
+
+    if (iface) {
+        iface->call(QDBus::NoBlock, "settingsChanged");
+    }
 }
 
 void Mitakuuluu::forceConnection()
@@ -1025,7 +1037,8 @@ void Mitakuuluu::setLocale(const QString &localeName)
 void Mitakuuluu::setLocale(int index)
 {
     QString locale = _locales[index];
-    settings->setValue("settings/locale", locale);
+    QSettings settings("coderus", "mitakuuluu2");
+    settings.setValue("settings/locale", locale);
     setLocale(locale);
 }
 
@@ -1341,10 +1354,9 @@ void Mitakuuluu::setCamera(QObject *camera)
 
 void Mitakuuluu::save(const QString &key, const QVariant &value)
 {
-    if (settings) {
-        settings->setValue(key, value);
-        settings->sync();
-    }
+    QSettings settings("coderus", "mitakuuluu2");
+    settings.setValue(key, value);
+    settings.sync();
 
     if (iface) {
         iface->call(QDBus::NoBlock, "settingsChanged");
@@ -1353,53 +1365,51 @@ void Mitakuuluu::save(const QString &key, const QVariant &value)
 
 QVariant Mitakuuluu::load(const QString &key, const QVariant &defaultValue)
 {
-    if (settings) {
-        settings->sync();
-        QVariant value = settings->value(key, defaultValue);
-        switch (defaultValue.type()) {
-        case QVariant::Bool:
-            return value.toBool();
-        case QVariant::Double:
-            return value.toDouble();
-        case QVariant::Int:
-            return value.toInt();
-        case QVariant::String:
-            return value.toString();
-        case QVariant::StringList:
-            return value.toStringList();
-        case QVariant::List:
-            return value.toList();
-        default:
-            return value;
-        }
+    QSettings settings("coderus", "mitakuuluu2");
+    QVariant value = settings.value(key, defaultValue);
+    switch (defaultValue.type()) {
+    case QVariant::Bool:
+        return value.toBool();
+    case QVariant::Double:
+        return value.toDouble();
+    case QVariant::Int:
+        return value.toInt();
+    case QVariant::String:
+        return value.toString();
+    case QVariant::StringList:
+        return value.toStringList();
+    case QVariant::List:
+        return value.toList();
+    default:
+        return value;
     }
     return QVariant();
 }
 
 QVariantList Mitakuuluu::loadGroup(const QString &name)
 {
-    if (settings) {
-        settings->sync();
-        settings->beginGroup(name);
-        QVariantList result;
-        foreach (const QString &key, settings->childKeys()) {
-            QVariantMap item;
-            item["jid"] = key;
-            item["value"] = settings->value(key, 0);
-            result.append(item);
-        }
-        settings->endGroup();
-        return result;
+    QSettings settings("coderus", "mitakuuluu2");
+    settings.beginGroup(name);
+    QVariantList result;
+    foreach (const QString &key, settings.childKeys()) {
+        QVariantMap item;
+        item["jid"] = key;
+        item["value"] = settings.value(key, 0);
+        result.append(item);
     }
-    return QVariantList();
+    settings.endGroup();
+    return result;
 }
 
 void Mitakuuluu::clearGroup(const QString &name)
 {
-    if (settings) {
-        settings->beginGroup(name);
-        settings->remove("");
-        settings->endGroup();
-        settings->sync();
+    QSettings settings("coderus", "mitakuuluu2");
+    settings.beginGroup(name);
+    settings.remove("");
+    settings.endGroup();
+    settings.sync();
+
+    if (iface) {
+        iface->call(QDBus::NoBlock, "settingsChanged");
     }
 }

@@ -39,7 +39,6 @@
 #include <QTimer>
 #include <QMutex>
 #include <QAbstractSocket>
-#include <QSettings>
 #include <QNetworkConfigurationManager>
 
 #include "Whatsapp/util/datacounters.h"
@@ -188,9 +187,6 @@ public:
     // Message number sequence
     static quint64 seq;
 
-    // Global settings
-    static QSettings *settings;
-
     // Own JID
     static QString myJid;
 
@@ -283,6 +279,7 @@ private slots:
 
     void authFailed();
     void doReconnect();
+    void clientDestroyed();
 
     void networkConfigurationChanged(const QNetworkConfiguration &conf);
     void verifyAndConnect();

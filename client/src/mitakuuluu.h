@@ -347,6 +347,7 @@ public slots:
     void setPresenceUnavailable();
     void syncAllPhonebook();
     void removeAccountFromServer();
+    void removeAccountLocally();
     void forceConnection();
     void setLocale(const QString &localeName);
     void setLocale(int  index);
@@ -376,9 +377,6 @@ public slots:
     void setCamera(QObject *camera);
 
 //Settings
-
-private:
-    QSettings *settings;
 
 public slots:
     Q_INVOKABLE void save(const QString &key, const QVariant &value);
