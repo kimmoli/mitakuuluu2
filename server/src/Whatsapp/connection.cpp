@@ -116,6 +116,11 @@ void Connection::init()
     connect(socket,SIGNAL(disconnected()),this,SLOT(finalCleanup()));
 
     socket->connectToHost(server, port);
+
+    keepalive = new BackgroundActivity(this);
+    connect(keepalive, SIGNAL(running()), this, SLOT(checkActivity()));
+    connect(keepalive, SIGNAL(stopped()), this, SLOT(wakeupStopped()));
+    keepalive->wait(BackgroundActivity::TenMinutes);
 }
 
 void Connection::disconnectAndDelete()
@@ -128,6 +133,9 @@ void Connection::disconnectAndDelete()
 
 void Connection::finalCleanup()
 {
+    if (keepalive && (keepalive->isRunning() || keepalive->isWaiting()))
+        keepalive->stop();
+
     socket->deleteLater();
     Q_EMIT disconnected();
     disconnect(this,0,0,0);
@@ -143,6 +151,9 @@ Connection::~Connection()
         @todo Clean disconnect to the WhatsApp servers
      */
     qDebug() << "Connection destructor";
+
+    if (keepalive && (keepalive->isRunning() || keepalive->isWaiting()))
+        keepalive->stop();
 }
 
 /**
@@ -969,6 +980,7 @@ void Connection::checkActivity()
         qDebug() << "should reconnect";
         disconnectAndDelete();
     }
+    keepalive->wait();
 }
 
 void Connection::wakeupStopped()
@@ -1220,12 +1232,6 @@ void Connection::parseSuccessNode(const ProtocolTreeNode &node)
         //connTimeout->start();
 
         _lastActivity = QDateTime::currentDateTime().toTime_t();
-
-        keepalive = new BackgroundActivity(this);
-        connect(keepalive, SIGNAL(running()), this, SLOT(checkActivity()));
-        connect(keepalive, SIGNAL(stopped()), this, SLOT(wakeupStopped()));
-        keepalive->setWakeupFrequency(BackgroundActivity::TenMinutes);
-        keepalive->run();
     }
     else {
         Q_EMIT authFailed();
@@ -1640,32 +1646,6 @@ void Connection::sendNotificationReceived(const QString &to, const QString &id, 
 }
 
 /**
-    Constructs a receipt acknowledgement node.
-
-    @param node         Node where the receipt acknowledge will be stored.
-    @param to           Destination jid.
-    @param id           Id of the receipt received.
-    @param receiptType  Type of the receipt. Example: "delivered".
-*/
-void Connection::getReceiptAck(ProtocolTreeNode &node, const QString &to, const QString &id,
-                               const QString &receiptType)
-{
-    ProtocolTreeNode ackNode("ack");
-    AttributeList attrs;
-    attrs.insert("xmlns","urn:xmpp:receipts");
-    attrs.insert("type",receiptType);
-    ackNode.setAttributes(attrs);
-
-    node.setTag("message");
-    node.addChild(ackNode);
-    attrs.clear();
-    attrs.insert("to",to);
-    attrs.insert("type","chat");
-    attrs.insert("id",id);
-    node.setAttributes(attrs);
-}
-
-/**
     Sends a receipt acknowledging a delivered message notification received.
 
     @param to           Destination jid.
@@ -1674,8 +1654,19 @@ void Connection::getReceiptAck(ProtocolTreeNode &node, const QString &to, const 
 */
 void Connection::sendDeliveredReceiptAck(const QString &to, const QString &id, const QString &type)
 {
-    ProtocolTreeNode node;
-    getReceiptAck(node,to,id,type);
+    ProtocolTreeNode ackNode("ack");
+    AttributeList attrs;
+    attrs.insert("xmlns","urn:xmpp:receipts");
+    attrs.insert("type",type);
+    ackNode.setAttributes(attrs);
+
+    ProtocolTreeNode node("message");
+    node.addChild(ackNode);
+    attrs.clear();
+    attrs.insert("to",to);
+    attrs.insert("type","chat");
+    attrs.insert("id",id);
+    node.setAttributes(attrs);
 
     int bytes = out->write(node);
     counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
@@ -1735,11 +1726,10 @@ void Connection::sendGetStatus(const QStringList &jids)
 {
     QString id = makeId("syncgetstatus_");
 
-    AttributeList attrs;
 
     ProtocolTreeNode statusNode("status");
-    attrs.clear();
-    statusNode.setAttributes(attrs);
+
+    AttributeList attrs;
 
     foreach (QString jid, jids) {
         if (jid.contains("@"))
@@ -1930,9 +1920,9 @@ void Connection::sendSetPhoto(const QString &jid, const QByteArray &imageBytes, 
     attrs.insert("type","set");
     attrs.insert("to",jid);
     attrs.insert("xmlns", "w:profile:picture");
-    if (!thumbBytes.isEmpty()) {
+    /*if (!thumbBytes.isEmpty()) {
         attrs.insert("type", "image");
-    }
+    }*/
     iqNode.setAttributes(attrs);
     iqNode.addChild(pictureNode);
 
@@ -2338,32 +2328,6 @@ void Connection::sendRemoveGroup(const QString &gjid)
     counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
 }
 
-/**
-    Sends a notification that a group subject was changed.
-
-    @param to   Group jid.
-    @param id   Id of the notification received.
-*/
-void Connection::sendSubjectReceived(const QString &to, const QString &id)
-{
-    AttributeList attrs;
-
-    ProtocolTreeNode receivedNode("received");
-    attrs.insert("xmlns","urn:xmpp:receipts");
-    receivedNode.setAttributes(attrs);
-
-    ProtocolTreeNode messageNode("message");
-    attrs.clear();
-    attrs.insert("to",to);
-    attrs.insert("type","subject");
-    attrs.insert("id",id);
-    messageNode.setAttributes(attrs);
-    messageNode.addChild(receivedNode);
-
-    int bytes = out->write(messageNode);
-    counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
-}
-
 /** ***********************************************************************
  ** Privacy list methods
  **/
@@ -2696,14 +2660,13 @@ void Connection::sendDeleteAccount()
      AttributeList attrs;
 
      ProtocolTreeNode removeNode("remove");
-     attrs.insert("xmlns","urn:xmpp:whatsapp:account");
-     removeNode.setAttributes(attrs);
 
      ProtocolTreeNode iqNode("iq");
      attrs.clear();
      attrs.insert("id",id);
      attrs.insert("type","get");
      attrs.insert("to",domain);
+     attrs.insert("xmlns","urn:xmpp:whatsapp:account");
      iqNode.setAttributes(attrs);
      iqNode.addChild(removeNode);
 

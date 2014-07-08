@@ -42,6 +42,7 @@ KeyStream::KeyStream(QByteArray rc4key, QByteArray mackey, QObject *parent) : QO
 
 bool KeyStream::decodeMessage(QByteArray& buffer, int macOffset, int offset, int length)
 {
+    //qDebug() << "decodeMessage seq:" << seq;
     QByteArray base = buffer.left(buffer.size() - 4);
     QByteArray hmac = buffer.right(4);
     QByteArray buffer2 = processBuffer(base, seq++);
@@ -63,6 +64,7 @@ bool KeyStream::decodeMessage(QByteArray& buffer, int macOffset, int offset, int
 
 void KeyStream::encodeMessage(QByteArray &buffer, int macOffset, int offset, int length, bool dout)
 {
+    //qDebug() << "encodeMessage seq:" << seq;
     rc4->Cipher(buffer.data(),offset,length);
     QByteArray base = buffer.mid(offset,length);
     base = processBuffer(base, seq++);

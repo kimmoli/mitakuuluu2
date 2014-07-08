@@ -452,9 +452,6 @@ private:
     // Sends a request to all groups
     void sendGetGroups(const QString &id, const QString &type);
 
-    // Sends a notification that a group subject was changed
-    void sendSubjectReceived(const QString &to, const QString &id);
-
 
     /** ***********************************************************************
      ** General methods
