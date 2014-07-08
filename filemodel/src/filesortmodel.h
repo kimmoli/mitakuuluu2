@@ -19,6 +19,7 @@ public:
     int count();
 
     Q_INVOKABLE QVariantMap get(int itemIndex);
+    Q_INVOKABLE bool remove(int itemIndex);
 
 private:
     bool getSorting();

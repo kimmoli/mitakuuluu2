@@ -2,13 +2,12 @@
 
 #include <QDebug>
 
-RecursiveSearch::RecursiveSearch(const QStringList &locations, const QStringList &filters, bool sortName, QObject *parent) :
+RecursiveSearch::RecursiveSearch(const QStringList &locations, const QStringList &filters, QObject *parent) :
     _active(false),
     QObject(parent)
 {
     _locations = locations;
     _filters = filters;
-    _sortName = sortName;
 }
 
 void RecursiveSearch::recursiveSearch(const QString &folder)
@@ -37,7 +36,7 @@ void RecursiveSearch::recursiveSearch(const QString &folder)
     //qDebug() << "Recursive search in:" << mpath << "filter:" << _filters;
 
     QDir dir(mpath);
-    const QFileInfoList &list = dir.entryInfoList(_filters, QDir::Files | QDir::AllDirs | QDir::NoSymLinks | QDir::NoDot | QDir::NoDotDot, _sortName ? QDir::Name : QDir::Time);
+    const QFileInfoList &list = dir.entryInfoList(_filters, QDir::Files | QDir::AllDirs | QDir::NoSymLinks | QDir::NoDot | QDir::NoDotDot, QDir::NoSort);
     foreach (const QFileInfo &info, list) {
         if (!_active)
             break;

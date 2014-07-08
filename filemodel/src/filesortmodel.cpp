@@ -46,6 +46,12 @@ QVariantMap FileSortModel::get(int itemIndex)
     return data;
 }
 
+bool FileSortModel::remove(int itemIndex)
+{
+    QModelIndex sourceIndex = mapToSource(index(itemIndex, 0, QModelIndex()));
+    return _fileModel->remove(sourceIndex.row());
+}
+
 bool FileSortModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
     if (_sorting) {

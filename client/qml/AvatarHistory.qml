@@ -19,7 +19,7 @@ Page {
 
     onStatusChanged: {
         if (status == PageStatus.Active) {
-            filemodel.showRecursive(["avatars"])
+            filesourcemodel.showRecursive(["avatars"])
         }
     }
 
@@ -28,15 +28,18 @@ Page {
 
         onPictureUpdated: {
             if (pjid === page.jid && path.length > 0) {
-                filemodel.showRecursive(["avatars"])
+                filesourcemodel.showRecursive(["avatars"])
             }
         }
     }
 
-    Filemodel {
+    FileSortModel {
         id: filemodel
-        filter: jid + "-*"
         sorting: true
+        fileModel: FileSourceModel {
+            id: filesourcemodel
+            filter: jid + "-*"
+        }
     }
 
     SilicaFlickable {
