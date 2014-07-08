@@ -1259,10 +1259,10 @@ void Client::setPicture(const QString &jid, const QString &path)
             }
             qDebug() << "sending image" << img.height() << img.width();
 
-            QByteArray data;
-            data.clear();
-            QBuffer out(&data);
-            img.save(&out, "JPEG");
+            QByteArray image;
+            image.clear();
+            QBuffer imagebuffer(&image);
+            img.save(&imagebuffer, "JPEG");
 
             /*int quality = 90;
             do
@@ -1276,8 +1276,9 @@ void Client::setPicture(const QString &jid, const QString &path)
 
             QByteArray thumbnail;
 
-            /*QImage thumb = img.scaled(96, 96, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-                        quality = 100;
+            QImage thumb = img.scaled(96, 96, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+            /*int quality = 80;
             do
             {
                 thumbnail.clear();
@@ -1286,7 +1287,11 @@ void Client::setPicture(const QString &jid, const QString &path)
                 quality -= 5;
             } while ((quality > 10) && thumbnail.size() > MAX_PROFILE_PICTURE_SIZE);*/
 
-            Q_EMIT connectionSendSetPhoto(jid, data, thumbnail);
+            thumbnail.clear();
+            QBuffer thumbnailbuffer(&thumbnail);
+            thumb.save(&thumbnailbuffer, "JPEG", 80);
+
+            Q_EMIT connectionSendSetPhoto(jid, image, thumbnail);
         }
     }
 }
