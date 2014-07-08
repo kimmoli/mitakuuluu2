@@ -27,32 +27,6 @@ void ContactsFilterModel::init()
     _initComplete = true;
 }
 
-void ContactsFilterModel::onRowsInserted(const QModelIndex &parent, int first, int last)
-{
-    Q_UNUSED(parent);
-    Q_UNUSED(first);
-    Q_UNUSED(last);
-    Q_EMIT contactsModelChanged();
-}
-
-void ContactsFilterModel::onRowsRemoved(const QModelIndex &parent, int first, int last)
-{
-    Q_UNUSED(parent);
-    Q_UNUSED(first);
-    Q_UNUSED(last);
-    Q_EMIT contactsModelChanged();
-}
-
-void ContactsFilterModel::onRowsMoved(const QModelIndex &parent, int start, int end, const QModelIndex &destination, int row)
-{
-    Q_UNUSED(parent);
-    Q_UNUSED(start);
-    Q_UNUSED(end);
-    Q_UNUSED(destination);
-    Q_UNUSED(row);
-    Q_EMIT contactsModelChanged();
-}
-
 bool ContactsFilterModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
@@ -98,7 +72,7 @@ bool ContactsFilterModel::lessThan(const QModelIndex &left, const QModelIndex &r
     QString leftString = sourceModel()->data(left, Qt::UserRole + 4).toString();
     QString rightString = sourceModel()->data(right, Qt::UserRole + 4).toString();
 
-    return leftString.localeAwareCompare(rightString.toLower()) < 0;
+    return leftString.toLower().localeAwareCompare(rightString.toLower()) < 0;
 }
 
 QString ContactsFilterModel::filter()
