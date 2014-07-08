@@ -14,9 +14,9 @@ Group:      Qt/Qt
 License:    WTFPL
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5
-Requires:   nemo-transferengine-qt5
-Requires:   declarative-transferengine-qt5 >= 0.0.44
-Requires:   qt5-qtdeclarative-import-sensors qt5-qtsensors-plugin-gestures-sensor, qt5-qtsensors-plugin-gestures-shake
+Requires:   nemo-transferengine-qt5 declarative-transferengine-qt5 >= 0.0.44
+Requires:   qt5-qtdeclarative-import-sensors qt5-qtsensors-plugin-gestures-sensor qt5-qtsensors-plugin-gestures-shake
+Requires:   qt5-qtdeclarative-import-location qt5-qtdeclarative-import-positioning
 Requires:   libkeepalive
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
