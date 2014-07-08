@@ -2957,7 +2957,9 @@ void Client::dbResults(const QVariant &result)
     case QueryType::ContactsGetJids: {
         _contacts = reply["jids"].toMap();
         foreach (const QString& jid, _contacts.keys()) {
-            requestPresenceSubscription(jid);
+            if (!jid.contains("-")) {
+                requestPresenceSubscription(jid);
+            }
             Q_EMIT setUnread(jid, _contacts[jid].toInt());
         }
         if (_contacts.isEmpty()) {

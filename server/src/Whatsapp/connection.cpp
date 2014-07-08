@@ -528,7 +528,7 @@ bool Connection::read()
         else if (tag == "presence")
         {
             QString from = node.getAttributeValue("from");
-            if (!from.isEmpty())
+            if (!from.isEmpty() && !from.contains("-"))
             {
                 QString type = node.getAttributeValue("type");
                 if (type.isEmpty() || type == "available")
