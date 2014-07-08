@@ -1,4 +1,4 @@
-import QtQuick 2.1
+﻿import QtQuick 2.1
 import Sailfish.Silica 1.0
 import harbour.mitakuuluu2.client 1.0
 import QtMultimedia 5.0
@@ -130,8 +130,13 @@ Dialog {
 
         videoRecorder{
             resolution: extensions.viewfinderResolution
+
+            audioChannels: 2
+            audioSampleRate: 12000
+            audioCodec: "audio/mpeg, mpegversion=(int)4"
+
             videoCodec: "video/mpeg, mpegversion=(int)4"
-            mediaContainer: extensions.device == "secondary" ? "video/quicktime, variant=(string)iso" : "video/x-matroska"
+            mediaContainer: "video/quicktime, variant=(string)iso"
 
             onRecorderStateChanged: {
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
@@ -205,7 +210,7 @@ Dialog {
         }
     }
 
-    CircleButton {
+    /*CircleButton {
         id: cameraModeButton
 
         anchors.left: parent.left
@@ -225,13 +230,13 @@ Dialog {
                 camera.captureMode = Camera.CaptureStillImage
             }
         }
-    }
+    }*/
 
     CircleButton {
         id: cameraSourceButton
 
         anchors.left: parent.left
-        anchors.top: cameraModeButton.bottom
+        anchors.top: header.bottom//cameraModeButton.bottom
         anchors.margins: Theme.paddingSmall
         visible: !page.canAccept
         rotation: sensor.rotationAngle - 90
@@ -335,7 +340,7 @@ Dialog {
             }
         }
 
-        onClicked: camera.flash.mode = flashMode.nextFlashMode(camera.flash.mode)
+        onClicked: camera.flash.mode = flashButton.nextFlashMode(camera.flash.mode)
     }
 
     CircleButton {
