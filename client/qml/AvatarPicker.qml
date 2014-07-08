@@ -9,7 +9,7 @@ AvatarPickerCrop {
     property string jid
     signal avatarSet(string avatarPath)
     function setAvatar(avatarPath) {
-        avatarSet(avatarPath)
+        page.avatarSet(avatarPath)
     }
 
     onAvatarSourceChanged: {
