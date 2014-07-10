@@ -48,12 +48,12 @@ class Mitakuuluu: public QObject
     Q_ENUMS(MessageType)
     Q_ENUMS(MessageStatus)
     Q_ENUMS(ContactType)
-    Q_PROPERTY(int connectionStatus READ connectionStatus NOTIFY connectionStatusChanged)
-    Q_PROPERTY(QString connectionString READ connectionString NOTIFY connectionStringChanged)
+    Q_SCRIPTABLE Q_PROPERTY(int connectionStatus READ connectionStatus NOTIFY connectionStatusChanged)
+    Q_SCRIPTABLE Q_PROPERTY(QString connectionString READ connectionString NOTIFY connectionStringChanged)
     Q_PROPERTY(QString mcc READ mcc NOTIFY mccChanged)
     Q_PROPERTY(QString mnc READ mnc NOTIFY mncChanged)
-    Q_PROPERTY(int totalUnread READ totalUnread NOTIFY totalUnreadChanged)
-    Q_PROPERTY(QString myJid READ myJid NOTIFY myJidChanged)
+    Q_SCRIPTABLE Q_PROPERTY(int totalUnread READ totalUnread NOTIFY totalUnreadChanged)
+    Q_SCRIPTABLE Q_PROPERTY(QString myJid READ myJid NOTIFY myJidChanged)
 
     Q_PROPERTY(QString mediaTone READ getMediaTone WRITE setMediaTone NOTIFY mediaToneChanged)
     Q_PROPERTY(QString privateTone READ getPrivateTone WRITE setPrivateTone NOTIFY privateToneChanged)
@@ -67,7 +67,7 @@ class Mitakuuluu: public QObject
     Q_PROPERTY(QString privateLedColor READ getPrivateLedColor WRITE setPrivateLedColor NOTIFY privateLedColorChanged)
     Q_PROPERTY(QString groupLedColor READ getGroupLedColor WRITE setGroupLedColor NOTIFY groupLedColorChanged)
 
-    Q_PROPERTY(QString version READ version NOTIFY versionChanged)
+    Q_SCRIPTABLE Q_PROPERTY(QString version READ version NOTIFY versionChanged)
 
 public:
     enum ConnectionStatus {

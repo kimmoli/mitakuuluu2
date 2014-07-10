@@ -47,7 +47,7 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
             QDBusConnection::sessionBus().registerService(SERVICE_NAME) &&
             QDBusConnection::sessionBus().registerObject(OBJECT_NAME,
                                                          this,
-                                                         QDBusConnection::ExportScriptableSlots);
+                                                         QDBusConnection::ExportScriptableSlots | QDBusConnection::ExportScriptableProperties);
     if (ret) {
         qDebug() << "dbus created";
         nam = new QNetworkAccessManager(this);
