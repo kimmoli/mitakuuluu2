@@ -25,7 +25,7 @@ Page {
         else if (page.status === PageStatus.Active) {
             if (pageStack._currentContainer.attachedContainer == null) {
                 if (isGroup) {
-                    pageStack.pushAttached(Qt.resolvedUrl("GroupProfile.qml"), {"conversationModel": conversationModel, "jid": jid})
+                    pageStack.pushAttached(Qt.resolvedUrl("GroupProfile.qml"), {"conversationModel": conversationModel, "jid": jid, "conversationPage": page})
                 }
                 else {
                     pageStack.pushAttached(Qt.resolvedUrl("UserProfile.qml"), {"conversationModel": conversationModel, "jid": jid})
@@ -170,7 +170,7 @@ Page {
     }
 
     function addMention(mjid) {
-        var mention = "@" + getNicknameByJid(mjid) + " "
+        var mention = getNicknameByJid(mjid) + ": "
         sendBox.text += mention
         sendBox.cursorPosition += mention.length
         sendBox.forceActiveFocus()

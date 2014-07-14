@@ -19,6 +19,7 @@ Page {
         Mitakuuluu.getGroupInfo(jid)
         Mitakuuluu.getParticipants(jid)
     }
+    property Page conversationPage
 
     property string subject: ""
 
@@ -405,6 +406,15 @@ Page {
                     Mitakuuluu.removeParticipant(page.jid, model.jid)
                     participantsModel.remove(index)
                 }
+            }
+
+            onPressAndHold: {
+                pageStack.pop()
+                conversationPage.addMention(model.jid)
+            }
+
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("UserProfile.qml"), {"jid": model.jid})
             }
         }
     }
