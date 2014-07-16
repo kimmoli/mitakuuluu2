@@ -228,6 +228,9 @@ ApplicationWindow {
             pageStack.currentPage.rejected.connect(coverReceiver.operationRejected)
             appWindow.activate()
             break
+        case 7: //connect/disconnect
+            connectDisconnectAction(true)
+            break
         default:
             break
         }
@@ -440,6 +443,28 @@ ApplicationWindow {
         }
     }
 
+    function connectDisconnectAction(immediate) {
+        if (Mitakuuluu.connectionStatus < Mitakuuluu.Connecting) {
+            Mitakuuluu.forceConnection()
+        }
+        else if (Mitakuuluu.connectionStatus > Mitakuuluu.WaitingForConnection && Mitakuuluu.connectionStatus < Mitakuuluu.LoginFailure) {
+            if (immediate) {
+                Mitakuuluu.disconnect()
+            }
+            else {
+                remorseDisconnect.execute(qsTr("Disconnecting", "Disconnect remorse popup"),
+                                           function() {
+                                               Mitakuuluu.disconnect()
+                                           },
+                                           5000)
+            }
+        }
+        else if (Mitakuuluu.connectionStatus == Mitakuuluu.Disconnected)
+            Mitakuuluu.authenticate()
+        else
+            pageStack.replace(Qt.resolvedUrl("RegistrationPage.qml"))
+    }
+
     property int coverLeftAction: 4
     onCoverLeftActionChanged: {
         Mitakuuluu.save("settings/coverLeftAction", coverLeftAction)
@@ -482,6 +507,15 @@ ApplicationWindow {
             return "../images/icon-cover-recorder-" + (left ? "left" : "right") + ".png"
         case 6: //text
             return "../images/icon-cover-text-" + (left ? "left" : "right") + ".png"
+        case 7: //connect/disconnect
+            if (Mitakuuluu.connectionStatus < Mitakuuluu.Connecting) {
+                return "../images/icon-cover-disconnected-" + (left ? "left" : "right") + ".png"
+            }
+            else if (Mitakuuluu.connectionStatus > Mitakuuluu.WaitingForConnection && Mitakuuluu.connectionStatus < Mitakuuluu.LoginFailure) {
+                return "../images/icon-cover-connected-" + (left ? "left" : "right") + ".png"
+            }
+            else
+                return "../images/icon-cover-disconnected-" + (left ? "left" : "right") + ".png"
         default:
             return ""
         }
@@ -705,6 +739,7 @@ ApplicationWindow {
         target: Mitakuuluu
         onConnectionStatusChanged: {
             console.log("connectionStatus: " + Mitakuuluu.connectionStatus)
+            updateCoverActions()
         }
         onNotificationOpenJid: {
             activate()
@@ -780,6 +815,10 @@ ApplicationWindow {
 
     Popup {
         id: banner
+    }
+
+    RemorsePopup {
+        id: remorseDisconnect
     }
 
     HapticsEffect {

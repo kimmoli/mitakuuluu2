@@ -30,7 +30,8 @@ Page {
                         qsTr("Take picture", "Settings cover action name text"),
                         qsTr("Send location", "Settings cover action name text"),
                         qsTr("Send voice note", "Settings cover action name text"),
-                        qsTr("Send text", "Settings cover action name text")
+                        qsTr("Send text", "Settings cover action name text"),
+                        qsTr("Connect/Disconnect", "Settings cover action name text")
                     ]
         }
         return coverNames[index]
@@ -612,7 +613,7 @@ Page {
                 menu: ContextMenu {
                     Repeater {
                         width: parent.width
-                        model: 7
+                        model: 8
                         delegate: MenuItem {
                             text: coverActionName(index)
                             //onClicked: coverLeftAction = index
@@ -636,7 +637,7 @@ Page {
                 menu: ContextMenu {
                     Repeater {
                         width: parent.width
-                        model: 7
+                        model: 8
                         delegate: MenuItem {
                             text: coverActionName(index)
                             //onClicked: coverRightAction = index

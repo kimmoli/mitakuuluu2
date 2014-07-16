@@ -68,20 +68,7 @@ Page {
                 id: connectDisconnect
                 text: parseConnectionAction(Mitakuuluu.connectionStatus)
                 onClicked: {
-                    if (Mitakuuluu.connectionStatus < Mitakuuluu.Connecting) {
-                        Mitakuuluu.forceConnection()
-                    }
-                    else if (Mitakuuluu.connectionStatus > Mitakuuluu.WaitingForConnection && Mitakuuluu.connectionStatus < Mitakuuluu.LoginFailure) {
-                        remorseDisconnect.execute(qsTr("Disconnecting", "Disconnect remorse popup"),
-                                                   function() {
-                                                       Mitakuuluu.disconnect()
-                                                   },
-                                                   5000)
-                    }
-                    else if (Mitakuuluu.connectionStatus == Mitakuuluu.Disconnected)
-                        Mitakuuluu.authenticate()
-                    else
-                        pageStack.replace(Qt.resolvedUrl("RegistrationPage.qml"))
+                    connectDisconnectAction(false)
                 }
             }
 
@@ -447,10 +434,6 @@ Page {
                 }
             }
         }
-    }
-
-    RemorsePopup {
-        id: remorseDisconnect
     }
 
     ContactsFilterModel {
