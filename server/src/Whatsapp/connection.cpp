@@ -136,7 +136,7 @@ void Connection::finalCleanup()
     if (keepalive && (keepalive->isRunning() || keepalive->isWaiting()))
         keepalive->stop();
 
-    socket->deleteLater();
+    //socket->deleteLater();
     Q_EMIT disconnected();
     disconnect(this,0,0,0);
     this->deleteLater();

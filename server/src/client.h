@@ -453,7 +453,8 @@ signals:
 private:
     QueryExecutor *dbExecutor;
 
-    Connection *connection;
+    QScopedPointer<Connection> connectionPtr;
+    //Connection *connection;
     QNetworkConfigurationManager *manager;
     QNetworkSession *session;
     QSqlDatabase db;

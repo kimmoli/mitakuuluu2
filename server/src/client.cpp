@@ -157,8 +157,6 @@ Client::Client(QObject *parent) : QObject(parent)
 
     qDebug() << "Locale" << QLocale::system().name();
 
-    connection = 0;
-
     reg = 0;
     dbExecutor = 0;
     manager = 0;
@@ -683,82 +681,82 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connectionStatus = LoggedIn;
     Q_EMIT connectionStatusChanged(connectionStatus);
 
-    connect(connection,SIGNAL(accountExpired(QVariantMap)),this,SLOT(expired(QVariantMap)));
+    connect(connectionPtr.data(),SIGNAL(accountExpired(QVariantMap)),this,SLOT(expired(QVariantMap)));
 
-    connect(connection,SIGNAL(groupNewSubject(QString,QString,QString,QString,QString,QString,bool)),
+    connect(connectionPtr.data(),SIGNAL(groupNewSubject(QString,QString,QString,QString,QString,QString,bool)),
             this,SLOT(groupNewSubject(QString,QString,QString,QString,QString,QString,bool)));
 
-    connect(connection,SIGNAL(groupInfoFromList(QString,QString,QString,QString,
+    connect(connectionPtr.data(),SIGNAL(groupInfoFromList(QString,QString,QString,QString,
                                                 QString,QString,QString)),
             this,SLOT(groupInfoFromList(QString,QString,QString,QString,
                                         QString,QString,QString)));
 
-    connect(connection,SIGNAL(messageReceived(FMessage)),
+    connect(connectionPtr.data(),SIGNAL(messageReceived(FMessage)),
             this,SLOT(onMessageReceived(FMessage)));
 
-    connect(connection,SIGNAL(messageStatusUpdate(QString, QString, int)),
+    connect(connectionPtr.data(),SIGNAL(messageStatusUpdate(QString, QString, int)),
             this,SLOT(messageStatusUpdate(QString, QString, int)));
 
-    connect(connection,SIGNAL(available(QString,bool)),
+    connect(connectionPtr.data(),SIGNAL(available(QString,bool)),
             this,SLOT(available(QString,bool)));
 
-    connect(connection,SIGNAL(composing(QString,QString)),
+    connect(connectionPtr.data(),SIGNAL(composing(QString,QString)),
             this,SLOT(composing(QString,QString)));
 
-    connect(connection,SIGNAL(paused(QString)),
+    connect(connectionPtr.data(),SIGNAL(paused(QString)),
             this,SLOT(paused(QString)));
 
-    connect(connection,SIGNAL(groupLeft(QString)),
+    connect(connectionPtr.data(),SIGNAL(groupLeft(QString)),
             this,SLOT(groupLeft(QString)));
 
-    connect(connection,SIGNAL(userStatusUpdated(QString, QString)),
+    connect(connectionPtr.data(),SIGNAL(userStatusUpdated(QString, QString)),
             this,SLOT(userStatusUpdated(QString, QString)));
 
-    connect(connection,SIGNAL(lastOnline(QString,qint64)),
+    connect(connectionPtr.data(),SIGNAL(lastOnline(QString,qint64)),
             this,SLOT(available(QString,qint64)));
 
-    connect(connection,SIGNAL(mediaUploadAccepted(FMessage)),
+    connect(connectionPtr.data(),SIGNAL(mediaUploadAccepted(FMessage)),
             this,SLOT(mediaUploadAccepted(FMessage)));
 
-    connect(connection,SIGNAL(photoIdReceived(QString,QString,QString,QString,QString,QString,bool)),
+    connect(connectionPtr.data(),SIGNAL(photoIdReceived(QString,QString,QString,QString,QString,QString,bool)),
             this,SLOT(photoIdReceived(QString,QString,QString,QString,QString,QString,bool)));
 
-    connect(connection,SIGNAL(photoDeleted(QString,QString,QString,QString,QString)),
+    connect(connectionPtr.data(),SIGNAL(photoDeleted(QString,QString,QString,QString,QString)),
             this,SLOT(photoDeleted(QString,QString,QString,QString,QString)));
 
-    connect(connection,SIGNAL(photoReceived(QString,QByteArray,QString,bool)),
+    connect(connectionPtr.data(),SIGNAL(photoReceived(QString,QByteArray,QString,bool)),
             this,SLOT(photoReceived(QString,QByteArray,QString,bool)));
 
-    connect(connection,SIGNAL(groupUsers(QString,QStringList)),
+    connect(connectionPtr.data(),SIGNAL(groupUsers(QString,QStringList)),
             this,SLOT(groupUsers(QString,QStringList)));
 
-    connect(connection,SIGNAL(groupAddUser(QString,QString,QString,QString,bool)),
+    connect(connectionPtr.data(),SIGNAL(groupAddUser(QString,QString,QString,QString,bool)),
             this,SLOT(groupAddUser(QString,QString,QString,QString,bool)));
 
-    connect(connection,SIGNAL(groupRemoveUser(QString,QString,QString,QString,bool)),
+    connect(connectionPtr.data(),SIGNAL(groupRemoveUser(QString,QString,QString,QString,bool)),
             this,SLOT(groupRemoveUser(QString,QString,QString,QString,bool)));
 
-    connect(connection,SIGNAL(groupError(QString)),
+    connect(connectionPtr.data(),SIGNAL(groupError(QString)),
             this,SLOT(groupError(QString)));
 
-    connect(connection,SIGNAL(privacyListReceived(QStringList)),
+    connect(connectionPtr.data(),SIGNAL(privacyListReceived(QStringList)),
             this,SLOT(privacyListReceived(QStringList)));
 
-    connect(connection,SIGNAL(privacySettingsReceived(QVariantMap)),
+    connect(connectionPtr.data(),SIGNAL(privacySettingsReceived(QVariantMap)),
             this,SLOT(privacySettingsReceived(QVariantMap)));
 
-    connect(connection,SIGNAL(contactAdded(QString)),
+    connect(connectionPtr.data(),SIGNAL(contactAdded(QString)),
             this,SLOT(newContactAdded(QString)));
 
-    connect(connection, SIGNAL(groupCreated(QString)), this, SIGNAL(groupCreated(QString)));
+    connect(connectionPtr.data(), SIGNAL(groupCreated(QString)), this, SIGNAL(groupCreated(QString)));
 
-    connect(connection,SIGNAL(contactsStatus(QVariantList)), this, SLOT(syncContactsAvailable(QVariantList)));
+    connect(connectionPtr.data(),SIGNAL(contactsStatus(QVariantList)), this, SLOT(syncContactsAvailable(QVariantList)));
 
-    connect(connection,SIGNAL(contactsSynced(QVariantList)), this, SLOT(syncResultsAvailable(QVariantList)));
+    connect(connectionPtr.data(),SIGNAL(contactsSynced(QVariantList)), this, SLOT(syncResultsAvailable(QVariantList)));
 
-    connect(connection,SIGNAL(syncFinished()), this, SIGNAL(synchronizationFinished()));
+    connect(connectionPtr.data(),SIGNAL(syncFinished()), this, SIGNAL(synchronizationFinished()));
 
-    connect(connection, SIGNAL(notifyOfflineMessages(int)), this, SLOT(notifyOfflineMessages(int)));
+    connect(connectionPtr.data(), SIGNAL(notifyOfflineMessages(int)), this, SLOT(notifyOfflineMessages(int)));
 
     updateNotification(tr("Connected", "System connection notification"));
 
@@ -877,66 +875,69 @@ void Client::connectToServer()
 
     qDebug() << "creating connection";
 
-    if (connection) {
-        delete connection;
-        connection = 0;
-    }
+    Connection *conn = new Connection(server,443,JID_DOMAIN,waresource,phoneNumber,
+                                      userName,password,nextChallenge,
+                                      //systemInfo->currentLanguage(),systemInfo->currentCountryCode(),
+                                      //networkInfo->currentMobileCountryCode(),networkInfo->currentMobileNetworkCode(),
+                                      "en", "US", "000", "000",
+                                      waversion,&dataCounters,0);
 
-    connection = new Connection(server,443,JID_DOMAIN,waresource,phoneNumber,
-                                userName,password,nextChallenge,
-                                //systemInfo->currentLanguage(),systemInfo->currentCountryCode(),
-                                //networkInfo->currentMobileCountryCode(),networkInfo->currentMobileNetworkCode(),
-                                "en", "US", "000", "000",
-                                waversion,&dataCounters,0);
+    qDebug() << "Assigning to pointer";
 
-    QObject::connect(this, SIGNAL(connectionSendMessage(FMessage)), connection, SLOT(sendMessage(FMessage)));
-    QObject::connect(this, SIGNAL(connectionSendSyncContacts(QStringList)), connection, SLOT(sendSyncContacts(QStringList)));
-    QObject::connect(this, SIGNAL(connectionSendQueryLastOnline(QString)), connection, SLOT(sendQueryLastOnline(QString)));
-    QObject::connect(this, SIGNAL(connectionSendGetStatus(QStringList)), connection, SLOT(sendGetStatus(QStringList)));
-    QObject::connect(this, SIGNAL(connectionSendPresenceSubscriptionRequest(QString)), connection, SLOT(sendPresenceSubscriptionRequest(QString)));
-    QObject::connect(this, SIGNAL(connectionSendUnsubscribeHim(QString)), connection, SLOT(sendUnsubscribeHim(QString)));
-    QObject::connect(this, SIGNAL(connectionSendGetPhoto(QString,QString,bool)), connection, SLOT(sendGetPhoto(QString,QString,bool)));
-    QObject::connect(this, SIGNAL(connectionSendSetPhoto(QString,QByteArray,QByteArray)), connection, SLOT(sendSetPhoto(QString,QByteArray,QByteArray)));
-    QObject::connect(this, SIGNAL(connectionSendGetPhotoIds(QStringList)), connection, SLOT(sendGetPhotoIds(QStringList)));
-    QObject::connect(this, SIGNAL(connectionSendVoiceNotePlayed(FMessage)), connection, SLOT(sendVoiceNotePlayed(FMessage)));
-    QObject::connect(this, SIGNAL(connectionSendCreateGroupChat(QString)), connection, SLOT(sendCreateGroupChat(QString)));
-    QObject::connect(this, SIGNAL(connectionSendAddParticipants(QString,QStringList)), connection, SLOT(sendAddParticipants(QString,QStringList)));
-    QObject::connect(this, SIGNAL(connectionSendRemoveParticipants(QString,QStringList)), connection, SLOT(sendRemoveParticipants(QString,QStringList)));
-    QObject::connect(this, SIGNAL(connectionSendVerbParticipants(QString,QStringList,QString,QString)), connection, SLOT(sendVerbParticipants(QString,QStringList,QString,QString)));
-    QObject::connect(this, SIGNAL(connectionSendGetParticipants(QString)), connection, SLOT(sendGetParticipants(QString)));
-    QObject::connect(this, SIGNAL(connectionSendGetGroupInfo(QString)), connection, SLOT(sendGetGroupInfo(QString)));
-    QObject::connect(this, SIGNAL(connectionUpdateGroupChats()), connection, SLOT(updateGroupChats()));
-    QObject::connect(this, SIGNAL(connectionSendSetGroupSubject(QString,QString)), connection, SLOT(sendSetGroupSubject(QString,QString)));
-    QObject::connect(this, SIGNAL(connectionSendLeaveGroup(QString)), connection, SLOT(sendLeaveGroup(QString)));
-    QObject::connect(this, SIGNAL(connectionSendRemoveGroup(QString)), connection, SLOT(sendRemoveGroup(QString)));
-    QObject::connect(this, SIGNAL(connectionSendGetPrivacyList()), connection, SLOT(sendGetPrivacyList()));
-    QObject::connect(this, SIGNAL(connectionSendSetPrivacyBlockedList(QStringList)), connection, SLOT(sendSetPrivacyBlockedList(QStringList)));
-    QObject::connect(this, SIGNAL(connectionSendGetPrivacySettings()), connection, SLOT(sendGetPrivacySettings()));
-    QObject::connect(this, SIGNAL(connectionSendSetPrivacySettings(QString,QString)), connection, SLOT(sendSetPrivacySettings(QString,QString)));
-    QObject::connect(this, SIGNAL(connectionSetNewUserName(QString,bool)), connection, SLOT(setNewUserName(QString,bool)));
-    QObject::connect(this, SIGNAL(connectionSetNewStatus(QString)), connection, SLOT(sendSetStatus(QString)));
-    QObject::connect(this, SIGNAL(connectionSendAvailableForChat(bool)), connection, SLOT(sendAvailableForChat(bool)));
-    QObject::connect(this, SIGNAL(connectionSendAvailable()), connection, SLOT(sendAvailable()));
-    QObject::connect(this, SIGNAL(connectionSendUnavailable()), connection, SLOT(sendUnavailable()));
-    QObject::connect(this, SIGNAL(connectionSendDeleteAccount()), connection, SLOT(sendDeleteAccount()));
-    QObject::connect(this, SIGNAL(connectionDisconnect()), connection, SLOT(disconnectAndDelete()));
-    QObject::connect(this, SIGNAL(connectionSendGetServerProperties()), connection, SLOT(sendGetServerProperties()));
-    QObject::connect(this, SIGNAL(connectionSendGetClientConfig()), connection, SLOT(getClientConfig()));
-    QObject::connect(this, SIGNAL(connectionSendComposing(QString,QString)), connection, SLOT(sendComposing(QString,QString)));
-    QObject::connect(this, SIGNAL(connectionSendPaused(QString,QString)), connection, SLOT(sendPaused(QString,QString)));
+    connectionPtr.reset(conn);
 
-    QObject::connect(connection, SIGNAL(authSuccess(QString,QString,QString,QString,QByteArray)), this, SLOT(onAuthSuccess(QString,QString,QString,QString,QByteArray)));
-    QObject::connect(connection, SIGNAL(authFailed()), this, SLOT(authFailed()));
-    QObject::connect(connection, SIGNAL(connected()), this, SLOT(connected()));
-    QObject::connect(connection, SIGNAL(disconnected()), this, SLOT(disconnected()));
-    QObject::connect(connection, SIGNAL(needReconnect()), this, SLOT(doReconnect()));
-    QObject::connect(connection, SIGNAL(destroyed()), this, SLOT(clientDestroyed()));
+    qDebug() << "connecting to signals";
 
-    QObject::connect(connection, SIGNAL(socketBroken()), this, SLOT(destroyConnection()));
+    QObject::connect(this, SIGNAL(connectionSendMessage(FMessage)), connectionPtr.data(), SLOT(sendMessage(FMessage)));
+    QObject::connect(this, SIGNAL(connectionSendSyncContacts(QStringList)), connectionPtr.data(), SLOT(sendSyncContacts(QStringList)));
+    QObject::connect(this, SIGNAL(connectionSendQueryLastOnline(QString)), connectionPtr.data(), SLOT(sendQueryLastOnline(QString)));
+    QObject::connect(this, SIGNAL(connectionSendGetStatus(QStringList)), connectionPtr.data(), SLOT(sendGetStatus(QStringList)));
+    QObject::connect(this, SIGNAL(connectionSendPresenceSubscriptionRequest(QString)), connectionPtr.data(), SLOT(sendPresenceSubscriptionRequest(QString)));
+    QObject::connect(this, SIGNAL(connectionSendUnsubscribeHim(QString)), connectionPtr.data(), SLOT(sendUnsubscribeHim(QString)));
+    QObject::connect(this, SIGNAL(connectionSendGetPhoto(QString,QString,bool)), connectionPtr.data(), SLOT(sendGetPhoto(QString,QString,bool)));
+    QObject::connect(this, SIGNAL(connectionSendSetPhoto(QString,QByteArray,QByteArray)), connectionPtr.data(), SLOT(sendSetPhoto(QString,QByteArray,QByteArray)));
+    QObject::connect(this, SIGNAL(connectionSendGetPhotoIds(QStringList)), connectionPtr.data(), SLOT(sendGetPhotoIds(QStringList)));
+    QObject::connect(this, SIGNAL(connectionSendVoiceNotePlayed(FMessage)), connectionPtr.data(), SLOT(sendVoiceNotePlayed(FMessage)));
+    QObject::connect(this, SIGNAL(connectionSendCreateGroupChat(QString)), connectionPtr.data(), SLOT(sendCreateGroupChat(QString)));
+    QObject::connect(this, SIGNAL(connectionSendAddParticipants(QString,QStringList)), connectionPtr.data(), SLOT(sendAddParticipants(QString,QStringList)));
+    QObject::connect(this, SIGNAL(connectionSendRemoveParticipants(QString,QStringList)), connectionPtr.data(), SLOT(sendRemoveParticipants(QString,QStringList)));
+    QObject::connect(this, SIGNAL(connectionSendVerbParticipants(QString,QStringList,QString,QString)), connectionPtr.data(), SLOT(sendVerbParticipants(QString,QStringList,QString,QString)));
+    QObject::connect(this, SIGNAL(connectionSendGetParticipants(QString)), connectionPtr.data(), SLOT(sendGetParticipants(QString)));
+    QObject::connect(this, SIGNAL(connectionSendGetGroupInfo(QString)), connectionPtr.data(), SLOT(sendGetGroupInfo(QString)));
+    QObject::connect(this, SIGNAL(connectionUpdateGroupChats()), connectionPtr.data(), SLOT(updateGroupChats()));
+    QObject::connect(this, SIGNAL(connectionSendSetGroupSubject(QString,QString)), connectionPtr.data(), SLOT(sendSetGroupSubject(QString,QString)));
+    QObject::connect(this, SIGNAL(connectionSendLeaveGroup(QString)), connectionPtr.data(), SLOT(sendLeaveGroup(QString)));
+    QObject::connect(this, SIGNAL(connectionSendRemoveGroup(QString)), connectionPtr.data(), SLOT(sendRemoveGroup(QString)));
+    QObject::connect(this, SIGNAL(connectionSendGetPrivacyList()), connectionPtr.data(), SLOT(sendGetPrivacyList()));
+    QObject::connect(this, SIGNAL(connectionSendSetPrivacyBlockedList(QStringList)), connectionPtr.data(), SLOT(sendSetPrivacyBlockedList(QStringList)));
+    QObject::connect(this, SIGNAL(connectionSendGetPrivacySettings()), connectionPtr.data(), SLOT(sendGetPrivacySettings()));
+    QObject::connect(this, SIGNAL(connectionSendSetPrivacySettings(QString,QString)), connectionPtr.data(), SLOT(sendSetPrivacySettings(QString,QString)));
+    QObject::connect(this, SIGNAL(connectionSetNewUserName(QString,bool)), connectionPtr.data(), SLOT(setNewUserName(QString,bool)));
+    QObject::connect(this, SIGNAL(connectionSetNewStatus(QString)), connectionPtr.data(), SLOT(sendSetStatus(QString)));
+    QObject::connect(this, SIGNAL(connectionSendAvailableForChat(bool)), connectionPtr.data(), SLOT(sendAvailableForChat(bool)));
+    QObject::connect(this, SIGNAL(connectionSendAvailable()), connectionPtr.data(), SLOT(sendAvailable()));
+    QObject::connect(this, SIGNAL(connectionSendUnavailable()), connectionPtr.data(), SLOT(sendUnavailable()));
+    QObject::connect(this, SIGNAL(connectionSendDeleteAccount()), connectionPtr.data(), SLOT(sendDeleteAccount()));
+    QObject::connect(this, SIGNAL(connectionDisconnect()), connectionPtr.data(), SLOT(disconnectAndDelete()));
+    QObject::connect(this, SIGNAL(connectionSendGetServerProperties()), connectionPtr.data(), SLOT(sendGetServerProperties()));
+    QObject::connect(this, SIGNAL(connectionSendGetClientConfig()), connectionPtr.data(), SLOT(getClientConfig()));
+    QObject::connect(this, SIGNAL(connectionSendComposing(QString,QString)), connectionPtr.data(), SLOT(sendComposing(QString,QString)));
+    QObject::connect(this, SIGNAL(connectionSendPaused(QString,QString)), connectionPtr.data(), SLOT(sendPaused(QString,QString)));
 
-    QThread *thread = new QThread(connection);
-    connection->moveToThread(thread);
-    QObject::connect(thread, SIGNAL(started()), connection, SLOT(init()));
+    QObject::connect(connectionPtr.data(), SIGNAL(authSuccess(QString,QString,QString,QString,QByteArray)), this, SLOT(onAuthSuccess(QString,QString,QString,QString,QByteArray)));
+    QObject::connect(connectionPtr.data(), SIGNAL(authFailed()), this, SLOT(authFailed()));
+    QObject::connect(connectionPtr.data(), SIGNAL(connected()), this, SLOT(connected()));
+    QObject::connect(connectionPtr.data(), SIGNAL(disconnected()), this, SLOT(disconnected()));
+    QObject::connect(connectionPtr.data(), SIGNAL(needReconnect()), this, SLOT(doReconnect()));
+    QObject::connect(connectionPtr.data(), SIGNAL(destroyed()), this, SLOT(clientDestroyed()));
+
+    QObject::connect(connectionPtr.data(), SIGNAL(socketBroken()), this, SLOT(destroyConnection()));
+
+    qDebug() << "Threading connection";
+
+    QThread *thread = new QThread(connectionPtr.data());
+    connectionPtr.data()->moveToThread(thread);
+    QObject::connect(thread, SIGNAL(started()), connectionPtr.data(), SLOT(init()));
     thread->start();
 }
 
@@ -950,10 +951,7 @@ void Client::disconnected()
 {
     qDebug() << "Client disconnected";
 
-    if (connection) {
-        delete connection;
-        connection = 0;
-    }
+    connectionPtr.take();
 
     dataCounters.writeCounters();
 
@@ -966,11 +964,6 @@ void Client::disconnected()
 
 void Client::destroyConnection()
 {
-
-    if (connection) {
-        delete connection;
-        connection = 0;
-    }
     doReconnect();
 }
 
@@ -1936,12 +1929,12 @@ void Client::sendLocation(const QStringList &jids, const QString &latitude, cons
         int w = 128;
         int h = 128;
 
-        MapRequest *mapRequest = new MapRequest(source, latitude, longitude, zoom, w, h, jids, this);
+        MapRequest *mapRequest = new MapRequest(source, latitude, longitude, zoom, w, h, jids);
         QObject::connect(mapRequest, SIGNAL(mapAvailable(QByteArray,QString,QString,QStringList,MapRequest*)),
                          this, SLOT(sendLocationRequest(QByteArray,QString,QString,QStringList,MapRequest*)));
         QObject::connect(mapRequest, SIGNAL(requestError(MapRequest*)), this, SLOT(mapError(MapRequest*)));
 
-        QThread *thread = new QThread(connection);
+        QThread *thread = new QThread(mapRequest);
         mapRequest->moveToThread(thread);
         QObject::connect(thread, SIGNAL(started()), mapRequest, SLOT(doRequest()));
         thread->start();
