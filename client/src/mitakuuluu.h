@@ -244,6 +244,7 @@ signals:
 
     void logfileReady(const QByteArray &data, bool isReady);
 
+    Q_SCRIPTABLE void totalUnreadChanged2(int unread);
     void totalUnreadChanged();
 
     void privateToneChanged();
