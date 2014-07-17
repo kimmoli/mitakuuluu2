@@ -47,7 +47,7 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
             QDBusConnection::sessionBus().registerService(SERVICE_NAME) &&
             QDBusConnection::sessionBus().registerObject(OBJECT_NAME,
                                                          this,
-                                                         QDBusConnection::ExportScriptableSlots | QDBusConnection::ExportScriptableProperties);
+                                                         QDBusConnection::ExportScriptableContents);
     if (ret) {
         qDebug() << "dbus created";
         nam = new QNetworkAccessManager(this);
@@ -675,11 +675,17 @@ void Mitakuuluu::onSimParameters(const QString &mcccode, const QString &mnccode)
 
 void Mitakuuluu::onSetUnread(const QString &jid, int count)
 {
+    int lastUnread = _totalUnread;
+
     _unreadCount[jid] = count;
     _totalUnread = 0;
     foreach (int unread, _unreadCount.values())
         _totalUnread += unread;
     Q_EMIT setUnread(jid, count);
+
+    if (lastUnread != _totalUnread) {
+        Q_EMIT totalUnreadValue(_totalUnread);
+    }
     Q_EMIT totalUnreadChanged();
 }
 
