@@ -16,6 +16,8 @@ transifex.input = ..
 QMAKE_EXTRA_TARGETS += ts transifex
 PRE_TARGETDEPS += ts transifex
 
+
+
 TRANSLATIONS += \
     ca.ts \
     crh.ts \
@@ -29,13 +31,17 @@ TRANSLATIONS += \
     es.ts \
     fi.ts \
     fr_FR.ts \
+    gl.ts \
     it_IT.ts \
     nl.ts \
     nl_BE.ts \
     pl.ts \
+    pt_BR.ts \
     ru_RU.ts \
+    si_LK.ts \
     sl_SI.ts \
     sv_SE.ts \
+    sq_AL.ts \
     tr_TR.ts \
     zh_CN.ts \
     zh_HK.ts \
