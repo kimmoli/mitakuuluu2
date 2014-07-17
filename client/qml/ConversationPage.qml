@@ -325,7 +325,7 @@ Page {
                         icon.source: "image://theme/icon-m-gps"
                         onClicked: {
                             pushMedia.hide()
-                            if (locationEnabled)
+                            if (checkLocationEnabled())
                                 positionSourceCreationTimer.start()
                             else
                                 banner.notify(qsTr("Enable location in settings!", "Banner text if GPS disabled in settings"))

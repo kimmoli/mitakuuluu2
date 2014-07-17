@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtFeedback 5.0
-import org.nemomobile.configuration 1.0
 import harbour.mitakuuluu2.client 1.0
 import Sailfish.Gallery.private 1.0
 import QtSensors 5.1
@@ -54,12 +53,8 @@ ApplicationWindow {
         pageStack.push()
     }
 
-    property alias locationEnabled: locationEnabledConfig.value
-
-    ConfigurationValue {
-        id: locationEnabledConfig
-        key: "/jolla/location/enabled"
-        defaultValue: false
+    function checkLocationEnabled() {
+        return Mitakuuluu.locationEnabled()
     }
 
     property bool showSeconds: true

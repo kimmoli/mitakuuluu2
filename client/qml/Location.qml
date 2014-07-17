@@ -9,6 +9,7 @@ Dialog {
     objectName: "location"
     allowedOrientations: Orientation.Portrait
 
+    property bool locationEnabled: false
     property bool broadcastMode: true
     property PositionSource positionSource
 
@@ -46,9 +47,12 @@ Dialog {
             positionSource.destroy()
             positionSource = null
         }
-        else if (status == PageStatus.Active && locationEnabled) {
-            console.log("activating positionSource")
-            createPositionSource()
+        else if (status == PageStatus.Active) {
+            locationEnabled = checkLocationEnabled()
+            if (locationEnabled) {
+                console.log("activating positionSource")
+                createPositionSource()
+            }
         }
     }
 
@@ -104,7 +108,7 @@ Dialog {
     }
 
     Label {
-        visible: !locationEnabledConfig.value
+        visible: !locationEnabled
         text: qsTr("You need to enable GPS positioning in settings", "Location send page text")
         anchors.fill: parent
         horizontalAlignment: Text.AlignHCenter
@@ -119,7 +123,7 @@ Dialog {
             right: parent.right
             bottom: page.bottom
         }
-        visible: locationEnabledConfig.value && status == Image.Ready
+        visible: locationEnabled && status == Image.Ready
         asynchronous: true
         cache: true
         fillMode: Image.PreserveAspectFit
@@ -152,7 +156,7 @@ Dialog {
 
     Column {
         id: dataColumn
-        visible: locationEnabledConfig.value
+        visible: locationEnabled
         anchors.left: locationImg.left
         anchors.leftMargin: Theme.paddingLarge
         anchors.bottom: locationImg.bottom
