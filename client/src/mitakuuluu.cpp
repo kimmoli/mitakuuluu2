@@ -1356,6 +1356,12 @@ void Mitakuuluu::setCamera(QObject *camera)
     }
 }
 
+bool Mitakuuluu::locationEnabled()
+{
+    QSettings location("/etc/location/location.conf", QSettings::IniFormat);
+    return location.value("location/enabled", false);
+}
+
 // Settings
 
 void Mitakuuluu::save(const QString &key, const QVariant &value)

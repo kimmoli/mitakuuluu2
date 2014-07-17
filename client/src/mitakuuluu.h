@@ -377,6 +377,8 @@ public slots:
 
     void setCamera(QObject *camera);
 
+    bool locationEnabled();
+
 //Settings
 
 public slots:
