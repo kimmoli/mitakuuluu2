@@ -179,7 +179,7 @@ void BinTreeNodeReader::readAttributes(AttributeList& attribs, quint32 attribCou
 
 quint32 BinTreeNodeReader::readListSize(qint32 token, QDataStream& in)
 {
-    int size;
+    int size = -1;
     if (token == 0)
         size = 0;
     else if (token == 0xf8)
@@ -332,6 +332,7 @@ bool BinTreeNodeReader::getToken(int token, QByteArray &s, QDataStream& in)
 
     qDebug() << "Invalid token/length in getToken.";
     harakiri();
+    return false;
 }
 
 quint8 BinTreeNodeReader::readInt8(QDataStream& in)
