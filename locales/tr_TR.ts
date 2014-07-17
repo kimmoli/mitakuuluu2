@@ -128,21 +128,26 @@
         <comment>Account page remove dialog description</comment>
         <translation>Bu işlem telefonunuzdaki ve WhatsApp sunucularındaki tüm hesap bilgileriniz silinecektir.</translation>
     </message>
+    <message>
+        <location filename="../client/qml/Account.qml" line="302"/>
+        <source>No, remove only local information</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AddContact</name>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="63"/>
+        <location filename="../client/qml/AddContact.qml" line="62"/>
         <source>Add contact</source>
         <translation>Kişi ekle</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="79"/>
+        <location filename="../client/qml/AddContact.qml" line="78"/>
         <source>1234567890</source>
         <translation>1234567890</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="98"/>
+        <location filename="../client/qml/AddContact.qml" line="97"/>
         <source>Enter contact name here</source>
         <translation>Kişi ismini burya gir</translation>
     </message>
@@ -150,57 +155,57 @@
 <context>
     <name>AvatarHistory</name>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="52"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="55"/>
         <source>Avatar</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="56"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="59"/>
         <source>Select picture</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="66"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="69"/>
         <source>Take picture</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="76"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="79"/>
         <source>Remove avatar</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="86"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="89"/>
         <source>History</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="115"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="118"/>
         <source>Save to Gallery</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="119"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="122"/>
         <source>Avatar saved to; %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="126"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="129"/>
         <source>Delete</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="133"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="136"/>
         <source>Avatar history is empty</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="183"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="186"/>
         <source>Deleting avatar file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="207"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="210"/>
         <source>Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -256,13 +261,13 @@
 <context>
     <name>Capture</name>
     <message>
-        <location filename="../client/qml/Capture.qml" line="67"/>
+        <location filename="../client/qml/Capture.qml" line="479"/>
         <source>Send</source>
         <comment>Capture page send title</comment>
         <translation>Gönder</translation>
     </message>
     <message>
-        <location filename="../client/qml/Capture.qml" line="68"/>
+        <location filename="../client/qml/Capture.qml" line="480"/>
         <source>Camera</source>
         <comment>Capture page default title</comment>
         <translation>Kamera</translation>
@@ -271,152 +276,151 @@
 <context>
     <name>ChatsPage</name>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="20"/>
+        <location filename="../client/qml/ChatsPage.qml" line="30"/>
         <source>Restart engine</source>
         <comment>Main menu action</comment>
         <translation>Motoru yeniden başlat</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="21"/>
+        <location filename="../client/qml/ChatsPage.qml" line="31"/>
         <source>Force connect</source>
         <comment>Main menu action</comment>
         <translation>Bağlantıyı zorla</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="22"/>
-        <location filename="../client/qml/ChatsPage.qml" line="23"/>
-        <location filename="../client/qml/ChatsPage.qml" line="24"/>
+        <location filename="../client/qml/ChatsPage.qml" line="32"/>
+        <location filename="../client/qml/ChatsPage.qml" line="33"/>
+        <location filename="../client/qml/ChatsPage.qml" line="34"/>
         <source>Disconnect</source>
         <comment>Main menu action</comment>
         <translation>Bağlantıyı kes</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="25"/>
-        <location filename="../client/qml/ChatsPage.qml" line="28"/>
+        <location filename="../client/qml/ChatsPage.qml" line="35"/>
+        <location filename="../client/qml/ChatsPage.qml" line="38"/>
         <source>Register</source>
         <comment>Main menu action</comment>
         <translation>Kayıt ol</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="26"/>
+        <location filename="../client/qml/ChatsPage.qml" line="36"/>
         <source>Connect</source>
         <comment>Main menu action</comment>
         <translation>Bağlan</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="27"/>
+        <location filename="../client/qml/ChatsPage.qml" line="37"/>
         <source>No action</source>
         <comment>Main menu action</comment>
         <translation>Hareket yok</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="46"/>
+        <location filename="../client/qml/ChatsPage.qml" line="56"/>
         <source>Full quit</source>
         <comment>Main menu action</comment>
         <translation>Tamamen çık</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="49"/>
+        <location filename="../client/qml/ChatsPage.qml" line="59"/>
         <source>Quit and shutdown engine</source>
         <comment>Full quit remorse popup</comment>
         <translation>Çık ve motoru kapat</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="65"/>
-        <source>Disconnecting</source>
-        <comment>Disconnect remorse popup</comment>
-        <translation>Bağlantı kesiliyor</translation>
-    </message>
-    <message>
-        <location filename="../client/qml/ChatsPage.qml" line="79"/>
+        <location filename="../client/qml/ChatsPage.qml" line="76"/>
         <source>Muted contacts</source>
         <comment>Main menu action</comment>
         <translation>Kişileri sustur</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="87"/>
+        <location filename="../client/qml/ChatsPage.qml" line="84"/>
         <source>Broadcast</source>
         <comment>Main menu action</comment>
         <translation>Yayın</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="94"/>
+        <location filename="../client/qml/ChatsPage.qml" line="91"/>
         <source>Settings</source>
         <comment>Main menu item</comment>
         <translation>Ayarlar</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="103"/>
+        <location filename="../client/qml/ChatsPage.qml" line="100"/>
         <source>Chats</source>
         <comment>Contacts page title</comment>
         <translation>Yazışmalar</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="161"/>
+        <location filename="../client/qml/ChatsPage.qml" line="142"/>
+        <source>Flick left to access Contacts page</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ChatsPage.qml" line="173"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>Guruptan ayrıl %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="154"/>
+        <location filename="../client/qml/ChatsPage.qml" line="166"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>Sil</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="169"/>
+        <location filename="../client/qml/ChatsPage.qml" line="181"/>
         <source>Delete group %1</source>
         <comment>Group delete remorse action text</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="333"/>
+        <location filename="../client/qml/ChatsPage.qml" line="345"/>
         <source>Typing...</source>
         <comment>Contact status typing text</comment>
         <translation>Yazıyor...</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="334"/>
+        <location filename="../client/qml/ChatsPage.qml" line="346"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>Grup yazışma</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="353"/>
+        <location filename="../client/qml/ChatsPage.qml" line="365"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>Profil</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="370"/>
+        <location filename="../client/qml/ChatsPage.qml" line="382"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
         <translation>Susturuluyor</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="376"/>
+        <location filename="../client/qml/ChatsPage.qml" line="388"/>
         <source>Un-hide contact</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="376"/>
+        <location filename="../client/qml/ChatsPage.qml" line="388"/>
         <source>Hide contact</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="383"/>
+        <location filename="../client/qml/ChatsPage.qml" line="395"/>
         <source>Delete group</source>
         <comment>Contact context menu delete group item</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="393"/>
+        <location filename="../client/qml/ChatsPage.qml" line="405"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>Gruptan ayrıl</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="394"/>
+        <location filename="../client/qml/ChatsPage.qml" line="406"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>Sil</translation>
@@ -467,49 +471,49 @@
         <translation>Sistem</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="760"/>
+        <location filename="../server/src/client.cpp" line="761"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
         <translation>Bağlı</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1056"/>
+        <location filename="../server/src/client.cpp" line="1078"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Gizli</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1324"/>
+        <location filename="../server/src/client.cpp" line="1353"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Gruba katılım başarılı</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1327"/>
+        <location filename="../server/src/client.cpp" line="1356"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Gruptan ayrıl</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1330"/>
+        <location filename="../server/src/client.cpp" line="1359"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Konu: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1333"/>
+        <location filename="../server/src/client.cpp" line="1362"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Görüntü değiştirildi</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1671"/>
+        <location filename="../server/src/client.cpp" line="1701"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Bağlantı kesildi</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2830"/>
+        <location filename="../server/src/client.cpp" line="2865"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished"><numerusform></numerusform></translation>
@@ -518,97 +522,102 @@
 <context>
     <name>ContactsPage</name>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="40"/>
+        <location filename="../client/qml/ContactsPage.qml" line="50"/>
         <source>Create group</source>
         <comment>Contacts page menu item</comment>
         <translation>Grup oluştur</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="47"/>
+        <location filename="../client/qml/ContactsPage.qml" line="57"/>
         <source>Add contact</source>
         <comment>Contacts page menu item</comment>
         <translation>Kişi ekle</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="54"/>
+        <location filename="../client/qml/ContactsPage.qml" line="64"/>
         <source>Settings</source>
         <comment>Contacts page menu item</comment>
         <translation>Ayarlar</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="63"/>
+        <location filename="../client/qml/ContactsPage.qml" line="73"/>
         <source>Contacts</source>
         <comment>Contacts page title</comment>
         <translation>Kişiler</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="72"/>
+        <location filename="../client/qml/ContactsPage.qml" line="82"/>
         <source>Search contacts</source>
         <comment>Contacts page search text</comment>
         <translation>Kişileri ara</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="130"/>
+        <location filename="../client/qml/ContactsPage.qml" line="155"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>Gruptan ayrıl %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="123"/>
+        <location filename="../client/qml/ContactsPage.qml" line="148"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>Sil</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="33"/>
+        <location filename="../client/qml/ContactsPage.qml" line="43"/>
         <source>Blacklist</source>
         <comment>Contacts page menu item</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="138"/>
+        <location filename="../client/qml/ContactsPage.qml" line="125"/>
+        <source>Flick right to return to Chats page</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ContactsPage.qml" line="163"/>
         <source>Delete group %1</source>
         <comment>Group delete remorse action text</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="281"/>
+        <location filename="../client/qml/ContactsPage.qml" line="306"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>Grup yazışma</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="298"/>
+        <location filename="../client/qml/ContactsPage.qml" line="323"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>Profil</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="316"/>
+        <location filename="../client/qml/ContactsPage.qml" line="341"/>
         <source>Refresh</source>
         <comment>Contact context menu refresh item</comment>
         <translation>Yenile</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="324"/>
+        <location filename="../client/qml/ContactsPage.qml" line="349"/>
         <source>Rename</source>
         <comment>Contact context menu profile item</comment>
         <translation>Yeniden adlandır</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="332"/>
+        <location filename="../client/qml/ContactsPage.qml" line="357"/>
         <source>Delete group</source>
         <comment>Contact context menu delete group item</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="342"/>
+        <location filename="../client/qml/ContactsPage.qml" line="367"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>Gruptan ayrıl</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="343"/>
+        <location filename="../client/qml/ContactsPage.qml" line="368"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>Sil</translation>
@@ -617,95 +626,100 @@
 <context>
     <name>ConversationPage</name>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="94"/>
+        <location filename="../client/qml/ConversationPage.qml" line="104"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
         <translation>Sen</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="253"/>
+        <location filename="../client/qml/ConversationPage.qml" line="263"/>
         <source>Clear all messages</source>
         <comment>Conversation menu item</comment>
         <translation>Tüm mejları temizle</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="255"/>
+        <location filename="../client/qml/ConversationPage.qml" line="265"/>
         <source>Clear all messages</source>
         <comment>Conversation delete all messages remorse popup</comment>
         <translation>Tüm medajları temizle</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="265"/>
+        <location filename="../client/qml/ConversationPage.qml" line="275"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
         <translation>Susturuluyor</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="271"/>
+        <location filename="../client/qml/ConversationPage.qml" line="281"/>
         <source>Load old conversation</source>
         <comment>Conversation menu item</comment>
         <translation>Eski konuşmaları yükle</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="321"/>
+        <location filename="../client/qml/ConversationPage.qml" line="331"/>
         <source>Enable location in settings!</source>
         <comment>Banner text if GPS disabled in settings</comment>
         <translation>Ayarlarda konumu etkinleştir!</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="353"/>
+        <location filename="../client/qml/ConversationPage.qml" line="363"/>
         <source>Hold button for recording, release to send</source>
         <comment>Conversation voice recorder description label</comment>
         <translation>Kayıt için butonu basılı tutun, göndermek için bırakın</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="474"/>
+        <location filename="../client/qml/ConversationPage.qml" line="486"/>
         <source>Typing...</source>
         <comment>Contact typing converstation text</comment>
         <translation>Yazılıyor...</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="79"/>
+        <location filename="../client/qml/ConversationPage.qml" line="89"/>
         <source>Last seen: %1</source>
         <comment>Last seen converstation text</comment>
         <translation>Son görülme: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="77"/>
+        <location filename="../client/qml/ConversationPage.qml" line="87"/>
         <source>Contact blocked you</source>
         <translation>Kişi sizi engelledi</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="78"/>
+        <location filename="../client/qml/ConversationPage.qml" line="88"/>
         <source>Last online: hidden</source>
         <translation>Son öevrim içi: gizli</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="408"/>
+        <location filename="../client/qml/ConversationPage.qml" line="420"/>
         <source>Release to delete</source>
         <comment>Conversation voice recorder delete label</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="409"/>
+        <location filename="../client/qml/ConversationPage.qml" line="421"/>
         <source>Release to send</source>
         <comment>Conversation voice recorder delete label</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="538"/>
+        <location filename="../client/qml/ConversationPage.qml" line="550"/>
         <source>New message</source>
         <comment>Conversation new message indicator</comment>
         <translation>Yeni Mesaj</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="587"/>
+        <location filename="../client/qml/ConversationPage.qml" line="600"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation>Mesajı yazmak için dokunun</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="814"/>
+        <location filename="../client/qml/ConversationPage.qml" line="705"/>
+        <source>Flick left to access Contact details</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ConversationPage.qml" line="842"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation>Kordinatlar bekleniyor...</translation>
@@ -800,83 +814,83 @@
 <context>
     <name>GroupProfile</name>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="57"/>
+        <location filename="../client/qml/GroupProfile.qml" line="58"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
         <translation>Sen</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="166"/>
+        <location filename="../client/qml/GroupProfile.qml" line="167"/>
         <source>Save chat history</source>
         <comment>Group profile page menu item</comment>
         <translation>Yazışma geçmişini kaydet</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="169"/>
+        <location filename="../client/qml/GroupProfile.qml" line="170"/>
         <source>History saved to Documents</source>
         <comment>Banner notification text</comment>
         <translation>Geçmiş Dökümanlara kaydedildi</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="139"/>
+        <location filename="../client/qml/GroupProfile.qml" line="140"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
         <translation>Kişiler ekle</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="151"/>
+        <location filename="../client/qml/GroupProfile.qml" line="152"/>
         <source>Change background</source>
         <translation>Arka planı değiştir</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="158"/>
+        <location filename="../client/qml/GroupProfile.qml" line="159"/>
         <source>Clear background</source>
         <translation>Arka planı temizle</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="176"/>
+        <location filename="../client/qml/GroupProfile.qml" line="177"/>
         <source>Group profile</source>
         <comment>Group profile page title</comment>
         <translation>Grup profili</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="187"/>
+        <location filename="../client/qml/GroupProfile.qml" line="188"/>
         <source>Subject: </source>
         <comment>Group profile subject label</comment>
         <translation>Konu:</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="246"/>
+        <location filename="../client/qml/GroupProfile.qml" line="247"/>
         <source>Owner: %1</source>
         <comment>Group profile owner label</comment>
         <translation>Sahibi: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="260"/>
+        <location filename="../client/qml/GroupProfile.qml" line="261"/>
         <source>Creation: %1</source>
         <comment>Group profile creation label</comment>
         <translation>Creation: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="274"/>
+        <location filename="../client/qml/GroupProfile.qml" line="275"/>
         <source>Subject by: %1</source>
         <comment>Group profile subject owner label</comment>
         <translation>Subject by: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="288"/>
+        <location filename="../client/qml/GroupProfile.qml" line="289"/>
         <source>Subject set: %1</source>
         <comment>Group profile subject timestamp label</comment>
         <translation>Subject set: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="317"/>
+        <location filename="../client/qml/GroupProfile.qml" line="318"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
         <translation>Maksimum katılımcı sayısına ulaşıldı</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="349"/>
+        <location filename="../client/qml/GroupProfile.qml" line="350"/>
         <source>Fetching participants...</source>
         <comment>Group profile loading text</comment>
         <translation>Katılımcılar getiriliyor...</translation>
@@ -921,61 +935,61 @@
 <context>
     <name>MediaSelector</name>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="31"/>
+        <location filename="../client/qml/MediaSelector.qml" line="33"/>
         <source>You should select files to send!</source>
         <comment>Media page cant accept feedback</comment>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/MediaSelector.qml" line="95"/>
+        <location filename="../client/qml/MediaSelector.qml" line="106"/>
         <source>Images selected: %n</source>
         <comment>Media selection page title text</comment>
         <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="95"/>
+        <location filename="../client/qml/MediaSelector.qml" line="106"/>
         <source>Image selected</source>
         <comment>Media selection page title text</comment>
         <translation>Resim seçildi</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/MediaSelector.qml" line="96"/>
+        <location filename="../client/qml/MediaSelector.qml" line="107"/>
         <source>Audio selected: %n</source>
         <comment>Media selection page title text</comment>
         <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="96"/>
+        <location filename="../client/qml/MediaSelector.qml" line="107"/>
         <source>Audio selected</source>
         <comment>Media selection page title text</comment>
         <translation>Ses seçildi</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/MediaSelector.qml" line="97"/>
+        <location filename="../client/qml/MediaSelector.qml" line="108"/>
         <source>Video selected: %n</source>
         <comment>Media selection page title text</comment>
         <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="97"/>
+        <location filename="../client/qml/MediaSelector.qml" line="108"/>
         <source>Video selected</source>
         <comment>Media selection page title text</comment>
         <translation>Video deçildi</translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="98"/>
+        <location filename="../client/qml/MediaSelector.qml" line="109"/>
         <source>Images</source>
         <comment>Media selection page title text</comment>
         <translation>Görüntüler</translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="99"/>
+        <location filename="../client/qml/MediaSelector.qml" line="110"/>
         <source>Audio</source>
         <comment>Media selection page title text</comment>
         <translation>Ses</translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="100"/>
+        <location filename="../client/qml/MediaSelector.qml" line="111"/>
         <source>Video</source>
         <comment>Media selection page title text</comment>
         <translation>Ses</translation>
@@ -993,61 +1007,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="287"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="288"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation>Bilinmiyor</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="290"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="291"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation>Bağlantı bekleniyor</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="293"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="294"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation>Bağlanılıyor...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="296"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="297"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation>Doğrulanıyor...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="299"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="300"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation>Giriş yapıldı</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="303"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation>giriş başarısız!</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="306"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation>Bağlantı kesildi</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="309"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation>Kayıt olunuyor...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="312"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation>Kayıt başarısız</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="315"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation>Hesabın son kullanım tarihi sona erdi!</translation>
@@ -1853,474 +1867,480 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <translation>Mesaj gönder</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="62"/>
+        <location filename="../client/qml/Settings.qml" line="63"/>
         <source>About</source>
         <comment>Settings page menu item</comment>
         <translation>Hakkında</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="86"/>
+        <location filename="../client/qml/Settings.qml" line="87"/>
         <source>Send logfile to author</source>
         <comment>Settings page menu item</comment>
         <translation>Send logfile to author</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="80"/>
+        <location filename="../client/qml/Settings.qml" line="81"/>
         <source>Account</source>
         <comment>Settings page menu item</comment>
         <translation>Hesap</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="74"/>
+        <location filename="../client/qml/Settings.qml" line="34"/>
+        <source>Connect/Disconnect</source>
+        <comment>Settings cover action name text</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="75"/>
         <source>Traffic counter</source>
         <comment>Settings page menu item</comment>
         <translation>Traffic counter</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="101"/>
+        <location filename="../client/qml/Settings.qml" line="102"/>
         <source>Settings</source>
         <comment>Settings page title</comment>
         <translation>Ayarlar</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="105"/>
+        <location filename="../client/qml/Settings.qml" line="106"/>
         <source>Conversation</source>
         <comment>Settings page section name</comment>
         <translation>Konulmalar</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="153"/>
+        <location filename="../client/qml/Settings.qml" line="154"/>
         <source>Show sent messages at left side</source>
         <comment>Settings option name</comment>
         <translation>Gönderilen mesajı sol tarafta göster</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="159"/>
+        <location filename="../client/qml/Settings.qml" line="160"/>
         <source>Vibrate in active conversation</source>
         <comment>Settings option name</comment>
         <translation>Aktif konuşmada titre</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="166"/>
+        <location filename="../client/qml/Settings.qml" line="167"/>
         <source>Show messages timestamp</source>
         <comment>Settings option name</comment>
         <translation>Mesaj zaman çizelgesini göster</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="173"/>
+        <location filename="../client/qml/Settings.qml" line="174"/>
         <source>Show seconds in messages timestamp</source>
         <comment>Settings option name</comment>
         <translation>Zaman çizelgesinde saniyeleri göster</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="181"/>
+        <location filename="../client/qml/Settings.qml" line="182"/>
         <source>Send messages by Enter</source>
         <comment>Settings option name</comment>
         <translation>Mesajı Enter ile gönder</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="187"/>
+        <location filename="../client/qml/Settings.qml" line="188"/>
         <source>Automatically show keyboard when opening conversation</source>
         <comment>Settings option name</comment>
         <translation>Konuşma başladığında klavyeyi otomatik göster</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="193"/>
+        <location filename="../client/qml/Settings.qml" line="194"/>
         <source>Hide keyboard after sending message</source>
         <comment>Settings option name</comment>
         <translation>Gönderdikten sonra klavyeyi gizle</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="205"/>
+        <location filename="../client/qml/Settings.qml" line="206"/>
         <source>Map source</source>
         <comment>Settings option name</comment>
         <translation>Harita kaynağı</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="238"/>
+        <location filename="../client/qml/Settings.qml" line="239"/>
         <source>Here</source>
         <comment>Map source selection</comment>
         <translation>Here</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="239"/>
+        <location filename="../client/qml/Settings.qml" line="240"/>
         <source>Nokia</source>
         <comment>Map source selection</comment>
         <translation>Nokia</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="240"/>
+        <location filename="../client/qml/Settings.qml" line="241"/>
         <source>Google</source>
         <comment>Map source selection</comment>
         <translation>Google</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="241"/>
+        <location filename="../client/qml/Settings.qml" line="242"/>
         <source>OpenStreetMaps</source>
         <comment>Map source selection</comment>
         <translation>OpenStreetMaps</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="242"/>
+        <location filename="../client/qml/Settings.qml" line="243"/>
         <source>Bing</source>
         <comment>Map source selection</comment>
         <translation>Bing</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="243"/>
+        <location filename="../client/qml/Settings.qml" line="244"/>
         <source>MapQuest</source>
         <comment>Map source selection</comment>
         <translation>MapQuest</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="244"/>
+        <location filename="../client/qml/Settings.qml" line="245"/>
         <source>Yandex</source>
         <comment>Map source selection</comment>
         <translation>Yandex</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="245"/>
+        <location filename="../client/qml/Settings.qml" line="246"/>
         <source>Yandex usermap</source>
         <comment>Map source selection</comment>
         <translation>Yandex kullanıcı haritası</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="246"/>
+        <location filename="../client/qml/Settings.qml" line="247"/>
         <source>2Gis</source>
         <comment>Map source selection</comment>
         <translation>2Gis</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="297"/>
+        <location filename="../client/qml/Settings.qml" line="298"/>
         <source>Use system Chat notifier</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="546"/>
+        <location filename="../client/qml/Settings.qml" line="547"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
         <translation>Medyayı galeriye indir</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="547"/>
+        <location filename="../client/qml/Settings.qml" line="548"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
         <translation>İşaretli ise indirilen medyayı galeride göster</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="255"/>
+        <location filename="../client/qml/Settings.qml" line="256"/>
         <source>Chat font size</source>
         <comment>Settings option name</comment>
         <translation>Yazışma font boyutu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="68"/>
+        <location filename="../client/qml/Settings.qml" line="69"/>
         <source>System status</source>
         <comment>Settings page menu item</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="257"/>
+        <location filename="../client/qml/Settings.qml" line="258"/>
         <source>%1 px</source>
         <comment>Settings option value label</comment>
         <translation>%1 px</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="264"/>
+        <location filename="../client/qml/Settings.qml" line="265"/>
         <source>Notifications</source>
         <comment>Settings page section name</comment>
         <translation>Bildirimler</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="461"/>
+        <location filename="../client/qml/Settings.qml" line="462"/>
         <source>Common</source>
         <comment>Settings page section name</comment>
         <translation>Ortak</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="708"/>
+        <location filename="../client/qml/Settings.qml" line="709"/>
         <source>Don&apos;t resize on WLAN</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="803"/>
+        <location filename="../client/qml/Settings.qml" line="804"/>
         <source>red</source>
         <comment>Pattern led color</comment>
         <translation>kırmızı</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="804"/>
+        <location filename="../client/qml/Settings.qml" line="805"/>
         <source>green</source>
         <comment>Pattern led color</comment>
         <translation>yeşil</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="805"/>
+        <location filename="../client/qml/Settings.qml" line="806"/>
         <source>blue</source>
         <comment>Pattern led color</comment>
         <translation>mavi</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="806"/>
+        <location filename="../client/qml/Settings.qml" line="807"/>
         <source>white</source>
         <comment>Pattern led color</comment>
         <translation>beyaz</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="807"/>
+        <location filename="../client/qml/Settings.qml" line="808"/>
         <source>yellow</source>
         <comment>Pattern led color</comment>
         <translation>sarı</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="808"/>
+        <location filename="../client/qml/Settings.qml" line="809"/>
         <source>cyan</source>
         <comment>Pattern led color</comment>
         <translation>cyan</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="809"/>
+        <location filename="../client/qml/Settings.qml" line="810"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
         <translation>pembe</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="305"/>
+        <location filename="../client/qml/Settings.qml" line="306"/>
         <source>no sound</source>
         <comment>Private message tone not set</comment>
         <translation>ses yok</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="327"/>
+        <location filename="../client/qml/Settings.qml" line="328"/>
         <source>Private message color</source>
         <comment>Settings page Private message color selection</comment>
         <translation>Özel mesaj rengi</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="359"/>
+        <location filename="../client/qml/Settings.qml" line="360"/>
         <source>no sound</source>
         <comment>Group message tone not set</comment>
         <translation>ses yok</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="379"/>
+        <location filename="../client/qml/Settings.qml" line="380"/>
         <source>Group message color</source>
         <comment>Settings page Group message color selection</comment>
         <translation>Grup mesaj rengi</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="408"/>
+        <location filename="../client/qml/Settings.qml" line="409"/>
         <source>no sound</source>
         <comment>Medi message tone not set</comment>
         <translation>ses yok</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="428"/>
+        <location filename="../client/qml/Settings.qml" line="429"/>
         <source>Media message color</source>
         <comment>Settings page Media message color selection</comment>
         <translation>Medya mesaj rengi</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="465"/>
+        <location filename="../client/qml/Settings.qml" line="466"/>
         <source>Language</source>
         <translation>Dil</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="478"/>
+        <location filename="../client/qml/Settings.qml" line="479"/>
         <source>Restart application to change language</source>
         <comment>Language changing banner text</comment>
         <translation>Dili uygulamak için yeiden başlat</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="489"/>
+        <location filename="../client/qml/Settings.qml" line="490"/>
         <source>Connection server</source>
         <comment>Settings option name</comment>
         <translation>Bağlantı sunucusu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="527"/>
+        <location filename="../client/qml/Settings.qml" line="528"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
         <translation>Otomatik başla</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="535"/>
+        <location filename="../client/qml/Settings.qml" line="536"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
         <translation>Uygulama loglarını kaydetmeyi kabul et</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="539"/>
+        <location filename="../client/qml/Settings.qml" line="540"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
         <translation>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="231"/>
+        <location filename="../client/qml/Settings.qml" line="232"/>
         <source>Lock conversation orientation in portrait</source>
         <comment>Settings option name</comment>
         <translation>Konuşma yönünü dikeye sabitle</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="554"/>
+        <location filename="../client/qml/Settings.qml" line="555"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
         <translation>Show yourself in contact list, if present</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="560"/>
+        <location filename="../client/qml/Settings.qml" line="561"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
         <translation>Bilinmeyen kişilerden mesajları kabul et</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="456"/>
+        <location filename="../client/qml/Settings.qml" line="457"/>
         <source>Show notifications when connection changing</source>
         <comment>Settings option name</comment>
         <translation>Bağlantı değiştiğinde bildirim göster</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="276"/>
+        <location filename="../client/qml/Settings.qml" line="277"/>
         <source>Show new messages notifications</source>
         <comment>Settings option name</comment>
         <translation>Yeni mesaj bildirimlerini göster</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="290"/>
+        <location filename="../client/qml/Settings.qml" line="291"/>
         <source>Display messages text in notifications</source>
         <comment>Settings option name</comment>
         <translation>Bildirimlerde mesaj içeriğini göster</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="303"/>
+        <location filename="../client/qml/Settings.qml" line="304"/>
         <source>Private message</source>
         <comment>Settings page Private message tone selection</comment>
         <translation>Özel mesaj</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="310"/>
+        <location filename="../client/qml/Settings.qml" line="311"/>
         <source>Private message tone</source>
         <comment>Sound chooser description text</comment>
         <translation>Özel mesaj tonu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="364"/>
+        <location filename="../client/qml/Settings.qml" line="365"/>
         <source>Group message tone</source>
         <comment>Sound chooser description text</comment>
         <translation>Grup mesaj tonu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="413"/>
+        <location filename="../client/qml/Settings.qml" line="414"/>
         <source>Media message tone</source>
         <comment>Sound chooser description text</comment>
         <translation>Medya mesaj tonu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="357"/>
+        <location filename="../client/qml/Settings.qml" line="358"/>
         <source>Group message</source>
         <comment>Settings page Group message tone selection</comment>
         <translation>Grup mesajı</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="406"/>
+        <location filename="../client/qml/Settings.qml" line="407"/>
         <source>Media message</source>
         <comment>Settings page Media message tone selection</comment>
         <translation>Medya mesajı</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="565"/>
+        <location filename="../client/qml/Settings.qml" line="566"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
         <translation>Uygunluk</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="570"/>
+        <location filename="../client/qml/Settings.qml" line="571"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
         <translation>Uygunluk değiştir</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="573"/>
+        <location filename="../client/qml/Settings.qml" line="574"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
         <translation>Uygulama açık olduğunda çevrimiçi görün</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="580"/>
+        <location filename="../client/qml/Settings.qml" line="581"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
         <translation>Herzaman çevrimiçi görün</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="587"/>
+        <location filename="../client/qml/Settings.qml" line="588"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
         <translation>Herzaman çevrimdışı görün</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="600"/>
+        <location filename="../client/qml/Settings.qml" line="601"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
         <translation>Kapak</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="611"/>
+        <location filename="../client/qml/Settings.qml" line="612"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
         <translation>Sol kapak aksiyonu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="635"/>
+        <location filename="../client/qml/Settings.qml" line="636"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
         <translation>Sağ kapak aksiyonu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="652"/>
+        <location filename="../client/qml/Settings.qml" line="653"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
         <translation>Medya</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="688"/>
+        <location filename="../client/qml/Settings.qml" line="689"/>
         <source>Auto download on WLAN only</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="678"/>
+        <location filename="../client/qml/Settings.qml" line="679"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
         <translation>Oyomayik indir bytes</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="697"/>
+        <location filename="../client/qml/Settings.qml" line="698"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
         <translation>Gönderilen resmi yeiden boyutlandır</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="741"/>
+        <location filename="../client/qml/Settings.qml" line="742"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
         <translation>Resmin maksimum dosya boyutu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="775"/>
+        <location filename="../client/qml/Settings.qml" line="776"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
         <translation>Resmin maximum çözünürlülük boyutu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="777"/>
+        <location filename="../client/qml/Settings.qml" line="778"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
         <translation>%1 MPx</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="791"/>
+        <location filename="../client/qml/Settings.qml" line="792"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
         <translation>(*) ile işaretli ayarlar tekrar bağlantıdan sonra etki eder</translation>
@@ -2344,18 +2364,16 @@ Click Renew to purchase one year of WhatsApp service.</translation>
 <context>
     <name>StatusFeatures</name>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="58"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
         <source>System status</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <source>Email: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2367,12 +2385,12 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>available</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2384,66 +2402,68 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>unavailable</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <source>Last: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
         <source>Sync: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
         <source>Chat: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
         <source>Group: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
         <source>Multimedia: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
         <source>Online: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
         <source>Profile: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <source>Push: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <source>Registration: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
         <source>Broadcast: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
         <source>Status: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>Version: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -2630,7 +2650,13 @@ Click Renew to purchase one year of WhatsApp service.</translation>
 <context>
     <name>main</name>
     <message>
-        <location filename="../client/qml/main.qml" line="724"/>
+        <location filename="../client/qml/main.qml" line="455"/>
+        <source>Disconnecting</source>
+        <comment>Disconnect remorse popup</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/main.qml" line="762"/>
         <source>Server experiencing problems with following feature(s): %1</source>
         <translation type="unfinished"/>
     </message>

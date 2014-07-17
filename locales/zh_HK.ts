@@ -128,21 +128,26 @@
         <comment>Account page remove dialog description</comment>
         <translation>此動作會從電話和WhatsApp伺服器刪除你的帳號</translation>
     </message>
+    <message>
+        <location filename="../client/qml/Account.qml" line="302"/>
+        <source>No, remove only local information</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AddContact</name>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="63"/>
+        <location filename="../client/qml/AddContact.qml" line="62"/>
         <source>Add contact</source>
         <translation>新増聯絡人</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="79"/>
+        <location filename="../client/qml/AddContact.qml" line="78"/>
         <source>1234567890</source>
         <translation>1234567890</translation>
     </message>
     <message>
-        <location filename="../client/qml/AddContact.qml" line="98"/>
+        <location filename="../client/qml/AddContact.qml" line="97"/>
         <source>Enter contact name here</source>
         <translation>輸入聯絡人名稱</translation>
     </message>
@@ -150,57 +155,57 @@
 <context>
     <name>AvatarHistory</name>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="52"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="55"/>
         <source>Avatar</source>
         <translation>圖像</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="56"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="59"/>
         <source>Select picture</source>
         <translation>選擇圖片</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="66"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="69"/>
         <source>Take picture</source>
         <translation>影相</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="76"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="79"/>
         <source>Remove avatar</source>
         <translation>移除圖像</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="86"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="89"/>
         <source>History</source>
         <translation>歷史</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="115"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="118"/>
         <source>Save to Gallery</source>
         <translation>保存到圖片庫</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="119"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="122"/>
         <source>Avatar saved to; %1</source>
         <translation>圖像己保存; %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="126"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="129"/>
         <source>Delete</source>
         <translation>刪除</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="133"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="136"/>
         <source>Avatar history is empty</source>
         <translation>沒有圖像歷史</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="183"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="186"/>
         <source>Deleting avatar file</source>
         <translation>刪除圖像檔案</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="207"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="210"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
@@ -256,13 +261,13 @@
 <context>
     <name>Capture</name>
     <message>
-        <location filename="../client/qml/Capture.qml" line="67"/>
+        <location filename="../client/qml/Capture.qml" line="479"/>
         <source>Send</source>
         <comment>Capture page send title</comment>
         <translation>發送</translation>
     </message>
     <message>
-        <location filename="../client/qml/Capture.qml" line="68"/>
+        <location filename="../client/qml/Capture.qml" line="480"/>
         <source>Camera</source>
         <comment>Capture page default title</comment>
         <translation>相機</translation>
@@ -271,152 +276,151 @@
 <context>
     <name>ChatsPage</name>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="20"/>
+        <location filename="../client/qml/ChatsPage.qml" line="30"/>
         <source>Restart engine</source>
         <comment>Main menu action</comment>
         <translation>重啟引擎</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="21"/>
+        <location filename="../client/qml/ChatsPage.qml" line="31"/>
         <source>Force connect</source>
         <comment>Main menu action</comment>
         <translation>強制連線</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="22"/>
-        <location filename="../client/qml/ChatsPage.qml" line="23"/>
-        <location filename="../client/qml/ChatsPage.qml" line="24"/>
+        <location filename="../client/qml/ChatsPage.qml" line="32"/>
+        <location filename="../client/qml/ChatsPage.qml" line="33"/>
+        <location filename="../client/qml/ChatsPage.qml" line="34"/>
         <source>Disconnect</source>
         <comment>Main menu action</comment>
         <translation>中斷連線</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="25"/>
-        <location filename="../client/qml/ChatsPage.qml" line="28"/>
+        <location filename="../client/qml/ChatsPage.qml" line="35"/>
+        <location filename="../client/qml/ChatsPage.qml" line="38"/>
         <source>Register</source>
         <comment>Main menu action</comment>
         <translation>註冊</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="26"/>
+        <location filename="../client/qml/ChatsPage.qml" line="36"/>
         <source>Connect</source>
         <comment>Main menu action</comment>
         <translation>連線</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="27"/>
+        <location filename="../client/qml/ChatsPage.qml" line="37"/>
         <source>No action</source>
         <comment>Main menu action</comment>
         <translation>沒有行動</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="46"/>
+        <location filename="../client/qml/ChatsPage.qml" line="56"/>
         <source>Full quit</source>
         <comment>Main menu action</comment>
         <translation>完全離開</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="49"/>
+        <location filename="../client/qml/ChatsPage.qml" line="59"/>
         <source>Quit and shutdown engine</source>
         <comment>Full quit remorse popup</comment>
         <translation>離開和關掉引擎</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="65"/>
-        <source>Disconnecting</source>
-        <comment>Disconnect remorse popup</comment>
-        <translation>中斷連線中</translation>
-    </message>
-    <message>
-        <location filename="../client/qml/ChatsPage.qml" line="79"/>
+        <location filename="../client/qml/ChatsPage.qml" line="76"/>
         <source>Muted contacts</source>
         <comment>Main menu action</comment>
         <translation>靜音聯絡人</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="87"/>
+        <location filename="../client/qml/ChatsPage.qml" line="84"/>
         <source>Broadcast</source>
         <comment>Main menu action</comment>
         <translation>廣播</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="94"/>
+        <location filename="../client/qml/ChatsPage.qml" line="91"/>
         <source>Settings</source>
         <comment>Main menu item</comment>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="103"/>
+        <location filename="../client/qml/ChatsPage.qml" line="100"/>
         <source>Chats</source>
         <comment>Contacts page title</comment>
         <translation>對話</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="161"/>
+        <location filename="../client/qml/ChatsPage.qml" line="142"/>
+        <source>Flick left to access Contacts page</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ChatsPage.qml" line="173"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>退出群組 %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="154"/>
+        <location filename="../client/qml/ChatsPage.qml" line="166"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>刪除</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="169"/>
+        <location filename="../client/qml/ChatsPage.qml" line="181"/>
         <source>Delete group %1</source>
         <comment>Group delete remorse action text</comment>
         <translation>刪除群組 %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="333"/>
+        <location filename="../client/qml/ChatsPage.qml" line="345"/>
         <source>Typing...</source>
         <comment>Contact status typing text</comment>
         <translation>輸入中...</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="334"/>
+        <location filename="../client/qml/ChatsPage.qml" line="346"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>群組</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="353"/>
+        <location filename="../client/qml/ChatsPage.qml" line="365"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>資訊</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="370"/>
+        <location filename="../client/qml/ChatsPage.qml" line="382"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
         <translation>靜音</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="376"/>
+        <location filename="../client/qml/ChatsPage.qml" line="388"/>
         <source>Un-hide contact</source>
         <translation>解除隱藏聯絡人</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="376"/>
+        <location filename="../client/qml/ChatsPage.qml" line="388"/>
         <source>Hide contact</source>
         <translation>隱藏聯絡人</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="383"/>
+        <location filename="../client/qml/ChatsPage.qml" line="395"/>
         <source>Delete group</source>
         <comment>Contact context menu delete group item</comment>
         <translation>刪除群組</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="393"/>
+        <location filename="../client/qml/ChatsPage.qml" line="405"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>退出群組</translation>
     </message>
     <message>
-        <location filename="../client/qml/ChatsPage.qml" line="394"/>
+        <location filename="../client/qml/ChatsPage.qml" line="406"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>刪除</translation>
@@ -467,49 +471,49 @@
         <translation>系統</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="760"/>
+        <location filename="../server/src/client.cpp" line="761"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
         <translation>已連線</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1056"/>
+        <location filename="../server/src/client.cpp" line="1078"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>已隱藏</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1324"/>
+        <location filename="../server/src/client.cpp" line="1353"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>已加入群組</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1327"/>
+        <location filename="../server/src/client.cpp" line="1356"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>已退出群組</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1330"/>
+        <location filename="../server/src/client.cpp" line="1359"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>主題: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1333"/>
+        <location filename="../server/src/client.cpp" line="1362"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>圖標已改變</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1671"/>
+        <location filename="../server/src/client.cpp" line="1701"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>已中斷連線</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2830"/>
+        <location filename="../server/src/client.cpp" line="2865"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n 未讀訊息</numerusform></translation>
@@ -518,97 +522,102 @@
 <context>
     <name>ContactsPage</name>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="40"/>
+        <location filename="../client/qml/ContactsPage.qml" line="50"/>
         <source>Create group</source>
         <comment>Contacts page menu item</comment>
         <translation>新増群組</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="47"/>
+        <location filename="../client/qml/ContactsPage.qml" line="57"/>
         <source>Add contact</source>
         <comment>Contacts page menu item</comment>
         <translation>新増聯絡人</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="54"/>
+        <location filename="../client/qml/ContactsPage.qml" line="64"/>
         <source>Settings</source>
         <comment>Contacts page menu item</comment>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="63"/>
+        <location filename="../client/qml/ContactsPage.qml" line="73"/>
         <source>Contacts</source>
         <comment>Contacts page title</comment>
         <translation>聯絡人</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="72"/>
+        <location filename="../client/qml/ContactsPage.qml" line="82"/>
         <source>Search contacts</source>
         <comment>Contacts page search text</comment>
         <translation>搜尋聯絡人</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="130"/>
+        <location filename="../client/qml/ContactsPage.qml" line="155"/>
         <source>Leave group %1</source>
         <comment>Group leave remorse action text</comment>
         <translation>退出群組 %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="123"/>
+        <location filename="../client/qml/ContactsPage.qml" line="148"/>
         <source>Delete</source>
         <comment>Delete contact remorse action text</comment>
         <translation>刪除</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="33"/>
+        <location filename="../client/qml/ContactsPage.qml" line="43"/>
         <source>Blacklist</source>
         <comment>Contacts page menu item</comment>
         <translation>黑名單</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="138"/>
+        <location filename="../client/qml/ContactsPage.qml" line="125"/>
+        <source>Flick right to return to Chats page</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ContactsPage.qml" line="163"/>
         <source>Delete group %1</source>
         <comment>Group delete remorse action text</comment>
         <translation>刪除群組 %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="281"/>
+        <location filename="../client/qml/ContactsPage.qml" line="306"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation>群組</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="298"/>
+        <location filename="../client/qml/ContactsPage.qml" line="323"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation>資訊</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="316"/>
+        <location filename="../client/qml/ContactsPage.qml" line="341"/>
         <source>Refresh</source>
         <comment>Contact context menu refresh item</comment>
         <translation>重新整理</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="324"/>
+        <location filename="../client/qml/ContactsPage.qml" line="349"/>
         <source>Rename</source>
         <comment>Contact context menu profile item</comment>
         <translation>更改名稱</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="332"/>
+        <location filename="../client/qml/ContactsPage.qml" line="357"/>
         <source>Delete group</source>
         <comment>Contact context menu delete group item</comment>
         <translation>刪除群組</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="342"/>
+        <location filename="../client/qml/ContactsPage.qml" line="367"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation>退出群組</translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="343"/>
+        <location filename="../client/qml/ContactsPage.qml" line="368"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation>刪除</translation>
@@ -617,95 +626,100 @@
 <context>
     <name>ConversationPage</name>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="94"/>
+        <location filename="../client/qml/ConversationPage.qml" line="104"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
         <translation>你</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="253"/>
+        <location filename="../client/qml/ConversationPage.qml" line="263"/>
         <source>Clear all messages</source>
         <comment>Conversation menu item</comment>
         <translation>清除所有對話</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="255"/>
+        <location filename="../client/qml/ConversationPage.qml" line="265"/>
         <source>Clear all messages</source>
         <comment>Conversation delete all messages remorse popup</comment>
         <translation>清除所有對話</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="265"/>
+        <location filename="../client/qml/ConversationPage.qml" line="275"/>
         <source>Muting</source>
         <comment>Contacts context menu muting item</comment>
         <translation>靜音</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="271"/>
+        <location filename="../client/qml/ConversationPage.qml" line="281"/>
         <source>Load old conversation</source>
         <comment>Conversation menu item</comment>
         <translation>讀取之前對話</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="321"/>
+        <location filename="../client/qml/ConversationPage.qml" line="331"/>
         <source>Enable location in settings!</source>
         <comment>Banner text if GPS disabled in settings</comment>
         <translation>啟動位置設定 !</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="353"/>
+        <location filename="../client/qml/ConversationPage.qml" line="363"/>
         <source>Hold button for recording, release to send</source>
         <comment>Conversation voice recorder description label</comment>
         <translation>Hold button for recording, release to send</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="474"/>
+        <location filename="../client/qml/ConversationPage.qml" line="486"/>
         <source>Typing...</source>
         <comment>Contact typing converstation text</comment>
         <translation>輸入中...</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="79"/>
+        <location filename="../client/qml/ConversationPage.qml" line="89"/>
         <source>Last seen: %1</source>
         <comment>Last seen converstation text</comment>
         <translation>最後上線: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="77"/>
+        <location filename="../client/qml/ConversationPage.qml" line="87"/>
         <source>Contact blocked you</source>
         <translation>你已被聯絡人封鎖</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="78"/>
+        <location filename="../client/qml/ConversationPage.qml" line="88"/>
         <source>Last online: hidden</source>
         <translation>最後上線: 隱藏</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="408"/>
+        <location filename="../client/qml/ConversationPage.qml" line="420"/>
         <source>Release to delete</source>
         <comment>Conversation voice recorder delete label</comment>
         <translation>放開刪除</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="409"/>
+        <location filename="../client/qml/ConversationPage.qml" line="421"/>
         <source>Release to send</source>
         <comment>Conversation voice recorder delete label</comment>
         <translation>放開傳送</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="538"/>
+        <location filename="../client/qml/ConversationPage.qml" line="550"/>
         <source>New message</source>
         <comment>Conversation new message indicator</comment>
         <translation>新訊息</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="587"/>
+        <location filename="../client/qml/ConversationPage.qml" line="600"/>
         <source>Tap here to enter message</source>
         <comment>Message composing tet area placeholder</comment>
         <translation>在此輸入</translation>
     </message>
     <message>
-        <location filename="../client/qml/ConversationPage.qml" line="814"/>
+        <location filename="../client/qml/ConversationPage.qml" line="705"/>
+        <source>Flick left to access Contact details</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/ConversationPage.qml" line="842"/>
         <source>Waiting for coordinates...</source>
         <comment>Conversation location sending banner text</comment>
         <translation>定位中...</translation>
@@ -800,83 +814,83 @@
 <context>
     <name>GroupProfile</name>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="57"/>
+        <location filename="../client/qml/GroupProfile.qml" line="58"/>
         <source>You</source>
         <comment>Display You instead of your own nickname</comment>
         <translation>你</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="166"/>
+        <location filename="../client/qml/GroupProfile.qml" line="167"/>
         <source>Save chat history</source>
         <comment>Group profile page menu item</comment>
         <translation>保存歷史對話</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="169"/>
+        <location filename="../client/qml/GroupProfile.qml" line="170"/>
         <source>History saved to Documents</source>
         <comment>Banner notification text</comment>
         <translation>歷史對話已保存</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="139"/>
+        <location filename="../client/qml/GroupProfile.qml" line="140"/>
         <source>Add contacts</source>
         <comment>Group profile page menu item</comment>
         <translation>新増聯絡人</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="151"/>
+        <location filename="../client/qml/GroupProfile.qml" line="152"/>
         <source>Change background</source>
         <translation>更改背景</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="158"/>
+        <location filename="../client/qml/GroupProfile.qml" line="159"/>
         <source>Clear background</source>
         <translation>移除背景</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="176"/>
+        <location filename="../client/qml/GroupProfile.qml" line="177"/>
         <source>Group profile</source>
         <comment>Group profile page title</comment>
         <translation>群組資訊</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="187"/>
+        <location filename="../client/qml/GroupProfile.qml" line="188"/>
         <source>Subject: </source>
         <comment>Group profile subject label</comment>
         <translation>主題:</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="246"/>
+        <location filename="../client/qml/GroupProfile.qml" line="247"/>
         <source>Owner: %1</source>
         <comment>Group profile owner label</comment>
         <translation>群組管理員: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="260"/>
+        <location filename="../client/qml/GroupProfile.qml" line="261"/>
         <source>Creation: %1</source>
         <comment>Group profile creation label</comment>
         <translation>建立: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="274"/>
+        <location filename="../client/qml/GroupProfile.qml" line="275"/>
         <source>Subject by: %1</source>
         <comment>Group profile subject owner label</comment>
         <translation>主題命名: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="288"/>
+        <location filename="../client/qml/GroupProfile.qml" line="289"/>
         <source>Subject set: %1</source>
         <comment>Group profile subject timestamp label</comment>
         <translation>主題建立: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="317"/>
+        <location filename="../client/qml/GroupProfile.qml" line="318"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
         <translation>已達群組成員上限</translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="349"/>
+        <location filename="../client/qml/GroupProfile.qml" line="350"/>
         <source>Fetching participants...</source>
         <comment>Group profile loading text</comment>
         <translation>讀取成員中...</translation>
@@ -921,61 +935,61 @@
 <context>
     <name>MediaSelector</name>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="31"/>
+        <location filename="../client/qml/MediaSelector.qml" line="33"/>
         <source>You should select files to send!</source>
         <comment>Media page cant accept feedback</comment>
         <translation>你需要選擇檔案發送！</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/MediaSelector.qml" line="95"/>
+        <location filename="../client/qml/MediaSelector.qml" line="106"/>
         <source>Images selected: %n</source>
         <comment>Media selection page title text</comment>
         <translation><numerusform>圖片已選: %n</numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="95"/>
+        <location filename="../client/qml/MediaSelector.qml" line="106"/>
         <source>Image selected</source>
         <comment>Media selection page title text</comment>
         <translation>圖片已選</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/MediaSelector.qml" line="96"/>
+        <location filename="../client/qml/MediaSelector.qml" line="107"/>
         <source>Audio selected: %n</source>
         <comment>Media selection page title text</comment>
         <translation><numerusform>音樂已選: %n</numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="96"/>
+        <location filename="../client/qml/MediaSelector.qml" line="107"/>
         <source>Audio selected</source>
         <comment>Media selection page title text</comment>
         <translation>音樂已選</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/MediaSelector.qml" line="97"/>
+        <location filename="../client/qml/MediaSelector.qml" line="108"/>
         <source>Video selected: %n</source>
         <comment>Media selection page title text</comment>
         <translation><numerusform>影片已選: %n</numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="97"/>
+        <location filename="../client/qml/MediaSelector.qml" line="108"/>
         <source>Video selected</source>
         <comment>Media selection page title text</comment>
         <translation>影片已選</translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="98"/>
+        <location filename="../client/qml/MediaSelector.qml" line="109"/>
         <source>Images</source>
         <comment>Media selection page title text</comment>
         <translation>圖片</translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="99"/>
+        <location filename="../client/qml/MediaSelector.qml" line="110"/>
         <source>Audio</source>
         <comment>Media selection page title text</comment>
         <translation>音樂</translation>
     </message>
     <message>
-        <location filename="../client/qml/MediaSelector.qml" line="100"/>
+        <location filename="../client/qml/MediaSelector.qml" line="111"/>
         <source>Video</source>
         <comment>Media selection page title text</comment>
         <translation>影片</translation>
@@ -993,61 +1007,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="287"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="288"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation>不明</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="290"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="291"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation>等待連線中</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="293"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="294"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation>連線中...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="296"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="297"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation>認證中...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="299"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="300"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation>己登入</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="303"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation>登入失敗 !</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="306"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation>已中斷連線</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="309"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation>註冊中...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="312"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation>註冊失敗 !</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="315"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation>帳號已到期 !</translation>
@@ -1851,474 +1865,480 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <translation>發送文字</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="62"/>
+        <location filename="../client/qml/Settings.qml" line="63"/>
         <source>About</source>
         <comment>Settings page menu item</comment>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="86"/>
+        <location filename="../client/qml/Settings.qml" line="87"/>
         <source>Send logfile to author</source>
         <comment>Settings page menu item</comment>
         <translation>傳送logfile給作者</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="80"/>
+        <location filename="../client/qml/Settings.qml" line="81"/>
         <source>Account</source>
         <comment>Settings page menu item</comment>
         <translation>帳號</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="74"/>
+        <location filename="../client/qml/Settings.qml" line="34"/>
+        <source>Connect/Disconnect</source>
+        <comment>Settings cover action name text</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="75"/>
         <source>Traffic counter</source>
         <comment>Settings page menu item</comment>
         <translation>上網流量</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="101"/>
+        <location filename="../client/qml/Settings.qml" line="102"/>
         <source>Settings</source>
         <comment>Settings page title</comment>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="105"/>
+        <location filename="../client/qml/Settings.qml" line="106"/>
         <source>Conversation</source>
         <comment>Settings page section name</comment>
         <translation>對話</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="153"/>
+        <location filename="../client/qml/Settings.qml" line="154"/>
         <source>Show sent messages at left side</source>
         <comment>Settings option name</comment>
         <translation>顯示己發送的訊息在左方</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="159"/>
+        <location filename="../client/qml/Settings.qml" line="160"/>
         <source>Vibrate in active conversation</source>
         <comment>Settings option name</comment>
         <translation>在進行中的對話使用振動</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="166"/>
+        <location filename="../client/qml/Settings.qml" line="167"/>
         <source>Show messages timestamp</source>
         <comment>Settings option name</comment>
         <translation>顯示訊息時間</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="173"/>
+        <location filename="../client/qml/Settings.qml" line="174"/>
         <source>Show seconds in messages timestamp</source>
         <comment>Settings option name</comment>
         <translation>在訊息時間顯示秒</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="181"/>
+        <location filename="../client/qml/Settings.qml" line="182"/>
         <source>Send messages by Enter</source>
         <comment>Settings option name</comment>
         <translation>使用輸入鍵發送訊息</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="187"/>
+        <location filename="../client/qml/Settings.qml" line="188"/>
         <source>Automatically show keyboard when opening conversation</source>
         <comment>Settings option name</comment>
         <translation>當打開對話時，自動彈出鍵盤</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="193"/>
+        <location filename="../client/qml/Settings.qml" line="194"/>
         <source>Hide keyboard after sending message</source>
         <comment>Settings option name</comment>
         <translation>發送訊息後，隱藏鍵盤</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="205"/>
+        <location filename="../client/qml/Settings.qml" line="206"/>
         <source>Map source</source>
         <comment>Settings option name</comment>
         <translation>地圖來源</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="238"/>
+        <location filename="../client/qml/Settings.qml" line="239"/>
         <source>Here</source>
         <comment>Map source selection</comment>
         <translation>Here</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="239"/>
+        <location filename="../client/qml/Settings.qml" line="240"/>
         <source>Nokia</source>
         <comment>Map source selection</comment>
         <translation>Nokia</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="240"/>
+        <location filename="../client/qml/Settings.qml" line="241"/>
         <source>Google</source>
         <comment>Map source selection</comment>
         <translation>Google</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="241"/>
+        <location filename="../client/qml/Settings.qml" line="242"/>
         <source>OpenStreetMaps</source>
         <comment>Map source selection</comment>
         <translation>OpenStreetMaps</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="242"/>
+        <location filename="../client/qml/Settings.qml" line="243"/>
         <source>Bing</source>
         <comment>Map source selection</comment>
         <translation>Bing</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="243"/>
+        <location filename="../client/qml/Settings.qml" line="244"/>
         <source>MapQuest</source>
         <comment>Map source selection</comment>
         <translation>MapQuest</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="244"/>
+        <location filename="../client/qml/Settings.qml" line="245"/>
         <source>Yandex</source>
         <comment>Map source selection</comment>
         <translation>Yandex</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="245"/>
+        <location filename="../client/qml/Settings.qml" line="246"/>
         <source>Yandex usermap</source>
         <comment>Map source selection</comment>
         <translation>Yandex usermap</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="246"/>
+        <location filename="../client/qml/Settings.qml" line="247"/>
         <source>2Gis</source>
         <comment>Map source selection</comment>
         <translation>2Gis</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="297"/>
+        <location filename="../client/qml/Settings.qml" line="298"/>
         <source>Use system Chat notifier</source>
         <comment>Settings option name</comment>
         <translation>使用系統提示</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="546"/>
+        <location filename="../client/qml/Settings.qml" line="547"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
         <translation>下載媒體到圖片庫</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="547"/>
+        <location filename="../client/qml/Settings.qml" line="548"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
         <translation>下載的檔案會顯示在圖片庫</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="255"/>
+        <location filename="../client/qml/Settings.qml" line="256"/>
         <source>Chat font size</source>
         <comment>Settings option name</comment>
         <translation>聊天字體大小</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="68"/>
+        <location filename="../client/qml/Settings.qml" line="69"/>
         <source>System status</source>
         <comment>Settings page menu item</comment>
         <translation>系統狀態</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="257"/>
+        <location filename="../client/qml/Settings.qml" line="258"/>
         <source>%1 px</source>
         <comment>Settings option value label</comment>
         <translation>%1 px</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="264"/>
+        <location filename="../client/qml/Settings.qml" line="265"/>
         <source>Notifications</source>
         <comment>Settings page section name</comment>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="461"/>
+        <location filename="../client/qml/Settings.qml" line="462"/>
         <source>Common</source>
         <comment>Settings page section name</comment>
         <translation>常用</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="708"/>
+        <location filename="../client/qml/Settings.qml" line="709"/>
         <source>Don&apos;t resize on WLAN</source>
         <comment>Settings option name</comment>
         <translation>不許在無線網絡縮放圖片</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="803"/>
+        <location filename="../client/qml/Settings.qml" line="804"/>
         <source>red</source>
         <comment>Pattern led color</comment>
         <translation>紅色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="804"/>
+        <location filename="../client/qml/Settings.qml" line="805"/>
         <source>green</source>
         <comment>Pattern led color</comment>
         <translation>綠色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="805"/>
+        <location filename="../client/qml/Settings.qml" line="806"/>
         <source>blue</source>
         <comment>Pattern led color</comment>
         <translation>藍色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="806"/>
+        <location filename="../client/qml/Settings.qml" line="807"/>
         <source>white</source>
         <comment>Pattern led color</comment>
         <translation>白色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="807"/>
+        <location filename="../client/qml/Settings.qml" line="808"/>
         <source>yellow</source>
         <comment>Pattern led color</comment>
         <translation>黃色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="808"/>
+        <location filename="../client/qml/Settings.qml" line="809"/>
         <source>cyan</source>
         <comment>Pattern led color</comment>
         <translation>淺藍色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="809"/>
+        <location filename="../client/qml/Settings.qml" line="810"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
         <translation>粉紅色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="305"/>
+        <location filename="../client/qml/Settings.qml" line="306"/>
         <source>no sound</source>
         <comment>Private message tone not set</comment>
         <translation>無聲</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="327"/>
+        <location filename="../client/qml/Settings.qml" line="328"/>
         <source>Private message color</source>
         <comment>Settings page Private message color selection</comment>
         <translation>私人訊息提示顏色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="359"/>
+        <location filename="../client/qml/Settings.qml" line="360"/>
         <source>no sound</source>
         <comment>Group message tone not set</comment>
         <translation>無聲</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="379"/>
+        <location filename="../client/qml/Settings.qml" line="380"/>
         <source>Group message color</source>
         <comment>Settings page Group message color selection</comment>
         <translation>群組訊息提示顏色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="408"/>
+        <location filename="../client/qml/Settings.qml" line="409"/>
         <source>no sound</source>
         <comment>Medi message tone not set</comment>
         <translation>無聲</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="428"/>
+        <location filename="../client/qml/Settings.qml" line="429"/>
         <source>Media message color</source>
         <comment>Settings page Media message color selection</comment>
         <translation>媒體訊息提示顏色</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="465"/>
+        <location filename="../client/qml/Settings.qml" line="466"/>
         <source>Language</source>
         <translation>語言</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="478"/>
+        <location filename="../client/qml/Settings.qml" line="479"/>
         <source>Restart application to change language</source>
         <comment>Language changing banner text</comment>
         <translation>重新啟動以更改語言</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="489"/>
+        <location filename="../client/qml/Settings.qml" line="490"/>
         <source>Connection server</source>
         <comment>Settings option name</comment>
         <translation>連線伺服器</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="527"/>
+        <location filename="../client/qml/Settings.qml" line="528"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
         <translation>自動開始</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="535"/>
+        <location filename="../client/qml/Settings.qml" line="536"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
         <translation>允許保存程式記錄</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="539"/>
+        <location filename="../client/qml/Settings.qml" line="540"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
         <translation>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="231"/>
+        <location filename="../client/qml/Settings.qml" line="232"/>
         <source>Lock conversation orientation in portrait</source>
         <comment>Settings option name</comment>
         <translation>直立模式</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="554"/>
+        <location filename="../client/qml/Settings.qml" line="555"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
         <translation>顯示自己在聯絡人</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="560"/>
+        <location filename="../client/qml/Settings.qml" line="561"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
         <translation>接受不知名的訊息</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="456"/>
+        <location filename="../client/qml/Settings.qml" line="457"/>
         <source>Show notifications when connection changing</source>
         <comment>Settings option name</comment>
         <translation>當連線改變，顯示提示</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="276"/>
+        <location filename="../client/qml/Settings.qml" line="277"/>
         <source>Show new messages notifications</source>
         <comment>Settings option name</comment>
         <translation>顯示新訊息提示</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="290"/>
+        <location filename="../client/qml/Settings.qml" line="291"/>
         <source>Display messages text in notifications</source>
         <comment>Settings option name</comment>
         <translation>顯示訊息內容提示</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="303"/>
+        <location filename="../client/qml/Settings.qml" line="304"/>
         <source>Private message</source>
         <comment>Settings page Private message tone selection</comment>
         <translation>私人訊息</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="310"/>
+        <location filename="../client/qml/Settings.qml" line="311"/>
         <source>Private message tone</source>
         <comment>Sound chooser description text</comment>
         <translation>私人訊息鈴聲</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="364"/>
+        <location filename="../client/qml/Settings.qml" line="365"/>
         <source>Group message tone</source>
         <comment>Sound chooser description text</comment>
         <translation>群組訊息鈴聲</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="413"/>
+        <location filename="../client/qml/Settings.qml" line="414"/>
         <source>Media message tone</source>
         <comment>Sound chooser description text</comment>
         <translation>媒體訊息鈴聲</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="357"/>
+        <location filename="../client/qml/Settings.qml" line="358"/>
         <source>Group message</source>
         <comment>Settings page Group message tone selection</comment>
         <translation>群組訊息</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="406"/>
+        <location filename="../client/qml/Settings.qml" line="407"/>
         <source>Media message</source>
         <comment>Settings page Media message tone selection</comment>
         <translation>媒體訊息</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="565"/>
+        <location filename="../client/qml/Settings.qml" line="566"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
         <translation>狀態</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="570"/>
+        <location filename="../client/qml/Settings.qml" line="571"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
         <translation>顯示狀態</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="573"/>
+        <location filename="../client/qml/Settings.qml" line="574"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
         <translation>當app彈出，顯示為上線</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="580"/>
+        <location filename="../client/qml/Settings.qml" line="581"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
         <translation>長期上線</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="587"/>
+        <location filename="../client/qml/Settings.qml" line="588"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
         <translation>長期離線</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="600"/>
+        <location filename="../client/qml/Settings.qml" line="601"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
         <translation>Cover</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="611"/>
+        <location filename="../client/qml/Settings.qml" line="612"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
         <translation>左方Cover行動</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="635"/>
+        <location filename="../client/qml/Settings.qml" line="636"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
         <translation>右方Cover行動</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="652"/>
+        <location filename="../client/qml/Settings.qml" line="653"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
         <translation>媒體</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="688"/>
+        <location filename="../client/qml/Settings.qml" line="689"/>
         <source>Auto download on WLAN only</source>
         <comment>Settings option name</comment>
         <translation>只能在無線網絡自動下載</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="678"/>
+        <location filename="../client/qml/Settings.qml" line="679"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
         <translation>自動下載bytes</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="697"/>
+        <location filename="../client/qml/Settings.qml" line="698"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
         <translation>更改傳送圖片的大小</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="741"/>
+        <location filename="../client/qml/Settings.qml" line="742"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
         <translation>由檔案大小, 最大化圖片大小</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="775"/>
+        <location filename="../client/qml/Settings.qml" line="776"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
         <translation>由解象度大小, 最大化圖片大小</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="777"/>
+        <location filename="../client/qml/Settings.qml" line="778"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
         <translation>%1 MPx</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="791"/>
+        <location filename="../client/qml/Settings.qml" line="792"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
         <translation>Options marked with (*) will take effect after reconnection</translation>
@@ -2342,18 +2362,16 @@ Click Renew to purchase one year of WhatsApp service.</source>
 <context>
     <name>StatusFeatures</name>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="58"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
         <source>System status</source>
         <translation>系統狀態</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <source>Email: %1</source>
         <translation>Email: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2365,12 +2383,12 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>available</source>
         <translation>available</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="60"/>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
         <location filename="../client/qml/StatusFeatures.qml" line="62"/>
         <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <location filename="../client/qml/StatusFeatures.qml" line="64"/>
@@ -2382,66 +2400,68 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>unavailable</source>
         <translation>unavailable</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="61"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
         <source>Last: %1</source>
         <translation>最後: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="62"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
         <source>Sync: %1</source>
         <translation>同步: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="63"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
         <source>Chat: %1</source>
         <translation>聯天: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="64"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
         <source>Group: %1</source>
         <translation>群組: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="65"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
         <source>Multimedia: %1</source>
         <translation>多媒體: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="66"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
         <source>Online: %1</source>
         <translation>上線: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="67"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
         <source>Profile: %1</source>
         <translation>資訊: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="68"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
         <source>Push: %1</source>
         <translation>Push: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="69"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
         <source>Registration: %1</source>
         <translation>註冊: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="70"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
         <source>Broadcast: %1</source>
         <translation>廣播: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="71"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="73"/>
         <source>Status: %1</source>
         <translation>狀態: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/StatusFeatures.qml" line="72"/>
+        <location filename="../client/qml/StatusFeatures.qml" line="74"/>
         <source>Version: %1</source>
         <translation>版本: %1</translation>
     </message>
@@ -2628,7 +2648,13 @@ Click Renew to purchase one year of WhatsApp service.</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../client/qml/main.qml" line="724"/>
+        <location filename="../client/qml/main.qml" line="455"/>
+        <source>Disconnecting</source>
+        <comment>Disconnect remorse popup</comment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/main.qml" line="762"/>
         <source>Server experiencing problems with following feature(s): %1</source>
         <translation>Server experiencing problems with following feature(s): %1</translation>
     </message>
