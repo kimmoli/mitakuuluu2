@@ -1359,7 +1359,7 @@ void Mitakuuluu::setCamera(QObject *camera)
 bool Mitakuuluu::locationEnabled()
 {
     QSettings location("/etc/location/location.conf", QSettings::IniFormat);
-    return location.value("location/enabled", false);
+    return location.value("location/enabled", false).toBool();
 }
 
 // Settings
