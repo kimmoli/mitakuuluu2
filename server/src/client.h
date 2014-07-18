@@ -511,6 +511,9 @@ private:
     MNotification *offlineNotificationsNotification;
     void updateNotification(const QString &text);
 
+    qint64 lastDisconnect;
+    int disconnectCount;
+
     QVariantMap _mediaProgress;
 
     QString uuid;

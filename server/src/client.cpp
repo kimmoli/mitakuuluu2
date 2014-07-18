@@ -164,6 +164,8 @@ Client::Client(QObject *parent) : QObject(parent)
     connectionThread = 0;
     contactManager = 0;
     connectionNotification = 0;
+    disconnectCount = 0;
+    lastDisconnect = 0;
 
     _privacy = QVariantMap();
     _totalUnread = 0;
@@ -956,9 +958,22 @@ void Client::disconnected()
     dataCounters.writeCounters();
 
     if (connectionStatus != Disconnected) {
+        qint64 now = QDateTime::currentMSecsSinceEpoch();
         connectionStatus = Disconnected;
         Q_EMIT connectionStatusChanged(connectionStatus);
-        networkStatusChanged(isOnline);
+        if (now - lastDisconnect < 60000*5) {
+            disconnectCount++;
+            if (disconnectCount < 5) {
+                networkStatusChanged(isOnline);
+            }
+        }
+        else {
+            disconnectCount = 0;
+        }
+        lastDisconnect = now;
+    }
+    else {
+        disconnectCount = 0;
     }
 }
 
