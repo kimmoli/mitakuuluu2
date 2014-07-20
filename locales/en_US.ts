@@ -131,7 +131,7 @@
     <message>
         <location filename="../client/qml/Account.qml" line="302"/>
         <source>No, remove only local information</source>
-        <translation type="unfinished"/>
+        <translation>No, just remove local information</translation>
     </message>
 </context>
 <context>
@@ -353,7 +353,7 @@
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="142"/>
         <source>Flick left to access Contacts page</source>
-        <translation type="unfinished"/>
+        <translation>Flick left to go to Contacts page</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="173"/>
@@ -572,7 +572,7 @@
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="125"/>
         <source>Flick right to return to Chats page</source>
-        <translation type="unfinished"/>
+        <translation>Flick right to go back to Chats page</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="163"/>
@@ -716,7 +716,7 @@
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="705"/>
         <source>Flick left to access Contact details</source>
-        <translation type="unfinished"/>
+        <translation>Flick left to access Contact&apos;s Info page</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="842"/>
@@ -1888,7 +1888,7 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/Settings.qml" line="34"/>
         <source>Connect/Disconnect</source>
         <comment>Settings cover action name text</comment>
-        <translation type="unfinished"/>
+        <translation>Connect/Disconnect</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="75"/>
@@ -2653,7 +2653,7 @@ Click Renew to purchase one year of WhatsApp service.</translation>
         <location filename="../client/qml/main.qml" line="455"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
-        <translation type="unfinished"/>
+        <translation>Disconnecting</translation>
     </message>
     <message>
         <location filename="../client/qml/main.qml" line="762"/>

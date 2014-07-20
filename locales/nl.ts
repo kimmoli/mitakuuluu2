@@ -131,7 +131,7 @@
     <message>
         <location filename="../client/qml/Account.qml" line="302"/>
         <source>No, remove only local information</source>
-        <translation type="unfinished"/>
+        <translation>Nee, verwijder alleen lokale informatie</translation>
     </message>
 </context>
 <context>
@@ -353,7 +353,7 @@
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="142"/>
         <source>Flick left to access Contacts page</source>
-        <translation type="unfinished"/>
+        <translation>Veeg naar links om contactenpagina te zien</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="173"/>
@@ -572,7 +572,7 @@
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="125"/>
         <source>Flick right to return to Chats page</source>
-        <translation type="unfinished"/>
+        <translation>Veeg naar rechts om chatpagina te zien</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="163"/>
@@ -716,7 +716,7 @@
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="705"/>
         <source>Flick left to access Contact details</source>
-        <translation type="unfinished"/>
+        <translation>Veeg naar links om contactdetails te zien</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="842"/>
@@ -1887,7 +1887,7 @@ Klik op &quot;Vernieuw&quot; om met een jaar te verlengen.</translation>
         <location filename="../client/qml/Settings.qml" line="34"/>
         <source>Connect/Disconnect</source>
         <comment>Settings cover action name text</comment>
-        <translation type="unfinished"/>
+        <translation>Verbinden/verbreken</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="75"/>
@@ -2652,7 +2652,7 @@ Klik op &quot;Vernieuw&quot; om met een jaar te verlengen.</translation>
         <location filename="../client/qml/main.qml" line="455"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
-        <translation type="unfinished"/>
+        <translation>Verbreken</translation>
     </message>
     <message>
         <location filename="../client/qml/main.qml" line="762"/>

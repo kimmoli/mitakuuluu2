@@ -131,7 +131,7 @@
     <message>
         <location filename="../client/qml/Account.qml" line="302"/>
         <source>No, remove only local information</source>
-        <translation type="unfinished"/>
+        <translation>Non, supprimer seulement l&apos;information du terminal</translation>
     </message>
 </context>
 <context>
@@ -353,7 +353,7 @@
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="142"/>
         <source>Flick left to access Contacts page</source>
-        <translation type="unfinished"/>
+        <translation>Glisser à gauche pour accéder à la page de Contacts</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="173"/>
@@ -572,7 +572,7 @@
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="125"/>
         <source>Flick right to return to Chats page</source>
-        <translation type="unfinished"/>
+        <translation>Glisser à droite pour retourner à la page de Chat</translation>
     </message>
     <message>
         <location filename="../client/qml/ContactsPage.qml" line="163"/>
@@ -716,7 +716,7 @@
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="705"/>
         <source>Flick left to access Contact details</source>
-        <translation type="unfinished"/>
+        <translation>Glisser à gauche pour accéder aux détails du contact</translation>
     </message>
     <message>
         <location filename="../client/qml/ConversationPage.qml" line="842"/>
@@ -1365,7 +1365,7 @@
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="123"/>
         <source>If you don&apos;t share your Last seen, you won&apos;t be able to see other people&apos;s Last seen</source>
-        <translation>Si vous ne partagez pas votre statut &apos;Vue en dernier&apos;, vous ne pourrez pas voir ce statut pour les autres personnes</translation>
+        <translation>Si vous ne partagez pas votre statut &apos;Vu en dernier&apos;, vous ne pourrez pas voir ce statut pour les autres personnes</translation>
     </message>
     <message>
         <location filename="../client/qml/PrivacySettings.qml" line="139"/>
@@ -1888,7 +1888,7 @@ Cliquer sur Renouveller pour acheter un an de service à WhatsApp.</translation>
         <location filename="../client/qml/Settings.qml" line="34"/>
         <source>Connect/Disconnect</source>
         <comment>Settings cover action name text</comment>
-        <translation type="unfinished"/>
+        <translation>Connecter/Déconnecter</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="75"/>
@@ -2653,7 +2653,7 @@ Cliquer sur Renouveller pour acheter un an de service à WhatsApp.</translation>
         <location filename="../client/qml/main.qml" line="455"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
-        <translation type="unfinished"/>
+        <translation>Déconnexion</translation>
     </message>
     <message>
         <location filename="../client/qml/main.qml" line="762"/>

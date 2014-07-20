@@ -1028,7 +1028,7 @@
         <location filename="../client/src/mitakuuluu.cpp" line="297"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
-        <translation>Autenticazione in corso...</translation>
+        <translation>Accesso...</translation>
     </message>
     <message>
         <location filename="../client/src/mitakuuluu.cpp" line="300"/>

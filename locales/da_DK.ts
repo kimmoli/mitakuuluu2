@@ -318,7 +318,7 @@
         <location filename="../client/qml/ChatsPage.qml" line="56"/>
         <source>Full quit</source>
         <comment>Main menu action</comment>
-        <translation type="unfinished"/>
+        <translation>Luk alt</translation>
     </message>
     <message>
         <location filename="../client/qml/ChatsPage.qml" line="59"/>
@@ -1566,7 +1566,7 @@ Før du skifter til Mitakuuluu fra den officielle applikation, skal du benytte &
         <location filename="../client/qml/RegistrationPage.qml" line="302"/>
         <source>You should select country first!</source>
         <comment>Registration banner text</comment>
-        <translation type="unfinished"/>
+        <translation>Vælg land først!</translation>
     </message>
     <message>
         <location filename="../client/qml/RegistrationPage.qml" line="320"/>
@@ -1881,7 +1881,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <location filename="../client/qml/Settings.qml" line="34"/>
         <source>Connect/Disconnect</source>
         <comment>Settings cover action name text</comment>
-        <translation type="unfinished"/>
+        <translation>Tilslut / Afbryd</translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="75"/>
@@ -2423,7 +2423,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="67"/>
         <source>Multimedia: %1</source>
-        <translation type="unfinished"/>
+        <translation>Multimedia: %1</translation>
     </message>
     <message>
         <location filename="../client/qml/StatusFeatures.qml" line="68"/>
