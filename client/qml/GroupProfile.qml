@@ -409,8 +409,10 @@ Page {
             }
 
             onPressAndHold: {
-                pageStack.pop()
-                conversationPage.addMention(model.jid)
+                if (pageStack.previousPage(page).objectName === "conversationPage") {
+                    pageStack.navigateBack()
+                    conversationPage.addMention(model.jid)
+                }
             }
 
             onClicked: {
