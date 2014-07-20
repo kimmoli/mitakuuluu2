@@ -952,6 +952,7 @@ void Client::connected()
 void Client::disconnected()
 {
     qDebug() << "Client disconnected";
+    updateNotification(tr("Disconnected", "System connection notification"));
 
     connectionPtr.take();
 
@@ -1713,7 +1714,6 @@ void Client::disconnect()
     connectionStatus = Disconnected;
     Q_EMIT connectionDisconnect();
     Q_EMIT connectionStatusChanged(connectionStatus);
-    updateNotification(tr("Disconnected", "System connection notification"));
 }
 
 void Client::getNetworkUsage()
