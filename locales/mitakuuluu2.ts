@@ -41,103 +41,103 @@
 <context>
     <name>Account</name>
     <message>
-        <location filename="../client/qml/Account.qml" line="41"/>
+        <location filename="../client/qml/Account.qml" line="49"/>
         <source>You should be online!</source>
         <comment>Account page cant accept feedback</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="106"/>
+        <location filename="../client/qml/Account.qml" line="114"/>
         <source>Remove account</source>
         <comment>Account page menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="107"/>
+        <location filename="../client/qml/Account.qml" line="115"/>
         <source>Remove local data</source>
         <comment>Account page menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="118"/>
+        <location filename="../client/qml/Account.qml" line="126"/>
         <source>Renew subscription</source>
         <comment>Account page menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="125"/>
+        <location filename="../client/qml/Account.qml" line="133"/>
         <source>Privacy settings</source>
         <comment>Account page menu item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="135"/>
+        <location filename="../client/qml/Account.qml" line="143"/>
         <source>Account</source>
         <comment>Account page title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="136"/>
+        <location filename="../client/qml/Account.qml" line="144"/>
         <source>Save</source>
         <comment>Account page accept button text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="141"/>
+        <location filename="../client/qml/Account.qml" line="149"/>
         <source>Nickname:</source>
         <comment>Account page nickname title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="174"/>
+        <location filename="../client/qml/Account.qml" line="182"/>
         <source>Status:</source>
         <comment>Account page status title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="207"/>
+        <location filename="../client/qml/Account.qml" line="215"/>
         <source>Created: %1</source>
         <comment>Account page created title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="221"/>
+        <location filename="../client/qml/Account.qml" line="229"/>
         <source>Expiration: %1</source>
         <comment>Account page expiration title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="235"/>
+        <location filename="../client/qml/Account.qml" line="243"/>
         <source>Account is active</source>
         <comment>Account page account active label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="236"/>
+        <location filename="../client/qml/Account.qml" line="244"/>
         <source>Account is blocked</source>
         <comment>Account page account blocked label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="250"/>
+        <location filename="../client/qml/Account.qml" line="258"/>
         <source>Account type: %1</source>
         <comment>Account page account type label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="293"/>
+        <location filename="../client/qml/Account.qml" line="301"/>
         <source>Remove account</source>
         <comment>Account page remove dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="301"/>
+        <location filename="../client/qml/Account.qml" line="309"/>
         <source>This action will delete your account information from phone and from WhatsApp server.</source>
         <comment>Account page remove dialog description</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="307"/>
+        <location filename="../client/qml/Account.qml" line="315"/>
         <source>No, remove only local information</source>
         <translation type="unfinished"></translation>
     </message>
@@ -521,7 +521,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2905"/>
+        <location filename="../server/src/client.cpp" line="2907"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished">
@@ -2041,33 +2041,14 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <comment>Settings option name</comment>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../client/qml/Settings.qml" line="527"/>
-        <source>Use connection keepalive</source>
-        <comment>Settings option name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/qml/Settings.qml" line="535"/>
-        <source>Reconnection interval</source>
-        <comment>Settings option name</comment>
-        <translation type="unfinished"></translation>
-    </message>
     <message numerus="yes">
         <location filename="../client/qml/Settings.qml" line="537"/>
-        <location filename="../client/qml/Settings.qml" line="549"/>
         <source>%n minutes</source>
         <comment>Settings option value label</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
  <numerusform></numerusform>
         </translation>
-    </message>
-    <message>
-        <location filename="../client/qml/Settings.qml" line="547"/>
-        <source>Reconnection limit</source>
-        <comment>Settings option name</comment>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="577"/>
@@ -2110,6 +2091,33 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <source>Common</source>
         <comment>Settings page section name</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="527"/>
+        <source>Use connection keepalive (*)</source>
+        <comment>Settings option name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="535"/>
+        <source>Reconnection interval (*)</source>
+        <comment>Settings option name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="547"/>
+        <source>Reconnection limit (*)</source>
+        <comment>Settings option name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/qml/Settings.qml" line="549"/>
+        <source>%n reconnections</source>
+        <comment>Settings option value label</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+ <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../client/qml/Settings.qml" line="739"/>
