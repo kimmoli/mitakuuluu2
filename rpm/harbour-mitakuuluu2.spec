@@ -28,6 +28,7 @@ BuildRequires:  pkgconfig(nemotransferengine-qt5)
 BuildRequires:  gstreamer-devel
 BuildRequires:  libcontacts-qt5-devel qtcontacts-sqlite-qt5-extensions
 BuildRequires:  libkeepalive-devel
+BuildRequires:  qt5-qttools-linguist
 
 %description
 Short description of my SailfishOS Application
