@@ -116,11 +116,6 @@ void Connection::init()
     connect(socket,SIGNAL(disconnected()),this,SLOT(finalCleanup()));
 
     socket->connectToHost(server, port);
-
-    keepalive = new BackgroundActivity(this);
-    connect(keepalive, SIGNAL(running()), this, SLOT(checkActivity()));
-    connect(keepalive, SIGNAL(stopped()), this, SLOT(wakeupStopped()));
-    keepalive->wait(BackgroundActivity::TenMinutes);
 }
 
 void Connection::disconnectAndDelete()
@@ -133,9 +128,6 @@ void Connection::disconnectAndDelete()
 
 void Connection::finalCleanup()
 {
-    if (keepalive && (keepalive->isRunning() || keepalive->isWaiting()))
-        keepalive->stop();
-
     //socket->deleteLater();
     Q_EMIT disconnected();
     disconnect(this,0,0,0);
@@ -151,9 +143,6 @@ Connection::~Connection()
         @todo Clean disconnect to the WhatsApp servers
      */
     qDebug() << "Connection destructor";
-
-    if (keepalive && (keepalive->isRunning() || keepalive->isWaiting()))
-        keepalive->stop();
 }
 
 /**
@@ -189,10 +178,7 @@ void Connection::login(const QByteArray &nextChallenge)
 */
 bool Connection::read()
 {
-    //if (connTimeout) {
-    //    connTimeout->start();
-    //}
-    _lastActivity = QDateTime::currentDateTime().toTime_t();
+    lastActivity = QDateTime::currentDateTime().toTime_t();
 
     ProtocolTreeNode node;
     bool pictureReceived = false;
@@ -964,10 +950,6 @@ void Connection::connectedToServer()
 
 void Connection::connectionClosed()
 {
-    //if (connTimeout && connTimeout->isActive()) {
-    //    connTimeout->stop();
-    //    connTimeout->deleteLater();
-    //}
     qDebug() << "Connection closed";
     disconnectAndDelete();
 }
@@ -975,17 +957,11 @@ void Connection::connectionClosed()
 void Connection::checkActivity()
 {
     uint now = QDateTime::currentDateTime().toTime_t();
-    qDebug() << "wakeup check activity. now:" << now << "last:" << _lastActivity;
-    if ((now - _lastActivity) > 905) {
+    qDebug() << "wakeup check activity. now:" << now << "last:" << lastActivity;
+    if ((now - lastActivity) > 905) {
         qDebug() << "should reconnect";
         disconnectAndDelete();
     }
-    keepalive->wait();
-}
-
-void Connection::wakeupStopped()
-{
-    qDebug() << "WAKEUP STOPPED! WHAT SHOULD I DO NOW!?";
 }
 
 void Connection::socketError(QAbstractSocket::SocketError error)
@@ -1223,15 +1199,7 @@ void Connection::parseSuccessNode(const ProtocolTreeNode &node)
 
         Q_EMIT authSuccess(creation, expiration, kind, accountstatus, nextChallenge);
 
-        // ugly hack. if no activity on socket until 15 minutes 5 seconds it will be reconnected.
-        // server sends self pings to clients every 15 minutes. 5 seconds added as network delay.
-        //connTimeout = new QTimer(this);
-        //connTimeout->setSingleShot(false);
-        //connTimeout->setInterval(905000);
-        //QObject::connect(connTimeout, SIGNAL(timeout()), this, SLOT(disconnectAndDelete()));
-        //connTimeout->start();
-
-        _lastActivity = QDateTime::currentDateTime().toTime_t();
+        lastActivity = QDateTime::currentDateTime().toTime_t();
     }
     else {
         Q_EMIT authFailed();

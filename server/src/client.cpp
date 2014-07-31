@@ -243,6 +243,10 @@ Client::Client(QObject *parent) : QObject(parent)
     }
 
     recheckAccountAndConnect();
+
+    keepalive = new BackgroundActivity(this);
+    connect(keepalive, SIGNAL(running()), this, SLOT(checkActivity()));
+    connect(keepalive, SIGNAL(stopped()), this, SLOT(wakeupStopped()));
 }
 
 /**
@@ -318,6 +322,10 @@ void Client::readSettings()
     notificationsMuted = settings.value("settings/notificationsMuted", false).toBool();
     notifyMessages = settings.value("settings/notifyMessages", false).toBool();
     systemNotifier = settings.value("settings/systemNotifier", false).toBool();
+
+    useKeepalive = settings.value("settings/useKeepalive", true).toBool();
+    reconnectionInterval = settings.value("settings/reconnectionInterval", 5).toInt();
+    reconnectionLimit = settings.value("settings/reconnectionLimit", 5).toInt();
 
     showConnectionNotifications = settings.value("settings/showConnectionNotifications", false).toBool();
 
@@ -781,6 +789,10 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     getPicture(this->myJid);
 
     getContactStatus(this->myJid);
+
+    if (useKeepalive) {
+        keepalive->wait(BackgroundActivity::TenMinutes);
+    }
 }
 
 void Client::authFailed()
@@ -962,19 +974,19 @@ void Client::disconnected()
         qint64 now = QDateTime::currentMSecsSinceEpoch();
         connectionStatus = Disconnected;
         Q_EMIT connectionStatusChanged(connectionStatus);
-        if (now - lastDisconnect < 60000*5) {
+        if (now - lastDisconnect < 60000*reconnectionInterval) {
             disconnectCount++;
-            if (disconnectCount < 5) {
+            if (disconnectCount < reconnectionLimit) {
                 networkStatusChanged(isOnline);
             }
         }
         else {
-            disconnectCount = 0;
+            disconnectCount = 1;
         }
         lastDisconnect = now;
     }
     else {
-        disconnectCount = 0;
+        disconnectCount = 1;
     }
 }
 
@@ -1013,6 +1025,19 @@ void Client::contactsAvailable(const QStringList &contacts, const QVariantMap &l
     lastSync = now;
     QSettings settings("coderus", "mitakuuluu2", this);
     settings.setValue(SETTINGS_LAST_SYNC, lastSync);
+}
+
+void Client::checkActivity()
+{
+    if (!connectionPtr.isNull()) {
+        connectionPtr->checkActivity();
+    }
+    keepalive->wait();
+}
+
+void Client::wakeupStopped()
+{
+    qDebug() << "WAKEUP STOPPED! WHAT SHOULD I DO NOW!?";
 }
 
 void Client::synchronizePhonebook()
@@ -1698,6 +1723,8 @@ void Client::recheckAccountAndConnect()
     else
         connectionStatus = WaitingForConnection;
     Q_EMIT connectionStatusChanged(connectionStatus);
+
+    disconnectCount = 0;
 
     isOnline = manager->isOnline();
     networkStatusChanged(isOnline);

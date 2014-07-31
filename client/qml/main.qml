@@ -153,6 +153,15 @@ ApplicationWindow {
     property bool systemNotifier: false
     onSystemNotifierChanged: Mitakuuluu.save("settings/systemNotifier", systemNotifier)
 
+    property bool useKeepalive: true
+    onUseKeepaliveChanged: Mitakuuluu.save("settings/useKeepalive", useKeepalive)
+
+    property int reconnectionInterval: 5
+    onReconnectionIntervalChanged: Mitakuuluu.save("settings/reconnectionInterval", reconnectionInterval)
+
+    property int reconnectionLimit: 5
+    onReconnectionLimitChanged: Mitakuuluu.save("settings/reconnectionLimit", reconnectionLimit)
+
     property int currentOrientation: pageStack._currentOrientation
 
     property string coverIconLeft: "../images/icon-cover-location-left.png"

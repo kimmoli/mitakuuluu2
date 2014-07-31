@@ -998,17 +998,7 @@ void Mitakuuluu::removeAccountFromServer()
     if (iface) {
         iface->call(QDBus::NoBlock, "removeAccountFromServer");
     }
-    removeAccountLocally();
-}
-
-void Mitakuuluu::removeAccountLocally()
-{
-    QSettings settings("coderus", "mitakuuluu2");
-    settings.remove("account");
-
-    if (iface) {
-        iface->call(QDBus::NoBlock, "settingsChanged");
-    }
+    clearGroup("account");
 }
 
 void Mitakuuluu::forceConnection()
@@ -1416,9 +1406,10 @@ QVariantList Mitakuuluu::loadGroup(const QString &name)
 void Mitakuuluu::clearGroup(const QString &name)
 {
     QSettings settings("coderus", "mitakuuluu2");
-    settings.beginGroup(name);
-    settings.remove("");
-    settings.endGroup();
+    //settings.beginGroup(name);
+    //settings.remove("");
+    //settings.endGroup();
+    settings.remove(name);
     settings.sync();
 
     if (iface) {

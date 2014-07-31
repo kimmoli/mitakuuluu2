@@ -90,6 +90,8 @@
 #include <mlite5/MNotification>
 #include <mlite5/MRemoteAction>
 
+#include "keepalive/backgroundactivity.h"
+
 #include "../threadworker/queryexecutor.h"
 
 using namespace QtContacts;
@@ -350,6 +352,9 @@ private slots:
 
     void contactsAvailable(const QStringList &contacts, const QVariantMap &labels, const QVariantMap &avatars);
 
+    void checkActivity();
+    void wakeupStopped();
+
 signals:
     void authFail(const QString &username, const QString &reason);
     void authSuccess(const QString &username);
@@ -522,6 +527,8 @@ private:
 
     QTranslator translator;
 
+    BackgroundActivity *keepalive;
+
     /** ***********************************************************************
      ** Private methods
      **/
@@ -543,6 +550,9 @@ private:
     bool notificationsMuted;
     bool notifyMessages;
     bool systemNotifier;
+    bool useKeepalive;
+    int reconnectionInterval;
+    int reconnectionLimit;
 
     QMap<QString, qlonglong> mutingList;
 

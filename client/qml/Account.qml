@@ -30,6 +30,14 @@ Dialog {
         pageStack.navigateForward()
     }
 
+    function resetAccount() {
+        Mitakuuluu.clearGroup("account")
+        if (Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn) {
+            Mitakuuluu.disconnect()
+        }
+        pageStack.pop()
+    }
+
     property bool cantAcceptReally: pageStack._forwardFlickDifference > 0 && pageStack._preventForwardNavigation
     onCantAcceptReallyChanged: {
         if (cantAcceptReally)
@@ -103,10 +111,15 @@ Dialog {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("Remove account", "Account page menu item")
-                enabled: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn
+                text: Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn ? qsTr("Remove account", "Account page menu item") :
+                                                                           qsTr("Remove local data", "Account page menu item")
                 onClicked: {
-                    deleteDialog.open()
+                    if (Mitakuuluu.connectionStatus == Mitakuuluu.LoggedIn) {
+                        deleteDialog.open()
+                    }
+                    else {
+                        Mitakuuluu.clearGroup("account")
+                    }
                 }
             }
             MenuItem {
@@ -301,7 +314,8 @@ Dialog {
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: qsTr("No, remove only local information")
                     onClicked: {
-                        Mitakuuluu.removeAccountLocally()
+                        deleteDialog.reject()
+                        resetAccount()
                     }
                 }
             }
@@ -310,7 +324,7 @@ Dialog {
             //pageStack.pop(roster, PageStackAction.Immediate)
             //pageStack.replace(removePage)
             Mitakuuluu.removeAccountFromServer()
-            Mitakuuluu.clearGroup("account")
+            resetAccount()
         }
     }
 }

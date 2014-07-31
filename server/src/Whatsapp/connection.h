@@ -52,8 +52,6 @@
 #include "fmessage.h"
 #include "funstore.h"
 
-#include "keepalive/backgroundactivity.h"
-
 // QtMobility namespace
 //QTM_USE_NAMESPACE
 
@@ -132,6 +130,8 @@ public:
      ** General Public Methods
      **/
 
+    uint lastActivity;
+
     // Login to the WhatsApp servers
     void login(const QByteArray &nextChallenge);
 
@@ -141,9 +141,6 @@ public:
 private slots:
     void connectedToServer();
     void connectionClosed();
-
-    void checkActivity();
-    void wakeupStopped();
 
     void socketError(QAbstractSocket::SocketError error);
 
@@ -160,6 +157,8 @@ public slots:
 
     void disconnectAndDelete();
     void finalCleanup();
+
+    void checkActivity();
 
     /** ***********************************************************************
      ** Message handling
@@ -363,11 +362,6 @@ private:
 
     // Reader crypto stream
     KeyStream *inputKey;
-
-    // Connection timeout timer
-    QTimer *connTimeout;
-    BackgroundActivity *keepalive;
-    uint _lastActivity;
 
     /** ***********************************************************************
      ** Private methods

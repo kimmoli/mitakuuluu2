@@ -348,7 +348,6 @@ public slots:
     void setPresenceUnavailable();
     void syncAllPhonebook();
     void removeAccountFromServer();
-    void removeAccountLocally();
     void forceConnection();
     void setLocale(const QString &localeName);
     void setLocale(int  index);

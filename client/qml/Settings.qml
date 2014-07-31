@@ -523,6 +523,36 @@ Page {
             }
 
             TextSwitch {
+                checked: useKeepalive
+                text: qsTr("Use connection keepalive (*)", "Settings option name")
+                onClicked: useKeepalive = checked
+            }
+
+            Slider {
+                width: parent.width
+                maximumValue: 60
+                minimumValue: 1
+                label: qsTr("Reconnection interval (*)", "Settings option name")
+                value: reconnectionInterval
+                valueText: qsTr("%n minutes", "Settings option value label", parseInt(value))
+                onReleased: {
+                    reconnectionInterval = parseInt(value)
+                }
+            }
+
+            Slider {
+                width: parent.width
+                maximumValue: 30
+                minimumValue: 1
+                label: qsTr("Reconnection limit (*)", "Settings option name")
+                value: reconnectionLimit
+                valueText: qsTr("%n reconnections", "Settings option value label", parseInt(value))
+                onReleased: {
+                    reconnectionLimit = parseInt(value)
+                }
+            }
+
+            TextSwitch {
                 id: autostart
                 checked: Mitakuuluu.checkAutostart()
                 text: qsTr("Autostart", "Settings option name")
