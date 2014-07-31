@@ -25,6 +25,7 @@ BuildRequires:  pkgconfig(sailfishapp)
 BuildRequires:  pkgconfig(mlite5)
 BuildRequires:  pkgconfig(Qt5Contacts)
 BuildRequires:  pkgconfig(Qt5Sensors)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(nemotransferengine-qt5)
 BuildRequires:  gstreamer-devel
