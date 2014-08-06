@@ -165,6 +165,7 @@ Page {
 
             MenuItem {
                 text: qsTr("Save chat history", "Group profile page menu item")
+                visible: conversationModel
                 onClicked: {
                     conversationModel.saveHistory(page.jid, page.subject)
                     banner.notify(qsTr("History saved to Documents", "Banner notification text"))
