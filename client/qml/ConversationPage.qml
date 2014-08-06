@@ -566,6 +566,12 @@ Page {
                     scrollDownTimer.start()
             }
 
+            onAtYEndChanged: {
+                if (atYEnd && newMessageItem.visible) {
+                    newMessageItem.opacity = 0.0
+                }
+            }
+
             onFlickStarted: {
                 if (!conversationView.hasOwnProperty("quickScroll") || !conversationView.quickScroll) {
                     iconUp.opacity = 1.0;
