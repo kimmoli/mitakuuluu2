@@ -360,6 +360,8 @@ signals:
     void authSuccess(const QString &username);
     void disconnected(const QString &reason);
     void networkAvailable(bool value);
+    void networkOnline();
+    void networkOffline();
     void messageReceived(const QVariantMap &data);
     void smsTimeout(int timeout);
     void noAccountData();

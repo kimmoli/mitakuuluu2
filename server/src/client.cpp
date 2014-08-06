@@ -581,6 +581,7 @@ void Client::networkStatusChanged(bool isOnline)
 
     if (!isOnline)
     {
+        Q_EMIT networkOffline();
         activeNetworkID.clear();
         activeNetworkType = QNetworkConfiguration::BearerUnknown;
         if (connectionStatus == Connected || connectionStatus == LoggedIn)
@@ -588,6 +589,7 @@ void Client::networkStatusChanged(bool isOnline)
     }
     else
     {
+        Q_EMIT networkOnline();
         updateActiveNetworkID();
         if (connectionStatus == Disconnected || connectionStatus == WaitingForConnection)
             QTimer::singleShot(2000, this, SLOT(verifyAndConnect()));
@@ -969,6 +971,10 @@ void Client::disconnected()
 {
     qDebug() << "Client disconnected";
     updateNotification(tr("Disconnected", "System connection notification"));
+
+    if (keepalive->isWaiting()) {
+        keepalive->stop();
+    }
 
     connectionPtr.take();
 
@@ -2314,13 +2320,19 @@ void Client::regRequest(const QString &cc, const QString &phone, const QString &
     if (session)
         delete session;
     session = new QNetworkSession(manager->defaultConfiguration(), this);
-    if (!session->isOpen()) {
+    qDebug() << "regRequest session:" << session->isOpen() << "manager:" << manager->isOnline();
+    if (manager->isOnline() && !session->isOpen()) {
+        qDebug() << "online";
         QObject::connect(session, SIGNAL(opened()), reg, SLOT(start()));
-        //session->open();
+        session->open();
+    }
+    else if (!manager->isOnline()) {
+        qDebug() << "offline";
+        QObject::connect(this, SIGNAL(networkOnline()), reg, SLOT(start()));
         openConnectionDialog();
     }
-    else {
-        //session->deleteLater();
+    else if (session->isOpen()) {
+        qDebug() << "session open";
         QTimer::singleShot(500, reg, SLOT(start()));
     }
 }
@@ -2347,13 +2359,19 @@ void Client::enterCode(const QString &cc, const QString &phone, const QString &s
         session = 0;
     }
     session = new QNetworkSession(manager->defaultConfiguration(), this);
-    if (!session->isOpen()) {
+    qDebug() << "enterCode session:" << session->isOpen() << "manager:" << manager->isOnline();
+    if (manager->isOnline() && !session->isOpen()) {
+        qDebug() << "online";
         QObject::connect(session, SIGNAL(opened()), reg, SLOT(startRegRequest()));
-        //session->open();
+        session->open();
+    }
+    else if (!manager->isOnline()) {
+        qDebug() << "offline";
+        QObject::connect(this, SIGNAL(networkOnline()), reg, SLOT(startRegRequest()));
         openConnectionDialog();
     }
-    else {
-        //session->deleteLater();
+    else if (session->isOpen()) {
+        qDebug() << "session open";
         QTimer::singleShot(500, reg, SLOT(startRegRequest()));
     }
 }
@@ -2740,7 +2758,7 @@ void Client::openConnectionDialog()
     QDBusMessage reply = connSelectorInterface->callWithArgumentList(QDBus::NoBlock,
                                                                      QStringLiteral("openConnection"), args);
     if (reply.type() != QDBusMessage::ReplyMessage) {
-        qWarning() << reply.errorMessage();
+        qWarning() << "error:" << reply.errorMessage();
     }
 }
 
