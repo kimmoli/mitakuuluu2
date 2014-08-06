@@ -23,7 +23,7 @@ Page {
     property string picture: ""
     property bool blocked: false
 
-    property variant conversationModel
+    property variant conversationModel: null
 
     Connections {
         target: ContactsBaseModel
@@ -42,10 +42,6 @@ Page {
                 picture = path
             }
         }
-    }
-
-    Connections {
-        target: conversationModel
         onMediaListReceived: {
             if (pjid === page.jid) {
                 mediaListModel.clear()
@@ -61,7 +57,7 @@ Page {
 
         }
         else if (status == PageStatus.Active) {
-            conversationModel.requestContactMedia()
+            Mitakuuluu.requestContactMedia(jid)
         }
     }
 
@@ -103,9 +99,8 @@ Page {
 
             MenuItem {
                 text: qsTr("Save chat history", "User profile page menu item")
-                visible: conversationModel
                 onClicked: {
-                    conversationModel.saveHistory(page.jid, page.pushname)
+                    Mitakuuluu.saveHistory(page.jid, page.pushname)
                     banner.notify(qsTr("History saved to Documents", "User profile page history saved banner"))
                 }
             }

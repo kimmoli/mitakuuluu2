@@ -74,8 +74,7 @@ public slots:
     void resendMessage(const QString &jid, const QString& msgId);
     void removeConversation(const QString &rjid);
     int count();
-    void saveHistory(const QString &sjid, const QString &sname);
-    void requestContactMedia();
+    void requestContactMedia(const QString &sjid);
 
 private:
     int getIndexByMsgId(const QString &msgId);

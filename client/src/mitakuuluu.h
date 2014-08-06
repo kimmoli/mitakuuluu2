@@ -189,7 +189,6 @@ signals:
     void mncChanged();
     void myJidChanged();
     void versionChanged();
-
     void activeChanged();
     void messageReceived(const QVariantMap &data);
     void disconnected(const QString &reason);
@@ -238,30 +237,23 @@ signals:
     void codeReceived();
     void dissectError();
     void networkUsage(const QVariantList &networkUsage);
-
     void replyCrashed(bool isCrashed);
     void myAccount(const QString &account);
-
     void logfileReady(const QByteArray &data, bool isReady);
-
     void totalUnreadChanged();
     Q_SCRIPTABLE void totalUnreadValue(int totalUnread);
-
     void privateToneChanged();
     void groupToneChanged();
     void mediaToneChanged();
-
     void privateToneEnabledChanged();
     void groupToneEnabledChanged();
     void mediaToneEnabledChanged();
-
     void privateLedColorChanged();
     void groupLedColorChanged();
     void mediaLedColorChanged();
-
     void whatsappStatusReply(const QVariantMap &features);
-
     void androidReady(const QVariantMap &creds);
+    void mediaListReceived(const QString &pjid, const QVariantList &mediaList);
 
 private slots:
     void onConnectionStatusChanged(int status);
@@ -365,18 +357,15 @@ public slots:
     void rejectMediaCapture(const QString &path);
     void getNetworkUsage();
     void resetNetworkUsage();
-
     QStringList getLocalesNames();
     int getCurrentLocaleIndex();
-
     void checkWhatsappStatus();
-
     void checkAndroid();
     void importCredentials(const QVariantMap &data);
-
     void setCamera(QObject *camera);
-
     bool locationEnabled();
+    void saveHistory(const QString &sjid, const QString &sname);
+    void requestContactMedia(const QString &sjid);
 
 //Settings
 

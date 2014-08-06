@@ -253,18 +253,7 @@ int ConversationModel::count()
     return _modelData.size();
 }
 
-void ConversationModel::saveHistory(const QString &sjid, const QString &sname)
-{
-    QVariantMap query;
-    query["type"] = QueryType::ConversationSave;
-    query["name"] = sname;
-    query["jid"] = sjid;
-    query["table"] = sjid.split("@").first().replace("-", "g");;
-    query["uuid"] = uuid;
-    dbExecutor->queueAction(query);
-}
-
-void ConversationModel::requestContactMedia()
+void ConversationModel::requestContactMedia(const QString &sjid)
 {
     QVariantMap query;
     query["type"] = QueryType::ConversationGetMedia;

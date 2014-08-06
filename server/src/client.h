@@ -401,13 +401,11 @@ signals:
     void contactStatus(const QString &jid, const QString &message);
     void synchronizationFinished();
     void synchronizationFailed();
-
     void codeRequested(const QVariantMap &method);
     void existsRequestFailed(const QVariantMap &serverReply);
     void codeRequestFailed(const QVariantMap &serverReply);
     void registrationComplete();
     void dissectError();
-
     void connectionLogin(const QByteArray &nextChallenge);
     void connectionSendMessage(const FMessage &message);
     void connectionSendSyncContacts(const QStringList &numbers);
@@ -447,13 +445,11 @@ signals:
     void connectionSendComposing(const QString &jid, const QString &media);
     void connectionSendPaused(const QString &jid, const QString &media);
     void networkUsage(const QVariantList &networkUsage);
-
     void logfileReady(const QByteArray &data, bool isReady);
-
     void pong();
-
     void myAccount(const QString &account);
     void simParameters(const QString &mcc, const QString &mnc);
+    void mediaListReceived(const QString &pjid, const QVariantList &mediaList);
 
 private:
     QueryExecutor *dbExecutor;
@@ -655,19 +651,16 @@ public slots:
     void contactRemoved(const QString &jid);
     void setLocale(const QString &locale);
     void windowActive();
-
     void connectToServer();
     void disconnect();
-
     void getNetworkUsage();
     void resetNetworkUsage();
-
     void ping();
-
     void renewAccount(const QString &method, int years);
     void unsubscribe(const QString &jid);
-
     void settingsChanged();
+    void saveHistory(const QString &sjid, const QString &sname);
+    void requestContactMedia(const QString &sjid);
 };
 
 #endif // CLIENTTHREAD_H

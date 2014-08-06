@@ -1800,6 +1800,27 @@ void Client::settingsChanged()
     readSettings();
 }
 
+void Client::saveHistory(const QString &sjid, const QString &sname)
+{
+    QVariantMap query;
+    query["type"] = QueryType::ConversationSave;
+    query["name"] = sname;
+    query["jid"] = sjid;
+    query["table"] = sjid.split("@").first().replace("-", "g");;
+    query["uuid"] = uuid;
+    dbExecutor->queueAction(query);
+}
+
+void Client::requestContactMedia(const QString &sjid)
+{
+    QVariantMap query;
+    query["type"] = QueryType::ConversationGetMedia;
+    query["jid"] = sjid;
+    query["table"] = sjid.split("@").first().replace("-", "g");;
+    query["uuid"] = uuid;
+    dbExecutor->queueAction(query);
+}
+
 void Client::sendText(const QString &jid, const QString &message)
 {
     FMessage msg(jid, true);
@@ -3143,6 +3164,13 @@ void Client::dbResults(const QVariant &result)
         QStringList unknown = reply["unknown"].toStringList();
         if (!unknown.isEmpty()) {
             Q_EMIT connectionSendSyncContacts(unknown);
+        }
+        break;
+    }
+    case QueryType::ConversationGetMedia: {
+        QVariantList mediaList = reply["media"].toList();
+        if (mediaList.size() > 0) {
+            Q_EMIT mediaListReceived(reply["jid"].toString(), mediaList);
         }
         break;
     }

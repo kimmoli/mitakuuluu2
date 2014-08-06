@@ -30,8 +30,6 @@ Page {
     property int screation: 0
     property string avatar: ""
 
-    property variant conversationModel
-
     function timestampToFullDate(stamp) {
         var d = new Date(stamp*1000)
         return Qt.formatDateTime(d, "dd MMM yyyy")
@@ -165,9 +163,8 @@ Page {
 
             MenuItem {
                 text: qsTr("Save chat history", "Group profile page menu item")
-                visible: conversationModel
                 onClicked: {
-                    conversationModel.saveHistory(page.jid, page.subject)
+                    Mitakuuluu.saveHistory(page.jid, page.subject)
                     banner.notify(qsTr("History saved to Documents", "Banner notification text"))
                 }
             }

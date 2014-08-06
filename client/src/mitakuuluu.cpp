@@ -186,6 +186,8 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
                                               "simParameters", this, SLOT(onSimParameters(QString, QString)));
         QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
                                               "networkUsage", this, SIGNAL(networkUsage(QVariantList)));
+        QDBusConnection::sessionBus().connect(SERVER_SERVICE, SERVER_PATH, SERVER_INTERFACE,
+                                              "mediaListReceived", this, SIGNAL(mediaListReceived(QString,QVariantList)));
         qDebug() << "Start pinging server";
         pingServer = new QTimer(this);
         QObject::connect(pingServer, SIGNAL(timeout()), this, SLOT(doPingServer()));
@@ -1351,6 +1353,20 @@ bool Mitakuuluu::locationEnabled()
 {
     QSettings location("/etc/location/location.conf", QSettings::IniFormat);
     return location.value("location/enabled", false).toBool();
+}
+
+void Mitakuuluu::saveHistory(const QString &sjid, const QString &sname)
+{
+    if (iface) {
+        iface->call(QDBus::NoBlock, "saveHistory", sjid, sname);
+    }
+}
+
+void Mitakuuluu::requestContactMedia(const QString &sjid)
+{
+    if (iface) {
+        iface->call(QDBus::NoBlock, "requestContactMedia", sjid);
+    }
 }
 
 // Settings
