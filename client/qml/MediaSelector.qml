@@ -69,7 +69,7 @@ Dialog {
         sourceModel = fileModelComponent.createObject(page, {"filter": filter})
         filemodel.sorting = sorting
         filemodel.fileModel = sourceModel
-        sourceModel.showRecursive([_mode, "sdcard"])
+        sourceModel.showRecursive(["home", "sdcard"])
     }
 
     function fileSelect(selection) {
