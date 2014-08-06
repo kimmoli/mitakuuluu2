@@ -67,6 +67,10 @@ PhoneReg::PhoneReg(const QString& cc, const QString& number, const QString& meth
 
 void PhoneReg::start()
 {
+    QNetworkSession *session = qobject_cast<QNetworkSession *>(sender());
+    if (session) {
+        QObject::disconnect(session, SIGNAL(opened()), this, SLOT(start()));
+    }
     startCodeRequest();
 }
 
@@ -130,6 +134,11 @@ void PhoneReg::onSMSReceived(const QString &code)
 
 void PhoneReg::startRegRequest()
 {
+    QNetworkSession *session = qobject_cast<QNetworkSession *>(sender());
+    if (session) {
+        QObject::connect(session, SIGNAL(opened()), this, SLOT(startRegRequest()));
+    }
+
     qDebug() << "reg/req/register/start";
     request = new WARequest(this, "register");
     request->addParam("cc", cc);
