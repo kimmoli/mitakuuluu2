@@ -39,97 +39,103 @@
 <context>
     <name>Account</name>
     <message>
-        <location filename="../client/qml/Account.qml" line="41"/>
+        <location filename="../client/qml/Account.qml" line="49"/>
         <source>You should be online!</source>
         <comment>Account page cant accept feedback</comment>
         <translation>Onlinestatus prüfen!</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="106"/>
+        <location filename="../client/qml/Account.qml" line="114"/>
         <source>Remove account</source>
         <comment>Account page menu item</comment>
         <translation>Konto entfernen</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="113"/>
+        <location filename="../client/qml/Account.qml" line="115"/>
+        <source>Remove local data</source>
+        <comment>Account page menu item</comment>
+        <translation>Entferne Daten vom Mobiltelefon</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Account.qml" line="126"/>
         <source>Renew subscription</source>
         <comment>Account page menu item</comment>
         <translation>Mitgliedschaft verlängern</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="120"/>
+        <location filename="../client/qml/Account.qml" line="133"/>
         <source>Privacy settings</source>
         <comment>Account page menu item</comment>
         <translation>Privatsphäre</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="130"/>
+        <location filename="../client/qml/Account.qml" line="143"/>
         <source>Account</source>
         <comment>Account page title</comment>
         <translation>Konto</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="131"/>
+        <location filename="../client/qml/Account.qml" line="144"/>
         <source>Save</source>
         <comment>Account page accept button text</comment>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="136"/>
+        <location filename="../client/qml/Account.qml" line="149"/>
         <source>Nickname:</source>
         <comment>Account page nickname title</comment>
         <translation>Spitzname:</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="169"/>
+        <location filename="../client/qml/Account.qml" line="182"/>
         <source>Status:</source>
         <comment>Account page status title</comment>
         <translation>Status:</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="202"/>
+        <location filename="../client/qml/Account.qml" line="215"/>
         <source>Created: %1</source>
         <comment>Account page created title</comment>
         <translation>Erstellt: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="216"/>
+        <location filename="../client/qml/Account.qml" line="229"/>
         <source>Expiration: %1</source>
         <comment>Account page expiration title</comment>
         <translation>Ablaufdatum: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="230"/>
+        <location filename="../client/qml/Account.qml" line="243"/>
         <source>Account is active</source>
         <comment>Account page account active label</comment>
         <translation>Konto ist aktiv</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="231"/>
+        <location filename="../client/qml/Account.qml" line="244"/>
         <source>Account is blocked</source>
         <comment>Account page account blocked label</comment>
         <translation>Konto ist gesperrt</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="245"/>
+        <location filename="../client/qml/Account.qml" line="258"/>
         <source>Account type: %1</source>
         <comment>Account page account type label</comment>
         <translation>Kontotyp: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="288"/>
+        <location filename="../client/qml/Account.qml" line="301"/>
         <source>Remove account</source>
         <comment>Account page remove dialog title</comment>
         <translation>Konto entfernen</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="296"/>
+        <location filename="../client/qml/Account.qml" line="309"/>
         <source>This action will delete your account information from phone and from WhatsApp server.</source>
         <comment>Account page remove dialog description</comment>
         <translation>Kontoinformationen werden von dem Handy und dem WhatsApp-Server gelöscht.</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="302"/>
+        <location filename="../client/qml/Account.qml" line="315"/>
         <source>No, remove only local information</source>
         <translation>Nein, nur lokale Informationen entfernen</translation>
     </message>
@@ -429,91 +435,91 @@
 <context>
     <name>Client</name>
     <message>
-        <location filename="../server/src/client.cpp" line="456"/>
+        <location filename="../server/src/client.cpp" line="466"/>
         <source>Image</source>
         <comment>Notification media name text</comment>
         <translation>Bild</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="457"/>
+        <location filename="../server/src/client.cpp" line="467"/>
         <source>Audio</source>
         <comment>Notification media name text</comment>
         <translation>Audio</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="458"/>
+        <location filename="../server/src/client.cpp" line="468"/>
         <source>Video</source>
         <comment>Notification media name text</comment>
         <translation>Video</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="459"/>
+        <location filename="../server/src/client.cpp" line="469"/>
         <source>Contact</source>
         <comment>Notification media name text</comment>
         <translation>Kontakt</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="460"/>
+        <location filename="../server/src/client.cpp" line="470"/>
         <source>Location</source>
         <comment>Notification media name text</comment>
         <translation>Standort</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="461"/>
+        <location filename="../server/src/client.cpp" line="471"/>
         <source>Voice</source>
         <comment>Notification media name text</comment>
         <translation>Sprachnachricht</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="462"/>
+        <location filename="../server/src/client.cpp" line="472"/>
         <source>System</source>
         <comment>Notification media name text</comment>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="761"/>
+        <location filename="../server/src/client.cpp" line="771"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1078"/>
+        <location filename="../server/src/client.cpp" line="1119"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Versteckt</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1353"/>
+        <location filename="../server/src/client.cpp" line="1394"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Gruppenbeitritt von</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1356"/>
+        <location filename="../server/src/client.cpp" line="1397"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Gruppenaustritt von</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1359"/>
+        <location filename="../server/src/client.cpp" line="1400"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Thema: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1362"/>
+        <location filename="../server/src/client.cpp" line="1403"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Bildänderung durch</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1701"/>
+        <location filename="../server/src/client.cpp" line="967"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Offline</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2865"/>
+        <location filename="../server/src/client.cpp" line="2907"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n ungelesene Nachricht</numerusform><numerusform>%n ungelesene Nachrichten</numerusform></translation>
@@ -908,25 +914,25 @@
 <context>
     <name>Location</name>
     <message>
-        <location filename="../client/qml/Location.qml" line="36"/>
+        <location filename="../client/qml/Location.qml" line="37"/>
         <source>Coordinates not available</source>
         <comment>Location page cant accept feedback</comment>
         <translation>Koordinaten nicht verfügbar</translation>
     </message>
     <message>
-        <location filename="../client/qml/Location.qml" line="108"/>
+        <location filename="../client/qml/Location.qml" line="112"/>
         <source>You need to enable GPS positioning in settings</source>
         <comment>Location send page text</comment>
         <translation>GPS in den Einstellungen aktivieren</translation>
     </message>
     <message>
-        <location filename="../client/qml/Location.qml" line="165"/>
+        <location filename="../client/qml/Location.qml" line="169"/>
         <source>latitude: %1</source>
         <comment>Location send page text</comment>
         <translation>Breitengrad: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/Location.qml" line="172"/>
+        <location filename="../client/qml/Location.qml" line="176"/>
         <source>longitude: %1</source>
         <comment>Location send page text</comment>
         <translation>Längengrad: %1</translation>
@@ -2017,14 +2023,20 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <comment>Settings option name</comment>
         <translation>System-Benachrichtigungen verwenden</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../client/qml/Settings.qml" line="537"/>
+        <source>%n minutes</source>
+        <comment>Settings option value label</comment>
+        <translation><numerusform>%n Minute</numerusform><numerusform>%n Minuten</numerusform></translation>
+    </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="547"/>
+        <location filename="../client/qml/Settings.qml" line="577"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
         <translation>Medien in der Galerie speichern</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="548"/>
+        <location filename="../client/qml/Settings.qml" line="578"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
         <translation>Gespeicherte Dateien werden in der Galerie angezeigt</translation>
@@ -2060,49 +2072,73 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <translation>Allgemein</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="709"/>
+        <location filename="../client/qml/Settings.qml" line="527"/>
+        <source>Use connection keepalive (*)</source>
+        <comment>Settings option name</comment>
+        <translation>Serververbindung aufrecht erhalten (*)</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="535"/>
+        <source>Reconnection interval (*)</source>
+        <comment>Settings option name</comment>
+        <translation>Intervall für Verbindungsversuche (*)</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="547"/>
+        <source>Reconnection limit (*)</source>
+        <comment>Settings option name</comment>
+        <translation>Maximale Anzahl an Verbindungsversuchen (*)</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/qml/Settings.qml" line="549"/>
+        <source>%n reconnections</source>
+        <comment>Settings option value label</comment>
+        <translation><numerusform>Ein Verbindungsversuch</numerusform><numerusform>%n Verbindungsversuche</numerusform></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="739"/>
         <source>Don&apos;t resize on WLAN</source>
         <comment>Settings option name</comment>
         <translation>Bilder im WLAN nicht skalieren</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="804"/>
+        <location filename="../client/qml/Settings.qml" line="834"/>
         <source>red</source>
         <comment>Pattern led color</comment>
         <translation>Rot</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="805"/>
+        <location filename="../client/qml/Settings.qml" line="835"/>
         <source>green</source>
         <comment>Pattern led color</comment>
         <translation>Grün</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="806"/>
+        <location filename="../client/qml/Settings.qml" line="836"/>
         <source>blue</source>
         <comment>Pattern led color</comment>
         <translation>Blau</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="807"/>
+        <location filename="../client/qml/Settings.qml" line="837"/>
         <source>white</source>
         <comment>Pattern led color</comment>
         <translation>Weiß</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="808"/>
+        <location filename="../client/qml/Settings.qml" line="838"/>
         <source>yellow</source>
         <comment>Pattern led color</comment>
         <translation>Gelb</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="809"/>
+        <location filename="../client/qml/Settings.qml" line="839"/>
         <source>cyan</source>
         <comment>Pattern led color</comment>
         <translation>Cyan</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="810"/>
+        <location filename="../client/qml/Settings.qml" line="840"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
         <translation>Pink</translation>
@@ -2161,19 +2197,19 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <translation>Server</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="528"/>
+        <location filename="../client/qml/Settings.qml" line="558"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
         <translation>Automatisch starten</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="536"/>
+        <location filename="../client/qml/Settings.qml" line="566"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
         <translation>Speichern von Log-Dateien erlauben</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="540"/>
+        <location filename="../client/qml/Settings.qml" line="570"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
         <translation>Mitakuuluu muss komplett beendet werden, um die Log-Datei zu schreiben. &quot;Log-Dateien senden&quot; erscheint im Pulleymenü in den Einstellungen.</translation>
@@ -2185,13 +2221,13 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <translation>Querformat deaktivieren</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="555"/>
+        <location filename="../client/qml/Settings.qml" line="585"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
         <translation>Eigenen Kontakt anzeigen, sofern vorhanden</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="561"/>
+        <location filename="../client/qml/Settings.qml" line="591"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
         <translation>Nachrichten von unbekannten Kontakten akzeptieren</translation>
@@ -2251,97 +2287,97 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
         <translation>Mediennachricht Ton</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="566"/>
+        <location filename="../client/qml/Settings.qml" line="596"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="571"/>
+        <location filename="../client/qml/Settings.qml" line="601"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
         <translation>Onlinestatus</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="574"/>
+        <location filename="../client/qml/Settings.qml" line="604"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
         <translation>Automatisch</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="581"/>
+        <location filename="../client/qml/Settings.qml" line="611"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
         <translation>Immer online</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="588"/>
+        <location filename="../client/qml/Settings.qml" line="618"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
         <translation>Immer offline</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="601"/>
+        <location filename="../client/qml/Settings.qml" line="631"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
         <translation>Cover</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="612"/>
+        <location filename="../client/qml/Settings.qml" line="642"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
         <translation>Linke Cover-Aktion</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="636"/>
+        <location filename="../client/qml/Settings.qml" line="666"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
         <translation>Rechte Cover-Aktion</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="653"/>
+        <location filename="../client/qml/Settings.qml" line="683"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
         <translation>Medien</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="689"/>
+        <location filename="../client/qml/Settings.qml" line="719"/>
         <source>Auto download on WLAN only</source>
         <comment>Settings option name</comment>
         <translation>Automatischer Download nur im WLAN</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="679"/>
+        <location filename="../client/qml/Settings.qml" line="709"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
         <translation>Automatische Downloadgröße</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="698"/>
+        <location filename="../client/qml/Settings.qml" line="728"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
         <translation>Bilder vor dem Senden skalieren</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="742"/>
+        <location filename="../client/qml/Settings.qml" line="772"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
         <translation>Maximale Dateigröße</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="776"/>
+        <location filename="../client/qml/Settings.qml" line="806"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
         <translation>Maximale Bildauflösung</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="778"/>
+        <location filename="../client/qml/Settings.qml" line="808"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
         <translation>%1 MPx</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="792"/>
+        <location filename="../client/qml/Settings.qml" line="822"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
         <translation>Optionen mit (*) werden nach erneutem Verbindungsaufbau aktiv</translation>
@@ -2651,13 +2687,13 @@ Klicke auf verlängern, um ein Jahresabo des WhatsApp-Services zu kaufen.</trans
 <context>
     <name>main</name>
     <message>
-        <location filename="../client/qml/main.qml" line="455"/>
+        <location filename="../client/qml/main.qml" line="459"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
         <translation>Trenne</translation>
     </message>
     <message>
-        <location filename="../client/qml/main.qml" line="762"/>
+        <location filename="../client/qml/main.qml" line="766"/>
         <source>Server experiencing problems with following feature(s): %1</source>
         <translation>Der Server hat Probleme mit der / den folgenden Funktion(en): %1</translation>
     </message>

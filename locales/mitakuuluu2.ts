@@ -485,43 +485,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1119"/>
+        <location filename="../server/src/client.cpp" line="1126"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1394"/>
+        <location filename="../server/src/client.cpp" line="1401"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1397"/>
+        <location filename="../server/src/client.cpp" line="1404"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1400"/>
+        <location filename="../server/src/client.cpp" line="1407"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1403"/>
+        <location filename="../server/src/client.cpp" line="1410"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="967"/>
+        <location filename="../server/src/client.cpp" line="971"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2907"/>
+        <location filename="../server/src/client.cpp" line="2939"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished">
@@ -840,7 +840,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="170"/>
+        <location filename="../client/qml/GroupProfile.qml" line="171"/>
         <source>History saved to Documents</source>
         <comment>Banner notification text</comment>
         <translation type="unfinished"></translation>
@@ -862,49 +862,49 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="177"/>
+        <location filename="../client/qml/GroupProfile.qml" line="178"/>
         <source>Group profile</source>
         <comment>Group profile page title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="188"/>
+        <location filename="../client/qml/GroupProfile.qml" line="189"/>
         <source>Subject: </source>
         <comment>Group profile subject label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="247"/>
+        <location filename="../client/qml/GroupProfile.qml" line="248"/>
         <source>Owner: %1</source>
         <comment>Group profile owner label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="261"/>
+        <location filename="../client/qml/GroupProfile.qml" line="262"/>
         <source>Creation: %1</source>
         <comment>Group profile creation label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="275"/>
+        <location filename="../client/qml/GroupProfile.qml" line="276"/>
         <source>Subject by: %1</source>
         <comment>Group profile subject owner label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="289"/>
+        <location filename="../client/qml/GroupProfile.qml" line="290"/>
         <source>Subject set: %1</source>
         <comment>Group profile subject timestamp label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="318"/>
+        <location filename="../client/qml/GroupProfile.qml" line="319"/>
         <source>Max group participants count reached</source>
         <comment>Group profile maximum participants banner</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/GroupProfile.qml" line="350"/>
+        <location filename="../client/qml/GroupProfile.qml" line="351"/>
         <source>Fetching participants...</source>
         <comment>Group profile loading text</comment>
         <translation type="unfinished"></translation>
@@ -1129,18 +1129,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="840"/>
-        <source>Media saved as %1</source>
-        <comment>Banner text message</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/qml/ModernDelegate.qml" line="866"/>
-        <source>Message copied to clipboard</source>
-        <comment>Banner item text</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../client/qml/ModernDelegate.qml" line="828"/>
         <source>Forward</source>
         <comment>Conversation message context menu item</comment>
@@ -1153,9 +1141,21 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../client/qml/ModernDelegate.qml" line="840"/>
+        <source>Media saved as %1</source>
+        <comment>Banner text message</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../client/qml/ModernDelegate.qml" line="846"/>
         <source>Delete</source>
         <comment>Conversation message context menu item</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/ModernDelegate.qml" line="866"/>
+        <source>Message copied to clipboard</source>
+        <comment>Banner item text</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2661,25 +2661,25 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/UserProfile.qml" line="108"/>
+        <location filename="../client/qml/UserProfile.qml" line="109"/>
         <source>History saved to Documents</source>
         <comment>User profile page history saved banner</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/UserProfile.qml" line="148"/>
+        <location filename="../client/qml/UserProfile.qml" line="149"/>
         <source>Nickname: %1</source>
         <comment>User profile page nickname label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/UserProfile.qml" line="159"/>
+        <location filename="../client/qml/UserProfile.qml" line="160"/>
         <source>Status: %1</source>
         <comment>User profile page status label</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/UserProfile.qml" line="171"/>
+        <location filename="../client/qml/UserProfile.qml" line="172"/>
         <source>Contact blocked</source>
         <comment>User profile page contact blocked label</comment>
         <translation type="unfinished"></translation>
@@ -2695,17 +2695,17 @@ Click Renew to purchase one year of WhatsApp service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/UserProfile.qml" line="180"/>
+        <location filename="../client/qml/UserProfile.qml" line="181"/>
         <source>Call +%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/UserProfile.qml" line="191"/>
+        <location filename="../client/qml/UserProfile.qml" line="192"/>
         <source>Save +%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/UserProfile.qml" line="198"/>
+        <location filename="../client/qml/UserProfile.qml" line="199"/>
         <source>Media</source>
         <comment>User profile page media section name</comment>
         <translation type="unfinished"></translation>

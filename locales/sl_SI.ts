@@ -39,97 +39,103 @@
 <context>
     <name>Account</name>
     <message>
-        <location filename="../client/qml/Account.qml" line="41"/>
+        <location filename="../client/qml/Account.qml" line="49"/>
         <source>You should be online!</source>
         <comment>Account page cant accept feedback</comment>
         <translation>Najprej se povežite!</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="106"/>
+        <location filename="../client/qml/Account.qml" line="114"/>
         <source>Remove account</source>
         <comment>Account page menu item</comment>
         <translation>Odstrani račun</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="113"/>
+        <location filename="../client/qml/Account.qml" line="115"/>
+        <source>Remove local data</source>
+        <comment>Account page menu item</comment>
+        <translation>Odstrani lokalne podatke</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Account.qml" line="126"/>
         <source>Renew subscription</source>
         <comment>Account page menu item</comment>
         <translation>Obnovi naročnino</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="120"/>
+        <location filename="../client/qml/Account.qml" line="133"/>
         <source>Privacy settings</source>
         <comment>Account page menu item</comment>
         <translation>Nastavitve zasebnosti</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="130"/>
+        <location filename="../client/qml/Account.qml" line="143"/>
         <source>Account</source>
         <comment>Account page title</comment>
         <translation>Račun</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="131"/>
+        <location filename="../client/qml/Account.qml" line="144"/>
         <source>Save</source>
         <comment>Account page accept button text</comment>
         <translation>Shrani</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="136"/>
+        <location filename="../client/qml/Account.qml" line="149"/>
         <source>Nickname:</source>
         <comment>Account page nickname title</comment>
         <translation>Vzdevek:</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="169"/>
+        <location filename="../client/qml/Account.qml" line="182"/>
         <source>Status:</source>
         <comment>Account page status title</comment>
         <translation>Status:</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="202"/>
+        <location filename="../client/qml/Account.qml" line="215"/>
         <source>Created: %1</source>
         <comment>Account page created title</comment>
         <translation>Ustvarjen: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="216"/>
+        <location filename="../client/qml/Account.qml" line="229"/>
         <source>Expiration: %1</source>
         <comment>Account page expiration title</comment>
         <translation>Poteče: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="230"/>
+        <location filename="../client/qml/Account.qml" line="243"/>
         <source>Account is active</source>
         <comment>Account page account active label</comment>
         <translation>Račun je aktiven</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="231"/>
+        <location filename="../client/qml/Account.qml" line="244"/>
         <source>Account is blocked</source>
         <comment>Account page account blocked label</comment>
         <translation>Račun je blokiran</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="245"/>
+        <location filename="../client/qml/Account.qml" line="258"/>
         <source>Account type: %1</source>
         <comment>Account page account type label</comment>
         <translation>Vrsta računa: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="288"/>
+        <location filename="../client/qml/Account.qml" line="301"/>
         <source>Remove account</source>
         <comment>Account page remove dialog title</comment>
         <translation>Odstrani račun</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="296"/>
+        <location filename="../client/qml/Account.qml" line="309"/>
         <source>This action will delete your account information from phone and from WhatsApp server.</source>
         <comment>Account page remove dialog description</comment>
         <translation>To dejanje bo pobrisalo račun in podatke o računu s telefona in WhatsApp serverja.</translation>
     </message>
     <message>
-        <location filename="../client/qml/Account.qml" line="302"/>
+        <location filename="../client/qml/Account.qml" line="315"/>
         <source>No, remove only local information</source>
         <translation>Ne, odstrani le lokalne podatke</translation>
     </message>
@@ -429,91 +435,91 @@
 <context>
     <name>Client</name>
     <message>
-        <location filename="../server/src/client.cpp" line="456"/>
+        <location filename="../server/src/client.cpp" line="466"/>
         <source>Image</source>
         <comment>Notification media name text</comment>
         <translation>Slika</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="457"/>
+        <location filename="../server/src/client.cpp" line="467"/>
         <source>Audio</source>
         <comment>Notification media name text</comment>
         <translation>Zvok</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="458"/>
+        <location filename="../server/src/client.cpp" line="468"/>
         <source>Video</source>
         <comment>Notification media name text</comment>
         <translation>Video</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="459"/>
+        <location filename="../server/src/client.cpp" line="469"/>
         <source>Contact</source>
         <comment>Notification media name text</comment>
         <translation>Stik</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="460"/>
+        <location filename="../server/src/client.cpp" line="470"/>
         <source>Location</source>
         <comment>Notification media name text</comment>
         <translation>položaj</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="461"/>
+        <location filename="../server/src/client.cpp" line="471"/>
         <source>Voice</source>
         <comment>Notification media name text</comment>
         <translation>Glas</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="462"/>
+        <location filename="../server/src/client.cpp" line="472"/>
         <source>System</source>
         <comment>Notification media name text</comment>
         <translation>Sistem</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="761"/>
+        <location filename="../server/src/client.cpp" line="771"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
         <translation>Povezano</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1078"/>
+        <location filename="../server/src/client.cpp" line="1119"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Skrito</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1353"/>
+        <location filename="../server/src/client.cpp" line="1394"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Pridruženi skupini</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1356"/>
+        <location filename="../server/src/client.cpp" line="1397"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Zapustil skupino</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1359"/>
+        <location filename="../server/src/client.cpp" line="1400"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Zadeva: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1362"/>
+        <location filename="../server/src/client.cpp" line="1403"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Slika je spremenjena</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1701"/>
+        <location filename="../server/src/client.cpp" line="967"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation>Brez povezave</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2865"/>
+        <location filename="../server/src/client.cpp" line="2907"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n neprebrano sporočilo</numerusform><numerusform>%n neprebrani sporočili</numerusform><numerusform>%n neprebrana sporočila</numerusform><numerusform>%n neprebranih sporočil</numerusform></translation>
@@ -908,25 +914,25 @@
 <context>
     <name>Location</name>
     <message>
-        <location filename="../client/qml/Location.qml" line="36"/>
+        <location filename="../client/qml/Location.qml" line="37"/>
         <source>Coordinates not available</source>
         <comment>Location page cant accept feedback</comment>
         <translation>Koordinate niso na voljo</translation>
     </message>
     <message>
-        <location filename="../client/qml/Location.qml" line="108"/>
+        <location filename="../client/qml/Location.qml" line="112"/>
         <source>You need to enable GPS positioning in settings</source>
         <comment>Location send page text</comment>
         <translation>V nastavitvah omogočite določanje položaja z GPS</translation>
     </message>
     <message>
-        <location filename="../client/qml/Location.qml" line="165"/>
+        <location filename="../client/qml/Location.qml" line="169"/>
         <source>latitude: %1</source>
         <comment>Location send page text</comment>
         <translation>latitude: %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/Location.qml" line="172"/>
+        <location filename="../client/qml/Location.qml" line="176"/>
         <source>longitude: %1</source>
         <comment>Location send page text</comment>
         <translation>longitude: %1</translation>
@@ -2012,14 +2018,20 @@ Kliknite Obnovi za nakup 1-letne naročnine na WhatsApp servis.</translation>
         <comment>Settings option name</comment>
         <translation>Za obvestila o pogovorih uporabi sistemski opomnik</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../client/qml/Settings.qml" line="537"/>
+        <source>%n minutes</source>
+        <comment>Settings option value label</comment>
+        <translation><numerusform>%n minuta</numerusform><numerusform>%n minuti</numerusform><numerusform>%n minute</numerusform><numerusform>%n minut</numerusform></translation>
+    </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="547"/>
+        <location filename="../client/qml/Settings.qml" line="577"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
         <translation>Shrani medijske datoteke v galerijo</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="548"/>
+        <location filename="../client/qml/Settings.qml" line="578"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
         <translation>Potrdite če želite, da so shranjene datoteke vidne v galeriji</translation>
@@ -2055,49 +2067,73 @@ Kliknite Obnovi za nakup 1-letne naročnine na WhatsApp servis.</translation>
         <translation>Splošno</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="709"/>
+        <location filename="../client/qml/Settings.qml" line="527"/>
+        <source>Use connection keepalive (*)</source>
+        <comment>Settings option name</comment>
+        <translation>Uporabi ohranjanje povezave (*)</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="535"/>
+        <source>Reconnection interval (*)</source>
+        <comment>Settings option name</comment>
+        <translation>Interval ponovne povezave (*)</translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="547"/>
+        <source>Reconnection limit (*)</source>
+        <comment>Settings option name</comment>
+        <translation>Omejitev ponovne povezave (*)</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/qml/Settings.qml" line="549"/>
+        <source>%n reconnections</source>
+        <comment>Settings option value label</comment>
+        <translation><numerusform>%n ponovna povezava</numerusform><numerusform>%n ponovni povezavi</numerusform><numerusform>%n ponovne povezave</numerusform><numerusform>%n ponovnih povezav</numerusform></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Settings.qml" line="739"/>
         <source>Don&apos;t resize on WLAN</source>
         <comment>Settings option name</comment>
         <translation>Ne spreminjaj velikosti pri brezžični povezavi</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="804"/>
+        <location filename="../client/qml/Settings.qml" line="834"/>
         <source>red</source>
         <comment>Pattern led color</comment>
         <translation>rdeča</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="805"/>
+        <location filename="../client/qml/Settings.qml" line="835"/>
         <source>green</source>
         <comment>Pattern led color</comment>
         <translation>zelena</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="806"/>
+        <location filename="../client/qml/Settings.qml" line="836"/>
         <source>blue</source>
         <comment>Pattern led color</comment>
         <translation>modra</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="807"/>
+        <location filename="../client/qml/Settings.qml" line="837"/>
         <source>white</source>
         <comment>Pattern led color</comment>
         <translation>bela</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="808"/>
+        <location filename="../client/qml/Settings.qml" line="838"/>
         <source>yellow</source>
         <comment>Pattern led color</comment>
         <translation>rumena</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="809"/>
+        <location filename="../client/qml/Settings.qml" line="839"/>
         <source>cyan</source>
         <comment>Pattern led color</comment>
         <translation>cyan</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="810"/>
+        <location filename="../client/qml/Settings.qml" line="840"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
         <translation>pink</translation>
@@ -2156,19 +2192,19 @@ Kliknite Obnovi za nakup 1-letne naročnine na WhatsApp servis.</translation>
         <translation>Server za povezavo</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="528"/>
+        <location filename="../client/qml/Settings.qml" line="558"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
         <translation>Samodejni zagon</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="536"/>
+        <location filename="../client/qml/Settings.qml" line="566"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
         <translation>Dovoli shranjevanje log datotek</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="540"/>
+        <location filename="../client/qml/Settings.qml" line="570"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
         <translation>Za vklop log datotek naredtei popoln izhod iz programa. Ukaz za pošiljanje log datotek avtorju se nahaja v meniju Nastavitve</translation>
@@ -2180,13 +2216,13 @@ Kliknite Obnovi za nakup 1-letne naročnine na WhatsApp servis.</translation>
         <translation>Zakleni orientacijo pogovora v pokončnem pogledu</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="555"/>
+        <location filename="../client/qml/Settings.qml" line="585"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
         <translation>Če je status &quot;dosegljiv&quot; se prikaži med stiki</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="561"/>
+        <location filename="../client/qml/Settings.qml" line="591"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
         <translation>Sprejmi sporočila od neznanih stikov</translation>
@@ -2246,97 +2282,97 @@ Kliknite Obnovi za nakup 1-letne naročnine na WhatsApp servis.</translation>
         <translation>Multimedijsko sporočilo</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="566"/>
+        <location filename="../client/qml/Settings.qml" line="596"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
         <translation>Prisotnost</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="571"/>
+        <location filename="../client/qml/Settings.qml" line="601"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
         <translation>Prikaži prisotnost</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="574"/>
+        <location filename="../client/qml/Settings.qml" line="604"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
         <translation>Prikaži povezano ko je program zagnan</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="581"/>
+        <location filename="../client/qml/Settings.qml" line="611"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
         <translation>Vedno prikaži povezano</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="588"/>
+        <location filename="../client/qml/Settings.qml" line="618"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
         <translation>Vedno prikaži brez povezave</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="601"/>
+        <location filename="../client/qml/Settings.qml" line="631"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
         <translation>Naslovnica</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="612"/>
+        <location filename="../client/qml/Settings.qml" line="642"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
         <translation>Levo dejanje na naslovnici</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="636"/>
+        <location filename="../client/qml/Settings.qml" line="666"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
         <translation>Desno dejanje na naslovnici</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="653"/>
+        <location filename="../client/qml/Settings.qml" line="683"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
         <translation>Datoteke</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="689"/>
+        <location filename="../client/qml/Settings.qml" line="719"/>
         <source>Auto download on WLAN only</source>
         <comment>Settings option name</comment>
         <translation>Samodejni prenos le pri brezžični povezavi</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="679"/>
+        <location filename="../client/qml/Settings.qml" line="709"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
         <translation>Največja velikost za samodejni prenos</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="698"/>
+        <location filename="../client/qml/Settings.qml" line="728"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
         <translation>Spremeni velikost poslanih slik</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="742"/>
+        <location filename="../client/qml/Settings.qml" line="772"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
         <translation>Največja velikost slike po velikosti datoteke</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="776"/>
+        <location filename="../client/qml/Settings.qml" line="806"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
         <translation>Največja velikost slike po ločljivosti slike</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="778"/>
+        <location filename="../client/qml/Settings.qml" line="808"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
         <translation>%1 MPx</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="792"/>
+        <location filename="../client/qml/Settings.qml" line="822"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
         <translation>Možnosti, označene z (*) bodo veljavne po ponovni vzpostavitvi povezave</translation>
@@ -2646,13 +2682,13 @@ Kliknite Obnovi za nakup 1-letne naročnine na WhatsApp servis.</translation>
 <context>
     <name>main</name>
     <message>
-        <location filename="../client/qml/main.qml" line="455"/>
+        <location filename="../client/qml/main.qml" line="459"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
         <translation>Prekinjam povezavo ...</translation>
     </message>
     <message>
-        <location filename="../client/qml/main.qml" line="762"/>
+        <location filename="../client/qml/main.qml" line="766"/>
         <source>Server experiencing problems with following feature(s): %1</source>
         <translation>Server ima težave z naslednjimi možnostmi: %1</translation>
     </message>
