@@ -33,6 +33,7 @@ TRANSLATIONS += \
     fr_FR.ts \
     gl.ts \
     it_IT.ts \
+    ml_IN.ts \
     nl.ts \
     nl_BE.ts \
     pl.ts \
