@@ -803,7 +803,7 @@ ApplicationWindow {
         autoDownloadWlan = Mitakuuluu.load("settings/autoDownloadWlan", false)
         resizeWlan = Mitakuuluu.load("settings/resizeWlan", false)
         systemNotifier = Mitakuuluu.load("settings/systemNotifier", false)
-        useKeepalive - Mitakuuluu.load("settings/useKeepalive", true)
+        useKeepalive = Mitakuuluu.load("settings/useKeepalive", true)
 
         var hiddenContacts = Mitakuuluu.loadGroup("hidden")
         var toHide = []
