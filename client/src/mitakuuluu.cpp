@@ -890,6 +890,7 @@ QString Mitakuuluu::saveMedia(const QString &path, int watype)
     }
     case Video: {
         location = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
+        break;
     }
     default: {
         location = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
