@@ -324,8 +324,8 @@ void Client::readSettings()
     systemNotifier = settings.value("settings/systemNotifier", false).toBool();
 
     useKeepalive = settings.value("settings/useKeepalive", true).toBool();
-    reconnectionInterval = settings.value("settings/reconnectionInterval", 5).toInt();
-    reconnectionLimit = settings.value("settings/reconnectionLimit", 5).toInt();
+    reconnectionInterval = settings.value("settings/reconnectionInterval", 1).toInt();
+    reconnectionLimit = settings.value("settings/reconnectionLimit", 20).toInt();
 
     showConnectionNotifications = settings.value("settings/showConnectionNotifications", false).toBool();
 
@@ -842,6 +842,10 @@ void Client::verifyAndConnect()
         connectToServer();
     else
         Q_EMIT noAccountData();
+    if (session) {
+        delete session;
+        session = 0;
+    }
 }
 
 void Client::connectToServer()
@@ -974,19 +978,22 @@ void Client::disconnected()
         qint64 now = QDateTime::currentMSecsSinceEpoch();
         connectionStatus = Disconnected;
         Q_EMIT connectionStatusChanged(connectionStatus);
+        qDebug() << "now:" << now << "lastDisconnect:" << lastDisconnect << "reconnectionInterval:" << reconnectionInterval << "check count:" << (now - lastDisconnect < 60000*reconnectionInterval);
         if (now - lastDisconnect < 60000*reconnectionInterval) {
             disconnectCount++;
+            qDebug() << "disconnectCount:" << disconnectCount << "reconnectionLimit:" << reconnectionLimit;
             if (disconnectCount < reconnectionLimit) {
                 networkStatusChanged(isOnline);
             }
         }
         else {
             disconnectCount = 1;
+            networkStatusChanged(isOnline);
         }
         lastDisconnect = now;
     }
     else {
-        disconnectCount = 1;
+        disconnectCount = 0;
     }
 }
 
@@ -2288,10 +2295,11 @@ void Client::regRequest(const QString &cc, const QString &phone, const QString &
     session = new QNetworkSession(manager->defaultConfiguration(), this);
     if (!session->isOpen()) {
         QObject::connect(session, SIGNAL(opened()), reg, SLOT(start()));
-        session->open();
+        //session->open();
+        openConnectionDialog();
     }
     else {
-        session->deleteLater();
+        //session->deleteLater();
         QTimer::singleShot(500, reg, SLOT(start()));
     }
 }
@@ -2320,10 +2328,11 @@ void Client::enterCode(const QString &cc, const QString &phone, const QString &s
     session = new QNetworkSession(manager->defaultConfiguration(), this);
     if (!session->isOpen()) {
         QObject::connect(session, SIGNAL(opened()), reg, SLOT(startRegRequest()));
-        session->open();
+        //session->open();
+        openConnectionDialog();
     }
     else {
-        session->deleteLater();
+        //session->deleteLater();
         QTimer::singleShot(500, reg, SLOT(startRegRequest()));
     }
 }
@@ -2683,11 +2692,34 @@ void Client::removeAccountFromServer()
 void Client::forceConnection()
 {
     qDebug() << "Force connection";
+    if (session)
+        delete session;
+    session = new QNetworkSession(manager->defaultConfiguration(), this);
+    qDebug() << "session:" << session->isOpen() << "online:" << manager->isOnline();
     if (!session->isOpen()) {
-        session->open();
+        openConnectionDialog();
     }
     else {
         networkStatusChanged(true);
+    }
+    delete session;
+    session = 0;
+}
+
+void Client::openConnectionDialog()
+{
+    QDBusInterface *connSelectorInterface = new QDBusInterface(QStringLiteral("com.jolla.lipstick.ConnectionSelector"),
+                                                                   QStringLiteral("/"),
+                                                                   QStringLiteral("com.jolla.lipstick.ConnectionSelectorIf"),
+                                                                   QDBusConnection::sessionBus(),
+                                                                   this);
+
+    QList<QVariant> args;
+    args.append("wlan");
+    QDBusMessage reply = connSelectorInterface->callWithArgumentList(QDBus::NoBlock,
+                                                                     QStringLiteral("openConnection"), args);
+    if (reply.type() != QDBusMessage::ReplyMessage) {
+        qWarning() << reply.errorMessage();
     }
 }
 

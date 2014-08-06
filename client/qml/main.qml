@@ -156,10 +156,10 @@ ApplicationWindow {
     property bool useKeepalive: true
     onUseKeepaliveChanged: Mitakuuluu.save("settings/useKeepalive", useKeepalive)
 
-    property int reconnectionInterval: 5
+    property int reconnectionInterval: 1
     onReconnectionIntervalChanged: Mitakuuluu.save("settings/reconnectionInterval", reconnectionInterval)
 
-    property int reconnectionLimit: 5
+    property int reconnectionLimit: 20
     onReconnectionLimitChanged: Mitakuuluu.save("settings/reconnectionLimit", reconnectionLimit)
 
     property int currentOrientation: pageStack._currentOrientation

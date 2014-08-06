@@ -651,6 +651,7 @@ public slots:
     void setPresenceUnavailable();
     void removeAccountFromServer();
     void forceConnection();
+    void openConnectionDialog();
     void contactRemoved(const QString &jid);
     void setLocale(const QString &locale);
     void windowActive();
