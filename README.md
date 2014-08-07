@@ -11,6 +11,14 @@ WhatsApp is a registered trademark of WhatsApp Inc registered in the U.S. and ot
 * OpenRepos: https://openrepos.net/content/coderus/mitakuuluu
 * Forum (TMO): http://talk.maemo.org/showthread.php?t=92160
 
+Posting wishes
+==========
+
+Describe your wish as more as possible
+One wish per issue. Do not post multiple wishes in one issue
+Wishes will be implemented if enough peoples will be interested in this feature and vote +1 for it.
+You can donate for faster implementing your wishes, do not forget to add link to issue, or send it to author after donating.
+
 Posting bugreports
 ==========
 
