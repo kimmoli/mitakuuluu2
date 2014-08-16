@@ -86,6 +86,7 @@ private:
     FMessage _pendingMsg;
 
     QString generateMediaFilename(QString extension);
+    QImage generateThumbnail(const QString &fileName, const QSize &requestedSize, bool crop);
 
 };
 

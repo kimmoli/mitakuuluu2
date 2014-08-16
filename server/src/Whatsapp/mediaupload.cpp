@@ -37,6 +37,10 @@
 
 #include "util/utilities.h"
 
+#include <QLibrary>
+
+typedef QImage (*CreateThumbnailFunc)(const QString &fileName, const QSize &requestedSize, bool crop);
+
 MediaUpload::MediaUpload(const FMessage &message, QObject *parent) :
     QObject(parent)
 {
@@ -54,6 +58,22 @@ QString MediaUpload::generateMediaFilename(QString extension)
     hashed.append(QString("." + extension).toUtf8());
 
     return QString::fromUtf8(hashed);
+}
+
+QImage MediaUpload::generateThumbnail(const QString &fileName, const QSize &requestedSize, bool crop)
+{
+    QImage image;
+
+    static CreateThumbnailFunc createThumbnail = (CreateThumbnailFunc)QLibrary::resolve(
+                QLatin1String("/usr/lib/qt5/qml/org/nemomobile/thumbnailer/thumbnailers/libvideothumbnailer.so"), "createThumbnail");
+
+    if (createThumbnail) {
+        image = createThumbnail(fileName, requestedSize, crop);
+    } else {
+        qWarning("Cannot generate video thumbnail, thumbnailer function not available.");
+    }
+
+    return image;
 }
 
 
@@ -75,7 +95,7 @@ void MediaUpload::sendPicture(QStringList jids, MediaDescriptor descriptor)
         clip.setHeight(reader.size().width());
     }
     reader.setClipRect(clip);
-    reader.setScaledSize(QSize(64, 64));
+    reader.setScaledSize(QSize(100, 100));
     qDebug() << "creating preview";
 
     QImage picture = reader.read();
@@ -92,18 +112,17 @@ void MediaUpload::sendPicture(QStringList jids, MediaDescriptor descriptor)
 
 void MediaUpload::sendVideo(QStringList jids, MediaDescriptor descriptor)
 {
-    QString thumbnail = "/usr/share/harbour-mitakuuluu2/images/thumbnail-video.jpg";
-
-    QImage picture;
-
-    picture.load(thumbnail);
-
-    picture = picture.scaled(100, 100, Qt::KeepAspectRatio);
-
+    qDebug() << "loading video:" << descriptor.localFileUri;
+    QImage picture = generateThumbnail(descriptor.localFileUri, QSize(100, 100), true);
+    if (picture.isNull()) {
+        QString thumbnail = "/usr/share/harbour-mitakuuluu2/images/thumbnail-video.jpg";
+        picture.load(thumbnail);
+        picture = picture.scaled(64, 64, Qt::KeepAspectRatio);
+    }
     descriptor.data.clear();
     QBuffer out(&descriptor.data);
     out.open(QIODevice::WriteOnly);
-    picture.save(&out, descriptor.contentType.split("/").last().toUpper().toLatin1().data());
+    picture.save(&out, "JPG");
 
     sendMedia(jids, descriptor);
 }
