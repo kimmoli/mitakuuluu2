@@ -293,7 +293,8 @@ Page {
                     id: nickname
                     font.pixelSize: Theme.fontSizeMedium
                     width: parent.width
-                    text: Utilities.emojify(model.nickname, emojiPath)
+                    text: Theme.highlightText(Utilities.emojify(model.nickname, emojiPath), searchField.text, Theme.highlightColor)
+                    //text: Utilities.emojify(model.nickname, emojiPath)
                     wrapMode: Text.NoWrap
                     elide: Text.ElideRight
                     color: item.highlighted ? Theme.highlightColor : Theme.primaryColor

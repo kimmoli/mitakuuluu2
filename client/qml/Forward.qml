@@ -40,6 +40,8 @@ Dialog {
 
     property variant conversationModel
 
+    property bool searchEnabled: false
+
     onAccepted: {
         conversationModel.forwardMessage(page.jids, page.msgid)
         page.clear()
@@ -81,6 +83,18 @@ Dialog {
         anchors.fill: page
         pressDelay: 0
 
+        PullDownMenu {
+            MenuItem {
+                text: searchEnabled
+                      ? qsTr("Hide search field")
+                      : qsTr("Show search field")
+                enabled: listView.count > 0
+                onClicked: {
+                    searchEnabled = !searchEnabled
+                }
+            }
+        }
+
         DialogHeader {
             id: header
             title: jids.length == 0 ? qsTr("Select contacts", "Forward message page title")
@@ -108,9 +122,45 @@ Dialog {
             opacity: page.isPortrait ? 0.2 : 1.0
         }
 
+        Item {
+            id: searchFieldPlaceholder
+            width: parent.width
+            height: !searchField.enabled ? 0 : searchField.height
+            anchors {
+                top: page.isPortrait ? msgArea.bottom : header.bottom
+            }
+            Behavior on height {
+                NumberAnimation {
+                    duration: 150
+                    easing.type: Easing.InOutQuad
+                }
+            }
+        }
+
+        SearchField {
+            id: searchField
+            parent: searchFieldPlaceholder
+            width: parent.width
+            enabled: page.searchEnabled
+            onEnabledChanged: {
+                if (!enabled) {
+                    text = ''
+                }
+            }
+            focus: enabled
+
+            visible: opacity > 0
+            opacity: page.searchEnabled ? 1 : 0
+            Behavior on opacity {
+                FadeAnimation {
+                    duration: 150
+                }
+            }
+        }
+
         SilicaListView {
             id: listView
-            anchors.top: page.isPortrait ? msgArea.bottom : header.bottom
+            anchors.top: searchFieldPlaceholder.bottom
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             width: page.isPortrait ? page.width : (page.width / 2)
@@ -129,6 +179,7 @@ Dialog {
         showActive: false
         showUnknown: acceptUnknown
         filterContacts: showMyJid ? [] : [Mitakuuluu.myJid]
+        filter: searchField.text
         Component.onCompleted: {
             init()
         }
@@ -162,7 +213,8 @@ Dialog {
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingSmall
                 font.pixelSize: Theme.fontSizeMedium
-                text: Utilities.emojify(model.nickname, emojiPath)
+                text: Theme.highlightText(Utilities.emojify(model.nickname, emojiPath), searchField.text, Theme.highlightColor)
+                //text: Utilities.emojify(model.nickname, emojiPath)
                 color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
                 truncationMode: TruncationMode.Fade
             }
