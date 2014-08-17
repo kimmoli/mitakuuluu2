@@ -16,11 +16,13 @@ ShareDialog {
 
     property string path: source
 
+    property bool searchEnabled: false
+
     canAccept: false
 
     onStatusChanged: {
         if (status == DialogStatus.Opened) {
-            fastScroll.init()
+            //fastScroll.init()
         }
     }
 
@@ -46,18 +48,78 @@ ShareDialog {
         userData: {"description": "Mitakuuluu"}
     }
 
-    SilicaListView {
+    SilicaFlickable {
         anchors.fill: parent
-        model: contactsModel
-        delegate: contactsDelegate
-        header: DialogHeader { title: jids.length > 0 ? qsTr("Selected: %n", "Sharing menu title text", jids.length) : "Mitakuuluu" }
-        section.property: "nickname"
-        section.criteria: ViewSection.FirstCharacter
-        section.delegate: sectionDelegate
-        FastScroll {
-            id: fastScroll
-            __hasPageHeight: false
+        contentHeight: Math.max(1, content.height)
+
+        PullDownMenu {
+            MenuItem {
+                text: searchEnabled
+                      ? qsTr("Hide search field")
+                      : qsTr("Show search field")
+                enabled: contactsView.count > 0
+                onClicked: {
+                    searchEnabled = !searchEnabled
+                }
+            }
         }
+
+        Column {
+            id: content
+            width: parent.width
+
+            DialogHeader {
+                title: jids.length > 0 ? qsTr("Selected: %n", "Sharing menu title text", jids.length) : "Mitakuuluu"
+            }
+
+            Item {
+                id: searchFieldPlaceholder
+                width: parent.width
+
+                height: !searchField.enabled ? 0 : searchField.height
+                Behavior on height {
+                    NumberAnimation {
+                        duration: 150
+                        easing.type: Easing.InOutQuad
+                    }
+                }
+            }
+
+            SearchField {
+                id: searchField
+                parent: searchFieldPlaceholder
+                width: parent.width
+                enabled: root.searchEnabled
+                onEnabledChanged: {
+                    if (!enabled) {
+                        text = ''
+                    }
+                }
+
+                visible: opacity > 0
+                opacity: root.searchEnabled ? 1 : 0
+                Behavior on opacity {
+                    FadeAnimation {
+                        duration: 150
+                    }
+                }
+            }
+
+            ListView {
+                id: contactsView
+                width: parent.width
+                model: contactsModel
+                delegate: contactsDelegate
+                section.property: "nickname"
+                section.criteria: ViewSection.FirstCharacter
+                section.delegate: sectionDelegate
+                height: contactsView.contentHeight
+                currentIndex: -1
+                interactive: false
+            }
+        }
+
+        VerticalScrollDecorator {}
     }
 
     Component {
@@ -90,6 +152,7 @@ ShareDialog {
             Label {
                 id: nickname
                 font.pixelSize: Theme.fontSizeMedium
+                //text: Theme.highlightText(Utilities.emojify(model.nickname, emojiPath), Utilities.regExpFor(searchField.text), Theme.highlightColor)
                 text: Utilities.emojify(model.nickname, emojiPath)
                 anchors.left: ava.right
                 anchors.leftMargin: 16
@@ -156,5 +219,6 @@ ShareDialog {
 
     ShareContactsModel {
         id: contactsModel
+        filter: searchField.text
     }
 }
