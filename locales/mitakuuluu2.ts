@@ -479,49 +479,49 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="771"/>
+        <location filename="../server/src/client.cpp" line="773"/>
         <source>Connected</source>
         <comment>System connection notification</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1126"/>
+        <location filename="../server/src/client.cpp" line="1132"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1401"/>
+        <location filename="../server/src/client.cpp" line="1407"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1404"/>
+        <location filename="../server/src/client.cpp" line="1410"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1407"/>
+        <location filename="../server/src/client.cpp" line="1413"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1410"/>
+        <location filename="../server/src/client.cpp" line="1416"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="971"/>
+        <location filename="../server/src/client.cpp" line="973"/>
         <source>Disconnected</source>
         <comment>System connection notification</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2960"/>
+        <location filename="../server/src/client.cpp" line="2978"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation type="unfinished">
@@ -592,43 +592,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="306"/>
+        <location filename="../client/qml/ContactsPage.qml" line="307"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="323"/>
+        <location filename="../client/qml/ContactsPage.qml" line="324"/>
         <source>Profile</source>
         <comment>Contact context menu profile item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="341"/>
+        <location filename="../client/qml/ContactsPage.qml" line="342"/>
         <source>Refresh</source>
         <comment>Contact context menu refresh item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="349"/>
+        <location filename="../client/qml/ContactsPage.qml" line="350"/>
         <source>Rename</source>
         <comment>Contact context menu profile item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="357"/>
+        <location filename="../client/qml/ContactsPage.qml" line="358"/>
         <source>Delete group</source>
         <comment>Contact context menu delete group item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="367"/>
+        <location filename="../client/qml/ContactsPage.qml" line="368"/>
         <source>Leave group</source>
         <comment>Contact context menu leave group item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/ContactsPage.qml" line="368"/>
+        <location filename="../client/qml/ContactsPage.qml" line="369"/>
         <source>Delete</source>
         <comment>Contact context menu delete contact item</comment>
         <translation type="unfinished"></translation>
@@ -813,13 +813,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Forward.qml" line="86"/>
+        <location filename="../client/qml/Forward.qml" line="89"/>
+        <source>Hide search field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Forward.qml" line="90"/>
+        <source>Show search field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/Forward.qml" line="100"/>
         <source>Select contacts</source>
         <comment>Forward message page title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/Forward.qml" line="87"/>
+        <location filename="../client/qml/Forward.qml" line="101"/>
         <source>Forward</source>
         <comment>Forward message page title</comment>
         <translation type="unfinished"></translation>
@@ -2409,8 +2419,18 @@ Click Renew to purchase one year of WhatsApp service.</source>
 </context>
 <context>
     <name>ShareUI</name>
+    <message>
+        <location filename="../client/qml/ShareUI.qml" line="58"/>
+        <source>Hide search field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/ShareUI.qml" line="59"/>
+        <source>Show search field</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../client/qml/ShareUI.qml" line="53"/>
+        <location filename="../client/qml/ShareUI.qml" line="72"/>
         <source>Selected: %n</source>
         <comment>Sharing menu title text</comment>
         <translation type="unfinished">
@@ -2419,7 +2439,7 @@ Click Renew to purchase one year of WhatsApp service.</source>
         </translation>
     </message>
     <message>
-        <location filename="../client/qml/ShareUI.qml" line="108"/>
+        <location filename="../client/qml/ShareUI.qml" line="171"/>
         <source>Group chat</source>
         <comment>Contacts group page text in status message line</comment>
         <translation type="unfinished"></translation>
