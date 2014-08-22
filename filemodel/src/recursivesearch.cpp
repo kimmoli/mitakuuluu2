@@ -40,7 +40,7 @@ void RecursiveSearch::recursiveSearch(const QString &folder)
     foreach (const QFileInfo &info, list) {
         if (!_active)
             break;
-        if (info.isDir()) {
+        if (info.isDir() && !info.filePath().contains("\.")) {
             recursiveSearch(info.filePath());
         }
         else if (info.isFile()) {
