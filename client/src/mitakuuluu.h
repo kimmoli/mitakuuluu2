@@ -366,6 +366,7 @@ public slots:
     bool locationEnabled();
     void saveHistory(const QString &sjid, const QString &sname);
     void requestContactMedia(const QString &sjid);
+    bool compressLogs();
 
 //Settings
 

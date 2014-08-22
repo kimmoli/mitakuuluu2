@@ -1369,6 +1369,18 @@ void Mitakuuluu::requestContactMedia(const QString &sjid)
     }
 }
 
+bool Mitakuuluu::compressLogs()
+{
+    QFile logfile("/tmp/mitakuuluu2.log");
+    if (logfile.exists()) {
+        QProcess zip;
+        zip.start("/usr/bin/zip", QStringList() << "/tmp/mitakuuluu2log.zip" << "/tmp/mitakuuluu2.log");
+        zip.waitForFinished();
+        return zip.exitStatus() == QProcess::NormalExit;
+    }
+    return false;
+}
+
 // Settings
 
 void Mitakuuluu::save(const QString &key, const QVariant &value)
