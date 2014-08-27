@@ -8,8 +8,8 @@ Name:       harbour-mitakuuluu2
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Mitäkuuluu
-Version:    0.8.2
-Release:    3
+Version:    0.8.3
+Release:    1
 Group:      Qt/Qt
 License:    WTFPL
 Source0:    %{name}-%{version}.tar.bz2
@@ -18,6 +18,7 @@ Requires:   nemo-transferengine-qt5 declarative-transferengine-qt5 >= 0.0.44
 Requires:   qt5-qtdeclarative-import-sensors qt5-qtsensors-plugin-gestures-sensor qt5-qtsensors-plugin-gestures-shake
 Requires:   qt5-qtdeclarative-import-location qt5-qtdeclarative-import-positioning
 Requires:   libkeepalive
+Requires:   zip
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
