@@ -330,32 +330,38 @@ void QueryExecutor::saveConversationMessage(QVariantMap &query)
         }
     }
 
-    QSqlQuery i(db);
-    i.prepare(QString("INSERT INTO %1 VALUES (:msgid, :jid, :author, :timestamp, :data, :status, :watype, :url, :name, :latitude, :longitude, :size, :duration, :width, :height, :hash, :mime, :broadcast, :live, :local);").arg(table));
-    i.bindValue(":msgid", query["msgid"]);
-    i.bindValue(":jid", query["jid"]);
-    i.bindValue(":author", query["author"]);
-    i.bindValue(":timestamp", query["timestamp"]);
-    i.bindValue(":data", query["data"]);
-    i.bindValue(":status", query["status"]);
-    i.bindValue(":watype", query["watype"]);
-    i.bindValue(":url", query["url"]);
-    i.bindValue(":name", query["name"]);
-    i.bindValue(":latitude", query["latitude"]);
-    i.bindValue(":longitude", query["longitude"]);
-    i.bindValue(":size", query["size"]);
-    i.bindValue(":duration", query["duration"]);
-    i.bindValue(":width", query["width"]);
-    i.bindValue(":height", query["height"]);
-    i.bindValue(":hash", query.contains("hash") ? query["hash"] : QString());
-    i.bindValue(":mime", query["mime"]);
-    i.bindValue(":broadcast", query["broadcast"].toBool() ? 1 : 0);
-    i.bindValue(":live", query["live"].toBool() ? 1 : 0);
-    i.bindValue(":local", query["local"]);
-    i.exec();
+    QSqlQuery e(db);
+    e.prepare(QString("SELECT EXISTS (SELECT 1 FROM %1 WHERE msgid=(:msgid));").arg(table));
+    e.bindValue(":msgid", query["msgid"]);
+    e.exec();
+    if (!e.next() || e.value(0).toInt() == 0) {
+        QSqlQuery i(db);
+        i.prepare(QString("INSERT INTO %1 VALUES (:msgid, :jid, :author, :timestamp, :data, :status, :watype, :url, :name, :latitude, :longitude, :size, :duration, :width, :height, :hash, :mime, :broadcast, :live, :local);").arg(table));
+        i.bindValue(":msgid", query["msgid"]);
+        i.bindValue(":jid", query["jid"]);
+        i.bindValue(":author", query["author"]);
+        i.bindValue(":timestamp", query["timestamp"]);
+        i.bindValue(":data", query["data"]);
+        i.bindValue(":status", query["status"]);
+        i.bindValue(":watype", query["watype"]);
+        i.bindValue(":url", query["url"]);
+        i.bindValue(":name", query["name"]);
+        i.bindValue(":latitude", query["latitude"]);
+        i.bindValue(":longitude", query["longitude"]);
+        i.bindValue(":size", query["size"]);
+        i.bindValue(":duration", query["duration"]);
+        i.bindValue(":width", query["width"]);
+        i.bindValue(":height", query["height"]);
+        i.bindValue(":hash", query.contains("hash") ? query["hash"] : QString());
+        i.bindValue(":mime", query["mime"]);
+        i.bindValue(":broadcast", query["broadcast"].toBool() ? 1 : 0);
+        i.bindValue(":live", query["live"].toBool() ? 1 : 0);
+        i.bindValue(":local", query["local"]);
+        i.exec();
 
-    if (i.lastError().type() != QSqlError::NoError) {
-        qDebug() << "Error adding message:" << i.lastError().text();
+        if (i.lastError().type() != QSqlError::NoError) {
+            qDebug() << "Error adding message:" << i.lastError().text();
+        }
     }
 
     Q_EMIT actionDone(query);
