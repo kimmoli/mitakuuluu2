@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
     setgid(getgrnam("privileged")->gr_gid);
 
     QSettings settings("coderus", "mitakuuluu2");
-    if (settings.value("settings/keepLogs", false).toBool())
+    if (settings.value("settings/keepLogs", true).toBool())
         qInstallMessageHandler(fileHandler);
     else
         qInstallMessageHandler(stdoutHandler);

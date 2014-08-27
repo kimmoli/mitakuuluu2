@@ -131,12 +131,14 @@ Dialog {
         videoRecorder{
             resolution: extensions.viewfinderResolution
 
-            audioChannels: 2
-            audioSampleRate: 12000
+            audioSampleRate: 48000
+            audioBitRate: 96
+            audioChannels: 1
             audioCodec: "audio/mpeg, mpegversion=(int)4"
 
+            frameRate: 30
             videoCodec: "video/mpeg, mpegversion=(int)4"
-            mediaContainer: "video/quicktime, variant=(string)iso"
+            mediaContainer: "video/x-matroska"
 
             onRecorderStateChanged: {
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
@@ -173,7 +175,7 @@ Dialog {
         device: "primary"
         onDeviceChanged: reload()
 
-        viewfinderResolution: camera.captureMode == Camera.CaptureStillImage ? "1280x720" : "640x480"
+        viewfinderResolution: "1280x720"
 
 
         manufacturer: "Jolla"
@@ -206,11 +208,11 @@ Dialog {
             sourceSize.height: height
             clip: true
             smooth: true
-            mimeType: extensions.device == "secondary" ? "video/quicktime" : "video/x-matroska"
+            mimeType: "video/x-matroska"
         }
     }
 
-    /*CircleButton {
+    CircleButton {
         id: cameraModeButton
 
         anchors.left: parent.left
@@ -230,13 +232,13 @@ Dialog {
                 camera.captureMode = Camera.CaptureStillImage
             }
         }
-    }*/
+    }
 
     CircleButton {
         id: cameraSourceButton
 
         anchors.left: parent.left
-        anchors.top: header.bottom//cameraModeButton.bottom
+        anchors.top: cameraModeButton.bottom
         anchors.margins: Theme.paddingSmall
         visible: !page.canAccept
         rotation: sensor.rotationAngle - 90

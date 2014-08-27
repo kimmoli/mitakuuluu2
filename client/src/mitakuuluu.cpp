@@ -942,7 +942,7 @@ QString Mitakuuluu::saveWallpaper(const QString &path, const QString &jid)
 
 void Mitakuuluu::openProfile(const QString &name, const QString &phone, const QString avatar)
 {
-    QFile tmp(QString("%1/_persecute-%2").arg(QStandardPaths::writableLocation(QStandardPaths::TempLocation))
+    QFile tmp(QString("%1/_mitakuuluu-%2").arg(QStandardPaths::writableLocation(QStandardPaths::TempLocation))
                                          .arg(phone));
     if (tmp.open(QFile::WriteOnly | QFile::Text)) {
         QTextStream out(&tmp);
@@ -1327,23 +1327,23 @@ void Mitakuuluu::setCamera(QObject *camera)
 
     if (mediaObject && mediaObject->service()) {
 
-        QAudioEncoderSettingsControl *audioEncoder = mediaObject->service()->requestControl<QAudioEncoderSettingsControl *>();
+        /*QAudioEncoderSettingsControl *audioEncoder = mediaObject->service()->requestControl<QAudioEncoderSettingsControl *>();
         if (audioEncoder) {
             QAudioEncoderSettings settings = audioEncoder->audioSettings();
             settings.setBitRate(64000);
             settings.setSampleRate(12000);
             settings.setChannelCount(2);
             audioEncoder->setAudioSettings(settings);
-        }
+        }*/
 
         QVideoEncoderSettingsControl *videoEncoder = mediaObject->service()->requestControl<QVideoEncoderSettingsControl *>();
         if (videoEncoder) {
             QVideoEncoderSettings settings = videoEncoder->videoSettings();
             settings.setEncodingOption(QLatin1String("preset"), QLatin1String("vga"));
-            settings.setBitRate(2000000);
+            /*settings.setBitRate(2000000);
             settings.setEncodingMode(QMultimedia::ConstantBitRateEncoding);
             settings.setFrameRate(30);
-            settings.setQuality(QMultimedia::HighQuality);
+            settings.setQuality(QMultimedia::HighQuality);*/
             videoEncoder->setVideoSettings(settings);
         }
     }
