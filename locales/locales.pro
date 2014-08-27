@@ -16,8 +16,6 @@ transifex.input = ..
 QMAKE_EXTRA_TARGETS += ts transifex
 PRE_TARGETDEPS += ts transifex
 
-
-
 TRANSLATIONS += \
     ca.ts \
     crh.ts \
@@ -46,6 +44,8 @@ TRANSLATIONS += \
     tr_TR.ts \
     zh_CN.ts \
     zh_HK.ts \
+    zh.ts \
+    zh_CN.GB2312.ts \
     $${NULL}
 
 build_translations.target = build_translations
