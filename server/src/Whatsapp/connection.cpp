@@ -614,7 +614,7 @@ bool Connection::read()
                     }
                 }
 
-                sendNotificationReceived(to, id, from, participant, notificationType, ProtocolTreeNode());
+                sendNotificationReceived(from, id, to, participant, notificationType, ProtocolTreeNode());
             }
 
             else if (notificationType == "contacts") {
@@ -639,7 +639,7 @@ bool Connection::read()
             }
 
             else if (notificationType == "subject") {
-                sendNotificationReceived(to, id, from, participant, notificationType, ProtocolTreeNode());
+                sendNotificationReceived(from, id, to, participant, notificationType, ProtocolTreeNode());
                 QString timestamp = node.getAttributeValue("t");
                 ProtocolTreeNodeListIterator i(node.getChildren());
                 while (i.hasNext())
@@ -657,7 +657,7 @@ bool Connection::read()
             }
 
             else if (notificationType == "status") {
-                sendNotificationReceived(to, id, from, participant, notificationType, ProtocolTreeNode());
+                sendNotificationReceived(from, id, to, participant, notificationType, ProtocolTreeNode());
                 ProtocolTreeNodeListIterator i(node.getChildren());
                 while (i.hasNext())
                 {
@@ -675,7 +675,7 @@ bool Connection::read()
             }
 
             else if (notificationType == "participant") {
-                sendNotificationReceived(to, id, from, participant, notificationType, ProtocolTreeNode());
+                sendNotificationReceived(from, id, to, participant, notificationType, ProtocolTreeNode());
                 QString timestamp = node.getAttributeValue("t");
                 ProtocolTreeNodeListIterator i(node.getChildren());
                 while (i.hasNext())
