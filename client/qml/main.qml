@@ -50,7 +50,6 @@ ApplicationWindow {
     onFollowPresenceChanged: {
         Mitakuuluu.save("settings/followPresence", followPresence)
         updateCoverActions()
-        pageStack.push()
     }
 
     function checkLocationEnabled() {
@@ -129,7 +128,7 @@ ApplicationWindow {
     property bool notifyMessages: false
     onNotifyMessagesChanged: Mitakuuluu.save("settings/notifyMessages", notifyMessages)
 
-    property bool keepLogs: false
+    property bool keepLogs: true
     onKeepLogsChanged: Mitakuuluu.save("settings/keepLogs", keepLogs)
 
     property string mapSource: "here"
@@ -161,6 +160,9 @@ ApplicationWindow {
 
     property int reconnectionLimit: 20
     onReconnectionLimitChanged: Mitakuuluu.save("settings/reconnectionLimit", reconnectionLimit)
+
+    property bool disconnectStreamError: false
+    onDisconnectStreamErrorChanged: Mitakuuluu.save("settings/disconnectStreamError", disconnectStreamError)
 
     property int currentOrientation: pageStack._currentOrientation
 
@@ -792,7 +794,7 @@ ApplicationWindow {
         threading = Mitakuuluu.load("connection/threading", true)
         hideKeyboard = Mitakuuluu.load("settings/hideKeyboard", false)
         notifyMessages = Mitakuuluu.load("settings/notifyMessages", false)
-        keepLogs = Mitakuuluu.load("settings/keepLogs", false)
+        keepLogs = Mitakuuluu.load("settings/keepLogs", true)
         mapSource = Mitakuuluu.load("settings/mapSource", "here")
         notificationsMuted = Mitakuuluu.load("settings/notificationsMuted", false)
         coverLeftAction = Mitakuuluu.load("settings/coverLeftAction", 4)

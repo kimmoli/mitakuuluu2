@@ -326,6 +326,7 @@ void Client::readSettings()
     useKeepalive = settings.value("settings/useKeepalive", true).toBool();
     reconnectionInterval = settings.value("settings/reconnectionInterval", 1).toInt();
     reconnectionLimit = settings.value("settings/reconnectionLimit", 20).toInt();
+    disconnectStreamError = settings.value("settings/disconnectStreamError", false).toBool();
 
     showConnectionNotifications = settings.value("settings/showConnectionNotifications", false).toBool();
 
@@ -760,6 +761,9 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
     connect(connectionPtr.data(),SIGNAL(contactAdded(QString)),
             this,SLOT(newContactAdded(QString)));
 
+    connect(connectionPtr.data(),SIGNAL(streamError()),
+            this,SLOT(streamError()));
+
     connect(connectionPtr.data(), SIGNAL(groupCreated(QString)), this, SIGNAL(groupCreated(QString)));
 
     connect(connectionPtr.data(),SIGNAL(contactsStatus(QVariantList)), this, SLOT(syncContactsAvailable(QVariantList)));
@@ -1051,6 +1055,13 @@ void Client::checkActivity()
 void Client::wakeupStopped()
 {
     qDebug() << "WAKEUP STOPPED! WHAT SHOULD I DO NOW!?";
+}
+
+void Client::streamError()
+{
+    if (disconnectStreamError) {
+        connectionPtr->disconnectAndDelete();
+    }
 }
 
 void Client::synchronizePhonebook()

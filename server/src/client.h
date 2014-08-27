@@ -355,6 +355,8 @@ private slots:
     void checkActivity();
     void wakeupStopped();
 
+    void streamError();
+
 signals:
     void authFail(const QString &username, const QString &reason);
     void authSuccess(const QString &username);
@@ -551,6 +553,7 @@ private:
     bool useKeepalive;
     int reconnectionInterval;
     int reconnectionLimit;
+    bool disconnectStreamError;
 
     QMap<QString, qlonglong> mutingList;
 

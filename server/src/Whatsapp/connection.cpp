@@ -214,7 +214,7 @@ bool Connection::read()
                     qDebug() << child.getDataString();
                 }
             }
-            disconnectAndDelete();
+            Q_EMIT streamError();
         }
         if (tag == "iq")
         {

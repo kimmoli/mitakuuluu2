@@ -591,6 +591,8 @@ signals:
     void notifyOfflineMessages(int count);
 
     void loginFailed();
+
+    void streamError();
 };
 
 

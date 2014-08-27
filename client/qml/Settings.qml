@@ -43,8 +43,9 @@ Page {
         onAlwaysOfflineChanged: updatePresence()
         onConnectionServerChanged: {
             connServer.currentIndex = (connectionServer == "c.whatsapp.net" ? 0
-                                     :(connectionServer == "c2.whatsapp.net" ? 1
-                                                                              : 2))
+                                    : (connectionServer == "c1.whatsapp.net" ? 1
+                                    : (connectionServer == "c2.whatsapp.net" ? 2
+                                                                             : 3)))
         }
     }
 
@@ -520,6 +521,12 @@ Page {
                                 : (connectionServer == "c2.whatsapp.net" ? 2
                                                                          : 3)))
                 }
+            }
+
+            TextSwitch {
+                checked: !disconnectStreamError
+                text: qsTr("Ignore stream errors", "Settings option name")
+                onClicked: disconnectStreamError = !checked
             }
 
             TextSwitch {
