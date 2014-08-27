@@ -137,7 +137,7 @@ Dialog {
             audioCodec: "audio/mpeg, mpegversion=(int)4"
 
             frameRate: 30
-            videoCodec: "video/mpeg, mpegversion=(int)4"
+            videoCodec: "video/x-h264"
             mediaContainer: "video/x-matroska"
 
             onRecorderStateChanged: {
@@ -404,7 +404,7 @@ Dialog {
         id: wrongOrientationPhone
         source: "image://theme/icon-push-display-off?" + Theme.highlightColor
         anchors.centerIn: parent
-        rotation: rotatePhoneTimer.showmode > 1 ? 0 : 90
+        rotation: rotatePhoneTimer.showmode > 1 ? 0 : rotatePhoneTimer.needAngle //90
         visible: rotatePhoneTimer.running
 
         Behavior on rotation {
@@ -420,7 +420,7 @@ Dialog {
         id: wrongOrientationCircle
         source: "image://theme/icon-push-restart?" + (rotation == 0 ? "#00FF00" : "#FF0000")
         anchors.centerIn: parent
-        rotation: rotatePhoneTimer.showmode > 1 ? 0 : 90
+        rotation: rotatePhoneTimer.showmode > 1 ? 0 : rotatePhoneTimer.needAngle //90
         visible: rotatePhoneTimer.running
 
         Behavior on rotation {
@@ -436,14 +436,15 @@ Dialog {
         source: "image://theme/icon-header-" + (wrongOrientationCircle.rotation == 0 ? "accept?#00FF00" : "cancel?#FF0000")
         anchors.centerIn: parent
         visible: rotatePhoneTimer.running
-        rotation: sensor.rotationAngle - 90
+        rotation: sensor.rotationAngle - rotatePhoneTimer.needAngle //90
     }
 
     Timer {
         id: rotatePhoneTimer
         property int showmode: 0
         interval: 1000
-        running: extensions.device == "primary" && camera.captureMode == Camera.CaptureVideo && sensor.rotationAngle != 90
+        running: camera.captureMode == Camera.CaptureVideo && sensor.rotationAngle != needAngle
+        property int needAngle: extensions.device == "primary" ? 90 : 180
         repeat: true
         onTriggered: {
             showmode++
