@@ -343,6 +343,9 @@ Page {
                 else
                     reason = qsTr("Missing request param: %1", "Registration information constructor").arg(param)
             }
+            else if (reply.reason == "mismatch") {
+                reason = qsTr("Invalid registration code entered. Please try again.", "Registration information constructor")
+            }
             else if (reply.reason == "bad_param") {
                 reason = qsTr("Bad parameters passed to code request: %1", "Registration information constructor").arg(param)
             }
