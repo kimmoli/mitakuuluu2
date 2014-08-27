@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import harbour.mitakuuluu2.client 1.0
 import QtLocation 5.0
 import QtPositioning 5.1
+import org.nemomobile.configuration 1.0
 import "Utilities.js" as Utilities
 
 Page {
@@ -144,15 +145,32 @@ Page {
 
     function timestampToDateTime(stamp) {
         var d = new Date(stamp*1000)
-        return Qt.formatDateTime(d, "dd.MM hh:mm:ss")
+        if (timeFormat24) {
+            return Qt.formatDateTime(d, "dd.MM hh:mm:ss")
+        }
+        else {
+            return Qt.formatDateTime(d, "dd.MM h:m:s ap")
+        }
     }
 
     function timestampToTime(stamp) {
         var d = new Date(stamp*1000)
-        if (showSeconds)
-            return Qt.formatDateTime(d, "hh:mm:ss")
-        else
-            return Qt.formatDateTime(d, "hh:mm")
+        if (showSeconds) {
+            if (timeFormat24) {
+                return Qt.formatDateTime(d, "hh:mm:ss")
+            }
+            else {
+                return Qt.formatDateTime(d, "h:m:s ap")
+            }
+        }
+        else {
+            if (timeFormat24) {
+                return Qt.formatDateTime(d, "hh:mm")
+            }
+            else {
+                return Qt.formatDateTime(d, "h:m ap")
+            }
+        }
     }
 
     function getMediaPreview(model) {
@@ -894,5 +912,11 @@ Page {
             displayName = pageStack.currentPage.displayLabel
             Mitakuuluu.sendVCard([page.jid], displayName, vcardData)
         }
+    }
+
+    property bool timeFormat24: timeFormat.value === "24"
+    ConfigurationValue {
+        id: timeFormat
+        key: "/sailfish/i18n/lc_timeformat24h"
     }
 }
