@@ -363,6 +363,9 @@ void QueryExecutor::saveConversationMessage(QVariantMap &query)
             qDebug() << "Error adding message:" << i.lastError().text();
         }
     }
+    else {
+        qWarning() << "Message already exists:" << query["msgid"].toString();
+    }
 
     Q_EMIT actionDone(query);
 }
