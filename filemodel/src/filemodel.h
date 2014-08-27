@@ -20,6 +20,7 @@ class FileSourceModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(QStringList filter READ getFilter WRITE setFilter FINAL)
     Q_PROPERTY(QString path READ getPath WRITE processPath FINAL)
+    Q_PROPERTY(bool showHidden READ showHidden WRITE setShowHidden FINAL)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
 
 public:
@@ -55,6 +56,10 @@ private:
     QString _path;
     QString& getPath();
     void setPath(const QString &path);
+
+    bool _showHidden;
+    bool showHidden();
+    void setShowHidden(bool value);
 
 public slots:
     void showRecursive(const QStringList &dirs);

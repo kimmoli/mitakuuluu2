@@ -16,13 +16,17 @@ class RecursiveSearch : public QObject
 {
     Q_OBJECT
 public:
-    explicit RecursiveSearch(const QStringList &locations, const QStringList &filters, QObject *parent = 0);
+    explicit RecursiveSearch(const QStringList &locations,
+                             const QStringList &filters,
+                             bool showHidden,
+                             QObject *parent = 0);
 
 private:
     void recursiveSearch(const QString &folder);
 
     QStringList _locations;
     QStringList _filters;
+    bool _showHidden;
 
     bool _active;
 

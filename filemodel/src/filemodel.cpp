@@ -29,6 +29,7 @@ FileSourceModel::FileSourceModel(QObject *parent) :
     _roles[ImageHeightRole] = "height";
     _path = QDir::homePath();
     _filter = QStringList() << "*.*";
+    _showHidden = false;
 }
 
 FileSourceModel::~FileSourceModel()
@@ -63,13 +64,23 @@ void FileSourceModel::setFilter(const QStringList &filter)
     _filter = filter;
 }
 
+bool FileSourceModel::showHidden()
+{
+    return _showHidden;
+}
+
+void FileSourceModel::setShowHidden(bool value)
+{
+    _showHidden = value;
+}
+
 void FileSourceModel::showRecursive(const QStringList &dirs)
 {
     Q_EMIT stopSearch();
 
     clear();
 
-    RecursiveSearch *recursive = new RecursiveSearch(dirs, _filter);
+    RecursiveSearch *recursive = new RecursiveSearch(dirs, _filter, _showHidden);
     QObject::connect(this, SIGNAL(stopSearch()), recursive, SLOT(stopSearch()));
     QObject::connect(recursive, SIGNAL(haveFolderData(QVariantList)), this, SLOT(folderDataReceived(QVariantList)));
     QThread *thread = new QThread(recursive);

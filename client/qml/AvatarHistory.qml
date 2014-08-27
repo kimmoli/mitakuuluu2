@@ -38,7 +38,8 @@ Page {
         sorting: true
         fileModel: FileSourceModel {
             id: filesourcemodel
-            filter: jid + "-*"
+            filter: [jid + "-*"]
+            showHidden: true
         }
     }
 

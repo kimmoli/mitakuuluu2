@@ -2,12 +2,13 @@
 
 #include <QDebug>
 
-RecursiveSearch::RecursiveSearch(const QStringList &locations, const QStringList &filters, QObject *parent) :
+RecursiveSearch::RecursiveSearch(const QStringList &locations, const QStringList &filters, bool showHidden, QObject *parent) :
     QObject(parent),
    _active(false)
 {
     _locations = locations;
     _filters = filters;
+    _showHidden = showHidden;
 }
 
 void RecursiveSearch::recursiveSearch(const QString &folder)
@@ -40,7 +41,7 @@ void RecursiveSearch::recursiveSearch(const QString &folder)
     foreach (const QFileInfo &info, list) {
         if (!_active)
             break;
-        if (info.filePath().contains("/."))
+        if (!_showHidden && info.filePath().contains("/."))
             continue;
         if (info.isDir() && !info.filePath().contains("android_storage/Android/data")) {
             recursiveSearch(info.filePath());
