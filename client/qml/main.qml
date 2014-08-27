@@ -161,9 +161,6 @@ ApplicationWindow {
     property int reconnectionLimit: 20
     onReconnectionLimitChanged: Mitakuuluu.save("settings/reconnectionLimit", reconnectionLimit)
 
-    property bool disconnectStreamError: false
-    onDisconnectStreamErrorChanged: Mitakuuluu.save("settings/disconnectStreamError", disconnectStreamError)
-
     property int currentOrientation: pageStack._currentOrientation
 
     property string coverIconLeft: "../images/icon-cover-location-left.png"

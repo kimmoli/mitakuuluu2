@@ -355,8 +355,6 @@ private slots:
     void checkActivity();
     void wakeupStopped();
 
-    void streamError();
-
 signals:
     void authFail(const QString &username, const QString &reason);
     void authSuccess(const QString &username);
@@ -454,6 +452,7 @@ signals:
     void myAccount(const QString &account);
     void simParameters(const QString &mcc, const QString &mnc);
     void mediaListReceived(const QString &pjid, const QVariantList &mediaList);
+    void streamError();
 
 private:
     QueryExecutor *dbExecutor;

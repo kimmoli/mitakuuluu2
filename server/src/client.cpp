@@ -762,7 +762,7 @@ void Client::onAuthSuccess(const QString &creation, const QString &expiration, c
             this,SLOT(newContactAdded(QString)));
 
     connect(connectionPtr.data(),SIGNAL(streamError()),
-            this,SLOT(streamError()));
+            this,SIGNAL(streamError()));
 
     connect(connectionPtr.data(), SIGNAL(groupCreated(QString)), this, SIGNAL(groupCreated(QString)));
 
@@ -1055,13 +1055,6 @@ void Client::checkActivity()
 void Client::wakeupStopped()
 {
     qDebug() << "WAKEUP STOPPED! WHAT SHOULD I DO NOW!?";
-}
-
-void Client::streamError()
-{
-    if (disconnectStreamError) {
-        connectionPtr->disconnectAndDelete();
-    }
 }
 
 void Client::synchronizePhonebook()

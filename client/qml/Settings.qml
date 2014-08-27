@@ -524,12 +524,6 @@ Page {
             }
 
             TextSwitch {
-                checked: !disconnectStreamError
-                text: qsTr("Ignore stream errors", "Settings option name")
-                onClicked: disconnectStreamError = !checked
-            }
-
-            TextSwitch {
                 checked: useKeepalive
                 text: qsTr("Use connection keepalive (*)", "Settings option name")
                 onClicked: useKeepalive = checked
