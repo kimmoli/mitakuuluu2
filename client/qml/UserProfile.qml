@@ -265,7 +265,7 @@ Page {
             }
             Image {
                 source: "image://theme/icon-m-play"
-                visible: model.mime.indexOf("video") == 0
+                visible: typeof(model.mime) != "undefined" && model.mime.indexOf("video") == 0
                 anchors.centerIn: parent
                 asynchronous: true
                 cache: true

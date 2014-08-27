@@ -116,7 +116,7 @@ Page {
 
                     MenuItem {
                         text: qsTr("Save to Gallery")
-                        visible: avatarGrid.expandItem.inCache
+                        visible: avatarGrid.expandItem && avatarGrid.expandItem.inCache
                         onClicked: {
                             var path = Mitakuuluu.saveImage(avatarGrid.expandItem.source)
                             banner.notify(qsTr("Avatar saved to; %1").arg(path))
@@ -125,7 +125,7 @@ Page {
 
                     MenuItem {
                         objectName: "deleteItem"
-                        visible: avatarGrid.expandItem.source != page.avatar
+                        visible: avatarGrid.expandItem && avatarGrid.expandItem.source != page.avatar
                         text: qsTr("Delete")
                         onClicked: avatarGrid.expandItem.remove()
                     }
