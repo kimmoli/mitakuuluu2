@@ -68,6 +68,8 @@ class Mitakuuluu: public QObject
     Q_PROPERTY(QString groupLedColor READ getGroupLedColor WRITE setGroupLedColor NOTIFY groupLedColorChanged)
 
     Q_SCRIPTABLE Q_PROPERTY(QString version READ version NOTIFY versionChanged)
+    Q_PROPERTY(QString fullVersion READ fullVersion NOTIFY fullVersionChanged)
+    Q_PROPERTY(QVariantMap webVersion READ webVersion NOTIFY webVersionChanged)
 
 public:
     enum ConnectionStatus {
@@ -144,6 +146,12 @@ private:
     QString version();
     QString _version;
 
+    QString fullVersion();
+    QString _fullVersion;
+
+    QVariantMap webVersion();
+    QVariantMap _webVersion;
+
     int connStatus;
     int connectionStatus();
 
@@ -189,6 +197,8 @@ signals:
     void mncChanged();
     void myJidChanged();
     void versionChanged();
+    void fullVersionChanged();
+    void webVersionChanged();
     void activeChanged();
     void messageReceived(const QVariantMap &data);
     void disconnected(const QString &reason);
@@ -272,8 +282,10 @@ private slots:
     void handleProfileChanged(bool changed, bool active, QString profile, QList<MyStructure> keyValType);
 
     void onWhatsappStatus();
+    void onVersionReceived();
 
     void readVersion();
+    void readFullVersion();
 
 public slots:
     Q_SCRIPTABLE void exit();

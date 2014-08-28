@@ -200,7 +200,6 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
         checkWhatsappStatus();
 
         QProcess *app = new QProcess(this);
-        //app->start("/bin/rpm", QStringList() << "-qa" << "--queryformat" << "%{version}-%{release}" <<  "harbour-mitakuuluu2");
         app->start("/bin/rpm", QStringList() << "-qa" << "--queryformat" << "%{version}" <<  "harbour-mitakuuluu2");
         if (app->bytesAvailable() > 0) {
             _version = app->readAll();
@@ -210,6 +209,19 @@ Mitakuuluu::Mitakuuluu(QObject *parent): QObject(parent)
             _version = "n/a";
             connect(app, SIGNAL(readyRead()), this, SLOT(readVersion()));
         }
+
+        app->start("/bin/rpm", QStringList() << "-qa" << "--queryformat" << "%{version}-%{release}" <<  "harbour-mitakuuluu2");
+        if (app->bytesAvailable() > 0) {
+            _fullVersion = app->readAll();
+            Q_EMIT fullVersionChanged();
+        }
+        else {
+            _fullVersion = "n/a";
+            connect(app, SIGNAL(readyRead()), this, SLOT(readFullVersion()));
+        }
+
+        connect(nam->get(QNetworkRequest(QUrl("https://coderus.openrepos.net/mitakuuluu.json"))),
+                SIGNAL(finished()), this, SLOT(onVersionReceived()));
     }
     else {
         QGuiApplication::exit(1);
@@ -767,12 +779,35 @@ void Mitakuuluu::onWhatsappStatus()
     }
 }
 
+void Mitakuuluu::onVersionReceived()
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
+    if (reply->error() == QNetworkReply::NoError) {
+        QByteArray json = reply->readAll();
+        QJsonParseError error;
+        QJsonDocument doc = QJsonDocument::fromJson(json, &error);
+        if (error.error == QJsonParseError::NoError) {
+            _webVersion = doc.toVariant().toMap();
+            Q_EMIT webVersionChanged();
+        }
+    }
+}
+
 void Mitakuuluu::readVersion()
 {
     QProcess *app = qobject_cast<QProcess*>(sender());
     if (app && app->bytesAvailable() > 0) {
         _version = app->readAll();
         Q_EMIT versionChanged();
+    }
+}
+
+void Mitakuuluu::readFullVersion()
+{
+    QProcess *app = qobject_cast<QProcess*>(sender());
+    if (app && app->bytesAvailable() > 0) {
+        _fullVersion = app->readAll();
+        Q_EMIT fullVersionChanged();
     }
 }
 
@@ -1276,6 +1311,11 @@ void Mitakuuluu::setMediaLedColor(const QString &pattern)
 QString Mitakuuluu::version()
 {
     return _version;
+}
+
+QString Mitakuuluu::webVersion()
+{
+    return _webVersion;
 }
 
 QStringList Mitakuuluu::getLocalesNames()
