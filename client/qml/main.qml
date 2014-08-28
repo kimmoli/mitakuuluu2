@@ -83,7 +83,7 @@ ApplicationWindow {
     property double resizeImagesToMPix: 5.01
     onResizeImagesToMPixChanged: Mitakuuluu.save("settings/resizeImagesToMPix", resizeImagesToMPix)
 
-    property string conversationTheme: "/usr/share/harbour-mitakuuluu2/qml/DefaultDelegate.qml"
+    property string conversationTheme: "/usr/share/harbour-mitakuuluu2/qml/ModernDelegate.qml"
     onConversationThemeChanged: Mitakuuluu.save("settings/conversationTheme", conversationTheme)
 
     property int conversationIndex: 0
@@ -781,7 +781,7 @@ ApplicationWindow {
         resizeBySize = Mitakuuluu.load("settings/resizeBySize", true)
         resizeImagesTo = Mitakuuluu.load("settings/resizeImagesTo", parseInt(1048546))
         resizeImagesToMPix = Mitakuuluu.load("settings/resizeImagesToMPix", parseFloat(5.01))
-        conversationTheme = Mitakuuluu.load("settings/conversationTheme", "/usr/share/harbour-mitakuuluu2/qml/DefaultDelegate.qml")
+        conversationTheme = Mitakuuluu.load("settings/conversationTheme", "/usr/share/harbour-mitakuuluu2/qml/ModernDelegate.qml")
         alwaysOffline = Mitakuuluu.load("settings/alwaysOffline", false)
         deleteMediaFiles = Mitakuuluu.load("settings/deleteMediaFiles", false)
         importToGallery = Mitakuuluu.load("settings/importmediatogallery", true)
@@ -803,6 +803,8 @@ ApplicationWindow {
         resizeWlan = Mitakuuluu.load("settings/resizeWlan", false)
         systemNotifier = Mitakuuluu.load("settings/systemNotifier", false)
         useKeepalive = Mitakuuluu.load("settings/useKeepalive", true)
+        reconnectionInterval = Mitakuuluu.load("settings/reconnectionInterval", 1)
+        reconnectionLimit = Mitakuuluu.load("settings/reconnectionLimit", 20)
 
         var hiddenContacts = Mitakuuluu.loadGroup("hidden")
         var toHide = []

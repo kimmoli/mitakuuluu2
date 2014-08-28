@@ -528,7 +528,7 @@ Page {
                 Loader {
                     width: parent.width
                     asynchronous: false
-                    source: Qt.resolvedUrl("ModernDelegate.qml")
+                    source: Qt.resolvedUrl(conversationTheme)
                 }
             }
             MouseArea {
