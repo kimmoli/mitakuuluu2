@@ -255,13 +255,6 @@ Dialog {
         }
     }
 
-    Label {
-        anchors.left: parent.left
-        anchors.top: cameraSourceButton.bottom
-        anchors.margins: Theme.paddingSmall
-        text: sensor.rotationAngle
-    }
-
     Item {
         anchors.right: parent.right
         anchors.top: header.bottom
