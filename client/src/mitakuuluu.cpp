@@ -861,6 +861,10 @@ QString Mitakuuluu::saveImage(const QString &path)
         QFile img(cutpath);
         if (img.exists()) {
             QString name = path.split("/").last().split("@").first();
+            QString id = path.split("/").last().split("-").last();
+            if (name != id) {
+                name = QString("%1-%2").arg(name).arg(id);
+            }
             qDebug() << "saveImage" << path << "name:" << name;
             img.open(QFile::ReadOnly);
             QString ext = "jpg";
