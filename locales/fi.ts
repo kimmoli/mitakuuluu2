@@ -161,57 +161,57 @@
 <context>
     <name>AvatarHistory</name>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="55"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="56"/>
         <source>Avatar</source>
         <translation>Profiilikuva</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="59"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="60"/>
         <source>Select picture</source>
         <translation>Valitse kuva</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="69"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="70"/>
         <source>Take picture</source>
         <translation>Ota kuva</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="79"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="80"/>
         <source>Remove avatar</source>
         <translation>Poista profiilikuva</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="89"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="90"/>
         <source>History</source>
         <translation>Historia</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="118"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="119"/>
         <source>Save to Gallery</source>
         <translation>Tallenna Galleriaan</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="122"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="123"/>
         <source>Avatar saved to; %1</source>
         <translation>Profiilikuva tallennettu; %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="129"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="130"/>
         <source>Delete</source>
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="136"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="137"/>
         <source>Avatar history is empty</source>
         <translation>Profiilikuvahistoria on tyhjä</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="186"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="187"/>
         <source>Deleting avatar file</source>
         <translation>Poistetaan profiilikuvan tiedosto</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="210"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="211"/>
         <source>Cancel</source>
         <translation>Peruuta</translation>
     </message>
@@ -483,31 +483,31 @@
         <translation>Yhdistetty</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1143"/>
+        <location filename="../server/src/client.cpp" line="1136"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Piilotettu</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1418"/>
+        <location filename="../server/src/client.cpp" line="1411"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Liitytty ryhmään</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1421"/>
+        <location filename="../server/src/client.cpp" line="1414"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Poistui ryhmästä</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1424"/>
+        <location filename="../server/src/client.cpp" line="1417"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Otsikko: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1427"/>
+        <location filename="../server/src/client.cpp" line="1420"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Kuva vaihdettu</translation>
@@ -519,7 +519,7 @@
         <translation>Yhteys katkaistu</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2989"/>
+        <location filename="../server/src/client.cpp" line="2982"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n lukematon viesti</numerusform><numerusform>%n lukematonta viestiä</numerusform></translation>
@@ -1023,61 +1023,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="290"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation>Tuntematon</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="293"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation>Odotetaan yhteyttä</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="296"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation>Yhdistetään...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="299"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation>Vahvistetaan...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation>Kirjautuneena</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="317"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation>Kirjautuminen epäonnistui!</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="320"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation>Yhteys katkaistu</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="323"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation>Rekisteröidään...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="326"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation>Rekisteröinti epäonnistui!</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="317"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="329"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation>Tili vanhentunut!</translation>
@@ -1264,6 +1264,25 @@
         <source>100 years</source>
         <comment>Contacts muting duration text</comment>
         <translation>100 vuotta</translation>
+    </message>
+</context>
+<context>
+    <name>NewVersion</name>
+    <message>
+        <location filename="../client/qml/NewVersion.qml" line="30"/>
+        <source>New Mitakuuluu version available!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/NewVersion.qml" line="40"/>
+        <source>Version: v%1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/NewVersion.qml" line="50"/>
+        <source>Release notes: 
+%1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2038,26 +2057,20 @@ Napauta &apos;Uudista&apos; ostaaksesi Whatsapp palvelun vuodeksi.</translation>
         <comment>Settings option name</comment>
         <translation>Käytä järjestelmän keskusteluilmoituksia</translation>
     </message>
-    <message>
-        <location filename="../client/qml/Settings.qml" line="528"/>
-        <source>Ignore stream errors</source>
-        <comment>Settings option name</comment>
-        <translation type="unfinished"/>
-    </message>
     <message numerus="yes">
-        <location filename="../client/qml/Settings.qml" line="544"/>
+        <location filename="../client/qml/Settings.qml" line="538"/>
         <source>%n minutes</source>
         <comment>Settings option value label</comment>
         <translation><numerusform>%n minuutti</numerusform><numerusform>%n minuuttia</numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="584"/>
+        <location filename="../client/qml/Settings.qml" line="578"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
         <translation>Lataa media Galleriaan</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="585"/>
+        <location filename="../client/qml/Settings.qml" line="579"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
         <translation>Jos merkitty, ladatut tiedostot näkyvät Galleriassa</translation>
@@ -2093,73 +2106,73 @@ Napauta &apos;Uudista&apos; ostaaksesi Whatsapp palvelun vuodeksi.</translation>
         <translation>Yleiset</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="534"/>
+        <location filename="../client/qml/Settings.qml" line="528"/>
         <source>Use connection keepalive (*)</source>
         <comment>Settings option name</comment>
         <translation>Käytä yhteyden ylläpitoa (*)</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="542"/>
+        <location filename="../client/qml/Settings.qml" line="536"/>
         <source>Reconnection interval (*)</source>
         <comment>Settings option name</comment>
         <translation>Uudelleenyhdistämisen aikaväli (*)</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="554"/>
+        <location filename="../client/qml/Settings.qml" line="548"/>
         <source>Reconnection limit (*)</source>
         <comment>Settings option name</comment>
         <translation>Uudelleenyhdistyksien raja (*)</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/Settings.qml" line="556"/>
+        <location filename="../client/qml/Settings.qml" line="550"/>
         <source>%n reconnections</source>
         <comment>Settings option value label</comment>
         <translation><numerusform>%n uudelleenyhdistys</numerusform><numerusform>%n uudelleenyhdistystä</numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="746"/>
+        <location filename="../client/qml/Settings.qml" line="740"/>
         <source>Don&apos;t resize on WLAN</source>
         <comment>Settings option name</comment>
         <translation>Älä muuta kuvien kokoa langattomassa verkossa</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="841"/>
+        <location filename="../client/qml/Settings.qml" line="835"/>
         <source>red</source>
         <comment>Pattern led color</comment>
         <translation>punainen</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="842"/>
+        <location filename="../client/qml/Settings.qml" line="836"/>
         <source>green</source>
         <comment>Pattern led color</comment>
         <translation>vihreä</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="843"/>
+        <location filename="../client/qml/Settings.qml" line="837"/>
         <source>blue</source>
         <comment>Pattern led color</comment>
         <translation>sininen</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="844"/>
+        <location filename="../client/qml/Settings.qml" line="838"/>
         <source>white</source>
         <comment>Pattern led color</comment>
         <translation>valkoinen</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="845"/>
+        <location filename="../client/qml/Settings.qml" line="839"/>
         <source>yellow</source>
         <comment>Pattern led color</comment>
         <translation>keltainen</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="846"/>
+        <location filename="../client/qml/Settings.qml" line="840"/>
         <source>cyan</source>
         <comment>Pattern led color</comment>
         <translation>syaani</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="847"/>
+        <location filename="../client/qml/Settings.qml" line="841"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
         <translation>pinkki</translation>
@@ -2218,19 +2231,19 @@ Napauta &apos;Uudista&apos; ostaaksesi Whatsapp palvelun vuodeksi.</translation>
         <translation>Palvelinyhteys</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="565"/>
+        <location filename="../client/qml/Settings.qml" line="559"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
         <translation>Automaattinen käynnistys</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="573"/>
+        <location filename="../client/qml/Settings.qml" line="567"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
         <translation>Salli sovelluksen lokitietojen tallennus</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="577"/>
+        <location filename="../client/qml/Settings.qml" line="571"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
         <translation>Sinun täytyy ensin sulkea sovellus kokonaan saadaksesi lokeja. Valitse &apos;Lähetä lokitiedosto kehittäjälle&apos; asetuksien ylävalikosta.</translation>
@@ -2242,13 +2255,13 @@ Napauta &apos;Uudista&apos; ostaaksesi Whatsapp palvelun vuodeksi.</translation>
         <translation>Lukitse keskustelunäkymä pystyasentoon</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="592"/>
+        <location filename="../client/qml/Settings.qml" line="586"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
         <translation>Näytä itsesi yhteystiedoissa, jos olet paikalla</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="598"/>
+        <location filename="../client/qml/Settings.qml" line="592"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
         <translation>Hyväksy viestit tuntemattomilta henkilöiltä</translation>
@@ -2308,97 +2321,97 @@ Napauta &apos;Uudista&apos; ostaaksesi Whatsapp palvelun vuodeksi.</translation>
         <translation>Mediaviesti</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="603"/>
+        <location filename="../client/qml/Settings.qml" line="597"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
         <translation>Läsnäolo</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="608"/>
+        <location filename="../client/qml/Settings.qml" line="602"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
         <translation>Näytä läsnäolo</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="611"/>
+        <location filename="../client/qml/Settings.qml" line="605"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
         <translation>Näytä paikalla, kun sovellus on auki</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="618"/>
+        <location filename="../client/qml/Settings.qml" line="612"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
         <translation>Näytä aina paikalla</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="625"/>
+        <location filename="../client/qml/Settings.qml" line="619"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
         <translation>Näytä aina poissa</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="638"/>
+        <location filename="../client/qml/Settings.qml" line="632"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
         <translation>Kansi</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="649"/>
+        <location filename="../client/qml/Settings.qml" line="643"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
         <translation>Vasen toiminto</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="673"/>
+        <location filename="../client/qml/Settings.qml" line="667"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
         <translation>Oikea toiminto</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="690"/>
+        <location filename="../client/qml/Settings.qml" line="684"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
         <translation>Media</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="726"/>
+        <location filename="../client/qml/Settings.qml" line="720"/>
         <source>Auto download on WLAN only</source>
         <comment>Settings option name</comment>
         <translation>Automaattinen lataus vain langattomassa verkossa</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="716"/>
+        <location filename="../client/qml/Settings.qml" line="710"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
         <translation>Automaattinen latauskoko</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="735"/>
+        <location filename="../client/qml/Settings.qml" line="729"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
         <translation>Muuta lähetettävien kuvien kokoa</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="779"/>
+        <location filename="../client/qml/Settings.qml" line="773"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
         <translation>Suurin tiedostokoko</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="813"/>
+        <location filename="../client/qml/Settings.qml" line="807"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
         <translation>Suurin resoluutio megapikseleinä</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="815"/>
+        <location filename="../client/qml/Settings.qml" line="809"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
         <translation>%1 mp</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="829"/>
+        <location filename="../client/qml/Settings.qml" line="823"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
         <translation>(*) merkityt valinnat tulevat voimaan vasta uudelleen yhdistämisen jälkeen</translation>
@@ -2718,13 +2731,13 @@ Napauta &apos;Uudista&apos; ostaaksesi Whatsapp palvelun vuodeksi.</translation>
 <context>
     <name>main</name>
     <message>
-        <location filename="../client/qml/main.qml" line="461"/>
+        <location filename="../client/qml/main.qml" line="458"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
         <translation>Katkaistaan yhteyttä</translation>
     </message>
     <message>
-        <location filename="../client/qml/main.qml" line="768"/>
+        <location filename="../client/qml/main.qml" line="765"/>
         <source>Server experiencing problems with following feature(s): %1</source>
         <translation>Palvelimella ilmeni ongelmia seuraavien ominaisuuksien kanssa: %1</translation>
     </message>

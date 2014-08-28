@@ -161,57 +161,57 @@
 <context>
     <name>AvatarHistory</name>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="55"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="56"/>
         <source>Avatar</source>
         <translation>Avatar</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="59"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="60"/>
         <source>Select picture</source>
         <translation>Vybrat obrázek</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="69"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="70"/>
         <source>Take picture</source>
         <translation>Udělat obrázek</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="79"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="80"/>
         <source>Remove avatar</source>
         <translation>Odstranit avatara</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="89"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="90"/>
         <source>History</source>
         <translation>Historie</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="118"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="119"/>
         <source>Save to Gallery</source>
         <translation>Uložit do galerie</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="122"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="123"/>
         <source>Avatar saved to; %1</source>
         <translation>Avatar uložen do; %1</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="129"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="130"/>
         <source>Delete</source>
         <translation>Smazat</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="136"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="137"/>
         <source>Avatar history is empty</source>
         <translation>Historie avatarů je prázdná</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="186"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="187"/>
         <source>Deleting avatar file</source>
         <translation>Smazat soubor avatara</translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="210"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="211"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
@@ -483,31 +483,31 @@
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1143"/>
+        <location filename="../server/src/client.cpp" line="1136"/>
         <source>Hidden</source>
         <comment>User hidden own status for privacy</comment>
         <translation>Skrytý</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1418"/>
+        <location filename="../server/src/client.cpp" line="1411"/>
         <source>Joined the group</source>
         <comment>Notification group event text</comment>
         <translation>Připojeno ke skupině</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1421"/>
+        <location filename="../server/src/client.cpp" line="1414"/>
         <source>Left the group</source>
         <comment>Notification group event text</comment>
         <translation>Skupina opuštěna</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1424"/>
+        <location filename="../server/src/client.cpp" line="1417"/>
         <source>Subject: %1</source>
         <comment>Notification group event text</comment>
         <translation>Předmět: %1</translation>
     </message>
     <message>
-        <location filename="../server/src/client.cpp" line="1427"/>
+        <location filename="../server/src/client.cpp" line="1420"/>
         <source>Picture changed</source>
         <comment>Notification group event text</comment>
         <translation>Obrázek změněn</translation>
@@ -519,7 +519,7 @@
         <translation>Offline</translation>
     </message>
     <message numerus="yes">
-        <location filename="../server/src/client.cpp" line="2989"/>
+        <location filename="../server/src/client.cpp" line="2982"/>
         <source>%n messages unread</source>
         <comment>Message notification with unread messages count</comment>
         <translation><numerusform>%n nepřečtená zpráva</numerusform><numerusform>%n nepřečtené zprávy</numerusform><numerusform>%n nepřečtených zpráv</numerusform></translation>
@@ -1023,61 +1023,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="290"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation>Není známo</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="293"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation>Čekání na spojení</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="296"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation>Připojování...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="299"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation>Přihlašování...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation>Přihlášeno</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="317"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation>Přihlášení selhalo!</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="320"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation>Odpojeno</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="323"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation>Registrování...</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="326"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation>Registrace selhala!</translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="317"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="329"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation>Platnost účtu vypršela!</translation>
@@ -1264,6 +1264,25 @@
         <source>100 years</source>
         <comment>Contacts muting duration text</comment>
         <translation>100 let</translation>
+    </message>
+</context>
+<context>
+    <name>NewVersion</name>
+    <message>
+        <location filename="../client/qml/NewVersion.qml" line="30"/>
+        <source>New Mitakuuluu version available!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/NewVersion.qml" line="40"/>
+        <source>Version: v%1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../client/qml/NewVersion.qml" line="50"/>
+        <source>Release notes: 
+%1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2038,26 +2057,20 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
         <comment>Settings option name</comment>
         <translation>Použít systémové nastavení</translation>
     </message>
-    <message>
-        <location filename="../client/qml/Settings.qml" line="528"/>
-        <source>Ignore stream errors</source>
-        <comment>Settings option name</comment>
-        <translation type="unfinished"/>
-    </message>
     <message numerus="yes">
-        <location filename="../client/qml/Settings.qml" line="544"/>
+        <location filename="../client/qml/Settings.qml" line="538"/>
         <source>%n minutes</source>
         <comment>Settings option value label</comment>
         <translation><numerusform>%n minutu</numerusform><numerusform>%n minut</numerusform><numerusform>%n minut</numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="584"/>
+        <location filename="../client/qml/Settings.qml" line="578"/>
         <source>Download media to Gallery</source>
         <comment>Settings option name</comment>
         <translation>Stahovat média do Galerie</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="585"/>
+        <location filename="../client/qml/Settings.qml" line="579"/>
         <source>If checked downloaded files will be shown in Gallery</source>
         <comment>Settings option description</comment>
         <translation>Soubory budou zobrazeny v Galerii</translation>
@@ -2093,73 +2106,73 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
         <translation>Obecné</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="534"/>
+        <location filename="../client/qml/Settings.qml" line="528"/>
         <source>Use connection keepalive (*)</source>
         <comment>Settings option name</comment>
         <translation>Udržovat stále spojení (*)</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="542"/>
+        <location filename="../client/qml/Settings.qml" line="536"/>
         <source>Reconnection interval (*)</source>
         <comment>Settings option name</comment>
         <translation>Interval obnovení spojení (*)</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="554"/>
+        <location filename="../client/qml/Settings.qml" line="548"/>
         <source>Reconnection limit (*)</source>
         <comment>Settings option name</comment>
         <translation>Limit obnovení spojení (*)</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/qml/Settings.qml" line="556"/>
+        <location filename="../client/qml/Settings.qml" line="550"/>
         <source>%n reconnections</source>
         <comment>Settings option value label</comment>
         <translation><numerusform>%n obnovení spojení</numerusform><numerusform>%n obnovení spojení</numerusform><numerusform>%n obnovení spojení</numerusform></translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="746"/>
+        <location filename="../client/qml/Settings.qml" line="740"/>
         <source>Don&apos;t resize on WLAN</source>
         <comment>Settings option name</comment>
         <translation>Neměnit velikost při WiFi připojení</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="841"/>
+        <location filename="../client/qml/Settings.qml" line="835"/>
         <source>red</source>
         <comment>Pattern led color</comment>
         <translation>červená</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="842"/>
+        <location filename="../client/qml/Settings.qml" line="836"/>
         <source>green</source>
         <comment>Pattern led color</comment>
         <translation>zelená</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="843"/>
+        <location filename="../client/qml/Settings.qml" line="837"/>
         <source>blue</source>
         <comment>Pattern led color</comment>
         <translation>modrá</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="844"/>
+        <location filename="../client/qml/Settings.qml" line="838"/>
         <source>white</source>
         <comment>Pattern led color</comment>
         <translation>bílá</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="845"/>
+        <location filename="../client/qml/Settings.qml" line="839"/>
         <source>yellow</source>
         <comment>Pattern led color</comment>
         <translation>žlutá</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="846"/>
+        <location filename="../client/qml/Settings.qml" line="840"/>
         <source>cyan</source>
         <comment>Pattern led color</comment>
         <translation>azurová</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="847"/>
+        <location filename="../client/qml/Settings.qml" line="841"/>
         <source>pink</source>
         <comment>Pattern led color</comment>
         <translation>růžová</translation>
@@ -2218,19 +2231,19 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
         <translation>Server připojení</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="565"/>
+        <location filename="../client/qml/Settings.qml" line="559"/>
         <source>Autostart</source>
         <comment>Settings option name</comment>
         <translation>Automatický start</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="573"/>
+        <location filename="../client/qml/Settings.qml" line="567"/>
         <source>Allow saving application logs</source>
         <comment>Settings option name</comment>
         <translation>Ukládat logy aplikace</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="577"/>
+        <location filename="../client/qml/Settings.qml" line="571"/>
         <source>You need to full quit application to start writing logs. Send logfile to author appear in settings menu.</source>
         <comment>Allow application logs option description</comment>
         <translation>Aby se logy začaly zapisovat, musíte restartovat aplikaci. Odeslání logů se zobrazí v menu nastavení.</translation>
@@ -2242,13 +2255,13 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
         <translation>Uzamknout display v konverzaci na výšku</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="592"/>
+        <location filename="../client/qml/Settings.qml" line="586"/>
         <source>Show yourself in contact list, if present</source>
         <comment>Settings option name</comment>
         <translation>Zobrazit mne v seznamu kontaktů pokud jsem online</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="598"/>
+        <location filename="../client/qml/Settings.qml" line="592"/>
         <source>Accept messages from unknown contacts</source>
         <comment>Settings option name</comment>
         <translation>Přijímat zprávy od neznámých kontaktů</translation>
@@ -2308,97 +2321,97 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
         <translation>Multimediální zpráva</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="603"/>
+        <location filename="../client/qml/Settings.qml" line="597"/>
         <source>Presence</source>
         <comment>Settings page section name</comment>
         <translation>Stav</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="608"/>
+        <location filename="../client/qml/Settings.qml" line="602"/>
         <source>Display presence</source>
         <comment>Settings option name</comment>
         <translation>Zobrazit stav</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="611"/>
+        <location filename="../client/qml/Settings.qml" line="605"/>
         <source>Display online when app is open</source>
         <comment>Settings option value text</comment>
         <translation>Online jen když je aplikace otevřená</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="618"/>
+        <location filename="../client/qml/Settings.qml" line="612"/>
         <source>Always display online</source>
         <comment>Settings option value text</comment>
         <translation>Vždy zobrazovat online</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="625"/>
+        <location filename="../client/qml/Settings.qml" line="619"/>
         <source>Always display offline</source>
         <comment>Settings option value text</comment>
         <translation>Vždy zobrazovat offline</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="638"/>
+        <location filename="../client/qml/Settings.qml" line="632"/>
         <source>Cover</source>
         <comment>Settings page section name</comment>
         <translation>Náhled</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="649"/>
+        <location filename="../client/qml/Settings.qml" line="643"/>
         <source>Left cover action</source>
         <comment>Settings option name</comment>
         <translation>Akce levé strany</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="673"/>
+        <location filename="../client/qml/Settings.qml" line="667"/>
         <source>Right cover action</source>
         <comment>Settings option name</comment>
         <translation>Akce pravé strany</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="690"/>
+        <location filename="../client/qml/Settings.qml" line="684"/>
         <source>Media</source>
         <comment>Settings page section name</comment>
         <translation>Média</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="726"/>
+        <location filename="../client/qml/Settings.qml" line="720"/>
         <source>Auto download on WLAN only</source>
         <comment>Settings option name</comment>
         <translation>Automaticky stahovat jen při WiFi připojení</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="716"/>
+        <location filename="../client/qml/Settings.qml" line="710"/>
         <source>Automatic download bytes</source>
         <comment>Settings option name</comment>
         <translation>Automaticky stáhnout bajtů</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="735"/>
+        <location filename="../client/qml/Settings.qml" line="729"/>
         <source>Resize sending images</source>
         <comment>Settings option name</comment>
         <translation>Změnit velikost odesílaného obrázku</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="779"/>
+        <location filename="../client/qml/Settings.qml" line="773"/>
         <source>Maximum image size by file size</source>
         <comment>Settings option name</comment>
         <translation>Max velikost obrázku podle velikosti</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="813"/>
+        <location filename="../client/qml/Settings.qml" line="807"/>
         <source>Maximum image size by resolution</source>
         <comment>Settings option name</comment>
         <translation>Max velikost obrázku podle rozlišení</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="815"/>
+        <location filename="../client/qml/Settings.qml" line="809"/>
         <source>%1 MPx</source>
         <comment>Settings option value text</comment>
         <translation>%1 MPx</translation>
     </message>
     <message>
-        <location filename="../client/qml/Settings.qml" line="829"/>
+        <location filename="../client/qml/Settings.qml" line="823"/>
         <source>Options marked with (*) will take effect after reconnection</source>
         <comment>Settings (*) options description</comment>
         <translation>Volby označené (*) se uplatní až po restartu aplikace</translation>
@@ -2718,13 +2731,13 @@ Klikněte na Obnovit pro zakoupení ročního předplatného WhatsApp.</translat
 <context>
     <name>main</name>
     <message>
-        <location filename="../client/qml/main.qml" line="461"/>
+        <location filename="../client/qml/main.qml" line="458"/>
         <source>Disconnecting</source>
         <comment>Disconnect remorse popup</comment>
         <translation>Odpojování</translation>
     </message>
     <message>
-        <location filename="../client/qml/main.qml" line="768"/>
+        <location filename="../client/qml/main.qml" line="765"/>
         <source>Server experiencing problems with following feature(s): %1</source>
         <translation>Server rozpoznává problémy s následujícím: %1</translation>
     </message>

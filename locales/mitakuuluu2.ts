@@ -163,57 +163,57 @@
 <context>
     <name>AvatarHistory</name>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="55"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="56"/>
         <source>Avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="59"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="60"/>
         <source>Select picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="69"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="70"/>
         <source>Take picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="79"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="80"/>
         <source>Remove avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="89"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="90"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="118"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="119"/>
         <source>Save to Gallery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="122"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="123"/>
         <source>Avatar saved to; %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="129"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="130"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="136"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="137"/>
         <source>Avatar history is empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="186"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="187"/>
         <source>Deleting avatar file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/qml/AvatarHistory.qml" line="210"/>
+        <location filename="../client/qml/AvatarHistory.qml" line="211"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1040,61 +1040,61 @@
 <context>
     <name>Mitakuuluu</name>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="290"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
         <source>Unknown</source>
         <comment>Unknown connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="293"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
         <source>Waiting for connection</source>
         <comment>Waiting for connection connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="296"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
         <source>Connecting...</source>
         <comment>Connecting connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="299"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
         <source>Authentication...</source>
         <comment>Authentication connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="302"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
         <source>Logged in</source>
         <comment>Logged in connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="305"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="317"/>
         <source>Login failed!</source>
         <comment>Login failed connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="308"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="320"/>
         <source>Disconnected</source>
         <comment>Disconnected connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="311"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="323"/>
         <source>Registering...</source>
         <comment>Registering connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="314"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="326"/>
         <source>Registration failed!</source>
         <comment>Registration failed connection status</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/src/mitakuuluu.cpp" line="317"/>
+        <location filename="../client/src/mitakuuluu.cpp" line="329"/>
         <source>Account expired!</source>
         <comment>Account expired connection status</comment>
         <translation type="unfinished"></translation>
@@ -1280,6 +1280,25 @@
         <location filename="../client/qml/MutingSelector.qml" line="59"/>
         <source>100 years</source>
         <comment>Contacts muting duration text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NewVersion</name>
+    <message>
+        <location filename="../client/qml/NewVersion.qml" line="30"/>
+        <source>New Mitakuuluu version available!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/NewVersion.qml" line="40"/>
+        <source>Version: v%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/qml/NewVersion.qml" line="50"/>
+        <source>Release notes: 
+%1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
