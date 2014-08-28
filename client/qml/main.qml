@@ -817,6 +817,12 @@ ApplicationWindow {
         hidden = true
 
         updateCoverActions()
+
+        if (Mitakuuluu.webVersion.version && (Mitakuuluu.fullVersion !== Mitakuuluu.webVersion.version)) {
+            var updateDialogComponent = Qt.createComponent(Qt.resolvedUrl("NewVersion.qml"));
+            var updateDialog = updateDialogComponent.createObject(appWindow)
+            updateDialog.open()
+        }
     }
 
     Popup {
