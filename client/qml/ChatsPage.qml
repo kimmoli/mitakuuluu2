@@ -6,6 +6,7 @@ import "Utilities.js" as Utilities
 Page {
     id: page
     objectName: "rosterPage"
+    allowedOrientations: lockPortrait ? Orientation.Portrait : (Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted)
 
     onStatusChanged: {
         if (status == PageStatus.Active) {
