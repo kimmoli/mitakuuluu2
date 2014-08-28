@@ -234,7 +234,7 @@ Mitakuuluu::~Mitakuuluu()
         setPresenceUnavailable();
 }
 
-QVariant Mitakuuluu::getProfileValue(const QString &key, const QVariant def)
+QVariant Mitakuuluu::getProfileValue(const QString &key, const QVariant &def) const
 {
     QDBusMessage reply = profiled->call(PROFILED_GET_VALUE,
                                         QVariant("general"),
@@ -268,17 +268,17 @@ int Mitakuuluu::connectionStatus()
     return connStatus;
 }
 
-QString Mitakuuluu::connectionString()
+QString Mitakuuluu::connectionString() const
 {
     return connString;
 }
 
-QString Mitakuuluu::mcc()
+QString Mitakuuluu::mcc() const
 {
     return _mcc;
 }
 
-QString Mitakuuluu::mnc()
+QString Mitakuuluu::mnc() const
 {
     return _mnc;
 }
@@ -288,7 +288,7 @@ int Mitakuuluu::totalUnread()
     return _totalUnread;
 }
 
-QString Mitakuuluu::myJid()
+QString Mitakuuluu::myJid() const
 {
     return _myJid;
 }
@@ -1196,7 +1196,7 @@ void Mitakuuluu::resetNetworkUsage()
     }
 }
 
-QString Mitakuuluu::getPrivateTone()
+QString Mitakuuluu::getPrivateTone() const
 {
     QString tone = getProfileValue(PROFILEKEY_PRIVATE_TONE, TONE_FALLBACK).toString();
     qDebug() << "getPrivateTone" << tone;
@@ -1212,7 +1212,7 @@ void Mitakuuluu::setPrivateTone(const QString &path)
     Q_EMIT privateToneChanged();
 }
 
-QString Mitakuuluu::getGroupTone()
+QString Mitakuuluu::getGroupTone() const
 {
     return getProfileValue(PROFILEKEY_GROUP_TONE, TONE_FALLBACK).toString();
 }
@@ -1224,7 +1224,7 @@ void Mitakuuluu::setGroupTone(const QString &path)
     Q_EMIT groupToneChanged();
 }
 
-QString Mitakuuluu::getMediaTone()
+QString Mitakuuluu::getMediaTone() const
 {
     return getProfileValue(PROFILEKEY_MEDIA_TONE, TONE_FALLBACK).toString();
 }
@@ -1272,7 +1272,7 @@ void Mitakuuluu::setMediaToneEnabled(bool value)
     Q_EMIT mediaToneEnabledChanged();
 }
 
-QString Mitakuuluu::getPrivateLedColor()
+QString Mitakuuluu::getPrivateLedColor() const
 {
     return getProfileValue(PROFILEKEY_PRIVATE_PATTERN, "PatternMitakuuluuRed").toString();
 }
@@ -1284,7 +1284,7 @@ void Mitakuuluu::setPrivateLedColor(const QString &pattern)
     Q_EMIT privateLedColorChanged();
 }
 
-QString Mitakuuluu::getGroupLedColor()
+QString Mitakuuluu::getGroupLedColor() const
 {
     return getProfileValue(PROFILEKEY_GROUP_PATTERN, "PatternMitakuuluuGreen").toString();
 }
@@ -1296,7 +1296,7 @@ void Mitakuuluu::setGroupLedColor(const QString &pattern)
     Q_EMIT groupLedColorChanged();
 }
 
-QString Mitakuuluu::getMediaLedColor()
+QString Mitakuuluu::getMediaLedColor() const
 {
     return getProfileValue(PROFILEKEY_MEDIA_PATTERN, "PatternMitakuuluuCyan").toString();
 }
@@ -1308,12 +1308,17 @@ void Mitakuuluu::setMediaLedColor(const QString &pattern)
     Q_EMIT mediaLedColorChanged();
 }
 
-QString Mitakuuluu::version()
+QString Mitakuuluu::version() const
 {
     return _version;
 }
 
-QString Mitakuuluu::webVersion()
+QString Mitakuuluu::fullVersion() const
+{
+    return _fullVersion;
+}
+
+QVariantMap Mitakuuluu::webVersion() const
 {
     return _webVersion;
 }

@@ -119,14 +119,14 @@ public:
     ~Mitakuuluu();
 
 private:
-    QVariant getProfileValue(const QString &key, QVariant def = QVariant());
+    QVariant getProfileValue(const QString &key, const QVariant &def = QVariant()) const;
     bool setProfileValue(const QString &key, const QVariant &value);
 
-    QString getPrivateTone();
+    QString getPrivateTone() const;
     void setPrivateTone(const QString &path);
-    QString getGroupTone();
+    QString getGroupTone() const;
     void setGroupTone(const QString &path);
-    QString getMediaTone();
+    QString getMediaTone() const;
     void setMediaTone(const QString &path);
 
     bool getPrivateToneEnabled();
@@ -136,20 +136,20 @@ private:
     bool getMediaToneEnabled();
     void setMediaToneEnabled(bool value);
 
-    QString getPrivateLedColor();
+    QString getPrivateLedColor() const;
     void setPrivateLedColor(const QString &pattern);
-    QString getGroupLedColor();
+    QString getGroupLedColor() const;
     void setGroupLedColor(const QString &pattern);
-    QString getMediaLedColor();
+    QString getMediaLedColor() const;
     void setMediaLedColor(const QString &pattern);
 
-    QString version();
+    QString version() const;
     QString _version;
 
-    QString fullVersion();
+    QString fullVersion() const;
     QString _fullVersion;
 
-    QVariantMap webVersion();
+    QVariantMap webVersion() const;
     QVariantMap _webVersion;
 
     int connStatus;
@@ -159,16 +159,16 @@ private:
     int totalUnread();
 
     QString _myJid;
-    QString myJid();
+    QString myJid() const;
 
     QHash<QString, int> _unreadCount;
 
     QString connString;
-    QString connectionString();
+    QString connectionString() const;
 
-    QString mcc();
+    QString mcc() const;
     QString _mcc;
-    QString mnc();
+    QString mnc() const;
     QString _mnc;
 
     QNetworkAccessManager *nam;
