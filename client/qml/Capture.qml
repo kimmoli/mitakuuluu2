@@ -12,7 +12,7 @@ Dialog {
     id: page
     objectName: "capture"
 
-    allowedOrientations: Orientation.Landscape
+    allowedOrientations: Orientation.Landscape | Orientation.LandscapeInverted
 
     canNavigateForward: canAccept
     canAccept: false
@@ -87,7 +87,7 @@ Dialog {
         height: page.height
         anchors.fill: parent
         fillMode: VideoOutput.PreserveAspectCrop
-        orientation: page.orientation == Orientation.Portrait ? 0 : 90
+        orientation: page.orientation == Orientation.Portrait ? 0 : (page.orientation == Orientation.LandscapeInverted ? 270 : 90)
         visible: !page.canAccept
         source: camera
         property bool mirror: extensions.device == "secondary"
@@ -219,7 +219,7 @@ Dialog {
         anchors.top: header.bottom
         anchors.margins: Theme.paddingSmall
         visible: !page.canAccept
-        rotation: sensor.rotationAngle - 90
+        rotation: page.orientation == Orientation.LandscapeInverted ? sensor.rotationAngle + 90 : sensor.rotationAngle - 90
 
         iconSource: camera.captureMode == Camera.CaptureStillImage ? "image://theme/icon-camera-camera-mode"
                                                                    : "image://theme/icon-camera-video"
@@ -241,7 +241,7 @@ Dialog {
         anchors.top: cameraModeButton.bottom
         anchors.margins: Theme.paddingSmall
         visible: !page.canAccept
-        rotation: sensor.rotationAngle - 90
+        rotation: page.orientation == Orientation.LandscapeInverted ? sensor.rotationAngle + 90 : sensor.rotationAngle - 90
 
         iconSource: "image://theme/icon-camera-front-camera"
 
@@ -255,6 +255,13 @@ Dialog {
         }
     }
 
+    Label {
+        anchors.left: parent.left
+        anchors.top: cameraSourceButton.bottom
+        anchors.margins: Theme.paddingSmall
+        text: sensor.rotationAngle
+    }
+
     Item {
         anchors.right: parent.right
         anchors.top: header.bottom
@@ -262,7 +269,7 @@ Dialog {
         width: timerLabel.implicitWidth + (2 * Theme.paddingMedium)
         height: timerLabel.implicitWidth + (2 * Theme.paddingMedium)
         visible: camera.captureMode == Camera.CaptureVideo
-        rotation: sensor.rotationAngle - 90
+        rotation: page.orientation == Orientation.LandscapeInverted ? sensor.rotationAngle - 270 : sensor.rotationAngle - 90
 
         Behavior on rotation {
             NumberAnimation {
@@ -314,7 +321,7 @@ Dialog {
         anchors.right: parent.right
         anchors.margins: Theme.paddingSmall
         visible: camera.captureMode == Camera.CaptureStillImage && !page.canAccept
-        rotation: sensor.rotationAngle - 90
+        rotation: page.orientation == Orientation.LandscapeInverted ? sensor.rotationAngle + 90 : sensor.rotationAngle - 90
 
         iconSource: flashModeIcon(camera.flash.mode)
 
@@ -353,7 +360,7 @@ Dialog {
         anchors.verticalCenter: parent.verticalCenter
         anchors.margins: Theme.paddingSmall
         visible: !page.canAccept
-        rotation: sensor.rotationAngle - 90
+        rotation: page.orientation == Orientation.LandscapeInverted ? sensor.rotationAngle + 90 : sensor.rotationAngle - 90
 
         iconSource: camera.captureMode == Camera.CaptureStillImage ? "image://theme/icon-camera-shutter-release"
                                                                    : (camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? "image://theme/icon-camera-record"
